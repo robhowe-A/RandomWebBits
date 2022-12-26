@@ -146,9 +146,27 @@ nav li a { text-decoration: none;
     color: #400074;
 }
 
-/* Page Styles */
+/************************* Page Styles *************************/
+#HTTPS figure { margin: 0 auto;
+}
 
+#HTTPS figure:not(:last-of-type) { 
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
 
+figcaption { font-size: 12px;
+    font-style: italic;
+}
+
+#HTTPS div > p:not(:first-child) { margin: 0;
+    color: #000000;
+    font-family: monospace, sans-serif;
+}
+
+#Instructions div { width: 100%;
+    background-color: aquamarine;
+}
 
 .redbold { font-weight: bolder;
     color: red;
@@ -217,6 +235,9 @@ article > h3 { width: 100%;
     align-items: center;
 }
 
+#NASA div { width: 100%;
+}
+
 #NASA > h3 a { padding-top: 1em; 
     border-radius: 1.2em;
     padding-bottom: 1em;
@@ -231,8 +252,7 @@ article > h3 { width: 100%;
     border-radius: 1.2em;
 }
 
-.NASA-frame-link {
-    margin-top: 4em;
+.NASA-frame-link { margin-top: 4em;
 }
 
 .NASA-frame-link:hover { border-radius: 1.2em;
@@ -241,7 +261,6 @@ article > h3 { width: 100%;
 article iframe { width: 100%; 
     height: 80vh;
     display: block;
-    
 }
 
 #NASA-links li{ margin-top: 1em;
@@ -255,8 +274,8 @@ article iframe { width: 100%;
 }
 
 #NASA iframe, #NASA img { border: 1em solid #2A85A3;
-    width: 100%;
     border-radius: 6.65em;
+    margin: 0 auto;
 }
 
 time{ font-weight: bold;
@@ -286,9 +305,15 @@ time{ font-weight: bold;
 
 .exampleBlue { background-color: #ADD8E6;
     padding: 0.5em 1em 0.5em 1em;
-    margin: 0 auto;
+    margin: 1em auto;
     border: solid 2px;
-    max-width: 55%
+    max-width: 55%;
+    font-size: 14px;
+}
+
+.exampleBlue p, .examplePink p { width: 100%;
+    margin: 0;
+    text-align: center;
 }
 
 .examplePink { background-color: #FFC0CB;
@@ -312,8 +337,11 @@ time{ font-weight: bold;
 }
 
 @media only screen and (min-width: 750px){
-    .examplePink { padding: 0.5em 1em 0.5em 1em;
+    .examplePink, .exampleBlue { font-size: 1em;
         max-width: 35em;
+    }
+    
+    .examplePink, .exampleBlue { padding: 1em 2em 1em 2em;
     }
     
     aside ul { margin: 1em;
@@ -327,6 +355,12 @@ time{ font-weight: bold;
 @media only screen and (min-width: 1280px) {
     
     main{ max-width: 84.375em;
-    margin: 0 auto 12vh auto;
+        margin: 0 auto 12vh auto;
+    }
+    
+    #NASA iframe, #NASA img { max-width: 50em;
+    }
+    
+    #Instructions figure { width: 45em;
     }
 }

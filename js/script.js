@@ -1,4 +1,6 @@
 //-------------------SITE HEADER AND FOOTER------------------------//
+//-------SITE HEADER-------//
+
 //Create site header and navigation elements
 const siteHeader = document.createElement("header");
 const navContent = `
@@ -16,15 +18,20 @@ const H1 = document.createElement("H1");
 H1.innerHTML = '&lt;Random Web Bits&gt;';
 H1.setAttribute("id", "ArbitraryWebBits");
 
-    // Add site header and H1 to DOM
-document.querySelector("body").prepend(siteHeader);
-document.querySelector("header").append(H1);
+siteHeader.append(H1);
 
-//Create site footer
+// Add site header and H1 to DOM
+document.querySelector("body").prepend(siteHeader);
+
+
+
+
+//-------------------SITE FOOTER------------------------//
+//-------SITE FOOTER-------//
 const siteFooter = document.createElement("footer");
 const siteFooterP = document.createElement("p");
 siteFooterP.innerHTML = "&copy;2022 Random WebBits. All Rights Reserved."
 siteFooter.prepend(siteFooterP);
 
-    //add site footer to DOM
+//add site footer to DOM
 document.querySelector("body").append(siteFooter);

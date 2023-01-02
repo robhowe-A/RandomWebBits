@@ -14,34 +14,36 @@
 </head>
 <body>
     <main>
-        <time datetime="2022-12-04">December 4, 2022</time>
-        <article class="WebBits">
+        <div class="wrapper">
+            <time datetime="2022-12-04">December 4, 2022</time>
             <h2>TRY: Domain name lookup</h2>
-            <p>Domain names are often bought up fast, so to have one yourself means you need to find one that is available.</p>
-            <aside id="TryWhoIS" class="exampleBlue">
-                <p>Try searching <q>WhoIS</q>, a domain that hosts a service to check domain buying availability.</p>
-                <div class="search-container">
-                    <form id="searchWhoIS" action="index.html">
-                        <button><i class="fa fa-search"></i>&nbsp;WhoIS</button>
-                        <input id="txtSearch" type="text" placeholder="Enter a domain name..." class="monospace">
-                    </form>
-                    <!-- Search Bar, WHOIS API-->
-                    <script type="text/javascript" defer>
-                        document.getElementById('searchWhoIS').onsubmit = function() {
-                            var URL = 'https://www.whois.com/whois/' + document.getElementById('txtSearch').value;
-                            window.open(URL, '_blank');
-                            return false;
-                        }
-                    </script>
-                </div>
-            </aside>
-            <p>If your search returns an available domain, you'll see the message:</p>
-            <aside id="TryWhoIsReturn" class="examplePink">
-                <img src="../img/Whois_thisrandomwebdomain.com.png" alt="A screenshot of WhoIS domain search">
-            </aside>
-        </article>        
+            <article class="WebBits">
+                <p>Domain names are often bought up fast, so to have one yourself means you need to find one that is available.</p>
+                <aside id="TryWhoIS" class="exampleBlue">
+                    <p>Try searching <q>WhoIS</q>, a domain that hosts a service to check domain buying availability.</p>
+                    <div class="search-container">
+                        <form id="searchWhoIS" action="index.html">
+                            <button><i class="fa fa-search"></i>&nbsp;WhoIS</button>
+                            <input id="txtSearch" type="text" placeholder="Enter a domain name..." class="monospace">
+                        </form>
+                        <!-- Search Bar, WHOIS API-->
+                        <script>
+                            document.getElementById('searchWhoIS').onsubmit = function() {
+                                var URL = 'https://www.whois.com/whois/' + document.getElementById('txtSearch').value;
+                                window.open(URL, '_blank');
+                                return false;
+                            }
+                        </script>
+                    </div>
+                </aside>
+                <p>If your search returns an available domain, you'll see the message:</p>
+                <aside id="TryWhoIsReturn" class="examplePink">
+                    <img src="../img/Whois_thisrandomwebdomain.com.png" alt="A screenshot of WhoIS domain search">
+                </aside>
+            </article>
+        </div>
     </main>
-    <noscript>Your JavaScript may be broken. Turn it on for full experience! -- Random Web Bits &copy;2023</noscript>
+    <noscript>Your JavaScript may be broken or is disabled. Turn it on for full experience! -- Random Web Bits &copy;2023</noscript>
     
 </body>
 </html>

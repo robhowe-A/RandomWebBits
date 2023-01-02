@@ -1,25 +1,27 @@
 /* colors
 
-White: #FDFDFD
-Black: #4A4848
-Header(Blue): #32466D
-Footer(Blue): #081020;
-Blue: #2A85A3
-Title: #1D2A2E
-Lightblue: #ADD8E6
-Pink: #FFC0CB
-Cyan: #008B8B
-DarkCyan: #006363
+White: #FDFDFD (rgb(253, 253, 253))
+Dark-Text: #1D2A2E (rgb(29, 42, 46))
+Text-Black: #0A0A0A (rgb(10, 10, 10))
+Text-onWhite: #4A4848 (rgb(74, 72, 72))
+Header(Blue): #32466D (rgb(50, 70, 109))
+Footer(Blue): #081020; (rgb(8, 16, 32))
+Blue: #2A8BB8 (rgb(42, 139, 184))
+Title: #A7D0DC (rgb(167, 208, 220))
+Lightblue: #ADD8E6 (rgb(173, 216, 230))
+..Pink: #FFC0CB (rgb(255, 192, 203))
+Cyan: #008BB8 (rgb(0, 139, 184))
+DarkCyan: #006363 (rgb(0, 99, 99))
+..WhoIS_Orange: #F5893A (rgb(245, 137, 58))
+..Orange_Focus: #FFA500 (rgb(255, 165, 0))
+..Green: #00AA00 (rgb(0, 170, 0))
+..Skyblue: #87CEEB (rgb(135, 206, 235))
+..Red: #b50404 (rgb(181, 4, 4))
 
 */
 
 /* HTML tag styles */
 * { box-sizing: border-box}
-
-main{ width: 80%;
-    max-width: 50em;
-    margin: 5% auto 12vh auto
-}
 
 body { font-family: Lato, sans-serif;
     background-color: #FDFDFD;
@@ -40,12 +42,21 @@ footer { background-color: #081020;
     position: fixed;
     left: 0;
     bottom: 0;
+    color: #FDFDFD;
+}
+
+main{ width: 100%;
+    max-width: 50em;
+    margin-top: 5%;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-bottom: 12vh;
 }
 
 img { max-width: 100%
 }
 
-h1, h2, h3, h4, h5, h6 { color: #2A85A3;
+h1, h2, h3, h4, h5, h6 { color: #2A8BB8;
 }
 
 /* Navigation and header styles */
@@ -53,7 +64,7 @@ nav a { outline: none;
     text-decoration: none;
 }
 
-nav a:focus { border: 3px solid #f8f8f8;
+nav a:focus { border: 3px solid #FDFDFD;
     padding: .1em;
 }
 
@@ -62,10 +73,10 @@ nav a:visited { opacity: 80%;
 }
 
 nav a:hover { opacity: 80%;
-    color: darkcyan;
+    color: #008BB8;
 }
 
-#ArbitraryWebBits { color: #1D2A2E;
+#ArbitraryWebBits { color: #A7D0DC;
     text-align: right;
     margin-top: .5em;
     margin-right: 1em;
@@ -80,20 +91,31 @@ nav ul { margin: 0;
 nav ul li { list-style: none
 }
 
-nav li a { text-decoration: none;
-    color: #FDFDFD;
+nav li a { color: #FDFDFD;
     font-size: 1.4em;
+}
+
+a { text-decoration: none;
 }
 
 /* Home Pages Styles */
 .Title { text-align: center
 }
 
-/* CARDS - Home and Pages */
-.cards h2{ text-align: center
+h2:first-child { font-size: 2.5em;
 }
 
-.card-columns { display: flex;
+/* CARDS - Home and Pages */
+.cards h2 { text-align: center;
+}
+
+.cards h3 { color: #1D2A2E;
+}
+
+.cards p { color: #0A0A0A;
+}
+
+.card_columns { display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
@@ -101,52 +123,96 @@ nav li a { text-decoration: none;
     margin: 0 auto 8em auto;
 }
 
-.card-columns .card { width: 12em
+.card_columns .card { width: 100%;
 }
 
-.card { padding: 1em;
-    margin: 0.5em 1em;
-    background: rgba(248, 248, 248, 0.08);
-    border: 2px solid #0a0a0a;
+
+.card div:first-child {width: 100%; 
+    height: auto;
+}
+
+.card { margin: 2em 0;
+    background: rgba(42, 133, 163, .75);
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 10px 15px 0px #32466D;
+    text-align: center;
 }
 
-.card .card-body { padding: 1em 0;
-    margin: 0 auto;
+.card_body { padding: 1em 0;
+    margin: 0;
+    display: inline-block;
 }
 
-.card-body p { font-size: .8em;
+.card_body > a:focus {
+    border: 3px solid #FFA500;
+    outline: none;
+}
+
+.card_body p { font-size: .8em;
     max-width: 15em;
     margin: 0;
 }
 
-.card-img { border: 1px solid #0a0a0a
-}
-
 /* Buttons */
 
-.cards a { background: #400074;
+.cards a { background: #006363;
     color: #FDFDFD;
     font-size: .8rem;
     padding: 0.8em;
-    margin: 0.5em;
     text-transform: uppercase;
     letter-spacing: 1px;
     line-height: 1.2;
-    border: 1px solid #0a0a0a;
     border-radius: 10px;
+    box-shadow: 0 2px 2px 0px #32466D;
+    font-weight: bolder;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    display: inline-block;
 }
 
 .cards a:hover{ transition: background-color 400ms;
-    background-color: silver;
-    color: #400074;
+    background-color: #008BB8;
 }
 
 /************************* Page Styles *************************/
+
+.WebBits { margin-bottom: 5em;
+    margin-top: 2em;
+}
+
+.WebBits a { font-weight: bold;
+}
+
+.WebBits a:focus { border: 3px solid #FFA500;
+    outline: none;
+    padding: .1em;
+}
+
+.WebBits a:link { color: #2A8BB8;
+}
+
+.WebBits a:visited { color: #081020;
+}
+
+.WebBits a:hover { color: #32466D;
+}
+#webTech .exampleBlue ul { padding: 0;
+    text-align: left;
+}
+.examplePink.webTech a { color: #32466D;
+}
+
+#webTech .exampleBlue li { margin: .4em 0;}
+
+time{ font-weight: bold;
+    font-size: .8em;
+}
+
+
 #HTTPS figure { margin: 0 auto;
 }
 
@@ -160,7 +226,7 @@ figcaption { font-size: 12px;
 }
 
 #HTTPS div > p:not(:first-child) { margin: 0;
-    color: #000000;
+    color: #0A0A0A;
     font-family: monospace, sans-serif;
 }
 
@@ -169,7 +235,7 @@ figcaption { font-size: 12px;
 }
 
 .redbold { font-weight: bolder;
-    color: red;
+    color: #B50404;
 }
 
 aside p { padding: 0;
@@ -200,8 +266,8 @@ input[type=text], button { padding: .3em;
 
 #searchWhoIS button { font-family: lato, sans-serif;
     font-weight: bold;
-    background-color: #f5893a;
-    color: #FFFFFF;
+    background-color: #F5893A;
+    color: #FDFDFD;
     width: 80%;
     max-width: 8em;
 }
@@ -238,10 +304,10 @@ article > h3 { width: 100%;
 #NASA div { width: 100%;
 }
 
-#NASA > h3 a { padding-top: 1em; 
+.NASA-frame-link a { padding-top: 1em; 
     border-radius: 1.2em;
     padding-bottom: 1em;
-    background-color: #2A85A3;
+    background-color: #2A8BB8;
     width: 80%;
     display: inline-block;
     text-align: center;
@@ -252,7 +318,9 @@ article > h3 { width: 100%;
     border-radius: 1.2em;
 }
 
-.NASA-frame-link { margin-top: 4em;
+.NASA-frame-link { margin-top: 4em; 
+    text-align:center;
+    text-decoration: none;
 }
 
 .NASA-frame-link:hover { border-radius: 1.2em;
@@ -267,40 +335,12 @@ article iframe { width: 100%;
     font-size: 1.3em;
 }
 
-#NASA-links li a { text-decoration: none;
+#NASA-links li a:hover { color: #87CEEB;
 }
 
-#NASA-links li a:hover { color: skyblue;
-}
-
-#NASA iframe, #NASA img { border: 1em solid #2A85A3;
+#NASA iframe, #NASA img { border: 1em solid #2A8BB8;
     border-radius: 6.65em;
     margin: 0 auto;
-}
-
-time{ font-weight: bold;
-    font-size: .8em;
-}
-
-.WebBits { margin-bottom: 5em;
-    margin-top: 2em;
-}
-
-.WebBits a { font-weight: bold;
-}
-
-.WebBits a:focus { border: 3px solid orange;
-    outline: none;
-    padding: .1em;
-}
-
-.WebBits a:link { color: #008B8B;
-}
-
-.WebBits a:visited { color: #006363;
-}
-
-.WebBits a:hover { color: #32466D;
 }
 
 .exampleBlue { background-color: #ADD8E6;
@@ -311,7 +351,7 @@ time{ font-weight: bold;
     font-size: 14px;
 }
 
-.exampleBlue p, .examplePink p { width: 100%;
+.exampleBlue p, .examplePink p, .exampleBlue ul { width: 100%;
     margin: 0;
     text-align: center;
 }
@@ -322,10 +362,27 @@ time{ font-weight: bold;
     border: solid 2px;
 }
 
+.examplePink h3 { color: #1D2A2E;}
+
+.examplePink.nasa a { color: #32466D;
+}
+
 .examplePink h3 { margin-top: 0;
 }
 
-@media only screen and (min-width: 350px){
+/* Styles for small mobile */
+@media only screen and (max-width: 319px){
+    main {padding: 1em;}
+    
+}
+@media only screen and (max-width: 500px){
+    .card:first-of-type{ margin-top: 0; 
+    }
+}
+
+
+/* Styles for mobile */
+@media only screen and (min-width: 320px){
     aside ul { padding-left: 1em;
         padding-right: 1em;
     }
@@ -333,15 +390,22 @@ time{ font-weight: bold;
     aside li a { font-size: 16px;
     }
     
-    .examplePink { max-width: 30em;}
+    .examplePink { max-width: 30em;
+    }
+    
+    .card_columns { padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
 }
 
-@media only screen and (min-width: 750px){
+/* Styles for tablet */
+@media only screen and (min-width: 501px){
     .examplePink, .exampleBlue { font-size: 1em;
-        max-width: 35em;
     }
     
     .examplePink, .exampleBlue { padding: 1em 2em 1em 2em;
+        margin-top: 2em;
+        margin-bottom: 2em;
     }
     
     aside ul { margin: 1em;
@@ -350,17 +414,52 @@ time{ font-weight: bold;
     aside p { text-align: left;
     }
     
-}
-
-@media only screen and (min-width: 1280px) {
-    
-    main{ max-width: 84.375em;
-        margin: 0 auto 12vh auto;
+    .card_columns .card { width: 40%;
     }
     
-    #NASA iframe, #NASA img { max-width: 50em;
+    .card_columns { padding: 0;
+    }
+    
+    .card {margin: 1.2em 1em;
+    }
+    .wrapper { max-width: 30em;
+        margin: 0 auto;
+    }
+}
+
+
+/* Styles for desktop */
+@media only screen and (min-width: 769px) {
+    
+    main{ max-width: 84.375em;
+    }
+    
+    #NASA iframe, #NASA img { max-width: 40em;
     }
     
     #Instructions figure { width: 45em;
+    }
+    
+    .card_columns .card { width: 28%;
+    }
+    .card {margin: 1.2em 1em;
+    }
+    
+    .wrapper { max-width: 43.0625em;
+        margin: 0 auto;
+    }
+    
+    #HTTPS figure { width: 100%
+    }
+
+}
+
+
+
+/* Styles for large desktop */
+@media only screen and (min-width: 1280px) {
+    
+    main{ max-width: 84.375em;
+        margin: 0 auto;
     }
 }

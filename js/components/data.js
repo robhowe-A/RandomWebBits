@@ -58,7 +58,18 @@ const Article05 = new WebBit (
     "Browser extension logo. A white w on a purple tile."
 );
 
+const Article06 = new WebBit (
+    "jsonObject",
+    6,
+    "jsonObject",
+    "JSON object notation",
+    "January 9, 2023",
+    "pages/jsonobject.html",
+    "img/json.png",
+    "JSON logo: A grey circle with artistic spirals."
+);
 
-const ArbitraryArticles = [Article01, Article05, Article03, Article04, Article02];
+
+const ArbitraryArticles = [Article01, Article05, Article03, Article04, Article02, Article06];
 
 export default ArbitraryArticles;

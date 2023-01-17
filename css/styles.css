@@ -50,7 +50,6 @@ main{ width: 100%;
     margin-top: 5%;
     padding-left: 3em;
     padding-right: 3em;
-    padding-bottom: 12vh;
 }
 
 img { max-width: 100%
@@ -180,8 +179,7 @@ h2:first-child { font-size: 2.5em;
 
 /************************* Page Styles *************************/
 
-.WebBits { margin-bottom: 5em;
-    margin-top: 2em;
+.WebBits { margin-top: 2em;
 }
 
 .WebBits a { font-weight: bold;
@@ -200,24 +198,43 @@ h2:first-child { font-size: 2.5em;
 
 .WebBits a:hover { color: #32466D;
 }
+
 #webTech .exampleBlue ul { padding: 0;
     text-align: left;
 }
+
 .examplePink.webTech a { color: #32466D;
 }
 
-#webTech .exampleBlue li { margin: .4em 0;}
+#webTech .exampleBlue li { margin: .4em 0;
+}
 
 time{ font-weight: bold;
     font-size: .8em;
 }
 
+.sideList { text-align: left;
+    font-size: 20px;
+}
+
+.sideList h4 { margin-bottom: .5em;}
+
+.sideList ul { margin: 0;
+    }
+
+/* Styles for the first div following main */
+main + div { width: 100%;
+    text-align: center;
+    margin-bottom: 12vh;
+}
+.Top { margin-top: 2em;
+    display: inline-block;
+}
 
 #HTTPS figure { margin: 0 auto;
 }
 
-#HTTPS figure:not(:last-of-type) { 
-    padding-top: 2em;
+#HTTPS figure:not(:last-of-type) { padding-top: 2em;
     padding-bottom: 1em;
 }
 
@@ -241,8 +258,7 @@ figcaption { font-size: 12px;
 aside p { padding: 0;
 }
 
-aside ul { 
-    line-height: 1em;
+aside ul { line-height: 1em;
     font-size: .9em;
     font-family: Arial, sans-serif;
     margin: 0;
@@ -362,7 +378,8 @@ article iframe { width: 100%;
     border: solid 2px;
 }
 
-.examplePink h3 { color: #1D2A2E;}
+.examplePink h3 { color: #1D2A2E;
+}
 
 .examplePink.nasa a { color: #32466D;
 }
@@ -371,12 +388,10 @@ article iframe { width: 100%;
 }
 
 /* Styles for small mobile */
-@media only screen and (max-width: 319px){
-    main {padding: 1em;}
-    
+@media only screen and (max-width: 319px){ main {padding: 1em;
+    }
 }
-@media only screen and (max-width: 500px){
-    .card:first-of-type{ margin-top: 0; 
+@media only screen and (max-width: 500px){ .card:first-of-type{ margin-top: 0; 
     }
 }
 
@@ -422,9 +437,6 @@ article iframe { width: 100%;
     
     .card {margin: 1.2em 1em;
     }
-    .wrapper { max-width: 30em;
-        margin: 0 auto;
-    }
 }
 
 
@@ -443,10 +455,6 @@ article iframe { width: 100%;
     .card_columns .card { width: 28%;
     }
     .card {margin: 1.2em 1em;
-    }
-    
-    .wrapper { max-width: 43.0625em;
-        margin: 0 auto;
     }
     
     #HTTPS figure { width: 100%

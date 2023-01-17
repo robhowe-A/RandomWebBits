@@ -69,7 +69,19 @@ const Article06 = new WebBit (
     "JSON logo: A grey circle with artistic spirals."
 );
 
+const Article07 = new WebBit (
+    "Wi-Fi",
+    7,
+    "Wi-Fi Version",
+    "Determine Wifi Version",
+    "January 16, 2023",
+    "pages/wifi.html",
+    "img/wifi.png",
+    "Wi-Fi logo with a black circle background."
+);
 
-const ArbitraryArticles = [Article01, Article05, Article03, Article04, Article02, Article06];
+
+const ArbitraryArticles = [Article07, Article05, Article06, 
+    Article04, Article02, Article03, Article01];
 
 export default ArbitraryArticles;

@@ -9,14 +9,14 @@ const Article01 = new WebBit (
     "Check an available domain using WhoIS API search",
     "December 4, 2022",
     "pages/domainlookup.html",
-    "img/Whois_thisrandomwebdomain.com.png",
+    "img/whois.jpg",
     "WhoIs Lookup"
 );
 
 const Article02 = new WebBit (
     "htmlresponses",
     2,
-    "HTML Responses",
+    "HTML Frames",
     "View HTML page response statuses",
     "December 11, 2022",
     "pages/htmlresponses.html",
@@ -32,7 +32,7 @@ const Article03 = new WebBit (
     "Check out some NASA links",
     "December 18, 2022",
     "pages/nasa.html",
-    "img/NASA.jpg",
+    "img/NASA.png",
     "NASA Artemis Logo"
 );
 
@@ -43,7 +43,7 @@ const Article04 = new WebBit (
     "Select a website's HTTPS certificate",
     "December 26, 2022",
     "pages/https.html",
-    "img/https2.png",
+    "img/https_cert.png",
     "Cursor selecting HTTPS certificate"
 );
 

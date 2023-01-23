@@ -26,14 +26,14 @@
 
 @media (prefers-color-scheme: dark){
     :root {
-        --clr-white: #0A0A0A; /*(rgb(253, 253, 253))*/
+        --clr-white: #151515; /*(rgb(253, 253, 253))*/
         --clr-font-dark: #e5f3f7; /*(rgb(29, 42, 46))*/
         --clr-font-black: #FDFDFD; /*(rgb(10, 10, 10))*/
         --clr-all-font-white: #FDFDFD; /*(rgb(253, 253, 253))*/
         --clr-all-font-light: #c7c2c2;
         --clr-font-dark-onwhite: #c7c2c2; /*(rgb(74, 72, 72))*/
-        --clr-header-blue: #213763; /*(rgb(50, 70, 109))*/
-        --clr-footer-blue-dark: #667aa1; /*(rgb(8, 16, 32))*/
+        --clr-header-blue: #14264a; /*(rgb(50, 70, 109))*/
+        --clr-footer-blue-dark: #161d2c; /*(rgb(8, 16, 32))*/
         --clr-blue: #2A8BB8; /*(rgb(42, 139, 184))*/
         --clr-blue-light: #0b2f3a; /*(rgb(173, 216, 230))*/
         --clr-title: #A7D0DC; /*(rgb(167, 208, 220))*/
@@ -72,7 +72,7 @@ footer { background-color: var(--clr-footer-blue-dark);
     position: fixed;
     left: 0;
     bottom: 0;
-    color: var(--clr-white);
+    color: var(--clr-all-font-light);
 }
 
 main{ width: 100%;
@@ -223,7 +223,14 @@ h2:first-child { font-size: 2.5em;
 .WebBits a:link { color: var(--clr-blue);
 }
 
-.WebBits a:visited { color: var(--clr-footer-blue-dark);
+@media (prefers-color-scheme: light){
+    .WebBits a:visited { color: var(--clr-footer-blue-dark);
+    }
+}
+
+@media (prefers-color-scheme: dark){
+    .WebBits a:visited { color: var(--clr-Cyan);
+    }
 }
 
 .WebBits a:hover { color: var(--clr-header-blue);

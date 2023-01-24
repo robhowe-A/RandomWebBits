@@ -4,18 +4,27 @@
 const header = (function(){//Create site header and navigation elements
     const siteHeader = document.createElement("header");
     const headerNav = document.createElement("nav");
-    const navContent = `
-        <ul>
-            <li><a href="/RandomWebBits/index.html">Home</a>&nbsp;|&nbsp;</li>
-            <li><a href="/RandomWebBits/pages.html">Pages</a>&nbsp;|</li>
-        </ul>`;
+    const headerUL = document.createElement("ul");
     
-    headerNav.innerHTML = navContent;
+    //map a navigation link list. key: name, value: page.html
+    const navItems = new Map();
+    navItems.set('Home', 'index.html');
+    navItems.set('Pages', 'pages.html');
+
+    navItems.forEach((key, value) => {
+        const navListItems = document.createElement("li");
+        const navListLinks = document.createElement("a");
+        navListLinks.setAttribute('href', `/RandomWebBits/${key}`);
+        navListLinks.textContent = `${value}`;
+        navListItems.prepend(navListLinks);
+        headerUL.append(navListItems);
+    });
+    headerNav.append(headerUL);
     siteHeader.append(headerNav);
 
     //Create site H1
     const H1 = document.createElement("H1");
-    H1.innerHTML = '&lt;Random Web Bits&gt;';
+    H1.textContent = '<Random Web Bits>';
     H1.setAttribute("id", "ArbitraryWebBits");
 
     siteHeader.append(H1);
@@ -28,7 +37,9 @@ const footer = (function(){
     //-------------------SITE FOOTER------------------------//
     //-------SITE FOOTER-------//
     const siteFooter = document.createElement("footer")
-    siteFooter.innerHTML = `<p>&copy;2022 Random WebBits. All Rights Reserved.</p>`;
+    const footerPara = document.createElement("p")
+    footerPara.textContent = `\u00A9 2022 Random WebBits. All Rights Reserved.`;
+    siteFooter.append(footerPara);
     
     //add site footer to DOM
     document.querySelector("body").append(siteFooter);

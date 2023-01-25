@@ -2,22 +2,23 @@
 import ArbitraryArticles from "./components/data.js";
 
 const cardTiles = (function() {
+
     //Create Artibrary Articles section element and append to Main
     const pageMain = document.querySelector("main");
     const AASection = document.createElement("section");
     AASection.classList.add("cards");
 
-    const AASectionContent = `
-        <h2>Arbitrary Articles:</h2>
-        <div class="card_columns"></div>
-    `;
-    AASection.innerHTML = AASectionContent;
+        //create card section header and div element. Append to section
+    let aaHeader = document.createElement('h2');
+    aaHeader.innerText = `Arbitrary Articles:`;
+    let aaCardsSection = document.createElement('div');
+    aaCardsSection.classList.add('card_columns');
+    AASection.appendChild(aaHeader);
+    AASection.appendChild(aaCardsSection);
     pageMain.append(AASection);
 
-
-    //Map WebBits to cards (divs)
-    const cardcol = document.querySelector(".card_columns");
-
+    //Map WebBits to a card, each
+    //Map is fulcrum to create a WebBit card
     const AAs = ArbitraryArticles.map((article) => {
         let ArbitraryArticle = document.createElement('div');
         ArbitraryArticle.classList.add('card');
@@ -43,8 +44,8 @@ const cardTiles = (function() {
         return ArbitraryArticle;
     });
 
-    //add each card within card_columns class
+    //from AA map, append each to section
     AAs.forEach((article) => {
-        cardcol.append(article);
+        aaCardsSection.append(article);
     })
 })();

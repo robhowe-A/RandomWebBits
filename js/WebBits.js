@@ -19,20 +19,26 @@ const cardTiles = (function() {
     const cardcol = document.querySelector(".card_columns");
 
     const AAs = ArbitraryArticles.map((article) => {
-        let ArbitraryArticle = document.createElement("div");
-        ArbitraryArticle.classList.add("card");
-        const cardContent = `
-            <div>
-                <img src="${article.cardImage}" alt="${article.cardImageALT}">
-            </div>
-            <div class="card_body">
-                <h3>${article.name}</h3>
-                <p>${article.description}</p>
-                <a href="${article.articleLink}">Go to Page</a>
-            </div>
+        let ArbitraryArticle = document.createElement('div');
+        ArbitraryArticle.classList.add('card');
+        let cardImgTop = document.createElement('div');
+        let cardImg = document.createElement('img');
+        cardImg.setAttribute('src', article.cardImage);
+        cardImg.setAttribute('alt', article.cardImageALT);
+        cardImgTop.appendChild(cardImg);
+        let cardBody = document.createElement('div');
+        let cardBodyHeader = document.createElement('h3');
+        let cardBodyPara = document.createElement('p');
+        let cardBodyLink = document.createElement('a');
+        cardBody.appendChild(cardBodyHeader);
+        cardBody.appendChild(cardBodyPara);
+        cardBody.appendChild(cardBodyLink);
+        cardBodyHeader.innerText = article.name;
+        cardBodyPara.textContent = article.description;
+        cardBodyLink.setAttribute('href', article.articleLink)
+        cardBodyLink.textContent = "Go to Page";
 
-        `;
-        ArbitraryArticle.innerHTML = cardContent;
+        ArbitraryArticle.appendChild(cardImgTop).appendChild(cardBody);
 
         return ArbitraryArticle;
     });

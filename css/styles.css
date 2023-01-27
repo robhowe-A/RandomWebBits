@@ -219,9 +219,13 @@ h2:first-child { font-size: 2.5em;
 .WebBits a, .Top { font-weight: bold;
 }
 
-.WebBits a:focus, .Top { border: 3px solid var(--clr-Orange_Focus);
-    outline: none;
-    padding: .1em;
+a:focus, nav a:focus { border: none;
+    outline: 3px solid var(--clr-Orange_Focus);
+    outline-offset: .2em;
+}
+
+.card a:focus { outline: 5px solid var(--clr-Orange_Focus);
+    outline-offset: .3em; 
 }
 
 .WebBits a:link, .Top { color: var(--clr-blue);

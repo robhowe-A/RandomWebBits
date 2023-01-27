@@ -1,6 +1,7 @@
 Hosted on GitHub Pages: https://rhowell476.github.io/RandomWebBits/
 
 # Arbitrary Web Bits  
+=======
 **What is it?** A fun project to host short articles about the web and web development.  
 **What does it do?** It's a website in development, currently hosted on GitHub Pages. I'm using it to showcase my HTML, CSS, JS knowledge.
 
@@ -16,3 +17,8 @@ Hosted on GitHub Pages: https://rhowell476.github.io/RandomWebBits/
 
 ### Articles  
 - Fun bits of knowledge you may/may not know or have seen before.  
+
+-------------------------------------------
+Release Updates
+-------------------------------------------
+1-27-23: Added Favicon to all pages. Edited Header/footer sections  

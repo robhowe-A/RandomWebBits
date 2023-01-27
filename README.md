@@ -1,4 +1,5 @@
-Hosted on GitHub Pages: https://rhowell476.github.io/RandomWebBits/
+Main branch hosted on Netlify: https://resilient-tarsier-d3fba9.netlify.app
+Dev branch hosted on GitHub Pages: https://rhowell476.github.io/RandomWebBits/
 
 # Arbitrary Web Bits  
 **What is it?** A fun project to host short articles about the web and web development.  

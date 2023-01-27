@@ -2,8 +2,8 @@ Main branch hosted on [Netlify](https://resilient-tarsier-d3fba9.netlify.app)
 Dev branch hosted on [GitHub Pages](https://rhowell476.github.io/RandomWebBits/)  
 
 <figure>
-  <figcaption>QR for Netlify Mobile View</figcaption>
   <img src="mobileView.svg" width="128" alt="Netlify App page for mobile devices">
+  <figcaption>-->QR for Netlify Mobile View</figcaption>
 </figure>
 
 # Arbitrary Web Bits  

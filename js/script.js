@@ -49,10 +49,10 @@ const footer = (function(){
     const footerIconPara = document.createElement("p");
     const footerIconLink = document.createElement("a");
     footerIconLink.href = 'https://www.vectorstock.com/royalty-free-vector/maintenance-icon-for-graphic-and-web-design-vector-45026755'
-    footerIconLink.setAttribute('title', "VectorStock");
+    footerIconLink.setAttribute('title', "IconHome: #45026755");
     footerIconLink.setAttribute('target', "_blank");
-    footerIconLink.textContent = '(Image #45026755 at VectorStock.com)';
-    footerIconPara.textContent = `Favicon icon designed by IconHome `;
+    footerIconLink.textContent = 'VectorStock.com';
+    footerIconPara.textContent = `Favicon icon designed by IconHome at `;
     footerIconPara.appendChild(footerIconLink);
     siteFooter.append(footerIconPara);
 

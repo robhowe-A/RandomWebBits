@@ -69,9 +69,6 @@ footer { background-color: var(--clr-footer-blue-dark);
     width: 100vw;
     max-height: 10vh;
     padding: 1em;
-    position: fixed;
-    left: 0;
-    bottom: 0;
     color: var(--clr-all-font-light);
 }
 
@@ -212,15 +209,19 @@ h2:first-child { font-size: 2.5em;
 .WebBits { margin-top: 2em;
 }
 
-.WebBits a { font-weight: bold;
+.WebBits a, .Top { font-weight: bold;
 }
 
-.WebBits a:focus { border: 3px solid var(--clr-Orange_Focus);
-    outline: none;
-    padding: .1em;
+a:focus, nav a:focus { border: none;
+    outline: 3px solid var(--clr-Orange_Focus);
+    outline-offset: .2em;
 }
 
-.WebBits a:link { color: var(--clr-blue);
+.card a:focus { outline: 5px solid var(--clr-Orange_Focus);
+    outline-offset: .3em; 
+}
+
+.WebBits a:link, .Top { color: var(--clr-blue);
 }
 
 @media (prefers-color-scheme: light){
@@ -260,12 +261,8 @@ time{ font-weight: bold;
     }
 
 /* Styles for the first div following main */
-main + div { width: 100%;
-    text-align: center;
-    margin-bottom: 12vh;
-}
-.Top { margin-top: 2em;
-    display: inline-block;
+.Top-Link { text-align: center;
+    padding: 1.2em;
 }
 
 #HTTPS figure { margin: 0 auto;

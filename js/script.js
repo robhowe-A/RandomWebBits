@@ -14,6 +14,22 @@ const header = (function(){//Create site header and navigation elements
     siteHeader.append(headerNav);
 
     //Create site H1
+    document.body.prepend(siteHeaderFrag);
+
+    navItems.forEach((key, value) => {
+        const navListItems = document.createElement("li");
+        const navListLinks = document.createElement("a");
+        navListLinks.setAttribute('href', `/RandomWebBits/${key}`);
+        //navListLinks.setAttribute('href', `/${key}`);
+        navListLinks.setAttribute('href', `/${key}`);
+        navListLinks.textContent = `${value}`;
+        navListItems.prepend(navListLinks);
+        siteHeader.append(navListItems);
+    });
+    const main = document.querySelector("main");
+    main.prepend(siteHeaderFrag);
+
+    //Create Random Web Bits H1
     const H1 = document.createElement("H1");
     H1.innerHTML = '&lt;Random Web Bits&gt;';
     H1.setAttribute("id", "ArbitraryWebBits");
@@ -30,6 +46,17 @@ const footer = (function(){
     const siteFooter = document.createElement("footer")
     siteFooter.innerHTML = `<p>&copy;2022 Random WebBits. All Rights Reserved.</p>`;
     
+    //Designed by IconHome 
+    const footerIconPara = document.createElement("p");
+    const footerIconLink = document.createElement("a");
+    footerIconLink.href = 'https://www.vectorstock.com/royalty-free-vector/maintenance-icon-for-graphic-and-web-design-vector-45026755'
+    footerIconLink.setAttribute('title', "IconHome: #45026755");
+    footerIconLink.setAttribute('target', "_blank");
+    footerIconLink.textContent = 'VectorStock.com';
+    footerIconPara.textContent = `Favicon icon designed by IconHome at `;
+    footerIconPara.appendChild(footerIconLink);
+    siteFooter.append(footerIconPara);
+
     //add site footer to DOM
     document.querySelector("body").append(siteFooter);
 })();

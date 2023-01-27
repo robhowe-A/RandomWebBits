@@ -14,7 +14,7 @@ const header = (function(){//Create site header and navigation elements
     navItems.forEach((key, value) => {
         const navListItems = document.createElement("li");
         const navListLinks = document.createElement("a");
-        navListLinks.setAttribute('href', `/RandomWebBits/${key}`);
+        navListLinks.setAttribute('href', `/${key}`);
         navListLinks.textContent = `${value}`;
         navListItems.prepend(navListLinks);
         headerUL.append(navListItems);

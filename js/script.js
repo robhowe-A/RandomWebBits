@@ -20,8 +20,8 @@ const header = (function(){
     navItems.forEach((key, value) => {
         const navListItems = document.createElement("li");
         const navListLinks = document.createElement("a");
-        //navListLinks.setAttribute('href', `/RandomWebBits/${key}`);
-        navListLinks.setAttribute('href', `/${key}`);
+        navListLinks.setAttribute('href', `/RandomWebBits/${key}`);
+        //navListLinks.setAttribute('href', `/${key}`);
         navListLinks.textContent = `${value}`;
         navListItems.prepend(navListLinks);
         siteHeader.append(navListItems);

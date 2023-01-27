@@ -16,3 +16,6 @@ Hosted on GitHub Pages: https://rhowell476.github.io/RandomWebBits/
 
 ### Articles  
 - Fun bits of knowledge you may/may not know or have seen before.  
+
+
+1-27-23: Added Favicon to all pages. Edited Header/footer sections  

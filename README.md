@@ -1,4 +1,4 @@
-Main branch hosted on [Netlify:](https://resilient-tarsier-d3fba9.netlify.app)  
+Main branch hosted on [Netlify](https://resilient-tarsier-d3fba9.netlify.app)  
 Dev branch hosted on [GitHub Pages:](https://rhowell476.github.io/RandomWebBits/)  
 
 # Arbitrary Web Bits  

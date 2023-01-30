@@ -155,7 +155,7 @@ const footerWidget = (function(){
     };
     
     footer.init();
-=======
+
 //-------------------SITE HEADER AND FOOTER------------------------//
 //-------SITE HEADER-------//
 

@@ -1,19 +1,20 @@
 //-------------------SITE HEADER AND FOOTER------------------------//
 //-------SITE HEADER-------//
 
-const header = (function(){//Create site header and navigation elements
-    const siteHeader = document.createElement("header");
-    const headerNav = document.createElement("nav");
-    const navContent = `
-        <ul>
-            <li><a href="/RandomWebBits/index.html">Home</a>&nbsp;|&nbsp;</li>
-            <li><a href="/RandomWebBits/pages.html">Pages</a>&nbsp;|</li>
-        </ul>`;
+const header = (function(){
     
-    headerNav.innerHTML = navContent;
-    siteHeader.append(headerNav);
+    //map a navigation link list. key: name, value: page.html
+    const navItems = new Map();
+    navItems.set('Home', 'index.html');
+    navItems.set('Pages', 'pages.html');
+    
+    //TEST
+    const siteHeaderFrag = document.createDocumentFragment();
+    const siteHeader = siteHeaderFrag
+      .appendChild(document.createElement('header'))
+      .appendChild(document.createElement('nav'))
+      .appendChild(document.createElement('ul'));
 
-    //Create site H1
     document.body.prepend(siteHeaderFrag);
 
     navItems.forEach((key, value) => {
@@ -30,20 +31,19 @@ const header = (function(){//Create site header and navigation elements
 
     //Create Random Web Bits H1
     const H1 = document.createElement("H1");
-    H1.innerHTML = '&lt;Random Web Bits&gt;';
-    H1.setAttribute("id", "ArbitraryWebBits");
+    H1.textContent = '<Random Web Bits>';
+    H1.setAttribute("id", "RandomWebBits");
+    document.querySelector("header").append(H1);
 
-    siteHeader.append(H1);
-
-    // Add site header and H1 to DOM
-    document.querySelector("body").prepend(siteHeader);
 })();
     
 const footer = (function(){
     //-------------------SITE FOOTER------------------------//
     //-------SITE FOOTER-------//
-    const siteFooter = document.createElement("footer")
-    siteFooter.innerHTML = `<p>&copy;2022 Random WebBits. All Rights Reserved.</p>`;
+    const siteFooter = document.createElement("footer");
+    const footerPara = document.createElement("p");
+    footerPara.textContent = `\u00A9 2022 Random WebBits. All Rights Reserved.`;
+    siteFooter.append(footerPara);
     
     //Designed by IconHome 
     const footerIconPara = document.createElement("p");

@@ -67,7 +67,7 @@ header { background-color: var(--clr-header-blue);
 
 footer { background-color: var(--clr-footer-blue-dark);
     width: 100vw;
-    max-height: 10vh;
+    /*max-height: 10vh;*/
     padding: 1em;
     color: var(--clr-all-font-light);
 }
@@ -102,7 +102,7 @@ nav a:hover { opacity: 80%;
     color: var(--clr-Cyan);
 }
 
-#ArbitraryWebBits { color: var(--clr-title);
+#RandomWebBits { color: var(--clr-title);
     text-align: right;
     margin-top: .5em;
     margin-right: 1em;
@@ -119,6 +119,13 @@ nav ul li { list-style: none
 
 nav li a { color: var(--clr-all-font-light);
     font-size: 1.4em;
+}
+
+nav li a:after{ content: "|";
+    width: 1px;
+    height: 100%;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 a { text-decoration: none;

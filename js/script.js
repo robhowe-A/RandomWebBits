@@ -92,8 +92,8 @@ const headerWidget = (function(){
             NAVITEMS.map((item) => {
                 const navListItems = document.createElement("li");
                 const navListLinks = document.createElement("a");
-                navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
-                //navListLinks.setAttribute('href', `/${item.hReference}`);
+                //navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
+                navListLinks.setAttribute('href', `/${item.hReference}`);
                 navListLinks.textContent = `${item.innerText}`;
                 navListItems.prepend(navListLinks);
                 headerNav.append(navListItems);

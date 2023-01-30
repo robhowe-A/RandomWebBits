@@ -84,15 +84,26 @@ const Article08 = new WebBit (
     "chatGPT",
     8,
     "Preview chatGPT",
-    "chat with an AI for research and development.",
+    "Chat with an AI for research and development.",
     "January 28, 2023",
     "pages/chatgpt.html",
     "img/ai.webp",
     "Decorative AI logo"
 );
 
+const Article09 = new WebBit (
+    "paint3d",
+    9,
+    "Paint 3D",
+    "Edit and more using paint 3D",
+    "January 28, 2023",
+    "pages/paint3d.html",
+    "img/prototype.webp",
+    "Colorful prototyping icon"
+);
+
 
 const ArbitraryArticles = [Article01, Article02, Article03, 
-    Article04, Article05, Article06, Article07, Article08];
+    Article04, Article05, Article06, Article07, Article08, Article09];
 
 export default ArbitraryArticles;

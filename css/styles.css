@@ -1,5 +1,3 @@
-/*   var(--clr-white)   */
-
 @media (prefers-color-scheme: light){
     :root {
         --clr-white: #FDFDFD; /*(rgb(253, 253, 253))*/
@@ -47,8 +45,6 @@
         --clr-Red: #fb6060; /*(rgb(181, 4, 4))*/
     }
 }
-
-
 
 /* HTML tag styles */
 * { box-sizing: border-box}
@@ -131,6 +127,8 @@ nav li a:after{ content: "|";
 a { text-decoration: none;
 }
 
+
+
 /* Home Pages Styles */
 .Title { text-align: center
 }
@@ -180,8 +178,7 @@ h2:first-child { font-size: 2.5em;
     display: inline-block;
 }
 
-.card_body > a:focus {
-    border: 3px solid var(--clr-Orange_Focus);
+.card_body > a:focus { border: 3px solid var(--clr-Orange_Focus);
     outline: none;
 }
 
@@ -212,6 +209,40 @@ h2:first-child { font-size: 2.5em;
 }
 
 /************************* Page Styles *************************/
+#chatGPT p img { border-radius: 30px;
+    margin: 2em auto;
+}
+
+@media (prefers-color-scheme: dark) {
+    #chatGPT p img { box-shadow: -10px 10px 15px 0px var(--clr-Cyan);
+    }
+}
+@media (prefers-color-scheme: light) {
+    #chatGPT p img { box-shadow: 10px 10px 15px 0px var(--clr-DarkCyan);
+    }
+}
+#GPT { margin: 0 auto;
+    background-color: rgba(175, 175, 100, .1);
+    padding: .5em 2em 3em 2em;
+    border-radius: 30px;
+}
+
+#GPT p { margin-bottom: 2em; line-height: 20px; font-size: 12px; font-family: monospace;
+}
+
+#GPT pre { 
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+code { font-weight: bolder;
+}
+
+.preBack { background-color: var(--clr-header-blue);
+}
 
 .WebBits { margin-top: 2em;
 }
@@ -262,10 +293,11 @@ time{ font-weight: bold;
     font-size: 20px;
 }
 
-.sideList h4 { margin-bottom: .5em;}
+.sideList h4 { margin-bottom: .5em;
+}
 
 .sideList ul { margin: 0;
-    }
+}
 
 /* Styles for the first div following main */
 .Top-Link { text-align: center;
@@ -334,11 +366,6 @@ input[type=text], button { padding: .3em;
 }
 
 #TryWhoIsReturn { background-color: var(--clr-Pink)
-}
-
-article p { width: 80%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 article img { display: block;
@@ -484,13 +511,19 @@ article iframe { width: 100%;
     
     .card {margin: 1.2em 1em;
     }
+    
+    #chatGPT p img { max-width: 450px;
+    }
+    
+    #GPT { max-width: 450px;
+    }
 }
 
 
 /* Styles for desktop */
 @media only screen and (min-width: 769px) {
     
-    main{ max-width: 84.375em;
+    main{ max-width: 68.75em;
     }
     
     #NASA iframe, #NASA img { max-width: 40em;
@@ -504,9 +537,17 @@ article iframe { width: 100%;
     .card {margin: 1.2em 1em;
     }
     
-    #HTTPS figure { width: 100%
+    #HTTPS figure { width: 100%;
     }
-
+    
+    article p { width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    
+    #chatGPT pre { max-width: 475px;
+        margin: 0 auto;
+    }
 }
 
 
@@ -514,7 +555,6 @@ article iframe { width: 100%;
 /* Styles for large desktop */
 @media only screen and (min-width: 1280px) {
     
-    main{ max-width: 84.375em;
-        margin: 0 auto;
+    main{ margin: 0 auto;
     }
 }

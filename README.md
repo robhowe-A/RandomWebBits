@@ -22,8 +22,15 @@ Dev branch hosted on [GitHub Pages](https://rhowell476.github.io/RandomWebBits/)
 
 ### Articles  
 - Fun bits of knowledge you may/may not know or have seen before.  
+  
 
-===========================================  
-Release Updates
-===========================================  
+---------  
+#### Release Updates  
 1-27-23: Added Favicon to all pages. Edited Header/footer sections  
+1-28-23:  
+&nbsp;&nbsp;- Image optimizations and attributions.  
+&nbsp;&nbsp;- Added footer UL of the requested attributions from FLATICON  
+&nbsp;&nbsp;- New WebBits page: chatGPT  
+1-29-23: Script.js changes  
+&nbsp;&nbsp;- Added navigation link objects  
+&nbsp;&nbsp;- GitHub Desktop - Squash commit history  

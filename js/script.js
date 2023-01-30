@@ -1,62 +1,158 @@
-//-------------------SITE HEADER AND FOOTER------------------------//
-//-------SITE HEADER-------//
+class LinkDetails {
+    constructor (title, innerText) {
+        this.title = title,
+        this.innerText = innerText
+    }
+}
 
-const header = (function(){//Create site header and navigation elements
-    const siteHeader = document.createElement("header");
-    const headerNav = document.createElement("nav");
-    const navContent = `
-        <ul>
-            <li><a href="/RandomWebBits/index.html">Home</a>&nbsp;|&nbsp;</li>
-            <li><a href="/RandomWebBits/pages.html">Pages</a>&nbsp;|</li>
-        </ul>`;
-    
-    headerNav.innerHTML = navContent;
-    siteHeader.append(headerNav);
+class NavigationLink extends LinkDetails {
+    constructor (pageName, hReference, title, innerText) {
+        super(title, innerText);
+        this.pageName = pageName;
+        this.hReference = hReference;
+    }
+}
 
-    //Create site H1
-    document.body.prepend(siteHeaderFrag);
+class IconLink extends LinkDetails {
+    constructor(pageName, hReference, title, innerText) {
+        super(title, innerText);
+        this.pageName = pageName,
+        this.hReference = hReference
+    }
+}
 
-    navItems.forEach((key, value) => {
-        const navListItems = document.createElement("li");
-        const navListLinks = document.createElement("a");
-        navListLinks.setAttribute('href', `/RandomWebBits/${key}`);
-        //navListLinks.setAttribute('href', `/${key}`);
-        navListLinks.setAttribute('href', `/${key}`);
-        navListLinks.textContent = `${value}`;
-        navListItems.prepend(navListLinks);
-        siteHeader.append(navListItems);
-    });
-    const main = document.querySelector("main");
-    main.prepend(siteHeaderFrag);
+//Nav items
+const homeNavLink = new NavigationLink (
+    "Index",
+    "index.html",
+    "Home",
+    "Home"
+);
 
-    //Create Random Web Bits H1
-    const H1 = document.createElement("H1");
-    H1.innerHTML = '&lt;Random Web Bits&gt;';
-    H1.setAttribute("id", "ArbitraryWebBits");
+const pagesNavLink = new NavigationLink (
+    "Pages",
+    "pages.html",
+    "Pages",
+    "Pages"
+)
 
-    siteHeader.append(H1);
+const NAVITEMS = [homeNavLink, pagesNavLink];
 
-    // Add site header and H1 to DOM
-    document.querySelector("body").prepend(siteHeader);
+//Icon links
+const htmlFramesIconLink = new IconLink(
+   "HTML Frames",
+    "https://www.flaticon.com/free-icons/html",
+    "html icons",
+    "Html icons created by Freepik - Flaticon"
+);
+const httpsCertIconLink = new IconLink(
+    "HTTPS Certificate",
+    "https://www.flaticon.com/free-icons/ssl-certificate",
+    "ssl certificate icons",
+    "Ssl certificate icons created by inipagistudio - Flaticon"
+);
+const domainLookupIconLink = new IconLink(
+    "Domain Lookup",
+    "https://www.flaticon.com/free-icons/domain",
+    "domain icons",
+    "Domain icons created by Freepik - Flaticon"
+);
+const aiIconLink = new IconLink(
+    "Preview chatGPT",
+    "https://www.flaticon.com/free-icons/ai",
+    "ai icons",
+    "Ai icons created by Freepik - Flaticon"
+);
+const FLATICONS = [htmlFramesIconLink, httpsCertIconLink, domainLookupIconLink,
+    aiIconLink
+];
+
+
+const headerWidget = (function(){
+    var header = {
+        createHeader: function() {
+            //-------SITE HEADER-------//
+            const siteHeader = document.createElement('header');
+
+            //Create Random Web Bits H1
+            const H1 = document.createElement("H1");
+            H1.textContent = '<Random Web Bits>';
+            H1.setAttribute("id", "RandomWebBits");
+            siteHeader.append(H1);
+
+            const main = document.querySelector("main").prepend(siteHeader);
+            return siteHeader;
+        },
+        createNavigation: function() {
+            const headerNavFrag = document.createDocumentFragment();
+            const headerNav = headerNavFrag
+                .appendChild(document.createElement('nav'))
+                .appendChild(document.createElement('ul'));
+
+            NAVITEMS.map((item) => {
+                const navListItems = document.createElement("li");
+                const navListLinks = document.createElement("a");
+                navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
+                //navListLinks.setAttribute('href', `/${item.hReference}`);
+                navListLinks.textContent = `${item.innerText}`;
+                navListItems.prepend(navListLinks);
+                headerNav.append(navListItems);
+            });
+            return headerNavFrag;
+        },
+        init: function (){
+            document.body.prepend(header.createHeader());
+            document.body.querySelector("header").prepend(header.createNavigation());
+        }
+    };
+    header.init();
+
 })();
     
-const footer = (function(){
-    //-------------------SITE FOOTER------------------------//
-    //-------SITE FOOTER-------//
-    const siteFooter = document.createElement("footer")
-    siteFooter.innerHTML = `<p>&copy;2022 Random WebBits. All Rights Reserved.</p>`;
-    
-    //Designed by IconHome 
-    const footerIconPara = document.createElement("p");
-    const footerIconLink = document.createElement("a");
-    footerIconLink.href = 'https://www.vectorstock.com/royalty-free-vector/maintenance-icon-for-graphic-and-web-design-vector-45026755'
-    footerIconLink.setAttribute('title', "IconHome: #45026755");
-    footerIconLink.setAttribute('target', "_blank");
-    footerIconLink.textContent = 'VectorStock.com';
-    footerIconPara.textContent = `Favicon icon designed by IconHome at `;
-    footerIconPara.appendChild(footerIconLink);
-    siteFooter.append(footerIconPara);
+const footerWidget = (function(){
+    var footer = {
+        createFooter: function() {
+            //-------SITE FOOTER-------//
+            const siteFooter = document.createElement("footer");
+            const footerPara = document.createElement("p");
+            footerPara.textContent = `\u00A9 2022 Random WebBits. All Rights Reserved.`;
+            siteFooter.append(footerPara);
 
-    //add site footer to DOM
-    document.querySelector("body").append(siteFooter);
+            //Designed by IconHome 
+            const footerIconPara = document.createElement("p");
+            const footerIconLink = document.createElement("a");
+            footerIconLink.href = 'https://www.vectorstock.com/royalty-free-vector/maintenance-icon-for-graphic-and-web-design-vector-45026755'
+            footerIconLink.setAttribute('title', "IconHome: #45026755");
+            footerIconLink.setAttribute('target', "_blank");
+            footerIconLink.textContent = 'VectorStock.com';
+            footerIconPara.textContent = `Favicon designed by IconHome at `;
+            footerIconPara.appendChild(footerIconLink);
+            siteFooter.append(footerIconPara);
+            return siteFooter;
+        },
+
+        //Icon attribution
+        createIconAttributionLinks: function() {
+            const footerIconPara2 = document.createElement("p");
+            const footerIconUL = document.createElement("ul");
+            const iconUL = footerIconPara2.appendChild(footerIconUL);
+
+            FLATICONS.map(function(link){
+                const iconLI = iconUL.appendChild(document.createElement("li"));
+                const lia = iconLI.appendChild(document.createElement("a"));
+                lia.href = link.hReference;
+                lia.textContent = link.innerText;
+                lia.title = link.title;
+                iconUL.appendChild(iconLI);
+            });
+
+            return footerIconPara2;
+        },
+        init: function(){
+            document.body.append(footer.createFooter());
+            document.body.querySelector("footer").append(footer.createIconAttributionLinks());
+        }
+    };
+    
+    footer.init();
 })();

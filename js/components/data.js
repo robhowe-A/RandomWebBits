@@ -9,18 +9,18 @@ const Article01 = new WebBit (
     "Check an available domain using WhoIS API search",
     "December 4, 2022",
     "pages/domainlookup.html",
-    "img/Whois_thisrandomwebdomain.com.png",
+    "img/whois.webp",
     "WhoIs Lookup"
 );
 
 const Article02 = new WebBit (
     "htmlresponses",
     2,
-    "HTML Responses",
+    "HTML Frames",
     "View HTML page response statuses",
     "December 11, 2022",
     "pages/htmlresponses.html",
-    "img/HTML_Frames.png",
+    "img/HTML_Frames.webp",
     "HTML frames example"
 );
 
@@ -32,7 +32,7 @@ const Article03 = new WebBit (
     "Check out some NASA links",
     "December 18, 2022",
     "pages/nasa.html",
-    "img/NASA.jpg",
+    "img/NASA.webp",
     "NASA Artemis Logo"
 );
 
@@ -43,7 +43,7 @@ const Article04 = new WebBit (
     "Select a website's HTTPS certificate",
     "December 26, 2022",
     "pages/https.html",
-    "img/https2.png",
+    "img/https_cert.webp",
     "Cursor selecting HTTPS certificate"
 );
 
@@ -54,7 +54,7 @@ const Article05 = new WebBit (
     "Wappalyzer browser extension",
     "January 2, 2023",
     "pages/webTech.html",
-    "img/wappalyzer-logo.png",
+    "img/wappalyzer-logo.webp",
     "Browser extension logo. A white w on a purple tile."
 );
 
@@ -65,7 +65,7 @@ const Article06 = new WebBit (
     "JSON object notation",
     "January 9, 2023",
     "pages/jsonobject.html",
-    "img/json.png",
+    "img/json.webp",
     "JSON logo: A grey circle with artistic spirals."
 );
 
@@ -76,12 +76,23 @@ const Article07 = new WebBit (
     "Determine Wifi Version",
     "January 16, 2023",
     "pages/wifi.html",
-    "img/wifi.png",
+    "img/wifi.webp",
     "Wi-Fi logo with a black circle background."
 );
 
+const Article08 = new WebBit (
+    "chatGPT",
+    8,
+    "Preview chatGPT",
+    "chat with an AI for research and development.",
+    "January 28, 2023",
+    "pages/chatgpt.html",
+    "img/ai.webp",
+    "Decorative AI logo"
+);
 
-const ArbitraryArticles = [Article07, Article05, Article06, 
-    Article04, Article02, Article03, Article01];
+
+const ArbitraryArticles = [Article01, Article02, Article03, 
+    Article04, Article05, Article06, Article07, Article08];
 
 export default ArbitraryArticles;

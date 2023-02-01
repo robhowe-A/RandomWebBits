@@ -34,4 +34,5 @@ Dev branch hosted on [GitHub Pages](https://rhowell476.github.io/RandomWebBits/)
 1-29-23: Script.js changes  
 &nbsp;&nbsp;- Added navigation link objects  
 &nbsp;&nbsp;- GitHub Desktop - Squash commit history  
+1-30-23: New WebBits page: paint3D  
 1-31-23: Added dictionary page  

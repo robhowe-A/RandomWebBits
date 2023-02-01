@@ -62,11 +62,12 @@ header { background-color: var(--clr-header-blue);
 }
 
 footer { background-color: var(--clr-footer-blue-dark);
-    width: 100vw;
-    /*max-height: 10vh;*/
     padding: 1em;
     color: var(--clr-all-font-light);
 }
+
+footer a { color: var(--clr-Red);}
+footer a:hover { color: var(--clr-Green);}
 
 main{ width: 100%;
     max-width: 50em;
@@ -74,6 +75,8 @@ main{ width: 100%;
     padding-left: 3em;
     padding-right: 3em;
 }
+
+section { margin-bottom: 4em;}
 
 img { max-width: 100%
 }
@@ -137,6 +140,65 @@ h2:first-child { font-size: 2.5em;
 }
 
 /* CARDS - Home and Pages */
+.flip-card {
+    background-color: transparent;
+    width: 350px;
+    height: 350px;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .inner{
+    transform: rotateY(180deg);
+}
+
+.cardFront, .cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.cardFront {
+    background-color: transparent;
+}
+
+.cardBack {
+    background-color: transparent;
+    transform: rotateY(180deg);
+}
+
+.cardBody { position: relative;}
+
+.attribute { position: absolute;
+    top: 0;
+    transform: translateY(-275%);
+    right: 0;
+    font-size: 10px !important;
+    padding: .5em !important;
+    border-radius: 0 !important;
+}
+a.attribute:hover { background-color: var(--clr-Green) !important;}
+
+.cardBack h3::after{ content: '(attribution)';
+    display: block;
+    font-size: .7em;
+    text-decoration: none;
+    padding: .3em;
+}
+
+.imgSmall{ width: 150px;
+    height: 150px;
+}
+
 .cards h2 { text-align: center;
 }
 
@@ -150,16 +212,14 @@ h2:first-child { font-size: 2.5em;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    max-width: 1100px;
-    margin: 0 auto 8em auto;
+    max-width: 1200px;
+    margin: 0 auto 3em auto;
 }
 
 .card_columns .card { width: 100%;
 }
 
-
 .card div:first-child {width: 100%; 
-    height: auto;
 }
 
 .card { margin: 2em 0;
@@ -178,9 +238,7 @@ h2:first-child { font-size: 2.5em;
     display: inline-block;
 }
 
-.card_body > a:focus { border: 3px solid var(--clr-Orange_Focus);
-    outline: none;
-}
+
 
 .card_body p { font-size: .8em;
     max-width: 15em;
@@ -210,22 +268,52 @@ h2:first-child { font-size: 2.5em;
 
 /************************* Page Styles *************************/
 
-#mw-search input { border: none;
+#dictionary-search input { border: none;
     float: left;
-    color: blue;
+    color: var(--clr-DarkCyan);
     padding: 6px 10px;
     font-size: 17px;
-    background-color: rgba(255, 0, 0, .05);
+    background-color: rgba(0, 99, 99, .05);
     width: 75%;
+    border-bottom: 3px solid var(--clr-DarkCyan);
 }
 
-#mw-search button { padding: 6px 10px;
+#search-word::placeholder { color: var(--clr-title);}
+
+#dictionary-search button { padding: 6px 10px;
     background: #ddd;
     font-size: 17px;
     border: none;
     cursor: pointer;
-    background-color: var(--clr-Pink);
+    background-color: var(--clr-DarkCyan);
     max-width: 50px;
+    border-bottom: 3px solid var(--clr-DarkCyan);
+}
+
+#dictionary div h4, #dictionary div p > p { padding: 0;
+    margin: 0;
+}
+
+#dictionary h3, #dictionary h4 { color: var(--clr-DarkCyan)
+}
+
+.wordDefinition { margin-block: .4em;
+}
+
+.example i { font-size: .8em;
+}
+
+.example i::before { content: '  "'}
+.example i::after { content: '"'}
+
+.example > p:before{ content: 'Example: ';
+    font-size: .8em;
+    font-style: italic;
+    text-decoration: underline;
+    background-color: rgba(0, 99, 99, .5);
+    padding: .1em .5em .1em .5em;
+    border-radius: .5em;
+    color: var(--clr-font-dark);
 }
 
 #paint3D > figure { margin-top: 4em;
@@ -329,6 +417,15 @@ a:focus, nav a:focus { border: none;
     outline-offset: .3em; 
 }
 
+.card_body > a:focus { border: 3px solid var(--clr-Orange_Focus);
+    outline: none;
+}
+
+input:focus, button:focus { border: none;
+    outline: 4px solid var(--clr-Orange_Focus);
+    outline-offset: -4px;}
+
+
 .WebBits a:link, .Top { color: var(--clr-blue);
 }
 
@@ -427,9 +524,15 @@ input[type=text], button { padding: .3em;
     font-weight: bold;
     background-color: var(--clr-WhoIS_Orange);
     color: var(--clr-white);
-    width: 80%;
+    width: 38%;
     max-width: 8em;
+    float: left;
 }
+
+#searchWhoIS button:focus { outline: 4px solid var(--clr-DarkCyan);
+    outline-offset: -4px;}
+
+#searchWhoIS input { width: 62%;}
 
 .search-container { max-width: 100%;
     padding: 1em;
@@ -500,28 +603,28 @@ article iframe { width: 100%;
 .exampleBlue { background-color: var(--clr-blue-light);
     padding: 0.8em .8em 0.8em .8em;
     margin: 1em auto;
-    border: solid 2px;
+    border: solid 2px var(--clr-font-dark-onwhite);
     max-width: 55%;
     font-size: 14px;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 5px;
-    border-top-left-radius: 5px;
-
-}
-
-.exampleBlue p, .examplePink p, .exampleBlue ul { width: 100%;
-    margin: 0;
-    text-align: center;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 .examplePink { background-color: var(--clr-Pink);
     padding: 0.5em 0.5em 0.5em 0.5em;
     margin: 3em auto;
     border: solid 2px;
-    border-top-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 10px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.exampleBlue p, .examplePink p, .exampleBlue ul { width: 100%;
+    margin: 0;
+    text-align: center;
 }
 
 .examplePink h3 { color: var(--clr-font-dark);
@@ -582,6 +685,7 @@ article iframe { width: 100%;
         margin-top: 2em;
         margin-bottom: 2em;
     }
+    .exampleBlue { max-width: 19.6em;}
     
     aside ul { margin: 1em;
     }
@@ -589,7 +693,7 @@ article iframe { width: 100%;
     aside p { text-align: left;
     }
     
-    .card_columns .card { width: 40%;
+    .card_columns .card { max-width: 350px;
     }
     
     .card_columns { padding: 0;
@@ -614,9 +718,6 @@ article iframe { width: 100%;
     
     #GPT p { font-size: 16px;
     }
-    
-    .exampleBlue { max-width: 55%;
-    }
 }
 
 
@@ -636,18 +737,16 @@ article iframe { width: 100%;
     
     #Instructions figure { width: 45em;
     }
-    
-    .card_columns .card { width: 28%;
-    }
+
     .card {margin: 1.2em 1em;
     }
+    
     
     #HTTPS figure { width: 100%;
     }
     
-    article p { width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    article p { margin: auto;
+        text-align: center;
     }
     
     #chatGPT pre { max-width: 475px;

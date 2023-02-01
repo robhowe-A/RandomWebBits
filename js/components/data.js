@@ -17,13 +17,12 @@ const Article02 = new WebBit (
     "htmlresponses",
     2,
     "HTML Frames",
-    "View HTML page response statuses",
+    "View HTML page response status information",
     "December 11, 2022",
     "pages/htmlresponses.html",
     "img/HTML_Frames.webp",
     "HTML frames example"
 );
-
 
 const Article03 = new WebBit (
     "nasa",
@@ -40,7 +39,7 @@ const Article04 = new WebBit (
     "httpscert",
     4,
     "HTTPS Certificate",
-    "Select a website's HTTPS certificate",
+    "Select to view a website's HTTPS certificate",
     "December 26, 2022",
     "pages/https.html",
     "img/https_cert.webp",
@@ -95,15 +94,26 @@ const Article09 = new WebBit (
     "paint3d",
     9,
     "Paint 3D",
-    "Edit and more using paint 3D",
+    "Edit pictures or screen captures using paint 3D",
     "January 28, 2023",
     "pages/paint3d.html",
     "img/prototype.webp",
     "Colorful prototyping icon"
 );
 
+const Article10 = new WebBit (
+    "Dictionary",
+    10,
+    "Dictionary Terms",
+    "List dictionary terms using a dictionary API",
+    "January 30, 2023",
+    "pages/dictionaryWord.html",
+    "img/dictionary.webp",
+    "Dictionary icon depiction"
+);
+
 
 const ArbitraryArticles = [Article01, Article02, Article03, 
-    Article04, Article05, Article06, Article07, Article08, Article09];
+    Article04, Article05, Article06, Article07, Article08, Article09, Article10];
 
 export default ArbitraryArticles;

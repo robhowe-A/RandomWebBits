@@ -209,25 +209,71 @@ h2:first-child { font-size: 2.5em;
 }
 
 /************************* Page Styles *************************/
+#paint3D > figure { margin-top: 4em;}
+
+#paind3D-Nav li { list-style: circle;
+    margin-block: .5em;
+}
+
+#paint3D > p:last-of-type { margin-block: 3em;
+    text-align: center;
+}
+
+#openWith, #Ingrid-figure { border-radius: 30px;
+    border: 3px solid black;}
+
+#Ingrid {border-radius: 30px}
+
+#Ingrid-figure{ text-align: center;
+    max-width: 400px;
+    margin:4em  auto;
+}
+
+#Ingrid-figure figcaption { margin-block: 1em;}
+
 #chatGPT p img { border-radius: 30px;
     margin: 2em auto;
 }
 
 @media (prefers-color-scheme: dark) {
-    #chatGPT p img { box-shadow: -10px 10px 15px 0px var(--clr-Cyan);
+    #chatGPT p img, #openWith, #Ingrid-figure { box-shadow: -10px 10px 15px 0px var(--clr-Cyan);
     }
 }
 @media (prefers-color-scheme: light) {
-    #chatGPT p img { box-shadow: 10px 10px 15px 0px var(--clr-DarkCyan);
+    #chatGPT p img, #openWith, #Ingrid-figure { box-shadow: 10px 10px 15px 0px var(--clr-DarkCyan);
     }
 }
 #GPT { margin: 0 auto;
     background-color: rgba(175, 175, 100, .1);
     padding: .5em 2em 3em 2em;
     border-radius: 30px;
+    position: relative;
 }
 
-#GPT p { margin-bottom: 2em; line-height: 20px; font-size: 12px; font-family: monospace;
+#GPT p { margin-bottom: 2em; 
+    line-height: 20px; 
+    font-size: 12px; 
+    font-family: monospace;
+    margin-bottom: .5em
+}
+#GPT::before, #GPT::after {
+    content: '';
+    width: .4rem;
+    height: 95%;
+    display: block;
+    position: absolute;
+    background-color: var(--clr-header-blue);
+    border-radius: 1em;
+}
+
+#GPT::before {
+    left: 0px;
+    top: 15px
+}
+
+#GPT::after {
+    right: 0px;
+    top: 15px;
 }
 
 #GPT pre { 
@@ -236,6 +282,10 @@ h2:first-child { font-size: 2.5em;
     text-align: justify;
     margin-top: 2em;
     margin-bottom: 2em;
+}
+
+#JSON1, #JSON2 { font-weight: normal;
+    font-size: 12px;
 }
 
 code { font-weight: bolder;
@@ -415,7 +465,7 @@ article iframe { width: 100%;
     display: block;
 }
 
-#NASA-links li{ margin-top: 1em;
+#NASA-links li{ margin-top: .5em;
     font-size: 1.3em;
 }
 
@@ -428,11 +478,16 @@ article iframe { width: 100%;
 }
 
 .exampleBlue { background-color: var(--clr-blue-light);
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 0.8em .8em 0.8em .8em;
     margin: 1em auto;
     border: solid 2px;
     max-width: 55%;
     font-size: 14px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+
 }
 
 .exampleBlue p, .examplePink p, .exampleBlue ul { width: 100%;
@@ -444,6 +499,9 @@ article iframe { width: 100%;
     padding: 0.5em 0.5em 0.5em 0.5em;
     margin: 3em auto;
     border: solid 2px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 10px;
 }
 
 .examplePink h3 { color: var(--clr-font-dark);
@@ -463,9 +521,11 @@ article iframe { width: 100%;
 
 /* Styles for small mobile */
 @media only screen and (max-width: 319px){ main {padding: 1em;
+    
     }
 }
-@media only screen and (max-width: 500px){ .card:first-of-type{ margin-top: 0; 
+@media only screen and (max-width: 500px){ .card:first-of-type{ margin-top: 0;
+    
     }
 }
 
@@ -485,14 +545,19 @@ article iframe { width: 100%;
     .card_columns { padding-left: 1.5em;
         padding-right: 1.5em;
     }
+    .exampleBlue { max-width: 100%;
+    }
 }
 
 /* Styles for tablet */
 @media only screen and (min-width: 501px){
+    main { font-size: 20px;
+    }
+    
     .examplePink, .exampleBlue { font-size: 1em;
     }
     
-    .examplePink, .exampleBlue { padding: 1em 2em 1em 2em;
+    .examplePink, .exampleBlue { padding: 0.7em 1em 0.7em 1em;
         margin-top: 2em;
         margin-bottom: 2em;
     }
@@ -512,16 +577,35 @@ article iframe { width: 100%;
     .card {margin: 1.2em 1em;
     }
     
+    #JSON1, #JSON2 { font-weight: normal;
+        font-size: 14px;
+    }
+    
     #chatGPT p img { max-width: 450px;
     }
     
     #GPT { max-width: 450px;
+    }
+
+    #chatGPT p img, #openWith { border-radius: 30px;
+        margin: 3.5em auto;
+    }
+    
+    #GPT p { font-size: 16px;
+    }
+    
+    .exampleBlue { max-width: 55%;
     }
 }
 
 
 /* Styles for desktop */
 @media only screen and (min-width: 769px) {
+    
+    .examplePink, .exampleBlue { padding: 1em 2em 1em 2em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
     
     main{ max-width: 68.75em;
     }

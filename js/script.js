@@ -63,8 +63,14 @@ const aiIconLink = new IconLink(
     "ai icons",
     "Ai icons created by Freepik - Flaticon"
 );
+const prototypeIconLink = new IconLink(
+    "Paint 3D",
+    "https://www.flaticon.com/free-icons/prototype",
+    "prototype icons",
+    "Prototype icons created by Freepik - Flaticon"
+);
 const FLATICONS = [htmlFramesIconLink, httpsCertIconLink, domainLookupIconLink,
-    aiIconLink
+    aiIconLink, prototypeIconLink
 ];
 
 

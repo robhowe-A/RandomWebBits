@@ -209,7 +209,27 @@ h2:first-child { font-size: 2.5em;
 }
 
 /************************* Page Styles *************************/
-#paint3D > figure { margin-top: 4em;}
+
+#mw-search input { border: none;
+    float: left;
+    color: blue;
+    padding: 6px 10px;
+    font-size: 17px;
+    background-color: rgba(255, 0, 0, .05);
+    width: 75%;
+}
+
+#mw-search button { padding: 6px 10px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--clr-Pink);
+    max-width: 50px;
+}
+
+#paint3D > figure { margin-top: 4em;
+}
 
 #paind3D-Nav li { list-style: circle;
     margin-block: .5em;
@@ -523,6 +543,7 @@ article iframe { width: 100%;
 @media only screen and (max-width: 319px){ main {padding: 1em;
     
     }
+    #mw-search button { width: 25%;}
 }
 @media only screen and (max-width: 500px){ .card:first-of-type{ margin-top: 0;
     

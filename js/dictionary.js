@@ -52,9 +52,10 @@ const dictionaryWidget = (function() {
                         let wordTypeDefItem = wordTypeList.appendChild(document.createElement("li"));
                         let definitionP = wordTypeDefItem.appendChild(document.createElement("p"));
                         definitionP.textContent = def.definition;
+                        definitionP.classList.add("wordDefinition")
 
                         addAdjacentElem = function(){
-                            definitionP.classList.add("wordDefinition")
+                            definitionP.classList.add("example")
                             
                             console.log("What are all the selections: ", def);
                             const newP = definitionP.insertAdjacentElement('beforeend', document.createElement("p"));

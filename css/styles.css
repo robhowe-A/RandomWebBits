@@ -76,6 +76,8 @@ main{ width: 100%;
     padding-right: 3em;
 }
 
+section { margin-bottom: 4em;}
+
 img { max-width: 100%
 }
 
@@ -211,7 +213,7 @@ a.attribute:hover { background-color: var(--clr-Green) !important;}
     flex-direction: row;
     justify-content: center;
     max-width: 1200px;
-    margin: 0 auto 8em auto;
+    margin: 0 auto 3em auto;
 }
 
 .card_columns .card { width: 100%;

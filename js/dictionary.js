@@ -1,54 +1,78 @@
 
-// API fetch request the data from dictionary api:
-
-const url = "https://api.dictionaryapi.dev/api/v2/entries/en/"
-//const url = "https://od-api.oxforddictionaries.com/api/v2/entries/en-US/arbitrary"
-
-//const url = "https://anapioficeandfire.com/api/characters/1770";
-
-const apiResponseErrorCheck = function(res) {
-    if(!res.ok || res.status != 200){
-        throw new Error(res.ok + ": " + res.status);
-    }
-    return res.json();
-}
-
-//TODO: global variable
-const apiData = function(data) {
-    definitionSection.createDictionaryMarkup(data);
-}
-
-const apiGET = function(url, word) {
-    url += word;
-    fetch(url)
-        .then((response) => apiResponseErrorCheck(response))
-        .then((data) => apiData(data))
-        .catch(e => console.error(e));
-}
-
-//apiGET(url);
-
 // Create page elements showcasing a definition card.
-const dictionaryWidget = (function() {
+const dictionaryWidget = (element) => (function(elem) {
+    let requestDictionaryTerm = {
+        // API fetch request the data from dictionary api:
+        url: "https://api.dictionaryapi.dev/api/v2/entries/en/",
+        apiResponseErrorCheck: function(res) {
+            if(!res.ok || res.status != 200){
+                throw new Error(res.ok + ": " + res.status);
+            }
+            return res.json();
+        },
+        apiData: function(data) {
+            definitionSection.createDictionaryTermWithMarkup(data);
+        },
+        apiGET: function(url, word) {
+            url += word;
+            fetch(url)
+                .then((response) => requestDictionaryTerm.apiResponseErrorCheck(response))
+                .then((data) => requestDictionaryTerm.apiData(data))
+                .catch(e => console.error(e));
+        }
+    }
     
-    definitionSection = {
-        createDictionaryMarkup: function(wordData){
+    let dictionaryTermSection = {
+        afterElement: elem,
+        createDictionaryWidget: function() {
+            if(elem !== undefined){ //insert the widget after the passed in "elem"
+                if(elem.classList.contains("dictionaryWidget")){
+                const dictionary = dictionaryTermSection.afterElement.insertAdjacentElement("afterend", document.createElement("section"));
+                dictionary.id = "dictionary";
+                const artH = dictionary.appendChild(document.createElement("h3"));
+                artH.textContent = "Dictionary Term:";
+                //create dictionary form
+                dictionary.appendChild(document.createElement("div"));
+                const searchForm = dictionary.appendChild(document.createElement("form"));
+                searchForm.id = "dictionary-search";
+                searchForm.action = "index.html";
+                const searchInput = searchForm.appendChild(document.createElement("input"));
+                searchInput.id = "search-word";
+                searchInput.type = "text";
+                searchInput.placeholder = "Search..."
+                searchInput.classList.add("monospace");
+                const searchButton = searchForm.appendChild(document.createElement("button"));
+                searchButton.id = "word-search";
+                const fontAwesomeSearchIcon =  searchButton.appendChild(document.createElement("i"));
+                fontAwesomeSearchIcon.classList.add("fa");
+                fontAwesomeSearchIcon.classList.add("fa-search");
+                }else {
+                    console.log(`Add "dictionaryWidget" class to ${elem.nodeName} node.`)
+                }
+            } else {
+                console.log("Element is not valid. Please choose a valid element for dictionary widget to follow.")
+            }
+        }
+    }
+
+    let definitionSection = {
+        createDictionaryTermWithMarkup: function(wordData){
             const definition = document.querySelector("#dictionary");
             const dictionary = definition.appendChild(document.createElement("div"));
             dictionary.appendChild(document.createElement("hr"));
             
             wordData.map((word) => {
-                console.log("The word is: ",word)
+                //console.log("The word is: ",word)
                 const wordTitle = dictionary.appendChild(document.createElement("h3"));
                 wordTitle.textContent = word.word;
-                
+                //Add the word and examples to page
                 word.meanings.map((wordType) => {
-                    console.log("WordType are: ", wordType)
+                    //console.log("WordType are: ", wordType)
                     const wordTypeH = dictionary.appendChild(document.createElement("h4"));
                     wordTypeH.textContent = wordType.partOfSpeech;
                     const wordTypeList = dictionary.appendChild(document.createElement("ul"));
                     wordType.definitions.map((def) => {
-                        console.log("Definition is: ", def);
+                        //console.log("Definition is: ", def);
                         let wordTypeDefItem = wordTypeList.appendChild(document.createElement("li"));
                         let definitionP = wordTypeDefItem.appendChild(document.createElement("p"));
                         definitionP.textContent = def.definition;
@@ -56,13 +80,11 @@ const dictionaryWidget = (function() {
 
                         addAdjacentElem = function(){
                             definitionP.classList.add("example")
-                            
-                            console.log("What are all the selections: ", def);
+                            //console.log("What are all the selections: ", def);
                             const newP = definitionP.insertAdjacentElement('beforeend', document.createElement("p"));
                             const newPi = newP.appendChild(document.createElement("i"));
                             newPi.textContent = def.example;
                         }
-
                         //check if key "example" is in definition. If it is, add the example to list
                         "example" in def ?  addAdjacentElem(): true==true;
                     });
@@ -76,15 +98,20 @@ const dictionaryWidget = (function() {
             const wordSearch = document.querySelector("#word-search");
             wordSearch.addEventListener("click", function(event){
                 event.preventDefault();
-                apiGET(url, searchWord.value);
-                
+                requestDictionaryTerm.apiGET(requestDictionaryTerm.url, searchWord.value);
             })
         }
 
     }
-    //definitionSection.createDictionaryMarkup();
+    dictionaryTermSection.createDictionaryWidget();
     definitionSection.updateWordSearch();
-}());
+}(element));
 
-
-// Implement a search function to search your own words
+if(window.location.pathname == '/pages/dictionaryWord.html' || window.location.pathname == '/RandomWebBits/pages/dictionaryWord.html'){
+    // Implement a search function to search your own words
+    const blueWebBit = document.querySelector(".exampleBlue");
+    dictionaryWidget(blueWebBit);
+} else if (window.location.pathname == '/index.html' || window.location.pathname == '/RandomWebBits/index.html') {
+    const mainDiv = document.querySelector("main .cards");
+    dictionaryWidget(mainDiv);
+}

@@ -107,13 +107,34 @@ const Article10 = new WebBit (
     "Dictionary Terms",
     "List dictionary terms using a dictionary API",
     "January 30, 2023",
-    "pages/dictionaryWord.html",
+    "pages/dictionaryword.html",
     "img/dictionary.webp",
     "Dictionary icon depiction"
 );
 
+const Article11 = new WebBit (
+    "BOINC",
+    11,
+    "Contribute for Science United",
+    "Pivot the unused computing potential for science",
+    "February 6, 2023",
+    "pages/boinc.html",
+    "img/boinc_glossy.webp",
+    "Dictionary icon depiction"
+);
+
+const Article12 = new WebBit (
+    "IP Address",
+    12,
+    "IP Address Lookup",
+    "Lookup public and local IP addresses",
+    "February 13, 2023",
+    "pages/ipaddress.html",
+    "img/ip.webp",
+    "IP location and browser icon"
+);
 
 const ArbitraryArticles = [Article01, Article02, Article03, 
-    Article04, Article05, Article06, Article07, Article08, Article09, Article10];
+    Article04, Article05, Article06, Article07, Article08, Article09, Article10, Article11, Article12];
 
 export default ArbitraryArticles;

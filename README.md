@@ -1,5 +1,5 @@
 Main branch hosted on [Netlify](https://randomwebbits.com/)  
-Dev branch hosted on [GitHub Pages](https://rhowell476.github.io/RandomWebBits/)  
+Dev branch hosted on [GitHub Pages](https://rhowell476.github.io/RandomWebBits/index.html)  
 
 <figure>
   <img src="mobileView.svg" width="128" alt="Netlify App page for mobile devices">

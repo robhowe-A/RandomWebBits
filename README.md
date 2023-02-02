@@ -36,3 +36,7 @@ Dev branch hosted on [GitHub Pages](https://rhowell476.github.io/RandomWebBits/i
 &nbsp;&nbsp;- GitHub Desktop - Squash commit history  
 1-30-23: New WebBits page: paint3D  
 1-31-23: Added dictionary page  
+2-2-23:  
+&nbsp;&nbsp;- Conformed dictionary.js to module, set to defer on load  
+&nbsp;&nbsp;- Added dictionary.js to index.html  
+&nbsp;&nbsp;- Changed index page WebBits to show 3 random articles  

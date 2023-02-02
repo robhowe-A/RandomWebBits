@@ -13,14 +13,6 @@ class NavigationLink extends LinkDetails {
     }
 }
 
-class IconLink extends LinkDetails {
-    constructor(pageName, hReference, title, innerText) {
-        super(title, innerText);
-        this.pageName = pageName,
-        this.hReference = hReference
-    }
-}
-
 //Nav items
 const homeNavLink = new NavigationLink (
     "Index",
@@ -38,34 +30,7 @@ const pagesNavLink = new NavigationLink (
 
 const NAVITEMS = [homeNavLink, pagesNavLink];
 
-//Icon links
-const htmlFramesIconLink = new IconLink(
-   "HTML Frames",
-    "https://www.flaticon.com/free-icons/html",
-    "html icons",
-    "Html icons created by Freepik - Flaticon"
-);
-const httpsCertIconLink = new IconLink(
-    "HTTPS Certificate",
-    "https://www.flaticon.com/free-icons/ssl-certificate",
-    "ssl certificate icons",
-    "Ssl certificate icons created by inipagistudio - Flaticon"
-);
-const domainLookupIconLink = new IconLink(
-    "Domain Lookup",
-    "https://www.flaticon.com/free-icons/domain",
-    "domain icons",
-    "Domain icons created by Freepik - Flaticon"
-);
-const aiIconLink = new IconLink(
-    "Preview chatGPT",
-    "https://www.flaticon.com/free-icons/ai",
-    "ai icons",
-    "Ai icons created by Freepik - Flaticon"
-);
-const FLATICONS = [htmlFramesIconLink, httpsCertIconLink, domainLookupIconLink,
-    aiIconLink
-];
+
 
 
 const headerWidget = (function(){
@@ -92,8 +57,8 @@ const headerWidget = (function(){
             NAVITEMS.map((item) => {
                 const navListItems = document.createElement("li");
                 const navListLinks = document.createElement("a");
-                //navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
-                navListLinks.setAttribute('href', `/${item.hReference}`);
+                navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
+                //navListLinks.setAttribute('href', `/${item.hReference}`);
                 navListLinks.textContent = `${item.innerText}`;
                 navListItems.prepend(navListLinks);
                 headerNav.append(navListItems);
@@ -137,15 +102,6 @@ const footerWidget = (function(){
             const footerIconUL = document.createElement("ul");
             const iconUL = footerIconPara2.appendChild(footerIconUL);
 
-            FLATICONS.map(function(link){
-                const iconLI = iconUL.appendChild(document.createElement("li"));
-                const lia = iconLI.appendChild(document.createElement("a"));
-                lia.href = link.hReference;
-                lia.textContent = link.innerText;
-                lia.title = link.title;
-                iconUL.appendChild(iconLI);
-            });
-
             return footerIconPara2;
         },
         init: function(){
@@ -156,3 +112,5 @@ const footerWidget = (function(){
     
     footer.init();
 })();
+
+export default LinkDetails;

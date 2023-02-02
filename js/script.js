@@ -54,8 +54,12 @@ const headerWidget = (function(){
             NAVITEMS.map((item) => {
                 const navListItems = document.createElement("li");
                 const navListLinks = document.createElement("a");
-                //navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
-                navListLinks.setAttribute('href', `/${item.hReference}`);
+                if( window.location.host == 'rhowell476.github.io'){
+                    navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
+                } else if (window.location.host == 'randomwebbits.com' || window.location.host == 'resilient-tarsier-d3fba9.netlify.app') {
+                    navListLinks.setAttribute('href', `/${item.hReference}`);
+                }
+
                 navListLinks.textContent = `${item.innerText}`;
                 navListItems.prepend(navListLinks);
                 headerNav.append(navListItems);

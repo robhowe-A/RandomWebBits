@@ -107,7 +107,7 @@ const Article10 = new WebBit (
     "Dictionary Terms",
     "List dictionary terms using a dictionary API",
     "January 30, 2023",
-    "pages/dictionaryWord.html",
+    "pages/dictionaryword.html",
     "img/dictionary.webp",
     "Dictionary icon depiction"
 );

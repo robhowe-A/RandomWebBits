@@ -107,11 +107,15 @@ const dictionaryWidget = (element) => (function(elem) {
     definitionSection.updateWordSearch();
 }(element));
 
-if(window.location.pathname == '/pages/dictionaryWord.html' || window.location.pathname == '/RandomWebBits/pages/dictionaryWord.html'){
+if(window.location.pathname == '/pages/dictionaryword.html' || 
+   window.location.pathname == '/pages/dictionaryword' ||
+   window.location.pathname == '/RandomWebBits/pages/dictionaryword.html'){
     // Implement a search function to search your own words
     const blueWebBit = document.querySelector(".exampleBlue");
     dictionaryWidget(blueWebBit);
-} else if (window.location.pathname == '/index.html' || window.location.pathname == '/RandomWebBits/index.html') {
+} else if (window.location.pathname == '/index.html' || 
+           window.location.pathname == '/RandomWebBits/index.html' ||
+          window.location.pathname == '/') {
     const mainDiv = document.querySelector("main .cards");
     dictionaryWidget(mainDiv);
 }

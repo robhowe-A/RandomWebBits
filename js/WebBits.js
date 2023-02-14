@@ -51,6 +51,7 @@ const cardTiles = (function() {
          "Paint 3D",
          "https://www.flaticon.com/free-icons/prototype",
          "prototype icons",
+
          "Prototype icons created by Freepik - Flaticon",
          "Flaticon",
          9

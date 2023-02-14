@@ -41,6 +41,6 @@ Dev branch hosted on [GitHub Pages](https://rhowell476.github.io/RandomWebBits/i
 &nbsp;&nbsp;- Added dictionary.js to index.html  
 &nbsp;&nbsp;- Changed index page WebBits to show 3 random articles  
 2-6-23: New WebBits page: boinc  
-2-13-23:
-  - New WebBits page: ipaddress
-  - Minor code fixes
+2-13-23:  
+&nbsp;&nbsp;- New WebBits page: ipaddress  
+&nbsp;&nbsp;- Minor code fixes  

@@ -295,7 +295,6 @@ a.attribute:hover { background-color: var(--clr-Green) !important;}
     color: #f5f5f5;  
 }
 
-
 pre {
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -771,7 +770,6 @@ article iframe { width: 100%;
     #chatGPT pre { padding: .4em;}
     #chatGPT pre > * { font-size: 14px;
     }
-    
     #twoFigures code { font-size: 14px;
     padding: .3em 2em;
     }

@@ -30,9 +30,6 @@ const pagesNavLink = new NavigationLink (
 
 const NAVITEMS = [homeNavLink, pagesNavLink];
 
-
-
-
 const headerWidget = (function(){
     var header = {
         createHeader: function() {

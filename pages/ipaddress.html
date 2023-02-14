@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&lt;RWB&gt; IP Address</title>
+    <link rel="stylesheet" 
+        href="../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../img/vectorstock_45026755/ImageHome_Favicon.png">
+    <script type="module" src="../js/script.js"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N5SX42X');</script>
+        <!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5SX42X"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <main>
+        <time datetime="2023-02-13">February 13, 2023</time>
+        <article id="Public_IP" class="WebBits">
+            <h2>TRY: Looking up your IP Address</h2>
+                <p>Data runs the internet, and data always originates from somewhere. Two IP addresses are important.<br><br><strong>1.) Local IP: the <i>device</i> address</strong> assigned by a router or DHCP server on the network. You can find the local IP in many locations:</p>
+                <div id="twoFigures">
+                    <figure class="twoFigures_PS">
+                        <figcaption>PowerShell</figcaption>
+                        <p><code class="PS">Get-NetIPAddress | ? {$_.AddressFamily -match "IPv4"} | select IPAddress</code></p>
+                    </figure>
+                    <figure class="twoFigures_CMD">
+                        <figcaption>CMD</figcaption>
+                        <p><code class="CMD">ipconfig | findstr "IPv4"</code></p>
+                    </figure>
+                </div>
+
+                <p><strong>2.) Public IP: the <strong>network's</strong> IP address</strong> assigned by a service provdier (ISP). The browser requires a connection into your network, so it's a good place to find your public visible IP address.</p>
+
+            <aside class="examplePink">
+                <h4>Options:</h4>
+                <ol id="BOINC-links">
+                    <li><a href="https://www.bing.com/search?q=what+is+my+ip+address" title="Bing" target="_blank" rel="noopener">Search Engine</a> - The browser can return the public IP</li>
+                    <li><a href="https://www.ipchicken.com/" title="IP Chicken" target="_blank" rel="noopener">iP ChiCKEN</a> - Websites can find and show the public IP</li>
+                    <li><a href="https://www.ip2location.com/demo/" title="IP2Location" target="_blank" rel="noopener">Location Lookup</a> - This website has location information along with the public IP</li>
+                </ol>
+            </aside>
+            <aside class="exampleBlue">
+                <p><strong>Do NOT share your <u>public ip.</u></strong><br>It belongs to you and is secure not to share it with anyone.</p>
+            </aside>      
+
+        </article>
+        <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    </main>
+    <noscript>Your JavaScript may be broken or is disabled. Turn it on for full experience! -- Random Web Bits &copy;2023</noscript>
+
+</body>
+</html>

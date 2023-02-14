@@ -130,9 +130,6 @@ nav li a:after{ content: "|";
 a { text-decoration: none;
 }
 
-
-
-/* Home Pages Styles */
 .Title { text-align: center
 }
 
@@ -165,6 +162,7 @@ h2:first-child { font-size: 2.5em;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    transform: rotateX(0deg);
 }
 
 .cardFront {
@@ -238,8 +236,6 @@ a.attribute:hover { background-color: var(--clr-Green) !important;}
     display: inline-block;
 }
 
-
-
 .card_body p { font-size: .8em;
     max-width: 15em;
     margin: 0;
@@ -267,6 +263,43 @@ a.attribute:hover { background-color: var(--clr-Green) !important;}
 }
 
 /************************* Page Styles *************************/
+#twoFigures {
+    display: grid;
+    grid-column: 2fr;
+    grid-row: 2fr;
+    grid-template-areas: 
+        "powershell powershell"
+        "cmd cmd";
+}
+.twoFigures_PS { grid-area: powershell}
+.twoFigures_CMD { grid-area: cmd}
+
+#twoFigures figcaption { font-size: 1em;
+}
+
+#twoFigures figcaption, #twoFigures p { text-align: center; margin: auto; width: 130%;
+    transform: translate(-15%);
+}
+
+#twoFigures code { font-family: monospace;
+    font-size: 12px;
+    padding: .1em 1em;
+    margin: 0 auto;
+    text-align: center;
+}
+.PS { background-color: #012456;
+    color: #a4a4a4;
+}
+
+.CMD { background-color: #0c0c0c;
+    color: #f5f5f5;  
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: justify;
+}
 
 #dictionary-search input { border: none;
     float: left;
@@ -339,16 +372,16 @@ a.attribute:hover { background-color: var(--clr-Green) !important;}
 
 #Ingrid-figure figcaption { margin-block: 1em;}
 
-#chatGPT p img { border-radius: 30px;
+#chatGPT p img, .bitsImage { border-radius: 30px;
     margin: 2em auto;
 }
 
 @media (prefers-color-scheme: dark) {
-    #chatGPT p img, #openWith, #Ingrid-figure { box-shadow: -10px 10px 15px 0px var(--clr-Cyan);
+    #chatGPT p img, #openWith, #Ingrid-figure, .imgShadow { box-shadow: -10px 10px 15px 0px var(--clr-Cyan);
     }
 }
 @media (prefers-color-scheme: light) {
-    #chatGPT p img, #openWith, #Ingrid-figure { box-shadow: 10px 10px 15px 0px var(--clr-DarkCyan);
+    #chatGPT p img, #openWith, #Ingrid-figure, .imgShadow { box-shadow: 10px 10px 15px 0px var(--clr-DarkCyan);
     }
 }
 #GPT { margin: 0 auto;
@@ -385,9 +418,6 @@ a.attribute:hover { background-color: var(--clr-Green) !important;}
 }
 
 #GPT pre { 
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    text-align: justify;
     margin-top: 2em;
     margin-bottom: 2em;
 }
@@ -407,6 +437,11 @@ code { font-weight: bolder;
 
 .WebBits a, .Top { font-weight: bold;
 }
+
+.WebBits p:not(:first-of-type) { margin-block: 2em;
+}
+
+.WebBits i strong { font-size: .8em;}
 
 a:focus, nav a:focus { border: none;
     outline: 3px solid var(--clr-Orange_Focus);
@@ -588,12 +623,24 @@ article iframe { width: 100%;
     display: block;
 }
 
-#NASA-links li{ margin-top: .5em;
-    font-size: 1.3em;
+.examplePink li, .examplePink ol{ margin-top: .5em;
 }
 
-#NASA-links li a:hover { color: var(--clr-Skyblue);
+#NASA-links { font-size: 1.3em;
 }
+
+#BOINC-links li { font-size: 16px;
+}
+
+#BOINC img { margin-block: 3em; }
+
+.examplePink li a:hover, .examplePink ol a:hover { color: var(--clr-Skyblue);
+}
+
+.examplePink h4  { margin-bottom: 0;
+}
+
+.examplePink ol li { list-style-type: decimal;}
 
 #NASA iframe, #NASA img { border: 1em solid var(--clr-blue);
     border-radius: 6.65em;
@@ -627,7 +674,7 @@ article iframe { width: 100%;
     text-align: center;
 }
 
-.examplePink h3 { color: var(--clr-font-dark);
+.examplePink h3, .examplePink h4 { color: var(--clr-font-dark);
 }
 
 @media (prefers-color-scheme: light){
@@ -649,10 +696,11 @@ article iframe { width: 100%;
     #mw-search button { width: 25%;}
 }
 @media only screen and (max-width: 500px){ .card:first-of-type{ margin-top: 0;
-    
+    }
+    #twoFigures figcaption, #twoFigures p { width: 130%;
+        transform: translate(-15%);
     }
 }
-
 
 /* Styles for mobile */
 @media only screen and (min-width: 320px){
@@ -709,14 +757,21 @@ article iframe { width: 100%;
     #chatGPT p img { max-width: 450px;
     }
     
-    #GPT { max-width: 450px;
+    #GPT { max-width: 475px;
     }
 
-    #chatGPT p img, #openWith { border-radius: 30px;
+    #chatGPT p img, #openWith, .bitsImage { border-radius: 30px;
         margin: 3.5em auto;
     }
     
     #GPT p { font-size: 16px;
+        
+    }
+    #chatGPT pre { padding: .4em;}
+    #chatGPT pre > * { font-size: 14px;
+    }
+    #twoFigures code { font-size: 14px;
+    padding: .3em 2em;
     }
 }
 
@@ -751,7 +806,15 @@ article iframe { width: 100%;
     
     #chatGPT pre { max-width: 475px;
         margin: 0 auto;
+        
     }
+    
+    #twoFigures {
+        grid-template-areas: 
+            "powershell cmd"
+            "powershell cmd";
+        }
+    
 }
 
 

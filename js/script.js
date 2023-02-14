@@ -59,7 +59,6 @@ const headerWidget = (function(){
                 } else if (window.location.host == 'randomwebbits.com' || window.location.host == 'resilient-tarsier-d3fba9.netlify.app') {
                     navListLinks.setAttribute('href', `/${item.hReference}`);
                 }
-
                 navListLinks.textContent = `${item.innerText}`;
                 navListItems.prepend(navListLinks);
                 headerNav.append(navListItems);

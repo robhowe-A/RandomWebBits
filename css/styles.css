@@ -391,11 +391,12 @@ pre {
     position: relative;
 }
 
-#GPT p { margin-bottom: 2em; 
+#GPT p { margin-block: 2em; 
     line-height: 20px; 
     font-size: 12px; 
     font-family: monospace;
-    margin-bottom: .5em
+    margin-bottom: .5em;
+    text-align: left;
 }
 #GPT::before, #GPT::after {
     content: '';
@@ -438,7 +439,7 @@ code { font-weight: bolder;
 .WebBits a, .Top { font-weight: bold;
 }
 
-.WebBits p:not(:first-of-type) { margin-block: 2em;
+.WebBits > p:not(:first-of-type) { margin-block: 2em;
 }
 
 .WebBits i strong { font-size: .8em;}
@@ -544,6 +545,15 @@ aside li { list-style-type: none;
 }
 
 aside li a { font-size: 14px;
+}
+
+#wappalyzer li { list-style-type: disc;
+}
+
+#wappalyzer li > ul { list-style:inside;
+}
+
+#wappalyzer li > ul li {list-style-type: circle;
 }
 
 .monospace { font-family: monospace, serif
@@ -674,6 +684,8 @@ article iframe { width: 100%;
     text-align: center;
 }
 
+#wappalyzerInfo { text-align: center;}
+
 .examplePink h3, .examplePink h4 { color: var(--clr-font-dark);
 }
 
@@ -793,11 +805,18 @@ article iframe { width: 100%;
     #Instructions figure { width: 45em;
     }
 
-    .card {margin: 1.2em 1em;
+    .card { margin: 1.2em 1em;
     }
     
+    #HTTPS .examplePink figure { width: 100%;
+        margin-block: 1em;
+    }
     
-    #HTTPS figure { width: 100%;
+    #HTTPS .examplePink figure p { margin-top: 1em;
+        margin-left: 2.5em;
+        padding-right: 2.5em;
+        text-align: left;
+        text-indent: -2.5em;
     }
     
     article p { margin: auto;
@@ -806,14 +825,12 @@ article iframe { width: 100%;
     
     #chatGPT pre { max-width: 475px;
         margin: 0 auto;
-        
     }
     
-    #twoFigures {
-        grid-template-areas: 
-            "powershell cmd"
-            "powershell cmd";
-        }
+    #twoFigures { grid-template-areas: 
+                    "powershell cmd"
+                    "powershell cmd";
+                }
     
 }
 

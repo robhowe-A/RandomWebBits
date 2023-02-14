@@ -1,12 +1,6 @@
 Main branch hosted on [Netlify](https://randomwebbits.com/)  
-Dev branch hosted on [GitHub Pages](https://rhowell476.github.io/RandomWebBits/index.html)  
 
-<figure>
-  <img src="mobileView.svg" width="128" alt="Netlify App page for mobile devices">
-  <figcaption>-->QR for Netlify Mobile View</figcaption>
-</figure>
-
-# Arbitrary Web Bits  
+# Random Web Bits  
 **What is it?** A fun project to host short articles about the web and web development.  
 **What does it do?** It's a website in development, currently hosted on GitHub Pages. I'm using it to showcase my HTML, CSS, JS knowledge.  
 
@@ -44,3 +38,4 @@ Dev branch hosted on [GitHub Pages](https://rhowell476.github.io/RandomWebBits/i
 2-13-23:  
 &nbsp;&nbsp;- New WebBits page: ipaddress  
 &nbsp;&nbsp;- Minor code fixes  
+&nbsp;&nbsp;- Web Bits grammer fixes, edits, and corrections.

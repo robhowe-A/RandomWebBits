@@ -31,7 +31,7 @@ const Article03 = new WebBit (
     "Check out some NASA links",
     "December 18, 2022",
     "pages/nasa.html",
-    "img/NASA.webp",
+    "img/nasa.webp",
     "NASA Artemis Logo"
 );
 
@@ -52,7 +52,7 @@ const Article05 = new WebBit (
     "Wappalyzer",
     "Wappalyzer browser extension",
     "January 2, 2023",
-    "pages/webTech.html",
+    "pages/webtech.html",
     "img/wappalyzer-logo.webp",
     "Browser extension logo. A white w on a purple tile."
 );

@@ -121,7 +121,7 @@ const cardTiles = (function() {
             cardBody.appendChild(cardBodyHeading);
             cardBody.appendChild(cardBodyPara);
             cardBody.appendChild(cardBodyLink);
-            cardBodyHeading.innerText = article.id;
+            cardBodyHeading.innerText = article.name;
             FLATICONS.map(function(link){
                 if (cardImg.getAttribute('Article') == link.id){ //match WebBit ID to Icon ID
                 cardImgTop.classList.add("flip-card")

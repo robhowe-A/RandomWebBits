@@ -30,9 +30,9 @@ const pagesNavLink = new NavigationLink (
 
 const NAVITEMS = [homeNavLink, pagesNavLink];
 
-const headerWidget = (function(){
+const headerWidget = (() => {
     var header = {
-        createHeader: function() {
+        createHeader: () => {
             //-------SITE HEADER-------//
             const siteHeader = document.createElement('header');
 
@@ -45,7 +45,7 @@ const headerWidget = (function(){
             const main = document.querySelector("main").prepend(siteHeader);
             return siteHeader;
         },
-        createNavigation: function() {
+        createNavigation: () => {
             const headerNavFrag = document.createDocumentFragment();
             const headerNav = headerNavFrag
                 .appendChild(document.createElement('nav'))
@@ -65,7 +65,7 @@ const headerWidget = (function(){
             });
             return headerNavFrag;
         },
-        init: function (){
+        init: () => {
             document.body.prepend(header.createHeader());
             document.body.querySelector("header").prepend(header.createNavigation());
         }
@@ -74,9 +74,9 @@ const headerWidget = (function(){
 
 })();
     
-const footerWidget = (function(){
+const footerWidget = (() => {
     var footer = {
-        createFooter: function() {
+        createFooter: () => {
             //-------SITE FOOTER-------//
             const siteFooter = document.createElement("footer");
             const footerPara = document.createElement("p");
@@ -97,14 +97,14 @@ const footerWidget = (function(){
         },
 
         //Icon attribution
-        createIconAttributionLinks: function() {
+        createIconAttributionLinks: () => {
             const footerIconPara2 = document.createElement("p");
             const footerIconUL = document.createElement("ul");
             const iconUL = footerIconPara2.appendChild(footerIconUL);
 
             return footerIconPara2;
         },
-        init: function(){
+        init: () => {
             document.body.append(footer.createFooter());
             document.body.querySelector("footer").append(footer.createIconAttributionLinks());
         }

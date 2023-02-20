@@ -2,7 +2,7 @@
 import ArbitraryArticles from "./components/data.js";
 import LinkDetails from "./script.js";
 
-const cardTiles = (function() {
+const cardTiles = (() => {
 
     class IconLink extends LinkDetails {
         constructor(pageName, hReference, title, innerText, owner, id) {
@@ -84,7 +84,7 @@ const cardTiles = (function() {
          aiIconLink, prototypeIconLink, dictionaryIconLink, boincIconLink, 
          ipIconLink
      ];
-
+    
     //Create Artibrary Articles section element and append to Main
     const pageMain = document.querySelector("main");
     const AASection = document.createElement("section");
@@ -103,7 +103,7 @@ const cardTiles = (function() {
     //Map WebBits to a card, each
     //Map is fulcrum to create a WebBit card
     
-    const webBitsArticleCards = function buildWebBits(webBit){
+    const buildWebBitsArticleCards = () => {
         let AAs = ArbitraryArticles.map((article) => {
             let WebBit = document.createElement('div');
             WebBit.classList.add('card');
@@ -122,7 +122,7 @@ const cardTiles = (function() {
             cardBody.appendChild(cardBodyPara);
             cardBody.appendChild(cardBodyLink);
             cardBodyHeading.innerText = article.name;
-            FLATICONS.map(function(link){
+            FLATICONS.map((link) => {
                 if (cardImg.getAttribute('Article') == link.id){ //match WebBit ID to Icon ID
                 cardImgTop.classList.add("flip-card")
                 const cardInner = cardImgTop.appendChild(document.createElement("div"));
@@ -157,13 +157,13 @@ const cardTiles = (function() {
         return AAs;
     }
 
-    let WebBits = webBitsArticleCards();
+    let WebBits = buildWebBitsArticleCards();
 
     if(window.location.pathname == '/index.html' || 
        window.location.pathname == '/' || 
        window.location.pathname == '/RandomWebBits/index.html' || 
        window.location.pathname == '/RandomWebBits/'){
-        function getMultipleRandom(arr, num) {
+        const getMultipleRandom = (arr, num) => {
             const shuffled = [...arr].sort(() => 0.5 - Math.random());
         
             return shuffled.slice(0, num);

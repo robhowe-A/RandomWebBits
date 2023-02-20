@@ -1,19 +1,19 @@
 
 // Create page elements showcasing a definition card.
-const dictionaryWidget = (element) => (function(elem) {
+const dictionaryWidget = (element) => ((elem) => {
     let requestDictionaryTerm = {
         // API fetch request the data from dictionary api:
         url: "https://api.dictionaryapi.dev/api/v2/entries/en/",
-        apiResponseErrorCheck: function(res) {
+        apiResponseErrorCheck: (res) => {
             if(!res.ok || res.status != 200){
                 throw new Error(res.ok + ": " + res.status);
             }
             return res.json();
         },
-        apiData: function(data) {
+        apiData: (data) => {
             definitionSection.createDictionaryTermWithMarkup(data);
         },
-        apiGET: function(url, word) {
+        apiGET: (url, word) => {
             url += word;
             fetch(url)
                 .then((response) => requestDictionaryTerm.apiResponseErrorCheck(response))
@@ -24,7 +24,7 @@ const dictionaryWidget = (element) => (function(elem) {
     
     let dictionaryTermSection = {
         afterElement: elem,
-        createDictionaryWidget: function() {
+        createDictionaryWidget: () => {
             if(elem !== undefined){ //insert the widget after the passed in "elem"
                 if(elem.classList.contains("dictionaryWidget")){
                 const dictionary = dictionaryTermSection.afterElement.insertAdjacentElement("afterend", document.createElement("section"));
@@ -56,7 +56,7 @@ const dictionaryWidget = (element) => (function(elem) {
     }
 
     let definitionSection = {
-        createDictionaryTermWithMarkup: function(wordData){
+        createDictionaryTermWithMarkup: (wordData) => {
             const definition = document.querySelector("#dictionary");
             const dictionary = definition.appendChild(document.createElement("div"));
             dictionary.appendChild(document.createElement("hr"));
@@ -78,7 +78,7 @@ const dictionaryWidget = (element) => (function(elem) {
                         definitionP.textContent = def.definition;
                         definitionP.classList.add("wordDefinition")
 
-                        addAdjacentElem = function(){
+                        addAdjacentElem = () => {
                             definitionP.classList.add("example")
                             //console.log("What are all the selections: ", def);
                             const newP = definitionP.insertAdjacentElement('beforeend', document.createElement("p"));
@@ -93,10 +93,10 @@ const dictionaryWidget = (element) => (function(elem) {
 
             definition.appendChild(dictionary);
         },
-        updateWordSearch: function(){
+        updateWordSearch: () => {
             const searchWord = document.querySelector("#search-word");
             const wordSearch = document.querySelector("#word-search");
-            wordSearch.addEventListener("click", function(event){
+            wordSearch.addEventListener("click", (event) => {
                 event.preventDefault();
                 requestDictionaryTerm.apiGET(requestDictionaryTerm.url, searchWord.value);
             })
@@ -105,7 +105,7 @@ const dictionaryWidget = (element) => (function(elem) {
     }
     dictionaryTermSection.createDictionaryWidget();
     definitionSection.updateWordSearch();
-}(element));
+})(element);
 
 if(window.location.pathname == '/pages/dictionaryword.html' || 
    window.location.pathname == '/pages/dictionaryword' ||

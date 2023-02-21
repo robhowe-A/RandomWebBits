@@ -31,7 +31,7 @@ const Article03 = new WebBit (
     "Check out some NASA links",
     "December 18, 2022",
     "pages/nasa.html",
-    "img/nasa.webp",
+    "img/NASA.webp",
     "NASA Artemis Logo"
 );
 

@@ -39,3 +39,4 @@ Main branch hosted on [Netlify](https://randomwebbits.com/)
 &nbsp;&nbsp;- New WebBits page: ipaddress  
 &nbsp;&nbsp;- Minor code fixes  
 &nbsp;&nbsp;- Web Bits grammer fixes, edits, and corrections.
+2-20-23: Minor code fixes

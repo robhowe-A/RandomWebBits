@@ -128,7 +128,7 @@ a { text-decoration: none;}
 
 h2:first-child { font-size: 2.5em;}
 
-/* CARDS - Home and Pages */
+/* webBits cards */
 .flip-card { background-color: transparent;
     width: 350px;
     height: 350px;
@@ -260,6 +260,21 @@ a:focus, nav a:focus, input:focus, button:focus { border: none;
 }
 
 /************************* Page Styles *************************/
+#Markup p { margin-block: 2em;}
+
+#Markup li:first-of-type { margin-bottom: 1em;}
+
+#twoImgFig { max-width: 60vw; 
+    margin: 0 auto;
+}
+#twoImgFig figcaption { text-align: center;
+    font-size: .8em;
+}
+
+#comparison {
+    margin: 0 auto;
+}
+
 #ToDO h3 { color: var(--clr-DarkCyan)}
 
 #ToDO input { border: none;
@@ -267,6 +282,7 @@ a:focus, nav a:focus, input:focus, button:focus { border: none;
     padding: 6px 10px;
     font-size: 17px;
     background-color: rgba(0, 99, 99, .05);
+    color: var(--clr-font-black);
     width: 75%;
     border-bottom: 3px solid var(--clr-DarkCyan);
     box-shadow: 0px 3px 15px -3px black;
@@ -297,8 +313,6 @@ a:focus, nav a:focus, input:focus, button:focus { border: none;
 #ToDO input[type="checkbox"]:focus { outline-offset: -1px;}
 
 #twoFigures { display: grid;
-    grid-column: 2fr;
-    grid-row: 2fr;
     grid-template-areas: 
         "powershell powershell"
         "cmd cmd";

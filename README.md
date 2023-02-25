@@ -45,3 +45,4 @@ Main branch hosted on [Netlify](https://randomwebbits.com/)
 &nbsp;&nbsp;- Added ToDo List page  
 &nbsp;&nbsp;- Added ToDo List component on index  
 2-25-23: Refactor code: WebBits.js, script.js  
+2-26-23: New WebBits page: markup  

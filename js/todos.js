@@ -76,13 +76,7 @@ const todosWidget = (element) => ((elem) => {
                                 }
                             }
 
-                            //add buton event listener
-                            const ADDBUTTON2 = document.getElementById('AddButton');
-                            ADDBUTTON2.addEventListener("click", () =>{
-                                let addIN = document.querySelector('#ToDO input[name=itemINPUT]')
-                                toDosListSection.AddToDo(addIN.value);
-                                addIN.textContent = '';
-                            });
+                            toDosListSection.addToDoEventListeners();
 
                         break;
                     case 'ToDO':
@@ -101,22 +95,8 @@ const todosWidget = (element) => ((elem) => {
                                 toDosListSection.AddToDo(storageToDosPage[i]);
                             }
                         }
-
-                        //add buton event listener
-                            const ADDBUTTON = document.getElementById('AddButton');
-                            ADDBUTTON.addEventListener("click", () =>{
-                                let addIN = document.querySelector('#ToDO input[name=itemINPUT]');
-                                toDosListSection.AddToDo(addIN.value);
-                                addIN.value = '';
-                            });
-                            const ADDITEMBTN = document.querySelector('input[name="itemINPUT"]');
-                            ADDITEMBTN.addEventListener("keypress", (event) => {
-                                if (event.key === 'Enter'){
-                                    let addIN = document.querySelector('#ToDO input[name=itemINPUT]');
-                                    toDosListSection.AddToDo(addIN.value);
-                                    addIN.value = '';
-                                }
-                            });
+                        toDosListSection.addToDoEventListeners();
+                        
                         break;
                     default:
                         console.log("Element is not valid. Please choose a valid element for ToDo list widget to follow.")
@@ -173,6 +153,22 @@ const todosWidget = (element) => ((elem) => {
                 document.querySelector('table').deleteRow(i);
                 toDosListSection.ToDOs--;
             }
+        },
+        addToDoEventListeners: () => {
+            const ADDBUTTON = document.getElementById('AddButton');
+            const ADDITEMENTER = document.querySelector('input[name="itemINPUT"]');
+            
+            ADDBUTTON.addEventListener("click", () =>{
+                toDosListSection.AddToDo(ADDITEMENTER.value);
+                ADDITEMENTER.value = '';
+            });
+            
+            ADDITEMENTER.addEventListener("keypress", (event) => {
+                if (event.key === 'Enter'){
+                    toDosListSection.AddToDo(ADDITEMENTER.value);
+                    ADDITEMENTER.value = '';
+                }
+            });
         }
     }
 

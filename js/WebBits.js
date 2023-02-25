@@ -28,10 +28,10 @@ import LinkDetails from "./script.js";
         1
     );
     const htmlFramesIconLink = new IconLink(
-        "HTML Frames",
-        "https://www.flaticon.com/free-icons/html",
-        "html icons",
-        "Html icons created by Freepik - Flaticon",
+        "HTML Source Code",
+        "https://www.flaticon.com/free-icons/code",
+        "code icons",
+        "Code icons created by Freepik - Flaticon",
         "Flaticon",
         2
     );
@@ -83,9 +83,17 @@ import LinkDetails from "./script.js";
         "Flaticon",
         12
     );
+    const htmlSourceIconLink = new IconLink(
+        "HTML Source Code",
+        "https://www.flaticon.com/free-icons/html",
+        "html icons",
+        "Html icons created by Freepik - Flaticon",
+        "Flaticon",
+        13
+    );
     const FLATICONS = [htmlFramesIconLink, httpsCertIconLink, domainLookupIconLink,
         aiIconLink, prototypeIconLink, dictionaryIconLink, boincIconLink,
-        ipIconLink
+        ipIconLink, htmlSourceIconLink
     ];
 
     const cardsWidget = {

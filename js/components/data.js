@@ -134,8 +134,20 @@ const Article12 = new WebBit (
     "IP location and browser icon"
 );
 
+const Article13 = new WebBit (
+    "HTML Markup",
+    13,
+    "HTML Source Code",
+    "Reveal HTML source code and JavaScript",
+    "February 26, 2023",
+    "pages/markup.html",
+    "img/HTML_source.webp",
+    "HTML frames example"
+);
+
 const ArbitraryArticles = [Article01, Article02, Article03, 
-    Article04, Article05, Article06, Article07, Article08, Article09, Article10, Article11, Article12];
+    Article04, Article05, Article06, Article07, Article08, 
+    Article09, Article10, Article11, Article12, Article13];
 
 
 export default ArbitraryArticles;

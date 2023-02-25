@@ -241,7 +241,61 @@ a.attribute:hover { background-color: var(--clr-Green) !important;}
     background-color: var(--clr-Cyan);
 }
 
+a:focus, nav a:focus, input:focus, button:focus { border: none;
+    outline: 3px solid var(--clr-Orange_Focus);
+    outline-offset: .2em;
+}
+
+.card a:focus { outline: 5px solid var(--clr-Orange_Focus);
+    outline-offset: .3em; 
+}
+
+.card_body > a:focus { border: 3px solid var(--clr-Orange_Focus);
+    outline: none;
+}
+
+#dictionary-search input:focus, #dictionary-search button:focus { border: none;
+    outline: 4px solid var(--clr-Orange_Focus);
+    outline-offset: -2px;
+}
+
 /************************* Page Styles *************************/
+#ToDO h3 { color: var(--clr-DarkCyan)}
+
+#ToDO input { border: none;
+    float: left;
+    padding: 6px 10px;
+    font-size: 17px;
+    background-color: rgba(0, 99, 99, .05);
+    width: 75%;
+    border-bottom: 3px solid var(--clr-DarkCyan);
+    box-shadow: 0px 3px 15px -3px black;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+#ToDO input[type="button"], #ToDO input[value="Delete"]{ font-weight: bold;
+    background-color: var(--clr-DarkCyan);
+    color: var(--clr-all-font-white);
+    box-shadow: -3px 3px 15px -3px black;
+}
+
+#ToDO input[type="button"] { margin-left: 100%; transform: translate(-96%)}
+
+#ToDO input:focus, #ToDO button:focus { border: none;
+    outline: 4px solid var(--clr-Orange_Focus);
+    outline-offset: -2px;
+}
+
+#ToDO input[value="Delete"]{ width: 100%;
+    box-shadow: -5px 3px 10px -3px black;
+    outline-offset: 1px;
+}
+
+#ToDO input[type="checkbox"] { box-shadow: none;
+}
+#ToDO input[type="checkbox"]:focus { outline-offset: -1px;}
+
 #twoFigures { display: grid;
     grid-column: 2fr;
     grid-row: 2fr;
@@ -306,6 +360,18 @@ pre { white-space: pre-wrap;
 #dictionary h3, #dictionary h4 { color: var(--clr-DarkCyan)}
 
 .wordDefinition { margin-block: .4em;}
+
+#search-word.invalid, #dictionary-search button.invalid { border-color: var(--clr-Red);
+    color: var(--clr-Red);
+}
+
+.error { display: block;
+    font-size: .8em;
+    margin-left: 1em;
+    width: fit-content;
+    color: var(--clr-foo);
+    background-color: var(--clr-Red);
+}
 
 .example i { font-size: .8em;}
 
@@ -406,24 +472,6 @@ code { font-weight: bolder;}
 .WebBits > p:not(:first-of-type) { margin-block: 2em;}
 
 .WebBits i strong { font-size: .8em;}
-
-a:focus, nav a:focus { border: none;
-    outline: 3px solid var(--clr-Orange_Focus);
-    outline-offset: .2em;
-}
-
-.card a:focus { outline: 5px solid var(--clr-Orange_Focus);
-    outline-offset: .3em; 
-}
-
-.card_body > a:focus { border: 3px solid var(--clr-Orange_Focus);
-    outline: none;
-}
-
-input:focus, button:focus { border: none;
-    outline: 4px solid var(--clr-Orange_Focus);
-    outline-offset: -4px;}
-
 
 .WebBits a:link, .Top { color: var(--clr-blue);
 }

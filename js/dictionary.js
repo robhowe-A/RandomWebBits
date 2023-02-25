@@ -14,6 +14,7 @@ const dictionaryWidget = (element) => ((elem) => {
             definitionSection.createDictionaryTermWithMarkup(data);
         },
         apiGET: (url, word) => {
+            //submit validation
             url += word;
             fetch(url)
                 .then((response) => requestDictionaryTerm.apiResponseErrorCheck(response))
@@ -43,14 +44,71 @@ const dictionaryWidget = (element) => ((elem) => {
                 searchInput.classList.add("monospace");
                 const searchButton = searchForm.appendChild(document.createElement("button"));
                 searchButton.id = "word-search";
+                searchButton.type = "button";
                 const fontAwesomeSearchIcon =  searchButton.appendChild(document.createElement("i"));
                 fontAwesomeSearchIcon.classList.add("fa");
                 fontAwesomeSearchIcon.classList.add("fa-search");
+                const errorSpan = searchForm.appendChild(document.createElement("span"));
+                errorSpan.classList.add("error");
                 }else {
                     console.log(`Add "dictionaryWidget" class to ${elem.nodeName} node.`)
                 }
             } else {
                 console.log("Element is not valid. Please choose a valid element for dictionary widget to follow.")
+            }
+        },
+        updateWordSearch: () => {
+            const searchWord = document.querySelector("#search-word");
+            const wordSearch = document.querySelector("#word-search");
+            const error = wordSearch.nextElementSibling;
+            wordSearch.addEventListener("click", (event) => {
+                event.preventDefault();
+                const acceptedWord = dictionaryTermSection.wordValidation(searchWord.value);
+                    if (acceptedWord){
+                        requestDictionaryTerm.apiGET(requestDictionaryTerm.url, searchWord.value);
+                        searchWord.classList.remove("invalid");
+                        wordSearch.classList.remove("invalid");
+                        error.classList.remove("error");
+                        error.textContent = "";
+                    }
+                    else {
+                        searchWord.classList.add("invalid");
+                        wordSearch.classList.add("invalid");
+                        error.textContent = "Invalid word!";
+                        error.classList.add("error");
+                    }
+                    searchWord.value = '';
+            })
+            searchWord.addEventListener("keypress", (event) => {
+                if (event.key === 'Enter'){
+                    event.preventDefault();
+                    const acceptedWord = dictionaryTermSection.wordValidation(searchWord.value);
+                    if (acceptedWord){
+                        requestDictionaryTerm.apiGET(requestDictionaryTerm.url, searchWord.value);
+                        searchWord.classList.remove("invalid");
+                        wordSearch.classList.remove("invalid");
+                        error.classList.remove("error");
+                        error.textContent = "";
+                    }
+                    else {
+                        searchWord.classList.add("invalid");
+                        wordSearch.classList.add("invalid");
+                        error.textContent = "Invalid word!";
+                        error.classList.add("error");
+                    }
+                    searchWord.value = '';
+                }
+            })
+        },
+        wordValidation: (intxt) => {
+            let trimmed = intxt.trim();
+            let lettersRE = new RegExp("^[A-Za-z]{0,45}$");
+            if(lettersRE.test(trimmed)){
+                return true;
+            }
+            else{
+                //word is not an acceptable word.`);
+                return false;
             }
         }
     }
@@ -90,27 +148,19 @@ const dictionaryWidget = (element) => ((elem) => {
                     });
                 });
             });
-
             definition.appendChild(dictionary);
         },
-        updateWordSearch: () => {
-            const searchWord = document.querySelector("#search-word");
-            const wordSearch = document.querySelector("#word-search");
-            wordSearch.addEventListener("click", (event) => {
-                event.preventDefault();
-                requestDictionaryTerm.apiGET(requestDictionaryTerm.url, searchWord.value);
-            })
-        }
+        
 
     }
     dictionaryTermSection.createDictionaryWidget();
-    definitionSection.updateWordSearch();
+    dictionaryTermSection.updateWordSearch();
 })(element);
 
 if(window.location.pathname == '/pages/dictionaryword.html' || 
    window.location.pathname == '/pages/dictionaryword' ||
    window.location.pathname == '/RandomWebBits/pages/dictionaryword.html'){
-    // Implement a search function to search your own words
+    // Implement a search component to search your own words
     const blueWebBit = document.querySelector(".exampleBlue");
     dictionaryWidget(blueWebBit);
 } else if (window.location.pathname == '/index.html' || 

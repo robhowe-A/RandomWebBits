@@ -1,42 +1,51 @@
 class LinkDetails {
-    constructor (title, innerText) {
+    constructor(title, innerText) {
         this.title = title,
-        this.innerText = innerText
+            this.innerText = innerText
     }
 }
 
 class NavigationLink extends LinkDetails {
-    constructor (pageName, hReference, title, innerText) {
+    constructor(pageName, hReference, title, innerText) {
         super(title, innerText);
         this.pageName = pageName;
         this.hReference = hReference;
     }
 }
 
-//Nav items
-const homeNavLink = new NavigationLink (
-    "Index",
-    "index.html",
-    "Home",
-    "Home"
-);
+(() => {
+    window.addEventListener("DOMContentLoaded", () => {
+        headerWidget.init();
+        footerWidget.init();
+    })
 
-const pagesNavLink = new NavigationLink (
-    "Pages",
-    "pages.html",
-    "Pages",
-    "Pages"
-)
+    //Nav items
+    const homeNavLink = new NavigationLink(
+        "Index",
+        "index.html",
+        "Home",
+        "Home"
+    );
 
-const NAVITEMS = [homeNavLink, pagesNavLink];
+    const pagesNavLink = new NavigationLink(
+        "Pages",
+        "pages.html",
+        "Pages",
+        "Pages"
+    )
 
-const headerWidget = (() => {
-    var header = {
-        createHeader: () => {
+    const NAVITEMS = [homeNavLink, pagesNavLink];
+
+    var headerWidget = {
+        init: () => {
+            document.body.prepend(headerWidget.buildHeader());
+            document.body.querySelector("header").prepend(headerWidget.buildNavigation());
+        },
+        buildHeader: () => {
             //-------SITE HEADER-------//
             const siteHeader = document.createElement('header');
 
-            //Create Random Web Bits H1
+            //Random Web Bits H1 Logo
             const H1 = document.createElement("H1");
             H1.textContent = '<Random Web Bits>';
             H1.setAttribute("id", "RandomWebBits");
@@ -45,7 +54,8 @@ const headerWidget = (() => {
             const main = document.querySelector("main").prepend(siteHeader);
             return siteHeader;
         },
-        createNavigation: () => {
+        buildNavigation: () => {
+            //-------SITE NAVIGATION-------//
             const headerNavFrag = document.createDocumentFragment();
             const headerNav = headerNavFrag
                 .appendChild(document.createElement('nav'))
@@ -54,7 +64,7 @@ const headerWidget = (() => {
             NAVITEMS.map((item) => {
                 const navListItems = document.createElement("li");
                 const navListLinks = document.createElement("a");
-                if( window.location.host == 'rhowell476.github.io'){
+                if (window.location.host == 'rhowell476.github.io') {
                     navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
                 } else if (window.location.host == 'randomwebbits.com' || window.location.host == 'resilient-tarsier-d3fba9.netlify.app') {
                     navListLinks.setAttribute('href', `/${item.hReference}`);
@@ -64,26 +74,27 @@ const headerWidget = (() => {
                 headerNav.append(navListItems);
             });
             return headerNavFrag;
-        },
-        init: () => {
-            document.body.prepend(header.createHeader());
-            document.body.querySelector("header").prepend(header.createNavigation());
         }
-    };
-    header.init();
 
-})();
-    
-const footerWidget = (() => {
-    var footer = {
-        createFooter: () => {
+    };
+
+    var footerWidget = {
+        init: () => {
+            let footer = footerWidget.buildFooter();
+            document.body.append(footer);
+            document.body.querySelector("footer").append(footerWidget.buildIconAttributionLinks(footer));
+        },
+        buildFooter: () => {
             //-------SITE FOOTER-------//
             const siteFooter = document.createElement("footer");
             const footerPara = document.createElement("p");
             footerPara.textContent = `\u00A9 2022 Random WebBits. All Rights Reserved.`;
             siteFooter.append(footerPara);
 
-            //Designed by IconHome 
+            return siteFooter;
+        },
+        buildIconAttributionLinks: (footer) => {
+            //Favicon designed by IconHome attribution
             const footerIconPara = document.createElement("p");
             const footerIconLink = document.createElement("a");
             footerIconLink.href = 'https://www.vectorstock.com/royalty-free-vector/maintenance-icon-for-graphic-and-web-design-vector-45026755'
@@ -92,25 +103,12 @@ const footerWidget = (() => {
             footerIconLink.textContent = 'VectorStock.com';
             footerIconPara.textContent = `Favicon designed by IconHome at `;
             footerIconPara.appendChild(footerIconLink);
-            siteFooter.append(footerIconPara);
-            return siteFooter;
-        },
+            footer.appendChild(footerIconPara);
 
-        //Icon attribution
-        createIconAttributionLinks: () => {
-            const footerIconPara2 = document.createElement("p");
-            const footerIconUL = document.createElement("ul");
-            const iconUL = footerIconPara2.appendChild(footerIconUL);
-
-            return footerIconPara2;
-        },
-        init: () => {
-            document.body.append(footer.createFooter());
-            document.body.querySelector("footer").append(footer.createIconAttributionLinks());
+            return footerIconPara;
         }
     };
-    
-    footer.init();
+
 })();
 
 export default LinkDetails;

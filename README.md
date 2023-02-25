@@ -2,7 +2,7 @@ Main branch hosted on [Netlify](https://randomwebbits.com/)
 
 # Random Web Bits  
 **What is it?** A fun project to host short articles about the web and web development.  
-**What does it do?** It's a website in development, currently hosted on GitHub Pages. I'm using it to showcase my HTML, CSS, JS knowledge.  
+**What does it do?** It's a website in development, currently hosted on GitHub Pages. It showcases HTML, CSS, JS knowledge.  
 
 ----------  
 ## Features  
@@ -38,5 +38,10 @@ Main branch hosted on [Netlify](https://randomwebbits.com/)
 2-13-23:  
 &nbsp;&nbsp;- New WebBits page: ipaddress  
 &nbsp;&nbsp;- Minor code fixes  
-&nbsp;&nbsp;- Web Bits grammer fixes, edits, and corrections.  
+&nbsp;&nbsp;- Web Bits grammer fixes, edits, and corrections  
 2-20-23: Minor code fixes  
+2-21-23:  
+&nbsp;&nbsp;- Dictionary search input validation  
+&nbsp;&nbsp;- Added ToDo List page  
+&nbsp;&nbsp;- Added ToDo List component on index  
+2-25-23: Refactor code: WebBits.js, script.js  

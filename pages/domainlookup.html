@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&lt;RWB&gt;Domain Lookup</title>
+    <link rel="stylesheet" 
+        href="../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/91ce0b8975.js" crossorigin="anonymous"></script>
+    <script type="module" src="../js/script.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main>
+        <time datetime="2022-12-04">December 4, 2022</time>
+        <article class="WebBits">
+            <h2>TRY: Domain name lookup</h2>
+            <p>Domain names are often bought up fast, so to have one yourself means you need to find one that is available.</p>
+            <aside id="TryWhoIS" class="exampleBlue">
+                <p>Try searching <q>WhoIS</q>, a domain that hosts a service to check domain buying availability.</p>
+                <div class="search-container">
+                    <form id="searchWhoIS">
+                        <button type="submit"><i class="fa fa-search"></i>&nbsp;Search</button>
+                        <input id="txtSearch" type="text" placeholder="Domain search..." class="monospace">
+                    </form>
+                    <!-- Search Bar, WHOIS API-->
+                    <script>
+                        const searchWHOIS = () => {
+                            var URL = 'https://www.whois.com/whois/' + document.getElementById('txtSearch').value;
+                            window.open(URL, '_blank');
+                            return false;
+                        }
+                        const form = document.getElementById('searchWhoIS');
+                        form.addEventListener("submit", searchWHOIS);
+                    </script>
+                </div>
+            </aside>
+            <p>If your search returns an available domain, you'll see the message:</p>
+            <aside id="TryWhoIsReturn" class="examplePink">
+                <img src="../img/Whois_thisrandomwebdomain.com.png" alt="A screenshot of WhoIS domain search">
+            </aside>
+            
+        </article>
+        <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    </main>
+    <noscript>Your JavaScript may be broken or is disabled. Turn it on for full experience! -- Random Web Bits &copy;2023</noscript>
+    
+</body>
+</html>

@@ -1,9 +1,8 @@
-//-------------------Arbitrary Article Cards------------------------//
+//--Copyright (c) Robert A. Howell
 import ArbitraryArticles from "./components/data.js";
 import LinkDetails from "./script.js";
 
 (() => {
-
     window.addEventListener("DOMContentLoaded", () => {
         cardsWidget.init();
     })
@@ -18,7 +17,6 @@ import LinkDetails from "./script.js";
                 this.id = id
         }
     }
-
     const domainLookupIconLink = new IconLink(
         "Domain Lookup",
         "https://www.flaticon.com/free-icons/domain",
@@ -126,10 +124,8 @@ import LinkDetails from "./script.js";
 
                     return shuffled.slice(0, num);
                 }
-
                 WebBits = getMultipleRandom(WebBits, 3);
             }
-
             //from AA map, append each to section
             WebBits.forEach((article) => {
                 cardsSection.append(article);
@@ -151,12 +147,10 @@ import LinkDetails from "./script.js";
             AASection.appendChild(aaHeading);
             AASection.appendChild(aaCardsSection);
             pageMain.append(AASection);
-
             return aaCardsSection;
         },
         buildWebBitsArticleCards: () => {
             //Map WebBits to a card, each
-
             let AAs = ArbitraryArticles.map((article) => {
                 let WebBit = document.createElement('div');
                 WebBit.classList.add('card');

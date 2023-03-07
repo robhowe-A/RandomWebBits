@@ -1,8 +1,8 @@
-//-------------------Articles -----------------------//
+//--Copyright (c) Robert A. Howell
 import WebBit from "./WebBit.js"
 
 // Create new AA (Arbitrary Article)
-const Article01 = new WebBit (
+const Article01 = new WebBit(
     "domainLookup",
     1,
     "Domain Lookup",
@@ -12,7 +12,7 @@ const Article01 = new WebBit (
     "img/whois.webp",
     "WhoIs Lookup"
 );
-const Article02 = new WebBit (
+const Article02 = new WebBit(
     "htmlresponses",
     2,
     "HTML Frames",
@@ -22,7 +22,7 @@ const Article02 = new WebBit (
     "img/HTML_Frames.webp",
     "HTML frames example"
 );
-const Article03 = new WebBit (
+const Article03 = new WebBit(
     "nasa",
     3,
     "NASA Pages",
@@ -32,7 +32,7 @@ const Article03 = new WebBit (
     "img/NASA.webp",
     "NASA Artemis Logo"
 );
-const Article04 = new WebBit (
+const Article04 = new WebBit(
     "httpscert",
     4,
     "HTTPS Certificate",
@@ -42,7 +42,7 @@ const Article04 = new WebBit (
     "img/https_cert.webp",
     "Cursor selecting HTTPS certificate"
 );
-const Article05 = new WebBit (
+const Article05 = new WebBit(
     "webTech",
     5,
     "Wappalyzer",
@@ -52,7 +52,7 @@ const Article05 = new WebBit (
     "img/wappalyzer-logo.webp",
     "Browser extension logo. A white w on a purple tile."
 );
-const Article06 = new WebBit (
+const Article06 = new WebBit(
     "jsonObject",
     6,
     "jsonObject",
@@ -62,7 +62,7 @@ const Article06 = new WebBit (
     "img/json.webp",
     "JSON logo: A grey circle with artistic spirals."
 );
-const Article07 = new WebBit (
+const Article07 = new WebBit(
     "Wi-Fi",
     7,
     "Wi-Fi Version",
@@ -72,7 +72,7 @@ const Article07 = new WebBit (
     "img/wifi.webp",
     "Wi-Fi logo with a black circle background."
 );
-const Article08 = new WebBit (
+const Article08 = new WebBit(
     "chatGPT",
     8,
     "Preview chatGPT",
@@ -82,7 +82,7 @@ const Article08 = new WebBit (
     "img/ai.webp",
     "Decorative AI logo"
 );
-const Article09 = new WebBit (
+const Article09 = new WebBit(
     "paint3d",
     9,
     "Paint 3D",
@@ -92,7 +92,7 @@ const Article09 = new WebBit (
     "img/prototype.webp",
     "Colorful prototyping icon"
 );
-const Article10 = new WebBit (
+const Article10 = new WebBit(
     "Dictionary",
     10,
     "Dictionary Terms",
@@ -102,7 +102,7 @@ const Article10 = new WebBit (
     "img/dictionary.webp",
     "Dictionary icon depiction"
 );
-const Article11 = new WebBit (
+const Article11 = new WebBit(
     "BOINC",
     11,
     "Contribute for Science United",
@@ -112,7 +112,7 @@ const Article11 = new WebBit (
     "img/boinc_glossy.webp",
     "BOINC logo"
 );
-const Article12 = new WebBit (
+const Article12 = new WebBit(
     "IP Address",
     12,
     "IP Address Lookup",
@@ -122,7 +122,7 @@ const Article12 = new WebBit (
     "img/ip.webp",
     "IP location and browser icon"
 );
-const Article13 = new WebBit (
+const Article13 = new WebBit(
     "HTML Markup",
     13,
     "HTML Source Code",
@@ -132,7 +132,7 @@ const Article13 = new WebBit (
     "img/HTML_source.webp",
     "HTML frames icon"
 );
-const Article14 = new WebBit (
+const Article14 = new WebBit(
     "Search Verticals",
     14,
     "GUIDE: Search Verticals",
@@ -142,7 +142,7 @@ const Article14 = new WebBit (
     "img/search_settings.webp",
     "Search settings icon"
 );
-const Article15 = new WebBit (
+const Article15 = new WebBit(
     "Network Speed",
     15,
     "Network Speed Test",
@@ -153,8 +153,8 @@ const Article15 = new WebBit (
     "Speed test dial icon"
 );
 
-const ArbitraryArticles = [Article01, Article02, Article03, 
-    Article04, Article05, Article06, Article07, Article08, 
+const ArbitraryArticles = [Article01, Article02, Article03,
+    Article04, Article05, Article06, Article07, Article08,
     Article09, Article10, Article11, Article12, Article13,
     Article14, Article15];
 

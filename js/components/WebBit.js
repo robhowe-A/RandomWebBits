@@ -1,5 +1,4 @@
-
-//Set up WebBit class
+//--Copyright (c) Robert A. Howell
 class WebBit {
     constructor(
         id,

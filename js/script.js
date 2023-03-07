@@ -1,3 +1,4 @@
+//--Copyright (c) Robert A. Howell
 class LinkDetails {
     constructor(title, innerText) {
         this.title = title,

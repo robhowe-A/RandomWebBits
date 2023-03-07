@@ -1,12 +1,12 @@
 #root path
 /
-  Content-Security-Policy: script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; frame-ancestors 'self'
+  Content-Security-Policy: script-src 'self' 'unsafe-inline' kit.fontawesome.com  https://www.googletagmanager.com; frame-ancestors 'self'
   Permissions-Policy: microphone=(), geolocation=()
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
 #index page
 /index.html
-  Content-Security-Policy: script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; frame-ancestors 'self'
+  Content-Security-Policy: script-src 'self' 'unsafe-inline' kit.fontawesome.com  https://www.googletagmanager.com; frame-ancestors 'self'
   Permissions-Policy: microphone=(), geolocation=()
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
@@ -25,6 +25,12 @@
 #chatGPT page
 /pages/chatGPT.html
   Content-Security-Policy: script-src 'self' 'unsafe-inline' kit.fontawesome.com https://www.googletagmanager.com cdn.jsdelivr.net;
+  Permissions-Policy: microphone=(), geolocation=()
+  Referrer-Policy: no-referrer
+  X-Content-Type-Options: nosniff
+#networkSpeed page
+/pages/networkspeed.html
+  Content-Security-Policy: script-src 'self' 'unsafe-inline' https://www.googletagmanager.com cdn.jsdelivr.net;
   Permissions-Policy: microphone=(), geolocation=()
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff

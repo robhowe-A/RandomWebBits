@@ -1,11 +1,10 @@
-
-// Create page elements showcasing a definition card.
+//--Copyright (c) Robert A. Howell
 const dictionaryWidget = (element) => ((elem) => {
     let requestDictionaryTerm = {
         // API fetch request the data from dictionary api:
         url: "https://api.dictionaryapi.dev/api/v2/entries/en/",
         apiResponseErrorCheck: (res) => {
-            if(!res.ok || res.status != 200){
+            if (!res.ok || res.status != 200) {
                 throw new Error(res.ok + ": " + res.status);
             }
             return res.json();
@@ -22,12 +21,12 @@ const dictionaryWidget = (element) => ((elem) => {
                 .catch(e => console.error(e));
         }
     }
-    
+
     let dictionaryTermSection = {
         afterElement: elem,
         createDictionaryWidget: () => {
-            if(elem !== undefined){ //insert the widget after the passed in "elem"
-                if(elem.classList.contains("dictionaryWidget")){
+            if (elem !== undefined) { //insert the widget after the passed in "elem"
+                if (elem.classList.contains("dictionaryWidget")) {
                     const dictionary = dictionaryTermSection.afterElement.insertAdjacentElement("afterend", document.createElement("section"));
                     dictionary.id = "dictionary";
                     const artH = dictionary.appendChild(document.createElement("h3"));
@@ -47,12 +46,12 @@ const dictionaryWidget = (element) => ((elem) => {
                     searchButton.id = "word-search";
                     searchButton.type = "button";
                     searchButton.setAttribute("aria-label", "Search");
-                    const fontAwesomeSearchIcon =  searchButton.appendChild(document.createElement("i"));
+                    const fontAwesomeSearchIcon = searchButton.appendChild(document.createElement("i"));
                     fontAwesomeSearchIcon.classList.add("fa");
                     fontAwesomeSearchIcon.classList.add("fa-search");
                     const errorSpan = searchForm.appendChild(document.createElement("span"));
                     errorSpan.classList.add("error");
-                }else {
+                } else {
                     console.log(`Add "dictionaryWidget" class to ${elem.nodeName} node.`)
                 }
             } else {
@@ -66,26 +65,26 @@ const dictionaryWidget = (element) => ((elem) => {
             wordSearch.addEventListener("click", (event) => {
                 event.preventDefault();
                 const acceptedWord = dictionaryTermSection.wordValidation(searchWord.value);
-                    if (acceptedWord){
-                        requestDictionaryTerm.apiGET(requestDictionaryTerm.url, searchWord.value);
-                        searchWord.classList.remove("invalid");
-                        wordSearch.classList.remove("invalid");
-                        error.classList.remove("error");
-                        error.textContent = "";
-                    }
-                    else {
-                        searchWord.classList.add("invalid");
-                        wordSearch.classList.add("invalid");
-                        error.textContent = "Invalid word!";
-                        error.classList.add("error");
-                    }
-                    searchWord.value = '';
+                if (acceptedWord) {
+                    requestDictionaryTerm.apiGET(requestDictionaryTerm.url, searchWord.value);
+                    searchWord.classList.remove("invalid");
+                    wordSearch.classList.remove("invalid");
+                    error.classList.remove("error");
+                    error.textContent = "";
+                }
+                else {
+                    searchWord.classList.add("invalid");
+                    wordSearch.classList.add("invalid");
+                    error.textContent = "Invalid word!";
+                    error.classList.add("error");
+                }
+                searchWord.value = '';
             })
             searchWord.addEventListener("keypress", (event) => {
-                if (event.key === 'Enter'){
+                if (event.key === 'Enter') {
                     event.preventDefault();
                     const acceptedWord = dictionaryTermSection.wordValidation(searchWord.value);
-                    if (acceptedWord){
+                    if (acceptedWord) {
                         requestDictionaryTerm.apiGET(requestDictionaryTerm.url, searchWord.value);
                         searchWord.classList.remove("invalid");
                         wordSearch.classList.remove("invalid");
@@ -105,10 +104,10 @@ const dictionaryWidget = (element) => ((elem) => {
         wordValidation: (intxt) => {
             let trimmed = intxt.trim();
             let lettersRE = new RegExp("^[A-Za-z]{0,45}$");
-            if(lettersRE.test(trimmed)){
+            if (lettersRE.test(trimmed)) {
                 return true;
             }
-            else{
+            else {
                 //word is not an acceptable word.`);
                 return false;
             }
@@ -120,7 +119,7 @@ const dictionaryWidget = (element) => ((elem) => {
             const definition = document.querySelector("#dictionary");
             const dictionary = definition.appendChild(document.createElement("div"));
             dictionary.appendChild(document.createElement("hr"));
-            
+
             wordData.map((word) => {
                 //console.log("The word is: ",word)
                 const wordTitle = dictionary.appendChild(document.createElement("h3"));
@@ -146,28 +145,28 @@ const dictionaryWidget = (element) => ((elem) => {
                             newPi.textContent = def.example;
                         }
                         //check if key "example" is in definition. If it is, add the example to list
-                        "example" in def ?  addAdjacentElem(): true==true;
+                        "example" in def ? addAdjacentElem() : true == true;
                     });
                 });
             });
             definition.appendChild(dictionary);
         },
-        
+
 
     }
     dictionaryTermSection.createDictionaryWidget();
     dictionaryTermSection.updateWordSearch();
 })(element);
 
-if(window.location.pathname == '/pages/dictionaryword.html' || 
-   window.location.pathname == '/pages/dictionaryword' ||
-   window.location.pathname == '/RandomWebBits/pages/dictionaryword.html'){
+if (window.location.pathname == '/pages/dictionaryword.html' ||
+    window.location.pathname == '/pages/dictionaryword' ||
+    window.location.pathname == '/RandomWebBits/pages/dictionaryword.html') {
     // Implement a search component to search your own words
     const blueWebBit = document.querySelector(".exampleBlue");
     dictionaryWidget(blueWebBit);
-} else if (window.location.pathname == '/index.html' || 
-           window.location.pathname == '/RandomWebBits/index.html' ||
-          window.location.pathname == '/') {
+} else if (window.location.pathname == '/index.html' ||
+    window.location.pathname == '/RandomWebBits/index.html' ||
+    window.location.pathname == '/') {
     const mainDiv = document.querySelector("main .cards");
     dictionaryWidget(mainDiv);
 }

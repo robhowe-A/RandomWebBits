@@ -55,4 +55,5 @@ Main branch hosted on [Netlify](https://randomwebbits.com/)
 2-26-23:  
 &nbsp;&nbsp;- New WebBits page: markup  
 &nbsp;&nbsp;- New WebBits page: searchverticals  
-3-7-23: New WebBits page: networkspeed
+3-7-23: New WebBits page: networkspeed  
+3-11-23: Refactor To-Dos List    

@@ -105,9 +105,18 @@ import LinkDetails from "./script.js";
         "Flaticon",
         15
     );
+    const emailServerIconLink = new IconLink(
+        "SMTP and Email",
+        "https://www.flaticon.com/free-icons/server",
+        "server icons",
+        "Server icons created by Freepik - Flaticon",
+        "Flaticon",
+        16
+    );
     const FLATICONS = [htmlFramesIconLink, httpsCertIconLink, domainLookupIconLink,
         aiIconLink, prototypeIconLink, dictionaryIconLink, boincIconLink,
-        ipIconLink, htmlSourceIconLink, searchVerticalsIconLink, networkSpeedTestsIconLink
+        ipIconLink, htmlSourceIconLink, searchVerticalsIconLink, networkSpeedTestsIconLink,
+        emailServerIconLink
     ];
 
     const cardsWidget = {

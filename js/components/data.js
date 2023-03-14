@@ -132,13 +132,13 @@ const Article13 = new WebBit(
     "img/HTML_source.webp",
     "HTML frames icon"
 );
-const Article14 = new WebBit(
+const Guide_Search_1 = new WebBit(
     "Search Verticals",
     14,
     "GUIDE: Search Verticals",
     "Optimize your search engine news and results",
     "February 26, 2023",
-    "pages/searchverticals.html",
+    "guides/searchverticals.html",
     "img/search_settings.webp",
     "Search settings icon"
 );
@@ -152,11 +152,21 @@ const Article15 = new WebBit(
     "img/page-speed.webp",
     "Speed test dial icon"
 );
+const Guide_Email_1 = new WebBit(
+    "SMTP",
+    16,
+    "SMTP and Email",
+    "Learn Email protocols and port numbers",
+    "March 13, 2023",
+    "guides/smtp.html",
+    "img/communications.webp",
+    "Email server-stack with mail icon"
+);
 
 const ArbitraryArticles = [Article01, Article02, Article03,
     Article04, Article05, Article06, Article07, Article08,
     Article09, Article10, Article11, Article12, Article13,
-    Article14, Article15];
+    Guide_Search_1, Article15, Guide_Email_1];
 
 
 export default ArbitraryArticles;

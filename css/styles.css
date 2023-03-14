@@ -2,6 +2,7 @@
     :root {
         --clr-white: #FDFDFD; /*(rgb(253, 253, 253))*/
         --clr-font-dark: #1D2A2E; /*(rgb(29, 42, 46))*/
+        --clr-font-dark-fade: rgba(29, 42, 46, .4); /*(rgb(29, 42, 46))*/
         --clr-font-black: #0A0A0A; /*(rgb(10, 10, 10))*/
         --clr-all-font-white: #FDFDFD; /*(rgb(253, 253, 253))*/
         --clr-all-font-light: #C7C2C2; /*(rgb(194, 199, 194))*/
@@ -27,6 +28,7 @@
     :root {
         --clr-white: #151515; /*(rgb(21, 21, 21))*/
         --clr-font-dark: #E5F3F7; /*(rgb(229, 243, 247))*/
+        --clr-font-dark-fade: rgba(229, 243, 247, .4); /*(rgb(229, 243, 247))*/
         --clr-font-black: #FDFDFD; /*(rgb(253, 253, 253))*/
         --clr-all-font-white: #FDFDFD; /*(rgb(253, 253, 253))*/
         --clr-all-font-light: #C7C2C2; /*(rgb(194, 199, 194))*/
@@ -77,41 +79,63 @@ main{ width: 100%;
     padding-left: 3em;
     padding-right: 3em;
 }
-
 section { margin-bottom: 4em;}
 
 img { max-width: 100%}
 
 h1, h2, h3, h4, h5, h6 { color: var(--clr-blue);}
 
+dt { font-weight: bold;}
+
+dd { margin-bottom: 1.5em;
+    margin-left: 1.5em;
+}
+
+.WebBits { margin-top: 2em;}
+
+.WebBits a, .Top { font-weight: bold;}
+
+.WebBits > p:not(:first-of-type) { margin-block: 2em;}
+
+.WebBits i strong { font-size: .8em;}
+
+.WebBits a:link, .Top { color: var(--clr-blue);
+}
+
+@media (prefers-color-scheme: light){
+    .WebBits a:visited { color: var(--clr-footer-blue-dark);
+    }
+}
+@media (prefers-color-scheme: dark){
+    .WebBits a:visited { color: var(--clr-Cyan);
+    }
+}
+.WebBits a:hover { color: var(--clr-header-blue);}
+
+.WebBits figcaption a:hover { text-decoration: underline;}
+
 /* Navigation and header styles */
 nav a { outline: none;
     text-decoration: none;
 }
-
 nav a:focus { border: 3px solid var(--clr-white);
     padding: .1em;
 }
-
 nav a:visited { opacity: 80%;
     color: lightblue;
 }
-
 nav a:hover { opacity: 80%;
     color: var(--clr-Cyan);
 }
-
 #RandomWebBits { color: var(--clr-title);
     text-align: right;
     margin-top: .5em;
     margin-right: 1em;
     margin-bottom: .5em;
 }
-
 p code { background-color: var(--clr-Brown);
     color: var(--clr-font-black);
 }
-
 code { font-weight: bolder;}
 
 .twoFigures { display: grid;
@@ -213,7 +237,6 @@ a.attribute:hover { background-color: var(--clr-Green) !important;}
     max-width: 1200px;
     margin: 0 auto 3em auto;
 }
-
 .card_columns .card { width: 100%;}
 
 .card div:first-child {width: 100%; }
@@ -228,19 +251,16 @@ a.attribute:hover { background-color: var(--clr-Green) !important;}
     box-shadow: 0 10px 15px 0px var(--clr-header-blue);
     text-align: center;
 }
-
 .card_body { padding: 1em 0;
     margin: 0;
     display: inline-block;
 }
-
 .card_body p { font-size: .8em;
     max-width: 15em;
     margin: 0;
 }
 
 /* Buttons */
-
 .cards a { background: var(--clr-DarkCyan);
     color: var(--clr-all-font-white);
     font-size: .8rem;
@@ -255,30 +275,44 @@ a.attribute:hover { background-color: var(--clr-Green) !important;}
     margin-bottom: 2em;
     display: inline-block;
 }
-
 .cards a:hover{ transition: background-color 400ms;
     background-color: var(--clr-Cyan);
 }
-
 a:focus, nav a:focus, input:focus, button:focus { border: none;
     outline: 3px solid var(--clr-Orange_Focus);
     outline-offset: .2em;
 }
-
 .card a:focus { outline: 5px solid var(--clr-Orange_Focus);
     outline-offset: .3em; 
 }
-
 .card_body > a:focus { border: 3px solid var(--clr-Orange_Focus);
     outline: none;
 }
-
 #dictionary-search input:focus, #dictionary-search button:focus { border: none;
     outline: 4px solid var(--clr-Orange_Focus);
     outline-offset: -2px;
 }
 
 /************************* Page Styles *************************/
+#Email .server { color: var(--clr-Red)}
+#Email .client { color: var(--clr-Green)}
+#Email .clientconf { color: var(--clr-Orange_Focus)}
+
+#Email .exampleBlue ul{ text-align: left;}
+#Email .exampleBlue ul li{ margin-bottom: .5em;
+    text-indent: -.8em;
+}
+
+figure { width: fit-content;
+    background-color: var(--clr-font-dark-fade);
+    margin: 0 auto;
+    color: var(--clr-font-dark);
+}
+
+figure figcaption a { font-weight: lighter !important;
+    color: var(--clr-font-dark) !important;
+}
+
 #TestNetworkSpeed{ margin-block: 5em;}
 
 #Measure-NetworkSpeed { margin-top: 0;}
@@ -520,30 +554,6 @@ pre { overflow-x: scroll;
 
 .preBack { background-color: var(--clr-header-blue);}
 
-.WebBits { margin-top: 2em;}
-
-.WebBits a, .Top { font-weight: bold;}
-
-.WebBits > p:not(:first-of-type) { margin-block: 2em;}
-
-.WebBits i strong { font-size: .8em;}
-
-.WebBits a:link, .Top { color: var(--clr-blue);
-}
-
-@media (prefers-color-scheme: light){
-    .WebBits a:visited { color: var(--clr-footer-blue-dark);
-    }
-}
-
-@media (prefers-color-scheme: dark){
-    .WebBits a:visited { color: var(--clr-Cyan);
-    }
-}
-
-.WebBits a:hover { color: var(--clr-header-blue);}
-
-.WebBits figcaption a:hover { text-decoration: underline;}
 
 #webTech .exampleBlue ul { padding: 0;
     text-align: left;

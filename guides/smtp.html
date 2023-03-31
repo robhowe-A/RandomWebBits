@@ -1,0 +1,79 @@
+ <!--Copyright (c) Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn e-mail ports and protocols in a general discussion of SMTP and email services.">
+    <title>&lt;RWB&gt; How E-mail Works</title>
+    <link rel="stylesheet" 
+        href="../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../js/script.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main>
+        <time datetime="2023-03-13">March 13, 2023</time>
+        <article id="Email" class="WebBits">
+            <h2>GUIDE: Electronic Mail</h2>
+            <p>E-mail is not a protocol. Simple Mail Transfer Protocol (SMTP) is a protocol. E-mail, and the protocols in use with e-mail sending/receiving, is complicated to integrate into a website natively. It will be easier to first learn by knowing the basics.</p>
+
+            <p>A general discussion will reveal there are many ports operating email. The below definitions help to explain some of the mechanics underlying the definitions.
+                <aside class="exampleBlue">
+                    <ul>
+                        <li><span class="client">Green:</span> Default port</li>
+                        <li><span class="clientconf">Yellow:</span> May require configuration &lpar;i.e. certificates &rpar;</li>
+                        <li><span class="server">Red:</span> Server ports. Not normally available to client PCs.</li>
+                    </ul>
+                </aside>
+                <ul>
+                    <li><strong class="client">Port 25</strong> SMTP</li>
+                    <li><strong class="client">Port 109</strong> POP2</li>
+                    <li><strong class="client">Port 110</strong> POP3</li>
+                    <li><strong class="client">Port 143</strong> IMAP4</li>
+                    <li><strong class="server">Port 465</strong> SMTPS</li>
+                    <li><strong class="server">Port 587</strong> MSA &lpar;used by SMTP servers&rpar;</li>
+                    <li><strong class="clientconf">Port 993</strong> IMAP4 (encrypted)</li>
+                    <li><strong class="clientconf">Port 995</strong> POP3 (encrypted)</li>
+                    <li>Other: <strong class="clientconf">2525, 32587, etc.</strong></li>
+                </ul><br>
+
+            </p>
+            <figure class="imgShadow">
+                <img class="imgPTR" src="../img/SMTP_commands_overview.png" alt="SMTP client-to-server messages">
+                <figcaption><strong>Source:</strong> <a href="https://postmarkapp.com/guides/everything-you-need-to-know-about-smtp" target="_blank">Postmark, Everything you need to know about SMTP &lpar;Simple Mail Transfer Protocol&rpar;</a></figcaption>
+            </figure>
+            <dl>
+                <dt>Internet Message Acces Protocol &lpar;IMAP&rpar;</dt>
+                <dd>Supports connecting multiple clients to the same mailbox simultaneously.</dd>
+                <dt>Mail Submission Agents &lpar;MSA&rpar;</dt>
+                <dd>Used by mail clients to submit messages for delivery by an SMTP server.</dd>
+                <dt>Post-Office Protocol &lpar;POP&rpar;</dt>
+                <dd>Stores messages delivered by SMTP. <i>a.k.a.</i> POP3 downloads the messages to recipient client.</dd>
+                <dt>Simple Mail Transfer Protocol &lpar;SMTP&rpar;</dt>
+                <dd>Used to transport mail for message relay. STARTTLS can be enabled.</dd>
+                <dt>Simple Mail Transfer Protocol Secure&lpar;SMTPS&rpar;</dt>
+                <dd>SMTP encrypted by implicit TLS.</dd>
+            </dl>
+            
+
+        </article>
+        <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    </main>
+    <noscript>Your JavaScript may be broken or is disabled. Turn it on for full experience! -- Random Web Bits &copy;2023</noscript>
+
+</body>
+</html>

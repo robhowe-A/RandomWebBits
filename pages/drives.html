@@ -1,0 +1,69 @@
+<!--Copyright (c) Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about operating system drives which operate virtually and viewed using PowerShell.">
+    <title>&lt;RWB&gt; PowerShell Drives</title>
+    <link rel="stylesheet" 
+        href="../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../js/script.js"></script>
+    <script type="module" src="../js/components/acronyms-element.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css&amp;skin=desert"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main>
+        <time datetime="2023-03-20">March 20, 2023</time>
+        <article id="PSDrives" class="WebBits">
+            <h2>TRY: Surfing PowerShell Drives</h2>
+            <p>Windows uses PowerShell as an API to interact with the OS in many ways. The scripting language is common for administration automation and accessing CSOM and SSOM methods.</p>
+            
+            <p>Certificates' drive can be accessed in PowerShell's <code>cert:\</code> location. Instead of browsing a drive letter, the shell reads information from the isolated OS partitions.</p>
+            <aside class="examplePink">
+                <p>Multiple PowerShell drives are available to review:</p>
+                <ul>
+                    <li>cert:\</li>
+                    <li>hklm:\</li>
+                    <li>env:\</li>
+                </ul>
+                <p>Reading the contents of the drive is similar to changing directories <strong>Ex: </strong><code>cd c:\</code> in command prompt, using drive <strong>Ex: </strong><code>cd env:\</code></p>
+            </aside>
+            <figure id="CheckCertificateExpiration">
+                <h3 class="Title">Check for expiring certificates &lpar;1 year&rpar;</h3>
+                <pre id="Measure-NetworkSpeed" class="prettyprint linenums">
+cd cert:\
+dir
+cd Cert:\LocalMachine
+$today = Get-Date
+$OneYearFromToday = $today.AddYears(1)
+Get-ChildItem -Recurse | Where-Object{($_.NotAfter -gt $today) `
+-and ($_.NotAfter -lt $OneYearFromToday)} `
+| fl | Sort-Object NotAfter
+
+
+</pre>
+            </figure>
+            <p>Web administrators are familiar with maintenance needed for HTTPS delivery. Often, certificates will expire on a web or application server. The &lpar;above&rpar; script would be used to find certificates expiring within a 1 year's range.</p>
+        </article>
+    </main>
+    <acronyms-list></acronyms-list>
+    <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    <noscript>Your JavaScript may be broken or is disabled. Turn it on for full experience! -- Random Web Bits &copy;2023</noscript>
+
+</body>
+</html>

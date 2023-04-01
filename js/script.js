@@ -2,21 +2,7 @@
 import cardsWidget from './components/WebBits.js'
 import dictionaryWidget from './components/dictionary.js';
 import todosWidget from './components/todos.js';
-
-class LinkDetails {
-    constructor(title, innerText) {
-        this.title = title,
-            this.innerText = innerText
-    }
-}
-
-class NavigationLink extends LinkDetails {
-    constructor(pageName, hReference, title, innerText) {
-        super(title, innerText);
-        this.pageName = pageName;
-        this.hReference = hReference;
-    }
-}
+import LinkDetails from './components/LinkDetails.js';
 
 (() => {
     window.addEventListener("DOMContentLoaded", () => {
@@ -54,17 +40,17 @@ class NavigationLink extends LinkDetails {
     })
 
     //Nav items
-    const homeNavLink = new NavigationLink(
+    const homeNavLink = new LinkDetails(
         "Index",
-        "index.html",
         "Home",
+        "index.html",
         "Home"
     );
 
-    const pagesNavLink = new NavigationLink(
+    const pagesNavLink = new LinkDetails(
+        "Pages",
         "Pages",
         "pages.html",
-        "Pages",
         "Pages"
     )
 

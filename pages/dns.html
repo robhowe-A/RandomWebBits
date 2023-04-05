@@ -1,0 +1,75 @@
+<!--Copyright (c) Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use DNS to find websites across the internet.">
+    <title>&lt;RWB&gt;DNS</title>
+    <link rel="stylesheet" 
+        href="../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../js/script.js"></script>
+    <script type="module" src="../js/components/acronyms-element.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main>
+        <time datetime="2023-04-04">April 4, 2023</time>
+        <article id="DNS" class="WebBits">
+            <h2>LEARN: DNS</h2>
+            <p><strong>Domain Name System</strong>, <abbr>DNS</abbr>, empowers computers to find things on the internet. That is a big concept. A DNS server will tell a client what IP address matches the domain request.</p>
+            <aside class="exampleBlue">
+                <p>DNS operates on port 53 via UDP for client queries or TCP for zone transfers.</p>
+            </aside>
+            <p>Domain <strong>registrars</strong> use <strong>records</strong> &lpar;A/AAAA/CNAME/MX/others&rpar; to tell <strong>nameservers</strong> that a domain exists. Without a record of existence, a domain/website can only be reached from the network it is hosted within. DNS works in a hierarchical fashion utilizing cached entries to find sites from the internet's DNS <strong>root servers.</strong><sup>1</sup></p>
+            
+            <hr class="dl">
+            <dl>
+                <dt>Domain Name System</dt>
+                <dd>DNS is a resolution method associating a domain name to an IP address.</dd>
+                <dt>DNS Records</dt>
+                <dd>DNS records are Resource Records &lpar;RRs&rpar; that map the domain to things like IPv4, IPv4 or an alias &lpar;CNAME&rpar;.</dd>
+                <dt>Nameservers</dt>
+                <dd>A domain's DNS server which communicates with resolvers from a domain.</dd>
+                <dt>Registrars</dt>
+                <dd>Domain registrars are places where domains can be bought and managed, like GoDaddy, NameCheap, or Google Domains.</dd>
+                <dt>Resolvers</dt>
+                <dd>Internet operating nameservers in contact with root servers.</dd>
+                <dt>Root Servers</dt>
+                <dd>13 root servers serve DNS content globally.</dd>
+            </dl>
+            <hr class="dl">
+            <aside class="examplePink">
+                <p>Common DNS <strong>resolvers</strong> are:</p>
+                    <ul>
+                        <li><code>1.1.1.1</code> - &lpar;Cloudflare&rpar;</li>
+                        <li><code>8.8.8.8</code> - &lpar;Google&rpar;</li>
+                        <li><code>8.8.4.4</code> - &lpar;Google&rpar;</li>
+                    </ul>
+            </aside>
+            <p class="citations">
+                <strong>Citations:</strong><br>
+                <sup>[1]</sup>
+                <a href="https://www.cloudflare.com/learning/dns/dns-server-types/" target="_blank" title="Cloudflare: DNS server types"> <q>DNS server types | Cloudflare</q></a>
+            </p>
+        </article>
+    </main>
+    <acronyms-list></acronyms-list>
+    <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    <noscript>Your JavaScript may be broken or is disabled. Turn it on for full experience! -- Random Web Bits &copy;2023</noscript>
+
+</body>
+</html>

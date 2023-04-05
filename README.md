@@ -72,3 +72,4 @@ Main branch hosted on [Netlify](https://randomwebbits.com/)
 1.2.35: CSS color revision - dark mode/light mode  
 1.2.36: PS updates networkspeed page  
 1.2.37: Ammend widgets for Firefox functionality  
+1.2.38: New WebBits page: dns  

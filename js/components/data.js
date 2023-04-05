@@ -144,6 +144,16 @@ const ArbitraryArticles = new Array(
         "img/terminal.webp",
         "Computer terminal icon"
     ),
+    new WebBit(
+        "LEARN: DNS",
+        20,
+        "How DNS works",
+        "A general overview of Domain Name System",
+        "April 4, 2023",
+        "pages/dns.html",
+        "img/dns.webp",
+        "DNS drawing attached to a keyboard"
+    ),
 );
 const GuideShorts = new Array(
     new WebBit(

@@ -3,7 +3,6 @@ import WebBits from "./data.js";
 import ATTRIBUTIONLINKS from "./data_AttributionLinks.js";
 
 const cardsWidget = {
-    dictionaryWidgetBeforeElem: null,
     init: () => {
         let cardsArticles = [];
         cardsArticles.push(cardsWidget.buildArticleCards(WebBits.shift(), ATTRIBUTIONLINKS));
@@ -34,10 +33,6 @@ const cardsWidget = {
                 cardsSection[i].append(article);
             });
         }
-
-        cardsWidget.dictionaryWidgetBeforeElem = document.querySelector("Section:last-of-type")
-        cardsWidget.dictionaryWidgetBeforeElem.classList.add("dictionaryWidget", "ToDoList");
-        return cardsWidget.dictionaryWidgetBeforeElem;
     },
     buildCardSection: (name) => {
         //Create Artibrary Articles section element and append to Main

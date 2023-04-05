@@ -118,9 +118,12 @@ footer a:hover {
 main {
   width: 100%;
   max-width: 50em;
-  margin-top: 5%;
-  padding-left: 3em;
-  padding-right: 3em;
+  margin-top: 2%;
+
+}
+article:not(dl) {
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 section {
@@ -472,6 +475,41 @@ button:focus {
 }
 
 /************************* Page Styles *************************/
+abbr, #DNS strong { 
+  color: var(--clr-dark-800);
+  font-weight: bold;
+}
+
+abbr {
+  font-style: italic;
+}
+
+@media (prefers-color-scheme: dark) {
+  dt { color: var(--clr-primary-600)}
+  dd { color: var(--clr-primary-800)}
+}
+@media (prefers-color-scheme: light) {
+  dt { color: var(--clr-primary-400)}
+  dd { color: var(--clr-primary-700)}
+}
+
+#DNS aside > ul { margin: 0;}
+
+.wrapper, section#ToDO, section#dictionary, time {
+  padding: 0 3em;
+}
+
+dl, .dl { width: max(80%, 21em);
+  margin: 1em auto;
+}
+.citations { 
+  text-align: left;
+  font-size: .9em;
+}
+.citations strong {
+  font-size: 1em;
+}
+
 #ApplicationTab h3 {
   margin-bottom: 0;
 }

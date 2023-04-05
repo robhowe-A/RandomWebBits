@@ -138,4 +138,13 @@ ATTRIBUTIONLINKS.push(new AttributionLink(
     19
     )
 )
+ATTRIBUTIONLINKS.push(new AttributionLink(
+    "dns icons",
+    "Dns icons created by kerismaker - Flaticon",
+    "https://www.flaticon.com/free-icons/dns",
+    "Flaticon",
+    "LEARN: DNS",
+    20
+    )
+)
 export default ATTRIBUTIONLINKS;

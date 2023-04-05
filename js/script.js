@@ -9,29 +9,18 @@ import LinkDetails from './components/LinkDetails.js';
         if ( //'Index' route, add cards widget first
             window.location.pathname == '/RandomWebBits/index.html' ||
             window.location.pathname == '/index.html' ||
-            window.location.pathname == '/') {
-                
-                async function asyncAddDictionary() {
-                    const element =  await cardsWidget.init();
-                    dictionaryWidget.init(element);
-                    todosWidget.init(element);
-                }
-                // Add dictionary, todos widgets after cards' render
-                asyncAddDictionary(); 
-        }
-        else if ( //'Pages' route, add cards widget only
+            window.location.pathname == '/' ||
+            window.location.pathname == '' ||
             window.location.pathname == '/RandomWebBits/pages.html' ||
             window.location.pathname == '/pages.html') {
-                cardsWidget.init();
+            cardsWidget.init();
         }
-        else {
-            const dictionaryElement = document.querySelector(".dictionaryWidget");
-            if (dictionaryElement)
-                dictionaryWidget.init(dictionaryElement);
-            const toDosElement = document.querySelector(".ToDoList");
-            if (toDosElement)
-                todosWidget.init(toDosElement);
-        }
+        const dictionaryElement = document.querySelector(".dictionaryWidget");
+        if (dictionaryElement)
+            dictionaryWidget.init(dictionaryElement);
+        const toDosElement = document.querySelector(".ToDoList");
+        if (toDosElement)
+            todosWidget.init(toDosElement);
     })
 
     window.addEventListener("DOMContentLoaded", () => {
@@ -43,15 +32,15 @@ import LinkDetails from './components/LinkDetails.js';
     const homeNavLink = new LinkDetails(
         "Index",
         "Home",
-        "index.html",
-        "Home"
+        "Home",
+        "index.html"
     );
 
     const pagesNavLink = new LinkDetails(
         "Pages",
         "Pages",
-        "pages.html",
-        "Pages"
+        "Pages",
+        "pages.html"
     )
 
     const NAVITEMS = [homeNavLink, pagesNavLink];

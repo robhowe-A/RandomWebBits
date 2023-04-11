@@ -92,6 +92,8 @@ body {
   background-color: var(--clr-light-500);
   color: var(--clr-dark-500);
   margin: 0;
+  --transition_fast: 200ms;
+  --transition_medium: 500ms;
 }
 
 header {
@@ -233,9 +235,12 @@ nav a:hover {
   margin-bottom: 0.5em;
 }
 
-p code {
+p code, li code {
   background-color: var(--clr-Brown);
   color: var(--clr-all-font-black);
+  padding: .2em;
+  line-height: 1.5em;
+  border-radius: .2rem;
 }
 
 code {
@@ -475,13 +480,43 @@ button:focus {
 }
 
 /************************* Page Styles *************************/
+#InspectPages > h3 {
+  margin-top: 1.5em;
+}
+#inspectPages-Gallery {
+  margin-block: 2em;
+}
+#inspectSteps { 
+  list-style: none;
+  list-style-position: inside;
+}
+#inspectSteps strong {
+  text-decoration: underline;
+}
+.url {
+  color: var(--clr-Skyblue);
+  font-weight: bold;
+  letter-spacing: .03rem;
+  font-family: monospace;
+  text-decoration: underline transparent;
+  transition: text-decoration var(--transition_fast) ease-in;
+}
+.url:hover{
+  text-decoration: underline;
+  cursor:text;
+}
 abbr, #DNS strong { 
   color: var(--clr-dark-800);
   font-weight: bold;
 }
-
 abbr {
   font-style: italic;
+  text-decoration: underline transparent;
+  transition: text-decoration var(--transition_medium) ease-in;
+}
+
+abbr:hover {
+  text-decoration: underline;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -635,6 +670,7 @@ figure {
 .pictureCaption {
   width: fit-content;
   background-color: var(--clr-primary-800-2);
+  margin-block: 4em;
 }
 
 figure figcaption a {

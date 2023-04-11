@@ -186,6 +186,16 @@ const GuideShorts = new Array(
         "img/tool-box.webp",
         "Developer's tool kit icon"
     ),
+    new WebBit(
+        "DevToolsTwo",
+        21,
+        "GUIDE: Dev Tools: Inspect Pages",
+        "Open the developer's toolbox another way",
+        "April 10, 2023",
+        "guides/inspectpages.html",
+        "img/tool-box2.webp",
+        "Developer's tool kit icon two"
+    ),
 );
 const Explore = new Array(
     new WebBit(

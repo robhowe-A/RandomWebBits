@@ -73,3 +73,4 @@ Main branch hosted on [Netlify](https://randomwebbits.com/)
 1.2.36: PS updates networkspeed page  
 1.2.37: Ammend widgets for Firefox functionality  
 1.2.38: New WebBits page: dns  
+1.2.39: New WebBits page: inspectpages  

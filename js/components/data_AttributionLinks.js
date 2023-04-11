@@ -134,7 +134,7 @@ ATTRIBUTIONLINKS.push(new AttributionLink(
     "Toolbox icons created by Freepik - Flaticon",
     "https://www.flaticon.com/free-icons/toolbox",
     "Flaticon",
-    "Virtual Tour",
+    "DevTools",
     19
     )
 )
@@ -145,6 +145,15 @@ ATTRIBUTIONLINKS.push(new AttributionLink(
     "Flaticon",
     "LEARN: DNS",
     20
+    )
+)
+ATTRIBUTIONLINKS.push(new AttributionLink(
+    "toolbox icons",
+    "Toolbox icons created by Freepik - Flaticon",
+    "https://www.flaticon.com/free-icons/toolbox",
+    "Flaticon",
+    "DevToolsTwo",
+    21
     )
 )
 export default ATTRIBUTIONLINKS;

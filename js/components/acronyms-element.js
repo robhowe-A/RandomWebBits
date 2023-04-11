@@ -30,7 +30,7 @@ const PageAcronyms = [
   {
     page: "/pages/htmlresponses.html",
     htmlTitle: "htmlresponses",
-    acronyms: ["HTTP", "HTTPS", "TCP", "UDP", "DOM", "Asset", "Frame", "Auth", "Transport"]
+    acronyms: ["HTTP", "HTTPS", "TCP", "UDP", "DOM", "Asset", "Frame", "Auth", "Transport", "Response", "Verb"]
   },
   {
     page: "/pages/domainlookup.html",
@@ -40,7 +40,7 @@ const PageAcronyms = [
   {
     page: "/pages/drives.html",
     htmlTitle: "drives",
-    acronyms: ["CSOM", "SSOM", "PS", "NS", "Tree", "Objects"]
+    acronyms: ["CSOM", "SSOM", "PS", "NS", "Tree", "Objects", "Registry", "Variables", "TCP/IP", "TLS", "Cyphertext", "CN", "EKU"]
   },
   {
     page: "/pages/dns.html",

@@ -31,23 +31,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <time datetime="2023-03-07">March 7, 2023</time>
         <article id="NetworkSpeed" class="WebBits">
             <h2>TRY: Network speed tests</h2>
-            <p>The available speed of network connections depend on many factors. A starter spot is to compare LAN and WLAN speeds.</p>
+            <p>The available speed of network connections depend on many factors. A starter spot is to compare <abbr title="Local Area Network">LAN</abbr> and <abbr title="Wireless Local Area Network">WLAN</abbr> speeds.</p>
             <div class="oneFigure">
                 <figure class="PSFigure">
                     <figcaption>PowerShell</figcaption>
-                    <code class="PS">Get-NetAdapter<br><span style="color: var(--clr-Green)">#&nbsp;Use&nbsp;above&nbsp;or&nbsp;below&nbsp;commandlet&nbsp;with&nbsp;details</span><br>Get&#8209;NetAdapter&nbsp;|&nbsp;fl</code>
+                    <code class="PS">Get-NetAdapter<br><span style="color: var(--clr-Green)"><br># Use above or below commandlet with details</span><br>Get-NetAdapter | fl</code>
                 </figure>
             </div>
-            <p>There may be many more adapters hidden due to network or computer configuration factors such as a VPN or applied virtualization. Add&nbsp;<code><q>&#8209;includehidden</q></code> to reveal all interfaces.</p>
+            <p>There may be many more adapters hidden due to network or computer configuration factors such as a <abbr title="Virtual Private Network">VPN</abbr> or applied virtualization. Add <code><q>&#8209;includehidden</q></code> to reveal all interfaces.</p>
 
             <div id="TwoFigNA" class="twoFigures">
                 <figure id="PS-NAIH" class="PSFigure">
                     <figcaption>PowerShell</figcaption>
-                    <code class="PS"><span style="color: var(--clr-Green)">#&nbsp;Show&nbsp;full&nbsp;list&nbsp;of&nbsp;adapter&nbsp;details</span><br>Get&#8209;NetAdapter&nbsp;&#8209;IncludeHidden&nbsp;|&nbsp;ft</code>
+                    <code class="PS"><span style="color: var(--clr-Green)"># Show full list of adapter details</span><br>Get-NetAdapter -IncludeHidden | ft</code>
                 </figure>
                 <aside id="PS-EB" class="exampleBlue right">
                     <p>The <strong><q>LinkSpeed</q></strong> shows the adapter speed capability.</p>
-                    <code class="PS"><span style="color: var(--clr-Green)">#&nbsp;Show&nbsp;name&nbsp;and&nbsp;link&nbsp;speed</span><br>Get&#8209;NetAdapter&nbsp;|&nbsp;select&nbsp;name,&nbsp;LinkSpeed</code>
+                    <code class="PS"><span style="color: var(--clr-Green)"># Show name and link speed</span><br>Get-NetAdapter | select name, LinkSpeed</code>
                 </aside>
             </div>
 

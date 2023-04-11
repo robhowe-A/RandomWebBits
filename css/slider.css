@@ -44,7 +44,7 @@ div#comparison figure div {
     background-image: url(../img/firefox_sourcecode.png);
     background-size: cover;
     position: absolute;
-    width: 75%;
+    width: 50%;
     box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     bottom: 0;

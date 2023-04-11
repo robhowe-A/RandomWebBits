@@ -30,7 +30,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <time datetime="2023-02-13">February 13, 2023</time>
         <article id="Public_IP" class="WebBits">
             <h2>TRY: Looking up your IP Address</h2>
-                <p>Data runs the internet, and data always originates from somewhere. Two IP addresses are important.<br><br><strong>1.&rpar; Local IP: the <i>device</i> address</strong> assigned by a router or DHCP server on the network. You can find the local IP in many locations:</p>
+                <p>Data runs the internet, and data always originates from somewhere. Two IP addresses are immediately important.</p>
+                <ol>
+                    <li><strong>1.&rpar; Local IP: </strong>the <em>device</em> address assigned by a router or <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> server on the network.</li>
+                    <li><strong>2.&rpar; Public IP: </strong> the network's<strong> IP address</strong> assigned by a service provider <abbr title="Internet Service Provider">ISP</abbr></li>
+                </ol>
+                <p>The local IP can be found using <abbr title="command prompt">cmd</abbr> and <abbr title="PowerShell">PS</abbr>, as such:</p>
                 <div id="TwoFigures" class="twoFigures">
                     <figure class="twoFigures_PS PSFigure">
                         <figcaption>PowerShell</figcaption>
@@ -41,20 +46,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <code class="CMD">ipconfig | findstr "IPv4"</code>
                     </figure>
                 </div>
-
-                <p><strong>2.&rpar; Public IP: the <strong>network's</strong> IP address</strong> assigned by a service provdier &lpar;ISP&rpar;. The browser requires a connection into your network, so it's a good place to find your public visible IP address.</p>
-
+                <p>A browser requires a connection into your network, so it's a good place to find your public visible IP address.</p>
             <aside class="examplePink">
-                <h4>Options:</h4>
+                <h4>Find your public IP address using the browser:</h4>
                 <ol id="BOINC-links">
-                    <li><a href="https://www.bing.com/search?q=what+is+my+ip+address" title="Bing" target="_blank" rel="noopener">Search Engine</a> - The browser can return the public IP</li>
-                    <li><a href="https://www.ipchicken.com/" title="IP Chicken" target="_blank" rel="noopener">iP ChiCKEN</a> - Websites can find and show the public IP</li>
-                    <li><a href="https://www.ip2location.com/demo/" title="IP2Location" target="_blank" rel="noopener">Location Lookup</a> - This website has location information along with the public IP</li>
+                    <li><a href="https://www.bing.com/search?q=what+is+my+ip+address" title="Bing: what is my IP address" target="_blank" rel="noopener">Search Engine</a> - The browser can return the public IP</li>
+                    <li><a href="https://www.ipchicken.com/" title="IP Chicken" target="_blank" rel="noopener">iP ChiCKEN</a> - Websites can return and show the public IP</li>
+                    <li><a href="https://www.ip2location.com/demo/" title="IP2Location" target="_blank" rel="noopener">Location Lookup</a> - The IP2Location website has location information along with the public IP</li>
                 </ol>
             </aside>
             <aside class="exampleBlue">
                 <p><strong>Do NOT share your <u>public ip.</u></strong><br>It belongs to you and is secure not to share it with anyone.</p>
-            </aside>      
+            </aside>
         </article>
     </main>
     <acronyms-list></acronyms-list>

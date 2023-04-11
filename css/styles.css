@@ -121,11 +121,7 @@ main {
   width: 100%;
   max-width: 50em;
   margin-top: 2%;
-
-}
-article:not(dl) {
-  padding-left: 2em;
-  padding-right: 2em;
+  padding: 1em;
 }
 
 section {
@@ -241,6 +237,9 @@ p code, li code {
   padding: .2em;
   line-height: 1.5em;
   border-radius: .2rem;
+}
+.linenums code {
+  background-color: inherit;
 }
 
 code {
@@ -480,13 +479,16 @@ button:focus {
 }
 
 /************************* Page Styles *************************/
+#JSON > p {
+  margin-block: 2em !important;
+}
 #InspectPages > h3 {
   margin-top: 1.5em;
 }
 #inspectPages-Gallery {
   margin-block: 2em;
 }
-#inspectSteps { 
+#inspectSteps, #Public_IP ol { 
   list-style: none;
   list-style-position: inside;
 }
@@ -534,7 +536,7 @@ abbr:hover {
   padding: 0 3em;
 }
 
-dl, .dl { width: max(80%, 21em);
+dl, .dl { width: min(80%, 35em);
   margin: 1em auto;
 }
 .citations { 
@@ -551,7 +553,7 @@ dl, .dl { width: max(80%, 21em);
 
 figure.pswp-gallery__item:focus {
   background-color: purple !important;
-  border: 2px solid green;
+  border: 2px solid var(--clr-Green);
   outline: 30px solid var(--clr-Orange_Focus) !important;
   outline-offset: 5.2em;
 }
@@ -629,7 +631,7 @@ figure.img3 {
 }
 
 #ApplicationTab figcaption {
-  padding: 2em 1.5em;
+  padding: .5em .75em;
 }
 
 #ApplicationTab img:not(:first-child) {
@@ -670,7 +672,7 @@ figure {
 .pictureCaption {
   width: fit-content;
   background-color: var(--clr-primary-800-2);
-  margin-block: 4em;
+  margin-block: 1.5em;
 }
 
 figure figcaption a {
@@ -680,6 +682,16 @@ figure figcaption a {
 
 #HTTPS figure {
   width: auto;
+}
+
+#NetworkSpeed pre:not(:nth-last-child(2)) {
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 475px) {
+  figure.PSFigure {
+    margin: 0; padding: 0;
+  }
 }
 
 #TestNetworkSpeed {
@@ -1048,6 +1060,7 @@ pre {
 #JSON2 {
   font-weight: normal;
   font-size: 12px;
+  word-wrap: break-word;
 }
 
 .preBack {
@@ -1056,7 +1069,13 @@ pre {
 
 #webTech .exampleBlue ul {
   padding: 0;
+  padding-left: .75em;
   text-align: left;
+  list-style-position: inside;
+}
+
+#webTech .exampleBlue li ul {
+  list-style-position: inside;
 }
 
 .examplePink.webTech a {
@@ -1095,7 +1114,7 @@ time {
   margin: 0 auto;
 }
 
-#HTTPS figure:not(:last-of-type) {
+#HTTPS figure {
   padding-top: 2em;
   padding-bottom: 1em;
 }
@@ -1317,7 +1336,7 @@ article iframe {
   padding: 0.8em 0.8em 0.8em 0.8em;
   margin: 1em auto;
   border: solid 2px var(--clr-dark-500);
-  max-width: 55%;
+  width: max(80%, 150px);
   font-size: 14px;
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -1331,7 +1350,7 @@ article iframe {
 
 .examplePink h3,
 .examplePink h4 {
-  color: var(--clr-primary-900);
+  color: var(--clr-primary-600);
 }
 
 @media (prefers-color-scheme: light) {
@@ -1341,8 +1360,8 @@ article iframe {
 }
 
 @media (prefers-color-scheme: dark) {
-  .examplePink.explore a {
-    color: var(--clr-light-600);
+  .examplePink.explore a:hover {
+    color: var(--clr-dark-600);
   }
 }
 
@@ -1352,10 +1371,6 @@ article iframe {
 
 /* Styles for small mobile */
 @media only screen and (max-width: 319px) {
-  main {
-    padding: 1em;
-  }
-
   #mw-search button {
     width: 25%;
   }
@@ -1402,6 +1417,10 @@ article iframe {
 @media only screen and (min-width: 501px) {
   main {
     font-size: 20px;
+  }
+
+  article {
+    padding-inline: 2em;
   }
 
   .examplePink,
@@ -1482,6 +1501,8 @@ article iframe {
   .source a {
     margin-left: 5%;
   }
+
+  
 }
 
 /* Styles for desktop */
@@ -1537,7 +1558,14 @@ article iframe {
   #SearchVerts ul {
     margin-left: 15%;
   }
+  #ApplicationTab figcaption {
+    padding: 2em 1.5em;
+  }
 
+  #Email figure,
+  .pictureCaption {
+    margin-block: 4em;
+  }
 }
 
 /* Styles for large desktop */

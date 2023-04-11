@@ -29,29 +29,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <time datetime="2023-03-13">March 13, 2023</time>
         <article id="Email" class="WebBits">
             <h2>GUIDE: Electronic Mail</h2>
-            <p>E-mail is not a protocol. Simple Mail Transfer Protocol (SMTP) is a protocol. E-mail, and the protocols in use with e-mail sending/receiving, is complicated to integrate into a website natively. It will be easier to first learn by knowing the basics.</p>
+            <p>E-mail is not a protocol. <abbr title="Simple Mail Transfer Protocol">SMTP</abbr> is a protocol. E-mail, and the protocols in use with e-mail sending/receiving, is complicated to integrate into a website natively. It will be easier to first learn by knowing the basics.</p>
 
-            <p>A general discussion will reveal there are many ports operating email. The below definitions help to explain some of the mechanics underlying the definitions.
-                <aside class="exampleBlue">
-                    <ul>
-                        <li><span class="client">Green:</span> Default port</li>
-                        <li><span class="clientconf">Yellow:</span> May require configuration &lpar;i.e. certificates &rpar;</li>
-                        <li><span class="server">Red:</span> Server ports. Not normally available to client PCs.</li>
-                    </ul>
-                </aside>
+            <p>A general discussion will reveal there are many ports operating email. The below definitions help to explain some of the mechanics underlying the definitions.</p>
+            <aside class="exampleBlue">
                 <ul>
-                    <li><strong class="client">Port 25</strong> SMTP</li>
-                    <li><strong class="client">Port 109</strong> POP2</li>
-                    <li><strong class="client">Port 110</strong> POP3</li>
-                    <li><strong class="client">Port 143</strong> IMAP4</li>
-                    <li><strong class="server">Port 465</strong> SMTPS</li>
-                    <li><strong class="server">Port 587</strong> MSA &lpar;used by SMTP servers&rpar;</li>
-                    <li><strong class="clientconf">Port 993</strong> IMAP4 (encrypted)</li>
-                    <li><strong class="clientconf">Port 995</strong> POP3 (encrypted)</li>
-                    <li>Other: <strong class="clientconf">2525, 32587, etc.</strong></li>
-                </ul><br>
-
-            </p>
+                    <li><span class="client">Green:</span> Default port</li>
+                    <li><span class="clientconf">Yellow:</span> May require configuration &lpar;i.e. certificates &rpar;</li>
+                    <li><span class="server">Red:</span> Server ports. Not normally available to client PCs.</li>
+                </ul>
+            </aside>
+            <ul>
+                <li><strong class="client">Port 25</strong> SMTP</li>
+                <li><strong class="client">Port 109</strong> POP2</li>
+                <li><strong class="client">Port 110</strong> POP3</li>
+                <li><strong class="client">Port 143</strong> IMAP4</li>
+                <li><strong class="server">Port 465</strong> SMTPS</li>
+                <li><strong class="server">Port 587</strong> MSA &lpar;used by SMTP servers&rpar;</li>
+                <li><strong class="clientconf">Port 993</strong> IMAP4 (encrypted)</li>
+                <li><strong class="clientconf">Port 995</strong> POP3 (encrypted)</li>
+                <li>Other: <strong class="clientconf">2525, 32587, etc.</strong></li>
+            </ul><br>
             <figure class="imgShadow">
                 <img class="imgPTR" src="../img/SMTP_commands_overview.png" alt="SMTP client-to-server messages">
                 <figcaption><strong>Source:</strong> <a href="https://postmarkapp.com/guides/everything-you-need-to-know-about-smtp" target="_blank">Postmark, Everything you need to know about SMTP &lpar;Simple Mail Transfer Protocol&rpar;</a></figcaption>

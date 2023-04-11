@@ -30,12 +30,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <main>
         <time datetime="2023-03-20">March 20, 2023</time>
         <article id="PSDrives" class="WebBits">
-            <h2>TRY: Surfing PowerShell Drives</h2>
+            <h2>TRY: Surface PowerShell Drives</h2>
             <p>Windows uses PowerShell as an API to interact with the OS in many ways. The scripting language is common for administration automation and accessing CSOM and SSOM methods.</p>
             
             <p>Certificates' drive can be accessed in PowerShell's <code>cert:\</code> location. Instead of browsing a drive letter, the shell reads information from the isolated OS partitions.</p>
             <aside class="examplePink">
-                <p>Multiple PowerShell drives are available to review:</p>
+                <p>PowerShell drives available to review:</p>
                 <ul>
                     <li>cert:\</li>
                     <li>hklm:\</li>
@@ -57,8 +57,9 @@ Get-ChildItem -Recurse | Where-Object{($_.NotAfter -gt $today) `
 
 
 </pre>
+            <figcaption>Paste the above code into PowerShell to test local computer certificate expirations.</figcaption>
             </figure>
-            <p>Web administrators are familiar with maintenance needed for HTTPS delivery. Often, certificates will expire on a web or application server. The &lpar;above&rpar; script would be used to find certificates expiring within a 1 year's range.</p>
+            <p>Web administrators are familiar with maintenance needed for <abbr title="Hyper Text Transport Protocol Secure">HTTPS</abbr> delivery. Often, certificates will expire on a web or application server. The &lpar;above&rpar; script would be used to find certificates expiring within a 1 year's range.</p>
         </article>
     </main>
     <acronyms-list></acronyms-list>

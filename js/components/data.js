@@ -154,6 +154,16 @@ const ArbitraryArticles = new Array(
         "img/dns.webp",
         "DNS drawing attached to a keyboard"
     ),
+    new WebBit(
+        "LEARN: Google",
+        22,
+        "Google is #1 website",
+        "Google is the #1 trafficked site",
+        "April 17, 2023",
+        "pages/google.html",
+        "img/search-engine.webp",
+        "A bar graph icon"
+    ),
 );
 const GuideShorts = new Array(
     new WebBit(

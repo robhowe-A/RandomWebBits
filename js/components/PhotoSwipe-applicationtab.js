@@ -1,3 +1,4 @@
+//--Copyright (c) Robert A. Howell
 import PhotoSwipeLightbox from '../photoswipe/photoswipe-lightbox.esm.js';
 
 const lightbox = new PhotoSwipeLightbox({

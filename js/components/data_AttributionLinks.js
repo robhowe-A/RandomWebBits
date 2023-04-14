@@ -156,4 +156,13 @@ ATTRIBUTIONLINKS.push(new AttributionLink(
     21
     )
 )
+ATTRIBUTIONLINKS.push(new AttributionLink(
+    "rank icons",
+    "Rank icons created by Pixelmeetup - Flaticon",
+    "https://www.flaticon.com/free-icons/rank",
+    "Flaticon",
+    "LEARN: Google",
+    22
+    )
+)
 export default ATTRIBUTIONLINKS;

@@ -100,7 +100,7 @@ const todosWidget = {
             checkBOX.setAttribute('type', 'checkbox');
             checkBOX.setAttribute('aria-label', 'Checkbox');
             const newITEM = newRow.appendChild(document.createElement('td')); //Table second data
-            newITEM.innerHTML = description; //Populate second col
+            newITEM.textContent = description.toString(); //Populate second col
             newITEM.setAttribute('num', todosWidget.toDosListSection.ToDOs ? (() => {
                 let elem = document.querySelector('#ToDO td[num]');
                 return Number(elem.getAttribute("num")) + todosWidget.toDosListSection.ToDOs;

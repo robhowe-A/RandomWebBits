@@ -1,0 +1,122 @@
+//--Copyright (c) Robert A. Howell
+import cardsWidget from './components/WebBits'
+import dictionaryWidget from './components/dictionary';
+import todosWidget from './components/todos';
+import LinkDetails from './components/LinkDetails';
+
+(() => {
+    window.addEventListener("DOMContentLoaded", () => {
+        if ( //'Index' route, add cards widget first
+            window.location.pathname == '/RandomWebBits/index.html' ||
+            window.location.pathname == '/index.html' ||
+            window.location.pathname == '/' ||
+            window.location.pathname == '' ||
+            window.location.pathname == '/RandomWebBits/pages.html' ||
+            window.location.pathname == '/pages.html') {
+            cardsWidget.init();
+        }
+        const dictionaryElement = document.querySelector(".dictionaryWidget");
+        if (dictionaryElement)
+            dictionaryWidget.init(dictionaryElement);
+        const toDosElement = document.querySelector(".ToDoList");
+        if (toDosElement)
+            todosWidget.init(toDosElement);
+    })
+
+    window.addEventListener("DOMContentLoaded", () => {
+        headerWidget.init();
+        footerWidget.init();
+    })
+
+    //Nav items
+    const homeNavLink = new LinkDetails(
+        "Index",
+        "Home",
+        "Home",
+        "index.html"
+    );
+
+    const pagesNavLink = new LinkDetails(
+        "Pages",
+        "Pages",
+        "Pages",
+        "pages.html"
+    )
+
+    const NAVITEMS = [homeNavLink, pagesNavLink];
+
+    var headerWidget = {
+        init: () => {
+            const pageMain = document.querySelector('main');
+            pageMain.insertAdjacentElement('beforebegin', headerWidget.buildHeader());
+            document.body.querySelector("header").prepend(headerWidget.buildNavigation());
+        },
+        buildHeader: () => {
+            //-------SITE HEADER-------//
+            const siteHeader = document.createElement('header');
+
+            //Random Web Bits H1 Logo
+            const H1 = document.createElement("H1");
+            H1.textContent = '<Random Web Bits>';
+            H1.setAttribute("id", "RandomWebBits");
+            siteHeader.append(H1);
+
+            const main = document.querySelector("main").prepend(siteHeader);
+            return siteHeader;
+        },
+        buildNavigation: () => {
+            //-------SITE NAVIGATION-------//
+            const headerNavFrag = document.createDocumentFragment();
+            const headerNav = headerNavFrag
+                .appendChild(document.createElement('nav'))
+                .appendChild(document.createElement('ul'));
+
+            NAVITEMS.map((item) => {
+                const navListItems = document.createElement("li");
+                const navListLinks = document.createElement("a");
+                if (window.location.host == 'rhowell476.github.io') {
+                    navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
+                } else {
+                    navListLinks.setAttribute('href', `/${item.hReference}`);
+                }
+                navListLinks.textContent = `${item.innerText}`;
+                navListItems.prepend(navListLinks);
+                headerNav.append(navListItems);
+            });
+            return headerNavFrag;
+        }
+
+    };
+
+    var footerWidget = {
+        init: () => {
+            let footer = footerWidget.buildFooter();
+            document.body.append(footer);
+            document.body.querySelector("footer").append(footerWidget.buildIconAttributionLinks(footer));
+        },
+        buildFooter: () => {
+            //-------SITE FOOTER-------//
+            const siteFooter = document.createElement("footer");
+            const footerPara = document.createElement("p");
+            footerPara.textContent = `\u00A9 2022 Random WebBits. All Rights Reserved.`;
+            siteFooter.append(footerPara);
+
+            return siteFooter;
+        },
+        buildIconAttributionLinks: (footer) => {
+            //Favicon designed by IconHome attribution
+            const footerIconPara = document.createElement("p");
+            const footerIconLink = document.createElement("a");
+            footerIconLink.href = 'https://www.vectorstock.com/royalty-free-vector/maintenance-icon-for-graphic-and-web-design-vector-45026755'
+            footerIconLink.setAttribute('title', "IconHome: #45026755");
+            footerIconLink.setAttribute('target', "_blank");
+            footerIconLink.textContent = 'VectorStock.com';
+            footerIconPara.textContent = `Favicon designed by IconHome at `;
+            footerIconPara.appendChild(footerIconLink);
+            footer.appendChild(footerIconPara);
+
+            return footerIconPara;
+        }
+    };
+
+})();

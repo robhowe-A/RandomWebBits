@@ -1,0 +1,74 @@
+<!--Copyright (c) Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View HTML differences from native source code to rendered JavaScrict code.">
+    <title>&lt;RWB&gt; Markup</title>
+    <link rel="stylesheet" 
+        href="../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="stylesheet" 
+        href="../css/slider.css"
+        type="text/css"
+        media="all"> <!--image comparison-->
+    <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../js/typescript.js"></script>
+    <script type="module" src="../js/components/acronyms-element.js"></script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main>
+        <time datetime="2023-02-26">February 26, 2023</time>
+        <article id="Markup" class="WebBits">
+            <h2>TRY: Finding markup differences</h2>
+            <p>JavaScript requires <abbr title="HyperText Markup Language">HTML</abbr> to load before the JavaScript code. Developers often choose to preload their websites with small amounts of HTML, allowing JavaScript to fill in after. This results in different source code than what is applied during browsing.</p>
+
+            <!--image comparison-->
+            <figure id="twoImgFig">
+                <div id="comparison">
+                    <figure>
+                        <div id="divisor"></div>
+                    </figure>
+                    <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisorBar()">
+                </div>
+                <figcaption><strong>Left:</strong> source code. <strong>Right:</strong> inspected code.</figcaption>
+            </figure>
+            
+            <script>
+                var divisor = document.getElementById("divisor"), 
+                    slideBar = document.getElementById("slider");
+                slideBar.setAttribute("aria-label", "slider");
+                function moveDivisorBar() { 
+                    divisor.style.width = slideBar.value + "%";
+                }
+            </script><!--end comparison-->
+
+            <p>Blazor, Angular, and React web application frameworks are based on this concept. Each app begins its page render with small HTML source code and fills in the ramining markup as it's needed, known as dynamic rendering.</p>
+
+            <aside class="exampleBlue">
+                <ul><li><strong><q>CTRL + U</q></strong> to open source code.</li>
+                <li><strong><q>CTRL + SHIFT + I</q></strong> to open elements inspection</li></ul>
+            </aside>      
+
+        </article>
+        
+    </main>
+    <acronyms-list></acronyms-list>
+    <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    <noscript>Your JavaScript may be broken or is disabled. Turn it on for full experience! -- Random Web Bits &copy;2023</noscript>
+
+</body>
+</html>

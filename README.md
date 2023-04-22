@@ -6,7 +6,7 @@ Main branch hosted on Netlify at [https://randomwebbits.com/](https://randomwebb
 **What does it do?** A website in development hosted on Netlify showcases modern web development techniques of HTML, CSS, and JS. This type of website is static, whereby all the code running the site is run in the browser.
 
 - Developers:
-  > Create a [codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository) (from the green dropdown) to utilize GitHub's container-enabled development platform. Be sure to increase the CPU specs for faster load-times.
+  > Create a [codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository/#creating-a-codespace-for-a-repository) (from the green dropdown) to utilize GitHub's container-enabled development platform. Be sure to increase the CPU specs for faster load-times.
 - &lt;RandomWebBits&gt;
   > The website's code is in full in this repository.
 

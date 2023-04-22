@@ -7,13 +7,13 @@ const cardsWidget = {
         let cardsArticles = [
             cardsWidget.buildArticleCards(WEBBITDATA.shift(), ATTRIBUTIONLINKDATA),
             cardsWidget.buildArticleCards(WEBBITDATA.shift(), ATTRIBUTIONLINKDATA),
-            cardsWidget.buildArticleCards(WEBBITDATA.shift(), ATTRIBUTIONLINKDATA)
+            cardsWidget.buildArticleCards(WEBBITDATA.shift(), ATTRIBUTIONLINKDATA),
         ];
 
-        let cardsSection = [
-            cardsWidget.buildCardSection("Arbitrary Articles:"),
-            cardsWidget.buildCardSection("Guide Shorts:"),
-            cardsWidget.buildCardSection("Exlore the Web:")
+        let cardsSection: HTMLDivElement[] = [
+            cardsWidget.buildCardSection("Arbitrary Articles:")!,
+            cardsWidget.buildCardSection("Guide Shorts:")!,
+            cardsWidget.buildCardSection("Exlore the Web:")!,
         ];
 
         //Route Checks -> Add widget and format multiple pages
@@ -31,27 +31,44 @@ const cardsWidget = {
         }
 
         for (let i = 0; i < cardsSection.length; i++) {
-            //from cards stack, append each to section
-            cardsArticles.shift().forEach((article) => {
-                cardsSection[i].append(article);
-            });
+            if (cardsSection[i] != undefined){
+                //from cards stack, append each to section
+                cardsArticles.shift().forEach((article) => {
+                    cardsSection[i].append(article);
+                });
+            }
+            else {
+                console.log("There's an error.")
+            }
         }
     },
     buildCardSection: (name) => {
         //Create Artibrary Articles section element and append to Main
         const pageMain = document.querySelector("main");
-        const AASection = document.createElement("section");
-        AASection.classList.add("cards");
+        if (pageMain != null && pageMain.nodeName === 'MAIN'){
+            const AASection = document.createElement("section");
+            AASection.classList.add("cards");
 
-        //Create card section heading and div element. Append to section
-        let aaHeading = document.createElement('h2');
-        aaHeading.innerText = `${name}`;
-        let aaCardsSection = document.createElement('div');
-        aaCardsSection.classList.add('card_columns');
-        AASection.appendChild(aaHeading);
-        AASection.appendChild(aaCardsSection);
-        pageMain.append(AASection);
-        return aaCardsSection;
+            //Create card section heading and div element. Append to section
+            let aaHeading = document.createElement('h2');
+            aaHeading.innerText = `${name}`;
+            let aaCardsSection = document.createElement('div');
+            aaCardsSection.classList.add('card_columns');
+            AASection.appendChild(aaHeading);
+            AASection.appendChild(aaCardsSection);
+            pageMain.append(AASection);
+
+            return aaCardsSection;
+        }
+        else {
+            try {
+                throw new Error("No main element exists on the page.");
+            }
+            catch (error){
+                console.log(error);
+            }
+        }
+        
     },
     buildArticleCards: (cardsData, attrlinks) => {
         //Map WebBits to a card, each
@@ -82,7 +99,7 @@ const cardsWidget = {
                     const cardFront = cardInner.appendChild(document.createElement("div"));
                     cardFront.classList.add("cardFront");
                     cardFront.appendChild(cardImg);
-                    let smallImg = cardImg.cloneNode(false);
+                    let smallImg = <HTMLImageElement>cardImg.cloneNode(false);
                     smallImg.classList.add("imgSmall", "imgPTR");
 
                     const cardBack = cardInner.appendChild(document.createElement("div"));
@@ -105,6 +122,7 @@ const cardsWidget = {
 
             WebBit.appendChild(cardImgTop);
             WebBit.appendChild(cardBody);
+
             return WebBit;
         })
         return AAs;

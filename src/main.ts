@@ -6,7 +6,7 @@ import HEADERFOOTER from './components/headerfooter';
 
 (() => {
     window.addEventListener("DOMContentLoaded", () => {
-        if ( //'Index' route, add cards widget first
+        if ( //'Index' and 'Pages' route, add cards widget first
             window.location.pathname == '/RandomWebBits/index.html' ||
             window.location.pathname == '/index.html' ||
             window.location.pathname == '/' ||
@@ -15,15 +15,17 @@ import HEADERFOOTER from './components/headerfooter';
             window.location.pathname == '/pages.html') {
             cardsWidget.init();
         }
+        // Add dictionary widget if that class is on a page
         const dictionaryElement = document.querySelector(".dictionaryWidget");
         if (dictionaryElement)
             dictionaryWidget.init(dictionaryElement);
-        const toDosElement = document.querySelector(".ToDoList");
+            const toDosElement = document.querySelector(".ToDoList");
         if (toDosElement)
             todosWidget.init(toDosElement);
     })
 
     window.addEventListener("DOMContentLoaded", () => {
+        // Add the header and footer
         HEADERFOOTER.headerWidget.init();
         HEADERFOOTER.footerWidget.init();
     })

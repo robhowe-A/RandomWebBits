@@ -1,9 +1,12 @@
-var gulp = require("gulp");
-var browserify = require("browserify");
-var source = require("vinyl-source-stream");
-var watchify = require("watchify");
-var tsify = require("tsify");
-var fancy_log = require("fancy-log");
+//Author: Robert A Howell, April 2023
+//Source: https://www.typescriptlang.org/
+//TypeScript: Documentation - Gulp. [online]. Available at: https://www.typescriptlang.org/docs/handbook/gulp.html.
+var gulp = require("gulp"); // Package manager
+var browserify = require("browserify"); // JS bundler tool
+var source = require("vinyl-source-stream"); // Gulp pipeline dependency with browserify
+var watchify = require("watchify"); // Recompile the browser components on save
+var tsify = require("tsify"); // Browser plugin for compiling TypeScript
+var fancy_log = require("fancy-log"); // Gulp terminal extension
 var paths = {
   pages: ["index.html", "src/*.html"],
 };

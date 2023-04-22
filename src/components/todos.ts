@@ -1,12 +1,17 @@
 //--Copyright (c) Robert A. Howell
 
+interface ToDo  {
+    ToDoItem: string;
+}
+
 const todosWidget = {
     init: (elem) => {
         todosWidget.toDosListSection.createToDoListWidget(elem);
     },
     toDosListSection: {
         ToDOs: 0,
-        createSampleTo_Do: (tbody) => {
+
+        createSampleTo_Do: (tbody: Element) => {
             if (localStorage.getItem('ToDos') == null) {
                 const tr2 = tbody.appendChild(document.createElement('tr'));
                 const td2left = tr2.appendChild(document.createElement('td'));
@@ -14,7 +19,7 @@ const todosWidget = {
                 td2IN.type = "checkbox";
                 td2IN.setAttribute("aria-label", "Checkbox");
                 const td2middle = tr2.appendChild(document.createElement('td'));
-                td2middle.setAttribute("num", 1);
+                td2middle.setAttribute("num", `${1}`);
                 todosWidget.toDosListSection.ToDOs++;
                 td2middle.textContent = "Add a ToDO Item."
                 const td2right = tr2.appendChild(document.createElement('td'));
@@ -25,6 +30,131 @@ const todosWidget = {
 
                 //"delete" event listener
                 td2DEL.addEventListener("click", () => { todosWidget.toDosListSection.DeleteButton(td2DEL) });
+            }
+        },
+        AddToDo: (description: string, firstPaint: boolean) => {
+            //after "Add" is clicked, insert new table row
+            const TABLEITEM = document.getElementById('ToDoItems');
+            if (TABLEITEM != null){
+                const tableFrag = document.createDocumentFragment();
+                const newRow = tableFrag.appendChild(document.createElement('tr')); //Add row
+                const firstCOL = newRow.appendChild(document.createElement('td')); //Table first data
+                const checkBOX = firstCOL.appendChild(document.createElement('input')); //Add checkbox
+                checkBOX.setAttribute('type', 'checkbox');
+                checkBOX.setAttribute('aria-label', 'Checkbox');
+                const newITEM = newRow.appendChild(document.createElement('td')); //Table second data
+                newITEM.textContent = description.toString(); //Populate second col
+                newITEM.setAttribute('num', todosWidget.toDosListSection.ToDOs ? (() => {
+                    let elem = document.querySelector('#ToDO td[num]');
+                    return ((Number(elem?.getAttribute("num")) || -1000) + todosWidget.toDosListSection.ToDOs).toString();
+                })() : (1).toString());
+                todosWidget.toDosListSection.ToDOs++; //Number of Items
+                const secondCOL = newRow.appendChild(document.createElement('td')); //Table third data
+                const delBOX = secondCOL.appendChild(document.createElement('input')) //Add deletebox
+                delBOX.setAttribute('type', 'submit');
+                delBOX.setAttribute('value', 'Delete');
+                checkBOX.setAttribute('aria-label', 'Delete');
+                TABLEITEM.appendChild(tableFrag);
+                //"delete" event listener
+                delBOX.addEventListener("click", () => { todosWidget.toDosListSection.DeleteButton(delBOX); });
+    
+                if (firstPaint) {
+                    //add to list storage
+                    todosWidget.toDoListStorage.addtoDoToStorage(description);
+                }
+            }
+            else {
+                try {
+                    throw new Error("There were no 'ToDoItems' found or they are null.");
+                }
+                catch (error){
+                    if (error instanceof Error){
+                        console.log(error.name);
+                        console.log(error.message);
+                        console.log(error.stack);
+                    }
+                }
+            }
+
+        },
+        DeleteButton: (box: HTMLInputElement) => {
+            if (box.parentNode != null && box.parentNode.previousSibling != null &&
+                    box.parentNode.previousSibling.previousSibling != null){
+
+                let rowChkBx = <HTMLElement>box.parentNode.previousSibling.previousSibling;
+                let rowChkBxIN = <HTMLInputElement> rowChkBx.childNodes[0];
+                const table = document.querySelector('table');
+                if(table != null){
+                    let tr: HTMLTableRowElement = <HTMLTableRowElement>box.parentNode.parentNode;
+                    let i = tr.rowIndex;
+                    let value = box.parentNode.previousSibling.textContent;
+                    if (rowChkBxIN.checked) {
+                        //remove row since completed
+                        table.deleteRow(i);
+
+                        if (value != 'Add a ToDO Item.'){
+                            todosWidget.toDosListSection.ToDOs--;
+                            
+                            //delete associated storage item
+                            todosWidget.toDoListStorage.removetoDoFromStorage(value);
+                        }
+                        console.log("Done.");
+                    }
+                    else {
+                        table.deleteRow(i);
+                        todosWidget.toDosListSection.ToDOs--;
+                    }
+                }
+                else {
+                    try {
+                        throw new Error("'table' element not found or it is null.");
+                    }
+                    catch (error){
+                        if (error instanceof Error){
+                            console.log(error.name);
+                            console.log(error.message);
+                            console.log(error.stack);
+                        }
+                    }
+                }
+            }
+        },
+        addToDoEventListeners: () => {
+            const ADDBUTTON = document.getElementById('AddButton');
+            const ADDITEMENTER: HTMLInputElement = document.querySelector('input[name="itemINPUT"]')!;
+            if(ADDBUTTON != null && ADDITEMENTER != null){
+                ADDBUTTON.addEventListener("click", () => {
+                    todosWidget.toDosListSection.AddToDo(ADDITEMENTER.value, true);
+                    ADDITEMENTER.value = '';
+                });
+
+                ADDITEMENTER.addEventListener("keydown", (e) => { 
+                    if (e.code == 'NumpadEnter' || e.code == 'Enter') {
+                        todosWidget.toDosListSection.AddToDo(ADDITEMENTER.value, true);
+                        ADDITEMENTER.value = '';
+                    }
+                });
+            }
+            else {
+                try {
+                    throw new Error("Element was not found or is null");
+                }
+                catch (error){
+                    if (error instanceof Error){
+                        console.log(error.name);
+                        console.log(error.message);
+                        console.log(error.stack);
+                    }
+                }
+            }
+        },
+        populateToDoList: () => {
+            //retrieve Storage, add if missing
+            let storageToDos = todosWidget.toDoListStorage.getAlltoDoFromStorage();
+            if (storageToDos.length > 0) {
+                for (let i = 0; i < storageToDos.length; i++) {
+                    todosWidget.toDosListSection.AddToDo(storageToDos[i].ToDoItem, false);
+                }
             }
         },
         createToDoListWidget: (elem) => {
@@ -73,8 +203,21 @@ const todosWidget = {
                         case '/RandomWebBits/pages/todos.html':
                         case '/pages/todos.html':
                             const htbody = document.querySelector("#ToDoItems");
-                            todosWidget.toDosListSection.createSampleTo_Do(htbody);
-
+                            if (htbody != null){
+                                todosWidget.toDosListSection.createSampleTo_Do(htbody);
+                            }
+                            else {
+                                try {
+                                    throw new Error("'ToDoItems' element was not found or is null");
+                                }
+                                catch (error){
+                                    if (error instanceof Error){
+                                        console.log(error.name);
+                                        console.log(error.message);
+                                        console.log(error.stack);
+                                    }
+                                }
+                            }
                             todosWidget.toDosListSection.populateToDoList();
                             todosWidget.toDosListSection.addToDoEventListeners();
 
@@ -90,105 +233,45 @@ const todosWidget = {
             else {
                 console.log(`There is no "ToDoList" class on this page.`)
             }
-        },
-        AddToDo: (description, firstPaint) => {
-            //after "Add" is clicked, insert new table row
-            const TABLEITEMS = document.getElementById('ToDoItems');
-            const tableFrag = document.createDocumentFragment();
-            const newRow = tableFrag.appendChild(document.createElement('tr')); //Add row
-            const firstCOL = newRow.appendChild(document.createElement('td')); //Table first data
-            const checkBOX = firstCOL.appendChild(document.createElement('input')); //Add checkbox
-            checkBOX.setAttribute('type', 'checkbox');
-            checkBOX.setAttribute('aria-label', 'Checkbox');
-            const newITEM = newRow.appendChild(document.createElement('td')); //Table second data
-            newITEM.textContent = description.toString(); //Populate second col
-            newITEM.setAttribute('num', todosWidget.toDosListSection.ToDOs ? (() => {
-                let elem = document.querySelector('#ToDO td[num]');
-                return Number(elem.getAttribute("num")) + todosWidget.toDosListSection.ToDOs;
-            })() : 1);
-            todosWidget.toDosListSection.ToDOs++; //Number of Items
-            const secondCOL = newRow.appendChild(document.createElement('td')); //Table third data
-            const delBOX = secondCOL.appendChild(document.createElement('input')) //Add deletebox
-            delBOX.setAttribute('type', 'submit');
-            delBOX.setAttribute('value', 'Delete');
-            checkBOX.setAttribute('aria-label', 'Delete');
-
-            TABLEITEMS.appendChild(tableFrag);
-
-            //"delete" event listener
-            delBOX.addEventListener("click", () => { todosWidget.toDosListSection.DeleteButton(delBOX); });
-
-            if (firstPaint) {
-                //add to list storage
-                todosWidget.toDoListStorage.addtoDoToStorage(description);
-            }
-        },
-        DeleteButton: (box) => {
-            let rowChkBx = box.parentNode.previousElementSibling.previousElementSibling;
-            let rowChkBxIN = rowChkBx.childNodes[0];
-
-            if (rowChkBxIN.checked) {
-                //remove row
-                let i = box.parentNode.parentNode.rowIndex;
-                let value = box.parentNode.previousSibling.textContent;
-                document.querySelector('table').deleteRow(i);
-                todosWidget.toDosListSection.ToDOs--;
-
-                //remove storage item
-                todosWidget.toDoListStorage.removetoDoFromStorage(value);
-            }
-            else {
-                var i = box.parentNode.parentNode.rowIndex;
-                document.querySelector('table').deleteRow(i);
-                todosWidget.toDosListSection.ToDOs--;
-            }
-        },
-        addToDoEventListeners: () => {
-            const ADDBUTTON = document.getElementById('AddButton');
-            const ADDITEMENTER = document.querySelector('input[name="itemINPUT"]');
-
-            ADDBUTTON.addEventListener("click", () => {
-                todosWidget.toDosListSection.AddToDo(ADDITEMENTER.value, true);
-                ADDITEMENTER.value = '';
-            });
-
-            ADDITEMENTER.addEventListener("keypress", (event) => {
-                if (event.key === 'Enter') {
-                    todosWidget.toDosListSection.AddToDo(ADDITEMENTER.value, true);
-                    ADDITEMENTER.value = '';
-                }
-            });
-        },
-        populateToDoList: () => {
-            //retrieve Storage, add if missing
-            let storageToDos = todosWidget.toDoListStorage.getAlltoDoFromStorage();
-            if (storageToDos) {
-                for (let i = 0; i < storageToDos.length; i++) {
-                    todosWidget.toDosListSection.AddToDo(storageToDos[i].ToDoItem, false);
-                }
-            }
         }
     },
     toDoListStorage: {
         getAlltoDoFromStorage: () => {
-            let values = JSON.parse(localStorage.getItem('ToDos'));
-            return values;
+            let values = localStorage.getItem('ToDos');
+            return values ? JSON.parse(values) : [];
         },
-        addtoDoToStorage: (description) => {
-            let ToDo = {
-                ToDoItem: description
+        addtoDoToStorage: (description: string) => {
+            
+            let ToDo: ToDo =  {
+                ToDoItem: description,
             }
             //add the ToDos to local cache
             try {
                 if (localStorage.getItem('ToDos') == null) {
-                    let todos = [];
+                    let todos: ToDo[] = [];
                     todos.push(ToDo);
                     localStorage.setItem('ToDos', JSON.stringify(todos));
                 }
                 else {
-                    let todos = JSON.parse(localStorage.getItem('ToDos'));
-                    todos.push(ToDo);
-                    localStorage.setItem('ToDos', JSON.stringify(todos));
+                    let storageStr = localStorage.getItem('ToDos');
+                    if (storageStr == null)
+                    {
+                        try {
+                            throw new Error("Local storage values null.");
+                        }
+                        catch (error){
+                            if (error instanceof Error){
+                                console.log(error.name);
+                                console.log(error.message);
+                                console.log(error.stack);
+                            }
+                        }
+                    }
+                    else{
+                        let todos: ToDo[] = JSON.parse(storageStr);
+                        todos.push(ToDo);
+                        localStorage.setItem('ToDos', JSON.stringify(todos));
+                    }
                 }
             }
             catch (err) {
@@ -196,12 +279,28 @@ const todosWidget = {
             }
         },
         removetoDoFromStorage: (item) => {
-            let todos = JSON.parse(localStorage.getItem('ToDos'));
-            todos = todos.filter((todo) => todo.ToDoItem !== item);
-            if (todos.length > 0)
-                localStorage.setItem('ToDos', JSON.stringify(todos));
-            else
-                localStorage.removeItem('ToDos');
+            let storageStr = localStorage.getItem('ToDos');
+            if (storageStr == null)
+            {
+                try {
+                    throw new Error("Local storage values null.");
+                }
+                catch (error){
+                    if (error instanceof Error){
+                        console.log(error.name);
+                        console.log(error.message);
+                        console.log(error.stack);
+                    }
+                }
+            }
+            else {
+                let todos: ToDo[] = JSON.parse(storageStr);
+                todos = todos.filter((todo) => todo.ToDoItem !== item);
+                if (todos.length > 0)
+                    localStorage.setItem('ToDos', JSON.stringify(todos));
+                else
+                    localStorage.removeItem('ToDos');
+            }
         }
     }
 

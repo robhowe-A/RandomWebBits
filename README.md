@@ -1,23 +1,17 @@
-Main branch hosted on Netlify at [https://randomwebbits.com/](https://randomwebbits.com/)
+Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://randomwebbits.com/)
 
 # Random Web Bits
 
-**What is it?** A fun project to host short articles about the web and web development.  
-**What does it do?** A website in development hosted on Netlify showcases modern web development techniques of HTML, CSS, and JS. This type of website is static, whereby all the code running the site is run in the browser.
-
-- Developers:
-  > Create a [codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository/#creating-a-codespace-for-a-repository) (from the green dropdown) to utilize GitHub's container-enabled development platform. Be sure to increase the CPU specs for faster load-times.
-- &lt;RandomWebBits&gt;
-  > The website's code is in full in this repository.
-
----
-
 ## Features
+
+### Articles
+
+- Fun bits of knowledge you may/may not know or have seen before.
 
 ### Responsive web design
 
 - Developed for use on mobile/tablet/desktop devices
-- Web Bits are made mobile first and grow to fit desktop viewports
+- CSS designs fit the wireframe structure and adapt to different viewport sizes
 
 ### JavaScript components
 
@@ -39,13 +33,68 @@ Main branch hosted on Netlify at [https://randomwebbits.com/](https://randomwebb
 </html>
 ```
 
-### Articles
+---
 
-- Fun bits of knowledge you may/may not know or have seen before.
+**What is it?** A fun project to host short articles about the web and web development.  
+**What does it do?** It's a website to showcase modern web development techniques. It is currently a static website, whereby all the code running the site is run in the browser. You can spin up a codespace or download the repro to run the code or test the development space.
+
+## &lt;RandomWebBits&gt;
+
+<details>
+<summary>Developers:</summary>
+
+> Create a [codespace](https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository/#creating-a-codespace-for-a-repository) (from the green dropdown) to utilize GitHub's container-enabled development platform. Install **Live Server** VSCode extension, then 'Go Live' from there. Be sure to increase the CPU specs for faster load-times.
+>
+> - The website's code is in full in this repository.
+> - Debug code in the browser. Any saved change is streamed to the browser from VSCode via Browserify.
+> - Run the full developer's environment: 5 steps and the results:
+>
+> ```shell
+> #1. Navigate to the project's foler and run the below (4) dependency installations
+> # They install gulp-cli, gulp with typescript, browserify, tsify,
+> # vinyl-source-stream, and watchify  dependencies needed to run
+> # the developer's environment
+> #
+> #Node.JS commands to bring up the development
+> npm install -g gulp-cli
+>
+> npm install --save-dev typescript gulp@4.0.0 gulp-typescript
+>
+> npm install --save-dev browserify tsify vinyl-source-stream
+>
+> npm install --save-dev watchify fancy-log
+>
+> #2. Once they're ready, run the below command to begin
+> gulp
+> ```
+>
+> <img src="README/gulpinterminal_VSCode.png" alt="A screenshot of codespaces terminal" width="75%" margin="auto" />
+> <br>
+
+</details>
+
+<details>
+<summary>Web Admins:</summary>
+
+> The full site functions from the resources within "/dist" folder. All the other directory assets remain for development purposes, like utilizing TypeScript compiling (and intellisense).
+>
+> - Try exporting just the "/dist" folder, whereby the site is moved out of the developer's space. Running a web server of only the /dist folder resources produces the same site results without the developer's files. The site is then exportable to your web server of choice.   
+>   1.) **Open** with VSCode  
+>   2.) **Click "Go Live"** (From VSCode's live server extension)  
+>   3.) Site is **live**. All pages, javascript, and styles are included in the distro  
+>   <img src="README/dist_VSCode.png" alt="Screenshot: Open dist with VSCode" width="70%" margin="auto" /> > <br><br> > <img src="README/dist_VSCode_startServer.png" alt="Screenshot: Go Live with VSCode live server extension" width="70%" margin="auto" /> > <br>
+
+</details>
+
+<img src="README/RWB_VSCode.png" alt="Screenshot: Go Live with VSCode live server extension" width="50%" margin="auto" />
 
 ---
 
-#### Release Updates
+
+<em><u>Release Updates</u></em>
+
+<details>
+<summary>Version 1.0</summary>
 
 1.0.0: Added Favicon to all pages. Edited Header/footer sections  
 1.0.4:  
@@ -77,12 +126,24 @@ Main branch hosted on Netlify at [https://randomwebbits.com/](https://randomwebb
 &nbsp;&nbsp;- New WebBits page: searchverticals  
 1.0.23: New WebBits page: networkspeed  
 1.0.24: Refactor To-Dos List  
-1.0.25: New WebBits page: How E-mail Works  
+1.0.25: New WebBits page: How E-mail Works
+
+</details>
+
+<details>
+<summary>Version 1.1</summary>
+
 1.1.26: Added guides card section  
 1.1.28:  
 &nbsp;&nbsp;- Lit component: Acronyms List  
 &nbsp;&nbsp;- Components update, multiple pages  
-1.1.29: New WebBits page: drives  
+1.1.29: New WebBits page: drives
+
+</details>
+
+<details>
+<summary>Version 1.2</summary>
+
 1.2.31:  
 &nbsp;&nbsp;- Module design implementation  
 &nbsp;&nbsp;- Component functionality updates  
@@ -95,8 +156,16 @@ Main branch hosted on Netlify at [https://randomwebbits.com/](https://randomwebb
 1.2.38: New WebBits page: dns  
 1.2.39: New WebBits page: inspectpages  
 1.2.40: Abbr additions, CSS adjustments, and general updates  
-1.2.41: New WebBits page: google #1 website  
+1.2.41: New WebBits page: google #1 website
+
+</details>
+
+<details>
+<summary>Version 1.3</summary>
+
 1.3.41: Added TypeScript project compiler  
 1.3.43:  
 &nbsp;&nbsp;- TypeScript variables changes  
 &nbsp;&nbsp;- Header/Footer component addition
+
+</details>

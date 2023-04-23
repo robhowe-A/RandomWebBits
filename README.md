@@ -78,7 +78,7 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 
 > The full site functions from the resources within "/dist" folder. All the other directory assets remain for development purposes, like utilizing TypeScript compiling (and intellisense).
 >
-> - Try exporting just the "/dist" folder, whereby the site is moved out of the developer's space. Running a web server of only the /dist folder resources produces the same site results without the developer's files. The site is then exportable to your web server of choice.   
+> - Try exporting just the "/dist" folder, whereby the site is moved out of the developer's space. Running a web server of only the /dist folder resources produces the same site results without the developer's files. The site is then exportable to your web server of choice.  
 >   1.) **Open** with VSCode  
 >   2.) **Click "Go Live"** (From VSCode's live server extension)  
 >   3.) Site is **live**. All pages, javascript, and styles are included in the distro  
@@ -89,7 +89,6 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 <img src="README/RWB_VSCode.png" alt="Screenshot: Go Live with VSCode live server extension" width="50%" margin="auto" />
 
 ---
-
 
 <em><u>Release Updates</u></em>
 
@@ -166,6 +165,7 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 1.3.41: Added TypeScript project compiler  
 1.3.43:  
 &nbsp;&nbsp;- TypeScript variables changes  
-&nbsp;&nbsp;- Header/Footer component addition
+&nbsp;&nbsp;- Header/Footer component addition  
+1.3.44: Added DictionaryAPI 404 result  
 
 </details>

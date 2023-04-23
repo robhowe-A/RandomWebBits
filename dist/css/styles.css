@@ -995,14 +995,30 @@ pre {
   color: var(--clr-Red);
 }
 
+#search-word.invalid-notfound,
+#dictionary-search button.invalid-notfound {
+  border-color: var(--clr-Orange_Focus);
+  color: var(--clr-Orange_Focus);
+}
+
 .error {
   display: block;
-  font-size: 0.8em;
+  font-weight: bold;
   margin-left: 1em;
   width: -moz-fit-content;
   width: fit-content;
   color: var(--clr-foo);
   background-color: var(--clr-Red);
+}
+
+.error-notfound {
+  display: block;
+  font-weight: bold;
+  margin-left: 1em;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: var(--clr-foo);
+  background-color: var(--clr-Orange_Focus);
 }
 
 .example i {

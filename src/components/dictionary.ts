@@ -1,10 +1,13 @@
 //--Copyright (c) Robert A. Howell
 
 interface SchWordSchButtonDicElem {
-    searchWord: any;
-    wordSearch: any;
-    dictionaryElem: any;
+    searchWord: HTMLInputElement;
+    wordSearch: HTMLButtonElement;
+    dictionaryElem: HTMLElement;
+    errorElem: HTMLSpanElement;
 }
+
+const baseURL = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
 const dictionaryWidget = {
     init: (elem: Element) => {
@@ -20,12 +23,11 @@ const dictionaryWidget = {
             }
             return res.json();
         },
-        apiData: (data, elem) => {
+        apiData: (data: any, elem: SchWordSchButtonDicElem) => {
             dictionaryWidget.createDictionaryTermWithMarkup(data, elem);
         },
-        apiGET: (url, word, elem) => {
+        apiGET: (url: URL, elem: SchWordSchButtonDicElem) => {
             //submit validation
-            url += word;
             fetch(url)
                 .then((response) => dictionaryWidget.requestDictionaryTerm.apiResponseErrorCheck(response))
                 .then((data) => dictionaryWidget.requestDictionaryTerm.apiData(data, elem))
@@ -49,7 +51,8 @@ const dictionaryWidget = {
                         let searchWords: SchWordSchButtonDicElem = {
                             searchWord: searchForm.appendChild(document.createElement("input")),
                             wordSearch: searchForm.appendChild(document.createElement("button")),
-                            dictionaryElem: dictionary,
+                            dictionaryElem: <HTMLElement>dictionary,
+                            errorElem: searchForm.appendChild(document.createElement("span")),
                         }
                         searchWords.searchWord.id = "search-word";
                         searchWords.searchWord.setAttribute('type', 'text');
@@ -62,8 +65,7 @@ const dictionaryWidget = {
                         const fontAwesomeSearchIcon = searchWords.wordSearch.appendChild(document.createElement("i"));
                         fontAwesomeSearchIcon.classList.add("fa");
                         fontAwesomeSearchIcon.classList.add("fa-search");
-                        const errorSpan = searchForm.appendChild(document.createElement("span"));
-                        errorSpan.classList.add("error");
+                        searchWords.errorElem.classList.add("error");
 
                         return searchWords;
                     }
@@ -84,47 +86,55 @@ const dictionaryWidget = {
                 console.log("A search element undefined from searchWord | wordSearch");
                 return;
             }
-            const error = searchElems.searchWord.nextElementSibling;
+
+            //Add form input event listeners
+            //Upon input entry, fire API fetch
             searchElems.wordSearch.addEventListener("click", (event) => {
                 event.preventDefault();
-                const acceptedWord = dictionaryWidget.buildDictionaryTermSection.wordValidation(searchElems.searchWord.value);
-                if (acceptedWord) {
-                    dictionaryWidget.requestDictionaryTerm.apiGET(dictionaryWidget.requestDictionaryTerm.url, searchElems.searchWord.value, searchElems);
+                let acceptedInputWord: boolean = false;
+                dictionaryWidget.buildDictionaryTermSection.wordValidation(searchElems.searchWord.value)
+                ? acceptedInputWord = true : acceptedInputWord = false;
+                if (acceptedInputWord) {
+                    let wordURL: URL = new URL(searchElems.searchWord.value.toString(), "https://api.dictionaryapi.dev/api/v2/entries/en/");
+                    dictionaryWidget.requestDictionaryTerm.apiGET(wordURL, searchElems);
                     searchElems.searchWord.classList.remove("invalid");
                     searchElems.wordSearch.classList.remove("invalid");
-                    error.classList.remove("error");
-                    error.textContent = "";
+                    searchElems.errorElem.classList.remove("error");
+                    searchElems.errorElem.textContent = "";
                 }
                 else {
                     searchElems.searchWord.classList.add("invalid");
                     searchElems.wordSearch.classList.add("invalid");
-                    error.textContent = "Invalid word!";
-                    error.classList.add("error");
+                    searchElems.errorElem.textContent = "Invalid word!";
+                    searchElems.errorElem.classList.add("error");
                 }
                 searchElems.searchWord.value = '';
             })
             searchElems.searchWord.addEventListener("keypress", (event) => {
                 if (event.key === 'Enter') {
                     event.preventDefault();
-                    const acceptedWord = dictionaryWidget.buildDictionaryTermSection.wordValidation(searchElems.searchWord.value);
-                    if (acceptedWord) {
-                        dictionaryWidget.requestDictionaryTerm.apiGET(dictionaryWidget.requestDictionaryTerm.url, searchElems.searchWord.value, searchElems);
+                    let acceptedInputWord: boolean = false;
+                    dictionaryWidget.buildDictionaryTermSection.wordValidation(searchElems.searchWord.value)
+                    ? acceptedInputWord = true : acceptedInputWord = false;
+                    if (acceptedInputWord) {
+                        let wordURL: URL = new URL(searchElems.searchWord.value.toString(), "https://api.dictionaryapi.dev/api/v2/entries/en/");
+                        dictionaryWidget.requestDictionaryTerm.apiGET(wordURL, searchElems);
                         searchElems.searchWord.classList.remove("invalid");
                         searchElems.wordSearch.classList.remove("invalid");
-                        error.classList.remove("error");
-                        error.textContent = "";
+                        searchElems.errorElem.classList.remove("error");
+                        searchElems.errorElem.textContent = "";
                     }
                     else {
                         searchElems.searchWord.classList.add("invalid");
                         searchElems.wordSearch.classList.add("invalid");
-                        error.textContent = "Invalid word!";
-                        error.classList.add("error");
+                        searchElems.errorElem.textContent = "Invalid word!";
+                        searchElems.errorElem.classList.add("error");
                     }
                     searchElems.searchWord.value = '';
                 }
             })
         },
-        wordValidation: (intxt) => {
+        wordValidation: (intxt: string) => {
             let trimmed = intxt.trim();
             let lettersRE = new RegExp("^[A-Za-z]{0,45}$");
             if (lettersRE.test(trimmed)) {
@@ -136,22 +146,21 @@ const dictionaryWidget = {
             }
         }
     },
-    createDictionaryTermWithMarkup: (wordData, searchElems: SchWordSchButtonDicElem) => {
-        searchElems.dictionaryElem = document.querySelector("#dictionary");
+    createDictionaryTermWithMarkup: (wordData: any, searchElems: SchWordSchButtonDicElem) => {
         const definitionDescription = searchElems.dictionaryElem.appendChild(document.createElement("div"));
         definitionDescription.appendChild(document.createElement("hr"));
 
-        wordData.map((word) => {
+        wordData.map((word: any) => {
             //console.log("The word is: ",word)
             const wordTitle = definitionDescription.appendChild(document.createElement("h3"));
             wordTitle.textContent = word.word;
             //Add the word and examples to page
-            word.meanings.map((wordType) => {
+            word.meanings.map((wordType: any) => {
                 //console.log("WordType are: ", wordType)
                 const wordTypeH = definitionDescription.appendChild(document.createElement("h4"));
                 wordTypeH.textContent = wordType.partOfSpeech;
                 const wordTypeList = definitionDescription.appendChild(document.createElement("ul"));
-                wordType.definitions.map((def) => {
+                wordType.definitions.map((def: any) => {
                     //console.log("Definition is: ", def);
                     let wordTypeDefItem = wordTypeList.appendChild(document.createElement("li"));
                     let definitionP = wordTypeDefItem.appendChild(document.createElement("p"));
@@ -162,14 +171,20 @@ const dictionaryWidget = {
                         definitionP.classList.add("example")
                         //console.log("What are all the selections: ", def);
                         const newP = definitionP.insertAdjacentElement('beforeend', document.createElement("p"));
-                        const newPi = newP.appendChild(document.createElement("i"));
-                        newPi.textContent = def.example;
+                        if (newP instanceof HTMLElement){
+                            const newPi = newP.appendChild(document.createElement("i"));
+                            newPi.textContent = def.example;
+                        }
+                        else {
+                            console.log("Definition element is null.");
+                        }
                     }
                     //check if key "example" is in definition. If it is, add the example to list
                     "example" in def ? addAdjacentElem() : true == true;
                 });
             });
         });
+        
         searchElems.dictionaryElem.appendChild(definitionDescription);
     },
 }

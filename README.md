@@ -50,7 +50,7 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 > - Run the full developer's environment: 5 steps and the results:
 >
 > ```shell
-> #1. Navigate to the project's foler and run the below (4) dependency installations
+> #1. Navigate to the project's folder and run the below (4) dependency installations
 > # They install gulp-cli, gulp with typescript, browserify, tsify,
 > # vinyl-source-stream, and watchify  dependencies needed to run
 > # the developer's environment

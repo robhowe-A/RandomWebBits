@@ -7,12 +7,12 @@ class AttributionLink extends LinkDetails {
     articleid: number;
     
     constructor(
-        title,
-        innerText,
-        hReference,
-        attributeowner,
-        pageName,
-        articleid
+        title: string,
+        innerText: string,
+        hReference: string,
+        attributeowner: string,
+        pageName: string,
+        articleid: number
         
         ) {
         super(title, innerText, pageName, hReference);

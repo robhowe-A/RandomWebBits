@@ -498,10 +498,10 @@ button:focus {
 }
 
 #dictionary-search input:focus,
-#dictionary-search button:focus {
+#dictionary button:focus {
   border: none;
   outline: 4px solid var(--clr-Orange_Focus);
-  outline-offset: -2px;
+  outline-offset: -1px;
 }
 
 /************************* Page Styles *************************/
@@ -963,15 +963,37 @@ pre {
   color: var(--clr-title);
 }
 
-#dictionary-search button {
+#dictionary button {
   padding: 6px 10px;
   background: #ddd;
   font-size: 17px;
   border: none;
   cursor: pointer;
   background-color: var(--clr-DarkCyan);
-  max-width: 50px;
   border-bottom: 3px solid var(--clr-DarkCyan);
+  font-weight: bold;
+  color: var(--clr-light-500);
+  box-shadow: -3px 3px 15px -3px black;
+  width: fit-content;
+}
+
+#dictionary-search button {
+  max-width: 50px;
+}
+
+.dictionary-btn {
+  display: block;
+  margin: .5em;
+}
+
+.dictionary-word-btn {
+  display: inline-block;
+}
+
+.previousWords {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
 }
 
 #dictionary div h4,
@@ -990,34 +1012,34 @@ pre {
 }
 
 #search-word.invalid,
-#dictionary-search button.invalid {
+#dictionary button.invalid {
   border-color: var(--clr-Red);
   color: var(--clr-Red);
 }
 
 #search-word.invalid-notfound,
-#dictionary-search button.invalid-notfound {
+#dictionary button.invalid-notfound {
   border-color: var(--clr-Orange_Focus);
   color: var(--clr-Orange_Focus);
+  margin-bottom: .2em;
 }
 
-.error {
+.error, .error-notfound {
   display: block;
   font-weight: bold;
   margin-left: 1em;
+  margin-bottom: .2em;
   width: -moz-fit-content;
   width: fit-content;
   color: var(--clr-foo);
+  padding: 10px;
+}
+
+.error {
   background-color: var(--clr-Red);
 }
 
 .error-notfound {
-  display: block;
-  font-weight: bold;
-  margin-left: 1em;
-  width: -moz-fit-content;
-  width: fit-content;
-  color: var(--clr-foo);
   background-color: var(--clr-Orange_Focus);
 }
 

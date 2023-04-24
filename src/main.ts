@@ -20,7 +20,7 @@ import HEADERFOOTER from './components/headerfooter';
         if (dictionaryElement)
             dictionaryWidget.init(dictionaryElement);
             const toDosElement = document.querySelector(".ToDoList");
-        if (toDosElement)
+        if (toDosElement != null)
             todosWidget.init(toDosElement);
     })
 

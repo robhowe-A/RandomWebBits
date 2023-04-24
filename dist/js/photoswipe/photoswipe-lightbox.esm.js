@@ -686,7 +686,7 @@ class Content {
     this.hasSlide = true;
     this.instance = slide.pswp;
 
-    // todo: do we need to unset slide?
+    // Dmytro Semenov: do we need to unset slide?
   }
 
   /**
@@ -1063,7 +1063,7 @@ function getViewportSize(options, pswp) {
   return {
     x: document.documentElement.clientWidth,
 
-    // TODO: height on mobile is very incosistent due to toolbar
+    // Dmytro Semenov: height on mobile is very incosistent due to toolbar
     // find a way to improve this
     //
     // document.documentElement.clientHeight - doesn't seem to work well

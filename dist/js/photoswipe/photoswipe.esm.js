@@ -375,7 +375,7 @@ function getViewportSize(options, pswp) {
   return {
     x: document.documentElement.clientWidth,
 
-    // TODO: height on mobile is very incosistent due to toolbar
+    // Dmytro Semenov: height on mobile is very incosistent due to toolbar
     // find a way to improve this
     //
     // document.documentElement.clientHeight - doesn't seem to work well
@@ -827,7 +827,7 @@ class Slide {
    */
   appendHeavy() {
     const { pswp } = this;
-    const appendHeavyNearby = true; // todo
+    const appendHeavyNearby = true; // Dmytro Semenov
 
     // Avoid appending heavy elements during animations
     if (this.heavyAppended
@@ -2383,7 +2383,7 @@ class Gestures {
    * @param {PointerEvent} e
    */
   _preventPointerEventBehaviour(e) {
-    // TODO find a way to disable e.preventDefault on some elements
+    // Dmytro Semenov find a way to disable e.preventDefault on some elements
     //      via event or some class or something
     e.preventDefault();
   }
@@ -3682,7 +3682,7 @@ class UIElement {
  */
 function initArrowButton(element, pswp, isNextButton) {
   element.classList.add('pswp__button--arrow');
-  // TODO: this should point to a unique id for this instance
+  // Dmytro Semenov: this should point to a unique id for this instance
   element.setAttribute('aria-controls', 'pswp__items');
   pswp.on('change', () => {
     if (!pswp.options.loop) {
@@ -4654,7 +4654,7 @@ class Content {
     this.hasSlide = true;
     this.instance = slide.pswp;
 
-    // todo: do we need to unset slide?
+    // Dmytro Semenov: do we need to unset slide?
   }
 
   /**

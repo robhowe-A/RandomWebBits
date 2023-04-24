@@ -1,10 +1,12 @@
 //--Copyright (c) Robert A. Howell
+import AttributionLink from "./AttributionLink";
+import WebBit from "./WebBit";
 import WEBBITDATA from "./data"
 import ATTRIBUTIONLINKDATA from "./data_AttributionLinks";
 
 const cardsWidget = {
     init: () => {
-        let cardsArticles = [
+        let cardsArticles: any = [
             cardsWidget.buildArticleCards(WEBBITDATA.shift(), ATTRIBUTIONLINKDATA),
             cardsWidget.buildArticleCards(WEBBITDATA.shift(), ATTRIBUTIONLINKDATA),
             cardsWidget.buildArticleCards(WEBBITDATA.shift(), ATTRIBUTIONLINKDATA),
@@ -22,7 +24,7 @@ const cardsWidget = {
             window.location.pathname == '/RandomWebBits/index.html' ||
             window.location.pathname == '/RandomWebBits/' ||
             window.location.pathname == '/dist/index.html') {
-            const getMultipleRandom = (arr, num) => {
+            const getMultipleRandom = (arr: any, num: number) => {
                 const shuffled = [...arr].sort(() => 0.5 - Math.random());
 
                 return shuffled.slice(0, num);
@@ -33,7 +35,7 @@ const cardsWidget = {
         for (let i = 0; i < cardsSection.length; i++) {
             if (cardsSection[i] != undefined){
                 //from cards stack, append each to section
-                cardsArticles.shift().forEach((article) => {
+                cardsArticles.shift().forEach((article: any) => {
                     cardsSection[i].append(article);
                 });
             }
@@ -42,7 +44,7 @@ const cardsWidget = {
             }
         }
     },
-    buildCardSection: (name) => {
+    buildCardSection: (name: string) => {
         //Create Artibrary Articles section element and append to Main
         const pageMain = document.querySelector("main");
         if (pageMain != null && pageMain.nodeName === 'MAIN'){
@@ -70,9 +72,9 @@ const cardsWidget = {
         }
         
     },
-    buildArticleCards: (cardsData, attrlinks) => {
+    buildArticleCards: (cardsData: any, attrlinks: AttributionLink[]) => {
         //Map WebBits to a card, each
-        let AAs = cardsData.map((article) => {
+        let AAs = cardsData.map((article: any) => {
             let WebBit = document.createElement('div');
             WebBit.classList.add('card');
             let cardImgTop = document.createElement('div');
@@ -92,7 +94,7 @@ const cardsWidget = {
             cardBodyHeading.innerText = article.name;
             attrlinks.map((link) => {
                 //Determine if card image needs attribution panel
-                if (cardImg.getAttribute('Article') == link.articleid) { //match WebBit ID to Icon ID
+                if (cardImg.getAttribute('Article') === link.articleid.toString()) { //match WebBit ID to Icon ID
                     cardImgTop.classList.add("flip-card")
                     const cardInner = cardImgTop.appendChild(document.createElement("div"));
                     cardInner.classList.add("inner");

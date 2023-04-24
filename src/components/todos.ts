@@ -5,7 +5,7 @@ interface ToDo  {
 }
 
 const todosWidget = {
-    init: (elem) => {
+    init: (elem: Element) => {
         todosWidget.toDosListSection.createToDoListWidget(elem);
     },
     toDosListSection: {
@@ -157,7 +157,7 @@ const todosWidget = {
                 }
             }
         },
-        createToDoListWidget: (elem) => {
+        createToDoListWidget: (elem: Element) => {
             if (elem !== undefined) { //insert the widget after the passed in "elem"
                 if (elem.classList.contains("ToDoList")) {
                     switch (window.location.pathname) {
@@ -236,7 +236,7 @@ const todosWidget = {
         }
     },
     toDoListStorage: {
-        getAlltoDoFromStorage: () => {
+        getAlltoDoFromStorage: () => { //TODO: global usage
             let values = localStorage.getItem('ToDos');
             return values ? JSON.parse(values) : [];
         },
@@ -278,7 +278,7 @@ const todosWidget = {
                 console.log("Problem storing To-do list item: ", err);
             }
         },
-        removetoDoFromStorage: (item) => {
+        removetoDoFromStorage: (item: string) => {
             let storageStr = localStorage.getItem('ToDos');
             if (storageStr == null)
             {

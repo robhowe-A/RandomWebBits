@@ -6,7 +6,7 @@ class LinkDetails {
     pageName: string;
     hReference: string;
 
-    constructor(title, innerText, pageName, hReference) {
+    constructor(title: string, innerText: string, pageName: string, hReference: string) {
         this.title = title,
         this.innerText = innerText,
         this.pageName = pageName,

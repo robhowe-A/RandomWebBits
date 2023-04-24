@@ -1,4 +1,4 @@
-Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://randomwebbits.com/)
+ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://randomwebbits.com/)
 
 # Random Web Bits
 
@@ -166,6 +166,6 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 1.3.43:  
 &nbsp;&nbsp;- TypeScript variables changes  
 &nbsp;&nbsp;- Header/Footer component addition  
-1.3.44: Added DictionaryAPI 404 result  
+1.3.45: Added DictionaryAPI 404 result  
 
 </details>

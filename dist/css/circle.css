@@ -99,9 +99,17 @@
   top: calc(50% - 7.5px);
 }
 
+#Google figure .google {
+  margin: 0 auto;
+}
+
 #Google figure:first-of-type {
   margin-top: 3em;
   opacity: 1 !important;
+}
+
+#Google table {
+  margin: 0 auto;
 }
 
 #googlefig {

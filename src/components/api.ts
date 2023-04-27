@@ -15,9 +15,17 @@ export class apiGET {
         this.errorElem = errorElem;
     }
 
+    public getSendToBrowserCache() {
+        return this.sendToBrowserCache;
+    }
+
     public getGETURL() {
         return this.GETURL;
     };
+
+    public setSendToBrowserCache() {
+        return this.sendToBrowserCache ? false : true;
+    }
 
     public setGETURL(GETURL: URL | string) {
         if (typeof GETURL === 'string'){

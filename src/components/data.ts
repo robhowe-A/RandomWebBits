@@ -164,6 +164,16 @@ const ArbitraryArticles = new Array(
         "img/search-engine.webp",
         "A bar graph icon"
     ),
+    new WebBit(
+        "DOM",
+        23,
+        "DOM",
+        "Review the DOM with a DOM tree",
+        new Date(2023, 4, 27),
+        "pages/dom.html",
+        "img/tree.webp",
+        "A tree icon"
+    ),
 );
 const GuideShorts = new Array(
     new WebBit(

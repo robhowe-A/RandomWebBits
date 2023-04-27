@@ -25,7 +25,6 @@ class Dictionary {
             Dictionary.wordCaches = JSON.parse(storageStr);
             return Dictionary.wordCaches;
         }
-        
         //getCacheStorage()
         // for (let cache of wordcaches){
         //     console.log("'Cache Storage' name found: ", cache.cacheName);
@@ -56,11 +55,9 @@ class Dictionary {
         // }
         // return wordcaches;
     }
-
     // displayCachedWords() {
     //     //caches
     //     }
-
 }
 
 interface SchWordSchButtonDicElem {
@@ -73,6 +70,7 @@ interface SchWordSchButtonDicElem {
 }
 
 interface caches {
+    inCache: boolean,
     word: string,
     wordURL: URL,
     cacheName: string,
@@ -88,35 +86,36 @@ const dictionaryWidget = {
         dictionaryWidget.buildDictionaryTermSection.checkCacheStorage();
     },
     requestDictionaryTerm: {
-
-        //If apiGET.sendtobrowsercache is true
-        //TODO: dictionary fetch api:
-        //TODO: 1.) is to be cached true? --check
-        //TODO: 2.) is to be cached false? --check
-        //TODO: --> are they the same behavior? --check
-        //TODO: --> is the result in the cache? --check
-        //can the cache storage items be removed? --> TODO: remove button
-
-
         // API fetch request the data from dictionary api:
         requestUrl: "https://api.dictionaryapi.dev/api/v2/entries/en/",
-        fetchDictionaryTerm: (word:string, wordUrl: URL, elem: SchWordSchButtonDicElem) => {
+        
+        fetchDictionaryTerm: (word:string, wordUrl: URL, elem: SchWordSchButtonDicElem, sendToCache: boolean, cacheName:string) => {
+            // The function calls to either store in Cache Storage
+            // If items are to be cached, edit Local Storage cache names
+            //TODO: dictionary fetch api:
+            //TODO: 1.) is to be cached true? --check
+            //TODO: 2.) is to be cached false? --check
+            //TODO: --> are they the same behavior? --check
+            //TODO: --> is the result in the cache? --check
+            //TODO: send to cache true option allows empty string
             let wordCacheStore: any = [];
-            //save the word URL and cache name to retrieve later for cache management
             let wordcache: caches = {
+                inCache: sendToCache,
                 word: word,
                 wordURL: wordUrl,
-                cacheName: "definitions-words-cache",
+                cacheName: sendToCache ? cacheName : "",
             }
             wordCacheStore.push(wordcache);
-            const setCacheItem = () =>{
+
+            // Add the cache item to Local Storage
+            const setCacheItem = (sendToBrowserCache: boolean, wordArray:any[], ) =>{
                 try {
                     if (localStorage.getItem('word-caches') == null) { 
-                        //add item
+                        // Local storage empty => add the word
                         localStorage.setItem('word-caches', JSON.stringify(wordCacheStore));
                     }
                     else {
-                        //add item to current 'word-caches' list
+                        // Add word to current 'word-caches' in local storage
                         let storageStr = localStorage.getItem('word-caches');
                         if (storageStr == null)
                         {
@@ -135,11 +134,13 @@ const dictionaryWidget = {
                             let allcache: caches[] = JSON.parse(storageStr);
                             for (let cache of allcache){
                                 if (cache.wordURL == wordcache.wordURL){ 
-                                    //the word is already in cache, so return
+                                    // Word is already in local storage
+                                    // No need to add it to the array
                                     return;
                                 }
                             }
 
+                            // Add word to existing 'word-caches' in local storage
                             allcache.push(wordcache);
                             localStorage.setItem('word-caches', JSON.stringify(allcache));
                         }
@@ -165,7 +166,7 @@ const dictionaryWidget = {
                     // }
                     if (data != undefined && !noDefinitions) {
                         dictionaryWidget.createDictionaryTermWithMarkup(data, elem);
-                        setCacheItem();
+                        setCacheItem(wordFetch.getSendToBrowserCache(), wordCacheStore);
                     }
                     else {
                         if (noDefinitions){
@@ -262,7 +263,7 @@ const dictionaryWidget = {
             if (acceptedInputWord) {
                 wordSearches.wordURL = new URL(searchElems.searchWord.value.toString(), dictionaryWidget.requestDictionaryTerm.requestUrl);
 
-                dictionaryWidget.requestDictionaryTerm.fetchDictionaryTerm(searchElems.searchWord.value, wordSearches.wordURL, searchElems);
+                dictionaryWidget.requestDictionaryTerm.fetchDictionaryTerm(searchElems.searchWord.value, wordSearches.wordURL, searchElems, false, "");
                 searchElems.searchWord.classList.remove("invalid");
                 searchElems.searchWord.classList.remove("invalid-notfound");
                 searchElems.errorElem.classList.remove("error");
@@ -316,7 +317,7 @@ const dictionaryWidget = {
                                 //add event listener for new button
                                 cacheWordHeadingElem.addEventListener("click", (event) => {
                                     event.preventDefault();
-                                    dictionaryWidget.requestDictionaryTerm.fetchDictionaryTerm(wordCache.word, wordCache.wordURL, searchElems);
+                                    dictionaryWidget.requestDictionaryTerm.fetchDictionaryTerm(wordCache.word, wordCache.wordURL, searchElems, false, "");
                                 })
                                 Dictionary.previousWordsBtnIsCreated = true;
                             }

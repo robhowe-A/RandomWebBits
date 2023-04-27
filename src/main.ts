@@ -3,6 +3,7 @@ import cardsWidget from './components/WebBits'
 import dictionaryWidget from './components/dictionary';
 import todosWidget from './components/todos';
 import HEADERFOOTER from './components/headerfooter';
+import expandingList from './expandingList'
 
 (() => {
     window.addEventListener("DOMContentLoaded", () => {
@@ -15,6 +16,17 @@ import HEADERFOOTER from './components/headerfooter';
             window.location.pathname == '/pages.html') {
             cardsWidget.init();
         }
+        // Add the header and footer
+        HEADERFOOTER.headerWidget.init();
+        HEADERFOOTER.footerWidget.init();
+
+        // Initialize page components
+        // dom.html page uses expandingLists component
+        if ( 
+            window.location.pathname == '/pages/dom.html'){
+                expandingList.init();
+            }
+
         // Add dictionary widget if that class is on a page
         const dictionaryElement = document.querySelector(".dictionaryWidget");
         if (dictionaryElement)
@@ -22,12 +34,6 @@ import HEADERFOOTER from './components/headerfooter';
             const toDosElement = document.querySelector(".ToDoList");
         if (toDosElement != null)
             todosWidget.init(toDosElement);
-    })
-
-    window.addEventListener("DOMContentLoaded", () => {
-        // Add the header and footer
-        HEADERFOOTER.headerWidget.init();
-        HEADERFOOTER.footerWidget.init();
     })
 
 })();

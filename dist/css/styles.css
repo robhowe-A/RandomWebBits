@@ -38,6 +38,8 @@
     --clr-Skyblue: #87ceeb;
     --clr-Red: #f51212;
     --clr-Brown: #fcdaae;
+    --clr-elementisopenPink: 326, 37%, 55%;
+    --clr-elementisclosedBlue: 191, 39%, 40%;
   }
 }
 
@@ -79,6 +81,8 @@
     --clr-Skyblue: #87ceeb;
     --clr-Red: #fb6060;
     --clr-Brown: #deb887;
+    --clr-elementisopenPink: 326, 37%, 55%;
+    --clr-elementisclosedBlue: 191, 39%, 40%;
   }
 }
 
@@ -505,6 +509,45 @@ button:focus {
 }
 
 /************************* Page Styles *************************/
+.h3tall {
+  font-size: 32px;
+}
+
+ul[is="expanding-list"] {
+    background-color: lightgray;
+    padding: 1rem;
+    font-family: monospace;
+    padding-inline: 5px;
+}
+
+ul[is="expanding-list"] li span {
+    background-color: hsl(var(--clr-elementisclosedBlue), .1);
+    border-radius: 1rem;
+    padding-inline: 5px;
+}
+
+ul[is="expanding-list"] li span:hover {
+    color: red;
+}
+
+ul[is="expanding-list"] li.ulistelem-open span{
+    color: hsl(var(--clr-elementisopenPink));
+}
+
+ul[is="expanding-list"] li.ulistelem-closed span{
+    color: hsl(var(--clr-elementisclosedBlue));
+}
+
+ul[is="expanding-list"] .closed{
+    color: hsl(var(--clr-elementisclosedBlue)) !important;
+    border-radius: 1rem;
+}
+
+ul[is="expanding-list"], ul[is="expanding-list"] li {
+    list-style: none;
+}
+
+
 #google table,
 #google th,
 #google tr,
@@ -601,11 +644,22 @@ abbr:hover {
   margin: 0;
 }
 
-.wrapper,
 section#ToDO,
 section#dictionary,
 time {
   padding: 0 3em;
+}
+
+@media (prefers-color-scheme: dark){
+section#ToDO,
+section#dictionary {
+  padding: 0 3em;
+  background-color: var(--clr-light-100);
+  border-radius: 2em;
+  margin: 2em;
+  padding-block: 2em;
+  width: fit-content;
+  }
 }
 
 dl,
@@ -1497,6 +1551,12 @@ article iframe {
     width: 130%;
     transform: translate(-15%);
   }
+
+  section#ToDO,
+  section#dictionary,
+  time {
+    display: none;
+}
 }
 
 /* Styles for mobile */

@@ -146,6 +146,14 @@ new AttributionLink(
     "Flaticon",
     "LEARN: Google",
     22
+    ),
+new AttributionLink(
+    "tree icons",
+    "Tree icons created by justicon - Flaticon",
+    "https://www.flaticon.com/free-icons/tree",
+    "Flaticon",
+    "DOM",
+    23
     )
 ];
 

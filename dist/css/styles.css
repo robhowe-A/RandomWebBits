@@ -514,7 +514,7 @@ button:focus {
 }
 
 ul[is="expanding-list"] {
-    background-color: lightgray;
+    background-color: var(--clr-light-600);
     padding: 1rem;
     font-family: monospace;
     padding-inline: 5px;
@@ -527,7 +527,13 @@ ul[is="expanding-list"] li span {
 }
 
 ul[is="expanding-list"] li span:hover {
-    color: red;
+    color: var(--clr-Green);
+}
+
+ul[is="expanding-list"] li span:focus-visible {
+  border: none;
+  outline: 3px solid var(--clr-Orange_Focus);
+  outline-offset: 0.2em;
 }
 
 ul[is="expanding-list"] li.ulistelem-open span{

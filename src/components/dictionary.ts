@@ -156,31 +156,40 @@ const dictionaryWidget = {
                 const wordFetch = new apiGET(wordcache.wordURL, false, wordcache.cacheName, elem.errorElem)
 
                 let data = await wordFetch.apiGET(wordFetch.getGETURL());
-                    if (data instanceof Response){
-                        data.json();
+                    if (typeof data == 'string'){
+                        data = JSON.parse(data);
                     }
                     let wordData: any = data;
                     let noDefinitions: boolean = false;
-                    // if (Object.hasOwn(wordData, 'title')){
-                    //     noDefinitions = true;
-                    // }
+
+                    if (typeof data == 'object'){
+                        if (Object.hasOwn(wordData, 'title')){
+                            noDefinitions = true;
+                        }
+                    }
+
                     if (data != undefined && !noDefinitions) {
                         dictionaryWidget.createDictionaryTermWithMarkup(data, elem);
                         setCacheItem(wordFetch.getSendToBrowserCache(), wordCacheStore);
                     }
                     else {
-                        if (noDefinitions){
-                            if (wordData.title == "No Definitions Found")
-                                //--> 404 from fetch request
+                        if (navigator.onLine !== false){
+                            if (noDefinitions){
+                                if (wordData.title == "No Definitions Found")
+                                    //--> 404 from fetch request
+                                    elem.searchWord.classList.add("invalid-notfound");
+                                    elem.errorElem.classList.add("error-notfound");
+                                    elem.errorElem.innerText = "No Definitions Found";
+                            }
+                            else {
+                                //error
                                 elem.searchWord.classList.add("invalid-notfound");
+                                elem.errorElem.innerText = "Invalid word!";
                                 elem.errorElem.classList.add("error-notfound");
-                                elem.errorElem.innerText = "No Definitions Found";
+                            }
                         }
                         else {
-                            //error
-                            elem.searchWord.classList.add("invalid-notfound");
-                            elem.errorElem.innerText = "Invalid word!";
-                            elem.errorElem.classList.add("error-notfound");
+                            elem.errorElem.innerText += ", check network connection.";
                         }
                     }
                 };

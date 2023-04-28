@@ -38,8 +38,9 @@ export class apiGET {
 
     private apiResponseErrorCheck(res: Response) {
         if (res.status == 404){
-            this.errorElem.innerText = "404 fetch error!";
             this.errorElem.classList.add("error");
+            this.errorElem.innerText = "404 fetch error!";
+            return res;
         }
         if (!res.ok || res.status != 200) {
             throw new Error(res.ok + ": " + res.status);
@@ -51,11 +52,18 @@ export class apiGET {
     private fetchData(GETURL: URL) {
         return fetch(GETURL)
                 .then((response) => this.apiResponseErrorCheck(response))
-                .then((data) => data)
-                .catch(e => {
-                        console.error(e)}
-                    );
-    }
+                .then((data) => {
+                    if (data instanceof Response){
+                        return data.text();
+                    }
+                    else return data;
+                })
+                .catch((e: any) => {
+                        console.log(e);
+                        this.errorElem.classList.add("error");
+                        this.errorElem.innerText = `${e.message}`;
+                });
+        }
     public async apiGET(GETURL: URL) {
         if (this.sendToBrowserCache){
             let dataCachePromise = new Promise((resolve, reject)=> {

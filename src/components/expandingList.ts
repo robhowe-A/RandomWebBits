@@ -9,12 +9,12 @@ export class ExpandingList extends HTMLUListElement {
     constructor() {
         // Always call super first in constructor
         // Return value from super() is a reference to this element
-        self = super();
+        super();
 
         // Get ul and li elements that are a child of this custom ul element
         // li elements can be containers if they have uls within them
-        const uls = Array.from(self.querySelectorAll('ul'));
-        const lis = Array.from(self.querySelectorAll('li'));
+        const uls = this.querySelectorAll('ul');
+        const lis = this.querySelectorAll('li');
 
         // Hide all child uls
         // These lists will be shown when the user clicks a higher level container
@@ -40,7 +40,24 @@ export class ExpandingList extends HTMLUListElement {
                 newSpan.style.cursor = 'pointer';
 
                 // Add click handler to this span
-                newSpan.onclick = self.showul;
+                newSpan.onclick = this.showul;
+                newSpan.addEventListener('keydown', (event) => {
+                    if (event.code == 'NumpadEnter' || event.code == 'Enter'){
+                            // next sibling to the span should be the ul
+                            let nextul = newSpan.nextElementSibling as HTMLUListElement;
+                    
+                            // Toggle visible state and update class attribute on ul
+                            if (nextul.style.display == 'block') {
+                            nextul.style.display = 'none';
+                            let spanParent = nextul.parentNode as HTMLSpanElement;
+                            spanParent.setAttribute('class', 'ulistelem-closed')
+                            } else {
+                            nextul.style.display = 'block';
+                            let spanParent = nextul.parentNode as HTMLSpanElement;
+                            spanParent.setAttribute('class', 'ulistelem-open')
+                            }
+                    }
+                })
 
                 // Add the span and remove the bare text node from the li
                 childText.parentNode.insertBefore(newSpan, childText);
@@ -50,7 +67,7 @@ export class ExpandingList extends HTMLUListElement {
     }
 
     // li click handler
-    showul = function (e) {
+    showul = function (e: any) {
         // next sibling to the span should be the ul
         const nextul = e.target.nextElementSibling;
 

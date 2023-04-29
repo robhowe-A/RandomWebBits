@@ -21,14 +21,19 @@ const HEADERFOOTER = {
         init: () => {
             const pageMain = document.querySelector('main');
             let siteHeader: Element | null;
-            if (pageMain != null ){
+
+            // Add header element to the page
+            if (pageMain != null ){ 
+                
+                // if main element exists, add the header to it
                 siteHeader = pageMain.insertAdjacentElement('beforebegin', HEADERFOOTER.headerWidget.buildHeader( pageMain ));
                 if (siteHeader != null)
                     siteHeader.prepend(HEADERFOOTER.headerWidget.buildNavigation());
                 else
                     console.log("Check site header is not null before 'main' element.");
             }
-            else {
+            else { 
+                // if main element does not exist, add the header to the body
                 siteHeader = document.body.insertAdjacentElement('afterbegin', HEADERFOOTER.headerWidget.buildHeader( null ));
                 if (siteHeader != null)
                     siteHeader.prepend(HEADERFOOTER.headerWidget.buildNavigation());
@@ -51,22 +56,31 @@ const HEADERFOOTER = {
             return siteHeader;
         },
         buildNavigation: () => {
+            // Build the header navigation based on navigation data
+            // Create navigation elements
             const headerNavFrag = document.createDocumentFragment();
             const headerNav = headerNavFrag
                 .appendChild(document.createElement('nav'))
                 .appendChild(document.createElement('ul'));
 
+            // Append nav data to nav elements
             NAVITEMS.map((item) => {
                 const navListItems = document.createElement("li");
                 const navListLinks = document.createElement("a");
-                if (window.location.host == 'rhowell476.github.io') {
-                    navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
-                } else {
-                    navListLinks.setAttribute('href', `/${item.hReference}`);
-                }
-                navListLinks.textContent = `${item.innerText}`;
                 navListItems.prepend(navListLinks);
                 headerNav.append(navListItems);
+
+                // Add navigation attributes and property values
+                navListLinks.textContent = `${item.innerText}`;
+                // Environment links edit, requiring different link relatives to operate
+                // Github pages operates from repository, not '/'
+                if (window.location.host == 'rhowell476.github.io') {
+                    //link data edit for dev environment
+                    navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
+                } else {
+                    //link data in other environments
+                    navListLinks.setAttribute('href', `/${item.hReference}`);
+                }
             });
             return headerNavFrag;
         }
@@ -74,6 +88,7 @@ const HEADERFOOTER = {
 
     footerWidget: {
         init: () => {
+            // Add footer element to the page end
             let footer: HTMLElement = HEADERFOOTER.footerWidget.buildFooter();
             document.body.append(footer);
             footer.append(HEADERFOOTER.footerWidget.buildFaviconAttribution(footer));
@@ -81,20 +96,22 @@ const HEADERFOOTER = {
         buildFooter: () => {
             const siteFooter = document.createElement("footer");
             const footerPara = document.createElement("p");
-            footerPara.textContent = `\u00A9 2022 Random WebBits. All Rights Reserved.`;
             siteFooter.append(footerPara);
+            footerPara.textContent = `\u00A9 2022 Random WebBits. All Rights Reserved.`;
 
             return siteFooter;
         },
         buildFaviconAttribution: (footer: HTMLElement) => {
-            //Favicon designed by IconHome attribution
+            // Favicon attribution section + link to source
             const footerIconPara = document.createElement("p");
             const footerIconLink = document.createElement("a");
-            footerIconLink.href = 'https://www.vectorstock.com/royalty-free-vector/maintenance-icon-for-graphic-and-web-design-vector-45026755'
             footerIconLink.setAttribute('title', "IconHome: #45026755");
             footerIconLink.setAttribute('target', "_blank");
+            footerIconLink.href = 'https://www.vectorstock.com/royalty-free-vector/maintenance-icon-for-graphic-and-web-design-vector-45026755'
             footerIconLink.textContent = 'VectorStock.com';
             footerIconPara.textContent = `Favicon designed by IconHome at `;
+            
+            // Append attribution to footer para
             footerIconPara.appendChild(footerIconLink);
             footer.appendChild(footerIconPara);
 

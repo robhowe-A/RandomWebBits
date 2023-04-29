@@ -3,32 +3,38 @@ import { ExpandingList } from "./components/expandingList";
 
 const expandingList = {
     init:() => {
-        // Define the new element
+        // Define the expanding list element, for use within the page
         customElements.define('expanding-list', ExpandingList, { extends: 'ul' });
 
-        // Add title attribute to all li that can expand further
+        // "DOM" page specific properties
+        // Add a title attribute to all li-span that can expand further
         const expandableLiOpenOpen = document.querySelectorAll(`ul[is="expanding-list"] li span:first-child`);
         const expandableLiCloseSpan = document.querySelectorAll(`ul[is="expanding-list"] li span:nth-child(3)`);
 
-        for (let li of expandableLiOpenOpen){
-            li.setAttribute('title', 'Select to expand...');
-            li.addEventListener('click', (e) => {
+        // Set attributes and property values for expanding-element expandable elements
+        for (let span of expandableLiOpenOpen){
+            span.setAttribute('title', 'Select to expand...');
+            span.setAttribute('tabindex', '0');
+            // Add a click event listener to the 'DOM' items elements
+            // --->when clicked, change the title property to reflect open or closed status
+            span.addEventListener('click', (e) => {
                 e.preventDefault();
-                li.getAttribute('title') == 'Select to expand...' ? (() =>{
-                    li.setAttribute('title', 'Select to close...');
-                    if (li.nextElementSibling.nextElementSibling == null) return;
-                    li.nextElementSibling.nextElementSibling.setAttribute('title', 'Select opening element tag to close.');
-                })()
-                : (() => {
-                    li.setAttribute('title', 'Select to expand...' );
-                    if (li.nextElementSibling.nextElementSibling == null) return;
-                    li.nextElementSibling.nextElementSibling.setAttribute('title', 'Select opening element tag to expand.');
-                })();
+                span.getAttribute('title') == 'Select to expand...' 
+                    ? (() =>{
+                        span.setAttribute('title', 'Select to close...');
+                        if (span.nextElementSibling.nextElementSibling == null) return;
+                        span.nextElementSibling.nextElementSibling.setAttribute('title', 'Select opening element tag to close.');
+                    })()
+                    : (() => {
+                        span.setAttribute('title', 'Select to expand...' );
+                        if (span.nextElementSibling.nextElementSibling == null) return;
+                        span.nextElementSibling.nextElementSibling.setAttribute('title', 'Select opening element tag to expand.');
+                    })();
             })
-            li.setAttribute('tabindex', '0');
         }
-        for (let li of expandableLiCloseSpan){
-            li.setAttribute('title', 'Select opening element tag to expand.');
+        // Set property of closing span elements
+        for (let span of expandableLiCloseSpan){
+            span.setAttribute('title', 'Select opening element tag to expand.');
         }
     }
 }

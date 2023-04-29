@@ -5,18 +5,23 @@ import todosWidget from './components/todos';
 import HEADERFOOTER from './components/headerfooter';
 import expandingList from './expandingList'
 
+// entry point
 (() => {
+    // Event fired before assets are rendered to the page
     window.addEventListener("DOMContentLoaded", () => {
-        if ( //'Index' and 'Pages' route, add cards widget first
+
+        //'Index' and 'Pages' routes, add cards widget
+        if ( 
             window.location.pathname == '/RandomWebBits/index.html' ||
             window.location.pathname == '/index.html' ||
             window.location.pathname == '/' ||
             window.location.pathname == '' ||
             window.location.pathname == '/RandomWebBits/pages.html' ||
             window.location.pathname == '/pages.html') {
-            cardsWidget.init();
+            cardsWidget.init(); // cards widget initialization
         }
-        // Add the header and footer
+
+        // Add header and footer components
         HEADERFOOTER.headerWidget.init();
         HEADERFOOTER.footerWidget.init();
 
@@ -25,13 +30,15 @@ import expandingList from './expandingList'
         if ( 
             window.location.pathname == '/pages/dom.html'){
                 expandingList.init();
-            }
+        }
 
         // Add dictionary widget if that class is on a page
         const dictionaryElement = document.querySelector(".dictionaryWidget");
         if (dictionaryElement)
-            dictionaryWidget.init(dictionaryElement);
-            const toDosElement = document.querySelector(".ToDoList");
+        dictionaryWidget.init(dictionaryElement);
+
+        // Add ToDos widget if that class is on a page
+        const toDosElement = document.querySelector(".ToDoList");
         if (toDosElement != null)
             todosWidget.init(toDosElement);
     })

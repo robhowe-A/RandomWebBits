@@ -1,6 +1,6 @@
 //--Copyright (c) Robert A. Howell
 import cardsWidget from './components/WebBits'
-import DictionaryWidget from './components/dictionarywidget';
+import dictionaryWidget from './components/dictionarywidget';
 import todosWidget from './components/todos';
 import HEADERFOOTER from './components/headerfooter';
 import expandingListDOMWidget from './components/expandingListDOMWidget'
@@ -35,9 +35,7 @@ import expandingListDOMWidget from './components/expandingListDOMWidget'
         // Add dictionary widget if that class is on a page
         const dictionaryElement = document.querySelector(".dictionaryWidget");
         if (dictionaryElement) {
-            // Create the dictionary widget, call create
-            let dictionaryWidget = new DictionaryWidget();
-            dictionaryWidget.createDictionaryWidget(dictionaryElement);
+            dictionaryWidget.init(dictionaryElement);
         }
 
         // Add ToDos widget if that class is on a page

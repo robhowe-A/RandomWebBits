@@ -1,11 +1,28 @@
 //--Copyright (c) Robert A. Howell
+import { ToDoListElements } from "./widgetmarkupelements";
 import { localstoragetodocache } from "./localstoragecaches";
 
 class ToDoWidget {
     public static todosInLocalStorage: boolean = false;
     public static ToDOs: number = 0;
+    private static ToDoElements: ToDoListElements;
+
+    public static setToDoListElements(ToDoListElements: ToDoListElements) {
+        ToDoWidget.ToDoElements = ToDoListElements;
+    }
+
+    private getToDoListElements() {
+        let ToDoElements: ToDoListElements = {
+            todoTable: document.querySelector('#ToDO table'),
+            todoTableBody: document.getElementById('ToDoItems'),
+            addButton: document.getElementById('AddButton'),
+            addItemToEnter: document.querySelector('input[name="itemINPUT"]'),
+        }
+        return ToDoElements;
+    }
 
     public createToDoListWidget(elem: Element) {
+        
         // Insert the widget after the passed in "elem"
         // Dependent on the page, todo widget may have pre-existing markup in place
         // Switch against the current page to determine markup needed
@@ -52,15 +69,24 @@ class ToDoWidget {
                         // Create a sample to do item (it is not stored in cache)
                         this.createSampleTo_Do(tbody);
 
+                        // With the elements created, set the class list elements
+                        let listElements:ToDoListElements = this.getToDoListElements();
+                        ToDoWidget.setToDoListElements(listElements);
+
                         this.populateToDoList();
                         this.addToDoEventListeners();
+
 
                         break;
                     case '/RandomWebBits/pages/todos.html':
                     case '/pages/todos.html':
                         // Markup exists on the page already
+                        // With the elements created, set the class list elements
+                        let listElementsPages:ToDoListElements = this.getToDoListElements();
+                        ToDoWidget.setToDoListElements(listElementsPages);
+
                         // Create a sample to do item (it is not stored in cache)
-                        const htbody = document.querySelector("#ToDoItems");
+                        const htbody = ToDoWidget.ToDoElements.todoTableBody;
                         if (htbody != null) {
                             this.createSampleTo_Do(htbody);
                         }
@@ -92,6 +118,8 @@ class ToDoWidget {
         else {
             console.log(`There is no "ToDoList" class on this page.`)
         }
+
+        
     }
 
     private static isToDoInStorage() {
@@ -152,7 +180,7 @@ class ToDoWidget {
 
     private AddToDoRow(description: string, firstPaint: boolean) {
         //Create a table row with checkbox and delete options
-        const TABLEITEM = document.getElementById('ToDoItems'); //TODO: class element
+        const TABLEITEM = ToDoWidget.ToDoElements.todoTable;
         if (TABLEITEM != null) {
             const tableFrag = document.createDocumentFragment();
             const newRow = tableFrag.appendChild(document.createElement('tr')); //Add row
@@ -179,7 +207,7 @@ class ToDoWidget {
             TABLEITEM.appendChild(tableFrag);
 
             //add an event listener for when 'delete' is clicked
-            delBOX.addEventListener("click", () => { this.DeleteButton(delBOX); }); //TODO: event listener here?
+            delBOX.addEventListener("click", () => { this.DeleteButton(delBOX); });
 
             if (firstPaint) {
                 //add to list storage
@@ -213,8 +241,8 @@ class ToDoWidget {
     }
 
     private addToDoEventListeners() {
-        const ADDBUTTON = document.getElementById('AddButton');
-        const ADDITEMENTER: HTMLInputElement = document.querySelector('input[name="itemINPUT"]')!;
+        const ADDBUTTON = ToDoWidget.ToDoElements.addButton;
+        const ADDITEMENTER = ToDoWidget.ToDoElements.addItemToEnter;
         if (ADDBUTTON != null && ADDITEMENTER != null) {
             ADDBUTTON.addEventListener("click", () => {
                 this.AddToDoRow(ADDITEMENTER.value, true);
@@ -248,14 +276,14 @@ class ToDoWidget {
 
             let rowChkBx = <HTMLElement>box.parentNode.previousSibling.previousSibling;
             let rowChkBxIN = <HTMLInputElement>rowChkBx.childNodes[0];
-            const table = document.querySelector('table'); //TODO: class element
-            if (table != null) {
+            const todoTable: HTMLTableElement = ToDoWidget.ToDoElements.todoTable;
+            if (todoTable != null) {
                 let tr: HTMLTableRowElement = <HTMLTableRowElement>box.parentNode.parentNode;
                 let i = tr.rowIndex;
                 let value = box.parentNode.previousSibling.textContent;
                 if (rowChkBxIN.checked) {
                     //remove row since completed
-                    table.deleteRow(i);
+                    todoTable.deleteRow(i);
 
                     if (value != 'Add a ToDO Item.') {
                         ToDoWidget.ToDOs--;
@@ -266,7 +294,7 @@ class ToDoWidget {
                     console.log("Done.");
                 }
                 else {
-                    table.deleteRow(i);
+                    todoTable.deleteRow(i);
                     ToDoWidget.ToDOs--;
                 }
             }
@@ -311,12 +339,9 @@ class ToDoWidget {
     }
 }
 
-interface ToDo {
-    ToDoItem: string;
-}
-
 const todosWidget = {
     init: (elem: Element) => {
+
         // Create the to-do widget, call create
         const todoWidget = new ToDoWidget();
 

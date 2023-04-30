@@ -1,9 +1,9 @@
 //--Copyright (c) Robert A. Howell
 import { apiGET } from "./api";
-import { SchWordSchButtonDicElem } from './dictionarywidgetmarkup'
+import { DictionarySearchElements } from './widgetmarkupelements'
 import { localstoragewordcache } from "./localstoragecaches";
 
-export default class DictionaryWidget {
+class DictionaryWidget {
     private static isExistingCacheinBrowser: boolean;
     private static cachedWordsCount: number;
     private static existingCaches: string[];
@@ -41,7 +41,7 @@ export default class DictionaryWidget {
         }
     }
 
-    public addWordSearchEvents(searchElems: SchWordSchButtonDicElem | undefined) {
+    public addWordSearchEvents(searchElems: DictionarySearchElements | undefined) {
         if (searchElems == undefined) {
             console.log("A search element is undefined from searchWord | wordSearch");
             return;
@@ -161,7 +161,7 @@ export default class DictionaryWidget {
         }
     }
 
-    private fetchDictionaryTerm(word: string, wordUrl: URL, elem: SchWordSchButtonDicElem,
+    private fetchDictionaryTerm(word: string, wordUrl: URL, elem: DictionarySearchElements,
         sendToCache: boolean, cacheName: string) {
         //TODO: dictionary cache management:
         //TODO: 1.) is to be cached true? --check
@@ -224,8 +224,6 @@ export default class DictionaryWidget {
         wordFetchRequest();
     }
 
-
-
     private wordValidation(intxt: string) {
         let trimmed = intxt.trim();
         let lettersRE = new RegExp("^[A-Za-z]{1,45}$");
@@ -238,7 +236,7 @@ export default class DictionaryWidget {
         }
     }
 
-    private wordSearchUpdate(searchElems: SchWordSchButtonDicElem) {
+    private wordSearchUpdate(searchElems: DictionarySearchElements) {
         // Take user input and filter to an accepted string
         let acceptedInputWord: boolean = false;
         this.wordValidation(searchElems.searchWord.value)
@@ -267,7 +265,7 @@ export default class DictionaryWidget {
 }
 
 
-export class DictionaryWidgetMarkup extends DictionaryWidget {
+class DictionaryWidgetMarkup extends DictionaryWidget {
 
     public static createDictionaryWidgetMarkup(elem: Element) {
         //insert the widget after the passed in "elem"
@@ -281,7 +279,7 @@ export class DictionaryWidgetMarkup extends DictionaryWidget {
                     const previousWords = dictionary.appendChild(document.createElement("div"))
 
                     // Return the elements used in later functions
-                    let searchWords: SchWordSchButtonDicElem = {
+                    let searchWords: DictionarySearchElements = {
                         searchWord: searchForm.appendChild(document.createElement("input")),
                         wordSearch: searchForm.appendChild(document.createElement("button")),
                         dictionaryElem: <HTMLElement>dictionary,
@@ -326,7 +324,7 @@ export class DictionaryWidgetMarkup extends DictionaryWidget {
             console.log(`There is no "dictionaryWidget" class on this page.`)
         }
     }
-    public static createDictionaryTermWithMarkup(wordData: any, searchElems: SchWordSchButtonDicElem) {
+    public static createDictionaryTermWithMarkup(wordData: any, searchElems: DictionarySearchElements) {
         if (wordData == null || wordData! instanceof Object) {
             try {
                 throw new Error("The data is null")
@@ -380,3 +378,13 @@ export class DictionaryWidgetMarkup extends DictionaryWidget {
         DictionaryWidget.previousWordsBtnWasClicked = false;
     }
 }
+
+const dictionaryWidget = {
+    init: (elem: Element) => {
+       // Create the dictionary widget, call create
+       let dictionaryWidget = new DictionaryWidget();
+       dictionaryWidget.createDictionaryWidget(elem);
+    }
+};
+
+export default dictionaryWidget;

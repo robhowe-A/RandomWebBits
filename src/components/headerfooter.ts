@@ -1,3 +1,4 @@
+//--Copyright (c) Robert A. Howell
 import LinkDetails from './LinkDetails';
 
 //Header navigation links
@@ -23,18 +24,18 @@ const HEADERFOOTER = {
             let siteHeader: Element | null;
 
             // Add header element to the page
-            if (pageMain != null ){ 
-                
+            if (pageMain != null) {
+
                 // if main element exists, add the header to it
-                siteHeader = pageMain.insertAdjacentElement('beforebegin', HEADERFOOTER.headerWidget.buildHeader( pageMain ));
+                siteHeader = pageMain.insertAdjacentElement('beforebegin', HEADERFOOTER.headerWidget.buildHeader(pageMain));
                 if (siteHeader != null)
                     siteHeader.prepend(HEADERFOOTER.headerWidget.buildNavigation());
                 else
                     console.log("Check site header is not null before 'main' element.");
             }
-            else { 
+            else {
                 // if main element does not exist, add the header to the body
-                siteHeader = document.body.insertAdjacentElement('afterbegin', HEADERFOOTER.headerWidget.buildHeader( null ));
+                siteHeader = document.body.insertAdjacentElement('afterbegin', HEADERFOOTER.headerWidget.buildHeader(null));
                 if (siteHeader != null)
                     siteHeader.prepend(HEADERFOOTER.headerWidget.buildNavigation());
                 else
@@ -48,7 +49,7 @@ const HEADERFOOTER = {
             H1.setAttribute("id", "RandomWebBits");
             siteHeader.append(H1);
 
-            if (main != null){
+            if (main != null) {
                 main.prepend(siteHeader);
             }
             else
@@ -110,7 +111,7 @@ const HEADERFOOTER = {
             footerIconLink.href = 'https://www.vectorstock.com/royalty-free-vector/maintenance-icon-for-graphic-and-web-design-vector-45026755'
             footerIconLink.textContent = 'VectorStock.com';
             footerIconPara.textContent = `Favicon designed by IconHome at `;
-            
+
             // Append attribution to footer para
             footerIconPara.appendChild(footerIconLink);
             footer.appendChild(footerIconPara);

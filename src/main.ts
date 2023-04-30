@@ -1,9 +1,9 @@
 //--Copyright (c) Robert A. Howell
 import cardsWidget from './components/WebBits'
-import dictionaryWidget from './components/dictionary';
+import DictionaryWidget from './components/dictionarywidget';
 import todosWidget from './components/todos';
 import HEADERFOOTER from './components/headerfooter';
-import expandingList from './expandingList'
+import expandingListDOMWidget from './components/expandingListDOMWidget'
 
 // entry point
 (() => {
@@ -11,7 +11,7 @@ import expandingList from './expandingList'
     window.addEventListener("DOMContentLoaded", () => {
 
         //'Index' and 'Pages' routes, add cards widget
-        if ( 
+        if (
             window.location.pathname == '/RandomWebBits/index.html' ||
             window.location.pathname == '/index.html' ||
             window.location.pathname == '/' ||
@@ -27,15 +27,18 @@ import expandingList from './expandingList'
 
         // Initialize page components
         // dom.html page uses expandingLists component
-        if ( 
-            window.location.pathname == '/pages/dom.html'){
-                expandingList.init();
+        if (
+            window.location.pathname == '/pages/dom.html') {
+            expandingListDOMWidget.init();
         }
 
         // Add dictionary widget if that class is on a page
         const dictionaryElement = document.querySelector(".dictionaryWidget");
-        if (dictionaryElement)
-        dictionaryWidget.init(dictionaryElement);
+        if (dictionaryElement) {
+            // Create the dictionary widget, call create
+            let dictionaryWidget = new DictionaryWidget();
+            dictionaryWidget.createDictionaryWidget(dictionaryElement);
+        }
 
         // Add ToDos widget if that class is on a page
         const toDosElement = document.querySelector(".ToDoList");

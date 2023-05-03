@@ -32,7 +32,7 @@ import activeCard from './components/growingcard';
             expandingListDOMWidget.init();
         }
         if ( window.location.pathname == '/pages/webIDE.html'
-            || '/pages/webIDE'
+            || window.location.pathname == '/pages/webIDE'
         ) {
             activeCard.init();
         }

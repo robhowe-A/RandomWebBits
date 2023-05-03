@@ -174,6 +174,16 @@ const ArbitraryArticles = new Array(
         "img/tree.webp",
         "A tree icon"
     ),
+    new WebBit(
+        "webIDE",
+        24,
+        "webIDE",
+        "Try skipping the download with a web IDE",
+        new Date(2023, 5, 3),
+        "pages/webIDE.html",
+        "img/ux.webp",
+        "A computer application icon"
+    ),
 );
 const GuideShorts = new Array(
     new WebBit(

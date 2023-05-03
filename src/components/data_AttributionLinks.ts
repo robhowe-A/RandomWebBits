@@ -154,6 +154,14 @@ new AttributionLink(
     "Flaticon",
     "DOM",
     23
+    ),
+new AttributionLink(
+    "design icons",
+    "Design icons created by Freepik - Flaticon",
+    "https://www.flaticon.com/free-icons/design",
+    "Flaticon",
+    "webIDE",
+    24
     )
 ];
 

@@ -31,7 +31,9 @@ import activeCard from './components/growingcard';
         if ( window.location.pathname == '/pages/dom.html') {
             expandingListDOMWidget.init();
         }
-        if ( window.location.pathname =='/pages/webIDE.html') {
+        if ( window.location.pathname == '/pages/webIDE.html'
+            || '/pages/webIDE'
+        ) {
             activeCard.init();
         }
 

@@ -1,7 +1,7 @@
 //--Copyright (c) Robert A. Howell
 import AttributionLink from "./AttributionLink";
-import WEBBITDATA from "./data"
-import ATTRIBUTIONLINKDATA from "./data_AttributionLinks";
+import WEBBITDATA from "../lib/data"
+import ATTRIBUTIONLINKDATA from "../lib/data_AttributionLinks";
 
 const cardsWidget = {
     init: () => {

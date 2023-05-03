@@ -3,7 +3,8 @@ import cardsWidget from './components/WebBits'
 import dictionaryWidget from './components/dictionarywidget';
 import todosWidget from './components/todos';
 import HEADERFOOTER from './components/headerfooter';
-import expandingListDOMWidget from './components/expandingListDOMWidget'
+import expandingListDOMWidget from './components/expandingListDOMWidget';
+import activeCard from './components/growingcard';
 
 // entry point
 (() => {
@@ -27,9 +28,11 @@ import expandingListDOMWidget from './components/expandingListDOMWidget'
 
         // Initialize page components
         // dom.html page uses expandingLists component
-        if (
-            window.location.pathname == '/pages/dom.html') {
+        if ( window.location.pathname == '/pages/dom.html') {
             expandingListDOMWidget.init();
+        }
+        if ( window.location.pathname =='/pages/webIDE.html') {
+            activeCard.init();
         }
 
         // Add dictionary widget if that class is on a page

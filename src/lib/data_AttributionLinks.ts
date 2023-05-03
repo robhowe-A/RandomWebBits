@@ -1,5 +1,5 @@
 //--Copyright (c) Robert A. Howell
-import AttributionLink from "./AttributionLink";
+import AttributionLink from "../components/AttributionLink";
 
 let ATTRIBUTIONLINKDATA = [
 

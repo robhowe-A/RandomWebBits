@@ -562,13 +562,18 @@ button:focus {
   flex-direction: column;
   justify-content: space-between;
   width: 15em;
+  aspect-ratio: 1 / 1;
+  transition: 
+    width var(--transition_fast) ease-in, 
+    height var(--transition_fast) ease-in, 
+  ;
 }
 
 #webIDECards li a, #webIDECards li details {
   visibility: hidden;
 }
 
-#webIDECards li:hover {
+#webIDECards li:active {
   background-color: var(--clr-all-primary-800);
 }
 

@@ -1,5 +1,5 @@
 //--Copyright (c) Robert A. Howell
-import WebBit from "./WebBit"
+import WebBit from "../components/WebBit"
 
 // Create new AA (Arbitrary Article)
 

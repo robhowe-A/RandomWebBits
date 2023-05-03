@@ -1,0 +1,32 @@
+# Query: attributelink
+# ContextLines: 1
+
+10 results - 2 files
+
+dist/js/typescript.js:
+  191                      const backPara = cardBack.appendChild(document.createElement("p"));
+  192:                     const attributeLink = cardBody.appendChild(document.createElement("a")); //append to front panel
+  193                      // Add flip-panel data attributes and property values
+
+  198                      cardBack.classList.add("cardBack");
+  199:                     attributeLink.classList.add("attribute");
+  200                      backHeading.textContent = link.attributeowner;
+  201                      backPara.textContent = link.innerText;
+  202:                     attributeLink.href = link.hReference;
+  203:                     attributeLink.title = link.title;
+  204:                     attributeLink.textContent = link.attributeowner;
+  205                  }
+
+src/components/WebBits.ts:
+  157                      const backPara = cardBack.appendChild(document.createElement("p"));
+  158:                     const attributeLink = cardBody.appendChild(document.createElement("a")); //append to front panel
+  159                      
+
+  165                      cardBack.classList.add("cardBack");
+  166:                     attributeLink.classList.add("attribute");
+  167                      backHeading.textContent = link.attributeowner;
+  168                      backPara.textContent = link.innerText
+  169:                     attributeLink.href = link.hReference;
+  170:                     attributeLink.title = link.title;
+  171:                     attributeLink.textContent = link.attributeowner;
+  172                      

@@ -175,12 +175,12 @@ const ArbitraryArticles = new Array(
         "A tree icon"
     ),
     new WebBit(
-        "webIDE",
+        "webide",
         24,
-        "webIDE",
+        "webide",
         "Try skipping the download with a web IDE",
         new Date(2023, 5, 3),
-        "pages/webIDE.html",
+        "pages/webides.html",
         "img/ux.webp",
         "A computer application icon"
     ),

@@ -160,7 +160,7 @@ new AttributionLink(
     "Design icons created by Freepik - Flaticon",
     "https://www.flaticon.com/free-icons/design",
     "Flaticon",
-    "webIDE",
+    "webides",
     24
     )
 ];

@@ -169,4 +169,5 @@
 1.3.45: Added DictionaryAPI 404 result  
 1.3.46: Dictionary: local storage caches  
 1.3.47: New WebBits page: DOM  
+1.3.48: New WebBits page: webIDE  
 </details>

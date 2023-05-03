@@ -1,4 +1,4 @@
-
+//--Copyright (c) Robert A. Howell
 class GrowingCard extends HTMLLIElement {
     private isGrown: boolean = false;
     // private static hasLink;

@@ -3,7 +3,7 @@
   Cache-Control: no-cache
   Content-Security-Policy: script-src 'self' 'unsafe-inline' kit.fontawesome.com  https://www.googletagmanager.com; frame-ancestors 'self'
   Content-Type: text/html; charset=utf-8
-  Permissions-Policy: microphone=(), geolocation=()
+  Permissions-Policy: microphone=(), camera=(), geolocation=()
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
 #index page
@@ -11,7 +11,7 @@
   Cache-Control: no-cache
   Content-Security-Policy: script-src 'self' 'unsafe-inline' kit.fontawesome.com  https://www.googletagmanager.com; frame-ancestors 'self'
   Content-Type: text/html; charset=utf-8
-  Permissions-Policy: microphone=(), geolocation=()
+  Permissions-Policy: microphone=(), camera=(), geolocation=()
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
 #pages page
@@ -19,7 +19,7 @@
   Cache-Control: no-cache
   Content-Security-Policy: script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; frame-ancestors 'self'
   Content-Type: text/html; charset=utf-8
-  Permissions-Policy: microphone=(), geolocation=()
+  Permissions-Policy: microphone=(), camera=(), geolocation=()
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
 #all pages
@@ -27,7 +27,7 @@
   Cache-Control: no-cache
   Content-Security-Policy: script-src 'self' 'unsafe-inline' cdn.jsdelivr.net kit.fontawesome.com https://www.googletagmanager.com; frame-ancestors 'self'
   Content-Type: text/html; charset=utf-8
-  Permissions-Policy: microphone=(), geolocation=()
+  Permissions-Policy: microphone=(), camera=(), geolocation=()
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
 #all guides
@@ -35,7 +35,7 @@
   Cache-Control: no-cache
   Content-Security-Policy: script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; frame-ancestors 'self'
   Content-Type: text/html; charset=utf-8
-  Permissions-Policy: microphone=(), geolocation=()
+  Permissions-Policy: microphone=(), camera=(), geolocation=()
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
 #all explore
@@ -43,7 +43,7 @@
   Cache-Control: no-cache
   Content-Security-Policy: script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; frame-ancestors 'self'
   Content-Type: text/html; charset=utf-8
-  Permissions-Policy: microphone=(), geolocation=()
+  Permissions-Policy: microphone=(), camera=(), geolocation=()
   Referrer-Policy: no-referrer
   X-Content-Type-Options: nosniff
 #images
@@ -175,4 +175,10 @@
 /img/Edge-Inspect_inspected-page.png
   Content-Type: image/png;
 /img/tool-box2.webp
+  Content-Type: image/webp;
+/img/tree.webp
+  Content-Type: image/webp;
+/img/search-engine.webp
+  Content-Type: image/webp;
+/img/ux.webp
   Content-Type: image/webp;

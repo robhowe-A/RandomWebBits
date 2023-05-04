@@ -291,7 +291,6 @@ class ToDoWidget {
                         //delete associated storage item
                         this.removetoDoFromStorage(value);
                     }
-                    console.log("Done.");
                 }
                 else {
                     todoTable.deleteRow(i);

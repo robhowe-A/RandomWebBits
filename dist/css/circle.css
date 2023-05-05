@@ -1,28 +1,17 @@
 /*--Copyright (c) Robert A. Howell*/
-.circle {
-  width: auto;
-  aspect-ratio: 1 / 1;
-  max-width: 500px;
-  position: relative;
-  margin: 1em auto 3em auto;
-  display: block;
-}
 
-.circle:after {
-  position: absolute;
-  /* background: conic-gradient(from 2.06% turn at 50% 30%, #ffff); */
-  background: conic-gradient(
-    #c8a98a 0% 25%,
-    #0360ad 25% 27.06%,
-    #16a0a0 27.06% 28.94%,
-    #c23b23 28.94% 29.45%,
-    #a73c46 29.45% 29.61%,
-    #a73c46 29.61% 29.67%,
-    #c8a98a 29.67% 100%
-  );
-  content: "";
-  width: 100%;
-  height: 100%;
+.pieContainer {
+  --PieChartHeight: 250px;
+  width: var(--PieChartHeight);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  position: relative;
+  --slice1Height: calc(var(--PieChartHeight)/2 * 1.13016); /* 275px + 35.794px = 310.794px @ 550px */
+  --slice2Height: calc(var(--slice1Height) * 1.10500); /* 310.794x + 32.636px =  343.430px  @ 550px*/
+  --slice3Height: calc(var(--slice2Height) * 1.02566); /* 343.430 + 8.815px= 352.245px  @ 550px*/
+  --slice4Height: calc(var(--slice3Height) * 1.007847); /* 352.245 + 2.7645px = 355.009px  @ 550px*/
+  --slice5Height: calc(var(--slice4Height) * 1.002918); /* 355.009 + 1.0365px = 356.045px  @ 550px*/
+  box-shadow: 0px 5px 15px -10px black;
   border-radius: 100%;
 }
 
@@ -35,67 +24,176 @@
   transform: translateX(-50%) translateY(-50%);
   left: 50%;
   top: 50%;
-  z-index: 1;
+  z-index: 11;
+  box-shadow: inset 0px 5px 15px -10px black;
 }
 
-.dot1::after {
+#pieRemainder .pieProportion {
+  transition: all 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  z-index: -1;
+}
+
+#pieRemainder {
+  transition: all 1s;
+  background-color: #c8a98a; 
+  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 50% 50%, 100% var(--slice5Height), 100% 100%, 0% 100%);
+  z-index: 10;
+}
+
+#pieRemainder:hover {
+  background-color: teal;
+}
+
+#slice1 .pieProportion {
+  transition: all 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  clip-path: polygon(50% 50%, 100% 50%, 100% var(--slice1Height) ); /* 2.06% || 71.588px height*/
+  background-color: #0360ad;
+  z-index: 5;
+}
+
+#slice1 .pieProportion:hover {
+  background-color: teal;
+}
+
+#slice2 .pieProportion {
+  transition: all 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  clip-path: polygon(50% 50%, 100% var(--slice1Height), 100% var(--slice2Height) );/* 1.88% || 65.272 */
+  background-color: #16a0a0;
+  z-index: 4;
+}
+
+#slice2 .pieProportion:hover {
+  background-color: teal;
+}
+
+#slice3 .pieProportion {
+  transition: all 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  clip-path: polygon(50% 50%, 100% var(--slice2Height), 100% var(--slice3Height)); /* 0.51% || 17.63 */
+  background-color: #fc9f52;
+  z-index: 3;
+}
+
+#slice3 .pieProportion:hover {
+  background-color: teal;
+}
+
+#slice4 .pieProportion {
+  transition: all 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  clip-path: polygon(50% 50%, 100% var(--slice3Height), 100% var(--slice4Height)); /* 0.16% || 5.529 */
+  background-color: #c23b23;
+  z-index: 2;
+}
+
+#slice4 .pieProportion:hover {
+  background-color: teal;
+}
+
+#slice5 .pieProportion {
+  transition: all 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  clip-path: polygon(50% 50%, 100% var(--slice4Height), 100% var(--slice5Height)); /* 0.06% || 2.073 */
+  background-color: #34a853;
+}
+
+#slice5 .pieProportion:hover {
+  background-color: teal;
+}
+
+.slice {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+
+
+.directDot::after {
   position: absolute;
   content: "";
   background-color: #c8a98a;
   width: 15px;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
-  left: calc(1.5em - 7.5px);
+  left: calc(1.25em - 7.5px);
   top: calc(50% - 7.5px);
 }
-.dot2::after {
+
+.referralsDot::after {
   position: absolute;
   content: "";
   background-color: #0360ad;
   width: 15px;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
-  left: calc(1.5em - 7.5px);
+  left: calc(1.25em - 7.5px);
   top: calc(50% - 7.5px);
 }
-.dot3 {
+
+.socialDot {
   position: absolute;
   content: "";
   background-color: #16a0a0;
   width: 15px;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
-  left: calc(1.5em - 7.5px);
+  left: calc(1.25em - 7.5px);
   top: calc(50% - 7.5px);
 }
-.dot4 {
+
+.searchDot {
+  position: absolute;
+  content: "";
+  background-color: #fc9f52;
+  width: 15px;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  left: calc(1.25em - 7.5px);
+  top: calc(50% - 7.5px);
+}
+
+.emailDot {
   position: absolute;
   content: "";
   background-color: #c23b23;
   width: 15px;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
-  left: calc(1.5em - 7.5px);
+  left: calc(1.25em - 7.5px);
   top: calc(50% - 7.5px);
 }
-.dot5 {
+
+.displayadsDot {
   position: absolute;
   content: "";
-  background-color: #a73c46;
+  background-color: #34a853;
   width: 15px;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
-  left: calc(1.5em - 7.5px);
-  top: calc(50% - 7.5px);
-}
-.dot6 {
-  position: absolute;
-  content: "";
-  background-color: #a73c46;
-  width: 15px;
-  aspect-ratio: 1 / 1;
-  border-radius: 100%;
-  left: calc(1.5em - 7.5px);
+  left: calc(1.25em - 7.5px);
   top: calc(50% - 7.5px);
 }
 
@@ -109,7 +207,8 @@
 }
 
 #Google table {
-  margin: 0 auto;
+  margin: 2em auto 0 auto;
+  border-collapse: collapse;
 }
 
 #googlefig {
@@ -122,8 +221,35 @@
   padding-inline: 2em;
 }
 
+#google table,
+#google th,
+#google tr,
+#google td {
+  margin: 0 auto;
+  padding: .5em 1.8em;
+}
+
+#google th {
+  color: var(--clr-light-400);
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 350px) {
   #googlefig {
     background: none;
+  }
+}
+
+@media only screen and (min-width: 501px) {
+  .pieContainer {
+    --PieChartHeight: 450px;
+    width: var(--PieChartHeight);
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .pieContainer {
+    --PieChartHeight: 550px;
+    width: var(--PieChartHeight);
   }
 }

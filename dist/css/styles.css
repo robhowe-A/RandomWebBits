@@ -729,22 +729,6 @@ ul[is="expanding-list"], ul[is="expanding-list"] li {
     list-style: none;
 }
 
-
-#google table,
-#google th,
-#google tr,
-#google td {
-  margin: 0 auto;
-  border: 1px solid var(--clr-dark-700);
-  border-collapse: collapse;
-  padding: 0.5em;
-}
-
-#google th {
-  background: hsl(136, 53%, 43%);
-  color: var(--clr-light-600);
-}
-
 @media (prefers-color-scheme: dark) {
   #google tr,
   #google td {

@@ -91,7 +91,7 @@ const activeCard = {
         customElements.define('growing-card', GrowingCard, { extends: 'li' });
 
         document.body.addEventListener('click', (e) => {
-            if(e.target instanceof HTMLAnchorElement){
+            if(e.target instanceof HTMLAnchorElement || e.target instanceof HTMLDetailsElement){
                 return;
             }
             e.preventDefault();
@@ -105,7 +105,6 @@ const activeCard = {
                 let tempItem: GrowingCard = item;
                 if (e.target !== tempItem && !tempItem.contains(e.target as Node)){
                     GrowingCard.shrinkCard(tempItem);
-                    console.log("Clicked here");
                 }
             }
 

@@ -634,8 +634,8 @@ button:focus {
   align-items: baseline;
 }
 
-#webIDECards hgroup p {
-  margin: 0;
+#webIDECards hgroup > p {
+  margin: 0 !important;
 }
 
 #webIDECards hgroup span {
@@ -645,6 +645,10 @@ button:focus {
 
 #webIDECards li abbr {
   color: var(--clr-all-font-white);
+}
+
+#webIDECards li p {
+  margin-top: 2em;
 }
 
 .spanAlert {
@@ -1538,7 +1542,7 @@ button {
   background-color: var(--clr-Pink);
 }
 
-article img {
+article img, article svg {
   display: block;
   height: auto;
   margin: auto;

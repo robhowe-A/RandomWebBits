@@ -175,9 +175,9 @@ const ArbitraryArticles = new Array(
         "A tree icon"
     ),
     new WebBit(
-        "webide",
+        "WebIDE",
         24,
-        "webide",
+        "WebIDE",
         "Try skipping the download with a web IDE",
         new Date(2023, 5, 3),
         "pages/webides.html",

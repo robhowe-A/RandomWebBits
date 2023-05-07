@@ -1,12 +1,7 @@
 import ATTRIBUTIONLINKDATA from "../lib/data_AttributionLinks";
 import AttributionLink from "./AttributionLink";
 import WebBit from "./WebBit";
-
-interface RWBCardElements {
-    cardImg: HTMLImageElement;
-    cardImgTop: HTMLDivElement;
-    cardBody: HTMLDivElement;
-}
+import { RWBCardElements } from "./widgetmarkupelements"
 
 export default class RWBCard {
     public buildRWBCardMarkup(article: WebBit) {

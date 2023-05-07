@@ -14,3 +14,9 @@ export interface ToDoListElements {
     addButton: HTMLElement;
     addItemToEnter: HTMLInputElement;
 }
+
+export interface RWBCardElements {
+    cardImg: HTMLImageElement;
+    cardImgTop: HTMLDivElement;
+    cardBody: HTMLDivElement;
+}

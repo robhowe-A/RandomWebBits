@@ -171,4 +171,5 @@
 1.3.47: New WebBits page: DOM  
 1.3.48: New WebBits page: webIDE  
 1.3.49: New component: GrowingCard  
+1.3.50: RWBcards class addition  
 </details>

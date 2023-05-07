@@ -2,7 +2,7 @@
 import AttributionLink from "./AttributionLink";
 import WebBit from "./WebBit";
 import WEBBITDATA from "../lib/data"
-import RWBCard from "./RWBcards"
+import RWBCard from "./RWBcard"
 
 class RandomWebBits {
     public static buildCardContainingSection(name: string) {

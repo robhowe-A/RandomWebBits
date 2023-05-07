@@ -1,26 +1,26 @@
 //--Copyright (c) Robert A. Howell
-class GrowingCard extends HTMLLIElement {
+class GrowingCardElement extends HTMLLIElement {
     private isGrown: boolean = false;
     // private static hasLink;
     // private static hadDetails;
     // private static hasDescription;
-    
+
     constructor() {
         super();
         this.addEventListener('click', this.growCard);
     }
-    
-    public static shrinkCard = (li: GrowingCard) => { //TODO: check class property
-        if (li.style.scale){
+
+    public static shrinkCard = (li: GrowingCardElement) => { //TODO: check class property
+        if (li.style.scale) {
             li.style.scale = "1";
             li.style.zIndex = "1";
             li.setIsGrown(false);
         }
     }
 
-    public static shadeInactiveCard = (li: GrowingCard) => {
-        if(GrowingCard.getIsAtLeastOneBig()){
-            if(!li.getIsGrown()){
+    public static shadeInactiveCard = (li: GrowingCardElement) => {
+        if (GrowingCardElement.getIsAtLeastOneBig()) {
+            if (!li.getIsGrown()) {
                 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
                     li.style.opacity = ".5";
                 }
@@ -46,9 +46,9 @@ class GrowingCard extends HTMLLIElement {
             }
         }
     }
-    
+
     public static getIsAtLeastOneBig = () => {
-        let listLIs: GrowingCard[]  = Array.from(document.querySelectorAll(`#webIDECards li`));
+        let listLIs: GrowingCardElement[] = Array.from(document.querySelectorAll(`#webIDECards li`));
         let atLeastOneIsBig = listLIs.some((li) => li.getIsGrown() == true);
         return atLeastOneIsBig;
     }
@@ -56,11 +56,11 @@ class GrowingCard extends HTMLLIElement {
     public getIsGrown = () => {
         return this.isGrown;
     }
-    
+
     private setIsGrown = (truefalse: boolean) => {
         return this.isGrown = truefalse;
     }
-    
+
     private growCard = () => {
         this.style.scale = "1.2";
         this.style.zIndex = "2";
@@ -71,12 +71,12 @@ class GrowingCard extends HTMLLIElement {
         // If it's not the clicked element, shrink it.
         let listLIs = (document.querySelectorAll("#webIDECards li") as NodeListOf<HTMLElement>);
         for (let item of listLIs) {
-            if (item !== this){
-                GrowingCard.shrinkCard((item as GrowingCard));
-                GrowingCard.shadeInactiveCard((item as GrowingCard));
+            if (item !== this) {
+                GrowingCardElement.shrinkCard((item as GrowingCardElement));
+                GrowingCardElement.shadeInactiveCard((item as GrowingCardElement));
 
                 // set the scale property for each card
-                if (item.style.scale == ""){
+                if (item.style.scale == "") {
                     item.style.scale = "1";
                     item.style.zIndex = "1";
                 }
@@ -86,35 +86,35 @@ class GrowingCard extends HTMLLIElement {
 
 }
 
-const activeCard = {
+const ActiveCardsWidget = {
     init: () => {
-        customElements.define('growing-card', GrowingCard, { extends: 'li' });
+        customElements.define('growing-card', GrowingCardElement, { extends: 'li' });
 
         document.body.addEventListener('click', (e) => {
-            if(e.target instanceof HTMLAnchorElement || e.target instanceof HTMLDetailsElement){
+            if (e.target instanceof HTMLAnchorElement || e.target instanceof HTMLDetailsElement) {
                 return;
             }
             e.preventDefault();
-            
+
             // Array of list items (cards)
-            let listLIs: GrowingCard[]  = Array.from(document.querySelectorAll("#webIDECards li"));
+            let listLIs: GrowingCardElement[] = Array.from(document.querySelectorAll("#webIDECards li"));
 
             // Click event to resize the cards if clicking outside of a card
             // When clicking outside a card, resize all cards to normal
             for (let item of listLIs) {
-                let tempItem: GrowingCard = item;
-                if (e.target !== tempItem && !tempItem.contains(e.target as Node)){
-                    GrowingCard.shrinkCard(tempItem);
+                let tempItem: GrowingCardElement = item;
+                if (e.target !== tempItem && !tempItem.contains(e.target as Node)) {
+                    GrowingCardElement.shrinkCard(tempItem);
                 }
             }
 
             // Reshade all cards because none of them are big
-            for (let li of listLIs){
-                GrowingCard.shadeInactiveCard(li);
+            for (let li of listLIs) {
+                GrowingCardElement.shadeInactiveCard(li);
             }
 
         })
     }
 }
 
-export default activeCard;
+export default ActiveCardsWidget;

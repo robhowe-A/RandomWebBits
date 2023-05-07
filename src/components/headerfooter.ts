@@ -17,7 +17,7 @@ const pagesNavLink = new LinkDetails(
 )
 const NAVITEMS = [homeNavLink, pagesNavLink];
 
-const HEADERFOOTER = {
+const HeaderFooter = {
     headerWidget: {
         init: () => {
             const pageMain = document.querySelector('main');
@@ -27,17 +27,17 @@ const HEADERFOOTER = {
             if (pageMain != null) {
 
                 // if main element exists, add the header to it
-                siteHeader = pageMain.insertAdjacentElement('beforebegin', HEADERFOOTER.headerWidget.buildHeader(pageMain));
+                siteHeader = pageMain.insertAdjacentElement('beforebegin', HeaderFooter.headerWidget.buildHeader(pageMain));
                 if (siteHeader != null)
-                    siteHeader.prepend(HEADERFOOTER.headerWidget.buildNavigation());
+                    siteHeader.prepend(HeaderFooter.headerWidget.buildNavigation());
                 else
                     console.log("Check site header is not null before 'main' element.");
             }
             else {
                 // if main element does not exist, add the header to the body
-                siteHeader = document.body.insertAdjacentElement('afterbegin', HEADERFOOTER.headerWidget.buildHeader(null));
+                siteHeader = document.body.insertAdjacentElement('afterbegin', HeaderFooter.headerWidget.buildHeader(null));
                 if (siteHeader != null)
-                    siteHeader.prepend(HEADERFOOTER.headerWidget.buildNavigation());
+                    siteHeader.prepend(HeaderFooter.headerWidget.buildNavigation());
                 else
                     console.log("Check site header is not null after 'body' element.");
             }
@@ -83,6 +83,7 @@ const HEADERFOOTER = {
                     navListLinks.setAttribute('href', `/${item.hReference}`);
                 }
             });
+
             return headerNavFrag;
         }
     },
@@ -90,9 +91,9 @@ const HEADERFOOTER = {
     footerWidget: {
         init: () => {
             // Add footer element to the page end
-            let footer: HTMLElement = HEADERFOOTER.footerWidget.buildFooter();
+            let footer: HTMLElement = HeaderFooter.footerWidget.buildFooter();
             document.body.append(footer);
-            footer.append(HEADERFOOTER.footerWidget.buildFaviconAttribution(footer));
+            footer.append(HeaderFooter.footerWidget.buildFaviconAttribution(footer));
         },
         buildFooter: () => {
             const siteFooter = document.createElement("footer");
@@ -121,4 +122,4 @@ const HEADERFOOTER = {
     }
 }
 
-export default HEADERFOOTER;
+export default HeaderFooter;

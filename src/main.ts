@@ -1,10 +1,10 @@
 //--Copyright (c) Robert A. Howell
+import HeaderFooter from './components/headerfooter';
 import RWBCardsWidget from './components/WebBits'
+import ToDosWidget from './components/todos';
 import DictionaryWidget from './components/dictionarywidget';
-import todosWidget from './components/todos';
-import HEADERFOOTER from './components/headerfooter';
-import expandingListDOMWidget from './components/expandingListDOMWidget';
-import activeCard from './components/growingcard';
+import ExpandingListDOMWidget from './components/expandingListDOMWidget';
+import ActiveCardsWidget from './components/growingcard';
 
 // entry point
 (() => {
@@ -23,16 +23,16 @@ import activeCard from './components/growingcard';
         }
 
         // Add header and footer components
-        HEADERFOOTER.headerWidget.init();
-        HEADERFOOTER.footerWidget.init();
+        HeaderFooter.headerWidget.init();
+        HeaderFooter.footerWidget.init();
 
         // Initialize page components
         // dom.html page uses expandingLists component
         if (window.location.pathname == '/pages/dom.html') {
-            expandingListDOMWidget.init();
+            ExpandingListDOMWidget.init();
         }
         if (window.location.pathname == '/pages/webides.html') {
-            activeCard.init();
+            ActiveCardsWidget.init();
         }
 
         // Add dictionary widget if that class is on a page
@@ -44,7 +44,7 @@ import activeCard from './components/growingcard';
         // Add ToDos widget if that class is on a page
         const toDosElement = document.querySelector(".ToDoList");
         if (toDosElement != null)
-            todosWidget.init(toDosElement);
+            ToDosWidget.init(toDosElement);
     })
 
 })();

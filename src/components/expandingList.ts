@@ -5,7 +5,7 @@
 //Source distribution: https://github.com/mdn/web-components-examples/tree/main/expanding-list-web-component
 
 // Create a class for the element
-export class ExpandingList extends HTMLUListElement {
+export class ExpandingListElement extends HTMLUListElement {
     constructor() {
         // Always call super first in constructor
         // Return value from super() is a reference to this element
@@ -42,20 +42,20 @@ export class ExpandingList extends HTMLUListElement {
                 // Add click handler to this span
                 newSpan.onclick = this.showul;
                 newSpan.addEventListener('keydown', (event) => {
-                    if (event.code == 'NumpadEnter' || event.code == 'Enter'){
-                            // next sibling to the span should be the ul
-                            let nextul = newSpan.nextElementSibling as HTMLUListElement;
-                    
-                            // Toggle visible state and update class attribute on ul
-                            if (nextul.style.display == 'block') {
+                    if (event.code == 'NumpadEnter' || event.code == 'Enter') {
+                        // next sibling to the span should be the ul
+                        let nextul = newSpan.nextElementSibling as HTMLUListElement;
+
+                        // Toggle visible state and update class attribute on ul
+                        if (nextul.style.display == 'block') {
                             nextul.style.display = 'none';
                             let spanParent = nextul.parentNode as HTMLSpanElement;
                             spanParent.setAttribute('class', 'ulistelem-closed')
-                            } else {
+                        } else {
                             nextul.style.display = 'block';
                             let spanParent = nextul.parentNode as HTMLSpanElement;
                             spanParent.setAttribute('class', 'ulistelem-open')
-                            }
+                        }
                     }
                 })
 
@@ -73,11 +73,11 @@ export class ExpandingList extends HTMLUListElement {
 
         // Toggle visible state and update class attribute on ul
         if (nextul.style.display == 'block') {
-        nextul.style.display = 'none';
-        nextul.parentNode.setAttribute('class', 'ulistelem-closed');
+            nextul.style.display = 'none';
+            nextul.parentNode.setAttribute('class', 'ulistelem-closed');
         } else {
-        nextul.style.display = 'block';
-        nextul.parentNode.setAttribute('class', 'ulistelem-open');
+            nextul.style.display = 'block';
+            nextul.parentNode.setAttribute('class', 'ulistelem-open');
         }
     };
 }

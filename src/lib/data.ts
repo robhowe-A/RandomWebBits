@@ -232,7 +232,7 @@ const Explore = new Array(
         "nasa",
         3,
         "EXPLORE: NASA Pages",
-        "Check out some NASA links",
+        "Explore the NASA domain. Learn about the universe via NASA links",
         new Date(2022, 12, 18),
         "explore/nasa.html",
         "img/NASA.webp",

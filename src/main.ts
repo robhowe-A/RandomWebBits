@@ -1,5 +1,5 @@
 //--Copyright (c) Robert A. Howell
-import cardsWidget from './components/WebBits'
+import rwbCardsWidget from './components/WebBits'
 import dictionaryWidget from './components/dictionarywidget';
 import todosWidget from './components/todos';
 import HEADERFOOTER from './components/headerfooter';
@@ -19,7 +19,7 @@ import activeCard from './components/growingcard';
             window.location.pathname == '' ||
             window.location.pathname == '/RandomWebBits/pages.html' ||
             window.location.pathname == '/pages.html') {
-            cardsWidget.init(); // cards widget initialization
+            rwbCardsWidget.init(); // cards widget initialization
         }
 
         // Add header and footer components
@@ -28,10 +28,10 @@ import activeCard from './components/growingcard';
 
         // Initialize page components
         // dom.html page uses expandingLists component
-        if ( window.location.pathname == '/pages/dom.html') {
+        if (window.location.pathname == '/pages/dom.html') {
             expandingListDOMWidget.init();
         }
-        if ( window.location.pathname == '/pages/webides.html') {
+        if (window.location.pathname == '/pages/webides.html') {
             activeCard.init();
         }
 

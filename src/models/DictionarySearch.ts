@@ -1,9 +1,8 @@
-//--Copyright (c) Robert A. Howell
-import { apiGET } from "./api";
-import { DictionarySearchElements } from './widgetmarkupelements'
-import { localstoragewordcache } from "./localstoragecaches";
+import { apiGET } from "../models/API";
+import { DictionarySearchElements } from './WidgetMarkupElements'
+import { localstoragewordcache } from "./LocalStorageCaches";
 
-class DictionarySearch {
+export class DictionarySearch {
     private static isExistingCacheinBrowser: boolean;
     private static cachedWordsCount: number;
     private static existingCaches: string[];
@@ -18,15 +17,6 @@ class DictionarySearch {
         //new dictionary. no initializing functions needed
         //static class - needs to show on browser any caches that exist
         //and their names
-    }
-    public createDictionaryWidget(elem: Element) {
-        var Srchelements = DictionarySearchMarkup.createDictionaryWidgetMarkup(elem);
-
-        // Initialize event listeners: word search, button clicks, etc
-        this.addWordSearchEvents(Srchelements);
-
-        // Find items pre-existing in local storage/cache
-        DictionarySearch.getLocalStorageWordCaches();
     }
 
     public static getLocalStorageWordCaches() {
@@ -264,9 +254,7 @@ class DictionarySearch {
     }
 }
 
-
-class DictionarySearchMarkup extends DictionarySearch {
-
+export class DictionarySearchMarkup extends DictionarySearch {
     public static createDictionaryWidgetMarkup(elem: Element) {
         //insert the widget after the passed in "elem"
         if (elem !== undefined) {
@@ -378,13 +366,3 @@ class DictionarySearchMarkup extends DictionarySearch {
         DictionarySearch.previousWordsBtnWasClicked = false;
     }
 }
-
-const DictionaryWidget = {
-    init: (elem: Element) => {
-        // Create the dictionary widget, call create
-        let dictionaryWidget = new DictionarySearch();
-        dictionaryWidget.createDictionaryWidget(elem);
-    }
-};
-
-export default DictionaryWidget;

@@ -1,10 +1,10 @@
 //--Copyright (c) Robert A. Howell
-import HeaderFooter from './components/headerfooter';
+import HeaderFooter from './components/HeaderFooter';
 import RWBCardsWidget from './components/WebBits'
-import ToDosWidget from './components/todos';
-import DictionaryWidget from './components/dictionarywidget';
-import ExpandingListDOMWidget from './components/expandingListDOMWidget';
-import ActiveCardsWidget from './components/growingcard';
+import ToDosWidget from './components/ToDos';
+import DictionaryWidget from './components/DictionaryWidget';
+import ExpandingListDOMWidget from './components/ExpandingListDOMWidget';
+import ActiveCardsWidget from './components/GrowingCard';
 
 // entry point
 (() => {

@@ -1,7 +1,8 @@
+//--Copyright (c) Robert A. Howell
 import ATTRIBUTIONLINKDATA from "../lib/data_AttributionLinks";
-import AttributionLink from "./AttributionLink";
-import WebBit from "./WebBit";
-import { RWBCardElements } from "./widgetmarkupelements"
+import AttributionLink from "../models/AttributionLink";
+import WebBit from "../models/WebBit";
+import { RWBCardElements } from "../models/WidgetMarkupElements"
 
 export default class RWBCard {
     public buildRWBCardMarkup(article: WebBit) {

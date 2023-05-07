@@ -5,7 +5,7 @@ import LinkDetails from "./LinkDetails";
 class AttributionLink extends LinkDetails {
     attributeowner: string;
     articleid: number;
-    
+
     constructor(
         title: string,
         innerText: string,
@@ -13,8 +13,8 @@ class AttributionLink extends LinkDetails {
         attributeowner: string,
         pageName: string,
         articleid: number
-        
-        ) {
+
+    ) {
         super(title, innerText, pageName, hReference);
         this.attributeowner = attributeowner;
         this.articleid = articleid;

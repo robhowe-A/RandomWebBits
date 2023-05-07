@@ -1,4 +1,5 @@
 //--Copyright (c) Robert A. Howell
+
 export interface DictionarySearchElements {
     searchWord: HTMLInputElement;
     wordSearch: HTMLButtonElement;

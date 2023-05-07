@@ -1,4 +1,5 @@
 //--Copyright (c) Robert A. Howell
+
 export interface localstoragewordcache {
     inCache: boolean,
     word: string,

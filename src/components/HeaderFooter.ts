@@ -1,5 +1,5 @@
 //--Copyright (c) Robert A. Howell
-import LinkDetails from './LinkDetails';
+import LinkDetails from '../models/LinkDetails';
 
 //Header navigation links
 const homeNavLink = new LinkDetails(

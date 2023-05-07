@@ -1,8 +1,7 @@
-//--Copyright (c) Robert A. Howell
-import { ToDoListElements } from "./widgetmarkupelements";
-import { localstoragetodocache } from "./localstoragecaches";
+import { ToDoListElements } from "./WidgetMarkupElements";
+import { localstoragetodocache } from "./LocalStorageCaches";
 
-class ToDoList {
+export class ToDoList {
     public static todosInLocalStorage: boolean = false;
     public static ToDOs: number = 0;
     private static ToDoElements: ToDoListElements;
@@ -337,16 +336,3 @@ class ToDoList {
         }
     }
 }
-
-const ToDosWidget = {
-    init: (elem: Element) => {
-
-        // Create the to-do widget, call create
-        const todoWidget = new ToDoList();
-
-        // Creates the markup needed and imports data from local storage, containing the todo items
-        todoWidget.createToDoListWidget(elem);
-    }
-};
-
-export default ToDosWidget;

@@ -1,4 +1,5 @@
 //--Copyright (c) Robert A. Howell
+
 class WebBit {
     id: string;
     articleNumber: number;

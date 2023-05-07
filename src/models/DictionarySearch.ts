@@ -9,9 +9,9 @@ export class DictionarySearch {
     private static requestUrl: string = "https://api.dictionaryapi.dev/api/v2/entries/en/";
     public static wordCaches: localstoragewordcache[];
     public static previousWordsBtnWasClicked: boolean = false;
-    public static previousWordsBtnIsCreated: boolean = false;
-    public static previousWordsNotFoundOnce: boolean = false;
-    public wordURL: URL;
+    private previousWordsBtnIsCreated: boolean = false;
+    private previousWordsNotFoundOnce: boolean = false;
+    private wordURL: URL;
 
     constructor() {
         //new dictionary. no initializing functions needed
@@ -29,6 +29,10 @@ export class DictionarySearch {
             DictionarySearch.wordCaches = JSON.parse(storageStr);
             return DictionarySearch.wordCaches;
         }
+    }
+
+    public getWordURL() {
+        return this.wordURL;
     }
 
     public addWordSearchEvents(searchElems: DictionarySearchElements | undefined) {
@@ -56,7 +60,7 @@ export class DictionarySearch {
             let buttonContainer = document.getElementById("dictionary-btns");
             let newButtonContainer: Element;
             if (DictionarySearch.previousWordsBtnWasClicked == false) {
-                if (DictionarySearch.previousWordsBtnIsCreated == false) {
+                if (this.previousWordsBtnIsCreated == false) {
                     newButtonContainer = placementlocationholder.insertAdjacentElement('afterend', document.createElement("div"));
                     newButtonContainer.id = "dictionary-btns";
                     //Check the placement location and word caches for undefined
@@ -71,15 +75,15 @@ export class DictionarySearch {
                                 event.preventDefault();
                                 this.fetchDictionaryTerm(wordCache.word, wordCache.wordURL, searchElems, false, "");
                             })
-                            DictionarySearch.previousWordsBtnIsCreated = true;
+                            this.previousWordsBtnIsCreated = true;
                         }
                     }
                     else {
-                        if (DictionarySearch.previousWordsNotFoundOnce == false) {
+                        if (this.previousWordsNotFoundOnce == false) {
                             const noWordsHeadingElem = newButtonContainer.appendChild(document.createElement("div"));
                             noWordsHeadingElem.classList.add("dictionary-btn", "error-notfound");
                             noWordsHeadingElem.textContent = "Previous words not found. The cache is empty.";
-                            DictionarySearch.previousWordsNotFoundOnce = true;
+                            this.previousWordsNotFoundOnce = true;
                             DictionarySearch.previousWordsBtnWasClicked = true;
                         }
                         else {
@@ -189,7 +193,8 @@ export class DictionarySearch {
                 }
             }
             if (data != undefined && !noDefinitions) { // good fetch--> move forward to markup render
-                DictionarySearchMarkup.createDictionaryTermWithMarkup(data, elem);
+                const dictionarysearchmarkup = new DictionarySearchMarkup()
+                dictionarysearchmarkup.createDictionaryTermWithMarkup(data, elem);
                 this.addDictionaryTermtoLocalStorage(wordFetch.getSendToBrowserCache(), wordcache, wordCacheStore);
             }
             else {
@@ -312,7 +317,7 @@ export class DictionarySearchMarkup extends DictionarySearch {
             console.log(`There is no "dictionaryWidget" class on this page.`)
         }
     }
-    public static createDictionaryTermWithMarkup(wordData: any, searchElems: DictionarySearchElements) {
+    public createDictionaryTermWithMarkup(wordData: any, searchElems: DictionarySearchElements) {
         if (wordData == null || wordData! instanceof Object) {
             try {
                 throw new Error("The data is null")

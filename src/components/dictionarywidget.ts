@@ -3,7 +3,7 @@ import { apiGET } from "./api";
 import { DictionarySearchElements } from './widgetmarkupelements'
 import { localstoragewordcache } from "./localstoragecaches";
 
-class DictionaryWidget {
+class DictionarySearch {
     private static isExistingCacheinBrowser: boolean;
     private static cachedWordsCount: number;
     private static existingCaches: string[];
@@ -20,13 +20,13 @@ class DictionaryWidget {
         //and their names
     }
     public createDictionaryWidget(elem: Element) {
-        var Srchelements = DictionaryWidgetMarkup.createDictionaryWidgetMarkup(elem);
+        var Srchelements = DictionarySearchMarkup.createDictionaryWidgetMarkup(elem);
 
         // Initialize event listeners: word search, button clicks, etc
         this.addWordSearchEvents(Srchelements);
 
         // Find items pre-existing in local storage/cache
-        DictionaryWidget.getLocalStorageWordCaches();
+        DictionarySearch.getLocalStorageWordCaches();
     }
 
     public static getLocalStorageWordCaches() {
@@ -36,8 +36,8 @@ class DictionaryWidget {
         //Enumerate local storage 'word-caches' items
         let storageStr = localStorage.getItem('word-caches');
         if (storageStr != null) {
-            DictionaryWidget.wordCaches = JSON.parse(storageStr);
-            return DictionaryWidget.wordCaches;
+            DictionarySearch.wordCaches = JSON.parse(storageStr);
+            return DictionarySearch.wordCaches;
         }
     }
 
@@ -65,13 +65,13 @@ class DictionaryWidget {
             const placementlocationholder = document.querySelector(".previousWords");
             let buttonContainer = document.getElementById("dictionary-btns");
             let newButtonContainer: Element;
-            if (DictionaryWidget.previousWordsBtnWasClicked == false) {
-                if (DictionaryWidget.previousWordsBtnIsCreated == false) {
+            if (DictionarySearch.previousWordsBtnWasClicked == false) {
+                if (DictionarySearch.previousWordsBtnIsCreated == false) {
                     newButtonContainer = placementlocationholder.insertAdjacentElement('afterend', document.createElement("div"));
                     newButtonContainer.id = "dictionary-btns";
                     //Check the placement location and word caches for undefined
-                    if (placementlocationholder != undefined && DictionaryWidget.wordCaches !== undefined) {
-                        for (let wordCache of DictionaryWidget.wordCaches) {
+                    if (placementlocationholder != undefined && DictionarySearch.wordCaches !== undefined) {
+                        for (let wordCache of DictionarySearch.wordCaches) {
                             const cacheWordHeadingElem = newButtonContainer.appendChild(document.createElement("button"));
                             cacheWordHeadingElem.setAttribute("type", "button");
                             cacheWordHeadingElem.classList.add("dictionary-btn", "dictionary-word-btn");
@@ -81,36 +81,36 @@ class DictionaryWidget {
                                 event.preventDefault();
                                 this.fetchDictionaryTerm(wordCache.word, wordCache.wordURL, searchElems, false, "");
                             })
-                            DictionaryWidget.previousWordsBtnIsCreated = true;
+                            DictionarySearch.previousWordsBtnIsCreated = true;
                         }
                     }
                     else {
-                        if (DictionaryWidget.previousWordsNotFoundOnce == false) {
+                        if (DictionarySearch.previousWordsNotFoundOnce == false) {
                             const noWordsHeadingElem = newButtonContainer.appendChild(document.createElement("div"));
                             noWordsHeadingElem.classList.add("dictionary-btn", "error-notfound");
                             noWordsHeadingElem.textContent = "Previous words not found. The cache is empty.";
-                            DictionaryWidget.previousWordsNotFoundOnce = true;
-                            DictionaryWidget.previousWordsBtnWasClicked = true;
+                            DictionarySearch.previousWordsNotFoundOnce = true;
+                            DictionarySearch.previousWordsBtnWasClicked = true;
                         }
                         else {
                             buttonContainer.style.display = "block";
-                            DictionaryWidget.previousWordsBtnWasClicked = true;
+                            DictionarySearch.previousWordsBtnWasClicked = true;
                             return;
                         }
                     }
                 }
                 else {
                     buttonContainer.style.display = "block";
-                    DictionaryWidget.previousWordsBtnWasClicked = true;
+                    DictionarySearch.previousWordsBtnWasClicked = true;
                     return;
                 }
             }
             else {
                 buttonContainer.style.display = "none";
-                DictionaryWidget.previousWordsBtnWasClicked = false;
+                DictionarySearch.previousWordsBtnWasClicked = false;
                 return;
             }
-            DictionaryWidget.previousWordsBtnWasClicked = true;
+            DictionarySearch.previousWordsBtnWasClicked = true;
         })
         searchElems.refreshBtn.addEventListener("click", (event) => {
             event.preventDefault();
@@ -199,7 +199,7 @@ class DictionaryWidget {
                 }
             }
             if (data != undefined && !noDefinitions) { // good fetch--> move forward to markup render
-                DictionaryWidgetMarkup.createDictionaryTermWithMarkup(data, elem);
+                DictionarySearchMarkup.createDictionaryTermWithMarkup(data, elem);
                 this.addDictionaryTermtoLocalStorage(wordFetch.getSendToBrowserCache(), wordcache, wordCacheStore);
             }
             else {
@@ -243,7 +243,7 @@ class DictionaryWidget {
             ? acceptedInputWord = true : acceptedInputWord = false;
         if (acceptedInputWord) {
             // Create a URL of the accepted word for use in the fetch call
-            this.wordURL = new URL(searchElems.searchWord.value.toString(), DictionaryWidget.requestUrl);
+            this.wordURL = new URL(searchElems.searchWord.value.toString(), DictionarySearch.requestUrl);
             this.fetchDictionaryTerm(searchElems.searchWord.value, this.wordURL, searchElems, false, "");
 
             // Remove unneeded classes if applied previously
@@ -265,7 +265,7 @@ class DictionaryWidget {
 }
 
 
-class DictionaryWidgetMarkup extends DictionaryWidget {
+class DictionarySearchMarkup extends DictionarySearch {
 
     public static createDictionaryWidgetMarkup(elem: Element) {
         //insert the widget after the passed in "elem"
@@ -375,16 +375,16 @@ class DictionaryWidgetMarkup extends DictionaryWidget {
         });
 
         definitionDescriptionContainer.appendChild(definitionDescription);
-        DictionaryWidget.previousWordsBtnWasClicked = false;
+        DictionarySearch.previousWordsBtnWasClicked = false;
     }
 }
 
-const dictionaryWidget = {
+const DictionaryWidget = {
     init: (elem: Element) => {
-       // Create the dictionary widget, call create
-       let dictionaryWidget = new DictionaryWidget();
-       dictionaryWidget.createDictionaryWidget(elem);
+        // Create the dictionary widget, call create
+        let dictionaryWidget = new DictionarySearch();
+        dictionaryWidget.createDictionaryWidget(elem);
     }
 };
 
-export default dictionaryWidget;
+export default DictionaryWidget;

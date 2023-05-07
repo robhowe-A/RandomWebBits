@@ -50,7 +50,7 @@ class RandomWebBits {
     }
 }
 
-const rwbCardsWidget = {
+const RWBCardsWidget = {
     init: () => {
         // Split the cards arrays into their respective category
         let cardsSection: HTMLDivElement[] = [
@@ -100,4 +100,4 @@ const rwbCardsWidget = {
     }
 }
 
-export default rwbCardsWidget
+export default RWBCardsWidget

@@ -1,6 +1,6 @@
 //--Copyright (c) Robert A. Howell
-import rwbCardsWidget from './components/WebBits'
-import dictionaryWidget from './components/dictionarywidget';
+import RWBCardsWidget from './components/WebBits'
+import DictionaryWidget from './components/dictionarywidget';
 import todosWidget from './components/todos';
 import HEADERFOOTER from './components/headerfooter';
 import expandingListDOMWidget from './components/expandingListDOMWidget';
@@ -19,7 +19,7 @@ import activeCard from './components/growingcard';
             window.location.pathname == '' ||
             window.location.pathname == '/RandomWebBits/pages.html' ||
             window.location.pathname == '/pages.html') {
-            rwbCardsWidget.init(); // cards widget initialization
+            RWBCardsWidget.init(); // cards widget initialization
         }
 
         // Add header and footer components
@@ -38,7 +38,7 @@ import activeCard from './components/growingcard';
         // Add dictionary widget if that class is on a page
         const dictionaryElement = document.querySelector(".dictionaryWidget");
         if (dictionaryElement) {
-            dictionaryWidget.init(dictionaryElement);
+            DictionaryWidget.init(dictionaryElement);
         }
 
         // Add ToDos widget if that class is on a page

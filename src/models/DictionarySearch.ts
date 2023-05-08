@@ -112,12 +112,15 @@ export class DictionarySearch {
         })
     }
 
-    private addDictionaryTermtoLocalStorage(sendToBrowserCache: boolean, wordcache: localstoragewordcache, wordArray: any[],) {
+    private addDictionaryTermtoLocalStorage(sendToBrowserCache: boolean, wordcache: localstoragewordcache) {
+        let wordCacheStore: any = [];
+        wordCacheStore.push(wordcache);
+
         // Add the cache item to Local Storage
         try {
             if (localStorage.getItem('word-caches') == null) {
                 // Local storage empty => add the word
-                localStorage.setItem('word-caches', JSON.stringify(wordArray));
+                localStorage.setItem('word-caches', JSON.stringify(wordCacheStore));
             }
             else {
                 // Add word to current 'word-caches' in local storage
@@ -167,14 +170,12 @@ export class DictionarySearch {
         //
         // The function calls to either store in Cache Storage
         // If items are to be cached, edit Local Storage cache names
-        let wordCacheStore: any = [];
         let wordcache: localstoragewordcache = {
             inCache: sendToCache,
             word: word,
             wordURL: wordUrl,
             cacheName: sendToCache ? cacheName : "",
         }
-        wordCacheStore.push(wordcache);
 
         const wordFetchRequest = async () => {
             //set apiGET::sendToBrowserCache to true to use cache storage
@@ -195,7 +196,7 @@ export class DictionarySearch {
             if (data != undefined && !noDefinitions) { // good fetch--> move forward to markup render
                 const dictionarysearchmarkup = new DictionarySearchMarkup()
                 dictionarysearchmarkup.createDictionaryTermWithMarkup(data, elem);
-                this.addDictionaryTermtoLocalStorage(wordFetch.getSendToBrowserCache(), wordcache, wordCacheStore);
+                this.addDictionaryTermtoLocalStorage(wordFetch.getSendToBrowserCache(), wordcache);
             }
             else {
                 if (navigator.onLine !== false) { // check network status via navigator object

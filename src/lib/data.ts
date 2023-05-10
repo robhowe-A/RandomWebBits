@@ -184,6 +184,16 @@ const ArbitraryArticles = new Array(
         "img/ux.webp",
         "A computer application icon"
     ),
+    new WebBit(
+        "SVG",
+        25,
+        "SVG",
+        "Find an SVG and learn about the SVG language",
+        new Date(2023, 5, 9),
+        "pages/svg.html",
+        "img/svg.svg",
+        "An svg icon example."
+    ),
 );
 const GuideShorts = new Array(
     new WebBit(

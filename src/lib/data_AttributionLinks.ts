@@ -170,6 +170,14 @@ let ATTRIBUTIONLINKDATA = [
         "Flaticon",
         "webides",
         24
+    ),
+    new AttributionLink(
+        "scalable vector graphics",
+        "SVG icon created by Harvey Rayner",
+        "http://www.w3.org/Graphics/SVG/",
+        "W3C",
+        "svg",
+        25
     )
 ];
 

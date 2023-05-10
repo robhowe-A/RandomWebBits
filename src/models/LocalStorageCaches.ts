@@ -1,6 +1,6 @@
 //--Copyright (c) Robert A. Howell
 
-export interface localstoragewordcache {
+export interface localstoragewordvalue {
     inCache: boolean,
     word: string,
     wordURL: URL,

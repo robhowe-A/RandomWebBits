@@ -51,6 +51,11 @@ const PageAcronyms = [
     page: "/pages/dom.html",
     htmlTitle: "dom",
     acronyms: ["DOM", "CSS", "HTML", "asset", "property", "attribute", "variable", "reference", "function", "root"]
+  },
+  {
+    page: "/pages/svg.html",
+    htmlTitle: "svg",
+    acronyms: ["XML", "XHTML", "RDF", "ISO", "DCMES", "CC License"]
   }
 ]
 

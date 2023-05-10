@@ -8,6 +8,7 @@ import ActiveCardsWidget from './components/GrowingCard';
 
 // entry point
 (() => {
+    //let t1 = performance.now();
     // Event fired before assets are rendered to the page
     window.addEventListener("DOMContentLoaded", () => {
 
@@ -28,7 +29,8 @@ import ActiveCardsWidget from './components/GrowingCard';
 
         // Initialize page components
         // dom.html page uses expandingLists component
-        if (window.location.pathname == '/pages/dom.html') {
+        if (window.location.pathname == '/pages/dom.html'||
+            window.location.pathname == '/pages/svg.html') {
             ExpandingListDOMWidget.init();
         }
         if (window.location.pathname == '/pages/webides.html') {
@@ -45,6 +47,10 @@ import ActiveCardsWidget from './components/GrowingCard';
         const toDosElement = document.querySelector(".ToDoList");
         if (toDosElement != null)
             ToDosWidget.init(toDosElement);
+
+        // let t2 = performance.now();
+        // const totaltime = t2 - t1;
+        // console.log("the time is: ", totaltime);
     })
 
 })();

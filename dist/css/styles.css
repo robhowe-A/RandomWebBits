@@ -520,6 +520,14 @@ button:focus {
 }
 
 /************************* Page Styles *************************/
+#SVG-expanding-list span:hover {
+  color: var(--clr-Green);
+}
+
+#SVG-art {
+  pointer-events:visibleStroke;
+}
+
 @media (prefers-color-scheme: dark){
   #webIDE-B {
     background-color: var(--clr-all-primary-900);

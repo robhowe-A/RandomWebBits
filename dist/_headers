@@ -182,3 +182,5 @@
   Content-Type: image/webp;
 /img/ux.webp
   Content-Type: image/webp;
+/img/svg.svg
+  Content-Type: image/svg+xml;

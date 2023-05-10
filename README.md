@@ -172,4 +172,5 @@
 1.3.48: New WebBits page: webIDE  
 1.3.49: New component: GrowingCard  
 1.3.50: RWBcards class addition  
+1.3.51: New WebBits: SVG  
 </details>

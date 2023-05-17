@@ -14,8 +14,16 @@ const pagesNavLink = new LinkDetails(
     "Pages",
     "Pages",
     "pages.html"
-)
-const NAVITEMS = [homeNavLink, pagesNavLink];
+);
+
+const gameNavLink = new LinkDetails(
+    "Game",
+    "FlashCards",
+    "Game",
+    "flashcards.html"
+);
+
+const NAVITEMS = [homeNavLink, pagesNavLink, gameNavLink];
 
 const HeaderFooter = {
     headerWidget: {
@@ -82,6 +90,7 @@ const HeaderFooter = {
                     //link data in other environments
                     navListLinks.setAttribute('href', `/${item.hReference}`);
                 }
+                navListLinks.setAttribute("title", item.title);
             });
 
             return headerNavFrag;

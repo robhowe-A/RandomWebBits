@@ -5,6 +5,7 @@ import ToDosWidget from './components/ToDos';
 import DictionaryWidget from './components/DictionaryWidget';
 import ExpandingListDOMWidget from './components/ExpandingListDOMWidget';
 import ActiveCardsWidget from './components/GrowingCard';
+import flashcardgameWidget from './components/FlashcardGameWidget'
 
 // entry point
 (() => {
@@ -33,8 +34,15 @@ import ActiveCardsWidget from './components/GrowingCard';
             window.location.pathname == '/pages/svg.html') {
             ExpandingListDOMWidget.init();
         }
+
+        // Initialize webIDE widget
         if (window.location.pathname == '/pages/webides.html') {
             ActiveCardsWidget.init();
+        }
+
+        // Initialize webIDE page components
+        if (window.location.pathname == '/flashcards.html') {
+            flashcardgameWidget.init();
         }
 
         // Add dictionary widget if that class is on a page

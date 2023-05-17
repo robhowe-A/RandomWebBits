@@ -155,7 +155,7 @@
 1.2.38: New WebBits page: dns  
 1.2.39: New WebBits page: inspectpages  
 1.2.40: Abbr additions, CSS adjustments, and general updates  
-1.2.41: New WebBits page: google #1 website
+1.2.41: New WebBits page: google #1 website  
 
 </details>
 
@@ -173,4 +173,5 @@
 1.3.49: New component: GrowingCard  
 1.3.50: RWBcards class addition  
 1.3.51: New WebBits: SVG  
+1.3.52: New Page: flashcards.html  
 </details>

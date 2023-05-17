@@ -369,6 +369,11 @@ hgroup h3 {
   transform: rotateY(180deg);
 }
 
+.flip-card:hover .inner.vertical {
+  transform: rotateX(180deg);
+}
+
+
 .cardFront,
 .cardBack {
   position: absolute;
@@ -386,6 +391,11 @@ hgroup h3 {
   background-color: transparent;
   transform: rotateY(180deg);
 }
+
+.cardBack.vertical {
+  transform: rotateX(180deg);
+}
+
 
 .cardBody {
   position: relative;

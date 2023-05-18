@@ -1,25 +1,34 @@
 import { ToDoListElements } from "./WidgetMarkupElements";
 import { localstoragetodocache } from "./LocalStorageCaches";
 
+/**
+ * A ToDoList is an HTML widget to store To-Dos in the browser. Instantiate the
+ *  ToDoList constructor to create widget markup and functionality. To-Dos are
+ *  stored in the browser's local storage and read and rendered when the page loads.
+ * 
+ * To create a ToDoList, an element on the page must have '.ToDoList' class. Call the
+ *  class constructor, passing in that element to create the widget.
+ *
+ *       const todoWidget = new ToDoList();
+ *       todoWidget.createToDoListWidget(elem);
+ * 
+ * Then, the widget is created and To-Dos are retrieved from storage.
+ */
 export class ToDoList {
     public static todosInLocalStorage: boolean = false;
     public static ToDOs: number = 0;
     private static ToDoElements: ToDoListElements;
+    private listElements: ToDoListElements;
 
     public static setToDoListElements(ToDoListElements: ToDoListElements) {
         ToDoList.ToDoElements = ToDoListElements;
     }
 
-    private getToDoListElements() {
-        let ToDoElements: ToDoListElements = {
-            todoTable: document.querySelector('#ToDO table'),
-            todoTableBody: document.getElementById('ToDoItems'),
-            addButton: document.getElementById('AddButton'),
-            addItemToEnter: document.querySelector('input[name="itemINPUT"]'),
-        }
-        return ToDoElements;
-    }
-
+    /**
+     * Random Web Bits uses multiple locations to apply the To-Do List widget. Create
+     *  the list markup, passing in a reference element for placement of the widget.
+     * @param elem - widget is placed after this reference element.
+     */
     public createToDoListWidget(elem: Element) {
 
         // Insert the widget after the passed in "elem"
@@ -33,6 +42,7 @@ export class ToDoList {
                     case '/index.html':
                     case '/':
                     case '/dist/index.html':
+                        // Markup does not exist on the page
                         // Create table elements needed for the todo list
                         const todolistSection = elem.insertAdjacentElement("afterend", document.createElement("section"));
                         const header = todolistSection.appendChild(document.createElement('h3'));
@@ -69,8 +79,8 @@ export class ToDoList {
                         this.createSampleTo_Do(tbody);
 
                         // With the elements created, set the class list elements
-                        let listElements: ToDoListElements = this.getToDoListElements();
-                        ToDoList.setToDoListElements(listElements);
+                        this.getToDoListElements();
+                        ToDoList.setToDoListElements(this.listElements);
 
                         this.populateToDoList();
                         this.addToDoEventListeners();
@@ -81,8 +91,8 @@ export class ToDoList {
                     case '/pages/todos.html':
                         // Markup exists on the page already
                         // With the elements created, set the class list elements
-                        let listElementsPages: ToDoListElements = this.getToDoListElements();
-                        ToDoList.setToDoListElements(listElementsPages);
+                        this.getToDoListElements();
+                        ToDoList.setToDoListElements(this.listElements);
 
                         // Create a sample to do item (it is not stored in cache)
                         const htbody = ToDoList.ToDoElements.todoTableBody;
@@ -117,10 +127,27 @@ export class ToDoList {
         else {
             console.log(`There is no "ToDoList" class on this page.`)
         }
-
-
     }
 
+    /**
+     * Gather necessary elements from the created widget.
+     * @returns ToDoElements: ToDoListElements
+     */
+    private getToDoListElements() {
+        // Gather necessary elements from the created widget
+        let ToDoElements: ToDoListElements = {
+            todoTable: document.querySelector('#ToDO table'),
+            todoTableBody: document.getElementById('ToDoItems'),
+            addButton: document.getElementById('AddButton'),
+            addItemToEnter: document.querySelector('input[name="itemINPUT"]'),
+        }
+        this.listElements = ToDoElements;
+    }
+
+    /**
+     * Checks for To-Do items previously in storage.
+     * @returns boolean true or false
+     */
     private static isToDoInStorage() {
         let todos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos'));
         if (todos == null) {
@@ -129,6 +156,11 @@ export class ToDoList {
         else return true
     }
 
+    /**
+     * Adds a To-Do string to Local Storage. The 'localstoragetodocache' interface
+     *  structures the data for later retrieval.
+     * @param description - User form input to add as a description.
+     */
     private addtoDoToStorage(description: string) {
 
         let ToDo: localstoragetodocache = {
@@ -137,6 +169,7 @@ export class ToDoList {
         }
         let ToDos: any = [];
         ToDos.push(ToDo);
+
         //add the ToDos to local cache
         let todos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos'));
         try {
@@ -154,6 +187,11 @@ export class ToDoList {
         }
     }
 
+    /**
+     * Removes a To-Do item from Local Storage. The requested To-Do to remove is
+     *  pulled individually from the key-value pair object.
+     * @param item - the To-Do item requested to remove
+     */
     private removetoDoFromStorage(item: string) {
         if (!ToDoList.isToDoInStorage()) {
             try {
@@ -177,6 +215,12 @@ export class ToDoList {
         }
     }
 
+    /**
+     * This function creates the necessary markup to add a row to the To-Do table.
+     *  A row consists of three columns: a complete tick-box, a description, and a delete button.
+     * @param description - User form input to add as a description.
+     * @param firstPaint - Boolean value used by adding list storage
+     */
     private AddToDoRow(description: string, firstPaint: boolean) {
         //Create a table row with checkbox and delete options
         const TABLEITEM = ToDoList.ToDoElements.todoTable;
@@ -228,6 +272,9 @@ export class ToDoList {
 
     }
 
+    /**
+     * Function called to create the To-Do item rows from To-Dos stored in the browser Local Storage.
+     */
     private populateToDoList() {
         //retrieve todo items in local storage and add each to the list
         let parsedToDos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos'));
@@ -239,6 +286,9 @@ export class ToDoList {
         }
     }
 
+    /**
+     * Adds button functionality: Delete, Add.
+     */
     private addToDoEventListeners() {
         const ADDBUTTON = ToDoList.ToDoElements.addButton;
         const ADDITEMENTER = ToDoList.ToDoElements.addItemToEnter;
@@ -269,6 +319,11 @@ export class ToDoList {
         }
     }
 
+    /**
+     * function determining the delete button. Items are deleted when pushed, but are
+     *  not removed from storage without 'Complete?' checkebox checked.
+     * @param box checkbox element
+     */
     private DeleteButton(box: HTMLInputElement) {
         if (box.parentNode != null && box.parentNode.previousSibling != null &&
             box.parentNode.previousSibling.previousSibling != null) {
@@ -311,6 +366,11 @@ export class ToDoList {
         }
     }
 
+    /**
+     * This function is called to seed the To-Do List when there are no Local Storage items
+     *  which would populate the list. The sample remains on page but is never stored in the browser.
+     * @param tbody table body element
+     */
     private createSampleTo_Do(tbody: Element) {
         if (!ToDoList.isToDoInStorage()) {
             // Create a sample entry in the ToDo table as a placeholder

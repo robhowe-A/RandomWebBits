@@ -1,15 +1,15 @@
 //--Copyright (c) Robert A. Howell
 import HeaderFooter from './components/HeaderFooter';
-import RWBCardsWidget from './components/WebBits'
+import RWBCardsWidget from './components/WebBits';
 import ToDosWidget from './components/ToDos';
 import DictionaryWidget from './components/DictionaryWidget';
 import ExpandingListDOMWidget from './components/ExpandingListDOMWidget';
 import ActiveCardsWidget from './components/GrowingCard';
-import flashcardgameWidget from './components/FlashcardGameWidget'
+import flashcardgameWidget from './components/FlashcardGameWidget';
 
 // entry point
 (() => {
-    //let t1 = performance.now();
+    //PERF: let t1 = performance.now();
     // Event fired before assets are rendered to the page
     window.addEventListener("DOMContentLoaded", () => {
 
@@ -30,7 +30,7 @@ import flashcardgameWidget from './components/FlashcardGameWidget'
 
         // Initialize page components
         // dom.html page uses expandingLists component
-        if (window.location.pathname == '/pages/dom.html'||
+        if (window.location.pathname == '/pages/dom.html' ||
             window.location.pathname == '/pages/svg.html') {
             ExpandingListDOMWidget.init();
         }
@@ -56,9 +56,9 @@ import flashcardgameWidget from './components/FlashcardGameWidget'
         if (toDosElement != null)
             ToDosWidget.init(toDosElement);
 
-        // let t2 = performance.now();
-        // const totaltime = t2 - t1;
-        // console.log("the time is: ", totaltime);
+        //PERF: let t2 = performance.now();
+        //PERF: const totaltime = t2 - t1;
+        //PERF: console.log("the time is: ", totaltime);
     })
 
 })();

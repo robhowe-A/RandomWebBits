@@ -1,5 +1,8 @@
 //--Copyright (c) Robert A. Howell
 
+/**
+ * Interface used for DictionarySearch Elements functionality.
+ */
 export interface DictionarySearchElements {
     searchWord: HTMLInputElement;
     wordSearch: HTMLButtonElement;
@@ -9,6 +12,9 @@ export interface DictionarySearchElements {
     refreshBtn: HTMLButtonElement;
 }
 
+/**
+ * Interface used for To-Do List elements functionality.
+ */
 export interface ToDoListElements {
     todoTable: HTMLTableElement,
     todoTableBody: HTMLElement;
@@ -16,6 +22,9 @@ export interface ToDoListElements {
     addItemToEnter: HTMLInputElement;
 }
 
+/**
+ * Interface used for RWB Card elements functionality.
+ */
 export interface RWBCardElements {
     cardImg: HTMLImageElement;
     cardImgTop: HTMLDivElement;

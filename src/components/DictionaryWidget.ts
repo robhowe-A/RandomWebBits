@@ -6,7 +6,8 @@ import { DictionarySearch } from "../models/DictionarySearch"
  */
 const DictionaryWidget = {
     /**
-     * Create a dictionary search widget by calling the constructor.
+     * This initialization function creates a dictionary search widget by calling the
+     *  constructor.
      * @param elem - Element containing 'dictionaryWidget' class
      */
     init: (elem: Element) => {

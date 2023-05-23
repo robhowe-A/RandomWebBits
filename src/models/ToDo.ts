@@ -1,3 +1,4 @@
+//--Copyright (c) 2023 Robert A. Howell
 import { ToDoListElements } from "./WidgetMarkupElements";
 import { localstoragetodocache } from "./LocalStorageCaches";
 

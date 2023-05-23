@@ -1,4 +1,4 @@
-//--Copyright (c) Robert A. Howell
+//--Copyright (c) 2023 Robert A. Howell
 import WebBit from "../models/WebBit"
 
 // Create new AA (Arbitrary Article)
@@ -193,6 +193,16 @@ const ArbitraryArticles = new Array(
         "pages/svg.html",
         "img/svg.svg",
         "An svg icon example."
+    ),
+    new WebBit(
+        "JavaScript",
+        26,
+        "JavaScript",
+        "Disable the JavaScript to test website function",
+        new Date(2023, 5, 22),
+        "pages/javascript.html",
+        "img/software-application.webp",
+        "A javascript function icon."
     ),
 );
 const GuideShorts = new Array(

@@ -1,5 +1,4 @@
-//--Copyright (c) Robert A. Howell
-//--Copyright (c) Robert A. Howell
+//--Copyright (c) 2023 Robert A. Howell
 import WEBBITDATA from "../lib/data"
 import { RandomWebBits } from "../models/RandomWebBits"
 

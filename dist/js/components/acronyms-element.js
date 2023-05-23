@@ -1,4 +1,4 @@
-//--Copyright (c) Robert A. Howell
+//--Copyright (c) 2023 Robert A. Howell
 import { LitElement, css, html } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 
 const PageAcronyms = [
@@ -56,6 +56,11 @@ const PageAcronyms = [
     page: "/pages/svg.html",
     htmlTitle: "svg",
     acronyms: ["XML", "XHTML", "RDF", "ISO", "DCMES", "CC License"]
+  },
+  {
+    page: "/pages/javascript.html",
+    htmlTitle: "javascript",
+    acronyms: ["Defer", "Synchronous", "ES", "GUI", "JSON", "AJAX", "IIFE", "IDE", "DOM"]
   }
 ]
 

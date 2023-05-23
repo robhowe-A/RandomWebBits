@@ -1,4 +1,4 @@
-//--Copyright (c) Robert A. Howell
+//--Copyright (c) 2023 Robert A. Howell
 
 /**
  * apiGET is for fetch requests. Use an apiGET object to manipulate the fetch

@@ -1,4 +1,4 @@
-//--Copyright (c) Robert A. Howell
+//--Copyright (c) 2023 Robert A. Howell
 
 /**
  * Interface used for Local Storage key-value dictionary words

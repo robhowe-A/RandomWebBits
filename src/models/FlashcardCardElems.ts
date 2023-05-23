@@ -1,5 +1,4 @@
-//--Copyright (c) Robert A. Howell
-
+//--Copyright (c) 2023 Robert A. Howell
 
 // This object creates an array of divs from input port number information
 export default class FlashcardCardElems {

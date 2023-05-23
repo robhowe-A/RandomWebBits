@@ -1,4 +1,4 @@
-//--Copyright (c) Robert A. Howell
+//--Copyright (c) 2023 Robert A. Howell
 import AttributionLink from "../models/AttributionLink";
 
 let ATTRIBUTIONLINKDATA = [
@@ -178,6 +178,14 @@ let ATTRIBUTIONLINKDATA = [
         "W3C",
         "svg",
         25
+    ),
+    new AttributionLink(
+        "web coding icons",
+        "Web coding icons created by Muhammad Atif - Flaticon",
+        "https://www.flaticon.com/free-icons/web-coding",
+        "Flaticon",
+        "JavaScript",
+        26
     )
 ];
 

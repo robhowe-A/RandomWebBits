@@ -1,4 +1,4 @@
-/*--Copyright (c) Robert A. Howell*/
+/*--Copyright (c) 2023 Robert A. Howell*/
 @media (prefers-color-scheme: light) {
   :root {
     --clr-light-100: #ffffff;
@@ -506,7 +506,8 @@ a.attribute:hover {
 a:focus,
 nav a:focus,
 input:focus,
-button:focus {
+button:focus,
+summary:focus-visible {
   border: none;
   outline: 3px solid var(--clr-Orange_Focus);
   outline-offset: 0.2em;
@@ -530,6 +531,15 @@ button:focus {
 }
 
 /************************* Page Styles *************************/
+#JavaScript summary {
+  font-weight: 600;
+  color: var(--clr-primary-600);
+}
+
+#JavaScript ol li::marker {
+  color: var(--clr-primary-600);
+}
+
 #SVG-expanding-list span:hover {
   color: var(--clr-Green);
 }

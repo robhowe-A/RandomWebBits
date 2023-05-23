@@ -1,4 +1,4 @@
-//--Copyright (c) Robert A. Howell
+//--Copyright (c) 2023 Robert A. Howell
 import { ExpandingListElement } from "../models/ExpandingList";
 
 const ExpandingListDOMWidget = {

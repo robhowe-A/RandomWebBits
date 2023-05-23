@@ -1,4 +1,4 @@
-//--Copyright (c) Robert A. Howell
+//--Copyright (c) 2023 Robert A. Howell
 import ATTRIBUTIONLINKDATA from "../lib/data_AttributionLinks";
 import AttributionLink from "../models/AttributionLink";
 import WebBit from "../models/WebBit";

@@ -45,7 +45,7 @@ const PageAcronyms = [
   {
     page: "/pages/dns.html",
     htmlTitle: "dns",
-    acronyms: ["DDNS", "DNSSEC", "GET", "POST", "nslookup", "QPS", "zone", "TTL"]
+    acronyms: ["DDNS", "DNSSEC", "A (addresS)", "CAA", "NS (name server)", "MX", "QPS"]
   },
   {
     page: "/pages/dom.html",

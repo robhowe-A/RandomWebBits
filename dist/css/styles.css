@@ -1750,6 +1750,18 @@ article iframe {
   }
 }
 
+@media (prefers-color-scheme: light) {
+  .examplePink a {
+    color: var(--clr-primary-600);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .examplePink a:hover {
+    color: var(--clr-dark-600);
+  }
+}
+
 .examplePink h4 {
   margin-bottom: 0;
 }

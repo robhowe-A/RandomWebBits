@@ -614,6 +614,10 @@ summary:focus-visible {
   text-align: left;
 }
 
+#Public_IP summary p {
+  text-align: left;
+}
+
 #JavaScript summary {
   font-weight: 600;
   color: var(--clr-primary-600);

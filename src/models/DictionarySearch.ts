@@ -117,8 +117,15 @@ export class DictionarySearch extends DictionarySearchWidget {
                 if (this.previousWordsBtnIsCreated == false) {
                     newButtonContainer = placementlocationholder.insertAdjacentElement('afterend', document.createElement("div"));
                     newButtonContainer.id = "dictionary-btns";
-                    //Check the placement location and word caches for undefined
-                    if (placementlocationholder != undefined && DictionarySearch.wordStorage !== undefined) {
+                    //Check the placement locator and word caches for undefined
+                    if (placementlocationholder != undefined 
+                        && (
+                            DictionarySearch.wordStorage !== undefined 
+                            && DictionarySearch.wordStorage.length !== 0 
+                            )
+                        ) {
+                        //Because the locator and the Local Storage values are viable, create the markup
+                        //needed to display those words. Add event listeners for widget functionality.
                         for (let wordCache of DictionarySearch.wordStorage) {
                             const wordHeadingElemContainer = newButtonContainer.appendChild(document.createElement("div"));
                             const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(document.createElement("button"));

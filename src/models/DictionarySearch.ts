@@ -23,6 +23,7 @@ export class DictionarySearch extends DictionarySearchWidget {
     private static isExistingCacheinBrowser: boolean;
     private static cachedWordsCount: number;
     private static existingCaches: string[];
+    private static CacheStorageNameofWordRequest: string = "RWB_word_fetch"
     private static requestUrl: string = "https://api.dictionaryapi.dev/api/v2/entries/en/";
     private previousWordsBtnIsCreated: boolean = false;
     private previousWordsBtnWasClicked: boolean = false;
@@ -105,8 +106,8 @@ export class DictionarySearch extends DictionarySearchWidget {
                 this.wordSearch(this.dictionarySearchMarkup, false, null);
             }
         })
-        // "Previous word searches" button fetches locally stored words
-        // Clicking the button displays each word in a list within the widget
+        //"Previous word searches" button fetches locally stored words
+        //Clicking the button displays each word in a list within the widget
         this.dictionarySearchMarkup.previousWordBtn.addEventListener("click", (event) => {
             event.preventDefault();
             const placementlocationholder = document.querySelector(".previousWords");
@@ -137,7 +138,6 @@ export class DictionarySearch extends DictionarySearchWidget {
                             //when hovered, display the delete button option
                             wordHeadingElemContainer.addEventListener("touchstart", (event) => {
                                 deleteCacheWordHeadingElem.style.display = "inline-block";
-                                console.log(event.target);
                                 //when not hovered, hide the delete button option
                                 wordHeadingElemContainer.addEventListener("mouseleave", (event) => {
                                     if(event.target == deleteCacheWordHeadingElem){
@@ -150,7 +150,6 @@ export class DictionarySearch extends DictionarySearchWidget {
                             //when hovered, display the delete button option
                             wordHeadingElemContainer.addEventListener("mouseover", (event) => {
                                 deleteCacheWordHeadingElem.style.display = "inline-block";
-                                console.log(event.target);
                                 //when not hovered, hide the delete button option
                                 wordHeadingElemContainer.addEventListener("mouseleave", (event) => {
                                     if(event.target == deleteCacheWordHeadingElem){
@@ -261,14 +260,14 @@ export class DictionarySearch extends DictionarySearchWidget {
      * @param localstorageword - String from "Previous Word Searches" button
      */
     private removeDictionaryTermfromLocalStorage( localstorageword: string){
-        // Remove the cache item to Local Storage
+        //Remove the cache item to Local Storage
         try {
             if (localStorage.getItem('word-caches') == null) {
-                // No words in storage, there's been an error! 
+                //No words in storage, there's been an error! 
                 console.log("No words in storage, there's been an error!");
                 return;
             }
-            // Remove word from current 'word-caches' in local storage
+            //Get the words array from Local Storage
             let storageStr = localStorage.getItem('word-caches');
             if (storageStr == null) {
                 try {
@@ -283,8 +282,31 @@ export class DictionarySearch extends DictionarySearchWidget {
                 }
             }
             else {
+                let removeURL: URL;
+                for (let wordCache of DictionarySearch.wordStorage) {
+                    if (wordCache.word == localstorageword) {
+                        removeURL = wordCache.wordURL;
+                    }
+                }
+                //Remove request from Cache Storage
+                window.caches.open(DictionarySearch.CacheStorageNameofWordRequest).then((cache) => {
+                    caches.match(removeURL).then((result) => {
+                        if (result === undefined){
+                            console.log("Problem matching the result. Result: ", result);
+                        }
+                        else {
+                            //console.log(result);
+                            // caches.delete(removeURL.toString());
+                            let keysPromise = new Promise(resolve => resolve(result));
+                            keysPromise.then((data) => {
+                                cache.delete(removeURL);
+                            });
+                        }
+                    })
+                })
+
+                //Remove the word from Local Storage word array, return words to storage
                 let allcache: localstoragewordvalue[] = JSON.parse(storageStr);
-                //remove the word from local storage word array
                 for (let cache of allcache) {
                     if (cache.word == localstorageword) {
                         allcache.splice(allcache.indexOf(cache), 1);
@@ -404,7 +426,7 @@ export class DictionarySearch extends DictionarySearchWidget {
     private callFetchDictionaryTerm(searchElems: DictionarySearchElements, word: string, wordURL: URL) {
         // When the word data resolves, call markup functions
         let wordDataPromise = new Promise((resolve) => {
-            resolve(this.fetchDictionaryTerm(word, wordURL, searchElems, false, ""));
+            resolve(this.fetchDictionaryTerm(word, wordURL, searchElems, true, DictionarySearch.CacheStorageNameofWordRequest));
         })
         wordDataPromise.then((data: object) => {
             this.wordData = data;

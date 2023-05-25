@@ -316,7 +316,7 @@ export class DictionarySearch extends DictionarySearchWidget {
 
         const wordFetchRequest = async () => {
             //set apiGET::sendToBrowserCache to true to use cache storage
-            const wordFetch = new apiGET(wordcache.wordURL, false, searchElems.errorElem, wordcache.cacheName);
+            const wordFetch = new apiGET(wordcache.wordURL, wordcache.inCache, searchElems.errorElem, wordcache.cacheName);
             let noDefinitions: boolean = false;
 
             //fetch request
@@ -390,7 +390,7 @@ export class DictionarySearch extends DictionarySearchWidget {
     private callFetchDictionaryTerm(searchElems: DictionarySearchElements, word: string, wordURL: URL) {
         // When the word data resolves, call markup functions
         let wordDataPromise = new Promise((resolve) => {
-            resolve(this.fetchDictionaryTerm(word, wordURL, searchElems, false, null));
+            resolve(this.fetchDictionaryTerm(word, wordURL, searchElems, false, ""));
         })
         wordDataPromise.then((data: object) => {
             this.wordData = data;

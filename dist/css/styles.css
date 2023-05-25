@@ -429,7 +429,6 @@ hgroup h3 {
   transform: rotateX(180deg);
 }
 
-
 .cardFront,
 .cardBack {
   position: absolute;
@@ -587,14 +586,14 @@ summary:focus-visible {
 }
 
 /************************* Page Styles *************************/
-#Public_IP summary { 
+#Public_IP summary {
   width: fit-content;
   margin: auto;
   padding: .5em;
   margin: 1em 2em;
 }
 
-#Public_IP details[open] summary:focus-visible{
+#Public_IP details[open] summary:focus-visible {
   outline: 3px solid var(--clr-Lightcoral);
   outline-offset: 0.2em;
 }
@@ -608,7 +607,7 @@ summary:focus-visible {
   color: var(--clr-Lightcoral);
 }
 
-#Public_IP details summary + p {
+#Public_IP details summary+p {
   margin-block: 2em;
   margin-left: 2.5em;
   text-align: left;
@@ -1297,7 +1296,7 @@ pre {
   color: var(--clr-title);
 }
 
-#dictionary button {
+#dictionary button:not(button[type="button-clear"]) {
   padding: 6px 10px;
   background: #ddd;
   font-size: 17px;
@@ -1315,6 +1314,17 @@ pre {
   max-width: 50px;
 }
 
+#dictionary-btns {
+  height: 50px;
+  position: relative;
+}
+
+#dictionary-btns>div {
+  display: inline-block;
+  position: relative;
+  /* TODO: */
+}
+
 .dictionary-btn {
   display: block;
   margin: .5em;
@@ -1322,6 +1332,50 @@ pre {
 
 .dictionary-word-btn {
   display: inline-block;
+}
+
+.dictionary-word-btn-clear {
+  --btn-size-clear: 17px;
+  position: absolute;
+  top: .1rem;
+  right: .1rem;
+  background-color: var(--clr-Cyan) !important;
+  width: var(--btn-size-clear);
+  height: var(--btn-size-clear);
+  border-radius: .2rem;
+  cursor: no-drop;
+}
+
+.dictionary-word-btn-clear::before {
+  --btn-size-X-width: calc(var(--btn-size-clear) / 10);
+  position: absolute;
+  top: 0;
+  content: "";
+  right: 0;
+  width: var(--btn-size-X-width);
+  height: var(--btn-size-clear);
+  background-color: var(--clr-primary-600);
+  transform:
+    translateX(calc(-.5 * var(--btn-size-clear) + (.5 * var(--btn-size-X-width)))) rotate(45deg);
+}
+
+.dictionary-word-btn-clear::after {
+  --btn-size-X-width: calc(var(--btn-size-clear) / 10);
+  position: absolute;
+  top: 0;
+  content: "";
+  right: 0;
+  width: var(--btn-size-X-width);
+  height: var(--btn-size-clear);
+  background-color: var(--clr-primary-600);
+  transform:
+    translateX(calc(-.5 * var(--btn-size-clear) + (.5 * var(--btn-size-X-width)))) rotate(-45deg);
+}
+
+#dictionary button[type="button-clear"] {
+  border: none;
+  box-shadow: -5px 3px 10px -3px black;
+  outline-offset: 1px;
 }
 
 .previousWords {

@@ -119,7 +119,11 @@ export class DictionarySearch extends DictionarySearchWidget {
                     //Check the placement location and word caches for undefined
                     if (placementlocationholder != undefined && DictionarySearch.wordStorage !== undefined) {
                         for (let wordCache of DictionarySearch.wordStorage) {
-                            const cacheWordHeadingElem = newButtonContainer.appendChild(document.createElement("button"));
+                            const wordHeadingElemContainer = newButtonContainer.appendChild(document.createElement("div"));
+                            const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(document.createElement("button"));
+                            const deleteCacheWordHeadingElem = wordHeadingElemContainer.appendChild(document.createElement("button"));
+                            deleteCacheWordHeadingElem.setAttribute("type","button-clear");
+                            deleteCacheWordHeadingElem.classList.add("dictionary-word-btn-clear")
                             cacheWordHeadingElem.setAttribute("type", "button");
                             cacheWordHeadingElem.classList.add("dictionary-btn", "dictionary-word-btn");
                             cacheWordHeadingElem.textContent = wordCache.word;
@@ -127,6 +131,13 @@ export class DictionarySearch extends DictionarySearchWidget {
                             cacheWordHeadingElem.addEventListener("click", (event) => {
                                 event.preventDefault();
                                 this.wordSearch(this.dictionarySearchMarkup, true, wordCache);
+                            })
+                            //add event listener for delete button
+                            deleteCacheWordHeadingElem.addEventListener("click", () => {
+                                event.preventDefault();
+                                wordHeadingElemContainer.remove();
+                                this.removeDictionaryTermfromLocalStorage(cacheWordHeadingElem.textContent);
+                                //remove word from Storage Cache TODO: not implemented fully (RH);
                             })
                             this.previousWordsBtnIsCreated = true;
                         }
@@ -165,7 +176,7 @@ export class DictionarySearch extends DictionarySearchWidget {
     }
 
     /** 
-     * Adds the fetched term to the browser's Local Storage --> Key/Value 
+     * Adds the word to the browser's Local Storage containing data about fetch caching--> Key/Value 
      * data referencing if words are in local cache.
      * 
      * @param sendToBrowserCache - //TODO: testing add/delete
@@ -213,6 +224,50 @@ export class DictionarySearch extends DictionarySearchWidget {
         }
         catch (err) {
             console.log("Problem storing key-value. Error: ", err);
+        }
+    }
+
+    /**
+     * Removes previous word data from browser's Local Storage --> Key/Value 
+     * data referencing if words are in local cache.
+     * 
+     * @param localstorageword - String from "Previous Word Searches" button
+     */
+    private removeDictionaryTermfromLocalStorage( localstorageword: string){
+        // Remove the cache item to Local Storage
+        try {
+            if (localStorage.getItem('word-caches') == null) {
+                // No words in storage, there's been an error! 
+                console.log("No words in storage, there's been an error!");
+                return;
+            }
+            // Remove word from current 'word-caches' in local storage
+            let storageStr = localStorage.getItem('word-caches');
+            if (storageStr == null) {
+                try {
+                    throw new Error("'word-caches' values are null. Try clearing browser cache.");
+                }
+                catch (error) {
+                    if (error instanceof Error) {
+                        console.log(error.name);
+                        console.log(error.message);
+                        console.log(error.stack);
+                    }
+                }
+            }
+            else {
+                let allcache: localstoragewordvalue[] = JSON.parse(storageStr);
+                //remove the word from local storage word array
+                for (let cache of allcache) {
+                    if (cache.word == localstorageword) {
+                        allcache.splice(allcache.indexOf(cache), 1);
+                    }
+                }
+                localStorage.setItem('word-caches', JSON.stringify(allcache));
+            }
+        }
+        catch (err) {
+            console.log("Problem removing the word. Error: ", err);
         }
     }
 

@@ -128,16 +128,25 @@ export class DictionarySearch extends DictionarySearchWidget {
                             cacheWordHeadingElem.classList.add("dictionary-btn", "dictionary-word-btn");
                             cacheWordHeadingElem.textContent = wordCache.word;
                             //add event listener for new button
+                            //when clicked, fire a word search
                             cacheWordHeadingElem.addEventListener("click", (event) => {
                                 event.preventDefault();
                                 this.wordSearch(this.dictionarySearchMarkup, true, wordCache);
+                            })
+                            //when hovered, display the delete button option
+                            cacheWordHeadingElem.addEventListener("mouseover", (event) => {
+                                deleteCacheWordHeadingElem.style.display = "inline-block";
+                                //when not hovered, hide the delete button option
+                                cacheWordHeadingElem.addEventListener("mouseout", () => {
+                                    deleteCacheWordHeadingElem.style.display = "none";
+                                })
                             })
                             //add event listener for delete button
                             deleteCacheWordHeadingElem.addEventListener("click", () => {
                                 event.preventDefault();
                                 wordHeadingElemContainer.remove();
                                 this.removeDictionaryTermfromLocalStorage(cacheWordHeadingElem.textContent);
-                                //remove word from Storage Cache TODO: not implemented fully (RH);
+                                //remove word from Storage Cache TODO: to be implemented when requests are stored in browser cache;
                             })
                             this.previousWordsBtnIsCreated = true;
                         }

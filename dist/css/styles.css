@@ -1334,6 +1334,7 @@ pre {
 }
 
 .dictionary-word-btn-clear {
+  display: none;
   --btn-size-clear: 17px;
   position: absolute;
   top: .1rem;

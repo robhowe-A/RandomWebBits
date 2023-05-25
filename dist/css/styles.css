@@ -1315,11 +1315,10 @@ pre {
 }
 
 #dictionary-btns {
-  height: 50px;
   position: relative;
 }
 
-#dictionary-btns>div {
+#dictionary-btns > div {
   display: inline-block;
   position: relative;
   /* TODO: */

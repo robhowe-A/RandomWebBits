@@ -102,10 +102,11 @@ export default class DictionarySearchWidget {
         const definitionDescription = definitionDescriptionContainer.appendChild(document.createElement("div"));
         definitionDescription.appendChild(document.createElement("hr")); // word definition separator
         definitionDescriptionContainer.classList.add("definitionDescription");
-
+        
         // The word data represents complex JSON object
         // Recurse the word data object, adding elements from the various levels
         wordData.map((word: any) => {
+            definitionDescriptionContainer.setAttribute("word", word.word);
             //console.log("The word is: ",word)
             const wordTitle = definitionDescription.appendChild(document.createElement("h3"));
             wordTitle.textContent = word.word;
@@ -136,6 +137,25 @@ export default class DictionarySearchWidget {
                 });
             });
         });
+
+        const deleteWordTermHeadingElem = definitionDescriptionContainer.appendChild(document.createElement("button"));
+        deleteWordTermHeadingElem.setAttribute("type","word-clear");
+        deleteWordTermHeadingElem.classList.add("dictionary-word-btn-clear");
+
+        //when hovered, display the delete button option
+        definitionDescriptionContainer.addEventListener("mouseover", (event) => {
+            deleteWordTermHeadingElem.style.display = "inline-block";
+            //when not hovered, hide the delete button option
+            definitionDescriptionContainer.addEventListener("mouseout", () => {
+                deleteWordTermHeadingElem.style.display = "none";
+            })
+        })
+
+        //add event listener for delete button
+        deleteWordTermHeadingElem.addEventListener("click", (event) => {
+            event.preventDefault();
+            definitionDescriptionContainer.remove();
+        })
 
         definitionDescriptionContainer.appendChild(definitionDescription);
     }

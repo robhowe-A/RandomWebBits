@@ -123,7 +123,7 @@ export class DictionarySearch extends DictionarySearchWidget {
                             const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(document.createElement("button"));
                             const deleteCacheWordHeadingElem = wordHeadingElemContainer.appendChild(document.createElement("button"));
                             deleteCacheWordHeadingElem.setAttribute("type","button-clear");
-                            deleteCacheWordHeadingElem.classList.add("dictionary-word-btn-clear")
+                            deleteCacheWordHeadingElem.classList.add("dictionary-word-btn-clear");
                             cacheWordHeadingElem.setAttribute("type", "button");
                             cacheWordHeadingElem.classList.add("dictionary-btn", "dictionary-word-btn");
                             cacheWordHeadingElem.textContent = wordCache.word;
@@ -142,7 +142,7 @@ export class DictionarySearch extends DictionarySearchWidget {
                                 })
                             })
                             //add event listener for delete button
-                            deleteCacheWordHeadingElem.addEventListener("click", () => {
+                            deleteCacheWordHeadingElem.addEventListener("click", (event) => {
                                 event.preventDefault();
                                 wordHeadingElemContainer.remove();
                                 this.removeDictionaryTermfromLocalStorage(cacheWordHeadingElem.textContent);

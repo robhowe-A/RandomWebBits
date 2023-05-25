@@ -1296,7 +1296,7 @@ pre {
   color: var(--clr-title);
 }
 
-#dictionary button:not(button[type="button-clear"]) {
+#dictionary button:not(button[type="button-clear"]):not(button[type="word-clear"]) {
   padding: 6px 10px;
   background: #ddd;
   font-size: 17px;
@@ -1321,7 +1321,6 @@ pre {
 #dictionary-btns > div {
   display: inline-block;
   position: relative;
-  /* TODO: */
 }
 
 .dictionary-btn {
@@ -1372,10 +1371,19 @@ pre {
     translateX(calc(-.5 * var(--btn-size-clear) + (.5 * var(--btn-size-X-width)))) rotate(-45deg);
 }
 
-#dictionary button[type="button-clear"] {
-  border: none;
-  box-shadow: -5px 3px 10px -3px black;
-  outline-offset: 1px;
+#dictionary button[type="word-clear"] {
+  padding: 0.3rem !important;
+}
+
+#dictionary button[type="button-clear"],
+#dictionary button[type="word-clear"] {
+  border: none !important;
+  box-shadow: -5px 3px 10px -3px black !important;
+  outline-offset: 1px !important;
+}
+
+.definitionDescription {
+  position: relative;
 }
 
 .previousWords {

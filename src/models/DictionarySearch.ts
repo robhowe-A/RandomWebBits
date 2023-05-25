@@ -134,10 +134,14 @@ export class DictionarySearch extends DictionarySearchWidget {
                                 this.wordSearch(this.dictionarySearchMarkup, true, wordCache);
                             })
                             //when hovered, display the delete button option
-                            cacheWordHeadingElem.addEventListener("mouseover", (event) => {
+                            wordHeadingElemContainer.addEventListener("mouseover", (event) => {
                                 deleteCacheWordHeadingElem.style.display = "inline-block";
+                                console.log(event.target);
                                 //when not hovered, hide the delete button option
-                                cacheWordHeadingElem.addEventListener("mouseout", () => {
+                                wordHeadingElemContainer.addEventListener("mouseleave", (event) => {
+                                    if(event.target == deleteCacheWordHeadingElem){
+                                        return;
+                                    }
                                     deleteCacheWordHeadingElem.style.display = "none";
                                 })
                             })

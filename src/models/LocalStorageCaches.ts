@@ -11,7 +11,7 @@ export interface localstoragewordvalue {
 }
 
 /**
- * Interface used for Local Storage key-value To-Do List items
+ * Interface used for Local Storage key-values
  */
 export interface localstoragetodocache {
     inCache: boolean,

@@ -11,10 +11,10 @@ const ToDosWidget = {
      */
     init: (elem: Element) => {
 
-        // ToDoList constructor
+        //ToDoList constructor
         const todoWidget = new ToDoList();
 
-        // Creates the markup needed and imports data from local storage, containing the todo items
+        //Creates widget markup and populates To-Do tasks contained in Local Storage
         todoWidget.createToDoListWidget(elem);
     }
 };

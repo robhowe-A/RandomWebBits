@@ -5,7 +5,7 @@ import { localstoragetodocache } from "./LocalStorageCaches";
 /**
  * A ToDoList is an HTML widget to store To-Dos in the browser. Instantiate the
  *  ToDoList constructor to create widget markup and functionality. To-Dos are
- *  stored in the browser's local storage and read and rendered when the page loads.
+ *  stored in the browser's Local Storage and read and rendered when the page loads.
  * 
  * To create a ToDoList, an element on the page must have '.ToDoList' class. Call the
  *  class constructor, passing in that element to create the widget.
@@ -21,8 +21,14 @@ export class ToDoList {
     private static ToDoElements: ToDoListElements;
     private listElements: ToDoListElements;
 
-    public static setToDoListElements(ToDoListElements: ToDoListElements) {
-        ToDoList.ToDoElements = ToDoListElements;
+    /**
+     * Sets the To-Do list widget's elements.
+     * 
+     *      ToDoList.ToDoElements
+     * @param ToDoElements Widget Elements -- key widget function elements.
+     */
+    public static setToDoListElements(ToDoElements: ToDoListElements) {
+        ToDoList.ToDoElements = ToDoElements;
     }
 
     /**
@@ -31,10 +37,9 @@ export class ToDoList {
      * @param elem - widget is placed after this reference element.
      */
     public createToDoListWidget(elem: Element) {
-
-        // Insert the widget after the passed in "elem"
-        // Dependent on the page, todo widget may have pre-existing markup in place
-        // Switch against the current page to determine markup needed
+        //Insert the widget after the passed in "elem"
+        //Dependent on the page, todo widget may have pre-existing markup in place
+        //Switch against the current page to determine markup needed
         if (elem !== undefined) {
             if (elem.classList.contains("ToDoList")) {
                 switch (window.location.pathname) {
@@ -43,8 +48,8 @@ export class ToDoList {
                     case '/index.html':
                     case '/':
                     case '/dist/index.html':
-                        // Markup does not exist on the page
-                        // Create table elements needed for the todo list
+                        //Markup does not exist on the page
+                        //Create table elements needed for the todo list
                         const todolistSection = elem.insertAdjacentElement("afterend", document.createElement("section"));
                         const header = todolistSection.appendChild(document.createElement('h3'));
                         const div = todolistSection.appendChild(document.createElement('div'));
@@ -61,7 +66,7 @@ export class ToDoList {
                         const td3middle = tr3.appendChild(document.createElement('td'));
                         const INPUT = td3middle.appendChild(document.createElement('input'));
 
-                        // Add attributes and property values
+                        //Add attributes and property values
                         table.appendChild(document.createElement('tfoot'));
                         td3IN.setAttribute("aria-label", "Add");
                         td3IN.setAttribute("Value", "Add");
@@ -76,10 +81,10 @@ export class ToDoList {
                         td3IN.id = "AddButton";
                         td3IN.type = "button";
 
-                        // Create a sample to do item (it is not stored in cache)
+                        //Create a sample to do item (it is not stored in cache)
                         this.createSampleTo_Do(tbody);
 
-                        // With the elements created, set the class list elements
+                        //With the elements created, set the class list elements
                         this.getToDoListElements();
                         ToDoList.setToDoListElements(this.listElements);
 
@@ -90,12 +95,12 @@ export class ToDoList {
                         break;
                     case '/RandomWebBits/pages/todos.html':
                     case '/pages/todos.html':
-                        // Markup exists on the page already
-                        // With the elements created, set the class list elements
+                        //Markup exists on the page already
+                        //With the elements created, set the class list elements
                         this.getToDoListElements();
                         ToDoList.setToDoListElements(this.listElements);
 
-                        // Create a sample to do item (it is not stored in cache)
+                        //Create a sample to do item (it is not stored in cache)
                         const htbody = ToDoList.ToDoElements.todoTableBody;
                         if (htbody != null) {
                             this.createSampleTo_Do(htbody);
@@ -135,7 +140,9 @@ export class ToDoList {
      * @returns ToDoElements: ToDoListElements
      */
     private getToDoListElements() {
-        // Gather necessary elements from the created widget
+        //Gather necessary elements from the created widget
+        //Each widget location's elements may vary, so a call of getToDoListElements()
+        //locates the page's elements to populate the ToDoElements interface.
         let ToDoElements: ToDoListElements = {
             todoTable: document.querySelector('#ToDO table'),
             todoTableBody: document.getElementById('ToDoItems'),
@@ -146,11 +153,24 @@ export class ToDoList {
     }
 
     /**
-     * Checks for To-Do items previously in storage.
+     * Checks for To-Do items from Local Storage.
      * @returns boolean true or false
      */
     private static isToDoInStorage() {
-        let todos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos'));
+        let todos: localstoragetodocache[]
+        try{
+            todos = JSON.parse(localStorage.getItem('ToDos'));
+        } catch (e){
+            if(e instanceof DOMException){
+              console.log(`%cCannot get Local Storage "ToDos."
+              %c${e.name} 
+              ${e.message} 
+              %c${e.stack}`, "color: grey", "color: orangered", "color: red");
+            }
+            else {
+                console.log(`Problem getting Local Storage key: ToDos`);
+            }
+        }
         if (todos == null) {
             return false
         }
@@ -158,33 +178,36 @@ export class ToDoList {
     }
 
     /**
-     * Adds a To-Do string to Local Storage. The 'localstoragetodocache' interface
-     *  structures the data for later retrieval.
-     * @param description - User form input to add as a description.
+     * Adds a To-Do to Local Storage. 
+     * @param description - The UI form input description.
      */
     private addtoDoToStorage(description: string) {
-
+        //Add the ToDos array to local cache.
+        //The 'localstoragetodocache' interface structures the data for later retrieval.
         let ToDo: localstoragetodocache = {
             inCache: false,
             todoitem: description,
         }
-        let ToDos: any = [];
+        let ToDos: any = []; //ToDo array
         ToDos.push(ToDo);
 
-        //add the ToDos to local cache
+        //First, read current Local Storage ToDos
         let todos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos'));
         try {
-            if (todos == null) {
+            if (todos == null) {//Nothing in storage, push current
                 localStorage.setItem('ToDos', JSON.stringify(ToDos));
                 ToDoList.todosInLocalStorage = true;
             }
-            else {
+            else {//Add the new ToDo to the current ToDos and push via setItem()
                 todos.push(ToDo);
                 localStorage.setItem('ToDos', JSON.stringify(todos));
             }
         }
         catch (err) {
             console.log("Problem storing To-do list item: ", err);
+            if(err instanceof DOMException){
+                console.log(err.name, err.message, err.stack);
+            }
         }
     }
 
@@ -234,7 +257,7 @@ export class ToDoList {
             const secondCOL = newRow.appendChild(document.createElement('td')); //Table third data
             const delBOX = secondCOL.appendChild(document.createElement('input')) //Add deletebox
 
-            // Add attributes and property values
+            //Add attributes and property values
             checkBOX.setAttribute('type', 'checkbox');
             checkBOX.setAttribute('aria-label', 'Checkbox');
             checkBOX.setAttribute('aria-label', 'Delete');
@@ -247,14 +270,14 @@ export class ToDoList {
             delBOX.setAttribute('type', 'submit');
             delBOX.setAttribute('value', 'Delete');
 
-            // Add the row to the ToDos table
+            //Add the row to the ToDos table
             TABLEITEM.appendChild(tableFrag);
 
-            //add an event listener for when 'delete' is clicked
+            //Add an event listener for when 'delete' is clicked
             delBOX.addEventListener("click", () => { this.DeleteButton(delBOX); });
 
             if (firstPaint) {
-                //add to list storage
+                //Add to list storage
                 this.addtoDoToStorage(description);
             }
         }
@@ -277,8 +300,22 @@ export class ToDoList {
      * Function called to create the To-Do item rows from To-Dos stored in the browser Local Storage.
      */
     private populateToDoList() {
-        //retrieve todo items in local storage and add each to the list
-        let parsedToDos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos'));
+        //Retrieve todo items in Local Storage and add each to the list
+        let parsedToDos: localstoragetodocache[]
+        try{
+            parsedToDos = JSON.parse(localStorage.getItem('ToDos'));
+        }
+        catch (e){
+            if(e instanceof DOMException){
+              console.log(`%cCannot get Local Storage "ToDos."
+              %c${e.name} 
+              ${e.message} 
+              %c${e.stack}`, "color: grey", "color: orangered", "color: red");
+            }
+            else {
+                console.log(`Problem getting Local Storage key: ToDos`);
+            }
+        }
 
         if (parsedToDos != null) {
             for (let i = 0; i < parsedToDos.length; i++) {
@@ -374,7 +411,7 @@ export class ToDoList {
      */
     private createSampleTo_Do(tbody: Element) {
         if (!ToDoList.isToDoInStorage()) {
-            // Create a sample entry in the ToDo table as a placeholder
+            //Create a sample entry in the ToDo table as a placeholder
             const tr2 = tbody.appendChild(document.createElement('tr'));
             const td2left = tr2.appendChild(document.createElement('td'));
             const td2IN = td2left.appendChild(document.createElement('input'));
@@ -382,7 +419,7 @@ export class ToDoList {
             const td2right = tr2.appendChild(document.createElement('td'));
             const td2DEL = td2right.appendChild(document.createElement('input'));
 
-            // Add attributes and property values
+            //Add attributes and property values
             td2IN.setAttribute("aria-label", "Checkbox");
             td2middle.setAttribute("num", `${1}`);
             td2IN.setAttribute("aria-label", "Delete");
@@ -392,7 +429,7 @@ export class ToDoList {
             td2middle.textContent = "Add a ToDO Item.";
             ToDoList.ToDOs++;
 
-            //"delete" event listener
+            //"Delete" event listener
             td2DEL.addEventListener("click", () => { this.DeleteButton(td2DEL) });
         }
     }

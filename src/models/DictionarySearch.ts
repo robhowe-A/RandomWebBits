@@ -37,11 +37,11 @@ export class DictionarySearch extends DictionarySearchWidget {
    * @param elem - The reference element used to place widget markup.
    */
   constructor(elem: Element) {
-    // Invoke DictionarySearchWidget superclass constructor.
+    //Invoke DictionarySearchWidget superclass constructor.
     super();
-    // Call creation for all the markup needed to begin the widget
+    //Call creation for all the markup needed to begin the widget
     this.dictionarySearchMarkup = this.createDictionaryWidgetMarkup(elem);
-    // Initialize the dictionary widget with click event listeners
+    //Initialize the dictionary widget with click event listeners
     this.addWidgetEvents();
     DictionarySearch.getLocalStorageWordCaches();
   }
@@ -53,18 +53,29 @@ export class DictionarySearch extends DictionarySearchWidget {
    *  browser cache.
    */
   public static getLocalStorageWordCaches() {
-    //enumerate all of the caches
-    //cache response links and cache name are previously stored in local storage
-
-    //Enumerate Local Storage 'word-caches' items
-    let storageStr = localStorage.getItem("word-caches");
-    if (storageStr != null
-        && storageStr != "[]") {
+    //Local Storage 'word-caches' items data assignment
+    //cache response links and cache name are previously stored in Local Storage
+    let storageStr: string;
+    try{
+      storageStr = localStorage.getItem("word-caches");
+    }
+    catch (e){
+      if(e instanceof DOMException){
+        console.log(`%cCannot get Local Storage "word-caches."
+        %c${e.name} 
+        ${e.message} 
+        %c${e.stack}`, "color: grey", "color: orangered", "color: red");
+      }
+      else {
+        console.log(`Problem getting Local Storage key: word-caches`)
+      }
+    }
+    if (storageStr != null && storageStr != "[]") {
       DictionarySearch.wordStorage = JSON.parse(storageStr);
       return DictionarySearch.wordStorage;
     }
     else {
-        //The Local Storage is null --> Check the browser does not have any Cache Storage items in error
+        //The Local Storage is null --> Confirm here the browser does not have any Cache Storage items in error
         if ("caches" in window){
             if (window.caches.has(DictionarySearch.CacheStorageNameofWordRequest)){
                 window.caches.delete(DictionarySearch.CacheStorageNameofWordRequest);
@@ -262,26 +273,22 @@ export class DictionarySearch extends DictionarySearchWidget {
   }
 
   /**
-   * Adds the word to the browser's Local Storage containing data about fetch caching--> Key/Value
-   * data referencing if words are in local cache.
+   * Adds the word to the browser's Local Storage containing word data, URL, and caching.
    *
-   * @param localstoragevalue - This is an interface implementation, storing
-   *  information where sending to local storage.
+   * @param localstoragevalue - This interface stores information where sending to Local Storage.
    */
-  private addDictionaryTermtoLocalStorage(
-    localstoragevalue: localstoragewordvalue
-  ) {
-    let wordStore: any = [];
+  private addDictionaryTermtoLocalStorage(localstoragevalue: localstoragewordvalue) {
+    let wordStore: localstoragewordvalue[] = [];
     wordStore.push(localstoragevalue);
 
-    // Add the cache item to Local Storage
+    //Add the cache item to Local Storage
     try {
       if (localStorage.getItem("word-caches") == null) {
         // Local storage empty => add the word
         localStorage.setItem("word-caches", JSON.stringify(wordStore));
         return;
       }
-      // Add word to current 'word-caches' in local storage
+      //Add word to current 'word-caches' in Local Storage
       let storageStr = localStorage.getItem("word-caches");
       if (storageStr == null) {
         try {
@@ -299,25 +306,33 @@ export class DictionarySearch extends DictionarySearchWidget {
         let allcache: localstoragewordvalue[] = JSON.parse(storageStr);
         for (let cache of allcache) {
           if (cache.wordURL == localstoragevalue.wordURL) {
-            // Word is already in local storage
+            //Word is already in Local Storage
             // No need to add it to the array
             return;
           }
         }
-        // Add word to existing 'word-caches' in local storage
+        //Add word to existing 'word-caches' in Local Storage
         allcache.push(localstoragevalue);
         localStorage.setItem("word-caches", JSON.stringify(allcache));
       }
-    } catch (err) {
-      console.log("Problem storing key-value. Error: ", err);
+    } catch (e){
+      if(e instanceof DOMException){
+        console.log(`%cCannot get Local Storage "word-caches."
+        %c${e.name} 
+        ${e.message} 
+        %c${e.stack}`, "color: grey", "color: orangered", "color: red");
+      }
+      else {
+        console.log(`Problem getting Local Storage key: word-caches`)
+      }
     }
   }
 
   /**
-   * Removes previous word data from browser's Local Storage --> Key/Value
+   * Remove a previous word data from browser's Local Storage --> Key/Value
    * data referencing if words are in local cache.
    *
-   * @param localstorageword - String from "Previous Word Searches" button
+   * @param localstorageword - string from "Previous Word Searches" button
    */
   private removeDictionaryTermfromLocalStorage(localstorageword: string) {
     //Remove the cache item to Local Storage, Cache Storage
@@ -364,8 +379,12 @@ export class DictionarySearch extends DictionarySearchWidget {
     }
   }
 
+  /**
+   * Remove a fetch request from Cache Storage. Utilizes 
+   * DictionarySearch.CacheStorageNameofWordRequest for cache name.
+   * @param removeURL 
+   */
   private removeRequestfromCacheStorage(removeURL: URL) {
-    //Remove request from Cache Storage
     window.caches
     .open(DictionarySearch.CacheStorageNameofWordRequest)
     .then((cache) => {
@@ -383,12 +402,12 @@ export class DictionarySearch extends DictionarySearchWidget {
   }
 
   /**
-   * This function structures inbound fetch request before sending an API fetch
-   * request. apiGET() is created and called based on parameter data.
+   * This function structures with word definition request and instantiates apiGET(). The 
+   * promise return data structures the widget markup.
    *
    * @param word - The word searched from widget input.
    * @param wordUrl - The fetch request URL.
-   * @param searchElems - Widget Elements -- used for data validation.
+   * @param searchElems - Widget Elements -- key widget function elements.
    * @param sendToCache - ? Send fetch request to Cache Storage : Fetch without storing the request.
    * @param cacheName - If sending fetch requests to cache, provide a name to store it under.
    * @returns - wordData: Promise<unknown>
@@ -400,15 +419,8 @@ export class DictionarySearch extends DictionarySearchWidget {
     sendToCache: boolean,
     cacheName: string | null
   ) {
-    //TODO: dictionary cache management:
-    //TODO: 2.) is to be cached false? --check
-    //TODO: --> are they the same behavior? --check
-    //TODO: --> is the result in the cache? --check
-    //TODO: implement a send to cache option
-    //
-    //
-    // The function calls to either store in Cache Storage
-    // If items are to be cached, edit Local Storage cache names
+    //A function call parameter option is to store the word request in browser's Cache Storage
+    //Structure the word data via 'localstoragewordvalue' interface used throughout fetching
     let wordcache: localstoragewordvalue = {
       inCache: sendToCache,
       word: word,
@@ -416,8 +428,9 @@ export class DictionarySearch extends DictionarySearchWidget {
       cacheName: sendToCache ? cacheName : "",
     };
 
+    //Asynchronous fetch reqeust and dynamic markup creation from the data's return
     const wordFetchRequest = async () => {
-      //set apiGET::sendToBrowserCache to true to use cache storage
+      //Call apiGET() object constructor
       const wordFetch = new apiGET(
         wordcache.wordURL,
         wordcache.inCache,
@@ -426,19 +439,27 @@ export class DictionarySearch extends DictionarySearchWidget {
       );
       let noDefinitions: boolean = false;
 
-      //fetch request
+      //Fetch request method call. Returned data may be the word definition
       let data = await wordFetch.apiGET(wordFetch.getGETURL());
       if (typeof data == "string") {
+        //If the returned data is a string, it is the word definition data.
         data = JSON.parse(data);
       }
       let wordData: any = data;
-      //check if the returned object is valid word data definitions
+      //If the returned data is an object, confirm it is 'no definition' server data
       if (typeof data == "object") {
         if (Object.hasOwn(wordData, "title")) {
-          // no definitions were found
+          //No definitions were found
           noDefinitions = true;
-          if(wordData.title == "No Definitions Found"){
+          if(wordData.title == "No Definitions Found" && wordcache.inCache == true){
+            //The data stream here is without word data. This function awaits the api fetch's data
+            //to complete storage/promise returns. It waits 5 seconds for the browser to complete its store functions
+            //then removes the unwanted cache request.
+            //TODO:BUGRESEARCH=>During the 5 timeout, if the page refreshes a 'bad word' will be stored in the cache
+            //This 'bad word' can be removed by deleting all previous words via UI and refreshing the page. This will
+            // fire getLocalStorageWordCaches() to clear any mismatched worddata<-->cachedrequests.
             setTimeout(() => {
+              //Function awaiting request's Cache Storage caching
                 try{
                     this.removeRequestfromCacheStorage(wordFetch.getGETURL());
                 }
@@ -449,24 +470,22 @@ export class DictionarySearch extends DictionarySearchWidget {
           }
         }
       }
-      if (data != undefined && !noDefinitions) {
-        // good fetch--> move forward to markup render
+      if (data != undefined && !noDefinitions) {//Good data--> return data for markup render
         this.addDictionaryTermtoLocalStorage(wordcache);
         return data;
-      } else {
-        if (navigator.onLine !== false) {
-          // check network status via navigator object
-          if (noDefinitions) {
+      } else {//'Bad data' due to "No definitions found", invalid word, bad network connection
+        if (navigator.onLine !== false) {//Online, problem with fetch
+          if (noDefinitions) {//Server returned no definitions data
             if (wordData.title == "No Definitions Found")
               searchElems.searchWord.classList.add("invalid-notfound");
             searchElems.errorElem.classList.add("error-notfound");
             searchElems.errorElem.innerText = "No Definitions Found";
-          } else {
+          } else {//Invalid word data
             searchElems.searchWord.classList.add("invalid-notfound");
             searchElems.errorElem.classList.add("error-notfound");
             searchElems.errorElem.innerText = "Invalid word!";
           }
-        } else {
+        } else {//Offline request
           searchElems.errorElem.innerText += ", check network connection.";
         }
       }
@@ -478,7 +497,7 @@ export class DictionarySearch extends DictionarySearchWidget {
   /**
    * User input validation function tests the input string against a valid Regular Expression.
    *
-   * RegExp("^[A-Za-z]{1,45}$")
+   *    RegExp("^[A-Za-z]{1,45}$")
    *
    * @param intxt - String value received from user field input.
    * @returns Acceptable user input: true or false.
@@ -495,12 +514,12 @@ export class DictionarySearch extends DictionarySearchWidget {
   }
 
   /**
-   * callFetchDictionaryTerm creates a promise to fetch a dictionary term.
-   * Of data ingress ti DictionarySearch, markup creation is called for.
+   * callFetchDictionaryTerm awaits a promise, fetching a dictionary term. The data 
+   * ingress calls markup creation function.
    *
-   * @param searchElems - Widget Elements -- used for data validation.
+   * @param searchElems - Widget Elements -- key widget function elements.
    * @param word - The word to be fetched.
-   * @param wordURL - A URL object composing the full string of the fetch request.
+   * @param wordURL - A URL composing the full url of the fetch request.
    */
   private callFetchDictionaryTerm(
     searchElems: DictionarySearchElements,
@@ -536,7 +555,7 @@ export class DictionarySearch extends DictionarySearchWidget {
    * wordSearch() begins a word search request. The user input listener chooses
    * whether the fetch is called from cache or is new.
    *
-   * @param searchElems - Widget Elements -- used for data validation.
+   * @param searchElems - Widget Elements -- key widget function elements.
    * @param isFromPreviousWords - True if the user requested a search from a previous word, to call data from Browser Cache.
    * @param cachedWord - If the user called for a previous word, cachedWord is within the Local Storage.
    */

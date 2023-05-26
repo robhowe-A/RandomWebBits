@@ -138,12 +138,19 @@ export class apiGET {
                   this.dataSendingToCache = true;
                   cache.put(GETURL, result);
                   this.dataSendingToCache = false;
-                  resolve(clonedresp.json().then((text) => text));
+                  resolve(clonedresp.json().then(text => text));
                 });
               } else {
-                resolve(result.json().then((text) => text));
+                resolve(result.json().then(text => text));
               }
             });
+          })
+          .catch(e => {//Cannot open storage cache
+            console.log(`%cProblem opening Cache Storage. Name: ${this.browserCacheName}`, "color: grey");
+            this.sendToBrowserCache = false;
+          }).finally(() => {//Attempt raw fetch
+            resolve(this.fetchData(GETURL));
+            reject(new Error("Promise error on data fetch."))
           });
         }
       });

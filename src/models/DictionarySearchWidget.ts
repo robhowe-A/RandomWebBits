@@ -95,7 +95,7 @@ export default class DictionarySearchWidget {
    *  adaptive to returned word data structures.
    *
    * @param wordData - This parameter is an object of word types, definitions, and examples.
-   * @param searchElems - Widget Elements -- used for data validation.
+   * @param searchElems - Widget Elements -- key widget function elements.
    */
   public createDictionaryTermWithMarkup(
     wordData: any,
@@ -103,7 +103,7 @@ export default class DictionarySearchWidget {
   ) {
     if (wordData == null || !(wordData instanceof Object)) {
       try {
-        throw new Error("The data is null or an incorrect type");
+        throw new Error("There is no definition for this word.");
       } catch (error) {
         console.log(error.message);
       }

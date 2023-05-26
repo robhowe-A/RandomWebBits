@@ -15,7 +15,6 @@ export class apiGET {
   private sendToBrowserCache: boolean = false;
   private browserCacheName: string;
   public errorElem: HTMLElement;
-  public dataSendingToCache: boolean = false; //TODO: dataincache overall
   private receivedData: any; //TODO: check if this is needed
 
   /**
@@ -114,38 +113,42 @@ export class apiGET {
   }
 
   /**
-   * A public function, creating a data promise object for the called fetch function. If
+   * A public function creating a data promise object for the called fetch function. If
    *  the request needs added to browser storage, the fetch is made and sent to
-   *  storage. A cloned copy of the fetched data is returned. Without sending to
-   *  browser cache, the fetch is requested and returned.
+   *  storage. A cloned copy of the fetched data is returned and the original request is
+   *  sent to the cache. Without sending to browser cache, the fetch is requested and 
+   * returned.
+   *  
    * @param GETURL - the (full) url of data request.
    * @returns dataCachePromise: Promise<unknown>
    */
   public async apiGET(GETURL: URL) {
+    //Check if the request is for cache storage
     if (this.sendToBrowserCache) {
+      //The returned data is packages as a Promise object
       let dataCachePromise = new Promise((resolve, reject) => {
         if ("caches" in window) {
-          // Open cache and check for request existing in Cache Storage
+          //Open cache and check for request existing in Cache Storage
           window.caches.open(this.browserCacheName).then((cache) => {
             caches.match(GETURL).then((result) => {
               if (result === undefined) {
-                // Fetch the request normally
+                //No matches for this request in Storage Cache, so fetch the request normally
+                //Upon success, a cloned copy will need to be returned.
                 fetch(GETURL).then((result) => {
-                  // Make a copy of the response since it can only be read once
+                  //Copy the response since it can only be read once
                   let clonedresp = result.clone();
 
-                  // Add the result to the cache
-                  this.dataSendingToCache = true;
+                  //Add the result to the cache
                   cache.put(GETURL, result);
-                  this.dataSendingToCache = false;
                   resolve(clonedresp.json().then(text => text));
                 });
               } else {
+                //Cache hit success, return the response data
                 resolve(result.json().then(text => text));
               }
             });
           })
-          .catch(e => {//Cannot open storage cache
+          .catch(e => {//Cannot open Storage Cache
             console.log(`%cProblem opening Cache Storage. Name: ${this.browserCacheName}`, "color: grey");
             this.sendToBrowserCache = false;
           }).finally(() => {//Attempt raw fetch
@@ -154,6 +157,7 @@ export class apiGET {
           });
         }
       });
+      //The promise has resolved --> return the promise data
       dataCachePromise.then((response: any) => {
         return response;
       });

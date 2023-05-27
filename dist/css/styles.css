@@ -1345,6 +1345,10 @@ pre {
   cursor: no-drop;
 }
 
+.definitionDescription .dictionary-word-btn-clear {
+  --btn-size-clear: 22px;
+}
+
 .dictionary-word-btn-clear::before {
   --btn-size-X-width: calc(var(--btn-size-clear) / 10);
   position: absolute;

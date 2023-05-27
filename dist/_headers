@@ -184,3 +184,17 @@
   Content-Type: image/webp;
 /img/svg.svg
   Content-Type: image/svg+xml;
+/img/software-application.webp
+  Content-Type: image/webp;
+/img/PWA-InstallAsAnApp.png
+  Content-Type: image/png;
+/img/PWA2-AppInstalled.png
+  Content-Type: image/png;
+/img/PWA3-AppLaunched.png
+  Content-Type: image/png;
+/img/PWA4-TaskbarBefore.png
+  Content-Type: image/png;
+/img/PWA4-TaskbarAfter.png
+  Content-Type: image/png;
+/img/app-development.webp
+  Content-Type: image/webp;

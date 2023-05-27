@@ -174,5 +174,6 @@
 1.3.50: RWBcards class addition  
 1.3.51: New WebBits: SVG  
 1.3.52: New Page: flashcards.html  
-1.3.53: New WebBits: javascript    
+1.3.53: New WebBits: javascript  
+1.3.54: New WebBits: PWAIcon  
 </details>

@@ -586,6 +586,28 @@ summary:focus-visible {
 }
 
 /************************* Page Styles *************************/
+#PWA figure~figure {
+  margin-bottom: 2em;
+}
+
+#PWA .pictureCaption {
+  padding: 1em;
+  width: 100%;
+  margin: 0;
+}
+
+#PWA figure:last-of-type {
+  margin-bottom: 2em;
+}
+
+#Instructions>p {
+  text-align: left;
+}
+
+#Instructions>p:not(:first-of-type) {
+  margin-bottom: 2em;
+}
+
 #Public_IP summary {
   width: fit-content;
   margin: auto;
@@ -1318,7 +1340,7 @@ pre {
   position: relative;
 }
 
-#dictionary-btns > div {
+#dictionary-btns>div {
   display: inline-block;
   position: relative;
 }

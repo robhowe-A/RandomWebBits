@@ -246,6 +246,16 @@ const GuideShorts = new Array(
         "img/tool-box2.webp",
         "Developer's tool kit icon two"
     ),
+    new WebBit(
+        "PWAIcon",
+        27,
+        "GUIDE: Install the PWA applications",
+        "Progressive websites have an installation option",
+        new Date(2023, 5, 27),
+        "guides/pwaicon.html",
+        "img/app-development.webp",
+        "App development icon"
+    ),
 );
 const Explore = new Array(
     new WebBit(

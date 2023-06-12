@@ -204,6 +204,16 @@ const ArbitraryArticles = new Array(
         "img/software-application.webp",
         "A javascript function icon."
     ),
+    new WebBit(
+        "LEARN: HTTP",
+        28,
+        "HTTP",
+        "HTTP makes sending and receiving web pages possible.",
+        new Date(2023, 6, 12),
+        "pages/http.html",
+        "img/http.webp",
+        "Http verb in front of a globe icon."
+    ),
 );
 const GuideShorts = new Array(
     new WebBit(

@@ -61,6 +61,11 @@ const PageAcronyms = [
     page: "/pages/javascript.html",
     htmlTitle: "javascript",
     acronyms: ["Defer", "Synchronous", "ES", "GUI", "JSON", "AJAX", "IIFE", "IDE", "DOM"]
+  },
+  {
+    page: "/pages/http.html",
+    htmlTitle: "javascript",
+    acronyms: ["HTTP", "TCP", "UDP", "DNS", "TLS", "IP", "HTML", "CSS", "JS", "API"]
   }
 ]
 

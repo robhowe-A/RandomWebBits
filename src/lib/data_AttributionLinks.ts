@@ -202,6 +202,14 @@ let ATTRIBUTIONLINKDATA = [
         "Flaticon",
         "LEARN: HTTP",
         28
+    ),
+    new AttributionLink(
+        "css 3 icons",
+        "Css 3 icons created by Freepik - Flaticon",
+        "https://www.flaticon.com/free-icons/css-3",
+        "Flaticon",
+        "CSS",
+        29
     )
 ];
 

@@ -214,6 +214,16 @@ const ArbitraryArticles = new Array(
         "img/http.webp",
         "Http verb in front of a globe icon."
     ),
+    new WebBit(
+        "CSS",
+        29,
+        "CSS",
+        "CSS styles the elements within a page.",
+        new Date(2023, 6, 19),
+        "pages/css.html",
+        "img/css-3.webp",
+        "A CSS three logo."
+    ),
 );
 const GuideShorts = new Array(
     new WebBit(

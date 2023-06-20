@@ -31,13 +31,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <h2>TRY: Create a CSS rule</h2>
             <p><strong>Cascading Style Sheets</strong>, <abbr title="Cascading Style Sheets">CSS</abbr>, gives color and layout to web elements based on some chosen characteristic of that element. Without applying css, website pages will look like a text document.</p>
             <div class="cssex">
-                <ol>
+                <button class="reset">RESET</button>
+                <ol class="slct">
                     <li class="Selector Selector-elem">Selector</li>
                     <li class="Attribute">Attribute</li>
                     <li class="Value">Value</li>
                     <li class="Psuedo-class">Psuedo-class</li>
                 </ol>
-
+                
                 <code id="cssfig">
                 <p class="Selector CSS">#CSS</p><p class="CSS"><pre class="CSS"> {
     </pre><p class="CSS Attribute">background-color</p><pre class="CSS">: </pre><p class="CSS Value">limegreen</p><pre class="CSS">;
@@ -60,12 +61,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             selector.style.color = "var(--clr-Red)";
                         })
                     })
-                    selector.addEventListener("mouseout", (event)=>{
-                        event.preventDefault();
-                        selectors.forEach((selector)=>{
-                            selector.style.color = "inherit";
-                        })
-                    })
                 })
                 const attributes = document.querySelectorAll(".Attribute");
                 attributes.forEach((attribute)=>{
@@ -73,12 +68,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         event.preventDefault();
                         attributes.forEach((attribute)=>{
                             attribute.style.color = "var(--clr-WhoIS_Orange)";
-                        })
-                    })
-                    attribute.addEventListener("mouseout", (event)=>{
-                        event.preventDefault();
-                        attributes.forEach((attribute)=>{
-                            attribute.style.color = "inherit";
                         })
                     })
                 })
@@ -90,12 +79,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             value.style.color = "var(--clr-Skyblue)";
                         })
                     })
-                    value.addEventListener("mouseout", (event)=>{
-                        event.preventDefault();
-                        values.forEach((value)=>{
-                            value.style.color = "inherit";
-                        })
-                    })
                 })
                 const psuedos = document.querySelectorAll(".Psuedo-class");
                 psuedos.forEach((psuedo)=>{
@@ -105,11 +88,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             psuedo.style.color = "var(--clr-Green)";
                         })
                     })
-                    psuedo.addEventListener("mouseout", (event)=>{
-                        event.preventDefault();
-                        psuedos.forEach((psuedo)=>{
-                            psuedo.style.color = "inherit";
-                        })
+                })
+                const resetBTN = document.querySelector(".reset");
+                resetBTN.addEventListener("click", ()=>{
+                    selectors.forEach((selector)=>{
+                        selector.style.color = "initial";
+                    })
+                    attributes.forEach((attribute)=>{
+                        attribute.style.color = "initial";
+                    })
+                    values.forEach((value)=>{
+                        value.style.color = "initial";
+                    })
+                    psuedos.forEach((psuedo)=>{
+                        psuedo.style.color = "initial";
                     })
                 })
                     

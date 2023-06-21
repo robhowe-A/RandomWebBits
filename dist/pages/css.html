@@ -59,7 +59,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 const psuedos = document.querySelectorAll(".Psuedo-class");
                 const resetBTN = document.querySelector(".reset");
 
-                //attributes
+                // Function to color the example area's css code properties
                 const CSSExampleHighlighting = (items, color) =>{
                     items.forEach((item)=>{
                         item.addEventListener("mouseover", (event)=>{
@@ -81,6 +81,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 CSSExampleHighlighting(values, "var(--clr-Skyblue)");
                 CSSExampleHighlighting(psuedos, "var(--clr-Green)");
                 
+                //function to reset the css code properties color to original
                 resetBTN.addEventListener("click", ()=>{
                     selectors.forEach((selector)=>{
                         selector.style.color = "initial";

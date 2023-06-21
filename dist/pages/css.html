@@ -59,7 +59,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         event.preventDefault();
                         selectors.forEach((selector)=>{
                             selector.style.color = "var(--clr-Red)";
-                        })
+                        });
+                    })
+                    selector.addEventListener("click", (event)=>{
+                        event.preventDefault();
+                        selectors.forEach((selector)=>{
+                            selector.style.color = "initial";
+                        });
                     })
                 })
                 const attributes = document.querySelectorAll(".Attribute");
@@ -68,7 +74,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         event.preventDefault();
                         attributes.forEach((attribute)=>{
                             attribute.style.color = "var(--clr-WhoIS_Orange)";
-                        })
+                        });
+                    })
+                    attribute.addEventListener("click", (event)=>{
+                        event.preventDefault();
+                        attributes.forEach((attribute)=>{
+                            attribute.style.color = "initial";
+                        });
                     })
                 })
                 const values = document.querySelectorAll(".Value");
@@ -77,7 +89,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         event.preventDefault();
                         values.forEach((value)=>{
                             value.style.color = "var(--clr-Skyblue)";
-                        })
+                        });
+                    })
+                    value.addEventListener("click", (event)=>{
+                        event.preventDefault();
+                        values.forEach((value)=>{
+                            value.style.color = "initial";
+                        });
                     })
                 })
                 const psuedos = document.querySelectorAll(".Psuedo-class");
@@ -86,23 +104,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         event.preventDefault();
                         psuedos.forEach((psuedo)=>{
                             psuedo.style.color = "var(--clr-Green)";
-                        })
+                        });
+                    })
+                    psuedo.addEventListener("click", (event)=>{
+                        event.preventDefault();
+                        psuedos.forEach((psuedo)=>{
+                            psuedo.style.color = "initial";
+                        });
                     })
                 })
                 const resetBTN = document.querySelector(".reset");
                 resetBTN.addEventListener("click", ()=>{
                     selectors.forEach((selector)=>{
                         selector.style.color = "initial";
-                    })
+                    });
                     attributes.forEach((attribute)=>{
                         attribute.style.color = "initial";
-                    })
+                    });
                     values.forEach((value)=>{
                         value.style.color = "initial";
-                    })
+                    });
                     psuedos.forEach((psuedo)=>{
                         psuedo.style.color = "initial";
-                    })
+                    });
                 })
                     
             </script>

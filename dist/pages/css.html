@@ -54,66 +54,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <script>
                 const selectors = document.querySelectorAll(".Selector");
-                selectors.forEach((selector)=>{
-                    selector.addEventListener("mouseover", (event)=>{
-                        event.preventDefault();
-                        selectors.forEach((selector)=>{
-                            selector.style.color = "var(--clr-Red)";
-                        });
-                    })
-                    selector.addEventListener("click", (event)=>{
-                        event.preventDefault();
-                        selectors.forEach((selector)=>{
-                            selector.style.color = "initial";
-                        });
-                    })
-                })
                 const attributes = document.querySelectorAll(".Attribute");
-                attributes.forEach((attribute)=>{
-                    attribute.addEventListener("mouseover", (event)=>{
-                        event.preventDefault();
-                        attributes.forEach((attribute)=>{
-                            attribute.style.color = "var(--clr-WhoIS_Orange)";
-                        });
-                    })
-                    attribute.addEventListener("click", (event)=>{
-                        event.preventDefault();
-                        attributes.forEach((attribute)=>{
-                            attribute.style.color = "initial";
-                        });
-                    })
-                })
                 const values = document.querySelectorAll(".Value");
-                values.forEach((value)=>{
-                    value.addEventListener("mouseover", (event)=>{
-                        event.preventDefault();
-                        values.forEach((value)=>{
-                            value.style.color = "var(--clr-Skyblue)";
-                        });
-                    })
-                    value.addEventListener("click", (event)=>{
-                        event.preventDefault();
-                        values.forEach((value)=>{
-                            value.style.color = "initial";
-                        });
-                    })
-                })
                 const psuedos = document.querySelectorAll(".Psuedo-class");
-                psuedos.forEach((psuedo)=>{
-                    psuedo.addEventListener("mouseover", (event)=>{
-                        event.preventDefault();
-                        psuedos.forEach((psuedo)=>{
-                            psuedo.style.color = "var(--clr-Green)";
-                        });
-                    })
-                    psuedo.addEventListener("click", (event)=>{
-                        event.preventDefault();
-                        psuedos.forEach((psuedo)=>{
-                            psuedo.style.color = "initial";
-                        });
-                    })
-                })
                 const resetBTN = document.querySelector(".reset");
+
+                //attributes
+                const CSSExampleHighlighting = (items, color) =>{
+                    items.forEach((item)=>{
+                        item.addEventListener("mouseover", (event)=>{
+                            event.preventDefault();
+                            items.forEach((item)=>{
+                                item.style.color = color;
+                            });
+                        })
+                        item.addEventListener("click", (event)=>{
+                            event.preventDefault();
+                            items.forEach((item)=>{
+                                item.style.color = "initial";
+                            });
+                        })
+                    })
+                }
+                CSSExampleHighlighting(selectors, "var(--clr-Red)");
+                CSSExampleHighlighting(attributes, "var(--clr-WhoIS_Orange)");
+                CSSExampleHighlighting(values, "var(--clr-Skyblue)");
+                CSSExampleHighlighting(psuedos, "var(--clr-Green)");
+                
                 resetBTN.addEventListener("click", ()=>{
                     selectors.forEach((selector)=>{
                         selector.style.color = "initial";
@@ -128,7 +95,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         psuedo.style.color = "initial";
                     });
                 })
-                    
             </script>
             <aside id="CSS" class="exampleBlue">
                 <p>The above example is a one-line, one-attribute css id rule. The same style gives this element the green background color.</p>

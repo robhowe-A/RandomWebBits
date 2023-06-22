@@ -1,3 +1,4 @@
+"strict mode"
 //--Copyright (c) 2023 Robert A. Howell
 import LinkDetails from '../models/LinkDetails';
 

@@ -1,3 +1,4 @@
+"strict mode"
 //--Copyright (c) 2023 Robert A. Howell
 import HeaderFooter from './components/HeaderFooter';
 import RWBCardsWidget from './components/WebBits';
@@ -95,7 +96,6 @@ const main = {
         }
         const allabbreviationelems = document.querySelectorAll("abbr");
         if(allabbreviationelems.length > 0){
-            console.log(allabbreviationelems)//TODO: Delete else block, it's for logging
             for (let abbr of allabbreviationelems){
                 let abbrev = new AbbrOpen();
                 abbrev.abbrElement = abbr;
@@ -121,9 +121,6 @@ const main = {
                     });
                 });
             }
-        }
-        else { //TODO: Delete else block, it's for logging
-            console.log("%cNo abbr elements.", "color: green");
         }
     }
 };

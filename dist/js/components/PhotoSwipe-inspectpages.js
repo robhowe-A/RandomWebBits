@@ -1,3 +1,4 @@
+"strict mode"
 //--Copyright (c) 2023 Robert A. Howell
 import PhotoSwipeLightbox from '../photoswipe/photoswipe-lightbox.esm.js';
 const options = {

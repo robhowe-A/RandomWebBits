@@ -605,7 +605,6 @@ summary:focus-visible {
   width: initial;
 }
 
-
 .cssex {
   background-color: var(--clr-all-font-light);
   border-radius: 1em;
@@ -640,8 +639,8 @@ summary:focus-visible {
   position: relative;
 }
 
-.Selector:hover, .Attribute:hover, .Value:hover {
-  color: skyblue;
+.Selector:hover, .Attribute:hover, .Value:hover, .Psuedo-class {
+  cursor: pointer;
 }
 
 .CSS {

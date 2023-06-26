@@ -6,9 +6,9 @@ const RWBCardsWidget = {
     init: () => {
         // Split the cards arrays into their respective category
         let cardsSection: HTMLDivElement[] = [
-            RandomWebBits.buildCardContainingSection("Arbitrary Articles:")!,
-            RandomWebBits.buildCardContainingSection("Guide Shorts:")!,
-            RandomWebBits.buildCardContainingSection("Exlore the Web:")!,
+            RandomWebBits.buildCardContainingSection("Arbitrary Articles:"),
+            RandomWebBits.buildCardContainingSection("Guide Shorts:"),
+            RandomWebBits.buildCardContainingSection("Exlore the Web:"),
         ];
 
         // create an array of card data + attribution link data
@@ -32,7 +32,8 @@ const RWBCardsWidget = {
 
                 return shuffled.slice(0, num); // return the requested number of elements
             }
-            cardsArticles[0] = getMultipleRandom(cardsArticles[0], 3);
+            cardsArticles[0] = getMultipleRandom(cardsArticles[0], 5);
+            cardsArticles[1] = getMultipleRandom(cardsArticles[1], 3);
         }
 
         // Add the cards to the page by deconstruction and addition

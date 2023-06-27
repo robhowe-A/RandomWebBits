@@ -860,6 +860,10 @@ summary:focus-visible {
   margin-top: 2em;
 }
 
+#webIDECards li:hover {
+  background-color: var(--clr-all-primary-800);
+}
+
 .spanAlert {
   padding: .4em;
   border-radius: .6em;

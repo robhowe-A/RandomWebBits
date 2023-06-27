@@ -45,6 +45,14 @@
     --clr-Skyblue: #87ceeb;
     --clr-Red: #f51212;
     --clr-Brown: #fcdaae;
+    --clr-HSLA-Brown: hsla(39, 100%, 70%, 0.70);
+    --clr-HSLA-Brown-Dark: hsla(39, 100%, 50%, 0.70);
+    --clr-HSLA-Red: hsla(350, 95%, 30%, 0.8);
+    --clr-HSLA-Red-Dark: hsla(350, 95%, 16%, 0.8);
+    --clr-HSLA-Gray: hsla(34, 57%, 85%, 0.5);
+    --clr-HSLA-Gray-Dark: hsla(34, 57%, 70%, 0.5);
+    --clr-HSLA-Green: hsla(120, 100%, 50%, 0.5);
+    --clr-HSLA-Green-Dark: hsla(120, 100%, 33%, 0.5);
     --clr-elementisopenPink: 326, 37%, 55%;
     --clr-elementisclosedBlue: 191, 39%, 40%;
   }
@@ -871,39 +879,39 @@ summary:focus-visible {
 }
 
 .spanAlertPrice {
-  background-color: hsla(120, 100%, 33%, 0.5);
+  background-color: var(--clr-HSLA-Green-Dark);
   /* --clr-Green-Alert */
 }
 
 .spanAlertPrice:hover {
-  background-color: hsla(120, 100%, 50%, 0.5);
+  background-color: var(--clr-HSLA-Green);
 }
 
 .spanAlertGit {
-  background-color: hsla(34, 57%, 70%, 0.5);
+  background-color: var(--clr-HSLA-Gray-Dark);
   /* --clr-Brown-Alert */
 }
 
 .spanAlertGit:hover {
-  background-color: hsla(34, 57%, 85%, 0.5);
+  background-color: var(--clr-HSLA-Gray);
 }
 
 .spanAlertFeatures {
-  background-color: hsla(350, 95%, 16%, 0.8);
+  background-color: var(--clr-HSLA-Red-Dark);
   /* -clr-Pink-Alert */
 }
 
 .spanAlertFeatures:hover {
-  background-color: hsla(350, 95%, 30%, 0.8);
+  background-color: var(--clr-HSLA-Red);
 }
 
 .spanAlertDB {
-  background-color: hsla(39, 100%, 50%, 0.70);
+  background-color: var(--clr-HSLA-Brown-Dark);
   /* --clr-Orange-Alert */
 }
 
 .spanAlertDB:hover {
-  background-color: hsla(39, 100%, 70%, 0.70);
+  background-color: var(--clr-HSLA-Brown);
 }
 
 .h3tall {

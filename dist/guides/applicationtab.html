@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Use the developer's tools to view browsing data like cache, cookies, and storage.">
-    <title>&lt;/RWB&gt; Dev Application</title>
+    <title>&lt;/RWB&gt; GUIDE: Dev Application</title>
     <link rel="stylesheet" 
         href="../css/styles.css"
         type="text/css"
@@ -33,12 +33,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <time datetime="2023-03-27">March 27, 2023</time>
         <article id="ApplicationTab" class="WebBits">
             <h2>GUIDE: Dev Tools --&gt; Application Tab</h2>
-            <p>Clearing cookies is a common problem-solving technique when the browser is awry. Use <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;DEL</code> shortcut to clear browser history and cache, generally for the last hour.</p>
-            
-            <figure class="imgShadow pictureCaption">
-                <img src="/img/DevTools_Application3-ClearCache.png" alt="Application tab in dev tools.">
-                <figcaption>Clear browsing data, seens similar in Edge, Chrome, Firefox</figcaption>
-            </figure>
+            <p>Open the application tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code>. In firefox, be sure to use <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code></p>
+
             <div id="devTools-Picture" class="devToolsGrid">
                 <figure class="imgShadow pictureCaption img1">
                     <a class="pswp-gallery__item" href="/img/DevTools_Application1.png" data-pswp-width="1920" data-pswp-height="823">
@@ -47,26 +43,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <figcaption>A default view of <q>Application</q> tab in developer's tools.</figcaption>
                 </figure>
             </div>
-            <p>On the frontside, the issue may resolve. Behind the scenes, the browser is clearing temporarily stored files, references, and objects from the application tab in the <abbr title="developer">dev</abbr> tools.</p>
-         <h3>Cleared Browsing Data</h3>   
-         <div class="flex-container">
-                <ol>
-                    <li>Browsing history</li>
-                    <li>Download history</li>
-                    <li>Cache items</li>
-                    <li>Local storage</li>
-                    <li>Cookies</li>
-                    <li>...more</li>
-                </ol>
-            </div>
-            <aside class="examplePink">
-                <p>Service workers will not delete without manually uninstalling them, or the site that installed it has done so. </p>
-                <h4 class="source">Sources:</h4>
-                    <ul>
-                        <li><a href="https://love2dev.com/blog/how-to-uninstall-a-service-worker/" rel="noopener" target="_blank" title="(love2dev.com)">How To Uninstall, Unregister Or Remove A Service&nbsp;Worker</a></li>
-                        <li><a href="https://www.lucidchart.com/techblog/2019/01/22/what-you-should-know-before-making-a-service-worker/" rel="noopener"  target="_blank">What you should know before making a&nbsp;service&nbsp;worker</a></li>
-                    </ul>
-            </aside>
+            <p>The browser's temporary files, references, and objects arise as transparent inner-workings of the current webpage domain.</p>
+
             <!--Photoswipe start-->
             <div id="devTools-Gallery" class="devToolsGrid">
                 <figure class=" pictureCaption img1">
@@ -79,21 +57,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a class="pswp-gallery__item" href="/img/DevTools_Application4-After.png" data-pswp-width="1920" data-pswp-height="823">
                         <img src="/img/DevTools_Application4-After.png" alt="LocalStorage after clearing browser data" width="627" height="270">
                     </a>
-                    <figcaption>After clearing the browser's cache, local storage items were cleared.</figcaption>
+                    <figcaption>After clearing the browser's cache, local storage items are cleared.<br>Go to <span RWB="link"><a href="clearcookiesquickly.html" title="&lt;/RWB&gt; GUIDE: Clearing cookies"><strong>&lt;GUIDE: Clearing cookies&gt;</strong></a></span> to learn more.</figcaption>
                 </figure>
                 <figure class=" pictureCaption img3">
                     <a class="pswp-gallery__item" href="/img/DevTools_Application5-After_Cookies.png" data-pswp-width="1920" data-pswp-height="823">
                         <img src="/img/DevTools_Application5-After_Cookies.png" alt="Cookies after clearing browser data" width="627" height="270">
                     </a>
-                    <figcaption><a href="https://developer.chrome.com/docs/devtools/storage/cache/?utm_source=devtools" rel="noopener" target="_blank" title="Chrome dev tools">Cookies</a> are also cleared as part of the deleted data selection.</figcaption>
+                    <figcaption><a href="https://developer.chrome.com/docs/devtools/storage/cache/?utm_source=devtools" rel="noopener" target="_blank" title="Chrome dev tools">Cookies</a> also enumerate if any are currently stored.</figcaption>
                 </figure>
               </div>
-                
-            
             <aside class="exampleBlue">
-                <p>Examples are using <em>Edge</em> browser. <em>Chrome</em> and <em>Firefox</em> use the same keyboard shortcut and application tab.</p>
+                <p>Examples are using <em>Edge</em> browser. <em>Chrome</em> and <em>Firefox</em> use the similar keyboard shortcuts and application layout information.</p>
             </aside>
-            
+            <aside class="examplePink">
+                <p>Service workers may only be removed manually by uninstalling them in the application tab page.</p>
+                <h4 class="source">Sources:</h4>
+                    <ul>
+                        <li><a href="https://love2dev.com/blog/how-to-uninstall-a-service-worker/" rel="noopener" target="_blank" title="(love2dev.com)">How To Uninstall, Unregister Or Remove A Service&nbsp;Worker</a></li>
+                        <li><a href="https://www.lucidchart.com/techblog/2019/01/22/what-you-should-know-before-making-a-service-worker/" rel="noopener"  target="_blank">What you should know before making a&nbsp;service&nbsp;worker</a></li>
+                    </ul>
+            </aside>
             
 
         </article>

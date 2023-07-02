@@ -250,8 +250,8 @@ const GuideShorts = new Array(
     new WebBit(
         "DevTools",
         19,
-        "GUIDE: Dev Tools: Application Tab",
-        "Review site data when clearing the browser history",
+        "GUIDE: Dev Application",
+        "Review dev tool's application tab",
         new Date(2023, 3, 27),
         "guides/applicationtab.html",
         "img/tool-box.webp",
@@ -260,7 +260,7 @@ const GuideShorts = new Array(
     new WebBit(
         "DevToolsTwo",
         21,
-        "GUIDE: Dev Tools: Inspect Pages",
+        "GUIDE: Inspect Pages",
         "Open the developer's toolbox another way",
         new Date(2023, 4, 10),
         "guides/inspectpages.html",
@@ -276,6 +276,16 @@ const GuideShorts = new Array(
         "guides/pwaicon.html",
         "img/app-development.webp",
         "App development icon"
+    ),
+    new WebBit(
+        "ClearCookies",
+        30,
+        "GUIDE: Clear cookies quickly",
+        "Don't waste time sifting through settings",
+        new Date(2023, 7, 2),
+        "guides/clearcookiesquickly.html",
+        "img/cookies.webp",
+        "Browser cookie icon"
     ),
 );
 const Explore = new Array(

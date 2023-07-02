@@ -129,7 +129,7 @@ let ATTRIBUTIONLINKDATA = [
         "Toolbox icons created by Freepik - Flaticon",
         "https://www.flaticon.com/free-icons/toolbox",
         "Flaticon",
-        "DevTools",
+        "GUIDE: Dev Application",
         19
     ),
     new AttributionLink(
@@ -145,7 +145,7 @@ let ATTRIBUTIONLINKDATA = [
         "Toolbox icons created by Freepik - Flaticon",
         "https://www.flaticon.com/free-icons/toolbox",
         "Flaticon",
-        "DevToolsTwo",
+        "GUIDE: Inspect Pages",
         21
     ),
     new AttributionLink(
@@ -211,6 +211,14 @@ let ATTRIBUTIONLINKDATA = [
         "Flaticon",
         "CSS",
         29
+    ),
+    new AttributionLink(
+        "cookie icons",
+        "Cookie icons created by Freepik - Flaticon",
+        "https://www.flaticon.com/free-icons/cookie",
+        "Flaticon",
+        "GUIDE: Clear cookies quickly",
+        30
     )
 ];
 

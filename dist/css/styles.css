@@ -1959,7 +1959,7 @@ article iframe {
   text-align: center;
 }
 
-#NASA iframe,
+.EXPLORE iframe,
 .share-frame-img img {
   border: 1em solid var(--clr-primary-500);
   border-radius: 6.65em;
@@ -2160,8 +2160,8 @@ article iframe {
     max-width: 68.75em;
   }
 
-  #NASA iframe,
-  #NASA img {
+  .EXPLORE iframe,
+  .EXPLORE img {
     max-width: 40em;
   }
 

@@ -309,6 +309,16 @@ const Explore = new Array(
         "img/google-expeditions.webp",
         "Google Expeditions logo from FLATICON"
     ),
+    new WebBit(
+        "Webb",
+        31,
+        "EXPLORE: Webb Telescope",
+        "Explore Webb's web for high resolution deep-space science",
+        new Date(2023, 7, 3),
+        "explore/webbtelescope.html",
+        "img/JWST_poster.webp",
+        "James Webb space telescope poster image"
+    ),
 );
 
 const WEBBITDATA = [ArbitraryArticles, GuideShorts, Explore]

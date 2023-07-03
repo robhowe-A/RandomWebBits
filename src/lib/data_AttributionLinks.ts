@@ -219,6 +219,14 @@ let ATTRIBUTIONLINKDATA = [
         "Flaticon",
         "GUIDE: Clear cookies quickly",
         30
+    ),
+    new AttributionLink(
+        "Hexagon Litho (2018)",
+        "James Webb Space Telescope icon provided by nasa.gov",
+        "https://jwst.nasa.gov/content/features/educational/print.html",
+        "jwst.nasa.gov",
+        "James Webb Space Telescope icon",
+        31
     )
 ];
 

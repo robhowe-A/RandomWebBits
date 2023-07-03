@@ -179,4 +179,5 @@
 1.3.55: New WebBits page: LEARN: HTTP  
 1.3.56: New WebBits page: CSS  
 1.3.57: New WebBits page: GUIDE: Clearing cookies  
+1.3.58: New WebBits page: EXPLORE: Webb Space Telescope  
 </details>

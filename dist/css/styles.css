@@ -638,9 +638,10 @@ summary:focus-visible {
   display: inline;
 }
 
-#cssfig {
+.cssfig {
   display: inline-block;
   margin-bottom: 2em;
+  font-weight: bolder;
 }
 
 .Selector {

@@ -92,11 +92,11 @@ export default class RWBCard {
             smallImg.classList.add("imgSmall", "imgPTR");
             cardBack.classList.add("cardBack");
             attributeLink.classList.add("attribute");
-            backHeading.textContent = link.attributeowner;
+            backHeading.textContent = link.attributedowner;
             backPara.textContent = link.innerText
             attributeLink.href = link.hReference;
             attributeLink.title = link.title;
-            attributeLink.textContent = link.attributeowner;
+            attributeLink.textContent = link.attributedowner;
         }
     }
 }

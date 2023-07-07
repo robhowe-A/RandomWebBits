@@ -265,7 +265,7 @@ export class ToDoList {
                 let elem = document.querySelector('#ToDO td[num]');
                 return ((Number(elem?.getAttribute("num")) || -1000) + ToDoList.ToDOs).toString();
             })() : (1).toString());
-            newITEM.textContent = description.toString(); //Populate second col
+            newITEM.textContent = description; //Populate second col
             ToDoList.ToDOs++; //Number of Items
             delBOX.setAttribute('type', 'submit');
             delBOX.setAttribute('value', 'Delete');

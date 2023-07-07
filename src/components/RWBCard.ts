@@ -5,6 +5,7 @@ import WebBit from "../models/WebBit";
 import { RWBCardElements } from "../models/WidgetMarkupElements"
 
 export default class RWBCard {
+    private RWBElements: RWBCardElements;
     public buildRWBCardMarkup(article: WebBit) {
         // Map WebBit data to a card, each
         //
@@ -19,7 +20,7 @@ export default class RWBCard {
         // </div>
 
         let WebBit = document.createElement('div');
-        let RWBElements: RWBCardElements = {
+        this.RWBElements = {
             cardImg: document.createElement('img'),
             cardImgTop: document.createElement('div'),
             cardBody: document.createElement('div')
@@ -27,17 +28,17 @@ export default class RWBCard {
         let cardBodyHeading = document.createElement('h3');
         let cardBodyPara = document.createElement('p');
         let cardBodyLink = document.createElement('a');
-        RWBElements.cardImgTop.appendChild(RWBElements.cardImg);
-        RWBElements.cardBody.appendChild(cardBodyHeading);
-        RWBElements.cardBody.appendChild(cardBodyPara);
-        RWBElements.cardBody.appendChild(cardBodyLink);
+        this.RWBElements.cardImgTop.appendChild(this.RWBElements.cardImg);
+        this.RWBElements.cardBody.appendChild(cardBodyHeading);
+        this.RWBElements.cardBody.appendChild(cardBodyPara);
+        this.RWBElements.cardBody.appendChild(cardBodyLink);
 
         // Add card data attributes and property values
         WebBit.classList.add('card');
-        RWBElements.cardBody.classList.add("cardBody");
-        RWBElements.cardImg.setAttribute('src', article.cardImage);
-        RWBElements.cardImg.setAttribute('alt', article.cardImageALT);
-        RWBElements.cardImg.setAttribute('Article', article.articleNumber.toString());
+        this.RWBElements.cardBody.classList.add("cardBody");
+        this.RWBElements.cardImg.setAttribute('src', article.cardImage);
+        this.RWBElements.cardImg.setAttribute('alt', article.cardImageALT);
+        this.RWBElements.cardImg.setAttribute('Article', article.articleNumber.toString());
         cardBodyLink.setAttribute('href', article.articleLink)
         cardBodyHeading.innerText = article.name;
         cardBodyPara.textContent = article.description;
@@ -45,12 +46,12 @@ export default class RWBCard {
 
         // Image attribution may be needed for the image used
         // Attribution data is imported as 'attrlinks' signature parameter
-        ATTRIBUTIONLINKDATA.map((link) => this.buildRWBCardAttributionPanel(RWBElements, link));
+        ATTRIBUTIONLINKDATA.map((link) => this.buildRWBCardAttributionPanel(this.RWBElements, link));
 
         // The card is WebBit
         // Add the markup to the containing element
-        WebBit.appendChild(RWBElements.cardImgTop);
-        WebBit.appendChild(RWBElements.cardBody);
+        WebBit.appendChild(this.RWBElements.cardImgTop);
+        WebBit.appendChild(this.RWBElements.cardBody);
 
         return WebBit;
 

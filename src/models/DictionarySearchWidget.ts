@@ -2,14 +2,9 @@
 import { DictionarySearchElements } from "./WidgetMarkupElements";
 
 /**
- * A DictionarySearchWidget is made to create Dictionary Search markup for the
- *  page display. Without markup, a search widget does not exist for user
- *  interaction.
- *
- * Each public functions, the widget markup can be created in multiple site locations.
- *  All that is needed is a reference element for the widget's placement on
- *  the page.
- *
+ * A DictionarySearchWidget is made to create the markup needed for the
+ *  Dictionary Search. Elements are created and appended to the page to the class
+ *  'dictionaryWidget'
  */
 export default class DictionarySearchWidget {
   /**

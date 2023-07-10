@@ -3,8 +3,16 @@ import WEBBITDATA from "../lib/data"
 import { RandomWebBits } from "../models/RandomWebBits"
 
 const RWBCardsWidget = {
+    /** Cards initialization function. This function breaks down the data structure in 
+     * order to formulate the article details into one card for each article data.
+     * 
+     * Articles have different categories, so each category must be respected. 
+     * */
     init: () => {
         // Split the cards arrays into their respective category
+        /** Multiple categories of card data exist. This array holds the markup needed 
+         * to create category sections divisions when placed on a page.
+         */
         let cardsSection: HTMLDivElement[] = [
             RandomWebBits.buildCardContainingSection("Arbitrary Articles:"),
             RandomWebBits.buildCardContainingSection("Guide Shorts:"),
@@ -12,7 +20,9 @@ const RWBCardsWidget = {
         ];
 
         // create an array of card data + attribution link data
-        // WEBBITDATA broken into 3 arrays: Pages, or articles, Guides, and Explores 
+        // WEBBITDATA broken into 3 arrays: Pages, or articles, Guides, and Explores
+        /**This array holds the markup of card elements. Each index stores the cards' data
+         * for one category of articles. */ 
         let cardsArticles: any = [
             RandomWebBits.buildArticleCards(WEBBITDATA.shift()),
             RandomWebBits.buildArticleCards(WEBBITDATA.shift()),
@@ -26,6 +36,7 @@ const RWBCardsWidget = {
             window.location.pathname == '/RandomWebBits/index.html' ||
             window.location.pathname == '/RandomWebBits/' ||
             window.location.pathname == '/dist/index.html') {
+                /** Randomize the order of cards. */
             const getMultipleRandom = (arr: any, num: number) => {
                 // randomize the array
                 const shuffled = [...arr].sort(() => 0.5 - Math.random());

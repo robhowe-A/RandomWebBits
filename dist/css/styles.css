@@ -402,6 +402,10 @@ hgroup h3 {
 }
 
 /* webBits cards */
+#Webb h3 {
+  color: var(--clr-light-100) !important;
+}
+
 .flip-card {
   background-color: transparent;
   width: 350px;

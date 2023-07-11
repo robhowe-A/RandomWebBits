@@ -1,5 +1,4 @@
 //--Copyright (c) 2023 Robert A. Howell
-import ATTRIBUTIONLINKDATA from "../lib/data_AttributionLinks";
 import AttributionLink from "../models/AttributionLink";
 import WebBit from "../models/WebBit";
 import { RWBCardElements } from "../models/WidgetMarkupElements"
@@ -40,7 +39,8 @@ export default class RWBCard {
 
         // Add card data attributes and property values
         WebBit.classList.add('card');
-        this.rwbcardelements.cardBody.classList.add("cardBody");
+        WebBit.setAttribute("id", `${article.id}`);
+        this.rwbcardelements.cardBody.classList.add("cardBody",);
         this.rwbcardelements.cardImg.setAttribute('src', article.cardImage);
         this.rwbcardelements.cardImg.setAttribute('alt', article.cardImageALT);
         this.rwbcardelements.cardImg.setAttribute('Article', article.articleNumber.toString());
@@ -51,7 +51,9 @@ export default class RWBCard {
 
         // Image attribution may be needed for the image used
         // Attribution data is imported as 'attrlinks' signature parameter
-        ATTRIBUTIONLINKDATA.map((link) => this.buildRWBCardAttributionPanel(this.rwbcardelements, link));
+        if (article.linkAttribution){
+            this.buildRWBCardAttributionPanel(this.rwbcardelements, article.linkAttribution);
+        }
 
         // The card is WebBit
         // Add the markup to the containing element

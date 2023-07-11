@@ -4,7 +4,7 @@ import { RandomWebBits } from "../models/RandomWebBits"
 
 /**
  * Card widget to initialize article data into HTML card elements. This widget 
- * creates multiple sections of cards from the 'WEBBITDATA' structure.
+ * creates multiple sections of cards to add to a page.
  */
 const RWBCardsWidget = {
     /** Cards initialization function. This function breaks down the data structure in 
@@ -33,6 +33,7 @@ const RWBCardsWidget = {
             RandomWebBits.buildArticleCards(WEBBITDATA.shift()),
         ];
 
+        
         // Routes -> Add widget and format pages
         // Index (Home) page shortens each section to 3 articles only
         if (window.location.pathname == '/index.html' ||

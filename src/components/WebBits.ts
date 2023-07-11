@@ -2,6 +2,10 @@
 import WEBBITDATA from "../lib/data"
 import { RandomWebBits } from "../models/RandomWebBits"
 
+/**
+ * Card widget to initialize article data into HTML card elements. This widget 
+ * creates multiple sections of cards from the 'WEBBITDATA' structure.
+ */
 const RWBCardsWidget = {
     /** Cards initialization function. This function breaks down the data structure in 
      * order to formulate the article details into one card for each article data.

@@ -364,7 +364,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "CSS",
+        "WB:CSS",
         29,
         "CSS",
         "CSS styles the elements within a page.",

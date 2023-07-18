@@ -381,6 +381,24 @@ const ArbitraryArticles = new Array(
             29
         )
     ),
+    new WebBit(
+        "LATENCY",
+        32,
+        "Latency",
+        "Travel latency can slow down a website.",
+        new Date(2023, 7, 18),
+        "pages/latency.html",
+        "img/chronometer.webp",
+        "A stopwatch icon.",
+        new AttributionLink(
+            "timer icons",
+            "Timer icons created by Freepik - Flaticon",
+            "https://www.flaticon.com/free-icons/timer",
+            "Flaticon",
+            "Latency",
+            32
+        )
+    )
 );
 
 /**

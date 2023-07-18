@@ -67,6 +67,11 @@ const PageAcronyms = [
     page: "/pages/http.html",
     htmlTitle: "javascript",
     acronyms: ["HTTP", "TCP", "UDP", "DNS", "TLS", "IP", "HTML", "CSS", "JS", "API"]
+  },
+  {
+    page: "/pages/latency.html",
+    htmlTitle: "javascript",
+    acronyms: ["CMS", "TCP", "TLS", "IP", "PS (packet switching)", "DNS"]
   }
 ]
 

@@ -2,7 +2,9 @@
 //--Copyright (c) 2023 Robert A. Howell
 import LinkDetails from '../models/LinkDetails';
 
-//Header navigation links
+/**
+ * Header navigation link data
+ */
 const homeNavLink = new LinkDetails(
     "Index",
     "Home",
@@ -24,45 +26,63 @@ const gameNavLink = new LinkDetails(
     "flashcards.html"
 );
 
+/** Navigation links */
 const NAVITEMS = [homeNavLink, pagesNavLink, gameNavLink];
 
+/**
+ * Widget to add site header and footer. Instantiated in 'Main' script.
+ */
 const HeaderFooter = {
     headerWidget: {
+        /**
+         * Site header containing navigation links and site logo.
+         */
         init: () => {
+            /**
+             * HTML 'main' element
+             */
             const pageMain = document.querySelector('main');
+            /** Header element container */
             let siteHeader: Element | null;
 
             // Add header element to the page
-            if (pageMain != null) {
+            if (pageMain != null) {// 'Main' element exists, add the header to it
+                try {
+                    siteHeader = pageMain.insertAdjacentElement('beforebegin', HeaderFooter.headerWidget.buildHeader());
+                } catch (e) {
+                    console.log("Check site header is not null before 'main' element.`n", e);
+                }
+            }
+            else { // 'Main' element does not exist, add the header to the body
+                try {
+                    siteHeader = document.body.insertAdjacentElement('afterbegin', HeaderFooter.headerWidget.buildHeader());
+                } catch (e) {
+                    console.log("Check site header is not null after 'body' element.`n", e);
+                }
+            }
 
-                // if main element exists, add the header to it
-                siteHeader = pageMain.insertAdjacentElement('beforebegin', HeaderFooter.headerWidget.buildHeader(pageMain));
-                if (siteHeader != null)
-                    siteHeader.prepend(HeaderFooter.headerWidget.buildNavigation());
-                else
-                    console.log("Check site header is not null before 'main' element.");
-            }
-            else {
-                // if main element does not exist, add the header to the body
-                siteHeader = document.body.insertAdjacentElement('afterbegin', HeaderFooter.headerWidget.buildHeader(null));
-                if (siteHeader != null)
-                    siteHeader.prepend(HeaderFooter.headerWidget.buildNavigation());
-                else
-                    console.log("Check site header is not null after 'body' element.");
-            }
+            //Append navigation items to header
+            try {
+                siteHeader.prepend(HeaderFooter.headerWidget.buildNavigation());
+            } catch (e) {
+                console.log("Cannot prepend navigation items.", e);
+            }                
         },
-        buildHeader: (main: HTMLElement | null) => {
+        /**
+         * Create header with site logo appended.
+         * @param main HTML 'main' element
+         * @returns Populated header element
+         */
+        buildHeader: () => {
+            /**
+             * Basic HTML header element containing logo (H1)
+             */
             const siteHeader = document.createElement('header');
             const H1 = document.createElement("H1");
-            H1.textContent = '<Random Web Bits>'; //H1 Logo
+            H1.textContent = '<Random Web Bits>';
             H1.setAttribute("id", "RandomWebBits");
             siteHeader.append(H1);
 
-            if (main != null) {
-                main.prepend(siteHeader);
-            }
-            else
-                document.body.prepend(siteHeader);
             return siteHeader;
         },
         buildNavigation: () => {
@@ -84,7 +104,7 @@ const HeaderFooter = {
                 navListLinks.textContent = `${item.innerText}`;
                 // Environment links edit, requiring different link relatives to operate
                 // Github pages operates from repository, not '/'
-                if (window.location.host == 'rhowell476.github.io') {
+                if (window.location.host == 'robhowe-a.github.io') {
                     //link data edit for dev environment
                     navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
                 } else {

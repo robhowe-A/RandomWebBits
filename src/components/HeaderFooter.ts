@@ -104,13 +104,13 @@ const HeaderFooter = {
                 navListLinks.textContent = `${item.innerText}`;
                 // Environment links edit, requiring different link relatives to operate
                 // Github pages operates from repository, not '/'
-                if (window.location.host == 'robhowe-a.github.io') {
+                //if (window.location.host == 'robhowe-a.github.io') {
                     //link data edit for dev environment
-                    navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
-                } else {
+                    //navListLinks.setAttribute('href', `/RandomWebBits/${item.hReference}`);
+                //} else {
                     //link data in other environments
                     navListLinks.setAttribute('href', `/${item.hReference}`);
-                }
+                //}
                 navListLinks.setAttribute("title", item.title);
             });
 

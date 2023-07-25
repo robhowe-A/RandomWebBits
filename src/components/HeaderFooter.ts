@@ -129,7 +129,7 @@ const HeaderFooter = {
             const siteFooter = document.createElement("footer");
             const footerPara = document.createElement("p");
             siteFooter.append(footerPara);
-            footerPara.textContent = `\u00A9 2022 Random WebBits. All Rights Reserved.`;
+            footerPara.textContent = `\u00A9 2022 Random Web Bits. All Rights Reserved.`;
 
             return siteFooter;
         },

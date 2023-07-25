@@ -398,7 +398,25 @@ const ArbitraryArticles = new Array(
             "Latency",
             32
         )
-    )
+    ),
+    new WebBit(
+        "HTML-ELEM",
+        33,
+        "Create an HTML page",
+        "Learn the parts and syntax of an HTML element",
+        new Date(2023, 7, 25),
+        "pages/html.html",
+        "img/html.webp",
+        "HTML element syntax icon",
+        new AttributionLink(
+            "html icons",
+            "Html icons created by Freepik - Flaticon",
+            "https://www.flaticon.com/free-icons/html",
+            "Flaticon",
+            "Create an HTML page",
+            33
+        )
+    ),
 );
 
 /**

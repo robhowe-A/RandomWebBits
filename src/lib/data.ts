@@ -402,7 +402,7 @@ const ArbitraryArticles = new Array(
     new WebBit(
         "HTML-ELEM",
         33,
-        "Create an HTML page",
+        "Create HTML elements",
         "Learn the parts and syntax of an HTML element",
         new Date(2023, 7, 25),
         "pages/html.html",
@@ -413,7 +413,7 @@ const ArbitraryArticles = new Array(
             "Html icons created by Freepik - Flaticon",
             "https://www.flaticon.com/free-icons/html",
             "Flaticon",
-            "Create an HTML page",
+            "Create HTML elements",
             33
         )
     ),

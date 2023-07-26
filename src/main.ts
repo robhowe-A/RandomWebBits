@@ -8,6 +8,7 @@ import ExpandingListDOMWidget from './components/ExpandingListDOMWidget';
 import ActiveCardsWidget from './components/GrowingCard';
 import flashcardgameWidget from './components/FlashcardGameWidget';
 import slideshowWidget from './components/SlideShowWidget';
+import cssex from './components/cssex'
 
 // entry point
 /**
@@ -50,14 +51,19 @@ const main = {
                 ActiveCardsWidget.init();
             }
 
-            // Initialize webIDE page components
-            if (window.location.pathname == '/flashcards.html') {
-                flashcardgameWidget.init();
-            }
-            
             // Initialize slideshow components
             if (window.location.pathname == '/guides/pwaicon.html'){
                 slideshowWidget.init();
+            }
+
+            // Initialize slideshow components
+            if (window.location.pathname == '/pages/css.html'){
+                cssex.CSSEXColorCode();
+            }
+
+            // Initialize flashcard components
+            if (window.location.pathname == '/flashcards.html') {
+                flashcardgameWidget.init();
             }
 
             // Add dictionary widget if that class is on a page

@@ -52,51 +52,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  </pre>
                 </div>
             </div>
-            <script>
-                const selectors = document.querySelectorAll(".Selector");
-                const attributes = document.querySelectorAll(".Attribute");
-                const values = document.querySelectorAll(".Value");
-                const psuedos = document.querySelectorAll(".Psuedo-class");
-                const resetBTN = document.querySelector(".reset");
-
-                // Function to color the example area's css code properties
-                const CSSExampleHighlighting = (items, color) =>{
-                    items.forEach((item)=>{
-                        item.addEventListener("mouseover", (event)=>{
-                            event.preventDefault();
-                            items.forEach((item)=>{
-                                item.style.color = color;
-                            });
-                        })
-                        item.addEventListener("click", (event)=>{
-                            event.preventDefault();
-                            items.forEach((item)=>{
-                                item.style.color = "initial";
-                            });
-                        })
-                    })
-                }
-                CSSExampleHighlighting(selectors, "var(--clr-Red)");
-                CSSExampleHighlighting(attributes, "var(--clr-WhoIS_Orange)");
-                CSSExampleHighlighting(values, "var(--clr-Skyblue)");
-                CSSExampleHighlighting(psuedos, "var(--clr-Green)");
-                
-                //function to reset the css code properties color to original
-                resetBTN.addEventListener("click", ()=>{
-                    selectors.forEach((selector)=>{
-                        selector.style.color = "initial";
-                    });
-                    attributes.forEach((attribute)=>{
-                        attribute.style.color = "initial";
-                    });
-                    values.forEach((value)=>{
-                        value.style.color = "initial";
-                    });
-                    psuedos.forEach((psuedo)=>{
-                        psuedo.style.color = "initial";
-                    });
-                })
-            </script>
             <aside id="CSS" class="exampleBlue">
                 <p>The above example is a one-line, one-attribute css id rule. The same style gives this element the green background color.</p>
             </aside>

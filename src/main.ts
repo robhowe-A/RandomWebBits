@@ -9,6 +9,7 @@ import ActiveCardsWidget from './components/GrowingCard';
 import flashcardgameWidget from './components/FlashcardGameWidget';
 import slideshowWidget from './components/SlideShowWidget';
 import cssex from './components/cssex'
+import htmlexColorCode from './components/colorcode'
 
 // entry point
 /**
@@ -56,9 +57,14 @@ const main = {
                 slideshowWidget.init();
             }
 
-            // Initialize slideshow components
+            // Initialize CSSEX components
             if (window.location.pathname == '/pages/css.html'){
                 cssex.CSSEXColorCode();
+            }
+
+            // Initialize htmlexColorCode components
+            if (window.location.pathname == '/pages/html.html'){
+                htmlexColorCode.HTMLEXColorCode();
             }
 
             // Initialize flashcard components

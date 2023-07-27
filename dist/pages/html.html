@@ -85,51 +85,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </pre><p class="Tagopen EXTXT">&lt;/body&gt;</p>
                 </div><br>
             </div>
-            <script>
-                const openers = document.querySelectorAll(".Tagopen");
-                const closers = document.querySelectorAll(".Tagclose");
-                const values = document.querySelectorAll(".TextVal");
-                const attributes = document.querySelectorAll(".Attribute");
-                const resetBTN = document.querySelector(".reset");
-
-                // Function to color the example area's css code properties
-                const CSSExampleHighlighting = (items, color) =>{
-                    items.forEach((item)=>{
-                        item.addEventListener("mouseover", (event)=>{
-                            event.preventDefault();
-                            items.forEach((item)=>{
-                                item.style.color = color;
-                            });
-                        })
-                        item.addEventListener("click", (event)=>{
-                            event.preventDefault();
-                            items.forEach((item)=>{
-                                item.style.color = "initial";
-                            });
-                        })
-                    })
-                }
-                CSSExampleHighlighting(openers, "var(--clr-WhoIS_Orange)");
-                CSSExampleHighlighting(closers, "var(--clr-Red)");
-                CSSExampleHighlighting(values, "var(--clr-DarkCyan)");
-                CSSExampleHighlighting(attributes, "var(--clr-Green)");
-                
-                //function to reset the css code properties color to original
-                resetBTN.addEventListener("click", ()=>{
-                    openers.forEach((selector)=>{
-                        selector.style.color = "initial";
-                    });
-                    closers.forEach((attribute)=>{
-                        attribute.style.color = "initial";
-                    });
-                    values.forEach((value)=>{
-                        value.style.color = "initial";
-                    });
-                    attributes.forEach((psuedo)=>{
-                        psuedo.style.color = "initial";
-                    });
-                })
-            </script>
             <aside class="exampleBlue">
                 <p>A time element, <code>&lt;time&gt;&lt;/time&gt;</code>, provides the metadata to add a date to an article using the datetime attribute: <br><br><strong>&lpar;datetime="YYYY-MM-DD"&rpar;</strong></p>
             </aside>

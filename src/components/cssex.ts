@@ -35,7 +35,7 @@ const cssex = {
     },
     // 
     /**
-     * Function to color the example area's css code properties
+     * Function to color the example area's elements using css
      * @param elems - Node list of HTMLElelements from query.SelectorAll()
      * @param color - String of CSS color value
      */

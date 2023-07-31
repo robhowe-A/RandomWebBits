@@ -8,27 +8,11 @@ const htmlexColorCode = {
         const attributes = document.querySelectorAll(".Attribute") as NodeListOf<HTMLElement>;
         const resetBTN = document.querySelector(".reset");
 
-        // Function to color the example area's css code properties
-        const CSSExampleHighlighting = (items:  NodeListOf<HTMLElement>, color: string) =>{
-            items.forEach((item)=>{
-                item.addEventListener("mouseover", (event)=>{
-                    event.preventDefault();
-                    items.forEach((item)=>{
-                        item.style.color = color;
-                    });
-                })
-                item.addEventListener("click", (event)=>{
-                    event.preventDefault();
-                    items.forEach((item)=>{
-                        item.style.color = "initial";
-                    });
-                })
-            })
-        }
-        CSSExampleHighlighting(openers, "var(--clr-WhoIS_Orange)");
-        CSSExampleHighlighting(closers, "var(--clr-Red)");
-        CSSExampleHighlighting(values, "var(--clr-DarkCyan)");
-        CSSExampleHighlighting(attributes, "var(--clr-Green)");
+        
+        htmlexColorCode.CSSExampleHighlighting(openers, "var(--clr-WhoIS_Orange)");
+        htmlexColorCode.CSSExampleHighlighting(closers, "var(--clr-Red)");
+        htmlexColorCode.CSSExampleHighlighting(values, "var(--clr-DarkCyan)");
+        htmlexColorCode.CSSExampleHighlighting(attributes, "var(--clr-Green)");
 
         //function to reset the css code properties color to original
         resetBTN.addEventListener("click", ()=>{
@@ -44,6 +28,25 @@ const htmlexColorCode = {
             attributes.forEach((psuedo)=>{
                 psuedo.style.color = "initial";
             });
+        })
+    },
+    /**
+     * Function to color the example area's elements using css
+     */
+    CSSExampleHighlighting: (items:  NodeListOf<HTMLElement>, color: string) =>{
+        items.forEach((item)=>{
+            item.addEventListener("mouseover", (event)=>{
+                event.preventDefault();
+                items.forEach((item)=>{
+                    item.style.color = color;
+                });
+            })
+            item.addEventListener("click", (event)=>{
+                event.preventDefault();
+                items.forEach((item)=>{
+                    item.style.color = "initial";
+                });
+            })
         })
     }
 }

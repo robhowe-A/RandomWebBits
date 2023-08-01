@@ -183,4 +183,5 @@
 1.3.59: New WebBits page: Latency  
 1.4.59: Header/Footer refactor  
 1.4.60: New WebBits page: HTML-ELEM  
+1.5.60: Main switch  
 </details>

@@ -3,9 +3,9 @@
 // This object creates an array of divs from input port number information
 export default class FlashcardCardElems {
     public m_flashcardsArr: HTMLLIElement[] = [];
-    private m_portInfoMap: Map<number, string>
+    private m_portInfoMap: Map<any, string>
 
-    constructor(portnumbersMap: Map<number, string>) {
+    constructor(portnumbersMap: Map<any, string>) {
         this.m_portInfoMap = portnumbersMap;
         const mapIter = this.m_portInfoMap.keys();
 

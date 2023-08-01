@@ -41,41 +41,32 @@ const main = {
             HeaderFooter.footerWidget.init();
 
             // Initialize page components
-            // dom.html page uses expandingLists component
-            if (window.location.pathname == '/pages/dom.html' ||
-                window.location.pathname == '/pages/svg.html') {
-                ExpandingListDOMWidget.init();
-            }
-
-            // Initialize webIDE widget
-            if (window.location.pathname == '/pages/webides.html') {
-                ActiveCardsWidget.init();
-            }
-
-            // Initialize slideshow components
-            if (window.location.pathname == '/guides/pwaicon.html'){
-                slideshowWidget.init();
-            }
-
-            // Initialize CSSEX components
-            if (window.location.pathname == '/pages/css.html'){
-                cssex.CSSEXColorCode();
-            }
-
-            // Initialize htmlexColorCode components
-            if (window.location.pathname == '/pages/html.html'){
-                htmlexColorCode.HTMLEXColorCode();
-            }
-
-            // Initialize flashcard components
-            if (window.location.pathname == '/flashcards.html') {
-                flashcardgameWidget.init();
-            }
-
-            // Add dictionary widget if that class is on a page
-            const dictionaryElement = document.querySelector(".dictionaryWidget");
-            if (dictionaryElement) {
-                DictionaryWidget.init(dictionaryElement);
+            switch (window.location.pathname) {
+                // dom.html page uses expandingLists component
+                case '/pages/dom.html':
+                case '/pages/svg.html':
+                    ExpandingListDOMWidget.init();
+                    break;
+                // Initialize webIDE widget
+                case '/pages/webides.html':
+                    ActiveCardsWidget.init();
+                    break;
+                // Initialize slideshow components
+                case '/guides/pwaicon.html':
+                    slideshowWidget.init();
+                    break;
+                // Initialize CSSEX components
+                case '/pages/css.html':
+                    cssex.CSSEXColorCode();
+                    break;
+                // Initialize htmlexColorCode components
+                case '/pages/html.html':
+                    htmlexColorCode.HTMLEXColorCode();
+                    break;
+                // Initialize flashcard components
+                case '/flashcards.html':
+                    flashcardgameWidget.init();
+                    break;
             }
 
             // Add ToDos widget if that class is on a page

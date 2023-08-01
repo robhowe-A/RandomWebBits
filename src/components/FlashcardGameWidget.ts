@@ -27,14 +27,22 @@ const flashcardgameWidget = {
             [445, "SMB  /TCP"],
             [465, "SMTP by TLS"],
             [514, "SYSLOG  /UDP"],
-            [587, "SMTPS for MSA"],
+            [587, "SMTPS STARTTLS"],
             [636, "LDAP SSL"],
             [990, "FTPS"],
+            [993, "IMAP TLS"],
+            [995, "POP TLS"],
             [1812, "RADIUS  /TCP/UDP"],
             [1813, "RADIUS  /TCP/UDP"],
             [3269, "Microsoft Global Catalog"],
             [3389, "RDP"],
         ]);
+
+        // Establish which port numbers to test and the definition
+        const methoddefinitions = new Map<string, string>([
+            ["charAt()", "Returns a new string of the character at a given index."]
+        ]);
+
 
         // Create flashcard elements
         let mainFlashCardDivs = new FlashcardCardElems(portdefinitions);

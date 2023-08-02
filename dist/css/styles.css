@@ -126,8 +126,7 @@ body {
 header {
   background-color: var(--clr-header-blue);
   max-width: 100%;
-  padding-top: 3em;
-  padding-bottom: 0.2em;
+  padding: 1rem 0rem 3rem 0rem;
 }
 
 footer {
@@ -142,6 +141,10 @@ footer a {
 
 footer a:hover {
   color: var(--clr-Green);
+}
+
+header nav ul {
+  padding-left: 0;
 }
 
 main {
@@ -2163,6 +2166,20 @@ article iframe {
     max-width: 168.75em;
   }
 
+  .width-max {
+    max-width: 75.75rem;
+  }
+
+  .width-max-center {
+    max-width: 75.75rem;
+    margin: 0 auto;
+  }
+
+  .WebBits-width main {
+    max-width: 75.75rem;
+    margin: 0 auto;
+  }
+
   .EXPLORE iframe,
   .EXPLORE img {
     max-width: 40em;
@@ -2219,12 +2236,5 @@ article iframe {
 
   #webIDECards li {
     margin-inline: 1em;
-  }
-}
-
-/* Styles for large desktop */
-@media only screen and (min-width: 1280px) {
-  main {
-    margin: 0 auto;
   }
 }

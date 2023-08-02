@@ -63,7 +63,7 @@ const HeaderFooter = {
 
             //Append navigation items to header
             try {
-                siteHeader.prepend(HeaderFooter.headerWidget.buildNavigation());
+                siteHeader.childNodes[0].appendChild(HeaderFooter.headerWidget.buildNavigation());
             } catch (e) {
                 console.log("Cannot prepend navigation items.", e);
             }                
@@ -78,10 +78,13 @@ const HeaderFooter = {
              * Basic HTML header element containing logo (H1)
              */
             const siteHeader = document.createElement('header');
+            const siteHeaderContainer = document.createElement('div');
+            siteHeaderContainer.classList.add("width-max-center");
             const H1 = document.createElement("H1");
             H1.textContent = '<Random Web Bits>';
             H1.setAttribute("id", "RandomWebBits");
-            siteHeader.append(H1);
+            siteHeaderContainer.append(H1);
+            siteHeader.append(siteHeaderContainer);
 
             return siteHeader;
         },
@@ -123,13 +126,16 @@ const HeaderFooter = {
             // Add footer element to the page end
             let footer: HTMLElement = HeaderFooter.footerWidget.buildFooter();
             document.body.append(footer);
-            footer.append(HeaderFooter.footerWidget.buildFaviconAttribution(footer));
+            footer.childNodes[0].appendChild(HeaderFooter.footerWidget.buildFaviconAttribution(footer));
         },
         buildFooter: () => {
             const siteFooter = document.createElement("footer");
+            const siteFooterContainer = document.createElement("div");
             const footerPara = document.createElement("p");
-            siteFooter.append(footerPara);
             footerPara.textContent = `\u00A9 2022 Random Web Bits. All Rights Reserved.`;
+
+            siteFooterContainer.append(footerPara);
+            siteFooter.append(siteFooterContainer);
 
             return siteFooter;
         },
@@ -145,7 +151,7 @@ const HeaderFooter = {
 
             // Append attribution to footer para
             footerIconPara.appendChild(footerIconLink);
-            footer.appendChild(footerIconPara);
+            footer.childNodes[0].appendChild(footerIconPara);
 
             return footerIconPara;
         }

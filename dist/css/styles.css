@@ -501,7 +501,6 @@ a.attribute:hover {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  max-width: 1200px;
   margin: 0 auto 3em auto;
 }
 
@@ -2161,7 +2160,7 @@ article iframe {
   }
 
   main {
-    max-width: 68.75em;
+    max-width: 168.75em;
   }
 
   .EXPLORE iframe,

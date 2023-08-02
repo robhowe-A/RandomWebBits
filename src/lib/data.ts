@@ -10,7 +10,7 @@ import AttributionLink from "../models/AttributionLink";
  */
 const ArbitraryArticles = new Array(
     new WebBit(
-        "domainLookup",
+        "Domainlookup",
         1,
         "Domain Lookup",
         "Check an available domain using WhoIS API search",
@@ -28,7 +28,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "htmlresponses",
+        "Htmlresponses",
         2,
         "HTML Frames",
         "View HTML page response status information",
@@ -46,7 +46,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "httpscert",
+        "Httpscert",
         4,
         "HTTPS Certificate",
         "Select to view a website's HTTPS certificate",
@@ -64,7 +64,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "webTech",
+        "Webtech",
         5,
         "Wappalyzer",
         "Wappalyzer browser extension",
@@ -74,7 +74,7 @@ const ArbitraryArticles = new Array(
         "Browser extension logo. A white w on a purple tile."
     ),
     new WebBit(
-        "jsonObject",
+        "Jsonobject",
         6,
         "jsonObject",
         "JSON object notation",
@@ -94,7 +94,7 @@ const ArbitraryArticles = new Array(
         "Wi-Fi logo with a black circle background."
     ),
     new WebBit(
-        "chatGPT",
+        "Chatgpt",
         8,
         "Preview chatGPT",
         "Chat with an AI for research and development.",
@@ -112,7 +112,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "paint3d",
+        "Paint3d",
         9,
         "Paint 3D",
         "Edit pictures or screen captures using paint 3D",
@@ -148,7 +148,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "BOINC",
+        "Boinc",
         11,
         "Contribute for Science United",
         "Pivot the unused computing potential for science",
@@ -166,7 +166,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "IP_Address",
+        "IPAddress",
         12,
         "IP Address Lookup",
         "Lookup public and local IP addresses",
@@ -184,7 +184,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "HTML_Markup",
+        "HTMLMarkup",
         13,
         "HTML Source Code",
         "Reveal HTML source code and JavaScript",
@@ -202,7 +202,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "Network_Speed",
+        "Networkspeed",
         15,
         "Network Speed Test",
         "Test the network adapters with a PowerShell script",
@@ -220,7 +220,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "PowerShell_Drives",
+        "PowerShelldrives",
         17,
         "PowerShell Drives",
         "Similar to an HDD, except it is only in PowerShell",
@@ -292,7 +292,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "WebIDE",
+        "Webide",
         24,
         "WebIDE",
         "Try skipping the download with a web IDE",
@@ -328,7 +328,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "JavaScript",
+        "Javascript",
         26,
         "JavaScript",
         "Disable the JavaScript to test website function",
@@ -364,7 +364,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "WB_CSS",
+        "CSSdef",
         29,
         "CSS",
         "CSS styles the elements within a page.",
@@ -382,7 +382,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "LATENCY",
+        "Latency",
         32,
         "Latency",
         "Travel latency can slow down a website.",
@@ -400,7 +400,7 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "HTML-ELEM",
+        "HTMLdef",
         33,
         "Create HTML elements",
         "Learn the parts and syntax of an HTML element",
@@ -424,7 +424,7 @@ const ArbitraryArticles = new Array(
  */
 const GuideShorts = new Array(
     new WebBit(
-        "Search_Verticals",
+        "Searchverticals",
         14,
         "GUIDE: Search Verticals",
         "Optimize your search engine news and results",
@@ -460,7 +460,7 @@ const GuideShorts = new Array(
         )
     ),
     new WebBit(
-        "DevTools",
+        "Devtools",
         19,
         "GUIDE: Dev Application",
         "Review dev tool's application tab",
@@ -478,7 +478,7 @@ const GuideShorts = new Array(
         )
     ),
     new WebBit(
-        "DevToolsTwo",
+        "Devtoolstwo",
         21,
         "GUIDE: Inspect Pages",
         "Open the developer's toolbox another way",
@@ -514,7 +514,7 @@ const GuideShorts = new Array(
         )
     ),
     new WebBit(
-        "ClearCookies",
+        "Clearcookies",
         30,
         "GUIDE: Clear cookies quickly",
         "Don't waste time sifting through settings",
@@ -538,7 +538,7 @@ const GuideShorts = new Array(
  */
 const Explore = new Array(
     new WebBit(
-        "nasa",
+        "Nasa",
         3,
         "EXPLORE: NASA Pages",
         "Explore the NASA domain. Learn about the universe via NASA links",
@@ -556,7 +556,7 @@ const Explore = new Array(
         )
     ),
     new WebBit(
-        "Virtual_Tour",
+        "Virtualtour",
         18,
         "EXPLORE: Virtual Tours",
         "Explore the real world in a web browser",

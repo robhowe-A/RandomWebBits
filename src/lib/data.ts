@@ -130,6 +130,24 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
+        "Dictionary",
+        10,
+        "Dictionary Terms",
+        "List dictionary terms using a dictionary API",
+        new Date(2023, 1, 30),
+        "pages/dictionaryword.html",
+        "img/dictionary.webp",
+        "Dictionary icon depiction",
+        new AttributionLink(
+            "dictionary icons",
+            "Dictionary icons created by Freepik - Flaticon",
+            "https://www.flaticon.com/free-icons/dictionary",
+            "Flaticon",
+            "Dictionary Terms",
+            10
+        )
+    ),
+    new WebBit(
         "Boinc",
         11,
         "Contribute for Science United",

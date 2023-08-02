@@ -69,6 +69,12 @@ const main = {
                     break;
             }
 
+            // Add dictionary widget if that class is on a page
+            const dictionaryElement = document.querySelector(".dictionaryWidget");
+            if (dictionaryElement) {
+                DictionaryWidget.init(dictionaryElement);
+            }
+
             // Add ToDos widget if that class is on a page
             const toDosElement = document.querySelector(".ToDoList");
             if (toDosElement != null)

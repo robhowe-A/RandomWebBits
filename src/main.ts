@@ -1,15 +1,10 @@
 "strict mode"
 //--Copyright (c) 2023 Robert A. Howell
 import HeaderFooter from './components/HeaderFooter';
-import RWBCardsWidget from './components/WebBits';
+
 import ToDosWidget from './components/ToDos';
 import DictionaryWidget from './components/DictionaryWidget';
-import ExpandingListDOMWidget from './components/ExpandingListDOMWidget';
-import ActiveCardsWidget from './components/GrowingCard';
-import flashcardgameWidget from './components/FlashcardGameWidget';
-import slideshowWidget from './components/SlideShowWidget';
-import cssex from './components/cssex'
-import htmlexColorCode from './components/colorcode'
+import PageComponents from './components/PageComponents'
 
 // entry point
 /**
@@ -25,50 +20,13 @@ const main = {
         // Event fired before assets are rendered to the page
         window.addEventListener("DOMContentLoaded", () => {
 
-            //'Index' and 'Pages' routes, add cards widget
-            if (
-                window.location.pathname == '/RandomWebBits/index.html' ||
-                window.location.pathname == '/index.html' ||
-                window.location.pathname == '/' ||
-                window.location.pathname == '' ||
-                window.location.pathname == '/RandomWebBits/pages.html' ||
-                window.location.pathname == '/pages.html') {
-                RWBCardsWidget.init(); // cards widget initialization
-            }
-
             // Add header and footer components
             HeaderFooter.headerWidget.init();
             HeaderFooter.footerWidget.init();
 
             // Initialize page components
-            switch (window.location.pathname) {
-                // dom.html page uses expandingLists component
-                case '/pages/dom.html':
-                case '/pages/svg.html':
-                    ExpandingListDOMWidget.init();
-                    break;
-                // Initialize webIDE widget
-                case '/pages/webides.html':
-                    ActiveCardsWidget.init();
-                    break;
-                // Initialize slideshow components
-                case '/guides/pwaicon.html':
-                    slideshowWidget.init();
-                    break;
-                // Initialize CSSEX components
-                case '/pages/css.html':
-                    cssex.CSSEXColorCode();
-                    break;
-                // Initialize htmlexColorCode components
-                case '/pages/html.html':
-                    htmlexColorCode.HTMLEXColorCode();
-                    break;
-                // Initialize flashcard components
-                case '/flashcards.html':
-                    flashcardgameWidget.init();
-                    break;
-            }
-
+            PageComponents.init();
+            
             // Add dictionary widget if that class is on a page
             const dictionaryElement = document.querySelector(".dictionaryWidget");
             if (dictionaryElement) {

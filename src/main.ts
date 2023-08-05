@@ -1,10 +1,8 @@
 "strict mode"
 //--Copyright (c) 2023 Robert A. Howell
 import HeaderFooter from './components/HeaderFooter';
-
-import ToDosWidget from './components/ToDos';
-import DictionaryWidget from './components/DictionaryWidget';
-import PageComponents from './components/PageComponents'
+import PageComponents from './components/PageComponents';
+import ClassComponents from './components/ClassComponents';
 
 // entry point
 /**
@@ -16,7 +14,8 @@ const main = {
      * Initialize page widgets and application functions.
      */
     init() {
-        //PERF: let t1 = performance.now();
+        const t1 = performance.now(); //PERF
+        let t2: number;
         // Event fired before assets are rendered to the page
         window.addEventListener("DOMContentLoaded", () => {
 
@@ -26,23 +25,17 @@ const main = {
 
             // Initialize page components
             PageComponents.init();
-            
-            // Add dictionary widget if that class is on a page
-            const dictionaryElement = document.querySelector(".dictionaryWidget");
-            if (dictionaryElement) {
-                DictionaryWidget.init(dictionaryElement);
-            }
 
-            // Add ToDos widget if that class is on a page
-            const toDosElement = document.querySelector(".ToDoList");
-            if (toDosElement != null)
-                ToDosWidget.init(toDosElement);
+            // Initialize element components
+            ClassComponents.init();
 
-            //PERF: let t2 = performance.now();
-            //PERF: const totaltime = t2 - t1;
-            //PERF: console.log("the time is: ", totaltime);
+            // <abbr></abbr> styles: implemented for mobile devices
             main.mobileAbbrMarkup();
+            
+            t2 = performance.now(); //PERF
+            console.log(`Main execution time is: ${t2 - t1}`); //PERF
         })
+
     },
     /**
      * Attribute tags on mobile do not have hover option. This function adds a click
@@ -55,7 +48,6 @@ const main = {
         class AbbrOpen{
             isOpen: boolean = false;
             abbrElement: HTMLElement;
-            
 
             constructor(){
                 this.isOpen = true;

@@ -1,16 +1,32 @@
 /*--Copyright (c) 2023 Robert A. Howell*/
 
 .pieContainer {
-  --PieChartHeight: 250px;
+  --PieChartHeight: 550px;
+  --slice1Weight: .0206;
   width: var(--PieChartHeight);
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   position: relative;
-  --slice1Height: calc(var(--PieChartHeight)/2 * 1.13016); /* 275px + 35.794px = 310.794px @ 550px */
-  --slice2Height: calc(var(--slice1Height) * 1.10500); /* 310.794x + 32.636px =  343.430px  @ 550px*/
-  --slice3Height: calc(var(--slice2Height) * 1.02566); /* 343.430 + 8.815px= 352.245px  @ 550px*/
-  --slice4Height: calc(var(--slice3Height) * 1.007847); /* 352.245 + 2.7645px = 355.009px  @ 550px*/
-  --slice5Height: calc(var(--slice4Height) * 1.002918); /* 355.009 + 1.0365px = 356.045px  @ 550px*/
+  
+  --halfofwidth: calc(var(--PieChartHeight) / 2);
+  --fiftypercent: calc(var(--halfofwidth) / var(--PieChartHeight) * 100%);
+  /* (((tan(360*.0206)*275)/550)*100)
+  formula does not work in CSS?
+  Slice1 height: manual, from calculator = (((tan(360*.0206)*275)/550)*100) = 6.50806%
+  Slice2 height: manual, from calculator = (((tan(360*.0188)*275)/550)*100) = 5.93382%
+  Slice3 height: manual, from calculator = (((tan(360*.0051)*275)/550)*100) = 1.60276%
+  Slice4 height: manual, from calculator = (((tan(360*.0016)*275)/550)*100) = 0.50267%
+  Slice5 height: manual, from calculator = (((tan(360*.0006)*275)/550)*100) = 0.18850%
+
+   NOTES --tangent: calc(tan(7.416));
+     --firsttangentpercent: calc(calc(calc(tan(calc(360*.0206))*275)/550)*100%);
+  */
+
+  --slice1Height: calc(var(--fiftypercent) +  6.50806% );
+  --slice2Height: calc(var(--slice1Height) + 5.93382% );
+  --slice3Height: calc(var(--slice2Height) + 1.60276% );
+  --slice4Height: calc(var(--slice3Height) + 0.50267% );
+  --slice5Height: calc(var(--slice4Height) + 0.18850% );
   box-shadow: 0px 5px 15px -10px black;
   border-radius: 100%;
 }
@@ -54,7 +70,7 @@
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  clip-path: polygon(50% 50%, 100% 50%, 100% var(--slice1Height) ); /* 2.06% || 71.588px height*/
+  clip-path: polygon(50% 50%, 100% 50%, 100% var(--slice1Height) ); /* 2.06% || 71.588px height*/ /*calc(275px + 35.794px) */ /*calc(50% + 6.508%)*/
   background-color: #0360ad;
   z-index: 5;
 }
@@ -249,7 +265,7 @@
 
 @media only screen and (min-width: 769px) {
   .pieContainer {
-    --PieChartHeight: 550px;
+    --PieChartHeight: 550;
     width: var(--PieChartHeight);
   }
 }

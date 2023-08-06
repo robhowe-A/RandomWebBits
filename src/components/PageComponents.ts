@@ -6,10 +6,14 @@ import slideshowWidget from './SlideShowWidget';
 import cssex from './cssex';
 import htmlexColorCode from './colorcode';
 import RWBCardsWidget from './WebBits';
+import ScriptPerf from '../models/ScriptPerf';
 
 const PageComponents = {
     init: () => {
+        const pageperf = new ScriptPerf("Pagecomponents"); //measure performance
+
         PageComponents.CheckPage();
+        pageperf.end(); //end performance measure
     },
     CheckPage: () => {
         switch (window.location.pathname) {

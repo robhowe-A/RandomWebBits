@@ -3,6 +3,9 @@
 import HeaderFooter from './components/HeaderFooter';
 import PageComponents from './components/PageComponents';
 import ClassComponents from './components/ClassComponents';
+import ScriptPerf from './models/ScriptPerf'
+
+const mainperf = new ScriptPerf("main");
 
 // entry point
 /**
@@ -14,8 +17,6 @@ const main = {
      * Initialize page widgets and application functions.
      */
     init() {
-        const t1 = performance.now(); //PERF
-        let t2: number;
         // Event fired before assets are rendered to the page
         window.addEventListener("DOMContentLoaded", () => {
 
@@ -32,8 +33,7 @@ const main = {
             // <abbr></abbr> styles: implemented for mobile devices
             main.mobileAbbrMarkup();
             
-            t2 = performance.now(); //PERF
-            console.log(`Main execution time is: ${t2 - t1}`); //PERF
+            mainperf.end();
         })
 
     },
@@ -42,6 +42,7 @@ const main = {
      *  ability to define an abbr tag, than rely on the title attribute.
      */
     mobileAbbrMarkup() {
+        const mobileabbrperf = new ScriptPerf("Mobileabbrperf"); //start performance measure
         /**
          * 
          */
@@ -81,6 +82,8 @@ const main = {
                 });
             }
         }
+
+        mobileabbrperf.end() //end performance measure
     }
 };
 

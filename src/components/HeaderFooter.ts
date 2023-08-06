@@ -1,6 +1,7 @@
 "strict mode"
 //--Copyright (c) 2023 Robert A. Howell
 import LinkDetails from '../models/LinkDetails';
+import ScriptPerf from '../models/ScriptPerf';
 
 /**
  * Header navigation link data
@@ -38,6 +39,8 @@ const HeaderFooter = {
          * Site header containing navigation links and site logo.
          */
         init: () => {
+            const headerperf = new ScriptPerf("Header");
+
             /**
              * HTML 'main' element
              */
@@ -66,7 +69,9 @@ const HeaderFooter = {
                 siteHeader.childNodes[0].appendChild(HeaderFooter.headerWidget.buildNavigation());
             } catch (e) {
                 console.log("Cannot prepend navigation items.", e);
-            }                
+            }
+            
+            headerperf.end();
         },
         /**
          * Create header with site logo appended.
@@ -123,10 +128,14 @@ const HeaderFooter = {
 
     footerWidget: {
         init: () => {
+            const footerperf = new ScriptPerf("Footer");
+
             // Add footer element to the page end
             let footer: HTMLElement = HeaderFooter.footerWidget.buildFooter();
             document.body.append(footer);
             footer.childNodes[0].appendChild(HeaderFooter.footerWidget.buildFaviconAttribution(footer));
+
+            footerperf.end();
         },
         buildFooter: () => {
             const siteFooter = document.createElement("footer");

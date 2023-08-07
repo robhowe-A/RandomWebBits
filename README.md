@@ -188,4 +188,5 @@
 1.6.61: PageComponents refactor  
 1.6.62: ClassComponents refactor  
 1.6.63: Script performance  
+1.6.64: New WebBits page: URL  
 </details>

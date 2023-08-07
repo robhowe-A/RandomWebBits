@@ -328,9 +328,9 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "Javascript",
+        "Disable_Javascript",
         26,
-        "JavaScript",
+        "Disable JavaScript",
         "Disable the JavaScript to test website function",
         new Date(2023, 5, 22),
         "pages/javascript.html",
@@ -408,6 +408,24 @@ const ArbitraryArticles = new Array(
         "pages/html.html",
         "img/html.webp",
         "HTML element syntax icon",
+        new AttributionLink(
+            "html icons",
+            "Html icons created by Freepik - Flaticon",
+            "https://www.flaticon.com/free-icons/html",
+            "Flaticon",
+            "Create HTML elements",
+            33
+        )
+    ),
+    new WebBit(
+        "URL",
+        34,
+        "URL Address Examples",
+        "Learn the parts and syntax of a URL",
+        new Date(2023, 8, 7),
+        "pages/url.html",
+        "img/www.webp",
+        "URL example icon",
         new AttributionLink(
             "html icons",
             "Html icons created by Freepik - Flaticon",

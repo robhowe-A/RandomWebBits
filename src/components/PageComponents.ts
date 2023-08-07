@@ -6,6 +6,7 @@ import slideshowWidget from './SlideShowWidget';
 import cssex from './cssex';
 import htmlexColorCode from './colorcode';
 import RWBCardsWidget from './WebBits';
+import urlexColorCode from './colorcodeurl'
 import ScriptPerf from '../models/ScriptPerf';
 
 const PageComponents = {
@@ -46,6 +47,10 @@ const PageComponents = {
             // Initialize htmlexColorCode components
             case '/pages/html.html':
                 htmlexColorCode.HTMLEXColorCode();
+                break;
+            // Initialize urlexColorCode components
+            case '/pages/url.html':
+                urlexColorCode.URLEXColorCode();
                 break;
             // Initialize flashcard components
             case '/flashcards.html':

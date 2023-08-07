@@ -427,12 +427,12 @@ const ArbitraryArticles = new Array(
         "img/www.webp",
         "URL example icon",
         new AttributionLink(
-            "html icons",
-            "Html icons created by Freepik - Flaticon",
-            "https://www.flaticon.com/free-icons/html",
+            "url icons",
+            "Url icons created by Freepik - Flaticon",
+            "https://www.flaticon.com/free-icons/url",
             "Flaticon",
             "Create HTML elements",
-            33
+            34
         )
     ),
 );

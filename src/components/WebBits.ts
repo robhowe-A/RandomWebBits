@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import WEBBITDATA from "../lib/data"
+import WEBBITDATA from "../data/data"
 import { RandomWebBits } from "../models/RandomWebBits"
 
 /**

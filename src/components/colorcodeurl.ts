@@ -72,4 +72,3 @@ const urlexColorCode = {
 }
 
 export default urlexColorCode;
-

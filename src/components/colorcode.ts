@@ -52,4 +52,3 @@ const htmlexColorCode = {
 }
 
 export default htmlexColorCode;
-

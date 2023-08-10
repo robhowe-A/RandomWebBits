@@ -6,4 +6,3 @@ export default class RWBPerformance {
     public scripttimestamps: ScriptPerf[]; 
     constructor(){};
 }
-

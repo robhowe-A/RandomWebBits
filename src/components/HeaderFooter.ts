@@ -113,7 +113,7 @@ const HeaderFooter = {
             const siteFooter = document.createElement("footer");
             const siteFooterContainer = document.createElement("div");
             const footerPara = document.createElement("p");
-            footerPara.textContent = `\u00A9 2022 Random Web Bits. All Rights Reserved.`;
+            footerPara.textContent = `\u00A9 2022-2023 Random Web Bits. All Rights Reserved.`;
 
             siteFooterContainer.append(footerPara);
             siteFooter.append(siteFooterContainer);

@@ -3,7 +3,7 @@ import WebBit from "./WebBit";
 import RWBCard from "../components/RWBCard";
 
 export class RandomWebBits {
-    public static buildCardContainingSection(name: string) {
+    public static buildCardContainingSection(sectionTitle: string, sectionHeadingID: string) {
         // Create divisor sectional elements to append to main
         const pageMain = document.querySelector("main");
         if (pageMain != null && pageMain.nodeName === 'MAIN') {
@@ -25,7 +25,8 @@ export class RandomWebBits {
             // Add data attributes and property values
             AASection.classList.add("cards");
             aaCardsSection.classList.add('card_columns');
-            aaHeading.innerText = `${name}`;
+            aaHeading.innerText = `${sectionTitle}`;
+            aaHeading.setAttribute("id", sectionHeadingID);
 
             return aaCardsSection;
         }

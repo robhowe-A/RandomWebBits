@@ -18,9 +18,9 @@ const RWBCardsWidget = {
          * to create category sections divisions when placed on a page.
          */
         let cardsSection: HTMLDivElement[] = [
-            RandomWebBits.buildCardContainingSection("Arbitrary Articles:"),
-            RandomWebBits.buildCardContainingSection("Guide Shorts:"),
-            RandomWebBits.buildCardContainingSection("Exlore the Web:"),
+            RandomWebBits.buildCardContainingSection("Arbitrary Articles:", "ArbitraryArticles"),
+            RandomWebBits.buildCardContainingSection("Guide Shorts:", "GuideShorts"),
+            RandomWebBits.buildCardContainingSection("Explore the Web:", "ExploretheWeb"),
         ];
 
         // create an array of card data + attribution link data

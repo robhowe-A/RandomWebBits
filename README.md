@@ -190,4 +190,5 @@
 1.6.63: Script performance  
 1.6.64: New WebBits page: URL  
 1.6.65: Heading Title IDs  
+1.6.66: Added ColorCode class  
 </details>

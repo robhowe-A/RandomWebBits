@@ -3,6 +3,7 @@
 import HeaderFooter from './components/HeaderFooter';
 import PageComponents from './components/PageComponents';
 import ClassComponents from './components/ClassComponents';
+import mobileAbbrMarkup from './components/mobileMarkup'
 import ScriptPerf from './models/ScriptPerf'
 
 const mainperf = new ScriptPerf("main");
@@ -31,60 +32,11 @@ const main = {
             ClassComponents.init();
 
             // <abbr></abbr> styles: implemented for mobile devices
-            main.mobileAbbrMarkup();
+            mobileAbbrMarkup.init();
             
             mainperf.end();
         })
-
-    },
-    /**
-     * Attribute tags on mobile do not have hover option. This function adds a click
-     *  ability to define an abbr tag, than rely on the title attribute.
-     */
-    mobileAbbrMarkup() {
-        const mobileabbrperf = new ScriptPerf("Mobileabbrperf"); //start performance measure
-        /**
-         * 
-         */
-        class AbbrOpen{
-            isOpen: boolean = false;
-            abbrElement: HTMLElement;
-
-            constructor(){
-                this.isOpen = true;
-            };
-        }
-        const allabbreviationelems = document.querySelectorAll("abbr");
-        if(allabbreviationelems.length > 0){
-            for (let abbr of allabbreviationelems){
-                let abbrev = new AbbrOpen();
-                abbrev.abbrElement = abbr;
-
-                abbrev.abbrElement.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    let abbrtitleattrval:string = abbrev.abbrElement.getAttribute("title");
-                    let description: HTMLSpanElement;
-
-                    if (e.target == abbr){
-                        if(abbrev.abbrElement.children.length < 1){ //create the span element
-                            description = abbrev.abbrElement.appendChild(document.createElement("span"));
-                            description.textContent = `${String.fromCharCode(160)}(${abbrtitleattrval}${String.fromCharCode(160)})`;
-                        }                        
-                        else { //show the span element
-                            description = abbrev.abbrElement.querySelector("span");
-                            description.textContent = `${String.fromCharCode(160)}(${abbrtitleattrval}${String.fromCharCode(160)})`;
-                        }
-                    }
-                    abbrev.abbrElement.addEventListener("mouseleave", () => {
-
-                            description.textContent = "";
-                    });
-                });
-            }
-        }
-
-        mobileabbrperf.end() //end performance measure
-    }
+    }    
 };
 
 main.init();

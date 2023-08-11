@@ -191,4 +191,5 @@
 1.6.64: New WebBits page: URL  
 1.6.65: Heading Title IDs  
 1.6.66: Added ColorCode class  
+1.6.67: URL, HTML, CSS examples component refactor  
 </details>

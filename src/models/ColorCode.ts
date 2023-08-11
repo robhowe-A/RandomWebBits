@@ -16,6 +16,8 @@ export default class ColorCode {
 
     /**
      * Function to color the example area's elements using css
+     * @param elemslist - Node list of HTMLElelements. I.E. using query.SelectorAll()
+     * @param color - String of CSS color value
      */
     cssExampleHighlighting (elemslist:  NodeListOf<HTMLElement>, color: string) {
         elemslist.forEach((elem)=>{

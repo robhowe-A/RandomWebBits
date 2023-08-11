@@ -1,4 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
+import ColorCode from '../models/ColorCode'
 
 const cssex = {
     /**
@@ -10,51 +11,13 @@ const cssex = {
         const attributes = document.querySelectorAll(".Attribute") as NodeListOf<HTMLElement>;
         const values = document.querySelectorAll(".Value") as NodeListOf<HTMLElement>;
         const psuedos = document.querySelectorAll(".Psuedo-class") as NodeListOf<HTMLElement>;
-        const resetBTN = document.querySelector(".reset");
-        
-        cssex.CSSExampleHighlighting(selectors, "var(--clr-Red)");
-        cssex.CSSExampleHighlighting(attributes, "var(--clr-WhoIS_Orange)");
-        cssex.CSSExampleHighlighting(values, "var(--clr-Skyblue)");
-        cssex.CSSExampleHighlighting(psuedos, "var(--clr-Green)");
-        
-        //function to reset the css code properties color to original
-        resetBTN.addEventListener("click", ()=>{
-            selectors.forEach((selector)=>{
-                selector.style.color = "initial";
-            });
-            attributes.forEach((attribute)=>{
-                attribute.style.color = "initial";
-            });
-            values.forEach((value)=>{
-                value.style.color = "initial";
-            });
-            psuedos.forEach((psuedo)=>{
-                psuedo.style.color = "initial";
-            });
-        })
-    },
-    // 
-    /**
-     * Function to color the example area's elements using css
-     * @param elems - Node list of HTMLElelements from query.SelectorAll()
-     * @param color - String of CSS color value
-     */
-    CSSExampleHighlighting: (elems: NodeListOf<HTMLElement>, color: string) => {
 
-        elems.forEach((elem)=>{
-            elem.addEventListener("mouseover", (event)=>{
-                event.preventDefault();
-                elems.forEach((elem)=>{
-                    elem.style.color = color;
-                });
-            })
-            elem.addEventListener("click", (event)=>{
-                event.preventDefault();
-                elems.forEach((elem)=>{
-                    elem.style.color = "initial";
-                });
-            })
-        })
+        // Add elements to array data structures, needed for the ColorCode instantiation
+        const colorlesselements = new Array(selectors, attributes, values, psuedos);
+        const elementscolors = new Array("var(--clr-Red)", "var(--clr-WhoIS_Orange)", "var(--clr-Skyblue)", "var(--clr-Green)");
+
+        // Instantiate a color code object with all needed elements
+        new ColorCode(colorlesselements, elementscolors, document.querySelector(".reset"));    
     }
 }
 

@@ -435,6 +435,24 @@ const ArbitraryArticles = new Array(
             34
         )
     ),
+    new WebBit(
+        "DataStorage",
+        35,
+        "Data Storage",
+        "Local storage saves data when needed for concurrent page surfing.",
+        new Date(2023, 8, 14),
+        "pages/datastorage.html",
+        "img/server.webp",
+        "Data storage icon",
+        new AttributionLink(
+            "server icons",
+            "Server icons created by Freepik - Flaticon",
+            "https://www.flaticon.com/free-icons/server",
+            "Flaticon",
+            "Data Storage",
+            35
+        )
+    ),
 );
 
 /**

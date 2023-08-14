@@ -193,4 +193,5 @@
 1.6.66: Added ColorCode class  
 1.6.67: URL, HTML, CSS examples component refactor  
 1.6.68: Added mobileMarkup component  
+1.4.60: New WebBits page: Data Storage  
 </details>

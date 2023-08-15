@@ -1,4 +1,57 @@
 /*--Copyright (c) 2023 Robert A. Howell*/
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&display=swap');
+@import url('./fonts/REM-Bold.ttf');
+
+@font-face {
+  font-family: 'REM-400';
+  src:  url('./fonts/REM-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+@font-face {
+  font-family: 'REM-400i';
+  src:  url('./fonts/REM-LightItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+@font-face {
+  font-family: 'REM-500';
+  src:  url('./fonts/REM-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+@font-face {
+  font-family: 'REM-500i';
+  src:  url('./fonts/REM-SemiBoldItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+@font-face {
+  font-family: 'REM-600';
+  src:  url('./fonts/REM-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+@font-face {
+  font-family: 'REM-600i';
+  src:  url('./fonts/REM-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+@font-face {
+  font-family: 'REM-700';
+  src:  url('./fonts/REM-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+@font-face {
+  font-family: 'REM-700i';
+  src:  url('./fonts/REM-MediumItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  }
+
 @media (prefers-color-scheme: light) {
   :root {
     --clr-light-100: #ffffff;
@@ -173,7 +226,19 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: 'REM-600', 'Lato', sans-serif;
+}
+
+h1, h2 {
   color: var(--clr-primary-500);
+}
+
+article h1, article h2 {
+  font-family: 'REM-500', 'Lato', sans-serif;
+}
+
+h3, h4, h5, h6 {
+  font-family: 'REM-500', 'Lato', sans-serif;
 }
 
 strong {
@@ -299,6 +364,7 @@ nav a:hover {
   margin-top: 0.5em;
   margin-right: 1em;
   margin-bottom: 0.5em;
+  font-family: 'Merriweather', serif;
 }
 
 p code,

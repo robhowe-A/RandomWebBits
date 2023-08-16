@@ -6,9 +6,10 @@ import LinkDetails from "./LinkDetails";
 */
 class AttributionLink extends LinkDetails {
     /**Name of the owner */
-    attributedowner: string;
+    public attributedowner: string;
     /**WebBits article data ID */
-    articleid: number;
+    public articleid: number;
+    public static count: number = 0;
 
     constructor(
         /**Link title */
@@ -28,6 +29,7 @@ class AttributionLink extends LinkDetails {
         super(title, innerText, pageName, hReference);
         this.attributedowner = attributedowner;
         this.articleid = articleid;
+        AttributionLink.count++;
     }
 }
 

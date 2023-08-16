@@ -1,10 +1,10 @@
 //--Copyright (c) 2023 Robert A. Howell
-import LinkDetails from "./LinkDetails";
+import RWBLink from "./RWBLink";
 
 /** 
  * Used for image Attribution
 */
-class AttributionLink extends LinkDetails {
+class AttributionLink extends RWBLink {
     /**Name of the owner */
     public attributedowner: string;
     /**WebBits article data ID */

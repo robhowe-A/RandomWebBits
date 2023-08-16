@@ -20,11 +20,10 @@ const flashcardgameWidget = {
         const gametitleElem = mainFlashCardPageDiv.appendChild(document.createElement("h2"));
         gametitleElem.innerText = "Computing Port Numbers"
 
-        // Add the flashcards to page
+        // Add the flashcards to widget
         for (let elem of mainFlashCardDivs.m_flashcardsArr){
             mainFlashCardPageDiv.appendChild(elem);
         }
-
     }
 };
 

@@ -3,11 +3,15 @@
 // This object creates an array of divs from input port number information
 export default class FlashcardCardElems {
     public m_flashcardsArr: HTMLLIElement[] = [];
-    private m_portInfoMap: Map<any, string>
+    private m_portInfoMap: Map<any, string>;
+    public flashcardscount: number = 0;
+    public static totalflashcards: number = 0;
+    public static widgetcount: number = 0;
 
     constructor(portnumbersMap: Map<any, string>) {
         this.m_portInfoMap = portnumbersMap;
         const mapIter = this.m_portInfoMap.keys();
+        FlashcardCardElems.widgetcount++;
 
         this.m_portInfoMap.forEach( (port) => { 
             // Create list element
@@ -27,6 +31,9 @@ export default class FlashcardCardElems {
             flipback.classList.add("cardBack", "vertical");
             gameCardSpan.innerText = `Port# ${mapIter.next().value}`;
             gameCardBackSpan.innerText = `${port}`;
+
+            this.flashcardscount++;
+            FlashcardCardElems.totalflashcards++;
 
             // Add div to flashcard instance
             this.m_flashcardsArr.push(flashcard);

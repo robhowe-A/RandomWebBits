@@ -3,22 +3,24 @@
 /**
  * HTML link element data. Used with anchor tags.
  */
-class LinkDetails {
+class RWBLink {
     /**HTML title attribute */
-    title: string;
+    public title: string;
     /**Inner text string*/
-    innerText: string;
+    public innerText: string;
     /**The page the link is associated to*/
-    pageName: string;
+    public pageName: string;
     /**HTML href attribute*/
-    hReference: string;
+    public hReference: string;
+    public static count: number = 0;
 
     constructor(title: string, innerText: string, pageName: string, hReference: string) {
         this.title = title,
         this.innerText = innerText,
         this.pageName = pageName,
-        this.hReference = hReference
+        this.hReference = hReference,
+        RWBLink.count++;
     }
 }
 
-export default LinkDetails;
+export default RWBLink;

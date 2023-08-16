@@ -11,10 +11,10 @@
  * 2. storing the request in the browser cache to retrieve later
  */
 export class apiGET {
+  public errorElem: HTMLElement;
   private GETURL: URL;
   private sendToBrowserCache: boolean = false;
   private browserCacheName: string;
-  public errorElem: HTMLElement;
   private receivedData: any; //TODO: check if this is needed
 
   /**
@@ -73,45 +73,6 @@ export class apiGET {
       this.GETURL = GETURL;
     }
   }
-
-  /**
-   * Checks whether the requested response is of valid status 'OK' and '200'
-   * @param res - the fetched response.
-   * @returns - returns res.json() on success or returns response on failure.
-   */
-  private apiResponseErrorCheck(res: Response) {
-    if (res.status == 404) {
-      this.errorElem.classList.add("error");
-      this.errorElem.innerText = "404 fetch error!";
-      return res;
-    }
-    if (!res.ok || res.status != 200) {
-      throw new Error(res.ok + ": " + res.status);
-    }
-
-    return res.json();
-  }
-
-  /**
-   * The fetch request, returning a fetch promise.
-   * @param GETURL - the (full) url of data request.
-   * @returns data.text() or data based on the instance returned.
-   */
-  private fetchData(GETURL: URL) {
-    return fetch(GETURL)
-      .then((response) => this.apiResponseErrorCheck(response))
-      .then((data) => {
-        if (data instanceof Response) {
-          return data.text();
-        } else return data;
-      })
-      .catch((e: any) => {
-        console.log(e);
-        this.errorElem.classList.add("error");
-        this.errorElem.innerText = `${e.message}`;
-      });
-  }
-
   /**
    * A public function creating a data promise object for the called fetch function. If
    *  the request needs added to browser storage, the fetch is made and sent to
@@ -172,4 +133,43 @@ export class apiGET {
       return dataCachePromise;
     }
   }
+
+  /**
+   * Checks whether the requested response is of valid status 'OK' and '200'
+   * @param res - the fetched response.
+   * @returns - returns res.json() on success or returns response on failure.
+   */
+  private apiResponseErrorCheck(res: Response) {
+    if (res.status == 404) {
+      this.errorElem.classList.add("error");
+      this.errorElem.innerText = "404 fetch error!";
+      return res;
+    }
+    if (!res.ok || res.status != 200) {
+      throw new Error(res.ok + ": " + res.status);
+    }
+
+    return res.json();
+  }
+
+  /**
+   * The fetch request, returning a fetch promise.
+   * @param GETURL - the (full) url of data request.
+   * @returns data.text() or data based on the instance returned.
+   */
+  private fetchData(GETURL: URL) {
+    return fetch(GETURL)
+      .then((response) => this.apiResponseErrorCheck(response))
+      .then((data) => {
+        if (data instanceof Response) {
+          return data.text();
+        } else return data;
+      })
+      .catch((e: any) => {
+        console.log(e);
+        this.errorElem.classList.add("error");
+        this.errorElem.innerText = `${e.message}`;
+      });
+  }
+
 }

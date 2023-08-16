@@ -2,9 +2,6 @@
 
 export class GrowingCardElement extends HTMLLIElement {
     private isGrown: boolean = false;
-    // private static hasLink;
-    // private static hadDetails;
-    // private static hasDescription;
 
     constructor() {
         super();
@@ -68,7 +65,7 @@ export class GrowingCardElement extends HTMLLIElement {
         this.style.opacity = "1";
         this.setIsGrown(true);
 
-        // Need all the list elements to reference which one to grow
+        // Get all the list elements to reference which one to grow
         // If it's not the clicked element, shrink it.
         let listLIs = (document.querySelectorAll("#webIDECards li") as NodeListOf<HTMLElement>);
         for (let item of listLIs) {

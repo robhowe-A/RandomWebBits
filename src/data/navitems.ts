@@ -1,25 +1,25 @@
 "strict mode"
 //--Copyright (c) 2023 Robert A. Howell
-import LinkDetails from '../models/LinkDetails';
+import RWBLink from '../models/RWBLink';
 
 /**
  * Header navigation link data
  */
-const homeNavLink = new LinkDetails(
+const homeNavLink = new RWBLink(
     "Index",
     "Home",
     "Home",
     "index.html"
 );
 
-const pagesNavLink = new LinkDetails(
+const pagesNavLink = new RWBLink(
     "Pages",
     "Pages",
     "Pages",
     "pages.html"
 );
 
-const gameNavLink = new LinkDetails(
+const gameNavLink = new RWBLink(
     "Game",
     "FlashCards",
     "Game",

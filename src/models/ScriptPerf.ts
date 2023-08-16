@@ -12,6 +12,7 @@ export default class ScriptPerf {
         startMark: null,
         endMark: null
     };
+    public static count: number = 0;
 
     /** Instantiating a ScriptPerf records the performance start mark. Call SriptPerf.end()
      * to set the end time stamp.
@@ -19,6 +20,7 @@ export default class ScriptPerf {
     constructor( scriptname: string){
         this.scriptruntimemarks.name = scriptname;
         this.scriptruntimemarks.startMark = performance.mark(`${this.scriptruntimemarks.name}-start`);
+        ScriptPerf.count++;
     }
 
     public end(){

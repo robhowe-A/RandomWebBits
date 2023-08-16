@@ -1,6 +1,6 @@
 "strict mode"
 //--Copyright (c) 2023 Robert A. Howell
-import WebBit from "../models/WebBit"
+import WebBit from "../models/WebBit";
 import AttributionLink from "../models/AttributionLink";
 
 // Create new AA (Arbitrary Article)
@@ -634,5 +634,4 @@ const Explore = new Array(
  * contain each article's data belonging in that section.
  */
 const WEBBITDATA = [ArbitraryArticles, GuideShorts, Explore]
-
 export default WEBBITDATA;

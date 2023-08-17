@@ -33,7 +33,7 @@ const main = {
 
             // <abbr></abbr> styles: implemented for mobile devices
             mobileAbbrMarkup.init();
-            
+
             mainperf.end();
         })
     }    

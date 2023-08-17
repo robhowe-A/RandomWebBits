@@ -6,15 +6,16 @@ import AttributionLink from "./AttributionLink";
  * etc.
  */
 class WebBit {
-    id: string;
-    articleNumber: number;
-    name: string;
-    description: string;
-    dateCreated: Date;
-    articleLink: string;
-    cardImage: string;
-    cardImageALT: string;
-    linkAttribution: AttributionLink;
+    public id: string;
+    public articleNumber: number;
+    public name: string;
+    public description: string;
+    public dateCreated: Date;
+    public articleLink: string;
+    public cardImage: string;
+    public cardImageALT: string;
+    public linkAttribution: AttributionLink;
+    public static count: number = 0;;
 
     constructor(
         id: string,
@@ -36,6 +37,7 @@ class WebBit {
         this.cardImage = cardImage;
         this.cardImageALT = cardImageALT;
         this.linkAttribution = linkAttribution;
+        WebBit.count++;
     }
 }
 

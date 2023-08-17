@@ -6,6 +6,7 @@
 
 // Create a class for the element
 export class ExpandingListElement extends HTMLUListElement {
+    public static count: number = 0;
     constructor() {
         // Always call super first in constructor
         // Return value from super() is a reference to this element
@@ -64,6 +65,7 @@ export class ExpandingListElement extends HTMLUListElement {
                 childText.parentNode.removeChild(childText);
             }
         });
+        ExpandingListElement.count++;
     }
 
     // li click handler

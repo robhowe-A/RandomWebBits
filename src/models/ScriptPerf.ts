@@ -7,12 +7,12 @@ interface ScriptRuntime {
 
 /** Create this object to record performance start and end marks. */
 export default class ScriptPerf {
-    scriptruntimemarks: ScriptRuntime = {
+    public static count: number = 0;
+    private scriptruntimemarks: ScriptRuntime = {
         name: null,
         startMark: null,
         endMark: null
     };
-    public static count: number = 0;
 
     /** Instantiating a ScriptPerf records the performance start mark. Call SriptPerf.end()
      * to set the end time stamp.

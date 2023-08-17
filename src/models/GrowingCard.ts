@@ -2,10 +2,12 @@
 
 export class GrowingCardElement extends HTMLLIElement {
     private isGrown: boolean = false;
+    public static count: number = 0;
 
     constructor() {
         super();
         this.addEventListener('click', this.growCard);
+        GrowingCardElement.count++;
     }
 
     public static shrinkCard = (li: GrowingCardElement) => { //TODO: check class property

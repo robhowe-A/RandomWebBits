@@ -28,9 +28,9 @@ const RWBCardsWidget = {
         /**This array holds the markup of card elements. Each index stores the cards' data
          * for one category of articles. */ 
         let cardsArticles: any = [
-            RandomWebBits.buildArticleCards(WEBBITDATA.shift()),
-            RandomWebBits.buildArticleCards(WEBBITDATA.shift()),
-            RandomWebBits.buildArticleCards(WEBBITDATA.shift()),
+            RandomWebBits.buildRWBCards(WEBBITDATA.shift()),
+            RandomWebBits.buildRWBCards(WEBBITDATA.shift()),
+            RandomWebBits.buildRWBCards(WEBBITDATA.shift()),
         ];
 
         

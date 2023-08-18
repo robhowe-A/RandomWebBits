@@ -6,8 +6,9 @@ import slideshowWidget from './SlideShowWidget';
 import cssex from './cssex';
 import htmlexColorCode from './colorcode';
 import RWBCardsWidget from './WebBits';
-import urlexColorCode from './colorcodeurl'
+import urlexColorCode from './colorcodeurl';
 import RWBPerf from '../models/ScriptPerf';
+import domainlookup from './domainlookup';
 
 const PageComponents = {
     init: () => {
@@ -55,6 +56,10 @@ const PageComponents = {
             // Initialize flashcard components
             case '/flashcards.html':
                 flashcardgameWidget.init();
+                break;
+            // Initialize domain name lookup
+            case '/pages/domainlookup.html':
+                domainlookup.init();
                 break;
         }
     }

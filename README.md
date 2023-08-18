@@ -196,4 +196,5 @@
 1.4.60: New WebBits page: Data Storage  
 1.4.61: Font changes  
 1.4.62: Static Object counters  
+1.4.63: Domain lookup component  
 </details>

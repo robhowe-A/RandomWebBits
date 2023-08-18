@@ -2,7 +2,7 @@
 import { apiGET } from "../models/API";
 import { DictionarySearchElements } from "./WidgetMarkupElements";
 import { localstoragewordvalue } from "./LocalStorageCaches";
-import DictionarySearchWidget from "./DictionarySearchWidget";
+import DictionarySearchMarkup from "./DictionarySearchMarkup";
 
 /**
  * A DictionarySearch is a set of markup creation and functions which allow a user
@@ -18,7 +18,7 @@ import DictionarySearchWidget from "./DictionarySearchWidget";
  * All the needed elements and functionality are added to the page.
  *
  */
-export class DictionarySearch extends DictionarySearchWidget {
+export class DictionarySearchWidget extends DictionarySearchMarkup {
   public static wordStorage: localstoragewordvalue[];
   private static CacheStorageNameofWordRequest: string = "RWB_word_fetch";
   private static requestUrl: string =
@@ -43,7 +43,7 @@ export class DictionarySearch extends DictionarySearchWidget {
     this.dictionarySearchMarkup = this.createDictionaryWidgetMarkup(elem);
     //Initialize the dictionary widget with click event listeners
     this.addWidgetEvents();
-    DictionarySearch.getLocalStorageWordCaches();
+    DictionarySearchWidget.getLocalStorageWordCaches();
   }
 
   /**
@@ -71,14 +71,14 @@ export class DictionarySearch extends DictionarySearchWidget {
       }
     }
     if (storageStr != null && storageStr != "[]") {
-      DictionarySearch.wordStorage = JSON.parse(storageStr);
-      return DictionarySearch.wordStorage;
+      DictionarySearchWidget.wordStorage = JSON.parse(storageStr);
+      return DictionarySearchWidget.wordStorage;
     }
     else {
         //The Local Storage is null --> Confirm here the browser does not have any Cache Storage items in error
         if ("caches" in window){
-            if (window.caches.has(DictionarySearch.CacheStorageNameofWordRequest)){
-                window.caches.delete(DictionarySearch.CacheStorageNameofWordRequest);
+            if (window.caches.has(DictionarySearchWidget.CacheStorageNameofWordRequest)){
+                window.caches.delete(DictionarySearchWidget.CacheStorageNameofWordRequest);
             }
         }
     }
@@ -150,12 +150,12 @@ export class DictionarySearch extends DictionarySearchWidget {
             //Check the placement locator and word caches for undefined
             if (
               placementlocationholder != undefined &&
-              DictionarySearch.wordStorage !== undefined &&
-              DictionarySearch.wordStorage.length !== 0
+              DictionarySearchWidget.wordStorage !== undefined &&
+              DictionarySearchWidget.wordStorage.length !== 0
             ) {
               //Because the locator and the Local Storage values are viable, create the markup
               //needed to display those words. Add event listeners for widget functionality.
-              for (let wordCache of DictionarySearch.wordStorage) {
+              for (let wordCache of DictionarySearchWidget.wordStorage) {
                 const wordHeadingElemContainer = newButtonContainer.appendChild(
                   document.createElement("div")
                 );
@@ -358,7 +358,7 @@ export class DictionarySearch extends DictionarySearchWidget {
         }
       } else {
         let removeURL: URL;
-        for (let wordCache of DictionarySearch.wordStorage) {
+        for (let wordCache of DictionarySearchWidget.wordStorage) {
           if (wordCache.word == localstorageword) {
             removeURL = wordCache.wordURL;
           }
@@ -386,7 +386,7 @@ export class DictionarySearch extends DictionarySearchWidget {
    */
   private removeRequestfromCacheStorage(removeURL: URL) {
     window.caches
-    .open(DictionarySearch.CacheStorageNameofWordRequest)
+    .open(DictionarySearchWidget.CacheStorageNameofWordRequest)
     .then((cache) => {
       caches.match(removeURL).then((result) => {
         if (result === undefined) {
@@ -534,7 +534,7 @@ export class DictionarySearch extends DictionarySearchWidget {
           wordURL,
           searchElems,
           true,
-          DictionarySearch.CacheStorageNameofWordRequest
+          DictionarySearchWidget.CacheStorageNameofWordRequest
         )
       );
     });
@@ -580,7 +580,7 @@ export class DictionarySearch extends DictionarySearchWidget {
         // Create a URL of the accepted word for use in the fetch call
         this.wordURL = new URL(
           searchElems.searchWord.value.toString(),
-          DictionarySearch.requestUrl
+          DictionarySearchWidget.requestUrl
         );
         this.callFetchDictionaryTerm(
           searchElems,

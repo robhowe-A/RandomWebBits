@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import ScriptPerf from '../models/ScriptPerf'
+import RWBPerf from '../models/ScriptPerf'
 
 const mobileAbbrMarkup = {
     init: () =>{
@@ -11,7 +11,7 @@ const mobileAbbrMarkup = {
          *  ability to define an abbr tag, than rely on the title attribute.
          */
     mobileAbbrMarkups: () => {
-        const mobileabbrperf = new ScriptPerf("Mobileabbrperf"); //start performance measure
+        const mobileabbrperf = new RWBPerf("Mobileabbrperf"); //start performance measure
         /**
          * 
          */

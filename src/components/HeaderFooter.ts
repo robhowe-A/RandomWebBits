@@ -1,6 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
 import NAVITEMS from '../data/navitems'
-import ScriptPerf from '../models/ScriptPerf';
+import RWBPerf from '../models/ScriptPerf';
 
 /**
  * Widget to add site header and footer. Instantiated in 'Main' script.
@@ -11,7 +11,7 @@ const HeaderFooter = {
          * Site header containing navigation links and site logo.
          */
         init: () => {
-            const headerperf = new ScriptPerf("Header");
+            const headerperf = new RWBPerf("Header");
 
             /**
              * HTML 'main' element
@@ -100,7 +100,7 @@ const HeaderFooter = {
 
     footerWidget: {
         init: () => {
-            const footerperf = new ScriptPerf("Footer");
+            const footerperf = new RWBPerf("Footer");
 
             // Add footer element to the page end
             let footer: HTMLElement = HeaderFooter.footerWidget.buildFooter();

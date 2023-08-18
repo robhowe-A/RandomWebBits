@@ -6,6 +6,8 @@ import AttributionLink from "./AttributionLink";
  * etc.
  */
 class WebBit {
+    /**Counts the number of objects instantiated */
+    public static count: number = 0;
     public id: string;
     public articleNumber: number;
     public name: string;
@@ -15,7 +17,6 @@ class WebBit {
     public cardImage: string;
     public cardImageALT: string;
     public linkAttribution: AttributionLink;
-    public static count: number = 0;;
 
     constructor(
         id: string,

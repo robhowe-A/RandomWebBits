@@ -2,11 +2,13 @@
 
 // This object creates an array of divs from input port number information
 export default class FlashcardCardElems {
-    public m_flashcardsArr: HTMLLIElement[] = [];
-    private m_portInfoMap: Map<any, string>;
-    public flashcardscount: number = 0;
-    public static totalflashcards: number = 0;
+    /**Counts the number of widget objects instantiated */
     public static widgetcount: number = 0;
+    /**Counts the number of objects within the widget instantiated [flashcards] */
+    public static totalflashcards: number = 0;
+    public m_flashcardsArr: HTMLLIElement[] = [];
+    public flashcardscount: number = 0;
+    private m_portInfoMap: Map<any, string>;
 
     constructor(portnumbersMap: Map<any, string>) {
         this.m_portInfoMap = portnumbersMap;

@@ -16,9 +16,11 @@ import { localstoragetodocache } from "./LocalStorageCaches";
  * Then, the widget is created and To-Dos are retrieved from storage.
  */
 export class ToDoList {
-    public static todosInLocalStorage: boolean = false;
+    /**Total number of ToDOs*/
     public static ToDOs: number = 0;
+    /**Widget elements used to populate todos */
     private static ToDoElements: ToDoListElements;
+    /**Todo HTML elements */
     private listElements: ToDoListElements;
 
     /**
@@ -196,7 +198,6 @@ export class ToDoList {
         try {
             if (todos == null) {//Nothing in storage, push current
                 localStorage.setItem('ToDos', JSON.stringify(ToDos));
-                ToDoList.todosInLocalStorage = true;
             }
             else {//Add the new ToDo to the current ToDos and push via setItem()
                 todos.push(ToDo);

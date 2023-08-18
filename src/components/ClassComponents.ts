@@ -1,11 +1,11 @@
 //--Copyright (c) 2023 Robert A. Howell
 import ToDosWidget from './ToDos';
 import DictionaryWidget from './DictionaryWidget';
-import ScriptPerf from '../models/ScriptPerf';
+import RWBPerf from '../models/ScriptPerf';
 
 const ClassComponents = {
     init: () => {
-        const classperf = new ScriptPerf("Classcomponents"); //begin performance measure
+        const classperf = new RWBPerf("Classcomponents"); //begin performance measure
 
         // Add dictionary widget if an element with that class is on a page
         const dictionaryElement = document.querySelector(".dictionaryWidget");

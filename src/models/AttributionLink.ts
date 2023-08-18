@@ -5,11 +5,12 @@ import RWBLink from "./RWBLink";
  * Used for image Attribution
 */
 class AttributionLink extends RWBLink {
+    /**Counts the number of objects instantiated */
+    public static count: number = 0;
     /**Name of the owner */
     public attributedowner: string;
     /**WebBits article data ID */
     public articleid: number;
-    public static count: number = 0;
 
     constructor(
         /**Link title */

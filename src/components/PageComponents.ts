@@ -7,11 +7,11 @@ import cssex from './cssex';
 import htmlexColorCode from './colorcode';
 import RWBCardsWidget from './WebBits';
 import urlexColorCode from './colorcodeurl'
-import ScriptPerf from '../models/ScriptPerf';
+import RWBPerf from '../models/ScriptPerf';
 
 const PageComponents = {
     init: () => {
-        const pageperf = new ScriptPerf("Pagecomponents"); //measure performance
+        const pageperf = new RWBPerf("Pagecomponents"); //measure performance
 
         PageComponents.CheckPage();
         pageperf.end(); //end performance measure

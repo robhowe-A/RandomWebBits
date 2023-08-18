@@ -6,7 +6,7 @@ import { DictionarySearchElements } from "./WidgetMarkupElements";
  *  Dictionary Search. Elements are created and appended to the page to the class
  *  'dictionaryWidget'
  */
-export default class DictionarySearchWidget {
+export default class DictionarySearchMarkup {
   /**
    * Primary widget markup structuring the widget elements and search input.
    *

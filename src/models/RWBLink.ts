@@ -4,6 +4,8 @@
  * HTML link element data. Used with anchor tags.
  */
 class RWBLink {
+    /**Counts the number of objects instantiated */
+    public static count: number = 0;
     /**HTML title attribute */
     public title: string;
     /**Inner text string*/
@@ -12,7 +14,6 @@ class RWBLink {
     public pageName: string;
     /**HTML href attribute*/
     public hReference: string;
-    public static count: number = 0;
 
     constructor(title: string, innerText: string, pageName: string, hReference: string) {
         this.title = title,

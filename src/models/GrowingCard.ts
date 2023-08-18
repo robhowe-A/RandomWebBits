@@ -1,8 +1,9 @@
 //--Copyright (c) 2023 Robert A. Howell
 
 export class GrowingCardElement extends HTMLLIElement {
-    private isGrown: boolean = false;
+    /**Counts the number of objects instantiated */
     public static count: number = 0;
+    private isGrown: boolean = false;
 
     constructor() {
         super();

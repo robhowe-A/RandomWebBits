@@ -6,7 +6,8 @@ interface ScriptRuntime {
 }
 
 /** Create this object to record performance start and end marks. */
-export default class ScriptPerf {
+export default class RWBPerf {
+    /**Counts the number of objects instantiated */
     public static count: number = 0;
     private scriptruntimemarks: ScriptRuntime = {
         name: null,
@@ -20,7 +21,7 @@ export default class ScriptPerf {
     constructor( scriptname: string){
         this.scriptruntimemarks.name = scriptname;
         this.scriptruntimemarks.startMark = performance.mark(`${this.scriptruntimemarks.name}-start`);
-        ScriptPerf.count++;
+        RWBPerf.count++;
     }
 
     public end(){

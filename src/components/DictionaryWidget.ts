@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { DictionarySearch } from "../models/DictionarySearch"
+import { DictionarySearchWidget } from "../models/DictionarySearch"
 
 /**
  * Component containing the dictionary widget's creation.
@@ -12,7 +12,7 @@ const DictionaryWidget = {
      */
     init: (elem: Element) => {
         // DictionarySearch constructor
-        new DictionarySearch(elem);
+        Object.create(new DictionarySearchWidget(elem));
     }
 };
 

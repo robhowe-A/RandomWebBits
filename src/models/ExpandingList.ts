@@ -6,6 +6,7 @@
 
 // Create a class for the element
 export class ExpandingListElement extends HTMLUListElement {
+    /**Counts the number of objects instantiated */
     public static count: number = 0;
     constructor() {
         // Always call super first in constructor

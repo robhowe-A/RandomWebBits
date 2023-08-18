@@ -4,9 +4,9 @@ import HeaderFooter from './components/HeaderFooter';
 import PageComponents from './components/PageComponents';
 import ClassComponents from './components/ClassComponents';
 import mobileAbbrMarkup from './components/mobileMarkup'
-import ScriptPerf from './models/ScriptPerf'
+import RWBPerf from './models/ScriptPerf'
 
-const mainperf = new ScriptPerf("main");
+const mainperf = new RWBPerf("main");
 
 // entry point
 /**

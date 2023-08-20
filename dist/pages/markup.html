@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="View HTML differences from native source code to rendered JavaScrict code.">
-    <title>&lt;/RWB&gt; Markup</title>
+    <title>&lt;/RWB&gt;Markup</title>
     <link rel="stylesheet" 
         href="../css/styles.css"
         type="text/css"
@@ -35,36 +35,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article id="Markup" class="WebBits">
             <h2>TRY: Finding markup differences</h2>
             <p>JavaScript requires <abbr title="HyperText Markup Language">HTML</abbr> to load before the JavaScript code. Developers often choose to preload their websites with small amounts of html, allowing JavaScript to fill in after. This results in different source code than what is applied during browsing.</p>
-
             <!--image comparison-->
             <figure id="twoImgFig">
                 <div id="comparison">
                     <figure>
                         <div id="divisor"></div>
                     </figure>
-                    <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisorBar()">
+                    <input type="range" min="0" max="100" value="50" id="slider">
                 </div>
                 <figcaption><strong>Left:</strong> source code. <strong>Right:</strong> inspected code.</figcaption>
             </figure>
-            
-            <script>
-                var divisor = document.getElementById("divisor"), 
-                    slideBar = document.getElementById("slider");
-                slideBar.setAttribute("aria-label", "slider");
-                function moveDivisorBar() { 
-                    divisor.style.width = slideBar.value + "%";
-                }
-            </script><!--end comparison-->
-
             <p>Blazor, Angular, and React web application frameworks are based on this concept. Each app begins its page render with small html source code and fills in the ramining markup as it's needed, known as dynamic rendering.</p>
-
             <aside class="exampleBlue">
                 <ul><li><strong><q>CTRL + U</q></strong> to open source code.</li>
                 <li><strong><q>CTRL + SHIFT + I</q></strong> to open elements inspection</li></ul>
-            </aside>      
-
+            </aside>
         </article>
-        
     </main>
     <acronyms-list></acronyms-list>
     <div class="Top-Link"><a class="Top" href="#">Top</a></div>

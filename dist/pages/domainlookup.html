@@ -40,23 +40,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <button type="submit"><i class="fa fa-search"></i>&nbsp;Search</button>
                         <input id="txtSearch" type="text" placeholder="Domain search..." class="monospace">
                     </form>
-                    <!-- Search Bar, WHOIS API-->
-                    <script>
-                        const searchWHOIS = () => {
-                            var URL = 'https://www.whois.com/whois/' + document.getElementById('txtSearch').value;
-                            window.open(URL, '_blank');
-                            return false;
-                        }
-                        const form = document.getElementById('searchWhoIS');
-                        form.addEventListener("submit", searchWHOIS);
-                    </script>
                 </div>
             </aside>
             <p>If a search returns an unavailable domain, you'll see the message: <i><q>Looks like this domain has not been registered yet.</q></i></p>
             <aside id="TryWhoIsReturn" class="examplePink">
                 <img src="../img/Whois_thisrandomwebdomain.com.png" alt="A screenshot of WhoIS domain search">
             </aside>
-            
         </article>
     </main>
     <acronyms-list></acronyms-list>

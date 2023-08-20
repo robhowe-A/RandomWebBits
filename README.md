@@ -197,4 +197,5 @@
 1.4.61: Font changes  
 1.4.62: Static Object counters  
 1.4.63: Domain lookup component  
+1.4.63: sliderbar component  
 </details>

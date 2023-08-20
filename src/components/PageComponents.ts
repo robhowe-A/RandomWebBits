@@ -9,6 +9,7 @@ import RWBCardsWidget from './WebBits';
 import urlexColorCode from './colorcodeurl';
 import RWBPerf from '../models/ScriptPerf';
 import domainlookup from './domainlookup';
+import sliderbar from './sliderbar';
 
 const PageComponents = {
     init: () => {
@@ -60,6 +61,9 @@ const PageComponents = {
             // Initialize domain name lookup
             case '/pages/domainlookup.html':
                 domainlookup.init();
+                break;
+            case '/pages/markup.html':
+                sliderbar.init();
                 break;
         }
     }

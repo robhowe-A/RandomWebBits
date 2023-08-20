@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Test the adapter's network connection using PowerShell instead of the browser.">
-    <title>&lt;/RWB&gt; Network Speed</title>
+    <title>&lt;/RWB&gt;Network Speed</title>
     <link rel="stylesheet" 
         href="../css/styles.css"
         type="text/css"
@@ -39,7 +39,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </figure>
             </div>
             <p>There may be hidden adapters due to network or computer configuration factors such as a <abbr title="Virtual Private Network">VPN</abbr> or applied virtualization. Add <code><q>&#8209;includehidden</q></code> to reveal all interfaces.</p>
-
             <div id="TwoFigNA" class="twoFigures">
                 <figure id="PS-NAIH" class="PSFigure">
                     <figcaption>PowerShell</figcaption>
@@ -50,7 +49,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <code class="PS"><span style="color: var(--clr-Green)"># Show name and link speed</span><br>Get-NetAdapter | select name, LinkSpeed</code>
                 </aside>
             </div>
-
             <p>Test each of the adapter's speed using PowerShell with the below script.</p>
             <figure id="TestNetworkSpeed">
                 <h3 class="Title">Test Network Speed with PowerShell</h3>

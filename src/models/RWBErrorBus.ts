@@ -39,7 +39,7 @@ export default class RWBErrorBus {
             Object.create(new RWBErrReferenceError(`${componentname}DomException`, `Key not found`));
             return true;
         }
-        if (test == ""){
+        if (test == "" || test =="[]"){
             console.log(`%cLocal storage value is empty for key: ${key}`, 'color: yellow;font-weight:bold;');
             Object.create(new RWBErrReferenceError(`${componentname}DomException`, `Value is empty`));
             return true;

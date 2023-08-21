@@ -182,6 +182,7 @@ export default class DictionarySearchMarkup {
     deleteWordTermHeadingElem.addEventListener("click", (event) => {
       event.preventDefault();
       definitionDescriptionContainer.remove();
+      console.log(`%c<RWB>%cRemoved word: ${definitionDescriptionContainer.getAttribute("word")}`, 'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
     });
 
     definitionDescriptionContainer.appendChild(definitionDescription);

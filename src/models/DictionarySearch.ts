@@ -3,6 +3,7 @@ import { apiGET } from "../models/API";
 import { DictionarySearchElements } from "./WidgetMarkupElements";
 import { localstoragewordvalue } from "./LocalStorageCaches";
 import DictionarySearchMarkup from "./DictionarySearchMarkup";
+import RWBErrorBus from "./RWBErrorBus";
 
 /**
  * A DictionarySearch is a set of markup creation and functions which allow a user
@@ -56,32 +57,25 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     //Local Storage 'word-caches' items data assignment
     //cache response links and cache name are previously stored in Local Storage
     let storageStr: string;
-    try{
-      storageStr = localStorage.getItem("word-caches");
-    }
-    catch (e){
-      if(e instanceof DOMException){
-        console.log(`%cCannot get Local Storage "word-caches."
-        %c${e.name} 
-        ${e.message} 
-        %c${e.stack}`, "color: grey", "color: orangered", "color: red");
-      }
-      else {
-        console.log(`Problem getting Local Storage key: word-caches`)
-      }
-    }
-    if (storageStr != null && storageStr != "[]") {
-      DictionarySearchWidget.wordStorage = JSON.parse(storageStr);
-      return DictionarySearchWidget.wordStorage;
-    }
-    else {
-        //The Local Storage is null --> Confirm here the browser does not have any Cache Storage items in error
-        if ("caches" in window){
-            if (window.caches.has(DictionarySearchWidget.CacheStorageNameofWordRequest)){
-                window.caches.delete(DictionarySearchWidget.CacheStorageNameofWordRequest);
-            }
+    if(localStorage.length > 0){
+      if (!RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches")){
+        try{
+          storageStr = localStorage.getItem("word-caches");
         }
+        catch (e){
+            console.log(`Problem getting Local Storage key: word-caches`)
+        }
+        DictionarySearchWidget.wordStorage = JSON.parse(storageStr);
+        return DictionarySearchWidget.wordStorage;
+      }
     }
+    //The Local Storage is null or empty--> Confirm here the browser does not have any Cache Storage items in error
+    if ("caches" in window){
+        if (window.caches.has(DictionarySearchWidget.CacheStorageNameofWordRequest)){
+            window.caches.delete(DictionarySearchWidget.CacheStorageNameofWordRequest);
+        }
+      localStorage.removeItem('word-caches');
+      }
   }
 
   /**
@@ -282,50 +276,26 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     wordStore.push(localstoragevalue);
 
     //Add the cache item to Local Storage
-    try {
-      if (localStorage.getItem("word-caches") == null) {
+      if (RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches")) {
         // Local storage empty => add the word
         localStorage.setItem("word-caches", JSON.stringify(wordStore));
+        console.log(`%c<RWB>%cCreated storage key: word-caches`, 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
         return;
       }
       //Add word to current 'word-caches' in Local Storage
       let storageStr = localStorage.getItem("word-caches");
-      if (storageStr == null) {
-        try {
-          throw new Error(
-            "'word-caches' values are null. Try clearing browser cache."
-          );
-        } catch (error) {
-          if (error instanceof Error) {
-            console.log(error.name);
-            console.log(error.message);
-            console.log(error.stack);
-          }
+      RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches"); //log whether fetched word cache is null or empty.
+      let allcache: localstoragewordvalue[] = JSON.parse(storageStr);
+      for (let cache of allcache) {
+        if (cache.wordURL == localstoragevalue.wordURL) {
+          //Word is already in Local Storage
+          // No need to add it to the array
+          return;
         }
-      } else {
-        let allcache: localstoragewordvalue[] = JSON.parse(storageStr);
-        for (let cache of allcache) {
-          if (cache.wordURL == localstoragevalue.wordURL) {
-            //Word is already in Local Storage
-            // No need to add it to the array
-            return;
-          }
-        }
-        //Add word to existing 'word-caches' in Local Storage
-        allcache.push(localstoragevalue);
-        localStorage.setItem("word-caches", JSON.stringify(allcache));
       }
-    } catch (e){
-      if(e instanceof DOMException){
-        console.log(`%cCannot get Local Storage "word-caches."
-        %c${e.name} 
-        ${e.message} 
-        %c${e.stack}`, "color: grey", "color: orangered", "color: red");
-      }
-      else {
-        console.log(`Problem getting Local Storage key: word-caches`)
-      }
-    }
+      //Add word to existing 'word-caches' in Local Storage
+      allcache.push(localstoragevalue);
+      localStorage.setItem("word-caches", JSON.stringify(allcache));
   }
 
   /**
@@ -336,47 +306,28 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    */
   private removeDictionaryTermfromLocalStorage(localstorageword: string) {
     //Remove the cache item to Local Storage, Cache Storage
-    try {
-      if (localStorage.getItem("word-caches") == null) {
-        //No words in storage, there's been an error!
-        console.log("No stored words, refresh the page!");
-        return;
-      }
-      //Get the words array from Local Storage
-      let storageStr = localStorage.getItem("word-caches");
-      if (storageStr == null) {
-        try {
-          throw new Error(
-            "'word-caches' values are null. Try clearing browser cache."
-          );
-        } catch (error) {
-          if (error instanceof Error) {
-            console.log(error.name);
-            console.log(error.message);
-            console.log(error.stack);
-          }
-        }
-      } else {
-        let removeURL: URL;
-        for (let wordCache of DictionarySearchWidget.wordStorage) {
-          if (wordCache.word == localstorageword) {
-            removeURL = wordCache.wordURL;
-          }
-        }
-        this.removeRequestfromCacheStorage(removeURL);
-
-        //Remove the word from Local Storage word array, return words to storage
-        let allcache: localstoragewordvalue[] = JSON.parse(storageStr);
-        for (let cache of allcache) {
-          if (cache.word == localstorageword) {
-            allcache.splice(allcache.indexOf(cache), 1);
-          }
-        }
-        localStorage.setItem("word-caches", JSON.stringify(allcache));
-      }
-    } catch (err) {
-      console.log("Problem removing the word. Error: ", err);
+    if (RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches")) {
+      return;
     }
+    //Get the words array from Local Storage
+    let storageStr = localStorage.getItem("word-caches");
+    RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches"); //log whether fetched word cache is null or empty.
+    let removeURL: URL;
+    for (let wordCache of DictionarySearchWidget.wordStorage) {
+      if (wordCache.word == localstorageword) {
+        removeURL = wordCache.wordURL;
+      }
+    }
+    this.removeRequestfromCacheStorage(removeURL);
+
+    //Remove the word from Local Storage word array, return words to storage
+    let allcache: localstoragewordvalue[] = JSON.parse(storageStr);
+    for (let cache of allcache) {
+      if (cache.word == localstorageword) {
+        allcache.splice(allcache.indexOf(cache), 1);
+      }
+    }
+    localStorage.setItem("word-caches", JSON.stringify(allcache));
   }
 
   /**
@@ -402,8 +353,8 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
   }
 
   /**
-   * This function structures with word definition request and instantiates apiGET(). The 
-   * promise return data structures the widget markup.
+   * This function dynamically recalls a word definition request and instantiates apiGET(). The 
+   * returned promise also dymanically answers the widget markup.
    *
    * @param word - The word searched from widget input.
    * @param wordUrl - The fetch request URL.

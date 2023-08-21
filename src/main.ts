@@ -30,9 +30,10 @@ const main = {
             PageComponents.init();
 
             // Initialize element components
-            if (RWBErrorBus.checkElementorNull("dictionaryWidget")) 
+            let componentname = "ClassComponent";
+            if (!RWBErrorBus.checkElementorNull(componentname, "dictionaryWidget"))
                 ClassComponents.initDictionary();
-            if (RWBErrorBus.checkElementorNull("ToDoList")) 
+            if (!RWBErrorBus.checkElementorNull(componentname, "ToDoList")) 
                 ClassComponents.initToDo();
 
             // <abbr></abbr> styles: implemented for mobile devices

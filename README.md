@@ -193,9 +193,10 @@
 1.6.66: Added ColorCode class  
 1.6.67: URL, HTML, CSS examples component refactor  
 1.6.68: Added mobileMarkup component  
-1.4.60: New WebBits page: Data Storage  
-1.4.61: Font changes  
-1.4.62: Static Object counters  
-1.4.63: Domain lookup component  
-1.4.63: sliderbar component  
+1.6.60: New WebBits page: Data Storage  
+1.6.61: Font changes  
+1.6.62: Static Object counters  
+1.6.63: Domain lookup component  
+1.6.63: sliderbar component  
+1.6.64: ErrorBus component  
 </details>

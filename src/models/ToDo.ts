@@ -1,6 +1,8 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { ToDoListElements } from "./WidgetMarkupElements";
 import { localstoragetodocache } from "./LocalStorageCaches";
+import RWBParseJSON from "./RWBParseAPI";
+import RWBErrorBus from "./RWBErrorBus";
 
 /**
  * A ToDoList is an HTML widget to store To-Dos in the browser. Instantiate the
@@ -159,24 +161,20 @@ export class ToDoList {
      * @returns boolean true or false
      */
     private static isToDoInStorage() {
-        let todos: localstoragetodocache[]
-        try{
-            todos = JSON.parse(localStorage.getItem('ToDos'));
-        } catch (e){
-            if(e instanceof DOMException){
-              console.log(`%cCannot get Local Storage "ToDos."
-              %c${e.name} 
-              ${e.message} 
-              %c${e.stack}`, "color: grey", "color: orangered", "color: red");
-            }
-            else {
-                console.log(`Problem getting Local Storage key: ToDos`);
-            }
+        let todos: localstoragetodocache[];
+        if (RWBErrorBus.checkLocalStorageEqualNull("ToDoList", "ToDos")){
+            return false;
         }
-        if (todos == null) {
-            return false
+        let parsestr = localStorage.getItem('ToDos');
+        let parsetest = Object.create(new RWBParseJSON(parsestr));
+        if (!parsetest.passed){
+            //parsed JSON is malformed
+            localStorage.removeItem('ToDos');
+            console.log(`%c<RWB>%cDeleted storage key: ToDos`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
+            return false;
         }
-        else return true
+        todos = parsetest.returnstr;
+        return true
     }
 
     /**
@@ -314,20 +312,17 @@ export class ToDoList {
     private populateToDoList() {
         //Retrieve todo items in Local Storage and add each to the list
         let parsedToDos: localstoragetodocache[]
-        try{
-            parsedToDos = JSON.parse(localStorage.getItem('ToDos'));
+        let parsestr: string;
+        if (RWBErrorBus.checkLocalStorageEqualNull("ToDoList", "ToDos")) {
+            //Remove null or empty local storage key-values
+            localStorage.removeItem('ToDos');
+            return;
         }
-        catch (e){
-            if(e instanceof DOMException){
-              console.log(`%cCannot get Local Storage "ToDos."
-              %c${e.name} 
-              ${e.message} 
-              %c${e.stack}`, "color: grey", "color: orangered", "color: red");
-            }
-            else {
-                console.log(`Problem getting Local Storage key: ToDos`);
-            }
-        }
+        parsestr = localStorage.getItem('ToDos');
+        let parsetest = Object.create(new RWBParseJSON(parsestr));
+        
+        if(parsetest.passed)
+            parsedToDos = parsetest.returnstr;
 
         if (parsedToDos != null) {
             for (let i = 0; i < parsedToDos.length; i++) {

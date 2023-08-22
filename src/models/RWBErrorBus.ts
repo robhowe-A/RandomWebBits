@@ -19,12 +19,23 @@ export default class RWBErrorBus {
             throw new Error (`Could not get element: ${classname}`);
         }
         if (elem == null){
-            console.log(`%cNo element with class name: ${classname}.`, 'color: yellow;font-weight:bold;');
+            console.log(`%cNo element found with class name: ${classname}.`, 'color: yellow;font-weight:bold;');
             Object.create(new RWBErrReferenceError(`${componentname}NullReference`, `Element not found`));
             return true;
         }
         return false;
     };
+
+    public static checkLocalStorageEqualNull (componentname: string, key: string) {
+        let test: string | null
+            if (localStorage.getItem(`${key}`) == null) {
+                console.log(`%cNo local storage for ${componentname}, continuing.`, 'color:purple;');
+                return true;
+            }
+            else {
+                return RWBErrorBus.checkLocalStorageNullorEmpty(componentname, key);
+            }
+        }
 
     public static checkLocalStorageNullorEmpty(componentname:string, key: string){
         let test: string | null

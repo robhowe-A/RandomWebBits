@@ -57,34 +57,27 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     //Local Storage 'word-caches' items data assignment
     //cache response links and cache name are previously stored in Local Storage
     let storageStr: string;
-    if(localStorage.length > 0 && localStorage.getItem('word-caches') != null){
-      if (!RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches") && storageStr != "[]"){
-        try{
-          storageStr = localStorage.getItem("word-caches");
-        }
-        catch (e){
-            console.log(`Problem getting Local Storage key: word-caches`)
-        }
-        try{
-          DictionarySearchWidget.wordStorage = JSON.parse(storageStr);
-        }
-        catch (e) {
-          console.log("Error parsing JSON.");
-          localStorage.removeItem("word-caches");
-          console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
-          this.getLocalStorageWordCaches();
-          return;
-        }
-        return DictionarySearchWidget.wordStorage;
-      }
-    }
-    //The Local Storage is null or empty--> Confirm here the browser does not have any Cache Storage items in error
-    if ("caches" in window){
+    if(RWBErrorBus.checkLocalStorageEqualNull("DictionarySearch", "word-caches")){
+      //The Local Storage is null or empty--> Confirm here the browser does not have any Cache Storage items in error
+      if ("caches" in window){
         if (window.caches.has(DictionarySearchWidget.CacheStorageNameofWordRequest)){
             window.caches.delete(DictionarySearchWidget.CacheStorageNameofWordRequest);
         }
       localStorage.removeItem('word-caches');
       }
+    }
+    storageStr = localStorage.getItem("word-caches");
+    try{
+      DictionarySearchWidget.wordStorage = JSON.parse(storageStr);
+    }
+    catch (e) {
+      console.log("Error parsing JSON.");
+      localStorage.removeItem("word-caches");
+      console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
+      this.getLocalStorageWordCaches();
+      return;
+    }
+    return DictionarySearchWidget.wordStorage;
   }
 
   /**

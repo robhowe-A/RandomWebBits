@@ -71,7 +71,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         catch (e) {
           console.log("Error parsing JSON.");
           localStorage.removeItem("word-caches");
-          console.log(`%c<RWB>%cRemoved storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
+          console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
           this.getLocalStorageWordCaches();
           return;
         }
@@ -282,11 +282,16 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     let wordStore: localstoragewordvalue[] = [];
     wordStore.push(localstoragevalue);
 
+    const addedwordcache = () => {
+      console.log(`%c<RWB>%cAdded word cache: ${localstoragevalue.word}`, 'color:cyan;font-weight:bold;', 'color:cyan;');
+    }
+
     //Add the cache item to Local Storage
       if (localStorage.getItem("word-caches") == null) {
         // Local storage empty => add the word
         localStorage.setItem("word-caches", JSON.stringify(wordStore));
         console.log(`%c<RWB>%cCreated storage key: word-caches`, 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
+        addedwordcache();
         return;
       }
       //Add word to current 'word-caches' in Local Storage
@@ -299,7 +304,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       catch (e) {
         console.log("Error parsing JSON.");
         localStorage.removeItem("word-caches");
-        console.log(`%c<RWB>%cRemoved storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
+        console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
         this.addDictionaryTermtoLocalStorage(localstoragevalue);
         return;
       }
@@ -343,13 +348,12 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     for (let cache of allcache) {
       if (cache.word == localstorageword) {
         allcache.splice(allcache.indexOf(cache), 1);
-        console.log(`%c<RWB>%cRemoved word cache: ${localstorageword}`, 'color:darkcyan;font-weight:bold;', 'color:darkcyan;');
-
+        console.log(`%c<RWB>%cDeleted word cache: ${localstorageword}`, 'color:darkcyan;font-weight:bold;', 'color:darkcyan;');
       }
     }
     if (allcache.length == 0){
       localStorage.removeItem("word-caches");
-      console.log(`%c<RWB>%cRemoved storage key: word-caches`, 'color:darkcyan;font-size:14px;font-weight:bold;', 'color:darkcyan;font-size:16px;');
+      console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:darkcyan;font-size:14px;font-weight:bold;', 'color:darkcyan;font-size:16px;');
       return;
     }
     localStorage.setItem("word-caches", JSON.stringify(allcache));
@@ -517,7 +521,8 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     wordDataPromise.then((data: object) => {
       this.wordData = data;
       this.createDictionaryTermWithMarkup(data, searchElems);
-      console.log(`%c<RWB>%cRetrieved word: ${word}`, 'color:gold;font-weight:bold;', 'color:gold;');
+      if (data != undefined)
+        console.log(`%c<RWB>%cRetrieved word: ${word}`, 'color:gold;font-weight:bold;', 'color:gold;');
     });
 
     // Remove unneeded classes if applied previously

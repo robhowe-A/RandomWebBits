@@ -192,12 +192,13 @@ export class ToDoList {
         }
         let ToDos: any = []; //ToDo array
         ToDos.push(ToDo);
-
+        
         //First, read current Local Storage ToDos
         let todos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos'));
         try {
             if (todos == null) {//Nothing in storage, push current
                 localStorage.setItem('ToDos', JSON.stringify(ToDos));
+                console.log(`%c<RWB>%cCreated to-do cache key: ToDos`, 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
             }
             else {//Add the new ToDo to the current ToDos and push via setItem()
                 todos.push(ToDo);
@@ -210,6 +211,7 @@ export class ToDoList {
                 console.log(err.name, err.message, err.stack);
             }
         }
+        console.log(`%c<RWB>%cAdded to-do cache: ${description}`, 'color:cyan;font-weight:bold;', 'color:cyan;');
     }
 
     /**
@@ -233,10 +235,14 @@ export class ToDoList {
         else {
             let todos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos'));
             todos = todos.filter((todo) => todo.todoitem !== item);
-            if (todos.length > 0)
+            console.log(`%c<RWB>%cDeleted todo cache: ${item}`, 'color:darkcyan;font-weight:bold;', 'color:darkcyan;');
+            if (todos.length > 0) {
                 localStorage.setItem('ToDos', JSON.stringify(todos));
-            else
+            }
+            else {
                 localStorage.removeItem('ToDos');
+                console.log(`%c<RWB>%cDeleted todo cache key: ToDos`, 'color:darkcyan;font-size:16px;font-weight:bold;', 'color:darkcyan;font-size:16px;');
+            }
         }
     }
 
@@ -271,16 +277,21 @@ export class ToDoList {
             delBOX.setAttribute('type', 'submit');
             delBOX.setAttribute('value', 'Delete');
 
-            //Add the row to the ToDos table
-            TABLEITEM.appendChild(tableFrag);
-
-            //Add an event listener for when 'delete' is clicked
-            delBOX.addEventListener("click", () => { this.DeleteButton(delBOX); });
-
             if (firstPaint) {
                 //Add to list storage
                 this.addtoDoToStorage(description);
             }
+
+            //Add the row to the ToDos table
+            TABLEITEM.appendChild(tableFrag);
+            console.log(`%c<RWB>%cCreated to-do table row`, 'color:gold;font-weight:bold;', 'color:gold;');
+
+            //Add an event listener for when 'delete' is clicked
+            delBOX.addEventListener("click", () => { 
+                this.DeleteButton(delBOX);
+            });
+
+            
         }
         else {
             try {
@@ -377,7 +388,7 @@ export class ToDoList {
                 if (rowChkBxIN.checked) {
                     //remove row since completed
                     todoTable.deleteRow(i);
-
+                    console.log(`%c<RWB>%cDeleted todo row: ${box.parentElement.previousElementSibling.textContent}`, 'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
                     if (value != 'Add a ToDO Item.') {
                         ToDoList.ToDOs--;
 
@@ -387,6 +398,7 @@ export class ToDoList {
                 }
                 else {
                     todoTable.deleteRow(i);
+                    console.log(`%c<RWB>%cRemoved todo row: ${box.parentElement.previousElementSibling.textContent}`, 'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
                     ToDoList.ToDOs--;
                 }
             }
@@ -431,7 +443,10 @@ export class ToDoList {
             ToDoList.ToDOs++;
 
             //"Delete" event listener
-            td2DEL.addEventListener("click", () => { this.DeleteButton(td2DEL) });
+            td2DEL.addEventListener("click", () => { 
+                this.DeleteButton(td2DEL);
+                console.log(`%c<RWB>%cRemoved todo: ${td2DEL.parentElement.previousElementSibling.textContent}`, 'color:purple;font-weight:bold;', 'color:purple;');
+            });
         }
     }
 }

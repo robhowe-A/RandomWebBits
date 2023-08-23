@@ -109,16 +109,12 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     }
     //Add form input event listeners
     //Upon input entry, fire API fetch
-    this.searchElements.wordSearch.addEventListener(
-      "click",
-      (event) => {
+    this.searchElements.wordSearch.addEventListener("click", (event) => {
         event.preventDefault();
         this.wordSearch(this.searchElements, false, null);
       }
     );
-    this.searchElements.searchWord.addEventListener(
-      "keypress",
-      (event) => {
+    this.searchElements.searchWord.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
           event.preventDefault();
           this.wordSearch(this.searchElements, false, null);
@@ -127,8 +123,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     );
     //"Previous word searches" button fetches locally stored words
     //Clicking the button displays each word in a list within the widget
-    this.searchElements.previousWordBtn.addEventListener("click",
-      (event) => {
+    this.searchElements.previousWordBtn.addEventListener("click", (event) => {
         event.preventDefault();
         const placementlocationholder =
           document.querySelector(".previousWords");
@@ -257,8 +252,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         }
       }
     );
-    this.searchElements.refreshBtn.addEventListener("click",
-      (event) => {
+    this.searchElements.refreshBtn.addEventListener("click", (event) => {
         event.preventDefault();
         location.reload();
       }
@@ -384,13 +378,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    * @param cacheName - If sending fetch requests to cache, provide a name to store it under.
    * @returns - wordData: Promise<unknown>
    */
-  private fetchDictionaryTerm(
-    word: string,
-    wordUrl: URL,
-    searchElems: DictionarySearchElements,
-    sendToCache: boolean,
-    cacheName: string | null
-  ) {
+  private fetchDictionaryTerm(word: string, wordUrl: URL, searchElems: DictionarySearchElements, sendToCache: boolean, cacheName: string | null) {
     //A function call parameter option is to store the word request in browser's Cache Storage
     //Structure the word data via 'localstoragewordvalue' interface used throughout fetching
     let wordcache: localstoragewordvalue = {
@@ -409,19 +397,21 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         searchElems.errorElem,
         wordcache.cacheName
       );
-      let noDefinitions: boolean = false;
+      let noDefinitions: boolean;
 
       //Fetch request method call. Returned data may be the word definition
       let data = await wordFetch.apiGET(wordFetch.getGETURL());
       if (typeof data == "string") {
         //If the returned data is a string, it is the word definition data.
+        noDefinitions = false;
         data = JSON.parse(data);
       }
       let wordData: any = data;
       //If the returned data is an object, confirm it is 'no definition' server data
       if (typeof data == "object") {
         if (Object.hasOwn(wordData, "title")) {
-          //No definitions were found
+          //No definitions were found when data is an object with a title property
+          //wordData.title == "No Definitions Found"
           noDefinitions = true;
           if(wordData.title == "No Definitions Found" && wordcache.inCache == true){
             //The data stream here is without word data. This function awaits the api fetch's data
@@ -442,25 +432,25 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
           }
         }
       }
-      if (data != undefined && !noDefinitions) {//Good data--> return data for markup render
-        this.addDictionaryTermtoLocalStorage(wordcache);
-        return data;
-      } else {//'Bad data' due to "No definitions found", invalid word, bad network connection
+      if (data == undefined || noDefinitions) {//Good data--> return data for markup render
+        //'Bad data' due to "No definitions found", invalid word, bad network connection
         if (navigator.onLine !== false) {//Online, problem with fetch
-          if (noDefinitions) {//Server returned no definitions data
-            if (wordData.title == "No Definitions Found")
-              searchElems.searchWord.classList.add("invalid-notfound");
-            searchElems.errorElem.classList.add("error-notfound");
-            searchElems.errorElem.innerText = "No Definitions Found";
-          } else {//Invalid word data
-            searchElems.searchWord.classList.add("invalid-notfound");
-            searchElems.errorElem.classList.add("error-notfound");
-            searchElems.errorElem.innerText = "Invalid word!";
-          }
-        } else {//Offline request
+          //Offline request
           searchElems.errorElem.innerText += ", check network connection.";
         }
+        if (noDefinitions) {//Server returned no definitions data
+          if (wordData.title == "No Definitions Found")
+            searchElems.errorElem.innerText = "No Definitions Found";
+          } 
+          else {//Invalid word data
+            searchElems.errorElem.innerText = "Invalid word!";
+        }
+          searchElems.searchWord.classList.add("invalid-notfound");
+          searchElems.errorElem.classList.add("error-notfound");
+          return;
       }
+      this.addDictionaryTermtoLocalStorage(wordcache);
+      return data;
     };
     let wordData = wordFetchRequest();
     return wordData;
@@ -493,21 +483,11 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    * @param word - The word to be fetched.
    * @param wordURL - A URL composing the full url of the fetch request.
    */
-  private callFetchDictionaryTerm(
-    searchElems: DictionarySearchElements,
-    word: string,
-    wordURL: URL
-  ) {
+  private callFetchDictionaryTerm(searchElems: DictionarySearchElements, word: string, wordURL: URL) {
     // When the word data resolves, call markup functions
     let wordDataPromise = new Promise((resolve) => {
       resolve(
-        this.fetchDictionaryTerm(
-          word,
-          wordURL,
-          searchElems,
-          true,
-          DictionarySearchWidget.CacheStorageNameofWordRequest
-        )
+        this.fetchDictionaryTerm(word, wordURL, searchElems, true, DictionarySearchWidget.CacheStorageNameofWordRequest)
       );
     });
     wordDataPromise.then((data: object) => {
@@ -533,17 +513,9 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    * @param isFromPreviousWords - True if the user requested a search from a previous word, to call data from Browser Cache.
    * @param cachedWord - If the user called for a previous word, cachedWord is within the Local Storage.
    */
-  private wordSearch(
-    searchElems: DictionarySearchElements,
-    isFromPreviousWords: boolean,
-    cachedWord: localstoragewordvalue | null
-  ) {
+  private wordSearch(searchElems: DictionarySearchElements, isFromPreviousWords: boolean, cachedWord: localstoragewordvalue | null) {
     if (isFromPreviousWords) {
-      this.callFetchDictionaryTerm(
-        searchElems,
-        cachedWord.word,
-        cachedWord.wordURL
-      );
+      this.callFetchDictionaryTerm(searchElems, cachedWord.word, cachedWord.wordURL);
     } else {
       // Take user input and filter to an accepted string
       let acceptedInputWord: boolean = false;
@@ -552,15 +524,8 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         : (acceptedInputWord = false);
       if (acceptedInputWord) {
         // Create a URL of the accepted word for use in the fetch call
-        this.wordURL = new URL(
-          searchElems.searchWord.value.toString(),
-          DictionarySearchWidget.requestUrl
-        );
-        this.callFetchDictionaryTerm(
-          searchElems,
-          searchElems.searchWord.value,
-          this.wordURL
-        );
+        this.wordURL = new URL( searchElems.searchWord.value.toString(), DictionarySearchWidget.requestUrl);
+        this.callFetchDictionaryTerm( searchElems, searchElems.searchWord.value, this.wordURL);
       } else {
         searchElems.searchWord.classList.remove("invalid-notfound");
         searchElems.searchWord.classList.add("invalid");

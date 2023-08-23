@@ -87,6 +87,7 @@ export default class DictionarySearchMarkup {
         console.log("%cThere is no definition for this word.", "color:darkgreen;");
       return;
     }
+    console.log(typeof wordData);
 
     // Add word definition to the dictionary widget
     const definitionDescriptionContainer = searchElems.dictionaryElem.appendChild(document.createElement("div"));

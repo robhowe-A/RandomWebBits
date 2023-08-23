@@ -272,28 +272,28 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       console.log(`%c<RWB>%cAdded word cache: ${localstoragevalue.word}`, 'color:cyan;font-weight:bold;', 'color:cyan;');
     }
 
-    //Add the cache item to Local Storage
-      if (localStorage.getItem("word-caches") == null) {
-        // Local storage empty => add the word
+      //Add the cache item to Local Storage 'word-caches'
+      if (RWBErrorBus.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
+        // Local storage is empty => add the word
         localStorage.setItem("word-caches", JSON.stringify(wordStore));
         console.log(`%c<RWB>%cCreated storage key: word-caches`, 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
         addedwordcache();
         return;
       }
-      //Add word to current 'word-caches' in Local Storage
+      //Local storage is not empty. Here, we need to add the word to the existing word cache.
+      //Get the word cache
       let storageStr = localStorage.getItem("word-caches");
       RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches", true); //log whether fetched word cache is null or empty.
-      let allcache: localstoragewordvalue[]
-      try {
-        allcache = JSON.parse(storageStr);
-      }
-      catch (e) {
-        console.log("Error parsing JSON.");
+      
+      let parsetest = Object.create(new RWBParseJSON(storageStr));
+      if (!parsetest){
         localStorage.removeItem("word-caches");
         console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
         this.addDictionaryTermtoLocalStorage(localstoragevalue);
         return;
       }
+      let allcache: localstoragewordvalue[] = parsetest.returnstr;
+ 
       for (let cache of allcache) {
         if (cache.wordURL == localstoragevalue.wordURL) {
           //Word is already in Local Storage
@@ -309,18 +309,21 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
 
   /**
    * Remove a previous word data from browser's Local Storage --> Key/Value
-   * data referencing if words are in local cache.
+   * data referencing words stored in local cache.
    *
    * @param localstorageword - string from "Previous Word Searches" button
    */
   private removeDictionaryTermfromLocalStorage(localstorageword: string) {
     //Remove the cache item to Local Storage, Cache Storage
+    //Check local storage is not null or empty
     if (RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches")) {
       return;
     }
     //Get the words array from Local Storage
     let storageStr = localStorage.getItem("word-caches");
     RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches"); //log whether fetched word cache is null or empty.
+    
+    //First, remove the word from Cache Storage
     let removeURL: URL;
     for (let wordCache of DictionarySearchWidget.wordStorage) {
       if (wordCache.word == localstorageword) {
@@ -329,7 +332,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     }
     this.removeRequestfromCacheStorage(removeURL);
 
-    //Remove the word from Local Storage word array, return words to storage
+    //Next, remove the word from Local Storage word array
     let allcache: localstoragewordvalue[] = JSON.parse(storageStr);
     for (let cache of allcache) {
       if (cache.word == localstorageword) {
@@ -337,11 +340,12 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         console.log(`%c<RWB>%cDeleted word cache: ${localstorageword}`, 'color:darkcyan;font-weight:bold;', 'color:darkcyan;');
       }
     }
-    if (allcache.length == 0){
+    if (allcache.length == 0){ //The removed word was the last word in the array, so remove the container
       localStorage.removeItem("word-caches");
       console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:darkcyan;font-size:14px;font-weight:bold;', 'color:darkcyan;font-size:16px;');
       return;
     }
+    //Return remaining words to Local Storage
     localStorage.setItem("word-caches", JSON.stringify(allcache));
   }
 

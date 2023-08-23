@@ -45,86 +45,84 @@ export class ToDoList {
         //Insert the widget after the passed in "elem"
         //Dependent on the page, todo widget may have pre-existing markup in place
         //Switch against the current page to determine markup needed
-        if (elem !== undefined) {
-            if (elem.classList.contains("ToDoList")) {
-                switch (window.location.pathname) {
-                    case '/RandomWebBits/':
-                    case '/RandomWebBits/index.html':
-                    case '/index.html':
-                    case '/':
-                    case '/dist/index.html':
-                        //Markup does not exist on the page
-                        //Create table elements needed for the todo list
-                        const todolistSection = elem.insertAdjacentElement("afterend", document.createElement("section"));
-                        const header = todolistSection.appendChild(document.createElement('h3'));
-                        const div = todolistSection.appendChild(document.createElement('div'));
-                        const table = div.appendChild(document.createElement('table'));
-                        const thead = table.appendChild(document.createElement('thead'));
-                        const tr1 = thead.appendChild(document.createElement('tr'));
-                        const thleft = tr1.appendChild(document.createElement('th'));
-                        const thmiddle = tr1.appendChild(document.createElement('th'));
-                        const tbody = table.appendChild(document.createElement('tbody'));
-                        const tfoot = table.appendChild(document.createElement('tfoot'));
-                        const tr3 = tfoot.appendChild(document.createElement('tr'));
-                        const td3left = tr3.appendChild(document.createElement('td'));
-                        const td3IN = td3left.appendChild(document.createElement('input'));
-                        const td3middle = tr3.appendChild(document.createElement('td'));
-                        const INPUT = td3middle.appendChild(document.createElement('input'));
-
-                        //Add attributes and property values
-                        table.appendChild(document.createElement('tfoot'));
-                        td3IN.setAttribute("aria-label", "Add");
-                        td3IN.setAttribute("Value", "Add");
-                        INPUT.setAttribute("name", "itemINPUT");
-                        INPUT.setAttribute("type", "text");
-                        INPUT.setAttribute("aria-label", "Input");
-                        header.textContent = "To-Do:";
-                        todolistSection.id = "ToDO";
-                        thleft.textContent = "Complete?";
-                        thmiddle.textContent = "Description";
-                        tbody.id = "ToDoItems";
-                        td3IN.id = "AddButton";
-                        td3IN.type = "button";
-
-                        //Create a sample to do item (it is not stored in cache)
-                        this.createSampleTo_Do(tbody);
-
-                        //With the elements created, set the class list elements
-                        this.getToDoListElements();
-                        ToDoList.setToDoListElements(this.listElements);
-
-                        this.populateToDoList();
-                        this.addToDoEventListeners();
-
-
-                        break;
-                    case '/RandomWebBits/pages/todos.html':
-                    case '/pages/todos.html':
-                        //Markup exists on the page already
-                        //With the elements created, set the class list elements
-                        this.getToDoListElements();
-                        ToDoList.setToDoListElements(this.listElements);
-
-                        //Create a sample to do item due to cache empty
-                        const htbody = ToDoList.ToDoElements.todoTableBody;
-                        if (htbody != null) {
-                            this.createSampleTo_Do(htbody);
-                        }
-
-                        this.populateToDoList();
-                        this.addToDoEventListeners();
-
-                        break;
-                    default:
-                        console.log("Element is not valid. Please ensure a valid element for ToDo list widget to follow.")
-                }
-            }
-            else {
-                console.log(`Add "ToDoList" class to ${elem.nodeName} node.`)
-            }
+        if (elem == undefined) {
+            console.log(`%cThere is no "ToDoList" class on this page.`, "color:orange;");
+            return;
         }
-        else {
-            console.log(`There is no "ToDoList" class on this page.`)
+        if (!elem.classList.contains("ToDoList")) {
+            console.log(`Add "ToDoList" class to ${elem.nodeName} node.`);
+            return;
+        }
+        switch (window.location.pathname) {
+            case '/RandomWebBits/':
+            case '/RandomWebBits/index.html':
+            case '/index.html':
+            case '/':
+            case '/dist/index.html':
+                //Markup does not exist on the page
+                //Create table elements needed for the todo list
+                const todolistSection = elem.insertAdjacentElement("afterend", document.createElement("section"));
+                const header = todolistSection.appendChild(document.createElement('h3'));
+                const div = todolistSection.appendChild(document.createElement('div'));
+                const table = div.appendChild(document.createElement('table'));
+                const thead = table.appendChild(document.createElement('thead'));
+                const tr1 = thead.appendChild(document.createElement('tr'));
+                const thleft = tr1.appendChild(document.createElement('th'));
+                const thmiddle = tr1.appendChild(document.createElement('th'));
+                const tbody = table.appendChild(document.createElement('tbody'));
+                const tfoot = table.appendChild(document.createElement('tfoot'));
+                const tr3 = tfoot.appendChild(document.createElement('tr'));
+                const td3left = tr3.appendChild(document.createElement('td'));
+                const td3IN = td3left.appendChild(document.createElement('input'));
+                const td3middle = tr3.appendChild(document.createElement('td'));
+                const INPUT = td3middle.appendChild(document.createElement('input'));
+
+                //Add attributes and property values
+                table.appendChild(document.createElement('tfoot'));
+                td3IN.setAttribute("aria-label", "Add");
+                td3IN.setAttribute("Value", "Add");
+                INPUT.setAttribute("name", "itemINPUT");
+                INPUT.setAttribute("type", "text");
+                INPUT.setAttribute("aria-label", "Input");
+                header.textContent = "To-Do:";
+                todolistSection.id = "ToDO";
+                thleft.textContent = "Complete?";
+                thmiddle.textContent = "Description";
+                tbody.id = "ToDoItems";
+                td3IN.id = "AddButton";
+                td3IN.type = "button";
+
+                //Create a sample to do item (it is not stored in cache)
+                this.createSampleTo_Do(tbody);
+
+                //With the elements created, set the class list elements
+                this.getToDoListElements();
+                ToDoList.setToDoListElements(this.listElements);
+
+                this.populateToDoList();
+                this.addToDoEventListeners();
+
+
+                break;
+            case '/RandomWebBits/pages/todos.html':
+            case '/pages/todos.html':
+                //Markup exists on the page already
+                //With the elements created, set the class list elements
+                this.getToDoListElements();
+                ToDoList.setToDoListElements(this.listElements);
+
+                //Create a sample to do item due to cache empty
+                const htbody = ToDoList.ToDoElements.todoTableBody;
+                if (htbody != null) {
+                    this.createSampleTo_Do(htbody);
+                }
+
+                this.populateToDoList();
+                this.addToDoEventListeners();
+
+                break;
+            default:
+                console.log("Element is not valid. Please ensure a valid element for ToDo list widget to follow.")
         }
     }
 
@@ -269,83 +267,60 @@ export class ToDoList {
     }
 
     /**
-     * Adds button functionality: Delete, Add.
+     * Add button functionality.
      */
     private addToDoEventListeners() {
         const ADDBUTTON = ToDoList.ToDoElements.addButton;
         const ADDITEMENTER = ToDoList.ToDoElements.addItemToEnter;
-        if (ADDBUTTON != null && ADDITEMENTER != null) {
-            ADDBUTTON.addEventListener("click", () => {
+        if (ADDBUTTON == null && ADDITEMENTER == null) {
+            throw new Error("Element was not found or is null");
+        }
+        /**Add input text to the todo list from clicking the add button*/
+        ADDBUTTON.addEventListener("click", () => {
+            this.AddToDoRow(ADDITEMENTER.value, true);
+            ADDITEMENTER.value = '';
+        });
+        /**Add input text to the todo list when using key enter*/
+        ADDITEMENTER.addEventListener("keydown", (e) => {
+            if (e.code == 'NumpadEnter' || e.code == 'Enter') {
                 this.AddToDoRow(ADDITEMENTER.value, true);
                 ADDITEMENTER.value = '';
-            });
-
-            ADDITEMENTER.addEventListener("keydown", (e) => {
-                if (e.code == 'NumpadEnter' || e.code == 'Enter') {
-                    this.AddToDoRow(ADDITEMENTER.value, true);
-                    ADDITEMENTER.value = '';
-                }
-            });
-        }
-        else {
-            try {
-                throw new Error("Element was not found or is null");
             }
-            catch (error) {
-                if (error instanceof Error) {
-                    console.log(error.name);
-                    console.log(error.message);
-                    console.log(error.stack);
-                }
-            }
-        }
+        });
     }
 
     /**
      * function determining the delete button. Items are deleted when pushed, but are
      *  not removed from storage without 'Complete?' checkebox checked.
-     * @param box checkbox element
+     * @param box input element
      */
     private DeleteButton(box: HTMLInputElement) {
-        if (box.parentNode != null && box.parentNode.previousSibling != null &&
-            box.parentNode.previousSibling.previousSibling != null) {
+        if (box.parentNode == null || box.parentNode.previousSibling == null ||
+            box.parentNode.previousSibling.previousSibling == null) {
+                throw new Error("Missing a table element.");
+        }
+        const rowChkBx = <HTMLElement>box.parentNode.previousSibling.previousSibling;
+        /** Input element */
+        const rowChkBxIN = <HTMLInputElement>rowChkBx.childNodes[0]; 
+        const todoTable: HTMLTableElement = ToDoList.ToDoElements.todoTable;
+        const tr: HTMLTableRowElement = <HTMLTableRowElement>box.parentNode.parentNode;
+        let i = tr.rowIndex;
+        const value = box.parentNode.previousSibling.textContent;
+        if (rowChkBxIN.checked) {
+            //remove row since completed
+            todoTable.deleteRow(i);
+            console.log(`%c<RWB>%cDeleted todo row: ${box.parentElement.previousElementSibling.textContent}`, 'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
+            if (value != 'Add a ToDO Item.') {
+                ToDoList.ToDOs--;
 
-            let rowChkBx = <HTMLElement>box.parentNode.previousSibling.previousSibling;
-            let rowChkBxIN = <HTMLInputElement>rowChkBx.childNodes[0];
-            const todoTable: HTMLTableElement = ToDoList.ToDoElements.todoTable;
-            if (todoTable != null) {
-                let tr: HTMLTableRowElement = <HTMLTableRowElement>box.parentNode.parentNode;
-                let i = tr.rowIndex;
-                let value = box.parentNode.previousSibling.textContent;
-                if (rowChkBxIN.checked) {
-                    //remove row since completed
-                    todoTable.deleteRow(i);
-                    console.log(`%c<RWB>%cDeleted todo row: ${box.parentElement.previousElementSibling.textContent}`, 'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
-                    if (value != 'Add a ToDO Item.') {
-                        ToDoList.ToDOs--;
-
-                        //delete associated storage item
-                        this.removetoDoFromStorage(value);
-                    }
-                }
-                else {
-                    todoTable.deleteRow(i);
-                    console.log(`%c<RWB>%cRemoved todo row: ${box.parentElement.previousElementSibling.textContent}`, 'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
-                    ToDoList.ToDOs--;
-                }
+                //delete associated storage item
+                this.removetoDoFromStorage(value);
             }
-            else {
-                try {
-                    throw new Error("'table' element not found or it is null.");
-                }
-                catch (error) {
-                    if (error instanceof Error) {
-                        console.log(error.name);
-                        console.log(error.message);
-                        console.log(error.stack);
-                    }
-                }
-            }
+        }
+        else {
+            todoTable.deleteRow(i);
+            console.log(`%c<RWB>%cRemoved todo row: ${box.parentElement.previousElementSibling.textContent}`, 'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
+            ToDoList.ToDOs--;
         }
     }
 
@@ -355,7 +330,7 @@ export class ToDoList {
      * @param tbody table body element
      */
     private createSampleTo_Do(tbody: Element) {
-        if(ToDoList.getToDoInStorage(false, false)) 
+        if(ToDoList.getToDoInStorage(false, true)) 
             return;
         //Create a sample entry in the ToDo table as a placeholder
         const tr2 = tbody.appendChild(document.createElement('tr'));

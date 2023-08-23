@@ -10,9 +10,17 @@ const DictionaryWidget = {
      *  constructor.
      * @param elem - Element containing 'dictionaryWidget' class
      */
-    init: (elem: Element) => {
+    init: () => {
+        let dictionaryWidgetStartingElement: Element
+        try{
+            dictionaryWidgetStartingElement = document.querySelector(".dictionaryWidget");
+        }
+        catch (err){
+            console.log("%cCould not query dictionary widget element.", "color:orange;")
+        }
+
         // DictionarySearch constructor
-        Object.create(new DictionarySearchWidget(elem));
+        Object.create(new DictionarySearchWidget(dictionaryWidgetStartingElement));
     }
 };
 

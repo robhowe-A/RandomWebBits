@@ -9,13 +9,21 @@ const ToDosWidget = {
      * Create a To-Do List widget.
      * @param elem - Element containing 'ToDoList' class
      */
-    init: (elem: Element) => {
+    init: () => {
 
-        //ToDoList constructor
+        let toDosElement: Element;
+        try{
+            toDosElement = document.querySelector(".ToDoList");
+        }
+        catch (err){
+            console.log("%cCould not query todo list widget element.", "color:orange;")
+        }
+
+        //ToDoList object
         const todoWidget = new ToDoList();
 
         //Creates widget markup and populates To-Do tasks contained in Local Storage
-        todoWidget.createToDoListWidget(elem);
+        todoWidget.createToDoListWidget(toDosElement);
     }
 };
 

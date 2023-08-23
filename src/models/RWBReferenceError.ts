@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 
 /** Create this object to record reference errors. */
-export default class RWBErrReferenceError extends ReferenceError {
+export default class RWBReferenceError extends ReferenceError {
     /**Counts the number of objects instantiated */
     public static count: number = 0;
     public name: string;
@@ -15,7 +15,7 @@ export default class RWBErrReferenceError extends ReferenceError {
         this.message = message;
         this.page = window.location.pathname;
         this.referror = new ReferenceError(this.message);
-        RWBErrReferenceError.count++;
+        RWBReferenceError.count++;
 
         console.log(this.referror);
     };

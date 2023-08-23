@@ -16,72 +16,72 @@ export default class DictionarySearchMarkup {
    */
   public createDictionaryWidgetMarkup(elem: Element) {
     //insert the widget after the passed in "elem"
-    if (elem !== undefined) {
-      if (elem.classList.contains("dictionaryWidget")) {
-        const dictionary = elem.insertAdjacentElement(
-          "afterend",
-          document.createElement("section")
-        );
-        if (dictionary != null) {
-          // Create widget elements
-          const artH = dictionary.appendChild(document.createElement("h3"));
-          const searchForm = dictionary.appendChild(
-            document.createElement("form")
-          );
-          const previousWords = dictionary.appendChild(
-            document.createElement("div")
-          );
-
-          // Return the elements used in later functions
-          let searchElements: DictionarySearchElements = {
-            searchWord: searchForm.appendChild(document.createElement("input")),
-            wordSearch: searchForm.appendChild(
-              document.createElement("button")
-            ),
-            dictionaryElem: <HTMLElement>dictionary,
-            errorElem: searchForm.appendChild(document.createElement("span")),
-            previousWordBtn: previousWords.appendChild(
-              document.createElement("button")
-            ),
-            refreshBtn: previousWords.appendChild(
-              document.createElement("button")
-            ),
-          };
-          const fontAwesomeSearchIcon = searchElements.wordSearch.appendChild(
-            document.createElement("i")
-          );
-
-          // Add attributes and property values
-          previousWords.classList.add("previousWords");
-          searchElements.searchWord.classList.add("monospace");
-          searchElements.previousWordBtn.classList.add("dictionary-btn");
-          searchElements.refreshBtn.classList.add("dictionary-btn");
-          fontAwesomeSearchIcon.classList.add("fa");
-          fontAwesomeSearchIcon.classList.add("fa-search");
-          searchElements.searchWord.setAttribute("type", "text");
-          searchElements.searchWord.setAttribute("placeholder", "Search...");
-          searchElements.searchWord.setAttribute("aria-label", "Input");
-          searchElements.wordSearch.setAttribute("type", "button");
-          searchElements.wordSearch.setAttribute("aria-label", "Search");
-          dictionary.id = "dictionary";
-          artH.textContent = "Dictionary Term:";
-          searchForm.id = "dictionary-search";
-          searchForm.action = "index.html";
-          searchElements.searchWord.id = "search-word";
-          searchElements.wordSearch.id = "word-search";
-          searchElements.previousWordBtn.innerText = "Previous Word Searches";
-          searchElements.refreshBtn.innerText = "Refresh";
-
-          return searchElements;
-        } else {
-          console.log("The determined dictionary element is null.");
-        }
-      } else {
-        console.log(`Add "dictionaryWidget" class to ${elem.nodeName} node.`);
-      }
-    } else {
-      console.log(`There is no "dictionaryWidget" class on this page.`);
+    if (elem == undefined) {
+      console.log(`%cThere is no "dictionaryWidget" class on this page.`, "color: orange;");
+      return;
     }
+    if (!elem.classList.contains("dictionaryWidget")) {
+      console.log(`Add "dictionaryWidget" class to ${elem.nodeName} node.`);
+      return;
+    }
+      const dictionary = elem.insertAdjacentElement(
+        "afterend",
+        document.createElement("section")
+      );
+      if (dictionary != null) {
+        // Create widget elements
+        const artH = dictionary.appendChild(document.createElement("h3"));
+        const searchForm = dictionary.appendChild(
+          document.createElement("form")
+        );
+        const previousWords = dictionary.appendChild(
+          document.createElement("div")
+        );
+
+        // Return the elements used in later functions
+        let searchElements: DictionarySearchElements = {
+          searchWord: searchForm.appendChild(document.createElement("input")),
+          wordSearch: searchForm.appendChild(
+            document.createElement("button")
+          ),
+          dictionaryElem: <HTMLElement>dictionary,
+          errorElem: searchForm.appendChild(document.createElement("span")),
+          previousWordBtn: previousWords.appendChild(
+            document.createElement("button")
+          ),
+          refreshBtn: previousWords.appendChild(
+            document.createElement("button")
+          ),
+        };
+        const fontAwesomeSearchIcon = searchElements.wordSearch.appendChild(
+          document.createElement("i")
+        );
+
+        // Add attributes and property values
+        previousWords.classList.add("previousWords");
+        searchElements.searchWord.classList.add("monospace");
+        searchElements.previousWordBtn.classList.add("dictionary-btn");
+        searchElements.refreshBtn.classList.add("dictionary-btn");
+        fontAwesomeSearchIcon.classList.add("fa");
+        fontAwesomeSearchIcon.classList.add("fa-search");
+        searchElements.searchWord.setAttribute("type", "text");
+        searchElements.searchWord.setAttribute("placeholder", "Search...");
+        searchElements.searchWord.setAttribute("aria-label", "Input");
+        searchElements.wordSearch.setAttribute("type", "button");
+        searchElements.wordSearch.setAttribute("aria-label", "Search");
+        dictionary.id = "dictionary";
+        artH.textContent = "Dictionary Term:";
+        searchForm.id = "dictionary-search";
+        searchForm.action = "index.html";
+        searchElements.searchWord.id = "search-word";
+        searchElements.wordSearch.id = "word-search";
+        searchElements.previousWordBtn.innerText = "Previous Word Searches";
+        searchElements.refreshBtn.innerText = "Refresh";
+
+        return searchElements;
+      } else {
+        console.log("The determined dictionary element is null.");
+      }
   }
 
   /**

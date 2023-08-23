@@ -5,7 +5,7 @@ import PageComponents from './components/PageComponents';
 import ClassComponents from './components/ClassComponents';
 import mobileAbbrMarkup from './components/mobileMarkup'
 import RWBPerf from './models/ScriptPerf'
-import RWBErrorBus from './models/RWBErrorBus'
+
 
 const mainperf = new RWBPerf("main");
 
@@ -30,11 +30,8 @@ const main = {
             PageComponents.init();
 
             // Initialize element components
-            let componentname = "ClassComponent";
-            if (!RWBErrorBus.checkElementorNull(componentname, "dictionaryWidget"))
-                ClassComponents.initDictionary();
-            if (!RWBErrorBus.checkElementorNull(componentname, "ToDoList")) 
-                ClassComponents.initToDo();
+            ClassComponents.initDictionary();
+            ClassComponents.initToDo();
 
             // <abbr></abbr> styles: implemented for mobile devices
             mobileAbbrMarkup.init();

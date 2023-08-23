@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import RWBErrReferenceError from './RWBErrReferenceError';
+import RWBReferenceError from './RWBReferenceError';
 import RWBErrDomException from './RWBErrDomException';
 
 /** Create this object to record reference errors. */
@@ -9,8 +9,13 @@ export default class RWBErrorBus {
     constructor(){
         RWBErrorBus.count++;
     };
-    public static checkElementorNull(componentname:string, classname: string) {
+    public static checkElementorNull(componentname:string, classname: string, logmessage?:boolean, supressexception?:boolean ) {
         let elem: HTMLElement | null;
+        let logmssg: boolean = true;
+        if (!logmessage) logmssg = logmessage;
+        let supressexcpt: boolean = false;
+        if (supressexception) supressexcpt = true;
+
         // Add dictionary widget if an element with that class is on a page
         try{
             elem = document.querySelector(`.${classname}`);
@@ -19,26 +24,32 @@ export default class RWBErrorBus {
             throw new Error (`Could not get element: ${classname}`);
         }
         if (elem == null){
-            console.log(`%cNo element found with class name: ${classname}.`, 'color: yellow;font-weight:bold;');
-            Object.create(new RWBErrReferenceError(`${componentname}NullReference`, `Element not found`));
+            if (logmssg)
+                console.log(`%cNo element found with class name: ${classname}.`, 'color: yellow;');
+            if (!supressexcpt)
+                Object.create(new RWBReferenceError(`${componentname}NullReference`, `Element not found`));
             return true;
         }
         return false;
     };
 
     public static checkLocalStorageEqualNull (componentname: string, key: string, checkemptystring?:boolean, logmessage?:boolean) {
-        let test: string | null
+        let logmssg: boolean = true;
+        if (!logmessage) logmssg = logmessage;
             if (localStorage.getItem(`${key}`) == null) {
-                if (logmessage)
-                    console.log(`%cNo local storage for ${componentname}, continuing.`, 'color:purple;');
+                if (logmssg)
+                    console.log(`%cNo local storage for ${componentname}.`, 'color:purple;');
                 return true;
             }
             if (checkemptystring)
-                return RWBErrorBus.checkLocalStorageNullorEmpty(componentname, key, logmessage);
+                return RWBErrorBus.checkLocalStorageNullorEmpty(componentname, key, logmssg);
         }
 
     public static checkLocalStorageNullorEmpty(componentname:string, key:string, logmessage?:boolean){
+        let logmssg: boolean = true;
+        if (!logmessage) logmssg = logmessage;
         let test: string | null
+        
         try{
             test = localStorage.getItem(`${key}`);
         }
@@ -46,15 +57,15 @@ export default class RWBErrorBus {
             throw new Error (`Could get local storage key: ${key}`);
         }
         if (test == null){
-            if (logmessage)
+            if (logmssg)
                 console.log(`%cLocal storage key not found: ${key}.`, 'color: yellow;font-weight:bold;');
-            Object.create(new RWBErrReferenceError(`${componentname}ReferenceException`, `Key not found`));
+            Object.create(new RWBReferenceError(`${componentname}ReferenceException`, `Key not found`));
             return true;
         }
         if (test == "" || test =="[]"){
-            if (logmessage)
+            if (logmssg)
                 console.log(`%cLocal storage value is empty for key: ${key}`, 'color: yellow;font-weight:bold;');
-            Object.create(new RWBErrReferenceError(`${componentname}ReferenceException`, `Value is empty`));
+            Object.create(new RWBReferenceError(`${componentname}ReferenceException`, `Value is empty`));
             return true;
         }
         return false;

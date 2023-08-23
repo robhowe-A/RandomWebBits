@@ -43,6 +43,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     super();
     //Call creation for all the markup needed to begin the widget
     this.dictionarySearchMarkup = this.createDictionaryWidgetMarkup(elem);
+    if (this.dictionarySearchMarkup == undefined) return;
     //Initialize the dictionary widget with click event listeners
     this.addWidgetEvents();
     DictionarySearchWidget.wordStorage = DictionarySearchWidget.getLocalStorageWordCaches();

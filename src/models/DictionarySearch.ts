@@ -30,7 +30,6 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
   private previousWordsNotFoundOnce: boolean = false;
   private wordURL: URL;
   private wordData: object;
-  private dictionarySearchMarkup: DictionarySearchElements;
 
   /**
    * This constructor creates all the functionality and markup needed for the
@@ -40,10 +39,8 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    */
   constructor(elem: Element) {
     //Invoke DictionarySearchWidget superclass constructor.
-    super();
-    //Call creation for all the markup needed to begin the widget
-    this.dictionarySearchMarkup = this.createDictionaryWidgetMarkup(elem);
-    if (this.dictionarySearchMarkup == undefined) return;
+    super(elem);
+    if (this.searchElements == undefined) return;
     //Initialize the dictionary widget with click event listeners
     this.addWidgetEvents();
     DictionarySearchWidget.wordStorage = DictionarySearchWidget.getLocalStorageWordCaches();
@@ -106,31 +103,31 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    *  previously searched word, the widget adapts markup for that request.
    */
   private addWidgetEvents() {
-    if (this.dictionarySearchMarkup == undefined) {
+    if (this.searchElements == undefined) {
       console.log("A search element is undefined from searchWord | wordSearch");
       return;
     }
     //Add form input event listeners
     //Upon input entry, fire API fetch
-    this.dictionarySearchMarkup.wordSearch.addEventListener(
+    this.searchElements.wordSearch.addEventListener(
       "click",
       (event) => {
         event.preventDefault();
-        this.wordSearch(this.dictionarySearchMarkup, false, null);
+        this.wordSearch(this.searchElements, false, null);
       }
     );
-    this.dictionarySearchMarkup.searchWord.addEventListener(
+    this.searchElements.searchWord.addEventListener(
       "keypress",
       (event) => {
         if (event.key === "Enter") {
           event.preventDefault();
-          this.wordSearch(this.dictionarySearchMarkup, false, null);
+          this.wordSearch(this.searchElements, false, null);
         }
       }
     );
     //"Previous word searches" button fetches locally stored words
     //Clicking the button displays each word in a list within the widget
-    this.dictionarySearchMarkup.previousWordBtn.addEventListener("click",
+    this.searchElements.previousWordBtn.addEventListener("click",
       (event) => {
         event.preventDefault();
         const placementlocationholder =
@@ -178,7 +175,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
                 //this is the cached word butten. when it's clicked, fire a word search
                 cacheWordHeadingElem.addEventListener("click", (event) => {
                   event.preventDefault();
-                  this.wordSearch(this.dictionarySearchMarkup, true, wordCache);
+                  this.wordSearch(this.searchElements, true, wordCache);
                 });
                 //MOBILE
                 //when hovered, display the delete button option
@@ -260,7 +257,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         }
       }
     );
-    this.dictionarySearchMarkup.refreshBtn.addEventListener("click",
+    this.searchElements.refreshBtn.addEventListener("click",
       (event) => {
         event.preventDefault();
         location.reload();

@@ -22,6 +22,7 @@ export class ToDoList {
     public static ToDOs: number = 0;
     /**Widget elements used to populate todos */
     private static ToDoElements: ToDoListElements;
+    private static ToDoInStorage: localstoragetodocache[];
     /**Todo HTML elements */
     private listElements: ToDoListElements;
 
@@ -104,22 +105,10 @@ export class ToDoList {
                         this.getToDoListElements();
                         ToDoList.setToDoListElements(this.listElements);
 
-                        //Create a sample to do item (it is not stored in cache)
+                        //Create a sample to do item due to cache empty
                         const htbody = ToDoList.ToDoElements.todoTableBody;
                         if (htbody != null) {
                             this.createSampleTo_Do(htbody);
-                        }
-                        else {
-                            try {
-                                throw new Error("'ToDoItems' element was not found or is null");
-                            }
-                            catch (error) {
-                                if (error instanceof Error) {
-                                    console.log(error.name);
-                                    console.log(error.message);
-                                    console.log(error.stack);
-                                }
-                            }
                         }
 
                         this.populateToDoList();
@@ -160,9 +149,8 @@ export class ToDoList {
      * Checks for To-Do items from Local Storage.
      * @returns boolean true or false
      */
-    private static isToDoInStorage() {
-        let todos: localstoragetodocache[];
-        if (RWBErrorBus.checkLocalStorageEqualNull("ToDoList", "ToDos")){
+    private static getToDoInStorage(checkemptyvaluestring:boolean, logmessage:boolean) {
+        if (RWBErrorBus.checkLocalStorageEqualNull("ToDoList", "ToDos", checkemptyvaluestring, logmessage)){
             return false;
         }
         let parsestr = localStorage.getItem('ToDos');
@@ -173,7 +161,8 @@ export class ToDoList {
             console.log(`%c<RWB>%cDeleted storage key: ToDos`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
             return false;
         }
-        todos = parsetest.returnstr;
+
+        this.ToDoInStorage = parsetest.returnstr
         return true
     }
 
@@ -192,22 +181,15 @@ export class ToDoList {
         ToDos.push(ToDo);
         
         //First, read current Local Storage ToDos
-        let todos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos'));
-        try {
-            if (todos == null) {//Nothing in storage, push current
-                localStorage.setItem('ToDos', JSON.stringify(ToDos));
-                console.log(`%c<RWB>%cCreated to-do cache key: ToDos`, 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
-            }
-            else {//Add the new ToDo to the current ToDos and push via setItem()
-                todos.push(ToDo);
-                localStorage.setItem('ToDos', JSON.stringify(todos));
-            }
+        let todosstoragecache = ToDoList.getToDoInStorage(false, false)
+        let todos: localstoragetodocache[] = ToDoList.ToDoInStorage;
+        if (todos == null) {//Nothing in storage, push current
+            localStorage.setItem('ToDos', JSON.stringify(ToDos));
+            console.log(`%c<RWB>%cCreated to-do cache key: ToDos`, 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
         }
-        catch (err) {
-            console.log("Problem storing To-do list item: ", err);
-            if(err instanceof DOMException){
-                console.log(err.name, err.message, err.stack);
-            }
+        else {//Add the new ToDo to the current ToDos and push via setItem()
+            todos.push(ToDo);
+            localStorage.setItem('ToDos', JSON.stringify(todos));
         }
         console.log(`%c<RWB>%cAdded to-do cache: ${description}`, 'color:cyan;font-weight:bold;', 'color:cyan;');
     }
@@ -218,30 +200,15 @@ export class ToDoList {
      * @param item - the To-Do item requested to remove
      */
     private removetoDoFromStorage(item: string) {
-        if (!ToDoList.isToDoInStorage()) {
-            try {
-                throw new Error("Local storage values null.");
-            }
-            catch (error) {
-                if (error instanceof Error) {
-                    console.log(error.name);
-                    console.log(error.message);
-                    console.log(error.stack);
-                }
-            }
+        ToDoList.ToDoInStorage = ToDoList.ToDoInStorage.filter((todo) => todo.todoitem !== item);
+        console.log(`%c<RWB>%cDeleted todo cache: ${item}`, 'color:darkcyan;font-weight:bold;', 'color:darkcyan;');
+        let jsonstr = JSON.stringify(ToDoList.ToDoInStorage)
+        if (jsonstr == "" || jsonstr == "[]"){
+            localStorage.removeItem('ToDos');
+            console.log(`%c<RWB>%cDeleted storage key: ToDos`, 'color:darkcyan;font-size:14px;font-weight:bold;', 'color:darkcyan;font-size:16px;');
+            return;
         }
-        else {
-            let todos: localstoragetodocache[] = JSON.parse(localStorage.getItem('ToDos'));
-            todos = todos.filter((todo) => todo.todoitem !== item);
-            console.log(`%c<RWB>%cDeleted todo cache: ${item}`, 'color:darkcyan;font-weight:bold;', 'color:darkcyan;');
-            if (todos.length > 0) {
-                localStorage.setItem('ToDos', JSON.stringify(todos));
-            }
-            else {
-                localStorage.removeItem('ToDos');
-                console.log(`%c<RWB>%cDeleted todo cache key: ToDos`, 'color:darkcyan;font-size:16px;font-weight:bold;', 'color:darkcyan;font-size:16px;');
-            }
-        }
+        localStorage.setItem('ToDos', jsonstr);
     }
 
     /**
@@ -253,56 +220,40 @@ export class ToDoList {
     private AddToDoRow(description: string, firstPaint: boolean) {
         //Create a table row with checkbox and delete options
         const TABLEITEM = ToDoList.ToDoElements.todoTable;
-        if (TABLEITEM != null) {
-            const tableFrag = document.createDocumentFragment();
-            const newRow = tableFrag.appendChild(document.createElement('tr')); //Add row
-            const firstCOL = newRow.appendChild(document.createElement('td')); //Table first data
-            const checkBOX = firstCOL.appendChild(document.createElement('input')); //Add checkbox
-            const newITEM = newRow.appendChild(document.createElement('td')); //Table second data
-            const secondCOL = newRow.appendChild(document.createElement('td')); //Table third data
-            const delBOX = secondCOL.appendChild(document.createElement('input')) //Add deletebox
+        const tableFrag = document.createDocumentFragment();
+        const newRow = tableFrag.appendChild(document.createElement('tr')); //Add row
+        const firstCOL = newRow.appendChild(document.createElement('td')); //Table first data
+        const checkBOX = firstCOL.appendChild(document.createElement('input')); //Add checkbox
+        const newITEM = newRow.appendChild(document.createElement('td')); //Table second data
+        const secondCOL = newRow.appendChild(document.createElement('td')); //Table third data
+        const delBOX = secondCOL.appendChild(document.createElement('input')) //Add deletebox
 
-            //Add attributes and property values
-            checkBOX.setAttribute('type', 'checkbox');
-            checkBOX.setAttribute('aria-label', 'Checkbox');
-            checkBOX.setAttribute('aria-label', 'Delete');
-            newITEM.setAttribute('num', ToDoList.ToDOs ? (() => {
-                let elem = document.querySelector('#ToDO td[num]');
-                return ((Number(elem?.getAttribute("num")) || -1000) + ToDoList.ToDOs).toString();
-            })() : (1).toString());
-            newITEM.textContent = description; //Populate second col
-            ToDoList.ToDOs++; //Number of Items
-            delBOX.setAttribute('type', 'submit');
-            delBOX.setAttribute('value', 'Delete');
+        //Add attributes and property values
+        checkBOX.setAttribute('type', 'checkbox');
+        checkBOX.setAttribute('aria-label', 'Checkbox');
+        checkBOX.setAttribute('aria-label', 'Delete');
+        newITEM.setAttribute('num', ToDoList.ToDOs ? (() => {
+            let elem = document.querySelector('#ToDO td[num]');
+            return ((Number(elem?.getAttribute("num")) || -1000) + ToDoList.ToDOs).toString();
+        })() : (1).toString());
+        newITEM.textContent = description; //Populate second col
+        ToDoList.ToDOs++; //Number of Items
+        delBOX.setAttribute('type', 'submit');
+        delBOX.setAttribute('value', 'Delete');
 
-            if (firstPaint) {
-                //Add to list storage
-                this.addtoDoToStorage(description);
-            }
-
-            //Add the row to the ToDos table
-            TABLEITEM.appendChild(tableFrag);
-            console.log(`%c<RWB>%cCreated to-do table row`, 'color:gold;font-weight:bold;', 'color:gold;');
-
-            //Add an event listener for when 'delete' is clicked
-            delBOX.addEventListener("click", () => { 
-                this.DeleteButton(delBOX);
-            });
-
-            
+        if (firstPaint) {
+            //Add to list storage
+            this.addtoDoToStorage(description);
         }
-        else {
-            try {
-                throw new Error("There were no 'ToDoItems' found or they are null.");
-            }
-            catch (error) {
-                if (error instanceof Error) {
-                    console.log(error.name);
-                    console.log(error.message);
-                    console.log(error.stack);
-                }
-            }
-        }
+
+        //Add the row to the ToDos table
+        TABLEITEM.appendChild(tableFrag);
+        console.log(`%c<RWB>%cCreated to-do table row`, 'color:gold;font-weight:bold;', 'color:gold;');
+
+        //Add an event listener for when 'delete' is clicked
+        delBOX.addEventListener("click", () => { 
+            this.DeleteButton(delBOX);
+        });
 
     }
 
@@ -310,23 +261,9 @@ export class ToDoList {
      * Function called to create the To-Do item rows from To-Dos stored in the browser Local Storage.
      */
     private populateToDoList() {
-        //Retrieve todo items in Local Storage and add each to the list
-        let parsedToDos: localstoragetodocache[]
-        let parsestr: string;
-        if (RWBErrorBus.checkLocalStorageEqualNull("ToDoList", "ToDos")) {
-            //Remove null or empty local storage key-values
-            localStorage.removeItem('ToDos');
-            return;
-        }
-        parsestr = localStorage.getItem('ToDos');
-        let parsetest = Object.create(new RWBParseJSON(parsestr));
-        
-        if(parsetest.passed)
-            parsedToDos = parsetest.returnstr;
-
-        if (parsedToDos != null) {
-            for (let i = 0; i < parsedToDos.length; i++) {
-                this.AddToDoRow(parsedToDos[i].todoitem, false);
+        if (ToDoList.ToDoInStorage != null) {
+            for (let i = 0; i < ToDoList.ToDoInStorage.length; i++) {
+                this.AddToDoRow(ToDoList.ToDoInStorage[i].todoitem, false);
             }
         }
     }
@@ -418,30 +355,30 @@ export class ToDoList {
      * @param tbody table body element
      */
     private createSampleTo_Do(tbody: Element) {
-        if (!ToDoList.isToDoInStorage()) {
-            //Create a sample entry in the ToDo table as a placeholder
-            const tr2 = tbody.appendChild(document.createElement('tr'));
-            const td2left = tr2.appendChild(document.createElement('td'));
-            const td2IN = td2left.appendChild(document.createElement('input'));
-            const td2middle = tr2.appendChild(document.createElement('td'));
-            const td2right = tr2.appendChild(document.createElement('td'));
-            const td2DEL = td2right.appendChild(document.createElement('input'));
+        if(ToDoList.getToDoInStorage(false, false)) 
+            return;
+        //Create a sample entry in the ToDo table as a placeholder
+        const tr2 = tbody.appendChild(document.createElement('tr'));
+        const td2left = tr2.appendChild(document.createElement('td'));
+        const td2IN = td2left.appendChild(document.createElement('input'));
+        const td2middle = tr2.appendChild(document.createElement('td'));
+        const td2right = tr2.appendChild(document.createElement('td'));
+        const td2DEL = td2right.appendChild(document.createElement('input'));
 
-            //Add attributes and property values
-            td2IN.setAttribute("aria-label", "Checkbox");
-            td2middle.setAttribute("num", `${1}`);
-            td2IN.setAttribute("aria-label", "Delete");
-            td2DEL.setAttribute("type", "reset");
-            td2DEL.setAttribute("value", "Delete");
-            td2IN.type = "checkbox";
-            td2middle.textContent = "Add a ToDO Item.";
-            ToDoList.ToDOs++;
+        //Add attributes and property values
+        td2IN.setAttribute("aria-label", "Checkbox");
+        td2middle.setAttribute("num", `${1}`);
+        td2IN.setAttribute("aria-label", "Delete");
+        td2DEL.setAttribute("type", "reset");
+        td2DEL.setAttribute("value", "Delete");
+        td2IN.type = "checkbox";
+        td2middle.textContent = "Add a ToDO Item.";
+        ToDoList.ToDOs++;
 
-            //"Delete" event listener
-            td2DEL.addEventListener("click", () => { 
-                this.DeleteButton(td2DEL);
-                console.log(`%c<RWB>%cRemoved todo: ${td2DEL.parentElement.previousElementSibling.textContent}`, 'color:purple;font-weight:bold;', 'color:purple;');
-            });
-        }
+        //"Delete" event listener
+        td2DEL.addEventListener("click", () => { 
+            this.DeleteButton(td2DEL);
+            console.log(`%c<RWB>%cRemoved todo: ${td2DEL.parentElement.previousElementSibling.textContent}`, 'color:purple;font-weight:bold;', 'color:purple;');
+        });
     }
 }

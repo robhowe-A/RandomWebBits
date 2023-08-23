@@ -4,6 +4,7 @@ import { DictionarySearchElements } from "./WidgetMarkupElements";
 import { localstoragewordvalue } from "./LocalStorageCaches";
 import DictionarySearchMarkup from "./DictionarySearchMarkup";
 import RWBErrorBus from "./RWBErrorBus";
+import RWBParseJSON from "./RWBParseAPI";
 
 /**
  * A DictionarySearch is a set of markup creation and functions which allow a user
@@ -44,7 +45,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     this.dictionarySearchMarkup = this.createDictionaryWidgetMarkup(elem);
     //Initialize the dictionary widget with click event listeners
     this.addWidgetEvents();
-    DictionarySearchWidget.getLocalStorageWordCaches();
+    DictionarySearchWidget.wordStorage = DictionarySearchWidget.getLocalStorageWordCaches();
   }
 
   /**
@@ -57,27 +58,27 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     //Local Storage 'word-caches' items data assignment
     //cache response links and cache name are previously stored in Local Storage
     let storageStr: string;
-    if(RWBErrorBus.checkLocalStorageEqualNull("DictionarySearch", "word-caches")){
+    if(RWBErrorBus.checkLocalStorageEqualNull("DictionarySearch", "word-caches", true, true)){
       //The Local Storage is null or empty--> Confirm here the browser does not have any Cache Storage items in error
       if ("caches" in window){
         if (window.caches.has(DictionarySearchWidget.CacheStorageNameofWordRequest)){
             window.caches.delete(DictionarySearchWidget.CacheStorageNameofWordRequest);
         }
       localStorage.removeItem('word-caches');
+      return;
       }
     }
     storageStr = localStorage.getItem("word-caches");
-    try{
-      DictionarySearchWidget.wordStorage = JSON.parse(storageStr);
-    }
-    catch (e) {
-      console.log("Error parsing JSON.");
+    //check the word-cache value for correct json parsing
+    let parsetest = Object.create(new RWBParseJSON(storageStr));
+    if (!parsetest.passed){
       localStorage.removeItem("word-caches");
       console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
       this.getLocalStorageWordCaches();
       return;
     }
-    return DictionarySearchWidget.wordStorage;
+
+    return JSON.parse(storageStr);
   }
 
   /**
@@ -289,7 +290,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       }
       //Add word to current 'word-caches' in Local Storage
       let storageStr = localStorage.getItem("word-caches");
-      RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches"); //log whether fetched word cache is null or empty.
+      RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches", true); //log whether fetched word cache is null or empty.
       let allcache: localstoragewordvalue[]
       try {
         allcache = JSON.parse(storageStr);

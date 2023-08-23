@@ -26,18 +26,18 @@ export default class RWBErrorBus {
         return false;
     };
 
-    public static checkLocalStorageEqualNull (componentname: string, key: string) {
+    public static checkLocalStorageEqualNull (componentname: string, key: string, checkemptystring?:boolean, logmessage?:boolean) {
         let test: string | null
             if (localStorage.getItem(`${key}`) == null) {
-                console.log(`%cNo local storage for ${componentname}, continuing.`, 'color:purple;');
+                if (logmessage)
+                    console.log(`%cNo local storage for ${componentname}, continuing.`, 'color:purple;');
                 return true;
             }
-            else {
-                return RWBErrorBus.checkLocalStorageNullorEmpty(componentname, key);
-            }
+            if (checkemptystring)
+                return RWBErrorBus.checkLocalStorageNullorEmpty(componentname, key, logmessage);
         }
 
-    public static checkLocalStorageNullorEmpty(componentname:string, key: string){
+    public static checkLocalStorageNullorEmpty(componentname:string, key:string, logmessage?:boolean){
         let test: string | null
         try{
             test = localStorage.getItem(`${key}`);
@@ -46,13 +46,15 @@ export default class RWBErrorBus {
             throw new Error (`Could get local storage key: ${key}`);
         }
         if (test == null){
-            console.log(`%cLocal storage key not found: ${key}.`, 'color: yellow;font-weight:bold;');
-            Object.create(new RWBErrReferenceError(`${componentname}DomException`, `Key not found`));
+            if (logmessage)
+                console.log(`%cLocal storage key not found: ${key}.`, 'color: yellow;font-weight:bold;');
+            Object.create(new RWBErrReferenceError(`${componentname}ReferenceException`, `Key not found`));
             return true;
         }
         if (test == "" || test =="[]"){
-            console.log(`%cLocal storage value is empty for key: ${key}`, 'color: yellow;font-weight:bold;');
-            Object.create(new RWBErrReferenceError(`${componentname}DomException`, `Value is empty`));
+            if (logmessage)
+                console.log(`%cLocal storage value is empty for key: ${key}`, 'color: yellow;font-weight:bold;');
+            Object.create(new RWBErrReferenceError(`${componentname}ReferenceException`, `Value is empty`));
             return true;
         }
         return false;

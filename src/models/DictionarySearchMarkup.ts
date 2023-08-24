@@ -51,25 +51,25 @@ export default class DictionarySearchMarkup {
     
     // Add attributes and property values
     const fontAwesomeSearchIcon = searchElements.wordSearch.appendChild(document.createElement("i"));
+    fontAwesomeSearchIcon.classList.add("fa");
+    fontAwesomeSearchIcon.classList.add("fa-search");
     previousWords.classList.add("previousWords");
     searchElements.searchWord.classList.add("monospace");
     searchElements.previousWordBtn.classList.add("dictionary-btn");
     searchElements.refreshBtn.classList.add("dictionary-btn");
-    fontAwesomeSearchIcon.classList.add("fa");
-    fontAwesomeSearchIcon.classList.add("fa-search");
     searchElements.searchWord.setAttribute("type", "text");
     searchElements.searchWord.setAttribute("placeholder", "Search...");
     searchElements.searchWord.setAttribute("aria-label", "Input");
     searchElements.wordSearch.setAttribute("type", "button");
     searchElements.wordSearch.setAttribute("aria-label", "Search");
-    dictionary.id = "dictionary";
-    artH.textContent = "Dictionary Term:";
-    searchForm.id = "dictionary-search";
-    searchForm.action = "index.html";
     searchElements.searchWord.id = "search-word";
     searchElements.wordSearch.id = "word-search";
     searchElements.previousWordBtn.innerText = "Previous Word Searches";
     searchElements.refreshBtn.innerText = "Refresh";
+    dictionary.id = "dictionary";
+    searchForm.id = "dictionary-search";
+    searchForm.action = "index.html";
+    artH.textContent = "Dictionary Term:";
 
     this.searchElements = searchElements;
   }

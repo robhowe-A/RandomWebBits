@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import RWBReferenceError from './RWBReferenceError';
+import RWBReferenceError from './RWBError';
 import RWBErrDomException from './RWBErrDomException';
 
 /** Create this object to record reference errors. */

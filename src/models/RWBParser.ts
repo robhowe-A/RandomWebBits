@@ -1,4 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
+import { RWBSyntaxError } from "./RWBError";
 
 /** An RWBParseJSON parses json and stores the parsed string.  */
 export default class RWBParseJSON {
@@ -22,7 +23,7 @@ export default class RWBParseJSON {
         }
         catch (e) {
             this.returnstr = this.parsestr;
-            console.log("Error parsing string: ", e);
+            new RWBSyntaxError("ParseError", e.message);
             return false;
         }
         return true;

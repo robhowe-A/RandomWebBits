@@ -4,7 +4,7 @@ import { DictionarySearchElements } from "./WidgetMarkupElements";
 import { localstoragewordvalue } from "./LocalStorageCaches";
 import DictionarySearchMarkup from "./DictionarySearchMarkup";
 import RWBErrorBus from "./RWBErrorBus";
-import RWBParseJSON from "./RWBParseAPI";
+import RWBParseJSON from "./RWBParser";
 
 /**
  * A DictionarySearch is a set of markup creation and functions which allow a user

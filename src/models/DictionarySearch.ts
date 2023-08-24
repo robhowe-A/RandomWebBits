@@ -137,6 +137,21 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       event.preventDefault();
       const placementlocationholder = document.querySelector(".previousWords");
       let buttonContainer = this.searchElements.previousWordsContainer;
+
+      //Check the placement locator and word caches for undefined
+      if (placementlocationholder == undefined ||
+        DictionarySearchWidget.wordStorage == undefined) {
+        if (!this.previousWordsBtnIsCreated) {
+            const noWordsHeadingElem = buttonContainer.appendChild(document.createElement("div"));
+            noWordsHeadingElem.classList.add("dictionary-btn", "error-notfound");
+            noWordsHeadingElem.textContent = "Previous words not found. The cache is empty.";
+            this.previousWordsBtnIsCreated = true;
+          return;
+        }
+        buttonContainer.style.display = "none";
+        this.previousWordsBtnWasClicked = true;
+        return;
+    }
       if (this.previousWordsBtnWasClicked) {
         buttonContainer.style.display = "none";
         this.previousWordsBtnWasClicked = false;
@@ -147,24 +162,13 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         this.previousWordsBtnWasClicked = true;
         return;
       }
-      //Check the placement locator and word caches for undefined
-      if (placementlocationholder == undefined &&
-          DictionarySearchWidget.wordStorage == undefined ||
-          DictionarySearchWidget.wordStorage == null) {
-        if (!this.previousWordsBtnIsCreated) {
-            const noWordsHeadingElem = buttonContainer.appendChild(document.createElement("div"));
-            noWordsHeadingElem.classList.add("dictionary-btn", "error-notfound");
-            noWordsHeadingElem.textContent = "Previous words not found. The cache is empty.";
-            this.previousWordsBtnIsCreated = true;
-          return;
-        }
-        buttonContainer.style.display = "block";
-        this.previousWordsBtnWasClicked = true;
-        return;
-      }
+      
       //Because the locator and the Local Storage values are viable, create the markup
       //needed to display those words. Add event listeners for widget functionality.
       for (let wordCache of DictionarySearchWidget.wordStorage) {
+        this.previousWordsBtnWasClicked = true;
+        this.previousWordsBtnIsCreated = true;
+
         const wordHeadingElemContainer = buttonContainer.appendChild(
           document.createElement("div"));
         const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(
@@ -213,9 +217,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
             wordHeadingElemContainer.remove();
             this.removeDictionaryTermfromLocalStorage(cacheWordHeadingElem.textContent);
           });
-          this.previousWordsBtnIsCreated = true;
         }
-        
       });
     //"Refresh" button reloads the page
     this.searchElements.refreshBtn.addEventListener("click", (event) => {

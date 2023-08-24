@@ -100,38 +100,32 @@ export default class DictionarySearchMarkup {
       definitionDescriptionContainer.setAttribute("word", word.word);
       //console.log("The word is: ",word)
       const wordTitle = definitionDescription.appendChild(
-        document.createElement("h3")
-      );
+        document.createElement("h3"));
       wordTitle.textContent = word.word;
       //Add the word and examples to page
       word.meanings.map((wordType: any) => {
         //console.log("WordType are: ", wordType)
         const wordTypeH = definitionDescription.appendChild(
-          document.createElement("h4")
-        );
+          document.createElement("h4"));
         const wordTypeList = definitionDescription.appendChild(
-          document.createElement("ul")
-        );
+          document.createElement("ul"));
         wordTypeH.textContent = wordType.partOfSpeech;
         wordType.definitions.map((def: any) => {
           //console.log("Definition is: ", def);
           let wordTypeDefItem = wordTypeList.appendChild(
-            document.createElement("li")
-          );
+            document.createElement("li"));
           let definitionP = wordTypeDefItem.appendChild(
-            document.createElement("p")
-          );
+            document.createElement("p"));
           definitionP.textContent = def.definition;
           definitionP.classList.add("wordDefinition");
 
           const addAdjacentElem = () => {
             //console.log("Definitions is: ", def);
-            const newP = definitionP.insertAdjacentElement(
-              "beforeend",
-              document.createElement("p")
-            );
+            const newP = definitionP.insertAdjacentElement("beforeend",
+              document.createElement("p"));
             if (newP instanceof HTMLElement) {
-              const newPi = newP.appendChild(document.createElement("i"));
+              const newPi = newP.appendChild(
+                document.createElement("i"));
               newPi.textContent = def.example;
             }
             definitionP.classList.add("example");
@@ -143,7 +137,8 @@ export default class DictionarySearchMarkup {
     });
 
     //create clear button
-    const deleteWordTermHeadingElem = definitionDescriptionContainer.appendChild(document.createElement("button"));
+    const deleteWordTermHeadingElem = definitionDescriptionContainer.appendChild(
+      document.createElement("button"));
     deleteWordTermHeadingElem.setAttribute("type", "word-clear");
     deleteWordTermHeadingElem.classList.add("dictionary-word-btn-clear");
 
@@ -160,7 +155,9 @@ export default class DictionarySearchMarkup {
     deleteWordTermHeadingElem.addEventListener("click", (event) => {
       event.preventDefault();
       definitionDescriptionContainer.remove();
-      console.log(`%c<RWB>%cRemoved word: ${definitionDescriptionContainer.getAttribute("word")}`, 'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
+      console.log(`%c<RWB>%cRemoved word: 
+        ${definitionDescriptionContainer.getAttribute("word")}`, 
+        'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
     });
 
     //add clear button to widget

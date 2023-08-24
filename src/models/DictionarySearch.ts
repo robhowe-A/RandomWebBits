@@ -71,11 +71,11 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     let parsetest = Object.create(new RWBParseJSON(storageStr));
     if (!parsetest.passed){
       localStorage.removeItem("word-caches");
-      console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
+      console.log(`%c<RWB>%cDeleted storage key: word-caches`, 
+        'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
       this.getLocalStorageWordCaches();
       return;
     }
-
     return JSON.parse(storageStr);
   }
 
@@ -136,10 +136,13 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         this.previousWordsBtnWasClicked = true;
         return;
       }
-      newButtonContainer = placementlocationholder.insertAdjacentElement("afterend", document.createElement("div"));
+      newButtonContainer = placementlocationholder.insertAdjacentElement("afterend", 
+        document.createElement("div"));
       newButtonContainer.id = "dictionary-btns";
       //Check the placement locator and word caches for undefined
-      if (placementlocationholder == undefined && DictionarySearchWidget.wordStorage == undefined && DictionarySearchWidget.wordStorage.length == 0) {
+      if (placementlocationholder == undefined &&
+          DictionarySearchWidget.wordStorage == undefined ||
+          DictionarySearchWidget.wordStorage == null) {
         if (!this.previousWordsNotFoundOnce == false) {
           buttonContainer.style.display = "block";
           this.previousWordsBtnWasClicked = true;
@@ -150,6 +153,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         noWordsHeadingElem.textContent = "Previous words not found. The cache is empty.";
         this.previousWordsNotFoundOnce = true;
         this.previousWordsBtnWasClicked = true;
+        return;
       }
       //Because the locator and the Local Storage values are viable, create the markup
       //needed to display those words. Add event listeners for widget functionality.

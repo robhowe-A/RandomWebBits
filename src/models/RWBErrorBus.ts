@@ -1,13 +1,11 @@
 //--Copyright (c) 2023 Robert A. Howell
-import RWBReferenceError from './RWBError';
-import { RWBDomException } from './RWBError';
 
 /** Create this object to record reference errors. */
-export default class RWBErrorBus {
+export default class RWBError {
     /**Counts the number of objects instantiated */
     public static count: number = 0;
     constructor(){
-        RWBErrorBus.count++;
+        RWBError.count++;
     };
     public static checkElementorNull(componentname:string, classname: string, logmessage?:boolean, supressexception?:boolean ) {
         let elem: HTMLElement | null;
@@ -42,7 +40,7 @@ export default class RWBErrorBus {
                 return true;
             }
             if (checkemptystring)
-                return RWBErrorBus.checkLocalStorageNullorEmpty(componentname, key, logmssg);
+                return RWBError.checkLocalStorageNullorEmpty(componentname, key, logmssg);
         }
 
     public static checkLocalStorageNullorEmpty(componentname:string, key:string, logmessage?:boolean){
@@ -70,4 +68,66 @@ export default class RWBErrorBus {
         }
         return false;
     }
+}
+
+/** Create this object to record reference errors. */
+export class RWBReferenceError extends ReferenceError {
+    /**Counts the number of objects instantiated */
+    public static count: number = 0;
+    public name: string;
+    public message: string;
+    public page: string;
+    private referror: ReferenceError;
+
+    constructor(name: string, message: string){
+        super();
+        this.name = name;
+        this.message = message;
+        this.page = window.location.pathname;
+        this.referror = new ReferenceError(this.message);
+        RWBReferenceError.count++;
+
+        console.log(this.referror);
+    };
+}
+
+export class RWBSyntaxError extends SyntaxError {
+    /**Counts the number of objects instantiated */
+    public static count: number = 0;
+    public name: string;
+    public message: string;
+    public page: string;
+    private referror: SyntaxError;
+
+    constructor(name: string, message: string){
+        super();
+        this.name = name;
+        this.message = message;
+        this.page = window.location.pathname;
+        this.referror = new SyntaxError(this.message);
+        RWBSyntaxError.count++;
+
+        console.log(this.referror);
+    };
+}
+
+/** Create this object to record reference errors. */
+export class RWBDomException extends DOMException {
+    /**Counts the number of objects instantiated */
+    public static count: number = 0;
+    public name: string;
+    public message: string;
+    public page: string;
+    private domexception: DOMException;
+
+    constructor(name: string, message: string){
+        super();
+        this.name = name;
+        this.message = message;
+        this.page = window.location.pathname;
+        this.domexception = new DOMException(this.message);
+        RWBDomException.count++;
+
+        console.log(this.domexception);
+    };
 }

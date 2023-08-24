@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { RWBSyntaxError } from "./RWBError";
+import { RWBSyntaxError } from './RWBErrorBus'
 
 /** An RWBParseJSON parses json and stores the parsed string.  */
 export default class RWBParseJSON {

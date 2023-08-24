@@ -2,13 +2,13 @@
 import ToDosWidget from './ToDos';
 import DictionaryWidget from './DictionaryWidget';
 import RWBPerf from '../models/ScriptPerf';
-import RWBErrorBus from '../models/RWBErrorBus'
+import RWBError from '../models/RWBErrorBus'
 
 const ClassComponents = {
     initDictionary: () => {
         const classperf = new RWBPerf("Classcomponents"); //begin performance measure
 
-        if (RWBErrorBus.checkElementorNull("ClassComponent", "dictionaryWidget", true, true)) return;
+        if (RWBError.checkElementorNull("ClassComponent", "dictionaryWidget", true, true)) return;
         DictionaryWidget.init();
 
         classperf.end(); //end performance measure
@@ -16,7 +16,7 @@ const ClassComponents = {
     initToDo: () => {
         
         // Add ToDos widget if an element with that class is on a page
-        if (RWBErrorBus.checkElementorNull("ClassComponent", "ToDoList", true, true)) return;
+        if (RWBError.checkElementorNull("ClassComponent", "ToDoList", true, true)) return;
         ToDosWidget.init();
         
     }

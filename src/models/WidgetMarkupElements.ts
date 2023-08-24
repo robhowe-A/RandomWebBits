@@ -9,6 +9,7 @@ export interface DictionarySearchElements {
     dictionaryElem: HTMLElement;
     errorElem: HTMLSpanElement;
     previousWordBtn: HTMLButtonElement;
+    previousWordsContainer: HTMLDivElement;
     refreshBtn: HTMLButtonElement;
 }
 

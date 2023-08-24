@@ -35,22 +35,32 @@ export default class DictionarySearchMarkup {
       return;
     }
     // Create widget elements
-    const artH = dictionary.appendChild(document.createElement("h3"));
-    const searchForm = dictionary.appendChild(document.createElement("form"));
-    const previousWords = dictionary.appendChild(document.createElement("div"));
+    const artH = dictionary.appendChild(
+      document.createElement("h3"));
+    const searchForm = dictionary.appendChild(
+      document.createElement("form"));
+    const previousWords = dictionary.appendChild(
+      document.createElement("div"));
 
     // Return elements used in later functions
     let searchElements: DictionarySearchElements = {
-      searchWord: searchForm.appendChild(document.createElement("input")),
-      wordSearch: searchForm.appendChild(document.createElement("button")),
+      searchWord: searchForm.appendChild(
+        document.createElement("input")),
+      wordSearch: searchForm.appendChild(
+        document.createElement("button")),
       dictionaryElem: <HTMLElement>dictionary,
-      errorElem: searchForm.appendChild(document.createElement("span")),
-      previousWordBtn: previousWords.appendChild(document.createElement("button")),
-      refreshBtn: previousWords.appendChild(document.createElement("button")),
+      errorElem: searchForm.appendChild(
+        document.createElement("span")),
+      previousWordBtn: previousWords.appendChild(
+        document.createElement("button")),
+      previousWordsContainer: dictionary.appendChild(document.createElement("div")),
+      refreshBtn: previousWords.appendChild(
+        document.createElement("button")),
     };
     
     // Add attributes and property values
-    const fontAwesomeSearchIcon = searchElements.wordSearch.appendChild(document.createElement("i"));
+    const fontAwesomeSearchIcon = searchElements.wordSearch.appendChild(
+      document.createElement("i"));
     fontAwesomeSearchIcon.classList.add("fa");
     fontAwesomeSearchIcon.classList.add("fa-search");
     previousWords.classList.add("previousWords");
@@ -66,6 +76,7 @@ export default class DictionarySearchMarkup {
     searchElements.wordSearch.id = "word-search";
     searchElements.previousWordBtn.innerText = "Previous Word Searches";
     searchElements.refreshBtn.innerText = "Refresh";
+    searchElements.previousWordsContainer.id = "dictionary-btns";
     dictionary.id = "dictionary";
     searchForm.id = "dictionary-search";
     searchForm.action = "index.html";
@@ -89,9 +100,12 @@ export default class DictionarySearchMarkup {
     }
 
     // Add word definition to the dictionary widget
-    const definitionDescriptionContainer = searchElems.dictionaryElem.appendChild(document.createElement("div"));
-    const definitionDescription = definitionDescriptionContainer.appendChild(document.createElement("div"));
-    definitionDescription.appendChild(document.createElement("hr")); // word definition separator
+    const definitionDescriptionContainer = searchElems.dictionaryElem.appendChild(
+      document.createElement("div"));
+    const definitionDescription = definitionDescriptionContainer.appendChild(
+      document.createElement("div"));
+    definitionDescription.appendChild(
+      document.createElement("hr")); // word definition separator
     definitionDescriptionContainer.classList.add("definitionDescription");
 
     // The word data represents complex JSON object
@@ -155,8 +169,7 @@ export default class DictionarySearchMarkup {
     deleteWordTermHeadingElem.addEventListener("click", (event) => {
       event.preventDefault();
       definitionDescriptionContainer.remove();
-      console.log(`%c<RWB>%cRemoved word: 
-        ${definitionDescriptionContainer.getAttribute("word")}`, 
+      console.log(`%c<RWB>%cRemoved word: ${definitionDescriptionContainer.getAttribute("word")}`, 
         'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
     });
 

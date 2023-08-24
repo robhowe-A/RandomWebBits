@@ -1,6 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
 import RWBReferenceError from './RWBError';
-import RWBErrDomException from './RWBErrDomException';
+import { RWBDomException } from './RWBError';
 
 /** Create this object to record reference errors. */
 export default class RWBErrorBus {

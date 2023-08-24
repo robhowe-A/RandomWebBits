@@ -158,9 +158,12 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       //Because the locator and the Local Storage values are viable, create the markup
       //needed to display those words. Add event listeners for widget functionality.
       for (let wordCache of DictionarySearchWidget.wordStorage) {
-        const wordHeadingElemContainer = newButtonContainer.appendChild(document.createElement("div"));
-        const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(document.createElement("button"));
-        const deleteCacheWordHeadingElem = wordHeadingElemContainer.appendChild(document.createElement("button"));
+        const wordHeadingElemContainer = newButtonContainer.appendChild(
+          document.createElement("div"));
+        const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(
+          document.createElement("button"));
+        const deleteCacheWordHeadingElem = wordHeadingElemContainer.appendChild(
+          document.createElement("button"));
         deleteCacheWordHeadingElem.setAttribute("type", "button-clear");
         deleteCacheWordHeadingElem.classList.add("dictionary-word-btn-clear");
         cacheWordHeadingElem.setAttribute("type", "button");
@@ -223,14 +226,16 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     wordStore.push(localstoragevalue);
 
     const addedwordcache = () => {
-      console.log(`%c<RWB>%cAdded word cache: ${localstoragevalue.word}`, 'color:cyan;font-weight:bold;', 'color:cyan;');
+      console.log(`%c<RWB>%cAdded word cache: ${localstoragevalue.word}`, 
+        'color:cyan;font-weight:bold;', 'color:cyan;');
     }
 
     //Add the cache item to Local Storage 'word-caches'
     if (RWBErrorBus.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
       // Local storage is empty => add the word
       localStorage.setItem("word-caches", JSON.stringify(wordStore));
-      console.log(`%c<RWB>%cCreated storage key: word-caches`, 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
+      console.log(`%c<RWB>%cCreated storage key: word-caches`, 
+        'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
       addedwordcache();
       return;
     }

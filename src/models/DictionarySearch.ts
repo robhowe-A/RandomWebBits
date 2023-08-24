@@ -146,10 +146,16 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
             noWordsHeadingElem.classList.add("dictionary-btn", "error-notfound");
             noWordsHeadingElem.textContent = "Previous words not found. The cache is empty.";
             this.previousWordsBtnIsCreated = true;
+            this.previousWordsBtnWasClicked = true;
+          return;
+        }
+        if (!this.previousWordsBtnWasClicked) {
+          buttonContainer.style.display = "block";
+          this.previousWordsBtnWasClicked = true;
           return;
         }
         buttonContainer.style.display = "none";
-        this.previousWordsBtnWasClicked = true;
+        this.previousWordsBtnWasClicked = false;
         return;
     }
       if (this.previousWordsBtnWasClicked) {

@@ -112,151 +112,101 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     this.searchElements.wordSearch.addEventListener("click", (event) => {
         event.preventDefault();
         this.wordSearch(this.searchElements, false, null);
-      }
-    );
+      });
     this.searchElements.searchWord.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
           event.preventDefault();
           this.wordSearch(this.searchElements, false, null);
         }
-      }
-    );
+      });
     //"Previous word searches" button fetches locally stored words
     //Clicking the button displays each word in a list within the widget
     this.searchElements.previousWordBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        const placementlocationholder =
-          document.querySelector(".previousWords");
-        let buttonContainer = document.getElementById("dictionary-btns");
-        let newButtonContainer: Element;
-        if (this.previousWordsBtnWasClicked == false) {
-          if (this.previousWordsBtnIsCreated == false) {
-            newButtonContainer = placementlocationholder.insertAdjacentElement(
-              "afterend",
-              document.createElement("div")
-            );
-            newButtonContainer.id = "dictionary-btns";
-            //Check the placement locator and word caches for undefined
-            if (
-              placementlocationholder != undefined &&
-              DictionarySearchWidget.wordStorage !== undefined &&
-              DictionarySearchWidget.wordStorage.length !== 0
-            ) {
-              //Because the locator and the Local Storage values are viable, create the markup
-              //needed to display those words. Add event listeners for widget functionality.
-              for (let wordCache of DictionarySearchWidget.wordStorage) {
-                const wordHeadingElemContainer = newButtonContainer.appendChild(
-                  document.createElement("div")
-                );
-                const cacheWordHeadingElem =
-                  wordHeadingElemContainer.appendChild(
-                    document.createElement("button")
-                  );
-                const deleteCacheWordHeadingElem =
-                  wordHeadingElemContainer.appendChild(
-                    document.createElement("button")
-                  );
-                deleteCacheWordHeadingElem.setAttribute("type", "button-clear");
-                deleteCacheWordHeadingElem.classList.add(
-                  "dictionary-word-btn-clear"
-                );
-                cacheWordHeadingElem.setAttribute("type", "button");
-                cacheWordHeadingElem.classList.add(
-                  "dictionary-btn",
-                  "dictionary-word-btn"
-                );
-                cacheWordHeadingElem.textContent = wordCache.word;
-                //add event listener for new button.
-                //this is the cached word butten. when it's clicked, fire a word search
-                cacheWordHeadingElem.addEventListener("click", (event) => {
-                  event.preventDefault();
-                  this.wordSearch(this.searchElements, true, wordCache);
-                });
-                //MOBILE
-                //when hovered, display the delete button option
-                wordHeadingElemContainer.addEventListener(
-                  "touchstart",
-                  () => {
-                    deleteCacheWordHeadingElem.style.display = "inline-block";
-                    //when not hovered, hide the delete button option
-                    wordHeadingElemContainer.addEventListener(
-                      "mouseleave",
-                      (event) => {
-                        if (event.target == deleteCacheWordHeadingElem) {
-                          return;
-                        }
-                        deleteCacheWordHeadingElem.style.display = "none";
-                      }
-                    );
-                  }
-                );
-
-                //when hovered, display the delete button option
-                wordHeadingElemContainer.addEventListener(
-                  "mouseover",
-                  (event) => {
-                    deleteCacheWordHeadingElem.style.display = "inline-block";
-                    //when not hovered, hide the delete button option
-                    wordHeadingElemContainer.addEventListener(
-                      "mouseleave",
-                      (event) => {
-                        if (event.target == deleteCacheWordHeadingElem) {
-                          return;
-                        }
-                        deleteCacheWordHeadingElem.style.display = "none";
-                      }
-                    );
-                  }
-                );
-                //add event listener for delete button
-                deleteCacheWordHeadingElem.addEventListener(
-                  "click",
-                  (event) => {
-                    event.preventDefault();
-                    wordHeadingElemContainer.remove();
-                    this.removeDictionaryTermfromLocalStorage(
-                      cacheWordHeadingElem.textContent
-                    );
-                  }
-                );
-                this.previousWordsBtnIsCreated = true;
-              }
-            } else {
-              if (this.previousWordsNotFoundOnce == false) {
-                const noWordsHeadingElem = newButtonContainer.appendChild(
-                  document.createElement("div")
-                );
-                noWordsHeadingElem.classList.add(
-                  "dictionary-btn",
-                  "error-notfound"
-                );
-                noWordsHeadingElem.textContent =
-                  "Previous words not found. The cache is empty.";
-                this.previousWordsNotFoundOnce = true;
-                this.previousWordsBtnWasClicked = true;
-              } else {
-                buttonContainer.style.display = "block";
-                this.previousWordsBtnWasClicked = true;
-                return;
-              }
-            }
-          } else {
-            buttonContainer.style.display = "block";
-            this.previousWordsBtnWasClicked = true;
-            return;
-          }
-        } else {
-          buttonContainer.style.display = "none";
-          this.previousWordsBtnWasClicked = false;
+      event.preventDefault();
+      const placementlocationholder = document.querySelector(".previousWords");
+      let buttonContainer = document.getElementById("dictionary-btns");
+      let newButtonContainer: Element;
+      if (this.previousWordsBtnWasClicked) {
+        buttonContainer.style.display = "none";
+        this.previousWordsBtnWasClicked = false;
+        return;
+      }
+      if (this.previousWordsBtnIsCreated) {
+        buttonContainer.style.display = "block";
+        this.previousWordsBtnWasClicked = true;
+        return;
+      }
+      newButtonContainer = placementlocationholder.insertAdjacentElement("afterend", document.createElement("div"));
+      newButtonContainer.id = "dictionary-btns";
+      //Check the placement locator and word caches for undefined
+      if (placementlocationholder == undefined && DictionarySearchWidget.wordStorage == undefined && DictionarySearchWidget.wordStorage.length == 0) {
+        if (!this.previousWordsNotFoundOnce == false) {
+          buttonContainer.style.display = "block";
+          this.previousWordsBtnWasClicked = true;
           return;
         }
+        const noWordsHeadingElem = newButtonContainer.appendChild(document.createElement("div"));
+        noWordsHeadingElem.classList.add("dictionary-btn", "error-notfound");
+        noWordsHeadingElem.textContent = "Previous words not found. The cache is empty.";
+        this.previousWordsNotFoundOnce = true;
+        this.previousWordsBtnWasClicked = true;
       }
-    );
+      //Because the locator and the Local Storage values are viable, create the markup
+      //needed to display those words. Add event listeners for widget functionality.
+      for (let wordCache of DictionarySearchWidget.wordStorage) {
+        const wordHeadingElemContainer = newButtonContainer.appendChild(document.createElement("div"));
+        const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(document.createElement("button"));
+        const deleteCacheWordHeadingElem = wordHeadingElemContainer.appendChild(document.createElement("button"));
+        deleteCacheWordHeadingElem.setAttribute("type", "button-clear");
+        deleteCacheWordHeadingElem.classList.add("dictionary-word-btn-clear");
+        cacheWordHeadingElem.setAttribute("type", "button");
+        cacheWordHeadingElem.classList.add("dictionary-btn", "dictionary-word-btn");
+        cacheWordHeadingElem.textContent = wordCache.word;
+        //add event listener for new button.
+        //this is the cached word butten. when it's clicked, fire a word search
+        cacheWordHeadingElem.addEventListener("click", (event) => {
+          event.preventDefault();
+          this.wordSearch(this.searchElements, true, wordCache);
+        });
+        //MOBILE
+        //when hovered, display the delete button option
+        wordHeadingElemContainer.addEventListener("touchstart", () => {
+            deleteCacheWordHeadingElem.style.display = "inline-block";
+            //when not hovered, hide the delete button option
+            wordHeadingElemContainer.addEventListener("mouseleave", (event) => {
+                if (event.target == deleteCacheWordHeadingElem) {
+                  return;
+                }
+                deleteCacheWordHeadingElem.style.display = "none";
+              });
+          });
+
+        //when hovered, display the delete button option
+        wordHeadingElemContainer.addEventListener("mouseover", (event) => {
+            deleteCacheWordHeadingElem.style.display = "inline-block";
+            //when not hovered, hide the delete button option
+            wordHeadingElemContainer.addEventListener("mouseleave", (event) => {
+                if (event.target == deleteCacheWordHeadingElem) {
+                  return;
+                }
+                deleteCacheWordHeadingElem.style.display = "none";
+              });
+          });
+
+        //add event listener for delete button
+        deleteCacheWordHeadingElem.addEventListener("click", (event) => {
+            event.preventDefault();
+            wordHeadingElemContainer.remove();
+            this.removeDictionaryTermfromLocalStorage(cacheWordHeadingElem.textContent);
+          });
+          this.previousWordsBtnIsCreated = true;
+        }
+      });
+    //"Refresh" button reloads the page
     this.searchElements.refreshBtn.addEventListener("click", (event) => {
         event.preventDefault();
         location.reload();
-      }
-    );
+      });
   }
 
   /**
@@ -272,39 +222,42 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       console.log(`%c<RWB>%cAdded word cache: ${localstoragevalue.word}`, 'color:cyan;font-weight:bold;', 'color:cyan;');
     }
 
-      //Add the cache item to Local Storage 'word-caches'
-      if (RWBErrorBus.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
-        // Local storage is empty => add the word
-        localStorage.setItem("word-caches", JSON.stringify(wordStore));
-        console.log(`%c<RWB>%cCreated storage key: word-caches`, 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
-        addedwordcache();
+    //Add the cache item to Local Storage 'word-caches'
+    if (RWBErrorBus.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
+      // Local storage is empty => add the word
+      localStorage.setItem("word-caches", JSON.stringify(wordStore));
+      console.log(`%c<RWB>%cCreated storage key: word-caches`, 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
+      addedwordcache();
+      return;
+    }
+    //Local storage is not empty. Here, we need to add the word to the existing word cache.
+    //Get the word cache
+    let storageStr = localStorage.getItem("word-caches");
+    RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches", true); //log whether fetched word cache is null or empty.
+    
+    //Parse the word cache with RWBParseJSON --> 
+    let parsetest = Object.create(new RWBParseJSON(storageStr));
+    if (!parsetest){ //If parse doesn't pass, clear it and return
+      localStorage.removeItem("word-caches");
+      console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
+      this.addDictionaryTermtoLocalStorage(localstoragevalue);
+      return;
+    }
+    //Parsed objects are localstoragewordvalue objects.
+    let allcache: localstoragewordvalue[] = parsetest.returnstr;//Assigns the object string to the object type
+
+    //Match the current URL for cache management
+    for (let cache of allcache) {
+      if (cache.wordURL == localstoragevalue.wordURL) {
+        //Word is already in Local Storage
+        //No need to add it to the array
         return;
       }
-      //Local storage is not empty. Here, we need to add the word to the existing word cache.
-      //Get the word cache
-      let storageStr = localStorage.getItem("word-caches");
-      RWBErrorBus.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches", true); //log whether fetched word cache is null or empty.
-      
-      let parsetest = Object.create(new RWBParseJSON(storageStr));
-      if (!parsetest){
-        localStorage.removeItem("word-caches");
-        console.log(`%c<RWB>%cDeleted storage key: word-caches`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
-        this.addDictionaryTermtoLocalStorage(localstoragevalue);
-        return;
-      }
-      let allcache: localstoragewordvalue[] = parsetest.returnstr;
- 
-      for (let cache of allcache) {
-        if (cache.wordURL == localstoragevalue.wordURL) {
-          //Word is already in Local Storage
-          // No need to add it to the array
-          return;
-        }
-      }
-      //Add word to existing 'word-caches' in Local Storage
-      allcache.push(localstoragevalue);
-      localStorage.setItem("word-caches", JSON.stringify(allcache));
-      console.log(`%c<RWB>%cAdded word cache: ${localstoragevalue.word}`, 'color:cyan;font-weight:bold;', 'color:cyan;');
+    }
+    //Add word to existing 'word-caches' in Local Storage
+    allcache.push(localstoragevalue);
+    localStorage.setItem("word-caches", JSON.stringify(allcache));
+    console.log(`%c<RWB>%cAdded word cache: ${localstoragevalue.word}`, 'color:cyan;font-weight:bold;', 'color:cyan;');
   }
 
   /**

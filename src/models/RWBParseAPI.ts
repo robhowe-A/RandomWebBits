@@ -1,12 +1,15 @@
 //--Copyright (c) 2023 Robert A. Howell
 
-/** Create this object to record reference errors. */
+/** An RWBParseJSON parses json and stores the parsed string.  */
 export default class RWBParseJSON {
     /**Counts the number of objects instantiated */
     public static count: number = 0;
     private parsestr: string;
     public returnstr: string;
     public passed: boolean;
+    /**Create this object to store parse results and parsed
+     * JSON object.
+     */
     constructor(parsestr:string){
         RWBParseJSON.count++;
         this.parsestr = parsestr;

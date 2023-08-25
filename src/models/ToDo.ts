@@ -156,7 +156,8 @@ export class ToDoList {
         if (!parsetest.passed){
             //parsed JSON is malformed
             localStorage.removeItem('ToDos');
-            console.log(`%c<RWB>%cDeleted storage key: ToDos`, 'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
+            console.log(`%c<RWB>%cDeleted storage key: ToDos`, 
+                'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
             return false;
         }
 
@@ -183,7 +184,8 @@ export class ToDoList {
         let todos: localstoragetodocache[] = ToDoList.ToDoInStorage;
         if (todos == null) {//Nothing in storage, push current
             localStorage.setItem('ToDos', JSON.stringify(ToDos));
-            console.log(`%c<RWB>%cCreated to-do cache key: ToDos`, 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
+            console.log(`%c<RWB>%cCreated to-do cache key: ToDos`, 
+                'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
         }
         else {//Add the new ToDo to the current ToDos and push via setItem()
             todos.push(ToDo);
@@ -203,7 +205,8 @@ export class ToDoList {
         let jsonstr = JSON.stringify(ToDoList.ToDoInStorage)
         if (jsonstr == "" || jsonstr == "[]"){
             localStorage.removeItem('ToDos');
-            console.log(`%c<RWB>%cDeleted storage key: ToDos`, 'color:darkcyan;font-size:14px;font-weight:bold;', 'color:darkcyan;font-size:16px;');
+            console.log(`%c<RWB>%cDeleted storage key: ToDos`, 
+                'color:darkcyan;font-size:14px;font-weight:bold;', 'color:darkcyan;font-size:16px;');
             return;
         }
         localStorage.setItem('ToDos', jsonstr);
@@ -309,7 +312,8 @@ export class ToDoList {
         if (rowChkBxIN.checked) {
             //remove row since completed
             todoTable.deleteRow(i);
-            console.log(`%c<RWB>%cDeleted todo row: ${box.parentElement.previousElementSibling.textContent}`, 'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
+            console.log(`%c<RWB>%cDeleted todo row: ${box.parentElement.previousElementSibling.textContent}`, 
+                'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
             if (value != 'Add a ToDO Item.') {
                 ToDoList.ToDOs--;
 
@@ -319,7 +323,8 @@ export class ToDoList {
         }
         else {
             todoTable.deleteRow(i);
-            console.log(`%c<RWB>%cRemoved todo row: ${box.parentElement.previousElementSibling.textContent}`, 'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
+            console.log(`%c<RWB>%cRemoved todo row: ${box.parentElement.previousElementSibling.textContent}`, 
+                'color:goldenrod;font-weight:bold;', 'color:goldenrod;');
             ToDoList.ToDOs--;
         }
     }
@@ -353,7 +358,8 @@ export class ToDoList {
         //"Delete" event listener
         td2DEL.addEventListener("click", () => { 
             this.DeleteButton(td2DEL);
-            console.log(`%c<RWB>%cRemoved todo: ${td2DEL.parentElement.previousElementSibling.textContent}`, 'color:purple;font-weight:bold;', 'color:purple;');
+            console.log(`%c<RWB>%cRemoved todo: ${td2DEL.parentElement.previousElementSibling.textContent}`, 
+                'color:purple;font-weight:bold;', 'color:purple;');
         });
     }
 }

@@ -75,7 +75,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       this.getLocalStorageWordCaches();
       return;
     }
-    return JSON.parse(storageStr);
+    return parsetest.returnstr;
   }
 
   /**
@@ -300,7 +300,6 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       return;
     }
     //Get the words array from Local Storage
-    let storageStr = localStorage.getItem("word-caches");
     RWBError.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches"); //log whether fetched word cache is null or empty.
     
     //First, remove the word from Cache Storage
@@ -313,7 +312,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     this.removeRequestfromCacheStorage(removeURL);
 
     //Next, remove the word from Local Storage word array
-    let allcache: localstoragewordvalue[] = JSON.parse(storageStr);
+    let allcache: localstoragewordvalue[] = DictionarySearchWidget.wordStorage;
     for (let cache of allcache) {
       if (cache.word == localstorageword) {
         allcache.splice(allcache.indexOf(cache), 1);
@@ -390,7 +389,11 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       if (typeof data == "string") {
         //If the returned data is a string, it is the word definition data.
         noDefinitions = false;
-        data = JSON.parse(data);
+        let parsetest = Object.create(new RWBParseJSON(data));
+        if(!parsetest.passed){
+          return;
+        }
+        data = parsetest.returnstr;
       }
       let wordData: any = data;
       //If the returned data is an object, confirm it is 'no definition' server data

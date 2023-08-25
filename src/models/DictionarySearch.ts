@@ -122,14 +122,12 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         event.preventDefault();
         this.wordSearch(this.searchElements, false, null);
         if (this.previousWordsBtnWasClicked) hidePreviousPanel();
-        this.addWidgetEvents();
       });
     this.searchElements.searchWord.addEventListener("keypress", (event) => {
         if (event.key !== "Enter") return;
           event.preventDefault();
           this.wordSearch(this.searchElements, false, null);
           if (this.previousWordsBtnWasClicked) hidePreviousPanel();
-          this.addWidgetEvents();
       });
     //"Previous word searches" button fetches locally stored words
     //Clicking the button displays each word in a list within the widget
@@ -157,7 +155,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         buttonContainer.style.display = "none";
         this.previousWordsBtnWasClicked = false;
         return;
-    }
+      }
       if (this.previousWordsBtnWasClicked) {
         buttonContainer.style.display = "none";
         this.previousWordsBtnWasClicked = false;

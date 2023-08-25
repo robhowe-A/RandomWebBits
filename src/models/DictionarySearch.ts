@@ -482,17 +482,19 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     wordDataPromise.then((data: object) => {
       this.wordData = data;
       this.createDictionaryTermWithMarkup(data, searchElems);
-      if (data != undefined)
+      if (data != undefined){
         console.log(`%c<RWB>%cRetrieved word: ${word}`, 
         'color:gold;font-weight:bold;', 'color:gold;');
+      }
+      // Remove unneeded classes if applied previously
+      searchElems.searchWord.classList.remove("invalid");
+      searchElems.searchWord.classList.remove("invalid-notfound");
+      searchElems.errorElem.classList.remove("error");
+      searchElems.errorElem.classList.remove("error-notfound");
+      searchElems.errorElem.textContent = "";
     });
 
-    // Remove unneeded classes if applied previously
-    searchElems.searchWord.classList.remove("invalid");
-    searchElems.searchWord.classList.remove("invalid-notfound");
-    searchElems.errorElem.classList.remove("error");
-    searchElems.errorElem.classList.remove("error-notfound");
-    searchElems.errorElem.textContent = "";
+    
   }
 
   /**

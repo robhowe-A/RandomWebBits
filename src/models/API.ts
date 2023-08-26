@@ -100,7 +100,9 @@ export class apiGET {
                   let clonedresp = result.clone();
 
                   //Add the result to the cache
-                  cache.put(GETURL, result);
+                  if (clonedresp.status != 404){
+                    cache.put(GETURL, result);
+                  }
                   resolve(clonedresp.json().then(text => text));
                 });
               } else {

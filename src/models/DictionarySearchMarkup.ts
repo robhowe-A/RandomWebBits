@@ -96,7 +96,7 @@ export default class DictionarySearchMarkup {
    * @param searchElems - Widget Elements -- key widget function elements.
    */
   public createDictionaryTermWithMarkup(wordData: any, searchElems: DictionarySearchElements) {
-    if (wordData == null || !(wordData instanceof Object)) {
+    if (wordData == null || !(wordData instanceof Object) || Object.hasOwn(wordData, 'title')) {
         console.log("%cThere is no definition for this word.", "color:darkgreen;");
       return;
     }

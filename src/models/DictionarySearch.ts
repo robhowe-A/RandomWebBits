@@ -428,13 +428,15 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       }
       if (data == undefined || noDefinitions) {//Good data--> return data for markup render
         //'Bad data' due to "No definitions found", invalid word, bad network connection
-        if (navigator.onLine !== false) {//Online, problem with fetch
+        if (!navigator.onLine) {//Online, problem with fetch
           //Offline request
           searchElems.errorElem.innerText += ", check network connection.";
+          return;
         }
         if (noDefinitions) {//Server returned no definitions data
           if (wordData.title == "No Definitions Found")
             searchElems.errorElem.innerText = "No Definitions Found";
+            return data;
           } 
           else {//Invalid word data
             searchElems.errorElem.innerText = "Invalid word!";
@@ -491,12 +493,14 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         console.log(`%c<RWB>%cRetrieved word: ${word}`, 
         'color:gold;font-weight:bold;', 'color:gold;');
       }
-      // Remove unneeded classes if applied previously
-      searchElems.searchWord.classList.remove("invalid");
-      searchElems.searchWord.classList.remove("invalid-notfound");
-      searchElems.errorElem.classList.remove("error");
-      searchElems.errorElem.classList.remove("error-notfound");
-      searchElems.errorElem.textContent = "";
+      if(!Object.hasOwn(data, 'title')){
+        // Remove unneeded classes if applied previously
+        searchElems.searchWord.classList.remove("invalid");
+        searchElems.searchWord.classList.remove("invalid-notfound");
+        searchElems.errorElem.classList.remove("error");
+        searchElems.errorElem.classList.remove("error-notfound");
+        searchElems.errorElem.textContent = "";
+      }
     });
 
     

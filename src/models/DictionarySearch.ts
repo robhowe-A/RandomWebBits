@@ -4,8 +4,8 @@ import { DictionarySearchElements } from "./WidgetMarkupElements";
 import { localstorageword } from "./LocalStorageCaches";
 import DictionarySearchMarkup from "./DictionarySearchMarkup";
 import RWBError from "./RWBErrorBus";
-import RWBParseJSON from "./RWBParser";
-import { RWBStringifyJSON } from "./RWBParser";
+import { RWBParseJSON } from "./RWBJSONConverter";
+import { RWBStringifyJSON } from "./RWBJSONConverter";
 import { DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements";
 
 
@@ -256,7 +256,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         let stringifytestsingleword = Object.create(new RWBStringifyJSON(wordStore));
         if(!stringifytestsingleword.passed){
           //stringify object did not work, so return
-          //LOGLEAFLEFT
+          //LOGLEAF
           return;
         }
         jsonstr = stringifytestsingleword.returnstr;
@@ -268,7 +268,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         addedwordcache();
         return;
       }
-      //LOGLEAFLEFT
+      //LOGLEAF
       return;
     }
     //Local storage is not empty. Here, we need to add the word to the existing word cache.
@@ -280,7 +280,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       if (cache.wordURL == localstoragevalue.wordURL) {
         //Word is already in Local Storage
         //No need to add it to the array
-        //LOGLEAFLEFT
+        //LOGLEAF
         return;
       }
     }
@@ -291,7 +291,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     let stringifytestdoubleword = Object.create(new RWBStringifyJSON(allcache));
     if(!stringifytestdoubleword.passed){
       //stringify object did not work, so return
-      //LOGLEAFLEFT
+      //LOGLEAF
       return;
     }
     jsonstr = stringifytestdoubleword.returnstr;
@@ -310,6 +310,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     //Remove the cache item to Local Storage, Cache Storage
     //Check local storage is not null or empty
     if (DictionarySearchWidget.wordStorage == null) {
+      //LOGLEAF
       return;
     }
     //Get the words array from Local Storage
@@ -331,8 +332,15 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         'color:darkcyan;font-size:14px;font-weight:bold;', 'color:darkcyan;font-size:16px;');
       return;
     }
+    //Call RWBStringifyJSON to stringify the object
+    let wordcachesstrfytest = Object.create(new RWBStringifyJSON(allcache));
+    if (!wordcachesstrfytest.passed){
+      //LOGLEAF
+      return;
+    }
+
     //Return remaining words to Local Storage
-    localStorage.setItem("word-caches", JSON.stringify(allcache));
+    localStorage.setItem("word-caches", JSON.stringify(wordcachesstrfytest.returnstr));
   }
 
   /**

@@ -2,7 +2,7 @@
 import { RWBSyntaxError } from './RWBErrorBus'
 
 /** An RWBParseJSON parses json and stores the parsed string.  */
-export default class RWBParseJSON {
+export class RWBParseJSON {
     /**Counts the number of objects instantiated */
     public static count: number = 0;
     private parsestr: string;

@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { ToDoListElements } from "./WidgetMarkupElements";
 import { localstoragetodocache } from "./LocalStorageCaches";
-import RWBParseJSON from "./RWBParser";
+import { RWBParseJSON } from "./RWBJSONConverter";
 import RWBError from "./RWBErrorBus";
 
 /**

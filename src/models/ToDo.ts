@@ -177,7 +177,6 @@ export class ToDoList {
             todoitem: description,
         }
         let ToDos: any = []; //ToDo array
-        ToDos.push(ToDo);
         const stringifytodo = (todostr:any) => {
             //Call RWBStringifyJSON to stringify the object
             let todosstrgfytest = Object.create(new RWBStringifyJSON(todostr));
@@ -196,6 +195,7 @@ export class ToDoList {
         let strgfysinglestr = stringifytodo(ToDos);
 
         if (ToDos == null) {//Nothing in storage, push current
+            ToDos.push(ToDo);
             localStorage.setItem('ToDos', strgfysinglestr);
             console.log(`%c<RWB>%cCreated to-do cache key: ToDos`, 
                 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');

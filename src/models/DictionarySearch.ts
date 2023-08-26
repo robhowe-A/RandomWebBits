@@ -147,8 +147,8 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     let buttonContainer = this.searchElements.previousWordsContainer;
 
     //Check the placement locator and word caches for undefined
-    if (placementlocationholder == undefined ||
-      DictionarySearchWidget.wordStorage == undefined) {
+    if (placementlocationholder == null ||
+      DictionarySearchWidget.wordStorage == null) {
       if (!this.previousWordsBtnIsCreated) {
           const noWordsHeadingElem = buttonContainer.appendChild(document.createElement("div"));
           noWordsHeadingElem.classList.add("dictionary-btn", "error-notfound");
@@ -245,30 +245,19 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     }
 
     //Add the cache item to Local Storage 'word-caches'
-    if (RWBError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
-      // Local storage is empty => add the word
-      localStorage.setItem("word-caches", JSON.stringify(wordStore));
-      console.log(`%c<RWB>%cCreated storage key: word-caches`, 
-        'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
-      addedwordcache();
+    if (DictionarySearchWidget.wordStorage == null) {
+      if (RWBError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
+        // Local storage is empty => add the word
+        localStorage.setItem("word-caches", JSON.stringify(wordStore));
+        console.log(`%c<RWB>%cCreated storage key: word-caches`, 
+          'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
+        addedwordcache();
+        return;
+      }
       return;
     }
     //Local storage is not empty. Here, we need to add the word to the existing word cache.
-    //Get the word cache
-    let storageStr = localStorage.getItem("word-caches");
-    RWBError.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches", true); //log whether fetched word cache is null or empty.
-    
-    //Parse the word cache with RWBParseJSON --> 
-    let parsetest = Object.create(new RWBParseJSON(storageStr));
-    if (!parsetest){ //If parse doesn't pass, clear it and return
-      localStorage.removeItem("word-caches");
-      console.log(`%c<RWB>%cDeleted storage key: word-caches`, 
-        'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
-      this.addDictionaryTermtoLocalStorage(localstoragevalue);
-      return;
-    }
-    //Parsed objects are localstoragewordvalue objects.
-    let allcache: localstorageword[] = parsetest.returnstr;//Assigns the object string to the object type
+    let allcache: localstorageword[] = DictionarySearchWidget.wordStorage;
 
     //Match the current URL for cache management
     for (let cache of allcache) {
@@ -294,26 +283,18 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
   private removeDictionaryTermfromLocalStorage(localstorageword: string) {
     //Remove the cache item to Local Storage, Cache Storage
     //Check local storage is not null or empty
-    if (RWBError.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches")) {
+    if (DictionarySearchWidget.wordStorage == null) {
       return;
     }
     //Get the words array from Local Storage
-    RWBError.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches"); //log whether fetched word cache is null or empty.
-    
-    //First, remove the word from Cache Storage
-    let removeURL: URL;
-    for (let wordCache of DictionarySearchWidget.wordStorage) {
-      if (wordCache.word == localstorageword) {
-        removeURL = wordCache.wordURL;
-      }
-    }
-    this.removeRequestfromCacheStorage(removeURL);
-
-    //Next, remove the word from Local Storage word array
+    //RWBError.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches"); //log whether fetched word cache is null or empty.
     let allcache: localstorageword[] = DictionarySearchWidget.wordStorage;
-    for (let cache of allcache) {
-      if (cache.word == localstorageword) {
-        allcache.splice(allcache.indexOf(cache), 1);
+    
+    //Remove the word from Cache Storage and Local Storage word array
+    for (let wordCache of allcache) {
+      if (wordCache.word == localstorageword) {
+        this.removeRequestfromCacheStorage(wordCache.wordURL);
+        allcache.splice(allcache.indexOf(wordCache), 1);
         console.log(`%c<RWB>%cDeleted word cache: ${localstorageword}`, 
           'color:darkcyan;font-weight:bold;', 'color:darkcyan;');
       }

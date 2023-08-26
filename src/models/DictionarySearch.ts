@@ -1,10 +1,12 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { apiGET } from "../models/API";
 import { DictionarySearchElements } from "./WidgetMarkupElements";
-import { localstoragewordvalue } from "./LocalStorageCaches";
+import { localstorageword } from "./LocalStorageCaches";
 import DictionarySearchMarkup from "./DictionarySearchMarkup";
 import RWBError from "./RWBErrorBus";
 import RWBParseJSON from "./RWBParser";
+import { DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements";
+
 
 /**
  * A DictionarySearch is a set of markup creation and functions which allow a user
@@ -21,7 +23,7 @@ import RWBParseJSON from "./RWBParser";
  *
  */
 export class DictionarySearchWidget extends DictionarySearchMarkup {
-  public static wordStorage: localstoragewordvalue[];
+  public static wordStorage: localstorageword[];
   private static CacheStorageNameofWordRequest: string = "RWB_word_fetch";
   private static requestUrl: string =
     "https://api.dictionaryapi.dev/api/v2/entries/en/";
@@ -177,66 +179,53 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     this.createPreviousWordButtons(this.previousWordsBtnWasClicked, buttonContainer);
   }
 
-  private createPreviousWordButtons(previousWordsBtnWasClicked: any, buttonContainer: any){
+  private createPreviousWordButtons(previousWordsBtnWasClicked: any, buttonContainer: HTMLDivElement){
     if(previousWordsBtnWasClicked){
         buttonContainer.style.display = "none";
         this.previousWordsBtnWasClicked = false;
         return;
     }
-    //Because the locator and the Local Storage values are viable, create the markup
-    //needed to display those words. Add event listeners for widget functionality.
-    for (let wordCache of DictionarySearchWidget.wordStorage) {
+      let previouswordbuttons: DictionarySearchPreviousWordKeyElements[] = this.createPreviousWordSearchesElements(DictionarySearchWidget.wordStorage, buttonContainer);
+      for (let btn of previouswordbuttons){
       this.previousWordsBtnWasClicked = true;
       this.previousWordsBtnIsCreated = true;
 
-      const wordHeadingElemContainer = buttonContainer.appendChild(
-        document.createElement("div"));
-      const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(
-        document.createElement("button"));
-      const deleteCacheWordHeadingElem = wordHeadingElemContainer.appendChild(
-        document.createElement("button"));
-      deleteCacheWordHeadingElem.setAttribute("type", "button-clear");
-      deleteCacheWordHeadingElem.classList.add("dictionary-word-btn-clear");
-      cacheWordHeadingElem.setAttribute("type", "button");
-      cacheWordHeadingElem.classList.add("dictionary-btn", "dictionary-word-btn");
-      cacheWordHeadingElem.textContent = wordCache.word;
-
       //add event listener for new button.
       //this is the cached word butten. when it's clicked, fire a word search
-      cacheWordHeadingElem.addEventListener("click", (event: any) => {
+      btn.cacheWordHeadingElem.addEventListener("click", (event: any) => {
         event.preventDefault();
-        this.wordSearch(this.searchElements, true, wordCache);
+        this.wordSearch(this.searchElements, true, btn.word);
       });
       //MOBILE
       //when hovered, display the delete button option
-      wordHeadingElemContainer.addEventListener("touchstart", () => {
-        deleteCacheWordHeadingElem.style.display = "inline-block";
+      btn.wordHeadingElemContainer.addEventListener("touchstart", () => {
+        btn.deleteCacheWordHeadingElem.style.display = "inline-block";
         //when not hovered, hide the delete button option
-        wordHeadingElemContainer.addEventListener("mouseleave", (event: any) => {
-            if (event.target == deleteCacheWordHeadingElem) {
+        btn.wordHeadingElemContainer.addEventListener("mouseleave", (event: any) => {
+            if (event.target == btn.deleteCacheWordHeadingElem) {
               return;
             }
-            deleteCacheWordHeadingElem.style.display = "none";
+            btn.deleteCacheWordHeadingElem.style.display = "none";
           });
       });
 
       //when hovered, display the delete button option
-      wordHeadingElemContainer.addEventListener("mouseover", (event: any) => {
-        deleteCacheWordHeadingElem.style.display = "inline-block";
+      btn.wordHeadingElemContainer.addEventListener("mouseover", (event: any) => {
+        btn.deleteCacheWordHeadingElem.style.display = "inline-block";
         //when not hovered, hide the delete button option
-        wordHeadingElemContainer.addEventListener("mouseleave", (event: any) => {
-            if (event.target == deleteCacheWordHeadingElem) {
+        btn.wordHeadingElemContainer.addEventListener("mouseleave", (event: any) => {
+            if (event.target == btn.deleteCacheWordHeadingElem) {
               return;
             }
-            deleteCacheWordHeadingElem.style.display = "none";
+            btn.deleteCacheWordHeadingElem.style.display = "none";
           });
       });
 
       //add event listener for delete button
-      deleteCacheWordHeadingElem.addEventListener("click", (event: any) => {
+      btn.deleteCacheWordHeadingElem.addEventListener("click", (event: any) => {
         event.preventDefault();
-        wordHeadingElemContainer.remove();
-        this.removeDictionaryTermfromLocalStorage(cacheWordHeadingElem.textContent);
+        btn.wordHeadingElemContainer.remove();
+        this.removeDictionaryTermfromLocalStorage(btn.cacheWordHeadingElem.textContent);
       });
     }
   }
@@ -246,8 +235,8 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    *
    * @param localstoragevalue - This interface stores information where sending to Local Storage.
    */
-  private addDictionaryTermtoLocalStorage(localstoragevalue: localstoragewordvalue) {
-    let wordStore: localstoragewordvalue[] = [];
+  private addDictionaryTermtoLocalStorage(localstoragevalue: localstorageword) {
+    let wordStore: localstorageword[] = [];
     wordStore.push(localstoragevalue);
 
     const addedwordcache = () => {
@@ -279,7 +268,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       return;
     }
     //Parsed objects are localstoragewordvalue objects.
-    let allcache: localstoragewordvalue[] = parsetest.returnstr;//Assigns the object string to the object type
+    let allcache: localstorageword[] = parsetest.returnstr;//Assigns the object string to the object type
 
     //Match the current URL for cache management
     for (let cache of allcache) {
@@ -321,7 +310,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     this.removeRequestfromCacheStorage(removeURL);
 
     //Next, remove the word from Local Storage word array
-    let allcache: localstoragewordvalue[] = DictionarySearchWidget.wordStorage;
+    let allcache: localstorageword[] = DictionarySearchWidget.wordStorage;
     for (let cache of allcache) {
       if (cache.word == localstorageword) {
         allcache.splice(allcache.indexOf(cache), 1);
@@ -375,7 +364,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
   private fetchDictionaryTerm(word: string, wordUrl: URL, searchElems: DictionarySearchElements, sendToCache: boolean, cacheName: string | null) {
     //A function call parameter option is to store the word request in browser's Cache Storage
     //Structure the word data via 'localstoragewordvalue' interface used throughout fetching
-    let wordcache: localstoragewordvalue = {
+    let wordcache: localstorageword = {
       inCache: sendToCache,
       word: word,
       wordURL: wordUrl,
@@ -514,7 +503,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    * @param isFromPreviousWords - True if the user requested a search from a previous word, to call data from Browser Cache.
    * @param cachedWord - If the user called for a previous word, cachedWord is within the Local Storage.
    */
-  private wordSearch(searchElems: DictionarySearchElements, isFromPreviousWords: boolean, cachedWord: localstoragewordvalue | null) {
+  private wordSearch(searchElems: DictionarySearchElements, isFromPreviousWords: boolean, cachedWord: localstorageword | null) {
     if (isFromPreviousWords) {
       this.callFetchDictionaryTerm(searchElems, cachedWord.word, cachedWord.wordURL);
     } else {

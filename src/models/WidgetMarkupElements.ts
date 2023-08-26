@@ -1,4 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
+import { localstorageword } from "./LocalStorageCaches";
 
 /**
  * Interface used for DictionarySearch Elements functionality.
@@ -11,6 +12,13 @@ export interface DictionarySearchElements {
     previousWordBtn: HTMLButtonElement;
     previousWordsContainer: HTMLDivElement;
     refreshBtn: HTMLButtonElement;
+}
+
+export interface DictionarySearchPreviousWordKeyElements {
+    word: localstorageword;
+    cacheWordHeadingElem: HTMLButtonElement;
+    wordHeadingElemContainer: HTMLDivElement;
+    deleteCacheWordHeadingElem: HTMLButtonElement;
 }
 
 /**

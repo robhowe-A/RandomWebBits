@@ -1,5 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
+import { localstorageword } from "./LocalStorageCaches";
 import { DictionarySearchElements } from "./WidgetMarkupElements";
+import { DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements";
 
 /**
  * A DictionarySearchWidget is made to create the markup needed for the
@@ -175,5 +177,34 @@ export default class DictionarySearchMarkup {
 
     //add clear button to widget
     definitionDescriptionContainer.appendChild(definitionDescription);
+  }
+
+  public createPreviousWordSearchesElements (wordstorage: localstorageword[], buttonContainer: HTMLDivElement) {
+    let buttonsarr: DictionarySearchPreviousWordKeyElements[] = [];
+    
+    //Because the locator and the Local Storage values are viable, create the markup
+    //needed to display those words. Add event listeners for widget functionality.
+    for (let wordCache of wordstorage) {
+      const wordHeadingElemContainer = buttonContainer.appendChild(
+        document.createElement("div"));
+      const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(
+        document.createElement("button"));
+      const deleteCacheWordHeadingElem = wordHeadingElemContainer.appendChild(
+        document.createElement("button"));
+      deleteCacheWordHeadingElem.setAttribute("type", "button-clear");
+      deleteCacheWordHeadingElem.classList.add("dictionary-word-btn-clear");
+      cacheWordHeadingElem.setAttribute("type", "button");
+      cacheWordHeadingElem.classList.add("dictionary-btn", "dictionary-word-btn");
+      cacheWordHeadingElem.textContent = wordCache.word;
+
+      let previouswordbtn: DictionarySearchPreviousWordKeyElements = {
+        word: wordCache,
+        cacheWordHeadingElem: cacheWordHeadingElem,
+        wordHeadingElemContainer: wordHeadingElemContainer,
+        deleteCacheWordHeadingElem: deleteCacheWordHeadingElem,
+      }
+      buttonsarr.push(previouswordbtn);
+    }
+    return buttonsarr;
   }
 }

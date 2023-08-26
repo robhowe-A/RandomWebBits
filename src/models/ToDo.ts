@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { ToDoListElements } from "./WidgetMarkupElements";
 import { localstoragetodocache } from "./LocalStorageCaches";
-import { RWBParseJSON } from "./RWBJSONConverter";
+import { RWBParseJSON, RWBStringifyJSON } from "./RWBJSONConverter";
 import RWBError from "./RWBErrorBus";
 
 /**
@@ -161,7 +161,7 @@ export class ToDoList {
             return false;
         }
 
-        this.ToDoInStorage = parsetest.returnstr
+        this.ToDoInStorage = parsetest.returnobj
         return true
     }
 
@@ -178,18 +178,33 @@ export class ToDoList {
         }
         let ToDos: any = []; //ToDo array
         ToDos.push(ToDo);
-        
+        const stringifytodo = (todostr:any) => {
+            //Call RWBStringifyJSON to stringify the object
+            let todosstrgfytest = Object.create(new RWBStringifyJSON(todostr));
+            if (!todosstrgfytest.passed){
+                //LOGLEAF
+                return;
+            }
+            return todosstrgfytest.returnstr;
+        }
+
         //First, read current Local Storage ToDos
-        let todosstoragecache = ToDoList.getToDoInStorage(false, false)
-        let todos: localstoragetodocache[] = ToDoList.ToDoInStorage;
-        if (todos == null) {//Nothing in storage, push current
-            localStorage.setItem('ToDos', JSON.stringify(ToDos));
+        let todosstoragecache = ToDoList.getToDoInStorage(false, false);
+        if (todosstoragecache){
+            ToDos = ToDoList.ToDoInStorage;
+        }
+        let strgfysinglestr = stringifytodo(ToDos);
+
+        if (ToDos == null) {//Nothing in storage, push current
+            localStorage.setItem('ToDos', strgfysinglestr);
             console.log(`%c<RWB>%cCreated to-do cache key: ToDos`, 
                 'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
         }
         else {//Add the new ToDo to the current ToDos and push via setItem()
-            todos.push(ToDo);
-            localStorage.setItem('ToDos', JSON.stringify(todos));
+            ToDos.push(ToDo);
+            //Call RWBStringifyJSON to stringify the object
+            let strgfymultstr = stringifytodo(ToDos);
+            localStorage.setItem('ToDos', strgfymultstr);
         }
         console.log(`%c<RWB>%cAdded to-do cache: ${description}`, 'color:cyan;font-weight:bold;', 'color:cyan;');
     }
@@ -202,7 +217,12 @@ export class ToDoList {
     private removetoDoFromStorage(item: string) {
         ToDoList.ToDoInStorage = ToDoList.ToDoInStorage.filter((todo) => todo.todoitem !== item);
         console.log(`%c<RWB>%cDeleted todo cache: ${item}`, 'color:darkcyan;font-weight:bold;', 'color:darkcyan;');
-        let jsonstr = JSON.stringify(ToDoList.ToDoInStorage)
+        let todoinstoragestrgfytest = Object.create(new RWBStringifyJSON(ToDoList.ToDoInStorage));
+        if(!todoinstoragestrgfytest.passed){
+            //LOGLEAF
+            return;
+        }
+        let jsonstr = todoinstoragestrgfytest.returnstr;
         if (jsonstr == "" || jsonstr == "[]"){
             localStorage.removeItem('ToDos');
             console.log(`%c<RWB>%cDeleted storage key: ToDos`, 
@@ -262,7 +282,7 @@ export class ToDoList {
      * Function called to create the To-Do item rows from To-Dos stored in the browser Local Storage.
      */
     private populateToDoList() {
-        if (ToDoList.ToDoInStorage != null) {
+        if (ToDoList.getToDoInStorage(true, false)) {
             for (let i = 0; i < ToDoList.ToDoInStorage.length; i++) {
                 this.AddToDoRow(ToDoList.ToDoInStorage[i].todoitem, false);
             }

@@ -340,7 +340,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     }
 
     //Return remaining words to Local Storage
-    localStorage.setItem("word-caches", JSON.stringify(wordcachesstrfytest.returnstr));
+    localStorage.setItem("word-caches", wordcachesstrfytest.returnstr);
   }
 
   /**

@@ -5,6 +5,7 @@ import { localstorageword } from "./LocalStorageCaches";
 import DictionarySearchMarkup from "./DictionarySearchMarkup";
 import RWBError from "./RWBErrorBus";
 import RWBParseJSON from "./RWBParser";
+import { RWBStringifyJSON } from "./RWBParser";
 import { DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements";
 
 
@@ -77,7 +78,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       this.getLocalStorageWordCaches();
       return;
     }
-    return parsetest.returnstr;
+    return parsetest.returnobj;
   }
 
   /**
@@ -236,42 +237,67 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    * @param localstoragevalue - This interface stores information where sending to Local Storage.
    */
   private addDictionaryTermtoLocalStorage(localstoragevalue: localstorageword) {
-    let wordStore: localstorageword[] = [];
-    wordStore.push(localstoragevalue);
-
+    //Log the word cache creation
     const addedwordcache = () => {
       console.log(`%c<RWB>%cAdded word cache: ${localstoragevalue.word}`, 
         'color:cyan;font-weight:bold;', 'color:cyan;');
     }
-
-    //Add the cache item to Local Storage 'word-caches'
+    //The 'localstoragevalue' needs added to local storage cache
+    //Local storage may be empty or already having the wanted searched word
+    //Check storage is not null. If it is, add the word.
     if (DictionarySearchWidget.wordStorage == null) {
       if (RWBError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
+        //Add the storage word to an array
+        let wordStore: localstorageword[] = [];
+        wordStore.push(localstoragevalue);
+        let jsonstr: string = "";
+
+        //Call RWBStringifyJSON to stringify the object
+        let stringifytestsingleword = Object.create(new RWBStringifyJSON(wordStore));
+        if(!stringifytestsingleword.passed){
+          //stringify object did not work, so return
+          //LOGLEAFLEFT
+          return;
+        }
+        jsonstr = stringifytestsingleword.returnstr;
+
         // Local storage is empty => add the word
-        localStorage.setItem("word-caches", JSON.stringify(wordStore));
+        localStorage.setItem("word-caches", jsonstr);
         console.log(`%c<RWB>%cCreated storage key: word-caches`, 
           'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
         addedwordcache();
         return;
       }
+      //LOGLEAFLEFT
       return;
     }
     //Local storage is not empty. Here, we need to add the word to the existing word cache.
     let allcache: localstorageword[] = DictionarySearchWidget.wordStorage;
+    let jsonstr: string = "";
 
     //Match the current URL for cache management
     for (let cache of allcache) {
       if (cache.wordURL == localstoragevalue.wordURL) {
         //Word is already in Local Storage
         //No need to add it to the array
+        //LOGLEAFLEFT
         return;
       }
     }
     //Add word to existing 'word-caches' in Local Storage
     allcache.push(localstoragevalue);
-    localStorage.setItem("word-caches", JSON.stringify(allcache));
-    console.log(`%c<RWB>%cAdded word cache: ${localstoragevalue.word}`, 
-      'color:cyan;font-weight:bold;', 'color:cyan;');
+
+    //Call RWBStringifyJSON to stringify the object
+    let stringifytestdoubleword = Object.create(new RWBStringifyJSON(allcache));
+    if(!stringifytestdoubleword.passed){
+      //stringify object did not work, so return
+      //LOGLEAFLEFT
+      return;
+    }
+    jsonstr = stringifytestdoubleword.returnstr;
+
+    localStorage.setItem("word-caches", jsonstr);
+    addedwordcache();
   }
 
   /**
@@ -372,7 +398,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         if(!parsetest.passed){
           return;
         }
-        data = parsetest.returnstr;
+        data = parsetest.returnobj;
       }
       let wordData: any = data;
       //If the returned data is an object, confirm it is 'no definition' server data

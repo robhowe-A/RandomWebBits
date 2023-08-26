@@ -6,7 +6,7 @@ export default class RWBParseJSON {
     /**Counts the number of objects instantiated */
     public static count: number = 0;
     private parsestr: string;
-    public returnstr: string;
+    public returnobj: object;
     public passed: boolean;
     /**Create this object to store parse results and parsed
      * JSON object.
@@ -14,19 +14,47 @@ export default class RWBParseJSON {
     constructor(parsestr:string){
         RWBParseJSON.count++;
         this.parsestr = parsestr;
-        this.passed = this.parseJSON();
+        this.passed = this.RWBparseJSON();
     };
 
-    private parseJSON () {
+    private RWBparseJSON () {
         try{
-            this.returnstr = JSON.parse(this.parsestr);
+            this.returnobj = JSON.parse(this.parsestr);
         }
         catch (e) {
-            this.returnstr = this.parsestr;
+            this.returnobj = null;
             new RWBSyntaxError("ParseError", e.message);
             return false;
         }
         return true;
     }
+}
 
+/** An RWBParseJSON parses json and stores the parsed string.  */
+export class RWBStringifyJSON {
+    /**Counts the number of objects instantiated */
+    public static count: number = 0;
+    private json: any;
+    public returnstr: string;
+    public passed: boolean;
+    /**Create this object to store parse results and parsed
+     * JSON object.
+     */
+    constructor(json:any){
+        RWBStringifyJSON.count++;
+        this.json = json;
+        this.passed = this.parseJSON();
+    };
+
+    private parseJSON () {
+        try{
+            this.returnstr = JSON.stringify(this.json);
+        }
+        catch (e) {
+            this.returnstr = null;
+            new RWBSyntaxError("ParseError", e.message);
+            return false;
+        }
+        return true;
+    }
 }

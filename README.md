@@ -204,4 +204,5 @@
 1.6.67: Widgets Refactor  
 1.6.68: Parser component  
 1.6.69: Stringify component  
+1.7.70: Footer addition  
 </details>

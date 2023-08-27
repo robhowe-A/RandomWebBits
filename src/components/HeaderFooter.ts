@@ -106,6 +106,7 @@ const HeaderFooter = {
             let footer: HTMLElement = HeaderFooter.footerWidget.buildFooter();
             document.body.append(footer);
             footer.childNodes[0].appendChild(HeaderFooter.footerWidget.buildFaviconAttribution(footer));
+            HeaderFooter.footerWidget.buildDeveloperAttribution(footer);
 
             footerperf.end();
         },
@@ -135,6 +136,16 @@ const HeaderFooter = {
             footer.childNodes[0].appendChild(footerIconPara);
 
             return footerIconPara;
+        },
+        buildDeveloperAttribution: (footer: HTMLElement) => {
+            const devattrib = document.createElement("div");
+            const dev = document.createElement("p");
+            dev.textContent = 'Developed by Robert Howell';
+
+            devattrib.append(dev);
+            footer.appendChild(devattrib);
+
+            return 
         }
     }
 }

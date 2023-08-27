@@ -1,6 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
 
-// This object creates an array of divs from input port number information
+// This object creates an array of divs from port number information
 export default class FlashcardCardElems {
     /**Counts the number of widget objects instantiated */
     public static widgetcount: number = 0;

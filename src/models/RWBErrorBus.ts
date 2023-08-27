@@ -71,7 +71,7 @@ export default class RWBError {
     }
 }
 
-/** Create this object to record reference errors. */
+/** Create this object to store reference error data. */
 export class RWBReferenceError extends ReferenceError {
     /**Counts the number of objects instantiated */
     public static count: number = 0;
@@ -97,6 +97,7 @@ export class RWBReferenceError extends ReferenceError {
     };
 }
 
+/** Create this object to store syntax error data. */
 export class RWBSyntaxError extends SyntaxError {
     /**Counts the number of objects instantiated */
     public static count: number = 0;
@@ -122,7 +123,6 @@ export class RWBSyntaxError extends SyntaxError {
     };
 }
 
-/** Create this object to record reference errors. */
 export class RWBDomException extends DOMException {
     /**Counts the number of objects instantiated */
     public static count: number = 0;

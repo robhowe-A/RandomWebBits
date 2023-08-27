@@ -15,15 +15,14 @@ export default class RWBPerf {
         endMark: null
     };
 
-    /** Instantiating a ScriptPerf records the performance start mark. Call SriptPerf.end()
-     * to set the end time stamp.
-    */
+    /** Instantiating a ScriptPerf records the performance start mark. */
     constructor( scriptname: string){
         this.scriptruntimemarks.name = scriptname;
         this.scriptruntimemarks.startMark = performance.mark(`${this.scriptruntimemarks.name}-start`);
         RWBPerf.count++;
     }
 
+    /** Call end() to set the end time stamp. */
     public end(){
         this.scriptruntimemarks.endMark = performance.mark(`${this.scriptruntimemarks.name}-end`);
         this.measure();

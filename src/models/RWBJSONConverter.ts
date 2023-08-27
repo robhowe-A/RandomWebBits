@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { RWBSyntaxError } from './RWBErrorBus'
 
-/** An RWBParseJSON parses json and stores the parsed string.  */
+/** An RWBParseJSON parses json and stores the parsed string with the result. */
 export class RWBParseJSON {
     /**Counts the number of objects instantiated */
     public static count: number = 0;
@@ -30,7 +30,8 @@ export class RWBParseJSON {
     }
 }
 
-/** An RWBParseJSON parses json and stores the parsed string.  */
+/** An RWBParseJSON tests whether an object can be stringified into a valid
+ * json string. */
 export class RWBStringifyJSON {
     /**Counts the number of objects instantiated */
     public static count: number = 0;

@@ -9,11 +9,11 @@ const ClassComponents = {
         const classperf = new RWBPerf("Classcomponents"); //begin performance measure
 
         // Add Dictionary Widget if an element with that class is on a page
-        if (RWBError.checkElementorNull("ClassComponent", "dictionaryWidget", true, true)) return;
+        if (!RWBError.checkElementorNull("ClassComponent", "dictionaryWidget", true, true))
         DictionaryWidget.init();
         
         // Add ToDos widget if an element with that class is on a page
-        if (RWBError.checkElementorNull("ClassComponent", "ToDoList", true, true)) return;
+        if (!RWBError.checkElementorNull("ClassComponent", "ToDoList", true, true))
         ToDosWidget.init();
         
         classperf.end(); //end performance measure

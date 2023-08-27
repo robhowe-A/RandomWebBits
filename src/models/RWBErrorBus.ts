@@ -13,17 +13,18 @@ export default class RWBError {
         if (!logmessage) logmssg = logmessage;
         let supressexcpt: boolean = false;//Supress message option default
         if (supressexception) supressexcpt = true;
+        let query: string = `.${classname}`;
 
         // Add dictionary widget if an element with that class is on a page
         try{
-            elem = document.querySelector(`.${classname}`);
+            elem = document.querySelector(query);
         }
         catch {
-            throw new Error (`Could not get element: ${classname}`);
+            Object.create(new RWBReferenceError("GetElement", `Could not get element: '${query}'`));
         }
         if (elem == null){
             if (logmssg)
-                console.log(`%cNo element found with class name: ${classname}.`, 'color: yellow;');
+                console.log(`%cNo element found with class name: ${query}.`, 'color: yellow;');
             if (!supressexcpt)
                 Object.create(new RWBReferenceError(`${componentname}NullReference`, `Element not found`));
             return true;
@@ -84,10 +85,15 @@ export class RWBReferenceError extends ReferenceError {
         this.name = name;
         this.message = message;
         this.page = window.location.pathname;
-        this.referror = new ReferenceError(this.message);
+        try{
+            throw new ReferenceError(this.message);
+        }
+        catch (err){
+            this.referror = err;
+            console.log(`%c<RWB>%cExecution experienced a reference error:\n%o\n%c</RWB>`, 
+                'color:red;font-weight:bold;', 'color:red;', err, 'color:red;font-weight:bold;');
+        }
         RWBReferenceError.count++;
-
-        console.log(this.referror);
     };
 }
 

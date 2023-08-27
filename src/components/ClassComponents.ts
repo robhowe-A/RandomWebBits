@@ -1,24 +1,22 @@
 //--Copyright (c) 2023 Robert A. Howell
-import ToDosWidget from './ToDos';
+import ToDosWidget from './ToDosWidget';
 import DictionaryWidget from './DictionaryWidget';
 import RWBPerf from '../models/ScriptPerf';
 import RWBError from '../models/RWBErrorBus'
 
 const ClassComponents = {
-    initDictionary: () => {
+    init: () => {
         const classperf = new RWBPerf("Classcomponents"); //begin performance measure
 
+        // Add Dictionary Widget if an element with that class is on a page
         if (RWBError.checkElementorNull("ClassComponent", "dictionaryWidget", true, true)) return;
         DictionaryWidget.init();
-
-        classperf.end(); //end performance measure
-    },
-    initToDo: () => {
         
         // Add ToDos widget if an element with that class is on a page
         if (RWBError.checkElementorNull("ClassComponent", "ToDoList", true, true)) return;
         ToDosWidget.init();
         
+        classperf.end(); //end performance measure
     }
 }
 export default ClassComponents;

@@ -177,6 +177,8 @@ export class ToDoList {
             todoitem: description,
         }
         let ToDos: any = []; //ToDo array
+        let strgfy;
+
         const stringifytodo = (todostr:any) => {
             //Call RWBStringifyJSON to stringify the object
             let todosstrgfytest = Object.create(new RWBStringifyJSON(todostr));
@@ -186,25 +188,22 @@ export class ToDoList {
             }
             return todosstrgfytest.returnstr;
         }
-
         //First, read current Local Storage ToDos
         let todosstoragecache = ToDoList.getToDoInStorage(false, false);
         if (todosstoragecache){
             ToDos = ToDoList.ToDoInStorage;
-        }
-        let strgfysinglestr = stringifytodo(ToDos);
-
-        if (ToDos == null) {//Nothing in storage, push current
-            ToDos.push(ToDo);
-            localStorage.setItem('ToDos', strgfysinglestr);
-            console.log(`%c<RWB>%cCreated to-do cache key: ToDos`, 
-                'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
-        }
-        else {//Add the new ToDo to the current ToDos and push via setItem()
             ToDos.push(ToDo);
             //Call RWBStringifyJSON to stringify the object
-            let strgfymultstr = stringifytodo(ToDos);
-            localStorage.setItem('ToDos', strgfymultstr);
+            strgfy = stringifytodo(ToDos);
+            localStorage.setItem('ToDos', strgfy);
+        }
+        else {
+            ToDos.push(ToDo);
+            //Call RWBStringifyJSON to stringify the object
+            strgfy = stringifytodo(ToDos);
+            localStorage.setItem('ToDos', strgfy);
+            console.log(`%c<RWB>%cCreated to-do cache key: ToDos`, 
+                'color:cyan;font-size:14px;font-weight:bold;', 'color:cyan;font-size:16px;');
         }
         console.log(`%c<RWB>%cAdded to-do cache: ${description}`, 'color:cyan;font-weight:bold;', 'color:cyan;');
     }

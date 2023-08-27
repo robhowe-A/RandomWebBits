@@ -23,7 +23,7 @@ import { DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements"
  * All the needed elements and functionality are added to the page.
  *
  */
-export class DictionarySearchWidget extends DictionarySearchMarkup {
+export class DictionarySearch extends DictionarySearchMarkup {
   public static wordStorage: localstorageword[];
   private static CacheStorageNameofWordRequest: string = "RWB_word_fetch";
   private static requestUrl: string =
@@ -40,12 +40,13 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    * @param elem - The reference element used to place widget markup.
    */
   constructor(elem: Element) {
-    //Invoke DictionarySearchWidget superclass constructor.
+    //Invoke superclass constructor.
     super(elem);
     if (this.searchElements == undefined) return;
     //Initialize the dictionary widget with click event listeners
     this.addWidgetEvents();
-    DictionarySearchWidget.wordStorage = DictionarySearchWidget.getLocalStorageWordCaches();
+    //Store words cache data with initialization.
+    DictionarySearch.wordStorage = DictionarySearch.getLocalStorageWordCaches();
   }
 
   /**
@@ -61,8 +62,8 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     if(RWBError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", true, true)){
       //The Local Storage is null or empty--> Confirm here the browser does not have any Cache Storage items in error
       if ("caches" in window){
-        if (window.caches.has(DictionarySearchWidget.CacheStorageNameofWordRequest)){
-            window.caches.delete(DictionarySearchWidget.CacheStorageNameofWordRequest);
+        if (window.caches.has(DictionarySearch.CacheStorageNameofWordRequest)){
+            window.caches.delete(DictionarySearch.CacheStorageNameofWordRequest);
         }
       localStorage.removeItem('word-caches');
       return;
@@ -149,7 +150,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
 
     //Check the placement locator and word caches for undefined
     if (placementlocationholder == null ||
-      DictionarySearchWidget.wordStorage == null) {
+      DictionarySearch.wordStorage == null) {
       if (!this.previousWordsBtnIsCreated) {
           const noWordsHeadingElem = buttonContainer.appendChild(document.createElement("div"));
           noWordsHeadingElem.classList.add("dictionary-btn", "error-notfound");
@@ -186,7 +187,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         this.previousWordsBtnWasClicked = false;
         return;
     }
-      let previouswordbuttons: DictionarySearchPreviousWordKeyElements[] = this.createPreviousWordSearchesElements(DictionarySearchWidget.wordStorage, buttonContainer);
+      let previouswordbuttons: DictionarySearchPreviousWordKeyElements[] = this.createPreviousWordSearchesElements(DictionarySearch.wordStorage, buttonContainer);
       for (let btn of previouswordbuttons){
       this.previousWordsBtnWasClicked = true;
       this.previousWordsBtnIsCreated = true;
@@ -245,7 +246,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     //The 'localstoragevalue' needs added to local storage cache
     //Local storage may be empty or already having the wanted searched word
     //Check storage is not null. If it is, add the word.
-    if (DictionarySearchWidget.wordStorage == null) {
+    if (DictionarySearch.wordStorage == null) {
       if (RWBError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
         //Add the storage word to an array
         let wordStore: localstorageword[] = [];
@@ -264,7 +265,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         // Local storage is empty => add the word
         localStorage.setItem("word-caches", jsonstr);
         console.log(`%c<RWB>%cCreated storage key: word-caches`, 
-          'color:cyan;font-size:16px;font-weight:bold;', 'color:cyan;font-size:16px;');
+          'color:cyan;font-size:14px;font-weight:bold;', 'color:cyan;font-size:16px;');
         addedwordcache();
         return;
       }
@@ -272,7 +273,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
       return;
     }
     //Local storage is not empty. Here, we need to add the word to the existing word cache.
-    let allcache: localstorageword[] = DictionarySearchWidget.wordStorage;
+    let allcache: localstorageword[] = DictionarySearch.wordStorage;
     let jsonstr: string = "";
 
     //Match the current URL for cache management
@@ -309,13 +310,13 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
   private removeDictionaryTermfromLocalStorage(localstorageword: string) {
     //Remove the cache item to Local Storage, Cache Storage
     //Check local storage is not null or empty
-    if (DictionarySearchWidget.wordStorage == null) {
+    if (DictionarySearch.wordStorage == null) {
       //LOGLEAF
       return;
     }
     //Get the words array from Local Storage
     //RWBError.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches"); //log whether fetched word cache is null or empty.
-    let allcache: localstorageword[] = DictionarySearchWidget.wordStorage;
+    let allcache: localstorageword[] = DictionarySearch.wordStorage;
     
     //Remove the word from Cache Storage and Local Storage word array
     for (let wordCache of allcache) {
@@ -350,7 +351,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
    */
   private removeRequestfromCacheStorage(removeURL: URL) {
     window.caches
-    .open(DictionarySearchWidget.CacheStorageNameofWordRequest)
+    .open(DictionarySearch.CacheStorageNameofWordRequest)
     .then((cache) => {
       caches.match(removeURL).then((result) => {
         if (result === undefined) {
@@ -491,7 +492,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
     // When the word data resolves, call markup functions
     let wordDataPromise = new Promise((resolve) => {
       resolve(
-        this.fetchDictionaryTerm(word, wordURL, searchElems, true, DictionarySearchWidget.CacheStorageNameofWordRequest)
+        this.fetchDictionaryTerm(word, wordURL, searchElems, true, DictionarySearch.CacheStorageNameofWordRequest)
       );
     });
     wordDataPromise.then((data: object) => {
@@ -507,8 +508,6 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         searchElems.errorElem.classList.remove("error-notfound");
         searchElems.errorElem.textContent = "";
     });
-
-    
   }
 
   /**
@@ -530,7 +529,7 @@ export class DictionarySearchWidget extends DictionarySearchMarkup {
         : (acceptedInputWord = false);
       if (acceptedInputWord) {
         // Create a URL of the accepted word for use in the fetch call
-        this.wordURL = new URL(searchElems.searchWord.value.toString(), DictionarySearchWidget.requestUrl);
+        this.wordURL = new URL(searchElems.searchWord.value.toString(), DictionarySearch.requestUrl);
         this.callFetchDictionaryTerm(searchElems, searchElems.searchWord.value, this.wordURL);
       } else {
         searchElems.searchWord.classList.remove("invalid-notfound");

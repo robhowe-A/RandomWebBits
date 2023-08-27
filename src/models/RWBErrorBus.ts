@@ -9,9 +9,9 @@ export default class RWBError {
     };
     public static checkElementorNull(componentname:string, classname: string, logmessage?:boolean, supressexception?:boolean ) {
         let elem: HTMLElement | null;
-        let logmssg: boolean = true;
+        let logmssg: boolean = true; //Log message option default
         if (!logmessage) logmssg = logmessage;
-        let supressexcpt: boolean = false;
+        let supressexcpt: boolean = false;//Supress message option default
         if (supressexception) supressexcpt = true;
 
         // Add dictionary widget if an element with that class is on a page
@@ -104,10 +104,15 @@ export class RWBSyntaxError extends SyntaxError {
         this.name = name;
         this.message = message;
         this.page = window.location.pathname;
-        this.referror = new SyntaxError(this.message);
+        try{
+            throw new SyntaxError(this.message);
+        }
+        catch (err){
+            this.referror = err;
+            console.log(`%c<RWB>%cExecution experienced a syntax error:\n%o\n%c</RWB>`, 
+                'color:red;font-weight:bold;', 'color:red;', err, 'color:red;font-weight:bold;');
+        }
         RWBSyntaxError.count++;
-
-        console.log(this.referror);
     };
 }
 

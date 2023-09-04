@@ -1,9 +1,11 @@
 import os
 
+imgfilepaths = []
+
 def main():
     mypath = 'dist/img'
     path = mypath.split("/")[1]
-    imgfilenames = []
+
     txtcount = 0
     jpegcount = 0
     jpgcount = 0
@@ -35,23 +37,24 @@ def main():
 
     # traverse root directory, and list directories as dirs and files as files
     for root, dirs, files in os.walk(mypath, topdown=False):
-        imgfilenames.extend(files)
+        for file in files:
+            # create the file path
+            filepath = os.path.join(root, file)
+            # remove 'dist' from file path, then recreate
+            imgfilepath = filepath.split(os.sep)
+            imgfilepath.pop(0)
+            imgfp = "/".join(imgfilepath)
+            imgfilepaths.append(imgfp)
 
-    print(my_files_path)
-
-    # filter files list of any .txt files
-    imgfilenamescpy = imgfilenames
-    for file in imgfilenamescpy:
-        ext = os.path.splitext(file)[-1].lower()
-        keeptest = extswitch(ext)
-        if not keeptest:
-            imgfilenamescpy.remove(file)
-        file = path + "/" + file
-        print(file)
-
+    # Add only valid extendsions
+    for path in imgfilepaths:
+        ext = os.path.splitext(path)[-1].lower()
+        validext = extswitch(ext)
+        if not validext:
+            imgfilepaths.remove(path)
 
     print("++++++++++++++++++++++++++++++++++++++++")
-    print("Total images in folder: %i"%len(imgfilenamescpy))
+    print("Total images in folder: %i"%len(imgfilepaths))
     print("Total txt files: %i"%filecounts[0])
     print("Total jpeg images: %i"%filecounts[1])
     print("Total jpg images: %i"%filecounts[2])
@@ -60,15 +63,26 @@ def main():
     print("Total webp images: %i"%filecounts[5])
     print("++++++++++++++++++++++++++++++++++++++++")
 
-    return imgfilenames
-filenames = []
-filesnames = main()
-#loop through imagefilenames.
-for file in filesnames:
-    print(file)
-#For each image file name, create an entry:
+    return imgfilepaths
+main()
+imgfilepaths.sort()
+
+#For each image file name, create header entry:
 headersfilepath = "dist/_headers"
 with open(headersfilepath, 'a', encoding="UTF=8") as headers:
-    headers.write("\n'")
-#    /img/<filename.filetype>
-#        Content-Type: image/<filetype>;
+    #Write the first line out for the image.
+    headers.write("\n")
+    for path in imgfilepaths:
+        ext = os.path.splitext(path)[-1].lower()
+        ext = ext.removeprefix(".")
+        if ext == "svg":
+            headers.write("/%s\n\tContent-Type: image/%s+xml;\n"%(path, ext))
+        else:
+            headers.write("/%s\n\tContent-Type: image/%s;\n"%(path, ext))
+
+# 
+# 
+# /img/<filename.filetype>
+#     Content-Type: image/<filetype>;
+# /img/svg.svg
+#   Content-Type: image/svg+xml;

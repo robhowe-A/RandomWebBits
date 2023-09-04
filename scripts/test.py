@@ -2,6 +2,7 @@ import os
 
 def main():
     mypath = 'dist/img'
+    path = mypath.split("/")[1]
     imgfilenames = []
     txtcount = 0
     jpegcount = 0
@@ -32,18 +33,21 @@ def main():
                 filecounts[5] += 1
                 return True
 
-
     # traverse root directory, and list directories as dirs and files as files
     for root, dirs, files in os.walk(mypath, topdown=False):
         imgfilenames.extend(files)
-            
-    # filter files list of any .txt files            
+
+    print(my_files_path)
+
+    # filter files list of any .txt files
     imgfilenamescpy = imgfilenames
     for file in imgfilenamescpy:
         ext = os.path.splitext(file)[-1].lower()
         keeptest = extswitch(ext)
         if not keeptest:
             imgfilenamescpy.remove(file)
+        file = path + "/" + file
+        print(file)
 
 
     print("++++++++++++++++++++++++++++++++++++++++")
@@ -54,12 +58,17 @@ def main():
     print("Total svg images: %i"%filecounts[3])
     print("Total png images: %i"%filecounts[4])
     print("Total webp images: %i"%filecounts[5])
+    print("++++++++++++++++++++++++++++++++++++++++")
 
-
-    print()
-
-main()
+    return imgfilenames
+filenames = []
+filesnames = main()
 #loop through imagefilenames.
+for file in filesnames:
+    print(file)
 #For each image file name, create an entry:
+headersfilepath = "dist/_headers"
+with open(headersfilepath, 'a', encoding="UTF=8") as headers:
+    headers.write("\n'")
 #    /img/<filename.filetype>
 #        Content-Type: image/<filetype>;

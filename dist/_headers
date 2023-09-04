@@ -65,168 +65,152 @@
 
 
 /img/2dShapes.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/BingSkinny.jpeg
-	Content-Type: image/jpeg;
+  Content-Type: image/jpeg;
 /img/BingWide.jpeg
-	Content-Type: image/jpeg;
-/img/ClearCookies.png
-	Content-Type: image/png;
+  Content-Type: image/jpeg;
 /img/DevTools_Application1.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/DevTools_Application2-Before.png
-	Content-Type: image/png;
+  Content-Type: image/png;
+/img/ClearCookies.png
+  Content-Type: image/png;
 /img/DevTools_Application4-After.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/DevTools_Application5-After_Cookies.png
-	Content-Type: image/png;
-/img/Edge-Inspect.png
-	Content-Type: image/png;
-/img/Edge-Inspect_ctrlq.png
-	Content-Type: image/png;
-/img/Edge-Inspect_inspect.png
-	Content-Type: image/png;
-/img/Edge-Inspect_inspected-page.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/HTML_Frames.jpeg
-	Content-Type: image/jpeg;
+  Content-Type: image/jpeg;
 /img/HTML_Frames.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/HTML_source.webp
-	Content-Type: image/webp;
-/img/JWST_poster.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/NASA.GOV.jpeg
-	Content-Type: image/jpeg;
+  Content-Type: image/jpeg;
 /img/NASA.jpg
-	Content-Type: image/jpg;
+  Content-Type: image/jpg;
 /img/NASA.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/NASA_Home-small.jpeg
-	Content-Type: image/jpeg;
+  Content-Type: image/jpeg;
 /img/NASA_Home.jpeg
-	Content-Type: image/jpeg;
-/img/PWA-InstallAsAnApp.png
-	Content-Type: image/png;
-/img/PWA2-AppInstalled.png
-	Content-Type: image/png;
-/img/PWA3-AppLaunched.png
-	Content-Type: image/png;
-/img/PWA4-TaskbarAfter.png
-	Content-Type: image/png;
-/img/PWA4-TaskbarBefore.png
-	Content-Type: image/png;
+  Content-Type: image/jpeg;
 /img/SMTP_commands_overview.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/Web capture_31-1-2023_162356_www.ibm.com.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/Whois_thisrandomwebdomain.com.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/ai.webp
-	Content-Type: image/webp;
-/img/app-development.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/artsandculture.google-small.jpeg
-	Content-Type: image/jpeg;
+  Content-Type: image/jpeg;
 /img/artsandculture.google.jpeg
-	Content-Type: image/jpeg;
+  Content-Type: image/jpeg;
 /img/boinc_glossy.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/boinc_project.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/chatGPT_First.jpeg
-	Content-Type: image/jpeg;
+  Content-Type: image/jpeg;
 /img/chatGPT_Second.jpeg
-	Content-Type: image/jpeg;
-/img/chronometer.webp
-	Content-Type: image/webp;
+  Content-Type: image/jpeg;
 /img/communications.webp
-	Content-Type: image/webp;
-/img/cookies.webp
-	Content-Type: image/webp;
-/img/css-3.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/dictionary.webp
-	Content-Type: image/webp;
-/img/dns.webp
-	Content-Type: image/webp;
-/img/favicon/ImageHome_Favicon.png
-	Content-Type: image/png;
-/img/favicon/vectorstock_45026755.png
-	Content-Type: image/png;
+  Content-Type: image/webp;
 /img/firefox_fullcode.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/firefox_sourcecode.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/google-expeditions.webp
-	Content-Type: image/webp;
-/img/html.webp
-	Content-Type: image/webp;
-/img/http.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/https0.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/https1.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/https2.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/https3.png
-	Content-Type: image/png;
+  Content-Type: image/png;
 /img/https_cert.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/ip.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/json.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/openWith.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/page-speed.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/prototype.webp
-	Content-Type: image/webp;
-/img/search-engine.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/search_settings.webp
-	Content-Type: image/webp;
-/img/server.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/showcase_newsletter.jpg
-	Content-Type: image/jpg;
-/img/software-application.webp
-	Content-Type: image/webp;
-/img/svg.svg
-	Content-Type: image/svg+xml;
+  Content-Type: image/jpg;
 /img/terminal.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/tool-box.webp
-	Content-Type: image/webp;
-/img/tool-box2.webp
-	Content-Type: image/webp;
-/img/tree.webp
-	Content-Type: image/webp;
-/img/ux.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/wappalyzer-logo.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/watchIngrid.webp
-	Content-Type: image/webp;
-/img/webide__brackets-icon.svg
-	Content-Type: image/svg+xml;
-/img/webide__cloud9ide.png
-	Content-Type: image/png;
-/img/webide__codio.png
-	Content-Type: image/png;
-/img/webide__github-mark-white.png
-	Content-Type: image/png;
-/img/webide__jsfiddle-logo.png
-	Content-Type: image/png;
-/img/webide__replit-logo-white.png
-	Content-Type: image/png;
+  Content-Type: image/webp;
 /img/webtech.html.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/whois.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
 /img/wifi.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
+/img/dns.webp
+  Content-Type: image/webp;
+/img/Edge-Inspect.png
+  Content-Type: image/png;
+/img/Edge-Inspect_ctrlq.png
+  Content-Type: image/png;
+/img/Edge-Inspect_inspect.png
+  Content-Type: image/png;
+/img/Edge-Inspect_inspected-page.png
+  Content-Type: image/png;
+/img/tool-box2.webp
+  Content-Type: image/webp;
+/img/tree.webp
+  Content-Type: image/webp;
+/img/search-engine.webp
+  Content-Type: image/webp;
+/img/ux.webp
+  Content-Type: image/webp;
+/img/svg.svg
+  Content-Type: image/svg+xml;
+/img/software-application.webp
+  Content-Type: image/webp;
+/img/PWA-InstallAsAnApp.png
+  Content-Type: image/png;
+/img/PWA2-AppInstalled.png
+  Content-Type: image/png;
+/img/PWA3-AppLaunched.png
+  Content-Type: image/png;
+/img/PWA4-TaskbarBefore.png
+  Content-Type: image/png;
+/img/PWA4-TaskbarAfter.png
+  Content-Type: image/png;
+/img/app-development.webp
+  Content-Type: image/webp;
+/img/http.webp
+  Content-Type: image/webp;
+/img/css-3.webp
+  Content-Type: image/webp;
+/img/cookies.webp
+  Content-Type: image/webp;
+/img/JWST_poster.webp
+  Content-Type: image/webp;
+/img/chronometer.webp
+  Content-Type: image/webp;
+/img/html.webp
+  Content-Type: image/webp;
 /img/www.webp
-	Content-Type: image/webp;
+  Content-Type: image/webp;
+/img/server.webp
+  Content-Type: image/webp;

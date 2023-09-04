@@ -30,8 +30,7 @@ const main = {
             PageComponents.init();
 
             // Initialize element components
-            ClassComponents.initDictionary();
-            ClassComponents.initToDo();
+            ClassComponents.init();
 
             // <abbr></abbr> styles: implemented for mobile devices
             mobileAbbrMarkup.init();

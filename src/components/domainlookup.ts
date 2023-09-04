@@ -1,11 +1,14 @@
 //--Copyright (c) 2023 Robert A. Howell
+import { RWBReferenceError } from "../models/RWBErrorBus";
 
 const domainlookup = {
     init: () => {
         // Get the form, assign to a variable
-        const form = document.getElementById('searchWhoIS') as HTMLFormElement | null;
-        if (form == null){ //If the form is not found, throw exception.
-            throw new ReferenceError("Lookup form not found.");
+        let formelemclassname = 'searchWhoIS';
+        let form: HTMLFormElement;
+            form = document.getElementById(`${formelemclassname}`) as HTMLFormElement | null;
+        if (form == null){
+            new RWBReferenceError("ElementNotFound", `Element not found: '${formelemclassname}':`);
         }
         form.addEventListener("submit", domainlookup.searchWHOIS);
     },

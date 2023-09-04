@@ -3,7 +3,7 @@
 /**
  * Interface used for Local Storage key-value dictionary words
  */
-export interface localstoragewordvalue {
+export interface localstorageword {
     inCache: boolean,
     word: string,
     wordURL: URL,

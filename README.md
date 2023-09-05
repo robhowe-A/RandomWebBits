@@ -1,4 +1,5 @@
- Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://randomwebbits.com/)
+ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://randomwebbits.com/)  
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c29ba08d-f324-404d-8cee-4d9621425de3/deploy-status)](https://app.netlify.com/sites/randwebbit/deploys)  
 
 # Random Web Bits
 
@@ -181,9 +182,27 @@
 1.3.57: New WebBits page: GUIDE: Clearing cookies  
 1.3.58: New WebBits page: EXPLORE: Webb Space Telescope  
 1.3.59: New WebBits page: Latency  
+
+</details>
+
+<details>
+<summary>Version 1.4</summary>
+
 1.4.59: Header/Footer refactor  
 1.4.60: New WebBits page: HTML-ELEM  
+
+</details>
+
+<details>
+<summary>Version 1.5</summary>
+ 
 1.5.60: Main switch  
+
+</details>
+
+<details>
+<summary>Version 1.6</summary>
+ 
 1.6.60: Widescreens  
 1.6.61: PageComponents refactor  
 1.6.62: ClassComponents refactor  
@@ -204,5 +223,13 @@
 1.6.67: Widgets Refactor  
 1.6.68: Parser component  
 1.6.69: Stringify component  
+
+</details>
+
+<details>
+<summary>Version 1.7</summary>
+ 
 1.7.70: Footer addition  
+1.7.71: New WebBits page: HSL  
+1.7.72: New page: 404.html  
 </details>

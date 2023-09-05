@@ -7,13 +7,13 @@ export default class RWBError {
     constructor(){
         RWBError.count++;
     };
-    public static checkElementorNull(componentname:string, classname: string, logmessage?:boolean, supressexception?:boolean ) {
+    public static checkElementorNull(componentname:string, cssquery: string, logmessage?:boolean, supressexception?:boolean ) {
         let elem: HTMLElement | null;
         let logmssg: boolean = true; //Log message option default
         if (!logmessage) logmssg = logmessage;
         let supressexcpt: boolean = false;//Supress message option default
         if (supressexception) supressexcpt = true;
-        let query: string = `.${classname}`;
+        let query: string = `${cssquery}`;
 
         // Add dictionary widget if an element with that class is on a page
         try{
@@ -85,14 +85,10 @@ export class RWBReferenceError extends ReferenceError {
         this.name = name;
         this.message = message;
         this.page = window.location.pathname;
-        try{
-            throw new ReferenceError(this.message);
-        }
-        catch (err){
-            this.referror = err;
-            console.log(`%c<RWB>%cExecution experienced a reference error:\n%o\n%c</RWB>`, 
-                'color:red;font-weight:bold;', 'color:red;', err, 'color:red;font-weight:bold;');
-        }
+        let err = new ReferenceError(this.message);
+        this.referror = err;
+        console.log(`%c<RWB>%cExecution experienced a reference error:\n%o\n%c</RWB>`, 
+            'color:red;font-weight:bold;', 'color:red;', this.referror, 'color:red;font-weight:bold;');
         RWBReferenceError.count++;
     };
 }
@@ -104,21 +100,20 @@ export class RWBSyntaxError extends SyntaxError {
     public name: string;
     public message: string;
     public page: string;
-    private referror: SyntaxError;
+    private synerror: SyntaxError;
 
     constructor(name: string, message: string){
         super();
         this.name = name;
         this.message = message;
         this.page = window.location.pathname;
-        try{
-            throw new SyntaxError(this.message);
-        }
-        catch (err){
-            this.referror = err;
-            console.log(`%c<RWB>%cExecution experienced a syntax error:\n%o\n%c</RWB>`, 
-                'color:red;font-weight:bold;', 'color:red;', err, 'color:red;font-weight:bold;');
-        }
+        // let err = new RangeError();
+        // console.log(`%c<RWB>%cHSL color value out of acceptable range:\n%o\n%c</RWB>`, 
+        // 'color:gray;font-weight:bold;', 'color:gray;', err, 'color:gray;font-weight:bold;');
+        let err = new SyntaxError(this.message);
+        this.synerror = err;
+        console.log(`%c<RWB>%cExecution experienced a syntax error:\n%o\n%c</RWB>`, 
+            'color:red;font-weight:bold;', 'color:red;', this.synerror, 'color:red;font-weight:bold;');
         RWBSyntaxError.count++;
     };
 }
@@ -128,17 +123,20 @@ export class RWBDomException extends DOMException {
     public static count: number = 0;
     public name: string;
     public message: string;
+    public stack: any;
     public page: string;
-    private domexception: DOMException;
+    private domerror: DOMException;
 
-    constructor(name: string, message: string){
+    constructor(name: string, message: string, error: any){
         super();
         this.name = name;
         this.message = message;
+        this.stack = error;
         this.page = window.location.pathname;
-        this.domexception = new DOMException(this.message);
+        let err = new DOMException(this.message);
+        this.domerror = err;
+        console.log(`%c<RWB>%cExecution experienced a DOM error:\n%o\n%c</RWB>`, 
+            'color:red;font-weight:bold;', 'color:red;', this.stack, 'color:red;font-weight:bold;');
         RWBDomException.count++;
-
-        console.log(this.domexception);
     };
 }

@@ -10,15 +10,22 @@ import urlexColorCode from './colorcodeurl';
 import RWBPerf from '../models/ScriptPerf';
 import domainlookup from './domainlookup';
 import sliderbar from './sliderbar';
+import hslcolorwidget from './hslcolor';
+import notfound404widget from './404';
+import RWBError from '../models/RWBErrorBus';
 
 const PageComponents = {
     init: () => {
         const pageperf = new RWBPerf("Pagecomponents"); //measure performance
 
         PageComponents.CheckPage();
+        
         pageperf.end(); //end performance measure
     },
     CheckPage: () => {
+        if (!RWBError.checkElementorNull('PageComponents', '#Four-Oh-Four', false, true)){
+            notfound404widget.init();
+        }
         switch (window.location.pathname) {
             //'Index' and 'Pages' routes, add cards widget
             case '/RandomWebBits/index.html':
@@ -28,8 +35,8 @@ const PageComponents = {
             case '/RandomWebBits/pages.html':
             case '/pages.html':
                 RWBCardsWidget.init(); // cards widget initialization
-            
-            // dom.html page uses expandingLists component
+                break;
+            // dom.html, svg.html page uses expandingLists component
             case '/pages/dom.html':
             case '/pages/svg.html':
                 ExpandingListDOMWidget.init();
@@ -64,6 +71,10 @@ const PageComponents = {
                 break;
             case '/pages/markup.html':
                 sliderbar.init();
+                break;
+            // Initialize HSL color picker
+            case '/pages/hsl.html':
+                hslcolorwidget.inithslcolorpicker();
                 break;
         }
     }

@@ -1833,6 +1833,21 @@ figcaption {
   color: var(--clr-Red);
 }
 
+.trueredbold {
+  font-weight: bolder;
+  color: red;
+}
+
+.truegreenbold {
+  font-weight: bolder;
+  color: green;
+}
+
+.truebluebold {
+  font-weight: bolder;
+  color: blue;
+}
+
 aside p {
   padding: 0;
 }

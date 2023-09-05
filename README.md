@@ -1,4 +1,5 @@
- Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://randomwebbits.com/)
+ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://randomwebbits.com/)  
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c29ba08d-f324-404d-8cee-4d9621425de3/deploy-status)](https://app.netlify.com/sites/randwebbit/deploys)  
 
 # Random Web Bits
 
@@ -205,4 +206,5 @@
 1.6.68: Parser component  
 1.6.69: Stringify component  
 1.7.70: Footer addition  
+1.7.71: New WebBits page: HSL  
 </details>

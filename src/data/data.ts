@@ -453,6 +453,24 @@ const ArbitraryArticles = new Array(
             35
         )
     ),
+    new WebBit(
+        "HSL",
+        36,
+        "Hue, Saturation, and Lightness",
+        "HSL colors manipulate hues.",
+        new Date(2023, 9, 6),
+        "pages/hsl.html",
+        "img/color-wheel.webp",
+        "Color wheel icon",
+        new AttributionLink(
+            "variety icons",
+            "Variety icons created by Freepik - Flaticon",
+            "https://www.flaticon.com/free-icons/variety",
+            "Flaticon",
+            "Hue, Saturation, and Lightness",
+            36
+        )
+    ),
 );
 
 /**

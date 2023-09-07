@@ -1,5 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
 import NAVITEMS from '../data/navitems'
+import { RWBDomException } from '../models/RWBErrorBus';
 import RWBPerf from '../models/ScriptPerf';
 
 /**
@@ -25,14 +26,14 @@ const HeaderFooter = {
                 try {
                     siteHeader = pageMain.insertAdjacentElement('beforebegin', HeaderFooter.headerWidget.buildHeader());
                 } catch (e) {
-                    console.log("Check site header is not null before 'main' element.`n", e);
+                    new RWBDomException("DomException", "Check site header element. Encountered error:", e);
                 }
             }
             else { // 'Main' element does not exist, add the header to the body
                 try {
                     siteHeader = document.body.insertAdjacentElement('afterbegin', HeaderFooter.headerWidget.buildHeader());
                 } catch (e) {
-                    console.log("Check site header is not null after 'body' element.`n", e);
+                    new RWBDomException("DomException", "Check site header is not null. Encountered error:", e);
                 }
             }
 
@@ -40,7 +41,7 @@ const HeaderFooter = {
             try {
                 siteHeader.childNodes[0].appendChild(HeaderFooter.headerWidget.buildNavigation());
             } catch (e) {
-                console.log("Cannot prepend navigation items.", e);
+                new RWBDomException("DomException", "Cannot prepend navigation items. Encountered error:", e);
             }
             
             headerperf.end();

@@ -85,14 +85,10 @@ export class RWBReferenceError extends ReferenceError {
         this.name = name;
         this.message = message;
         this.page = window.location.pathname;
-        try{
-            throw new ReferenceError(this.message);
-        }
-        catch (err){
-            this.referror = err;
-            console.log(`%c<RWB>%cExecution experienced a reference error:\n%o\n%c</RWB>`, 
-                'color:red;font-weight:bold;', 'color:red;', err, 'color:red;font-weight:bold;');
-        }
+        let err = new ReferenceError(this.message);
+        this.referror = err;
+        console.log(`%c<RWB>%cExecution experienced a reference error:\n%o\n%c</RWB>`, 
+            'color:red;font-weight:bold;', 'color:red;', err, 'color:red;font-weight:bold;');
         RWBReferenceError.count++;
     };
 }
@@ -111,14 +107,13 @@ export class RWBSyntaxError extends SyntaxError {
         this.name = name;
         this.message = message;
         this.page = window.location.pathname;
-        try{
-            throw new SyntaxError(this.message);
-        }
-        catch (err){
-            this.referror = err;
-            console.log(`%c<RWB>%cExecution experienced a syntax error:\n%o\n%c</RWB>`, 
-                'color:red;font-weight:bold;', 'color:red;', err, 'color:red;font-weight:bold;');
-        }
+        // let err = new RangeError();
+        // console.log(`%c<RWB>%cHSL color value out of acceptable range:\n%o\n%c</RWB>`, 
+        // 'color:gray;font-weight:bold;', 'color:gray;', err, 'color:gray;font-weight:bold;');
+        let err = new SyntaxError(this.message);
+        this.referror = err;
+        console.log(`%c<RWB>%cExecution experienced a syntax error:\n%o\n%c</RWB>`, 
+            'color:red;font-weight:bold;', 'color:red;', err, 'color:red;font-weight:bold;');
         RWBSyntaxError.count++;
     };
 }
@@ -138,7 +133,6 @@ export class RWBDomException extends DOMException {
         this.page = window.location.pathname;
         this.domexception = new DOMException(this.message);
         RWBDomException.count++;
-
         console.log(this.domexception);
     };
 }

@@ -14,11 +14,16 @@ const hslcolorwidget = {
                 if(hue == 0){
                     this.hue = 0;
                 }
-                if(hue == 120){
+                else if(hue == 120){
                     this.hue = 120
                 }
-                if(hue == 240){
+                else if(hue == 240){
                     this.hue = 240
+                }
+                if (hue < 0 || hue >= 360 || saturation < 0 || saturation > 100 || lightness < 0 || lightness > 100){
+                    let err = new RangeError();
+                    console.log(`%c<RWB>%cHSL color value out of acceptable range:\n%o\n%c</RWB>`, 
+                    'color:gray;font-weight:bold;', 'color:gray;', err, 'color:gray;font-weight:bold;');
                 }
                 this.saturation = saturation;
                 this.lightness = lightness;

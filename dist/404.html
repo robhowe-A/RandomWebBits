@@ -79,14 +79,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     this.connectionrtt = "";
             }
         }
-        let client404 = new client()
+        let client404 = new client();
         let clientrefferinfo = document.querySelector('#clientreferrer');
         let clientrttinfo = document.querySelector('#clientrtt');
         let clientplatforminfo = document.querySelector('#clientplat');
-        clientrefferinfo.textContent = client404.oldURL ? client404.oldURL : "Not Found.";
-        clientrttinfo.textContent = `${client404.connectiontype ? client404.connectiontype : "No connection type."}`;
-        clientrttinfo.textContent += `, rtt of ${client404.connectionrtt ? client404.connectionrtt : "No rtt."}`;
-        clientplatforminfo.textContent = client404.browserplatform ? client404.browserplatform : "No platform.";
+        clientrefferinfo.textContent = client404.oldURL ? client404.oldURL : window.location.href;
+        clientrttinfo.textContent = `${client404.connectiontype ? client404.connectiontype : "No connection type found."}`;
+        clientrttinfo.textContent += `, rtt of ${client404.connectionrtt ? client404.connectionrtt : "No rtt found."}`;
+        clientplatforminfo.textContent = client404.browserplatform ? client404.browserplatform : "No platform information found.";
         clientplatforminfo.textContent += `, ${client404.product ? client404.product : "No product info."}`;
         clientplatforminfo.textContent += `, ${client404.useragent ? client404.useragent : "No user agent info."}`;
 

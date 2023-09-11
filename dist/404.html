@@ -43,7 +43,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li>How long has the trip taken? <br><em><span id="clientrtt"></span></em></li><br>
                     <li>Let me see some identification? <br><em><span id="clientplat"></span></em></li>
                 </ul>
-                <a id="oldURL">Go Back</a>
+                <a id="oldURL">Move Along &lpar;Go Back&rpar;</a>
             </div>
         </article>
     </main>
@@ -60,21 +60,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             setbrowserplatform() {
                 if ("userAgentData" in window.clientInformation)
-                    this.browserplatform = window.clientInformation.userAgentData.platform;
+                    return window.clientInformation.userAgentData.platform;
                 else
                     this.browserplatform = "";
             }
 
             setconnectiontype() {
                 if ("connection" in window.clientInformation)
-                    this.connectiontype = window.clientInformation.connection.effectiveType;
+                    return window.clientInformation.connection.effectiveType;
                 else
                     this.connectiontype = "";
             }
 
             setconnectionrtt() {
                 if ("connection" in window.clientInformation)
-                    this.connectionrtt = window.clientInformation.connection.rtt;
+                    return window.clientInformation.connection.rtt;
                 else
                     this.connectionrtt = "";
             }
@@ -91,9 +91,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         clientplatforminfo.textContent += `, ${client404.useragent ? client404.useragent : "No user agent info."}`;
 
         let gobacklink = document.querySelector('#oldURL');
+        if (client404.oldURL.includes("404.html")){
+            client404.oldURL = window.location.origin;
+        }
         let gobackhref = client404.oldURL ? client404.oldURL : window.location.origin;
         gobacklink.setAttribute("href", `${gobackhref}`);
-        gobacklink.setAttribute("title", gobackhref.toString());
+        gobacklink.setAttribute("title", gobackhref);
+
     </script>
 </body>
 </html>

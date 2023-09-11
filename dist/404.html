@@ -59,21 +59,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             connectionrtt = this.setconnectionrtt();
 
             setbrowserplatform() {
-                if ("window.clientInformation.userAgentData.platform" in window)
+                if ("userAgentData" in window.clientInformation)
                     this.browserplatform = window.clientInformation.userAgentData.platform;
                 else
                     this.browserplatform = "";
             }
 
             setconnectiontype() {
-                if ("window.clientInformation.connection.effectiveType" in window)
+                if ("connection" in window.clientInformation)
                     this.connectiontype = window.clientInformation.connection.effectiveType;
                 else
                     this.connectiontype = "";
             }
 
             setconnectionrtt() {
-                if ("window.clientInformation.connection.rtt" in window)
+                if ("connection" in window.clientInformation)
                     this.connectionrtt = window.clientInformation.connection.rtt;
                 else
                     this.connectionrtt = "";

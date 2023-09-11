@@ -30,7 +30,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article id="Four-Oh-Four" class="WebBits">
             <h2 class="redbold">ERROR: Not Found</h2>
             <figure style="text-align: center;">
-                <img src="./img/error.png" alt="Error 404 computer icon.">
+                <img id="errorpic" src="./img/error.png" alt="Error 404 computer icon.">
                 <a href="https://www.flaticon.com/free-icons/error" title="error icons">Error icons created by Freepik - Flaticon</a>
             </figure>
             <aside class="exampleBlue">
@@ -98,6 +98,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         gobacklink.setAttribute("href", `${gobackhref}`);
         gobacklink.setAttribute("title", gobackhref);
 
+        let imgpic = document.querySelector("#errorpic");
+        imgpic.setAttribute("src", "/img/error.png");
     </script>
 </body>
 </html>

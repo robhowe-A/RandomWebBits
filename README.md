@@ -207,4 +207,5 @@
 1.6.69: Stringify component  
 1.7.70: Footer addition  
 1.7.71: New WebBits page: HSL  
+1.7.72: New page: 404.html  
 </details>

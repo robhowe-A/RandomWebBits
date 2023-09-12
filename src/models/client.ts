@@ -3,28 +3,27 @@
 export class client{
     oldURL = document.referrer;
     browserplatform = this.setbrowserplatform();
-    product = window.clientInformation.product;
-    useragent = window.clientInformation.userAgent;
+    useragent = window.navigator.userAgent;
     connectiontype = this.setconnectiontype();
     connectionrtt = this.setconnectionrtt();
 
     setbrowserplatform() {
-        if ("userAgentData" in window.clientInformation)
-            return window.clientInformation.userAgentData.platform;
+        if ("userAgentData" in window.navigator)
+            return window.navigator.userAgentData.platform;
         else
             this.browserplatform = "";
     }
 
     setconnectiontype() {
-        if ("connection" in window.clientInformation)
-            return window.clientInformation.connection.effectiveType;
+        if ("connection" in window.navigator)
+            return window.navigator.connection.effectiveType;
         else
             this.connectiontype = "";
     }
 
     setconnectionrtt() {
-        if ("connection" in window.clientInformation)
-            return window.clientInformation.connection.rtt;
+        if ("connection" in window.navigator)
+            return window.navigator.connection.rtt;
         else
             this.connectionrtt = "";
     }

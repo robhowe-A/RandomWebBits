@@ -11,7 +11,6 @@ const notfound404widget = {
         clientrttinfo.textContent = `${client404.connectiontype ? client404.connectiontype : "No connection type found."}`;
         clientrttinfo.textContent += `, rtt of ${client404.connectionrtt ? client404.connectionrtt : "No rtt found."}`;
         clientplatforminfo.textContent = client404.browserplatform ? client404.browserplatform : "No platform information found.";
-        clientplatforminfo.textContent += `, ${client404.product ? client404.product : "No product info."}`;
         clientplatforminfo.textContent += `, ${client404.useragent ? client404.useragent : "No user agent info."}`;
 
         let gobacklink = document.querySelector('#oldURL');

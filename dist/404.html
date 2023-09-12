@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HSL colors manipulate hues.">
-    <title>&lt;/RWB&gt;HSL</title>
+    <meta name="description" content="Error 404 not found.">
+    <title>&lt;/RWB&gt;404</title>
     <link rel="stylesheet" 
     href="../css/styles.css"
     type="text/css"
@@ -19,7 +19,6 @@
 })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
     <!-- End Google Tag Manager -->
     <script type="module" src="../js/typescript.js"></script>
-    <link rel="stylesheet" href="../css/hslcolor.css" type="text/css" media="all">
 </head>
 <body class="WebBits-width">
 <!-- Google Tag Manager (noscript) -->
@@ -49,57 +48,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </main>
     <div class="Top-Link"><a class="Top" href="#">Top</a></div>
         <noscript>Your JavaScript may be broken or is disabled. <br>Turn it on for full experience! Here are <a href="https://www.enable-javascript.com/">the instructions how to enable JavaScript in your web browser</a>.<br><br>-- Random Web Bits &copy;2023</noscript>
-    <script>
-        class client{
-            oldURL = document.referrer;
-            browserplatform = this.setbrowserplatform();
-            product = window.clientInformation.product;
-            useragent = window.clientInformation.userAgent;
-            connectiontype = this.setconnectiontype();
-            connectionrtt = this.setconnectionrtt();
 
-            setbrowserplatform() {
-                if ("userAgentData" in window.clientInformation)
-                    return window.clientInformation.userAgentData.platform;
-                else
-                    this.browserplatform = "";
-            }
-
-            setconnectiontype() {
-                if ("connection" in window.clientInformation)
-                    return window.clientInformation.connection.effectiveType;
-                else
-                    this.connectiontype = "";
-            }
-
-            setconnectionrtt() {
-                if ("connection" in window.clientInformation)
-                    return window.clientInformation.connection.rtt;
-                else
-                    this.connectionrtt = "";
-            }
-        }
-        let client404 = new client();
-        let clientrefferinfo = document.querySelector('#clientreferrer');
-        let clientrttinfo = document.querySelector('#clientrtt');
-        let clientplatforminfo = document.querySelector('#clientplat');
-        clientrefferinfo.textContent = client404.oldURL ? client404.oldURL : window.location.href;
-        clientrttinfo.textContent = `${client404.connectiontype ? client404.connectiontype : "No connection type found."}`;
-        clientrttinfo.textContent += `, rtt of ${client404.connectionrtt ? client404.connectionrtt : "No rtt found."}`;
-        clientplatforminfo.textContent = client404.browserplatform ? client404.browserplatform : "No platform information found.";
-        clientplatforminfo.textContent += `, ${client404.product ? client404.product : "No product info."}`;
-        clientplatforminfo.textContent += `, ${client404.useragent ? client404.useragent : "No user agent info."}`;
-
-        let gobacklink = document.querySelector('#oldURL');
-        if (client404.oldURL.includes("404.html")){
-            client404.oldURL = window.location.origin;
-        }
-        let gobackhref = client404.oldURL ? client404.oldURL : window.location.origin;
-        gobacklink.setAttribute("href", `${gobackhref}`);
-        gobacklink.setAttribute("title", gobackhref);
-
-        let imgpic = document.querySelector("#errorpic");
-        imgpic.setAttribute("src", "/img/error.png");
-    </script>
 </body>
 </html>

@@ -11,6 +11,7 @@ import RWBPerf from '../models/ScriptPerf';
 import domainlookup from './domainlookup';
 import sliderbar from './sliderbar';
 import hslcolorwidget from './hslcolor';
+import notfound404widget from './404';
 
 const PageComponents = {
     init: () => {
@@ -69,6 +70,9 @@ const PageComponents = {
             // Initialize HSL color picker
             case '/pages/hsl.html':
                 hslcolorwidget.inithslcolorpicker();
+                break;
+            case '/404.html':
+                notfound404widget.init();
         }
     }
 }

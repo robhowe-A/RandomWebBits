@@ -21,6 +21,9 @@ const PageComponents = {
         pageperf.end(); //end performance measure
     },
     CheckPage: () => {
+        if (document.querySelector('#Four-Oh-Four')){
+            notfound404widget.init();
+        }
         switch (window.location.pathname) {
             //'Index' and 'Pages' routes, add cards widget
             case '/RandomWebBits/index.html':
@@ -71,8 +74,6 @@ const PageComponents = {
             case '/pages/hsl.html':
                 hslcolorwidget.inithslcolorpicker();
                 break;
-            case '/404.html':
-                notfound404widget.init();
         }
     }
 }

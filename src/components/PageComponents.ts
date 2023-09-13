@@ -12,16 +12,18 @@ import domainlookup from './domainlookup';
 import sliderbar from './sliderbar';
 import hslcolorwidget from './hslcolor';
 import notfound404widget from './404';
+import RWBError from '../models/RWBErrorBus';
 
 const PageComponents = {
     init: () => {
         const pageperf = new RWBPerf("Pagecomponents"); //measure performance
 
         PageComponents.CheckPage();
+        
         pageperf.end(); //end performance measure
     },
     CheckPage: () => {
-        if (document.querySelector('#Four-Oh-Four')){
+        if (!RWBError.checkElementorNull('PageComponents', '#Four-Oh-Four', false, true)){
             notfound404widget.init();
         }
         switch (window.location.pathname) {

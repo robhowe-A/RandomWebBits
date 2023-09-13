@@ -7,13 +7,13 @@ export default class RWBError {
     constructor(){
         RWBError.count++;
     };
-    public static checkElementorNull(componentname:string, classname: string, logmessage?:boolean, supressexception?:boolean ) {
+    public static checkElementorNull(componentname:string, cssquery: string, logmessage?:boolean, supressexception?:boolean ) {
         let elem: HTMLElement | null;
         let logmssg: boolean = true; //Log message option default
         if (!logmessage) logmssg = logmessage;
         let supressexcpt: boolean = false;//Supress message option default
         if (supressexception) supressexcpt = true;
-        let query: string = `.${classname}`;
+        let query: string = `${cssquery}`;
 
         // Add dictionary widget if an element with that class is on a page
         try{

@@ -21,8 +21,6 @@ const notfound404widget = {
         gobacklink.setAttribute("href", `${gobackhref}`);
         gobacklink.setAttribute("title", gobackhref);
 
-        let imgpic = document.querySelector("#errorpic");
-        imgpic.setAttribute("src", "/img/error.png");
     }
 }
 

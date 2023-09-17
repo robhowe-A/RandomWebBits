@@ -15,6 +15,7 @@ const WebBitsSlideShow = {
             let temp = card
             slideshowslides.insertAdjacentElement("beforeend", temp)
         }
+        slideshowslides.classList.add("slidescontainer")
         slideshowslides.style.width = "100%";
         slideshowslides.style.display = "flex";
         aaslideshow.slideshowcontainer.style.justifyContent = "center"

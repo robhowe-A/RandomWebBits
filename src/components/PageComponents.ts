@@ -14,7 +14,6 @@ import hslcolorwidget from './hslcolor';
 import notfound404widget from './404';
 import RWBError from '../models/RWBErrorBus';
 import WebBitsSlideShow from './WebBitsSlideshow';
-
 const PageComponents = {
     init: () => {
         const pageperf = new RWBPerf("Pagecomponents"); //measure performance
@@ -38,7 +37,7 @@ const PageComponents = {
                 RWBCardsWidget.init(); // cards widget initialization
                 WebBitsSlideShow.init();
                 break;
-            // dom.html, svg.html page uses expandingLists component
+            // dom.html page uses expandingLists component
             case '/pages/dom.html':
             case '/pages/svg.html':
                 ExpandingListDOMWidget.init();

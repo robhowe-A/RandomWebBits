@@ -182,9 +182,27 @@
 1.3.57: New WebBits page: GUIDE: Clearing cookies  
 1.3.58: New WebBits page: EXPLORE: Webb Space Telescope  
 1.3.59: New WebBits page: Latency  
+
+</details>
+
+<details>
+<summary>Version 1.4</summary>
+
 1.4.59: Header/Footer refactor  
 1.4.60: New WebBits page: HTML-ELEM  
+
+</details>
+
+<details>
+<summary>Version 1.5</summary>
+ 
 1.5.60: Main switch  
+
+</details>
+
+<details>
+<summary>Version 1.6</summary>
+ 
 1.6.60: Widescreens  
 1.6.61: PageComponents refactor  
 1.6.62: ClassComponents refactor  
@@ -205,8 +223,17 @@
 1.6.67: Widgets Refactor  
 1.6.68: Parser component  
 1.6.69: Stringify component  
+
+</details>
+
+<details>
+<summary>Version 1.7</summary>
+ 
 1.7.70: Footer addition  
 1.7.71: New WebBits page: HSL  
 1.7.72: New page: 404.html  
+<<<<<<< HEAD
 1.7.73: WebBits Slideshow component  
+=======
+>>>>>>> 39af59d06059ddbd2d25db806e1269c9f4c84a8a
 </details>

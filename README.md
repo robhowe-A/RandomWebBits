@@ -208,4 +208,5 @@
 1.7.70: Footer addition  
 1.7.71: New WebBits page: HSL  
 1.7.72: New page: 404.html  
+1.7.73: WebBits Slideshow component  
 </details>

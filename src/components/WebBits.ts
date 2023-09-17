@@ -32,7 +32,6 @@ const RWBCardsWidget = {
             RandomWebBits.buildRWBCards(WEBBITDATA.shift()),
             RandomWebBits.buildRWBCards(WEBBITDATA.shift()),
         ];
-
         
         // Routes -> Add widget and format pages
         // Index (Home) page shortens each section to 3 articles only
@@ -48,8 +47,12 @@ const RWBCardsWidget = {
 
                 return shuffled.slice(0, num); // return the requested number of elements
             }
-            cardsArticles[0] = getMultipleRandom(cardsArticles[0], 5);
+            cardsArticles[0] = getMultipleRandom(cardsArticles[0], cardsArticles[0].length);
             cardsArticles[1] = getMultipleRandom(cardsArticles[1], 3);
+        }
+        // first section of cards slideshow class
+        for (let card of cardsArticles[0]){
+            card.classList.add("slide");
         }
 
         // Add the cards to the page by deconstruction and addition

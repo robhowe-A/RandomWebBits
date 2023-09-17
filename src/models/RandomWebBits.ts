@@ -24,7 +24,7 @@ export class RandomWebBits {
 
             // Add data attributes and property values
             AASection.classList.add("cards");
-            aaCardsSection.classList.add('card_columns');
+            aaCardsSection.classList.add('card_columns', 'cardslideshow', 'grid');
             aaHeading.innerText = `${sectionTitle}`;
             aaHeading.setAttribute("id", sectionHeadingID);
 

@@ -4,10 +4,11 @@ import CardsSlideShow from "../models/CardsSlideShow";
 const WebBitsSlideShow = {
     init: () => {
         if (window.location.pathname == '/pages.html') return;
-        //implement the slideshow for arbitrary articles
+        //Implement slideshow for arbitrary articles
         let aacards = document.querySelectorAll(".cardslideshow .slide") as NodeListOf<HTMLDivElement>;
         let aaslideshow = new CardsSlideShow(aacards, 3);
 
+        //Build the markup needed for the slideshow
         //Style the container
         let slideshowslides = aaslideshow.slideshowcontainer.appendChild(document.createElement("div"));
         for (let card of aaslideshow.cards){
@@ -18,34 +19,31 @@ const WebBitsSlideShow = {
         slideshowslides.style.width = "100%";
         slideshowslides.style.display = "flex";
         aaslideshow.slideshowcontainer.style.justifyContent = "center";
-
         let slideshowbtns = aaslideshow.slideshowcontainer.appendChild(document.createElement("div"));
-
-        //build the markup needed for the slideshow
-        //left slideshow btn
+        
+        //Left slideshow btn
         let previousslideshowbtn = document.createElement("a");
         previousslideshowbtn.classList.add('slideshowPrev');
         previousslideshowbtn.innerText = "❮";
         slideshowbtns.insertAdjacentElement('beforeend', previousslideshowbtn);
         aaslideshow.prevbtn = previousslideshowbtn;
-        //right slideshow btn
+        //Right slideshow btn
         let nextslideshowbtn = document.createElement("a");
         nextslideshowbtn.classList.add('slideshowNext');
         nextslideshowbtn.innerText = "❯";
         slideshowbtns.insertAdjacentElement('beforeend', nextslideshowbtn);
         slideshowbtns.style.display = "flex";
         slideshowbtns.style.justifyContent = "center";
-
         aaslideshow.nextbtn = nextslideshowbtn;
 
-        //hide unneeded elements
+        //Hide overflow elements
         if (aaslideshow.cardindxstart < aaslideshow.cardquantshow){
             for(let i = aaslideshow.cards.length - 1; i > aaslideshow.cardsindxend; i--){
                 aaslideshow.cards[i].style.display = "none";
             }
         }
 
-        //add previous/next btn event listeners
+        //Previous/next button event listeners
         aaslideshow.prevbtn.addEventListener("click", (e) => {
             e.preventDefault();
             WebBitsSlideShow.prev(aaslideshow);
@@ -59,11 +57,11 @@ const WebBitsSlideShow = {
         if (slideshow.turn == slideshow.maxturncount){
             return;
         }
-        //hide the first element in slideshow
+        //Hide the first element in slideshow
         slideshow.cards[slideshow.cardindxstart].style.display = "none";
-        //display the next element for slideshow
+        //Display the next element for slideshow
         slideshow.cards[slideshow.cardsindxend + 1].style.display = "block";
-        //increment index counter
+        //Increment index counter
         slideshow.cardindxstart++;
         slideshow.cardsindxend++;
         slideshow.turn++;
@@ -73,13 +71,12 @@ const WebBitsSlideShow = {
         if(slideshow.turn == 0){
             return;
         }
-        //swap in previous element
-        //hide the first element in slideshow
+        //Hide the first element in slideshow
         slideshow.cards[slideshow.cardsindxend].style.display = "none";
-        //display the next element for slideshow
+        //Display the next element for slideshow
         let temp = slideshow.cards[slideshow.cardindxstart - 1];
         temp.style.display = "block";
-        //increment index counter
+        //Increment index counter
         slideshow.cardindxstart--;
         slideshow.cardsindxend--;
         slideshow.turn--;

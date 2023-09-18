@@ -44,7 +44,7 @@ export class RandomWebBits {
         // Iterate each card in the array. Build the card elements and add the data
         let AAs = cardsData.map((article: WebBit) => {
             const rwbcard = new RWBCard();
-            return rwbcard.buildRWBCardMarkup(article);;
+            return rwbcard.buildRWBCardMarkup(article);
         })
         return AAs;
     }

@@ -46,24 +46,6 @@ const ArbitraryArticles = new Array(
         )
     ),
     new WebBit(
-        "Httpscert",
-        4,
-        "HTTPS Certificate",
-        "Select to view a website's HTTPS certificate",
-        new Date(2022, 12, 26),
-        "pages/https.html",
-        "img/https_cert.webp",
-        "Cursor selecting HTTPS certificate",
-        new AttributionLink(
-            "ssl certificate icons",
-            "Ssl certificate icons created by inipagistudio - Flaticon",
-            "https://www.flaticon.com/free-icons/ssl-certificate",
-            "Flaticon",
-            "HTTPS Certificate",
-            4
-        )
-    ),
-    new WebBit(
         "Webtech",
         5,
         "Wappalyzer",
@@ -477,6 +459,24 @@ const ArbitraryArticles = new Array(
  * "Guide Shorts' section card data."
  */
 const GuideShorts = new Array(
+    new WebBit(
+        "Httpscert",
+        4,
+        "HTTPS Certificate",
+        "Select to view a website's HTTPS certificate",
+        new Date(2022, 12, 26),
+        "guides/https.html",
+        "img/https_cert.webp",
+        "Cursor selecting HTTPS certificate",
+        new AttributionLink(
+            "ssl certificate icons",
+            "Ssl certificate icons created by inipagistudio - Flaticon",
+            "https://www.flaticon.com/free-icons/ssl-certificate",
+            "Flaticon",
+            "HTTPS Certificate",
+            4
+        )
+    ),
     new WebBit(
         "Searchverticals",
         14,

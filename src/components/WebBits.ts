@@ -1,6 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
-import WEBBITDATA from "../data/data"
-import { RandomWebBits } from "../models/RandomWebBits"
+import WEBBITDATA from "../data/data";
+import { RandomWebBits } from "../models/RandomWebBits";
 
 /**
  * Card widget to initialize article data into HTML card elements. This widget 
@@ -66,7 +66,7 @@ const RWBCardsWidget = {
                 });
             }
             else {
-                console.log("There's an error.")
+                console.log("There's an error.");
             }
         }
     }

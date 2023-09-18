@@ -529,7 +529,6 @@ hgroup h3 {
   transform: rotateX(180deg);
 }
 
-
 .cardBody {
   position: relative;
 }
@@ -584,12 +583,8 @@ a.attribute:hover {
   width: 100%;
 }
 
-.card_columns div .card {
-  flex-direction: column;
-}
-
 .card_columns .slidescontainer {
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
@@ -597,6 +592,10 @@ a.attribute:hover {
 
 .card div:first-child {
   width: 100%;
+}
+
+.card .slide{
+  display: flex;
 }
 
 .card {
@@ -2121,10 +2120,10 @@ article iframe {
     display: none;
   }
 }
+
 @media only screen and (max-width: 990px){
   .card_columns div .card {
     flex-direction: column;
-    margin-inline: 0 auto;
   }
 }
 

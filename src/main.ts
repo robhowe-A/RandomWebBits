@@ -3,8 +3,8 @@
 import HeaderFooter from './components/HeaderFooter';
 import PageComponents from './components/PageComponents';
 import ClassComponents from './components/ClassComponents';
-import mobileAbbrMarkup from './components/mobileMarkup'
-import RWBPerf from './models/ScriptPerf'
+import mobileAbbrMarkup from './components/mobileMarkup';
+import RWBPerf from './models/ScriptPerf';
 
 
 const mainperf = new RWBPerf("main");

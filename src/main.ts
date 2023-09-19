@@ -37,7 +37,7 @@ const main = {
 
             mainperf.end();
         })
-    }    
+    }
 };
 
 main.init();

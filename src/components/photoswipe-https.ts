@@ -1,6 +1,8 @@
 "strict mode"
 //--Copyright (c) 2023 Robert A. Howell
 import PhotoSwipeLightbox from '../js/photoswipe/photoswipe-lightbox.esm.js';
+import PhotoSwipe from '../js/photoswipe/photoswipe.esm.js'
+
 
 const photoswipe_pwa = () => {
     const lightbox = new PhotoSwipeLightbox({
@@ -8,7 +10,7 @@ const photoswipe_pwa = () => {
     children: '.pswp-gallery__item',
     imageClickAction: 'zoom',
     tapAction: 'zoom',
-    pswpModule: () => import('../js/photoswipe/photoswipe.esm.js')
+    pswpModule: PhotoSwipe
     });
     lightbox.init();
 }

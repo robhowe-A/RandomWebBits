@@ -14,10 +14,13 @@ import hslcolorwidget from './hslcolor';
 import notfound404widget from './404';
 import RWBError from '../models/RWBErrorBus';
 import WebBitsSlideShow from './WebBitsSlideshow';
+import {SimpleGreeting} from './acronyms-element'
+
 const PageComponents = {
     init: () => {
         const pageperf = new RWBPerf("Pagecomponents"); //measure performance
 
+        customElements.define('acronyms-list', SimpleGreeting);
         PageComponents.CheckPage();
         
         pageperf.end(); //end performance measure

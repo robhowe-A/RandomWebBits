@@ -4,6 +4,7 @@
     "noImplicitAny": true,
     "target": "ES2022",
     "moduleResolution": "NodeNext",
-    "allowJs": true
+    "allowJs": true,
+    "module": "ES2022"
   }
 }

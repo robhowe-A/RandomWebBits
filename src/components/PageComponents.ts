@@ -14,7 +14,10 @@ import hslcolorwidget from './hslcolor';
 import notfound404widget from './404';
 import RWBError from '../models/RWBErrorBus';
 import WebBitsSlideShow from './WebBitsSlideshow';
-import {SimpleGreeting} from './acronyms-element'
+import {SimpleGreeting} from './acronyms-element';
+import photoswipe_pwa from './photoswipe-https';
+import photoswipe_apptab from './photoswipe-applicationtab';
+import photoswipe_inspctpgs from './photoswipe-inspectpages';
 
 const PageComponents = {
     init: () => {
@@ -51,7 +54,17 @@ const PageComponents = {
                 break;
             // Initialize slideshow components
             case '/guides/pwaicon.html':
+                photoswipe_pwa();
                 slideshowWidget.init();
+                break;
+            case '/guides/applicationtab.html':
+                photoswipe_apptab();
+                break;
+            case '/guides/https.html':
+                photoswipe_pwa();
+                break;
+            case '/guides/inspectpages.html':
+                photoswipe_inspctpgs();
                 break;
             // Initialize CSSEX components
             case '/pages/css.html':

@@ -232,5 +232,6 @@
 1.7.71: New WebBits page: HSL  
 1.7.72: New page: 404.html  
 1.7.73: WebBits Slideshow component  
-1.7.74: Lit Elements: TypeScript  
+1.8.74: Lit Elements: TypeScript  
+1.8.74: PhotoSwipe: TypeScript  
 </details>

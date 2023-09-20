@@ -57,7 +57,7 @@ const ArbitraryArticles = new Array(
         new AttributionLink(
             "Wappalyzer app",
             "Graphical logo for Wappalyzer.",
-            "https://www.wappalyzer.com/",
+            "https://www.wappalyzer.com/logos/",
             "Wappalyzer",
             "Wappalyzer",
             5

@@ -234,4 +234,5 @@
 1.7.73: WebBits Slideshow component  
 1.8.74: Lit Elements: TypeScript  
 1.8.74: PhotoSwipe: TypeScript  
+1.8.75: Logo attributions  
 </details>

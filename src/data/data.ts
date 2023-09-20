@@ -41,7 +41,7 @@ const ArbitraryArticles = new Array(
             "Code icons created by Freepik - Flaticon",
             "https://www.flaticon.com/free-icons/code",
             "Flaticon",
-            "HTML Source Code",
+            "HTML Frames",
             2
         )
     ),
@@ -53,7 +53,15 @@ const ArbitraryArticles = new Array(
         new Date(2023, 1, 2),
         "pages/webtech.html",
         "img/wappalyzer-logo.webp",
-        "Browser extension logo. A white w on a purple tile."
+        "Browser extension logo. A white w on a purple tile.",
+        new AttributionLink(
+            "Wappalyzer app",
+            "Graphical logo for Wappalyzer.",
+            "https://www.wappalyzer.com/",
+            "Wappalyzer",
+            "Wappalyzer",
+            5
+        )
     ),
     new WebBit(
         "Jsonobject",
@@ -63,7 +71,15 @@ const ArbitraryArticles = new Array(
         new Date(2023, 1, 9),
         "pages/jsonobject.html",
         "img/json.webp",
-        "JSON logo: A grey circle with artistic spirals."
+        "JSON logo: A grey circle with artistic spirals.",
+        new AttributionLink(
+            "JavaScript Object Notation",
+            "Graphical logo for JSON, created by Douglas Crockford.",
+            "https://en.wikipedia.org/wiki/JSON",
+            "Wikipedia",
+            "jsonObject",
+            6
+        )
     ),
     new WebBit(
         "Wi-Fi",
@@ -73,7 +89,15 @@ const ArbitraryArticles = new Array(
         new Date(2023, 1, 16),
         "pages/wifi.html",
         "img/wifi.webp",
-        "Wi-Fi logo with a black circle background."
+        "Wi-Fi logo with a black circle background.",
+        new AttributionLink(
+            "Wireless Fidelity",
+            "Wi-Fi graphical logo.",
+            "https://www.wi-fi.org/who-we-are/our-brands",
+            "WiFi Alliance",
+            "Wi-Fi Version",
+            7
+        )
     ),
     new WebBit(
         "Chatgpt",

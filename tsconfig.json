@@ -3,7 +3,13 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "target": "ES2022",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "allowJs": true
-  }
+    "allowJs": true,
+    "outDir": "dist"
+  },
+  "exclude": [
+    "dist",
+    "src/js"
+  ]
 }

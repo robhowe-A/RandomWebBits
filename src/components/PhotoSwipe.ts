@@ -22,4 +22,25 @@ const photoswipe_apptab = () => {
     lightbox.init();
     picbox.init();
 }
-export default photoswipe_apptab
+
+const photoswipe_pwa = () => {
+    const lightbox = new PhotoSwipeLightbox({
+    gallery: '#Instructions',
+    children: '.pswp-gallery__item',
+    imageClickAction: 'zoom',
+    tapAction: 'zoom',
+    pswpModule: PhotoSwipe
+    });
+    lightbox.init();
+}
+
+const photoswipe_inspctpgs = () => {
+    const options = {
+    gallery:'#inspectPages-Gallery',
+    children:'.pswp-gallery__item',
+    pswpModule: PhotoSwipe
+    };
+    const lightbox2 = new PhotoSwipeLightbox(options);
+    lightbox2.init();
+    }
+export { photoswipe_pwa as PS_pwa, photoswipe_apptab as PS_at, photoswipe_inspctpgs as PS_ip};

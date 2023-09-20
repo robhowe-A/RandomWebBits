@@ -74,9 +74,9 @@ const ArbitraryArticles = new Array(
         "JSON logo: A grey circle with artistic spirals.",
         new AttributionLink(
             "JavaScript Object Notation",
-            "Graphical logo for JSON, created by Douglas Crockford.",
-            "https://en.wikipedia.org/wiki/JSON",
-            "Wikipedia",
+            "Graphical logo for JSON.",
+            "https://www.json.org/",
+            "json.org",
             "jsonObject",
             6
         )

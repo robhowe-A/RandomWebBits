@@ -596,6 +596,12 @@ a.attribute:hover {
 
 .card .slide{
   display: flex;
+  
+}
+
+.slidescontainer .card.slide {
+  transition:all 800ms ease-out;
+  margin-left: 60%;
 }
 
 .card {

@@ -17,7 +17,10 @@ const WebBitsSlideShow = {
         }
         slideshowslides.classList.add("slidescontainer");
         slideshowslides.style.width = "100%";
+        slideshowslides.style.height = "32em";
         slideshowslides.style.display = "flex";
+        slideshowslides.style.position = "relative";
+
         aaslideshow.slideshowcontainer.style.justifyContent = "center";
         let slideshowbtns = aaslideshow.slideshowcontainer.appendChild(document.createElement("div"));
         
@@ -39,9 +42,18 @@ const WebBitsSlideShow = {
         //Hide overflow elements
         if (aaslideshow.cardindxstart < aaslideshow.cardquantshow){
             for(let i = aaslideshow.cards.length - 1; i > aaslideshow.cardsindxend; i--){
-                aaslideshow.cards[i].style.display = "none";
+                aaslideshow.cards[i].style.position = "absolute";
+                aaslideshow.cards[i].style.opacity = "0";
             }
         }
+        aaslideshow.cards[0].style.position = "absolute";
+        aaslideshow.cards[0].style.opacity = "100";
+        aaslideshow.cards[0].style.marginRight = "60%";
+        aaslideshow.cards[1].style.position = "absolute";
+        aaslideshow.cards[1].style.opacity = "100";
+        aaslideshow.cards[2].style.position = "absolute";
+        aaslideshow.cards[2].style.opacity = "100";
+        aaslideshow.cards[2].style.marginLeft = "60%";
 
         //Previous/next button event listeners
         aaslideshow.prevbtn.addEventListener("click", (e) => {
@@ -58,9 +70,20 @@ const WebBitsSlideShow = {
             return;
         }
         //Hide the first element in slideshow
-        slideshow.cards[slideshow.cardindxstart].style.display = "none";
+        slideshow.cards[slideshow.cardindxstart].style.opacity = "0";
+        //move middle element to left
+        slideshow.cards[slideshow.cardindxstart+1].style.marginRight = "60%";
+        //move right to the middle
+        slideshow.cards[slideshow.cardindxstart+2].style.margin = "0";
+
         //Display the next element for slideshow
-        slideshow.cards[slideshow.cardsindxend + 1].style.display = "block";
+        slideshow.cards[slideshow.cardsindxend + 1].style.opacity = "100";
+        //move in new to the right
+        slideshow.cards[slideshow.cardsindxend + 1].style.marginLeft = "60%";
+        //set up next to appear
+        //slideshow.cards[slideshow.cardsindxend + 2].style.marginLeft = "160%";
+
+
         //Increment index counter
         slideshow.cardindxstart++;
         slideshow.cardsindxend++;
@@ -71,11 +94,21 @@ const WebBitsSlideShow = {
         if(slideshow.turn == 0){
             return;
         }
-        //Hide the first element in slideshow
-        slideshow.cards[slideshow.cardsindxend].style.display = "none";
+        //Hide the last element in slideshow
+        slideshow.cards[slideshow.cardsindxend].style.opacity = "0";
+
         //Display the next element for slideshow
         let temp = slideshow.cards[slideshow.cardindxstart - 1];
-        temp.style.display = "block";
+        temp.style.opacity = "100";
+        temp.style.marginRight = "60%";
+
+        //move card elements
+        //slideshow.cards[slideshow.cardindxstart-1].style.marginRight = "80%";
+        slideshow.cards[slideshow.cardindxstart].style.margin = "0";
+        //set up next to appear
+        slideshow.cards[slideshow.cardindxstart+1].style.marginLeft = "60%";
+
+
         //Increment index counter
         slideshow.cardindxstart--;
         slideshow.cardsindxend--;

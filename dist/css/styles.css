@@ -596,12 +596,14 @@ a.attribute:hover {
 
 .card .slide{
   display: flex;
-  
 }
 
 .slidescontainer .card.slide {
   transition:all 800ms ease-out;
-  margin-left: 60%;
+}
+
+.slidescontainer .card.slide:not(:first) {
+  margin-left: 365px;
 }
 
 .card {
@@ -2110,7 +2112,7 @@ article iframe {
 }
 
 @media only screen and (max-width: 500px) {
-  .card:first-of-type {
+  .card {
     margin-top: 0;
   }
 
@@ -2131,10 +2133,6 @@ article iframe {
   .card_columns div .card {
     flex-direction: column;
   }
-}
-
-@media only screen and (min-width: 501px){
-  
 }
 
 /* Styles for mobile */

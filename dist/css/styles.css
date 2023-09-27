@@ -598,6 +598,14 @@ a.attribute:hover {
   display: flex;
 }
 
+.slidescontainer .card.slide {
+  transition:all 800ms ease-out;
+}
+
+.slidescontainer .card.slide:not(:first) {
+  margin-left: 365px;
+}
+
 .card {
   margin: 2em 0;
   background: rgba(42, 133, 163, 0.75);
@@ -2104,7 +2112,7 @@ article iframe {
 }
 
 @media only screen and (max-width: 500px) {
-  .card:first-of-type {
+  .card {
     margin-top: 0;
   }
 
@@ -2125,10 +2133,6 @@ article iframe {
   .card_columns div .card {
     flex-direction: column;
   }
-}
-
-@media only screen and (min-width: 501px){
-  
 }
 
 /* Styles for mobile */

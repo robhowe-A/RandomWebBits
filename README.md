@@ -235,4 +235,5 @@
 1.8.74: Lit Elements: TypeScript  
 1.8.74: PhotoSwipe: TypeScript  
 1.8.75: Logo attributions  
+1.8.76: Animated Slideshow  
 </details>

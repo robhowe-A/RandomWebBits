@@ -1,11 +1,9 @@
-"strict mode"
+"strict mode";
 //--Copyright (c) 2023 Robert A. Howell
-import HeaderFooter from './components/HeaderFooter';
-import PageComponents from './components/PageComponents';
-import ClassComponents from './components/ClassComponents';
-import mobileAbbrMarkup from './components/mobileMarkup';
-import RWBPerf from './models/ScriptPerf';
-
+import HeaderFooter from "./components/HeaderFooter";
+import PageComponents from "./PageComponents";
+import ClassComponents from "./ClassComponents";
+import RWBPerf from "./models/ScriptPerf";
 
 const mainperf = new RWBPerf("main");
 
@@ -15,29 +13,27 @@ const mainperf = new RWBPerf("main");
  *  they're needed main.init() is the initialization of "typescript.js".
  */
 const main = {
-    /**
-     * Initialize page widgets and application functions.
-     */
-    init() {
-        // Event fired before assets are rendered to the page
-        window.addEventListener("DOMContentLoaded", () => {
+  /**
+   * Initialize page widgets and application functions.
+   */
+  init() {
+    // Event fired before assets are rendered to the page
+    window.addEventListener("DOMContentLoaded", () => {
+      // Add header and footer components
+      HeaderFooter.headerWidget.init();
+      HeaderFooter.footerWidget.init();
 
-            // Add header and footer components
-            HeaderFooter.headerWidget.init();
-            HeaderFooter.footerWidget.init();
+      let page: string = window.location.pathname;
 
-            // Initialize page components
-            PageComponents.init();
+      // Initialize page components
+      PageComponents.init(page);
 
-            // Initialize element components
-            ClassComponents.init();
+      // Initialize element components
+      ClassComponents.init(page);
 
-            // <abbr></abbr> styles: implemented for mobile devices
-            mobileAbbrMarkup.init();
-
-            mainperf.end();
-        })
-    }
+      mainperf.end();
+    });
+  },
 };
 
 main.init();

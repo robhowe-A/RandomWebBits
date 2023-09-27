@@ -1,5 +1,5 @@
- Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://randomwebbits.com/)  
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c29ba08d-f324-404d-8cee-4d9621425de3/deploy-status)](https://app.netlify.com/sites/randwebbit/deploys)  
+Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://randomwebbits.com/)  
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c29ba08d-f324-404d-8cee-4d9621425de3/deploy-status)](https://app.netlify.com/sites/randwebbit/deploys)
 
 # Random Web Bits
 
@@ -64,12 +64,23 @@
 >
 > npm install --save-dev watchify fancy-log
 >
+> yarn add -D prettier@^2.5.1 eslint@^8.7.0 @typescript-eslint/parser@^5.0.1 typescript@^4.4.4
+>
 > #2. Once they're ready, run the below command to begin
 > gulp
 > ```
 >
 > <img src="README/gulpinterminal_VSCode.png" alt="A screenshot of codespaces terminal" width="75%" margin="auto" />
 > <br>
+>
+> ```shell
+> #3 Extensions:
+> -Live Server
+> -Prettier - Code formatter
+> -Python, Pylance
+> -Tailwind Shades
+>
+> ```
 
 </details>
 
@@ -155,7 +166,7 @@
 1.2.38: New WebBits page: dns  
 1.2.39: New WebBits page: inspectpages  
 1.2.40: Abbr additions, CSS adjustments, and general updates  
-1.2.41: New WebBits page: google #1 website  
+1.2.41: New WebBits page: google #1 website
 
 </details>
 
@@ -180,7 +191,7 @@
 1.3.56: New WebBits page: CSS  
 1.3.57: New WebBits page: GUIDE: Clearing cookies  
 1.3.58: New WebBits page: EXPLORE: Webb Space Telescope  
-1.3.59: New WebBits page: Latency  
+1.3.59: New WebBits page: Latency
 
 </details>
 
@@ -188,14 +199,14 @@
 <summary>Version 1.4</summary>
 
 1.4.59: Header/Footer refactor  
-1.4.60: New WebBits page: HTML-ELEM  
+1.4.60: New WebBits page: HTML-ELEM
 
 </details>
 
 <details>
 <summary>Version 1.5</summary>
  
-1.5.60: Main switch  
+1.5.60: Main switch
 
 </details>
 
@@ -221,7 +232,7 @@
 1.6.66: ToDos Log  
 1.6.67: Widgets Refactor  
 1.6.68: Parser component  
-1.6.69: Stringify component  
+1.6.69: Stringify component
 
 </details>
 
@@ -236,4 +247,9 @@
 1.8.74: PhotoSwipe: TypeScript  
 1.8.75: Logo attributions  
 1.8.76: Animated Slideshow  
+1.8.77: Added project ESLint  
+1.8.78: Re-Added todos WebBit  
+1.8.78: New WebBits page: ElementInspect  
+1.8.79: WebBits Slideshow tabindex  
+1.8.80: Header/Footer colors  
 </details>

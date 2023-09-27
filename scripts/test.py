@@ -3,7 +3,7 @@ import os
 imgfilepaths = []
 
 def main():
-    mypath = 'dist/img'
+    mypath = 'src/img'
     path = mypath.split("/")[1]
 
     txtcount = 0
@@ -68,7 +68,7 @@ main()
 imgfilepaths.sort()
 
 #For each image file name, create header entry:
-headersfilepath = "dist/_headers"
+headersfilepath = "src/_headers"
 with open(headersfilepath, 'a', encoding="UTF=8") as headers:
     #Write the first line out for the image.
     headers.write("\n")

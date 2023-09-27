@@ -6,7 +6,7 @@ const WebBitsSlideShow = {
         if (window.location.pathname == '/pages.html') return;
         //var tablet = window.matchMedia("(min-width: 501px) and (max-width: 768px)");
         var small = window.matchMedia("(max-width: 819px)");
-        var tablet = window.matchMedia("(min-width: 820px) and (max-width: 992px)");
+        var tablet = window.matchMedia("(min-width: 820px) and (max-width: 1090px)");
 
         var windowsize:string = "";
         //Implement slideshow for arbitrary articles

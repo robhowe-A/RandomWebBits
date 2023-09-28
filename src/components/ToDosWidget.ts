@@ -16,7 +16,7 @@ const ToDosWidget = {
             toDosElement = document.querySelector(".ToDoList");
         }
         catch (err){
-            console.log("%cCould not query todo list widget element.", "color:orange;")
+            console.log("%cCould not query todo list widget element.", "color:orange;");
         }
 
         //ToDoList object

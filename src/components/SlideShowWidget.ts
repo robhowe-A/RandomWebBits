@@ -2,7 +2,6 @@
 // Attribution: Robert A Howell, May 2023
 // Content derived from: W3Schools, https://www.w3schools.com/howto/howto_js_slideshow.asp
 
-
 /**
  * Component creating slideshow widgets
  */

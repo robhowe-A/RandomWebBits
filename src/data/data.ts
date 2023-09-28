@@ -477,6 +477,24 @@ const ArbitraryArticles = new Array(
             36
         )
     ),
+    new WebBit(
+        "To-Do_List",
+        37,
+        "To-Do List",
+        "A ToDo list available through JavaScript and localStorage.",
+        new Date(2023, 9, 28),
+        "pages/todos.html",
+        "img/check.webp",
+        "To-do list notepad",
+        new AttributionLink(
+            "tasks icons",
+            "Tasks icons created by popcornarts - Flaticon",
+            "https://www.flaticon.com/free-icons/tasks",
+            "Flaticon",
+            "To-Do List",
+            37
+        )
+    ),
 );
 
 /**

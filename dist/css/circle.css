@@ -7,7 +7,7 @@
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   position: relative;
-  
+
   --halfofwidth: calc(var(--PieChartHeight) / 2);
   --fiftypercent: calc(var(--halfofwidth) / var(--PieChartHeight) * 100%);
   /* (((tan(360*.0206)*275)/550)*100)
@@ -22,11 +22,11 @@
      --firsttangentpercent: calc(calc(calc(tan(calc(360*.0206))*275)/550)*100%);
   */
 
-  --slice1Height: calc(var(--fiftypercent) +  6.50806% );
-  --slice2Height: calc(var(--slice1Height) + 5.93382% );
-  --slice3Height: calc(var(--slice2Height) + 1.60276% );
-  --slice4Height: calc(var(--slice3Height) + 0.50267% );
-  --slice5Height: calc(var(--slice4Height) + 0.18850% );
+  --slice1Height: calc(var(--fiftypercent) + 6.50806%);
+  --slice2Height: calc(var(--slice1Height) + 5.93382%);
+  --slice3Height: calc(var(--slice2Height) + 1.60276%);
+  --slice4Height: calc(var(--slice3Height) + 0.50267%);
+  --slice5Height: calc(var(--slice4Height) + 0.18850%);
   box-shadow: 0px 5px 15px -10px black;
   border-radius: 100%;
 }
@@ -55,7 +55,7 @@
 
 #pieRemainder {
   transition: all 1s;
-  background-color: #c8a98a; 
+  background-color: #c8a98a;
   clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 50% 50%, 100% var(--slice5Height), 100% 100%, 0% 100%);
   z-index: 10;
 }
@@ -70,7 +70,10 @@
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  clip-path: polygon(50% 50%, 100% 50%, 100% var(--slice1Height) ); /* 2.06% || 71.588px height*/ /*calc(275px + 35.794px) */ /*calc(50% + 6.508%)*/
+  clip-path: polygon(50% 50%, 100% 50%, 100% var(--slice1Height));
+  /* 2.06% || 71.588px height*/
+  /*calc(275px + 35.794px) */
+  /*calc(50% + 6.508%)*/
   background-color: #0360ad;
   z-index: 5;
 }
@@ -85,7 +88,8 @@
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  clip-path: polygon(50% 50%, 100% var(--slice1Height), 100% var(--slice2Height) );/* 1.88% || 65.272 */
+  clip-path: polygon(50% 50%, 100% var(--slice1Height), 100% var(--slice2Height));
+  /* 1.88% || 65.272 */
   background-color: #16a0a0;
   z-index: 4;
 }
@@ -100,7 +104,8 @@
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  clip-path: polygon(50% 50%, 100% var(--slice2Height), 100% var(--slice3Height)); /* 0.51% || 17.63 */
+  clip-path: polygon(50% 50%, 100% var(--slice2Height), 100% var(--slice3Height));
+  /* 0.51% || 17.63 */
   background-color: #fc9f52;
   z-index: 3;
 }
@@ -115,7 +120,8 @@
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  clip-path: polygon(50% 50%, 100% var(--slice3Height), 100% var(--slice4Height)); /* 0.16% || 5.529 */
+  clip-path: polygon(50% 50%, 100% var(--slice3Height), 100% var(--slice4Height));
+  /* 0.16% || 5.529 */
   background-color: #c23b23;
   z-index: 2;
 }
@@ -130,7 +136,8 @@
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  clip-path: polygon(50% 50%, 100% var(--slice4Height), 100% var(--slice5Height)); /* 0.06% || 2.073 */
+  clip-path: polygon(50% 50%, 100% var(--slice4Height), 100% var(--slice5Height));
+  /* 0.06% || 2.073 */
   background-color: #34a853;
 }
 

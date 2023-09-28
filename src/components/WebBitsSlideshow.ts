@@ -42,7 +42,7 @@ const WebBitsSlideShow = {
         let slideshowbtns = aaslideshow.slideshowcontainer.appendChild(document.createElement("div"));
 
         //Left slideshow btn
-        let previousslideshowbtn = document.createElement("a");
+        let previousslideshowbtn = document.createElement("button");
         previousslideshowbtn.classList.add('slideshowPrev');
         previousslideshowbtn.innerText = "❮";
         slideshowbtns.insertAdjacentElement('beforeend', previousslideshowbtn);
@@ -50,7 +50,7 @@ const WebBitsSlideShow = {
         aaslideshow.prevbtn = previousslideshowbtn;
 
         //Right slideshow btn
-        let nextslideshowbtn = document.createElement("a");
+        let nextslideshowbtn = document.createElement("button");
         nextslideshowbtn.classList.add('slideshowNext');
         nextslideshowbtn.innerText = "❯";
         slideshowbtns.insertAdjacentElement('beforeend', nextslideshowbtn);
@@ -63,7 +63,7 @@ const WebBitsSlideShow = {
         if (aaslideshow.cardindxstart < aaslideshow.cardquantshow){
             for(let i = aaslideshow.cards.length - 1; i > aaslideshow.cardsindxend; i--){
                 aaslideshow.cards[i].style.position = "absolute";
-                aaslideshow.cards[i].style.opacity = "0";
+                aaslideshow.cards[i].style.opacity = "0%";
                 aaslideshow.cards[i].style.display = "none";
                 if(windowsize == "SMALL"){
                     aaslideshow.cards[i].style.transform = "translateX(0px)";
@@ -78,20 +78,20 @@ const WebBitsSlideShow = {
         }
         if (windowsize == "LARGE"){
             aaslideshow.cards[0].style.position = "absolute";
-            aaslideshow.cards[0].style.opacity = "100";
+            aaslideshow.cards[0].style.opacity = "100%";
             aaslideshow.cards[0].style.transform = "translateX(-365px)";
             aaslideshow.cards[1].style.position = "absolute";
-            aaslideshow.cards[1].style.opacity = "100";
+            aaslideshow.cards[1].style.opacity = "100%";
             aaslideshow.cards[2].style.position = "absolute";
-            aaslideshow.cards[2].style.opacity = "100";
+            aaslideshow.cards[2].style.opacity = "100%";
             aaslideshow.cards[2].style.transform = "translateX(365px)";
         }
         if (windowsize == "MEDIUM"){
             aaslideshow.cards[0].style.position = "absolute";
-            aaslideshow.cards[0].style.opacity = "100";
+            aaslideshow.cards[0].style.opacity = "100%";
             aaslideshow.cards[0].style.transform = "translateX(-182.5px)";
             aaslideshow.cards[1].style.position = "absolute";
-            aaslideshow.cards[1].style.opacity = "100";
+            aaslideshow.cards[1].style.opacity = "100%";
             aaslideshow.cards[1].style.transform = "translateX(182.5px)";
         }
 
@@ -111,41 +111,41 @@ const WebBitsSlideShow = {
         }
         if(windowsize == "LARGE"){
             //Hide the first element in slideshow
-            slideshow.cards[slideshow.cardindxstart].style.opacity = "0";
+            slideshow.cards[slideshow.cardindxstart].style.opacity = "0%";
             slideshow.cards[slideshow.cardindxstart].style.display = "none";
-            //move middle element to left
+            //Move middle element to left
             slideshow.cards[slideshow.cardindxstart+1].style.transform = "translateX(-365px)";
-            //move right to the middle
+            //Move right to the middle
             slideshow.cards[slideshow.cardindxstart+2].style.transform = "translateX(0px)";
             //Display the next element for slideshow
             slideshow.cards[slideshow.cardsindxend+1].style.display = "block";
-            slideshow.cards[slideshow.cardsindxend+1].style.opacity = "100";
-            //move in new to the right
+            slideshow.cards[slideshow.cardsindxend+1].style.opacity = "100%";
+            //Move in new element
             slideshow.cards[slideshow.cardsindxend+1].style.transform = "translateX(365px)";
         }
         if(windowsize == "MEDIUM"){
             //Hide the first element in slideshow
-            slideshow.cards[slideshow.cardindxstart].style.opacity = "0";
+            slideshow.cards[slideshow.cardindxstart].style.opacity = "0%";
             slideshow.cards[slideshow.cardindxstart].style.display = "none";
             //Move the right element to left
             slideshow.cards[slideshow.cardindxstart+1].style.transform = "translateX(-182.5px)";
             //Display the next element for slideshow
             slideshow.cards[slideshow.cardsindxend+1].style.display = "block";
-            slideshow.cards[slideshow.cardsindxend+1].style.opacity = "100";
+            slideshow.cards[slideshow.cardsindxend+1].style.opacity = "100%";
             //Move in new element
             slideshow.cards[slideshow.cardsindxend+1].style.transform = "translateX(182.5px)";
         }
         if(windowsize == "SMALL"){
+            //Hide the first element in slideshow
+            slideshow.cards[slideshow.cardindxstart].style.opacity = "0%";
+            slideshow.cards[slideshow.cardindxstart].style.display = "none";
             //Move element to left
             slideshow.cards[slideshow.cardindxstart].style.transform = "translateX(-182.5px)";
-            //Hide the first element in slideshow
-            slideshow.cards[slideshow.cardindxstart].style.opacity = "0";
-            slideshow.cards[slideshow.cardindxstart].style.display = "none";
-            //Display the next element for slideshow
-            slideshow.cards[slideshow.cardsindxend+1].style.display = "block";
-            slideshow.cards[slideshow.cardsindxend+1].style.opacity = "100";
             //Move element to center
             slideshow.cards[slideshow.cardindxstart+1].style.transform = "translateX(0px)";
+            //Display the next element for slideshow
+            slideshow.cards[slideshow.cardsindxend+1].style.display = "block";
+            slideshow.cards[slideshow.cardsindxend+1].style.opacity = "100%";
         }
 
         //Increment index counter
@@ -160,43 +160,41 @@ const WebBitsSlideShow = {
         }
         if(windowsize == "LARGE"){
             //Hide the last element in slideshow
-            slideshow.cards[slideshow.cardsindxend].style.opacity = "0";
+            slideshow.cards[slideshow.cardsindxend].style.opacity = "0%";
             slideshow.cards[slideshow.cardsindxend].style.display = "none";
-            //Display the next element for slideshow
-            let temp = slideshow.cards[slideshow.cardindxstart - 1];
-            temp.style.display = "block";
-            temp.style.opacity = "100";
-            temp.style.transform = "translateX(-365px)";
-
-            //move left element to the right
+            //Move left element to the right
             slideshow.cards[slideshow.cardindxstart].style.transform = "translateX(0px)";
-            //move middle element to to the right
+            //Move middle element to to the right
             slideshow.cards[slideshow.cardindxstart+1].style.transform = "translateX(365px)";
+            //Display the next element for slideshow
+            slideshow.cards[slideshow.cardindxstart-1].style.display = "block";
+            slideshow.cards[slideshow.cardindxstart-1].style.opacity = "100%";
+            //Move in new element
+            slideshow.cards[slideshow.cardindxstart-1].style.transform = "translateX(-365px)";
         }
         if(windowsize == "MEDIUM"){
             //Hide the last element in slideshow
-            slideshow.cards[slideshow.cardsindxend].style.opacity = "0";
+            slideshow.cards[slideshow.cardsindxend].style.opacity = "0%";
             slideshow.cards[slideshow.cardsindxend].style.display = "none";
-            //move left element to the right
+            //Move left element to the right
             slideshow.cards[slideshow.cardindxstart].style.transform = "translateX(182.5px)";
             //Display the next element for slideshow
-            let temp = slideshow.cards[slideshow.cardindxstart - 1];
-            temp.style.display = "block";
-            temp.style.opacity = "100";
-            temp.style.transform = "translateX(-182.5px)";
+            slideshow.cards[slideshow.cardindxstart - 1].style.display = "block";
+            slideshow.cards[slideshow.cardindxstart - 1].style.opacity = "100%";
+            //Move in new element
+            slideshow.cards[slideshow.cardindxstart - 1].style.transform = "translateX(-182.5px)";
         }
         if(windowsize == "SMALL"){
-            //Move element to left
-            slideshow.cards[slideshow.cardindxstart].style.transform = "translateX(182.5px)";
             //Hide the first element in slideshow
-            slideshow.cards[slideshow.cardindxstart].style.opacity = "0";
+            slideshow.cards[slideshow.cardindxstart].style.opacity = "0%";
             slideshow.cards[slideshow.cardindxstart].style.display = "none";
-            //Display the next element for slideshow
-            let temp = slideshow.cards[slideshow.cardindxstart - 1];
-            temp.style.display = "block";
-            temp.style.opacity = "100";
+            //Move element to right
+            slideshow.cards[slideshow.cardindxstart].style.transform = "translateX(182.5px)";
             //Move element to center
-            temp.style.transform = "translateX(0px)";
+            slideshow.cards[slideshow.cardindxstart - 1].style.transform = "translateX(0px)";
+            //Display the next element for slideshow
+            slideshow.cards[slideshow.cardindxstart - 1].style.display = "block";
+            slideshow.cards[slideshow.cardindxstart - 1].style.opacity = "100%";
         }
 
         //Increment index counter

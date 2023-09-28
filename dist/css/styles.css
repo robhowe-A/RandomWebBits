@@ -4,52 +4,59 @@
 
 @font-face {
   font-family: 'REM-400';
-  src:  url('./fonts/REM-Light.ttf') format('truetype');
+  src: url('./fonts/REM-Light.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  }
+}
+
 @font-face {
   font-family: 'REM-400i';
-  src:  url('./fonts/REM-LightItalic.ttf') format('truetype');
+  src: url('./fonts/REM-LightItalic.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  }
+}
+
 @font-face {
   font-family: 'REM-500';
-  src:  url('./fonts/REM-SemiBold.ttf') format('truetype');
+  src: url('./fonts/REM-SemiBold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  }
+}
+
 @font-face {
   font-family: 'REM-500i';
-  src:  url('./fonts/REM-SemiBoldItalic.ttf') format('truetype');
+  src: url('./fonts/REM-SemiBoldItalic.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  }
+}
+
 @font-face {
   font-family: 'REM-600';
-  src:  url('./fonts/REM-Regular.ttf') format('truetype');
+  src: url('./fonts/REM-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  }
+}
+
 @font-face {
   font-family: 'REM-600i';
-  src:  url('./fonts/REM-Italic.ttf') format('truetype');
+  src: url('./fonts/REM-Italic.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  }
+}
+
 @font-face {
   font-family: 'REM-700';
-  src:  url('./fonts/REM-Medium.ttf') format('truetype');
+  src: url('./fonts/REM-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  }
+}
+
 @font-face {
   font-family: 'REM-700i';
-  src:  url('./fonts/REM-MediumItalic.ttf') format('truetype');
+  src: url('./fonts/REM-MediumItalic.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  }
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -173,6 +180,7 @@ body {
   margin: 0;
   --transition_fast: 200ms;
   --transition_medium: 500ms;
+  --transition_slow: 700ms;
 }
 
 header {
@@ -196,7 +204,7 @@ footer a:hover {
   color: var(--clr-Green);
 }
 
-footer div:nth-child(2) p{
+footer div:nth-child(2) p {
   margin-top: 8%;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -237,15 +245,20 @@ h6 {
   font-family: 'REM-600', 'Lato', sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: var(--clr-primary-500);
 }
 
-article h1, article h2 {
+article h1,
+article h2 {
   font-family: 'REM-500', 'Lato', sans-serif;
 }
 
-h3, h4, h5, h6 {
+h3,
+h4,
+h5,
+h6 {
   font-family: 'REM-500', 'Lato', sans-serif;
 }
 
@@ -495,7 +508,7 @@ hgroup h3 {
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 700ms;
+  transition: transform var(--transition_slow);
   transform-style: preserve-3d;
 }
 
@@ -594,12 +607,12 @@ a.attribute:hover {
   width: 100%;
 }
 
-.card .slide{
+.card .slide {
   display: flex;
 }
 
 .slidescontainer .card.slide {
-  transition:all 800ms ease-out;
+  transition: all var(--transition_medium) ease-in-out;
 }
 
 .slidescontainer .card.slide:not(:first) {
@@ -631,7 +644,8 @@ a.attribute:hover {
 }
 
 /* Buttons */
-.cards a {
+.cards a,
+.cardslideshow button {
   background: var(--clr-DarkCyan);
   color: var(--clr-light-500);
   font-size: 0.8rem;
@@ -647,9 +661,14 @@ a.attribute:hover {
   display: inline-block;
 }
 
-.cards a:hover {
-  transition: background-color 400ms;
+.cards a:hover,
+.cardslideshow button:hover {
+  transition: background-color var(--transition_medium);
   background-color: var(--clr-primary-400);
+}
+
+.cardslideshow button {
+  border: none;
 }
 
 a:focus,
@@ -697,9 +716,8 @@ summary:focus-visible {
 .reset {
   position: absolute;
   left: 50%;
-  transform: 
-    translateX(-50%)
-    translateY(25%);
+  transform:
+    translateX(-50%) translateY(25%);
   z-index: 1;
   font-size: .7rem;
   background-color: var(--clr-primary-400);
@@ -710,7 +728,8 @@ summary:focus-visible {
   width: initial;
 }
 
-.cssex, .colorcode {
+.cssex,
+.colorcode {
   background-color: var(--clr-all-font-light);
   border-radius: 1em;
   box-shadow: inset 0 0 10px 10px;
@@ -720,7 +739,8 @@ summary:focus-visible {
   margin-inline: auto;
 }
 
-.cssex ol, .colorcode ol {
+.cssex ol,
+.colorcode ol {
   width: min(90%, 600px);
   margin: 1em auto 2em auto;
   padding: 0;
@@ -731,11 +751,13 @@ summary:focus-visible {
   font-weight: bold;
 }
 
-.cssex li, .colorcode li {
+.cssex li,
+.colorcode li {
   display: inline;
 }
 
-.cssfig, .codefig {
+.cssfig,
+.codefig {
   display: inline-block;
   margin-bottom: 2em;
   font-weight: bolder;
@@ -745,11 +767,15 @@ summary:focus-visible {
   position: relative;
 }
 
-.Selector:hover, .Attribute:hover, .Value:hover, .Psuedo-class {
+.Selector:hover,
+.Attribute:hover,
+.Value:hover,
+.Psuedo-class {
   cursor: pointer;
 }
 
-.EXTXT, .CSS {
+.EXTXT,
+.CSS {
   display: inline;
 }
 
@@ -2129,7 +2155,7 @@ article iframe {
   }
 }
 
-@media only screen and (max-width: 990px){
+@media only screen and (max-width: 990px) {
   .card_columns div .card {
     flex-direction: column;
   }
@@ -2365,8 +2391,9 @@ article iframe {
     justify-content: center;
   }
 }
-@media screen and (min-width: 993px){
-  #ArbitraryArticles + .cardslideshow > .slidescontainer {
+
+@media screen and (min-width: 993px) {
+  #ArbitraryArticles+.cardslideshow>.slidescontainer {
     flex-direction: row;
     flex-wrap: nowrap;
   }

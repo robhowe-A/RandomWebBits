@@ -64,6 +64,8 @@
 >
 > npm install --save-dev watchify fancy-log
 >
+> yarn add -D prettier@^2.5.1 eslint@^8.7.0 @typescript-eslint/parser@^5.0.1 typescript@^4.4.4
+>
 > #2. Once they're ready, run the below command to begin
 > gulp
 > ```
@@ -236,4 +238,6 @@
 1.8.74: PhotoSwipe: TypeScript  
 1.8.75: Logo attributions  
 1.8.76: Animated Slideshow  
+1.8.77: Added project ESLint  
+1.8.78: Re-Added todos WebBit  
 </details>

@@ -64,6 +64,7 @@ const WebBitsSlideShow = {
             for(let i = aaslideshow.cards.length - 1; i > aaslideshow.cardsindxend; i--){
                 aaslideshow.cards[i].style.position = "absolute";
                 aaslideshow.cards[i].style.opacity = "0";
+                aaslideshow.cards[i].style.display = "none";
                 if(windowsize == "SMALL"){
                     aaslideshow.cards[i].style.transform = "translateX(0px)";
                     continue;
@@ -111,11 +112,13 @@ const WebBitsSlideShow = {
         if(windowsize == "LARGE"){
             //Hide the first element in slideshow
             slideshow.cards[slideshow.cardindxstart].style.opacity = "0";
+            slideshow.cards[slideshow.cardindxstart].style.display = "none";
             //move middle element to left
             slideshow.cards[slideshow.cardindxstart+1].style.transform = "translateX(-365px)";
             //move right to the middle
             slideshow.cards[slideshow.cardindxstart+2].style.transform = "translateX(0px)";
             //Display the next element for slideshow
+            slideshow.cards[slideshow.cardsindxend+1].style.display = "block";
             slideshow.cards[slideshow.cardsindxend+1].style.opacity = "100";
             //move in new to the right
             slideshow.cards[slideshow.cardsindxend+1].style.transform = "translateX(365px)";
@@ -123,9 +126,11 @@ const WebBitsSlideShow = {
         if(windowsize == "MEDIUM"){
             //Hide the first element in slideshow
             slideshow.cards[slideshow.cardindxstart].style.opacity = "0";
+            slideshow.cards[slideshow.cardindxstart].style.display = "none";
             //Move the right element to left
             slideshow.cards[slideshow.cardindxstart+1].style.transform = "translateX(-182.5px)";
             //Display the next element for slideshow
+            slideshow.cards[slideshow.cardsindxend+1].style.display = "block";
             slideshow.cards[slideshow.cardsindxend+1].style.opacity = "100";
             //Move in new element
             slideshow.cards[slideshow.cardsindxend+1].style.transform = "translateX(182.5px)";
@@ -156,9 +161,10 @@ const WebBitsSlideShow = {
         if(windowsize == "LARGE"){
             //Hide the last element in slideshow
             slideshow.cards[slideshow.cardsindxend].style.opacity = "0";
-
+            slideshow.cards[slideshow.cardsindxend].style.display = "none";
             //Display the next element for slideshow
             let temp = slideshow.cards[slideshow.cardindxstart - 1];
+            temp.style.display = "block";
             temp.style.opacity = "100";
             temp.style.transform = "translateX(-365px)";
 
@@ -170,10 +176,12 @@ const WebBitsSlideShow = {
         if(windowsize == "MEDIUM"){
             //Hide the last element in slideshow
             slideshow.cards[slideshow.cardsindxend].style.opacity = "0";
+            slideshow.cards[slideshow.cardsindxend].style.display = "none";
             //move left element to the right
             slideshow.cards[slideshow.cardindxstart].style.transform = "translateX(182.5px)";
             //Display the next element for slideshow
             let temp = slideshow.cards[slideshow.cardindxstart - 1];
+            temp.style.display = "block";
             temp.style.opacity = "100";
             temp.style.transform = "translateX(-182.5px)";
         }

@@ -4,6 +4,7 @@ export default class CardsSlideShow {
     cards:NodeListOf<HTMLDivElement>;
     cardquantshow: number;
     cardindxstart: number = 0;
+    cardcounter: number = 1;
     cardsindxend: number;
     turn: number = 0;
     maxturncount: number;

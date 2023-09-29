@@ -93,17 +93,17 @@ export class SimpleGreeting extends LitElement {
       {
         page: "/pages/domainlookup.html",
         htmlTitle: "domainlookup",
-        acronyms: ["DNS", "DNSSEC", "DDNS", "FQDN", "NetBIOS", "Nameserver", "OU", "Top-level", "A record", "CNAME"]
+        acronyms: ["DNS", "DNSSEC", "DDNS", "FQDN", "NetBIOS", "Nameserver", "OU", "Top-level", '"A" record', "CNAME"]
       },
       {
         page: "/pages/drives.html",
         htmlTitle: "drives",
-        acronyms: ["CSOM", "SSOM", "PS", "NS", "Tree", "Objects", "Registry", "Variables", "TCP/IP", "TLS", "Cyphertext", "CN", "EKU"]
+        acronyms: ["CSOM", "SSOM", "PS", "NS (namespace)", "Tree", "Objects", "Registry", "Variables", "TCP/IP", "TLS", "Cyphertext", "CN", "EKU"]
       },
       {
         page: "/pages/dns.html",
         htmlTitle: "dns",
-        acronyms: ["DDNS", "DNSSEC", "A (addresS)", "CAA", "NS (name server)", "MX", "QPS"]
+        acronyms: ["DDNS", "DNSSEC", '"A" record', "CAA", "NS (name server)", '"MX" record', "QPS"]
       },
       {
         page: "/pages/dom.html",

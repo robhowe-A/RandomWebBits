@@ -49,6 +49,24 @@ const WebBitsSlideShow = {
         //Update slideshow object
         aaslideshow.prevbtn = previousslideshowbtn;
 
+        //Number element
+        let numberelement = document.createElement("div");
+        let numberelementtext = () => {
+            if (windowsize == "SMALL"){
+                numberelement.innerText = aaslideshow.cardcounter.toString() + " of " + aaslideshow.cards.length.toString();
+            }
+            else {
+                numberelement.innerText = "[" + aaslideshow.cardcounter.toString() + ".." + 
+                    (aaslideshow.cardcounter + aaslideshow.cardquantshow - 1).toString() + "]" + " of " + aaslideshow.cards.length.toString();
+            }
+        }
+        numberelementtext();
+        previousslideshowbtn.insertAdjacentElement('afterend', numberelement);
+        numberelement.style.whiteSpace = "nowrap";
+        numberelement.style.display = "grid";
+        numberelement.style.alignContent = "center";
+        numberelement.style.marginInline = "1.5rem";
+
         //Right slideshow btn
         let nextslideshowbtn = document.createElement("button");
         nextslideshowbtn.classList.add('slideshowNext');
@@ -95,14 +113,16 @@ const WebBitsSlideShow = {
             aaslideshow.cards[1].style.transform = "translateX(182.5px)";
         }
 
-        //Previous/next button event listeners
-        aaslideshow.prevbtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            WebBitsSlideShow.prev(aaslideshow, windowsize);
-        })
+        //Next/previous button event listeners
         aaslideshow.nextbtn.addEventListener("click", (e) => {
             e.preventDefault();
             WebBitsSlideShow.next(aaslideshow, windowsize);
+            numberelementtext();
+        })
+        aaslideshow.prevbtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            WebBitsSlideShow.prev(aaslideshow, windowsize);
+            numberelementtext();
         })
     },
     next: (slideshow: CardsSlideShow, windowsize:string) => {
@@ -152,7 +172,7 @@ const WebBitsSlideShow = {
         slideshow.cardindxstart++;
         slideshow.cardsindxend++;
         slideshow.turn++;
-
+        slideshow.cardcounter++;
     },
     prev: (slideshow: CardsSlideShow, windowsize:string) => {
         if(slideshow.turn == 0){
@@ -201,6 +221,7 @@ const WebBitsSlideShow = {
         slideshow.cardindxstart--;
         slideshow.cardsindxend--;
         slideshow.turn--;
+        slideshow.cardcounter--;
     }
 }
 

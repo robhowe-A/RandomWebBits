@@ -1,5 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { ToDoList } from "../models/ToDo";
+import RWBError from "../models/RWBErrorBus";
 
 /**
  * Component containing the To-Do List widget's creation.
@@ -12,12 +13,7 @@ const ToDosWidget = {
     init: () => {
 
         let toDosElement: Element;
-        try{
-            toDosElement = document.querySelector(".ToDoList");
-        }
-        catch (err){
-            console.log("%cCould not query todo list widget element.", "color:orange;");
-        }
+        toDosElement = document.querySelector(".ToDoList");
 
         //ToDoList object
         const todoWidget = new ToDoList();

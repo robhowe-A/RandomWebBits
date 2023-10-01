@@ -22,15 +22,17 @@ const PageComponents = {
         const pageperf = new RWBPerf("Pagecomponents"); //measure performance
 
         customElements.define('acronyms-list', SimpleGreeting);
-        PageComponents.CheckPage();
+        let page = PageComponents.CheckPage();
         
         pageperf.end(); //end performance measure
+        return page;
     },
     CheckPage: () => {
-        if (!RWBError.checkElementorNull('PageComponents', '#Four-Oh-Four', false, true)){
+        if (!RWBError.checkElementforNull('PageComponents', '#Four-Oh-Four', false, true)){
             notfound404widget.init();
         }
-        switch (window.location.pathname) {
+        let page:string = window.location.pathname;
+        switch (page) {
             //'Index' and 'Pages' routes, add cards widget
             case '/RandomWebBits/index.html':
             case '/index.html':
@@ -92,6 +94,7 @@ const PageComponents = {
                 hslcolorwidget.inithslcolorpicker();
                 break;
         }
+        return page;
     }
 }
 

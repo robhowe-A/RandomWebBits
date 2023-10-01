@@ -23,24 +23,24 @@ const HeaderFooter = {
 
             // Add header element to the page
             if (pageMain != null) {// 'Main' element exists, add the header to it
-                try {
+                try{
                     siteHeader = pageMain.insertAdjacentElement('beforebegin', HeaderFooter.headerWidget.buildHeader());
-                } catch (e) {
+                }catch (e) {
                     new RWBDomException("DomException", "Check site header element. Encountered error:", e);
                 }
             }
             else { // 'Main' element does not exist, add the header to the body
-                try {
+                try{
                     siteHeader = document.body.insertAdjacentElement('afterbegin', HeaderFooter.headerWidget.buildHeader());
-                } catch (e) {
+                }catch (e) {
                     new RWBDomException("DomException", "Check site header is not null. Encountered error:", e);
                 }
             }
 
             //Append navigation items to header
-            try {
+            try{
                 siteHeader.childNodes[0].appendChild(HeaderFooter.headerWidget.buildNavigation());
-            } catch (e) {
+            }catch (e) {
                 new RWBDomException("DomException", "Cannot prepend navigation items. Encountered error:", e);
             }
             

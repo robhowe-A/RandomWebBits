@@ -1,5 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { DictionarySearch } from "../models/DictionarySearch"
+import RWBError from "../models/RWBErrorBus";
 
 /**
  * Component containing the dictionary widget's creation.
@@ -12,12 +13,7 @@ const DictionaryWidget = {
      */
     init: () => {
         let dictionaryWidgetStartingElement: Element
-        try{
-            dictionaryWidgetStartingElement = document.querySelector(".dictionaryWidget");
-        }
-        catch (err){
-            console.log("%cCould not query dictionary widget element.", "color:orange;")
-        }
+        dictionaryWidgetStartingElement = document.querySelector(".dictionaryWidget");
 
         // DictionarySearch constructor
         Object.create(new DictionarySearch(dictionaryWidgetStartingElement));

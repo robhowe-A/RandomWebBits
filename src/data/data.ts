@@ -301,7 +301,7 @@ const ArbitraryArticles = new Array(
         "Webide",
         24,
         "WebIDE",
-        "Try skipping the download with a web IDE",
+        "Try skipping the download by using a web IDE",
         new Date(2023, 5, 3),
         "pages/webides.html",
         "img/ux.webp",

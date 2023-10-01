@@ -7,7 +7,7 @@ export default class RWBError {
     constructor(){
         RWBError.count++;
     };
-    public static checkElementorNull(componentname:string, cssquery: string, logmessage?:boolean, supressexception?:boolean ) {
+    public static checkElementforNull(componentname:string, cssquery: string, logmessage?:boolean, supressexception?:boolean ) {
         let elem: HTMLElement | null;
         let logmssg: boolean = true; //Log message option default
         if (!logmessage) logmssg = logmessage;
@@ -24,7 +24,7 @@ export default class RWBError {
         }
         if (elem == null){
             if (logmssg)
-                console.log(`%cNo element found with class name: ${query}.`, 'color: yellow;');
+                console.log(`%cNo element found with query: ${query}.`, 'color: yellow;');
             if (!supressexcpt)
                 Object.create(new RWBReferenceError(`${componentname}NullReference`, `Element not found`));
             return true;

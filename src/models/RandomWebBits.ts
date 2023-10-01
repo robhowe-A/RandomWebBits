@@ -1,12 +1,17 @@
 //--Copyright (c) 2023 Robert A. Howell
 import WebBit from "./WebBit";
 import RWBCard from "../components/RWBCard";
+import RWBError from "./RWBErrorBus";
 
 export class RandomWebBits {
     public static buildCardContainingSection(sectionTitle: string, sectionHeadingID: string) {
-        // Create divisor sectional elements to append to main
+        // Create sectional elements to append to main
         const pageMain = document.querySelector("main");
-        if (pageMain != null && pageMain.nodeName === 'MAIN') {
+        if (pageMain == null || pageMain.nodeName !== 'MAIN') {
+            if(RWBError.checkElementforNull("MainRWB", "main", true, true)){
+                ReadableStreamDefaultController
+            }
+        }
             // Create card section elements
             // <section class="cards">
             //     <h2>Arbitrary Articles:</h2>
@@ -30,16 +35,6 @@ export class RandomWebBits {
 
             return aaCardsSection;
         }
-        else {
-            try {
-                throw new Error("No main element exists on the page.");
-            }
-            catch (error) {
-                console.log(error);
-            }
-        }
-
-    }
     public static buildRWBCards(cardsData: WebBit[]) {
         // Iterate each card in the array. Build the card elements and add the data
         let AAs = cardsData.map((article: WebBit) => {

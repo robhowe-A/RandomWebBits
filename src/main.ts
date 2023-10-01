@@ -27,10 +27,10 @@ const main = {
             HeaderFooter.footerWidget.init();
 
             // Initialize page components
-            PageComponents.init();
+            let page:string = PageComponents.init();
 
             // Initialize element components
-            ClassComponents.init();
+            ClassComponents.init(page);
 
             // <abbr></abbr> styles: implemented for mobile devices
             mobileAbbrMarkup.init();

@@ -8,7 +8,7 @@ var watchify = require("watchify"); // Recompile the browser components on save
 var tsify = require("tsify"); // Browser plugin for compiling TypeScript
 var fancy_log = require("fancy-log"); // Gulp terminal extension
 var paths = {
-  pages: ["index.html", "src/*.html"],
+  pages: ["src/*.html"],
 };
 var watchedBrowserify = watchify(
   browserify({
@@ -26,7 +26,7 @@ function bundle() {
   return watchedBrowserify
     .bundle()
     .on("error", fancy_log)
-    .pipe(source("js/typescript.js"))
+    .pipe(source("typescript.js"))
     .pipe(gulp.dest("dist"));
 }
 gulp.task("default", gulp.series(gulp.parallel("copy-html"), bundle));

@@ -233,7 +233,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
             if (event.target == btn.deleteCacheWordHeadingElem) {
               return;
             }
-            btn.deleteCacheWordHeadingElem.style.display = "none";
+            btn.deleteCacheWordHeadingElem.style.opacity = "50%;";
           }
         );
       });

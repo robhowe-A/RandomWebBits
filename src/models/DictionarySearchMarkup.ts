@@ -178,13 +178,14 @@ export default class DictionarySearchMarkup {
       );
     deleteWordTermHeadingElem.setAttribute("type", "word-clear");
     deleteWordTermHeadingElem.classList.add("dictionary-word-btn-clear");
+    deleteWordTermHeadingElem.style.display = "block";
 
     //when clear button is hovered, display it
     definitionDescriptionContainer.addEventListener("mouseover", event => {
-      deleteWordTermHeadingElem.style.display = "inline-block";
+      deleteWordTermHeadingElem.style.opacity = "100%";
       //when clear button is not hovered, hide it
       definitionDescriptionContainer.addEventListener("mouseout", () => {
-        deleteWordTermHeadingElem.style.display = "none";
+        deleteWordTermHeadingElem.style.opacity = "50%";
       });
     });
 

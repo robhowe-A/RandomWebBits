@@ -47,6 +47,19 @@ const WebBitsSlideShow = {
       document.createElement("div")
     );
 
+    const showhideslideshowbuttons = () => {
+      if (aaslideshow.cardindxstart == 0) {
+        previousslideshowbtn.style.display = "none";
+        return;
+      }
+      if (aaslideshow.cardsindxend == aaslideshow.cards.length - 1) {
+        nextslideshowbtn.style.display = "none";
+        return;
+      }
+      previousslideshowbtn.style.display = "block";
+      nextslideshowbtn.style.display = "block";
+    };
+
     //Left slideshow btn
     let previousslideshowbtn = document.createElement("button");
     previousslideshowbtn.classList.add("slideshowPrev");
@@ -54,6 +67,16 @@ const WebBitsSlideShow = {
     slideshowbtns.insertAdjacentElement("beforeend", previousslideshowbtn);
     //Update slideshow object
     aaslideshow.prevbtn = previousslideshowbtn;
+
+    //Right slideshow btn
+    let nextslideshowbtn = document.createElement("button");
+    nextslideshowbtn.classList.add("slideshowNext");
+    nextslideshowbtn.innerText = "❯";
+    slideshowbtns.insertAdjacentElement("beforeend", nextslideshowbtn);
+    slideshowbtns.style.display = "flex";
+    slideshowbtns.style.justifyContent = "center";
+    //Update slideshow object
+    aaslideshow.nextbtn = nextslideshowbtn;
 
     //Number element
     let numberelement = document.createElement("div");
@@ -75,21 +98,12 @@ const WebBitsSlideShow = {
       }
     };
     numberelementtext();
-    previousslideshowbtn.insertAdjacentElement("afterend", numberelement);
+    nextslideshowbtn.insertAdjacentElement("beforebegin", numberelement);
     numberelement.style.whiteSpace = "nowrap";
     numberelement.style.display = "grid";
     numberelement.style.alignContent = "center";
     numberelement.style.marginInline = "1.5rem";
-
-    //Right slideshow btn
-    let nextslideshowbtn = document.createElement("button");
-    nextslideshowbtn.classList.add("slideshowNext");
-    nextslideshowbtn.innerText = "❯";
-    slideshowbtns.insertAdjacentElement("beforeend", nextslideshowbtn);
-    slideshowbtns.style.display = "flex";
-    slideshowbtns.style.justifyContent = "center";
-    //Update slideshow object
-    aaslideshow.nextbtn = nextslideshowbtn;
+    showhideslideshowbuttons();
 
     //Hide overflow elements
     if (aaslideshow.cardindxstart < aaslideshow.cardquantshow) {
@@ -135,11 +149,13 @@ const WebBitsSlideShow = {
     aaslideshow.nextbtn.addEventListener("click", e => {
       e.preventDefault();
       WebBitsSlideShow.next(aaslideshow, windowsize);
+      showhideslideshowbuttons();
       numberelementtext();
     });
     aaslideshow.prevbtn.addEventListener("click", e => {
       e.preventDefault();
       WebBitsSlideShow.prev(aaslideshow, windowsize);
+      showhideslideshowbuttons();
       numberelementtext();
     });
   },

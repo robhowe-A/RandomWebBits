@@ -1,46 +1,50 @@
-"strict mode"
+"strict mode";
 //--Copyright (c) 2023 Robert A. Howell
-import PhotoSwipeLightbox from '../js/photoswipe/photoswipe-lightbox.esm.js';
-import PhotoSwipe from '../js/photoswipe/photoswipe.esm.js'
+import PhotoSwipeLightbox from "../js/photoswipe/photoswipe-lightbox.esm.js";
+import PhotoSwipe from "../js/photoswipe/photoswipe.esm.js";
 
 const photoswipe_apptab = () => {
-    const lightbox = new PhotoSwipeLightbox({
-    gallery: '#devTools-Gallery',
-    children: '.pswp-gallery__item',
-    imageClickAction: 'zoom',
-    tapAction: 'zoom',
-    pswpModule: PhotoSwipe
-    });
-    const options = {
-    gallery: '#devTools-Picture',
-    children: '.pswp-gallery__item',
-    imageClickAction: 'zoom',
-    tapAction: 'zoom',
-    pswpModule: PhotoSwipe
-    }
-    const picbox = new PhotoSwipeLightbox(options);
-    lightbox.init();
-    picbox.init();
-}
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: "#devTools-Gallery",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  });
+  const options = {
+    gallery: "#devTools-Picture",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  };
+  const picbox = new PhotoSwipeLightbox(options);
+  lightbox.init();
+  picbox.init();
+};
 
 const photoswipe_pwa = () => {
-    const lightbox = new PhotoSwipeLightbox({
-    gallery: '#Instructions',
-    children: '.pswp-gallery__item',
-    imageClickAction: 'zoom',
-    tapAction: 'zoom',
-    pswpModule: PhotoSwipe
-    });
-    lightbox.init();
-}
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: "#Instructions",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  });
+  lightbox.init();
+};
 
 const photoswipe_inspctpgs = () => {
-    const options = {
-    gallery:'#inspectPages-Gallery',
-    children:'.pswp-gallery__item',
-    pswpModule: PhotoSwipe
-    };
-    const lightbox2 = new PhotoSwipeLightbox(options);
-    lightbox2.init();
-    }
-export { photoswipe_pwa as PS_pwa, photoswipe_apptab as PS_at, photoswipe_inspctpgs as PS_ip};
+  const options = {
+    gallery: "#inspectPages-Gallery",
+    children: ".pswp-gallery__item",
+    pswpModule: PhotoSwipe,
+  };
+  const lightbox2 = new PhotoSwipeLightbox(options);
+  lightbox2.init();
+};
+export {
+  photoswipe_pwa as PS_pwa,
+  photoswipe_apptab as PS_at,
+  photoswipe_inspctpgs as PS_ip,
+};

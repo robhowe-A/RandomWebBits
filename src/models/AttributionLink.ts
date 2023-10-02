@@ -1,37 +1,36 @@
 //--Copyright (c) 2023 Robert A. Howell
 import RWBLink from "./RWBLink";
 
-/** 
+/**
  * Used for image Attribution
-*/
+ */
 class AttributionLink extends RWBLink {
-    /**Counts the number of objects instantiated */
-    public static count: number = 0;
+  /**Counts the number of objects instantiated */
+  public static count: number = 0;
+  /**Name of the owner */
+  public attributedowner: string;
+  /**WebBits article data ID */
+  public articleid: number;
+
+  constructor(
+    /**Link title */
+    title: string,
+    /**Link inner text */
+    innerText: string,
+    /** link href */
+    hReference: string,
     /**Name of the owner */
-    public attributedowner: string;
+    attributedowner: string,
+    /**WebBits page */
+    pageName: string,
     /**WebBits article data ID */
-    public articleid: number;
-
-    constructor(
-        /**Link title */
-        title: string,
-        /**Link inner text */
-        innerText: string,
-        /** link href */
-        hReference: string,
-        /**Name of the owner */
-        attributedowner: string,
-        /**WebBits page */
-        pageName: string,
-        /**WebBits article data ID */
-        articleid: number
-
-    ) {
-        super(title, innerText, pageName, hReference);
-        this.attributedowner = attributedowner;
-        this.articleid = articleid;
-        AttributionLink.count++;
-    }
+    articleid: number
+  ) {
+    super(title, innerText, pageName, hReference);
+    this.attributedowner = attributedowner;
+    this.articleid = articleid;
+    AttributionLink.count++;
+  }
 }
 
 export default AttributionLink;

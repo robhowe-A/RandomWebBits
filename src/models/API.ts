@@ -77,9 +77,9 @@ export class apiGET {
    * A public function creating a data promise object for the called fetch function. If
    *  the request needs added to browser storage, the fetch is made and sent to
    *  storage. A cloned copy of the fetched data is returned and the original request is
-   *  sent to the cache. Without sending to browser cache, the fetch is requested and 
+   *  sent to the cache. Without sending to browser cache, the fetch is requested and
    * returned.
-   *  
+   *
    * @param GETURL - the (full) url of data request.
    * @returns dataCachePromise: Promise<unknown>
    */
@@ -90,34 +90,42 @@ export class apiGET {
       let dataCachePromise = new Promise((resolve, reject) => {
         if ("caches" in window) {
           //Open cache and check for request existing in Cache Storage
-          window.caches.open(this.browserCacheName).then((cache) => {
-            caches.match(GETURL).then((result) => {
-              if (result === undefined) {
-                //No matches for this request in Storage Cache, so fetch the request normally
-                //Upon success, a cloned copy will need to be returned.
-                fetch(GETURL).then((result) => {
-                  //Copy the response since it can only be read once
-                  let clonedresp = result.clone();
+          window.caches
+            .open(this.browserCacheName)
+            .then(cache => {
+              caches.match(GETURL).then(result => {
+                if (result === undefined) {
+                  //No matches for this request in Storage Cache, so fetch the request normally
+                  //Upon success, a cloned copy will need to be returned.
+                  fetch(GETURL).then(result => {
+                    //Copy the response since it can only be read once
+                    let clonedresp = result.clone();
 
-                  //Add the result to the cache
-                  if (clonedresp.status != 404){
-                    cache.put(GETURL, result);
-                  }
-                  resolve(clonedresp.json().then(text => text));
-                });
-              } else {
-                //Cache hit success, return the response data
-                resolve(result.json().then(text => text));
-              }
+                    //Add the result to the cache
+                    if (clonedresp.status != 404) {
+                      cache.put(GETURL, result);
+                    }
+                    resolve(clonedresp.json().then(text => text));
+                  });
+                } else {
+                  //Cache hit success, return the response data
+                  resolve(result.json().then(text => text));
+                }
+              });
+            })
+            .catch(e => {
+              //Cannot open Storage Cache
+              console.log(
+                `%cProblem opening Cache Storage. Name: ${this.browserCacheName}`,
+                "color: grey"
+              );
+              this.sendToBrowserCache = false;
+            })
+            .finally(() => {
+              //Attempt raw fetch
+              resolve(this.fetchData(GETURL));
+              reject(new Error("Promise error on data fetch."));
             });
-          })
-          .catch(e => {//Cannot open Storage Cache
-            console.log(`%cProblem opening Cache Storage. Name: ${this.browserCacheName}`, "color: grey");
-            this.sendToBrowserCache = false;
-          }).finally(() => {//Attempt raw fetch
-            resolve(this.fetchData(GETURL));
-            reject(new Error("Promise error on data fetch."))
-          });
         }
       });
       //The promise has resolved --> return the promise data
@@ -129,7 +137,7 @@ export class apiGET {
       let dataCachePromise = new Promise((resolve, reject) => {
         resolve(this.fetchData(GETURL));
       });
-      dataCachePromise.then((data) => {
+      dataCachePromise.then(data => {
         return data;
       });
       return dataCachePromise;
@@ -161,8 +169,8 @@ export class apiGET {
    */
   private fetchData(GETURL: URL) {
     return fetch(GETURL)
-      .then((response) => this.apiResponseErrorCheck(response))
-      .then((data) => {
+      .then(response => this.apiResponseErrorCheck(response))
+      .then(data => {
         if (data instanceof Response) {
           return data.text();
         } else return data;
@@ -173,5 +181,4 @@ export class apiGET {
         this.errorElem.innerText = `${e.message}`;
       });
   }
-
 }

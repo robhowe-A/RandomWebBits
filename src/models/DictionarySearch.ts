@@ -8,7 +8,6 @@ import { RWBParseJSON } from "./RWBJSONConverter";
 import { RWBStringifyJSON } from "./RWBJSONConverter";
 import { DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements";
 
-
 /**
  * A DictionarySearch is a set of markup creation and functions which allow a user
  *  to look up a word like a Dictionary. When called, the user's input is validated
@@ -59,23 +58,33 @@ export class DictionarySearch extends DictionarySearchMarkup {
     //Local Storage 'word-caches' items data assignment
     //cache response links and cache name are previously stored in Local Storage
     let storageStr: string;
-    if(RWBError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", true, true)){
+    if (
+      RWBError.checkLocalStorageEqualNull(
+        "DictionarySearch",
+        "word-caches",
+        true,
+        true
+      )
+    ) {
       //The Local Storage is null or empty--> Confirm here the browser does not have any Cache Storage items in error
-      if ("caches" in window){
-        if (window.caches.has(DictionarySearch.CacheStorageNameofWordRequest)){
-            window.caches.delete(DictionarySearch.CacheStorageNameofWordRequest);
+      if ("caches" in window) {
+        if (window.caches.has(DictionarySearch.CacheStorageNameofWordRequest)) {
+          window.caches.delete(DictionarySearch.CacheStorageNameofWordRequest);
         }
-      localStorage.removeItem('word-caches');
-      return;
+        localStorage.removeItem("word-caches");
+        return;
       }
     }
     storageStr = localStorage.getItem("word-caches");
     //check the word-cache value for correct json parsing
     let parsetest = Object.create(new RWBParseJSON(storageStr));
-    if (!parsetest.passed){
+    if (!parsetest.passed) {
       localStorage.removeItem("word-caches");
-      console.log(`%c<RWB>%cDeleted storage key: word-caches`, 
-        'color:orange;font-size:14px;font-weight:bold;', 'color:orange;font-size:16px;');
+      console.log(
+        `%c<RWB>%cDeleted storage key: word-caches`,
+        "color:orange;font-size:14px;font-weight:bold;",
+        "color:orange;font-size:16px;"
+      );
       this.getLocalStorageWordCaches();
       return;
     }
@@ -112,36 +121,36 @@ export class DictionarySearch extends DictionarySearchMarkup {
     }
     let buttonContainer = document.getElementById("dictionary-btns");
     const hidePreviousPanel = () => {
-        buttonContainer.style.display = "none";
-        this.previousWordsBtnWasClicked = true;
-    }
+      buttonContainer.style.display = "none";
+      this.previousWordsBtnWasClicked = true;
+    };
 
     //Add form input event listeners
     //Upon input entry, fire API fetch
-    this.searchElements.wordSearch.addEventListener("click", (event) => {
-        event.preventDefault();
-        this.wordSearch(this.searchElements, false, null);
-        if (this.previousWordsBtnWasClicked) hidePreviousPanel();
-      });
-    this.searchElements.searchWord.addEventListener("keypress", (event) => {
-        if (event.key !== "Enter") return;
-          event.preventDefault();
-          this.wordSearch(this.searchElements, false, null);
-          if (this.previousWordsBtnWasClicked) hidePreviousPanel();
-      });
-      
+    this.searchElements.wordSearch.addEventListener("click", event => {
+      event.preventDefault();
+      this.wordSearch(this.searchElements, false, null);
+      if (this.previousWordsBtnWasClicked) hidePreviousPanel();
+    });
+    this.searchElements.searchWord.addEventListener("keypress", event => {
+      if (event.key !== "Enter") return;
+      event.preventDefault();
+      this.wordSearch(this.searchElements, false, null);
+      if (this.previousWordsBtnWasClicked) hidePreviousPanel();
+    });
+
     //"Previous word searches" button fetches locally stored words
     //Clicking the button displays each word in a list within the widget
-    this.searchElements.previousWordBtn.addEventListener("click", (event) => {
+    this.searchElements.previousWordBtn.addEventListener("click", event => {
       event.preventDefault();
       this.checkcreatePreviousWordButtons();
-      });
-    
+    });
+
     //"Refresh" button reloads the page
-    this.searchElements.refreshBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        location.reload();
-      });
+    this.searchElements.refreshBtn.addEventListener("click", event => {
+      event.preventDefault();
+      location.reload();
+    });
   }
 
   private checkcreatePreviousWordButtons() {
@@ -149,14 +158,19 @@ export class DictionarySearch extends DictionarySearchMarkup {
     let buttonContainer = this.searchElements.previousWordsContainer;
 
     //Check the placement locator and word caches for undefined
-    if (placementlocationholder == null ||
-      DictionarySearch.wordStorage == null) {
+    if (
+      placementlocationholder == null ||
+      DictionarySearch.wordStorage == null
+    ) {
       if (!this.previousWordsBtnIsCreated) {
-          const noWordsHeadingElem = buttonContainer.appendChild(document.createElement("div"));
-          noWordsHeadingElem.classList.add("dictionary-btn", "error-notfound");
-          noWordsHeadingElem.textContent = "Previous words not found. The cache is empty.";
-          this.previousWordsBtnIsCreated = true;
-          this.previousWordsBtnWasClicked = true;
+        const noWordsHeadingElem = buttonContainer.appendChild(
+          document.createElement("div")
+        );
+        noWordsHeadingElem.classList.add("dictionary-btn", "error-notfound");
+        noWordsHeadingElem.textContent =
+          "Previous words not found. The cache is empty.";
+        this.previousWordsBtnIsCreated = true;
+        this.previousWordsBtnWasClicked = true;
         return;
       }
       if (!this.previousWordsBtnWasClicked) {
@@ -178,17 +192,27 @@ export class DictionarySearch extends DictionarySearchMarkup {
       this.previousWordsBtnWasClicked = true;
       return;
     }
-    this.createPreviousWordButtons(this.previousWordsBtnWasClicked, buttonContainer);
+    this.createPreviousWordButtons(
+      this.previousWordsBtnWasClicked,
+      buttonContainer
+    );
   }
 
-  private createPreviousWordButtons(previousWordsBtnWasClicked: any, buttonContainer: HTMLDivElement){
-    if(previousWordsBtnWasClicked){
-        buttonContainer.style.display = "none";
-        this.previousWordsBtnWasClicked = false;
-        return;
+  private createPreviousWordButtons(
+    previousWordsBtnWasClicked: any,
+    buttonContainer: HTMLDivElement
+  ) {
+    if (previousWordsBtnWasClicked) {
+      buttonContainer.style.display = "none";
+      this.previousWordsBtnWasClicked = false;
+      return;
     }
-      let previouswordbuttons: DictionarySearchPreviousWordKeyElements[] = this.createPreviousWordSearchesElements(DictionarySearch.wordStorage, buttonContainer);
-      for (let btn of previouswordbuttons){
+    let previouswordbuttons: DictionarySearchPreviousWordKeyElements[] =
+      this.createPreviousWordSearchesElements(
+        DictionarySearch.wordStorage,
+        buttonContainer
+      );
+    for (let btn of previouswordbuttons) {
       this.previousWordsBtnWasClicked = true;
       this.previousWordsBtnIsCreated = true;
 
@@ -203,31 +227,42 @@ export class DictionarySearch extends DictionarySearchMarkup {
       btn.wordHeadingElemContainer.addEventListener("touchstart", () => {
         btn.deleteCacheWordHeadingElem.style.display = "inline-block";
         //when not hovered, hide the delete button option
-        btn.wordHeadingElemContainer.addEventListener("mouseleave", (event: any) => {
+        btn.wordHeadingElemContainer.addEventListener(
+          "mouseleave",
+          (event: any) => {
             if (event.target == btn.deleteCacheWordHeadingElem) {
               return;
             }
             btn.deleteCacheWordHeadingElem.style.display = "none";
-          });
+          }
+        );
       });
 
       //when hovered, display the delete button option
-      btn.wordHeadingElemContainer.addEventListener("mouseover", (event: any) => {
-        btn.deleteCacheWordHeadingElem.style.display = "inline-block";
-        //when not hovered, hide the delete button option
-        btn.wordHeadingElemContainer.addEventListener("mouseleave", (event: any) => {
-            if (event.target == btn.deleteCacheWordHeadingElem) {
-              return;
+      btn.wordHeadingElemContainer.addEventListener(
+        "mouseover",
+        (event: any) => {
+          btn.deleteCacheWordHeadingElem.style.display = "inline-block";
+          //when not hovered, hide the delete button option
+          btn.wordHeadingElemContainer.addEventListener(
+            "mouseleave",
+            (event: any) => {
+              if (event.target == btn.deleteCacheWordHeadingElem) {
+                return;
+              }
+              btn.deleteCacheWordHeadingElem.style.display = "none";
             }
-            btn.deleteCacheWordHeadingElem.style.display = "none";
-          });
-      });
+          );
+        }
+      );
 
       //add event listener for delete button
       btn.deleteCacheWordHeadingElem.addEventListener("click", (event: any) => {
         event.preventDefault();
         btn.wordHeadingElemContainer.remove();
-        this.removeDictionaryTermfromLocalStorage(btn.cacheWordHeadingElem.textContent);
+        this.removeDictionaryTermfromLocalStorage(
+          btn.cacheWordHeadingElem.textContent
+        );
       });
     }
   }
@@ -240,22 +275,34 @@ export class DictionarySearch extends DictionarySearchMarkup {
   private addDictionaryTermtoLocalStorage(localstoragevalue: localstorageword) {
     //Log the word cache creation
     const addedwordcache = () => {
-      console.log(`%c<RWB>%cAdded word cache: ${localstoragevalue.word}`, 
-        'color:cyan;font-weight:bold;', 'color:cyan;');
-    }
+      console.log(
+        `%c<RWB>%cAdded word cache: ${localstoragevalue.word}`,
+        "color:cyan;font-weight:bold;",
+        "color:cyan;"
+      );
+    };
     //The 'localstoragevalue' needs added to local storage cache
     //Local storage may be empty or already having the wanted searched word
     //Check storage is not null. If it is, add the word.
     if (DictionarySearch.wordStorage == null) {
-      if (RWBError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
+      if (
+        RWBError.checkLocalStorageEqualNull(
+          "DictionarySearch",
+          "word-caches",
+          false,
+          false
+        )
+      ) {
         //Add the storage word to an array
         let wordStore: localstorageword[] = [];
         wordStore.push(localstoragevalue);
         let jsonstr: string = "";
 
         //Call RWBStringifyJSON to stringify the object
-        let stringifytestsingleword = Object.create(new RWBStringifyJSON(wordStore));
-        if(!stringifytestsingleword.passed){
+        let stringifytestsingleword = Object.create(
+          new RWBStringifyJSON(wordStore)
+        );
+        if (!stringifytestsingleword.passed) {
           //stringify object did not work, so return
           //LOGLEAF
           return;
@@ -264,8 +311,11 @@ export class DictionarySearch extends DictionarySearchMarkup {
 
         // Local storage is empty => add the word
         localStorage.setItem("word-caches", jsonstr);
-        console.log(`%c<RWB>%cCreated storage key: word-caches`, 
-          'color:cyan;font-size:14px;font-weight:bold;', 'color:cyan;font-size:16px;');
+        console.log(
+          `%c<RWB>%cCreated storage key: word-caches`,
+          "color:cyan;font-size:14px;font-weight:bold;",
+          "color:cyan;font-size:16px;"
+        );
         addedwordcache();
         return;
       }
@@ -290,7 +340,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
 
     //Call RWBStringifyJSON to stringify the object
     let stringifytestdoubleword = Object.create(new RWBStringifyJSON(allcache));
-    if(!stringifytestdoubleword.passed){
+    if (!stringifytestdoubleword.passed) {
       //stringify object did not work, so return
       //LOGLEAF
       return;
@@ -317,25 +367,32 @@ export class DictionarySearch extends DictionarySearchMarkup {
     //Get the words array from Local Storage
     //RWBError.checkLocalStorageNullorEmpty("DictionaryWidget", "word-caches"); //log whether fetched word cache is null or empty.
     let allcache: localstorageword[] = DictionarySearch.wordStorage;
-    
+
     //Remove the word from Cache Storage and Local Storage word array
     for (let wordCache of allcache) {
       if (wordCache.word == localstorageword) {
         this.removeRequestfromCacheStorage(wordCache.wordURL);
         allcache.splice(allcache.indexOf(wordCache), 1);
-        console.log(`%c<RWB>%cDeleted word cache: ${localstorageword}`, 
-          'color:darkcyan;font-weight:bold;', 'color:darkcyan;');
+        console.log(
+          `%c<RWB>%cDeleted word cache: ${localstorageword}`,
+          "color:darkcyan;font-weight:bold;",
+          "color:darkcyan;"
+        );
       }
     }
-    if (allcache.length == 0){ //The removed word was the last word in the array, so remove the container
+    if (allcache.length == 0) {
+      //The removed word was the last word in the array, so remove the container
       localStorage.removeItem("word-caches");
-      console.log(`%c<RWB>%cDeleted storage key: word-caches`, 
-        'color:darkcyan;font-size:14px;font-weight:bold;', 'color:darkcyan;font-size:16px;');
+      console.log(
+        `%c<RWB>%cDeleted storage key: word-caches`,
+        "color:darkcyan;font-size:14px;font-weight:bold;",
+        "color:darkcyan;font-size:16px;"
+      );
       return;
     }
     //Call RWBStringifyJSON to stringify the object
     let wordcachesstrfytest = Object.create(new RWBStringifyJSON(allcache));
-    if (!wordcachesstrfytest.passed){
+    if (!wordcachesstrfytest.passed) {
       //LOGLEAF
       return;
     }
@@ -345,29 +402,29 @@ export class DictionarySearch extends DictionarySearchMarkup {
   }
 
   /**
-   * Remove a fetch request from Cache Storage. Utilizes 
+   * Remove a fetch request from Cache Storage. Utilizes
    * DictionarySearch.CacheStorageNameofWordRequest for cache name.
-   * @param removeURL 
+   * @param removeURL
    */
   private removeRequestfromCacheStorage(removeURL: URL) {
     window.caches
-    .open(DictionarySearch.CacheStorageNameofWordRequest)
-    .then((cache) => {
-      caches.match(removeURL).then((result) => {
-        if (result === undefined) {
-          console.log("Problem matching the result. Result: ", result);
-        } else {
-          let cachePromise = new Promise((resolve) => resolve(result));
-          cachePromise.then(() => {
-            cache.delete(removeURL);
-          });
-        }
+      .open(DictionarySearch.CacheStorageNameofWordRequest)
+      .then(cache => {
+        caches.match(removeURL).then(result => {
+          if (result === undefined) {
+            console.log("Problem matching the result. Result: ", result);
+          } else {
+            let cachePromise = new Promise(resolve => resolve(result));
+            cachePromise.then(() => {
+              cache.delete(removeURL);
+            });
+          }
+        });
       });
-    });
   }
 
   /**
-   * This function dynamically recalls a word definition request and instantiates apiGET(). The 
+   * This function dynamically recalls a word definition request and instantiates apiGET(). The
    * returned promise also dymanically answers the widget markup.
    *
    * @param word - The word searched from widget input.
@@ -377,7 +434,13 @@ export class DictionarySearch extends DictionarySearchMarkup {
    * @param cacheName - If sending fetch requests to cache, provide a name to store it under.
    * @returns - wordData: Promise<unknown>
    */
-  private fetchDictionaryTerm(word: string, wordUrl: URL, searchElems: DictionarySearchElements, sendToCache: boolean, cacheName: string | null) {
+  private fetchDictionaryTerm(
+    word: string,
+    wordUrl: URL,
+    searchElems: DictionarySearchElements,
+    sendToCache: boolean,
+    cacheName: string | null
+  ) {
     //A function call parameter option is to store the word request in browser's Cache Storage
     //Structure the word data via 'localstoragewordvalue' interface used throughout fetching
     let wordcache: localstorageword = {
@@ -404,7 +467,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
         //If the returned data is a string, it is the word definition data.
         noDefinitions = false;
         let parsetest = Object.create(new RWBParseJSON(data));
-        if(!parsetest.passed){
+        if (!parsetest.passed) {
           return;
         }
         data = parsetest.returnobj;
@@ -416,7 +479,10 @@ export class DictionarySearch extends DictionarySearchMarkup {
           //No definitions were found when data is an object with a title property
           //wordData.title == "No Definitions Found"
           noDefinitions = true;
-          if(wordData.title == "No Definitions Found" && wordcache.inCache == true){
+          if (
+            wordData.title == "No Definitions Found" &&
+            wordcache.inCache == true
+          ) {
             //The data stream here is without word data. This function awaits the api fetch's data
             //to complete storage/promise returns. It waits 5 seconds for the browser to complete its store functions
             //then removes the unwanted cache request.
@@ -425,30 +491,35 @@ export class DictionarySearch extends DictionarySearchMarkup {
             // fire getLocalStorageWordCaches() to clear any mismatched worddata<-->cachedrequests.
             setTimeout(() => {
               //Function awaiting request's Cache Storage caching
-                try{
-                    this.removeRequestfromCacheStorage(wordFetch.getGETURL());
-                }
-                catch{
-                    console.log("Could not remove from Cache Storage. Name: ", wordFetch.getGETURL());
-                }
-            }, 5000)
+              try {
+                this.removeRequestfromCacheStorage(wordFetch.getGETURL());
+              } catch {
+                console.log(
+                  "Could not remove from Cache Storage. Name: ",
+                  wordFetch.getGETURL()
+                );
+              }
+            }, 5000);
           }
         }
       }
-      if (data == undefined || noDefinitions) {//Good data--> return data for markup render
+      if (data == undefined || noDefinitions) {
+        //Good data--> return data for markup render
         //'Bad data' due to "No definitions found", invalid word, bad network connection
-        if (!navigator.onLine) {//Online, problem with fetch
+        if (!navigator.onLine) {
+          //Online, problem with fetch
           //Offline request
           searchElems.errorElem.innerText += ", check network connection.";
           return;
         }
-        if (noDefinitions) {//Server returned no definitions data
+        if (noDefinitions) {
+          //Server returned no definitions data
           if (wordData.title == "No Definitions Found")
             searchElems.errorElem.innerText = "No Definitions Found";
-            return data;
-          } 
-          else {//Invalid word data
-            searchElems.errorElem.innerText = "Invalid word!";
+          return data;
+        } else {
+          //Invalid word data
+          searchElems.errorElem.innerText = "Invalid word!";
         }
         searchElems.searchWord.classList.add("invalid-notfound");
         searchElems.errorElem.classList.add("error-notfound");
@@ -481,32 +552,45 @@ export class DictionarySearch extends DictionarySearchMarkup {
   }
 
   /**
-   * callFetchDictionaryTerm awaits a promise, fetching a dictionary term. The data 
+   * callFetchDictionaryTerm awaits a promise, fetching a dictionary term. The data
    * ingress calls markup creation function.
    *
    * @param searchElems - Widget Elements -- key widget function elements.
    * @param word - The word to be fetched.
    * @param wordURL - A URL composing the full url of the fetch request.
    */
-  private callFetchDictionaryTerm(searchElems: DictionarySearchElements, word: string, wordURL: URL) {
+  private callFetchDictionaryTerm(
+    searchElems: DictionarySearchElements,
+    word: string,
+    wordURL: URL
+  ) {
     // When the word data resolves, call markup functions
-    let wordDataPromise = new Promise((resolve) => {
+    let wordDataPromise = new Promise(resolve => {
       resolve(
-        this.fetchDictionaryTerm(word, wordURL, searchElems, true, DictionarySearch.CacheStorageNameofWordRequest)
+        this.fetchDictionaryTerm(
+          word,
+          wordURL,
+          searchElems,
+          true,
+          DictionarySearch.CacheStorageNameofWordRequest
+        )
       );
     });
     wordDataPromise.then((data: object) => {
       this.wordData = data;
       this.createDictionaryTermWithMarkup(data, searchElems);
-      if (data == undefined || Object.hasOwn(data, 'title')) return;
-        console.log(`%c<RWB>%cRetrieved word: ${word}`, 
-        'color:gold;font-weight:bold;', 'color:gold;');
-        // Remove unneeded classes if applied previously
-        searchElems.searchWord.classList.remove("invalid");
-        searchElems.searchWord.classList.remove("invalid-notfound");
-        searchElems.errorElem.classList.remove("error");
-        searchElems.errorElem.classList.remove("error-notfound");
-        searchElems.errorElem.textContent = "";
+      if (data == undefined || Object.hasOwn(data, "title")) return;
+      console.log(
+        `%c<RWB>%cRetrieved word: ${word}`,
+        "color:gold;font-weight:bold;",
+        "color:gold;"
+      );
+      // Remove unneeded classes if applied previously
+      searchElems.searchWord.classList.remove("invalid");
+      searchElems.searchWord.classList.remove("invalid-notfound");
+      searchElems.errorElem.classList.remove("error");
+      searchElems.errorElem.classList.remove("error-notfound");
+      searchElems.errorElem.textContent = "";
     });
   }
 
@@ -518,9 +602,17 @@ export class DictionarySearch extends DictionarySearchMarkup {
    * @param isFromPreviousWords - True if the user requested a search from a previous word, to call data from Browser Cache.
    * @param cachedWord - If the user called for a previous word, cachedWord is within the Local Storage.
    */
-  private wordSearch(searchElems: DictionarySearchElements, isFromPreviousWords: boolean, cachedWord: localstorageword | null) {
+  private wordSearch(
+    searchElems: DictionarySearchElements,
+    isFromPreviousWords: boolean,
+    cachedWord: localstorageword | null
+  ) {
     if (isFromPreviousWords) {
-      this.callFetchDictionaryTerm(searchElems, cachedWord.word, cachedWord.wordURL);
+      this.callFetchDictionaryTerm(
+        searchElems,
+        cachedWord.word,
+        cachedWord.wordURL
+      );
     } else {
       // Take user input and filter to an accepted string
       let acceptedInputWord: boolean = false;
@@ -529,8 +621,15 @@ export class DictionarySearch extends DictionarySearchMarkup {
         : (acceptedInputWord = false);
       if (acceptedInputWord) {
         // Create a URL of the accepted word for use in the fetch call
-        this.wordURL = new URL(searchElems.searchWord.value.toString(), DictionarySearch.requestUrl);
-        this.callFetchDictionaryTerm(searchElems, searchElems.searchWord.value, this.wordURL);
+        this.wordURL = new URL(
+          searchElems.searchWord.value.toString(),
+          DictionarySearch.requestUrl
+        );
+        this.callFetchDictionaryTerm(
+          searchElems,
+          searchElems.searchWord.value,
+          this.wordURL
+        );
       } else {
         searchElems.searchWord.classList.remove("invalid-notfound");
         searchElems.searchWord.classList.add("invalid");

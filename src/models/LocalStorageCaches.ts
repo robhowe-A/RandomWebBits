@@ -4,16 +4,16 @@
  * Interface used for Local Storage key-value dictionary words
  */
 export interface localstorageword {
-    inCache: boolean,
-    word: string,
-    wordURL: URL,
-    cacheName: string,
+  inCache: boolean;
+  word: string;
+  wordURL: URL;
+  cacheName: string;
 }
 
 /**
  * Interface used for Local Storage key-values
  */
 export interface localstoragetodocache {
-    inCache: boolean,
-    todoitem: string,
+  inCache: boolean;
+  todoitem: string;
 }

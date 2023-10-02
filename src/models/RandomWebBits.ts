@@ -4,43 +4,46 @@ import RWBCard from "../components/RWBCard";
 import RWBError from "./RWBErrorBus";
 
 export class RandomWebBits {
-    public static buildCardContainingSection(sectionTitle: string, sectionHeadingID: string) {
-        // Create sectional elements to append to main
-        const pageMain = document.querySelector("main");
-        if (pageMain == null || pageMain.nodeName !== 'MAIN') {
-            if(RWBError.checkElementforNull("MainRWB", "main", true, true)){
-                ReadableStreamDefaultController
-            }
-        }
-            // Create card section elements
-            // <section class="cards">
-            //     <h2>Arbitrary Articles:</h2>
-            //     <div class="card_columns">
-
-            //     </div>
-            // </section>
-            //
-            const AASection = document.createElement("section");
-            let aaHeading = document.createElement('h2');
-            let aaCardsSection = document.createElement('div');
-            AASection.appendChild(aaHeading);
-            AASection.appendChild(aaCardsSection);
-            pageMain.append(AASection);
-
-            // Add data attributes and property values
-            AASection.classList.add("cards");
-            aaCardsSection.classList.add('card_columns', 'cardslideshow', 'grid');
-            aaHeading.innerText = `${sectionTitle}`;
-            aaHeading.setAttribute("id", sectionHeadingID);
-
-            return aaCardsSection;
-        }
-    public static buildRWBCards(cardsData: WebBit[]) {
-        // Iterate each card in the array. Build the card elements and add the data
-        let AAs = cardsData.map((article: WebBit) => {
-            const rwbcard = new RWBCard();
-            return rwbcard.buildRWBCardMarkup(article);
-        })
-        return AAs;
+  public static buildCardContainingSection(
+    sectionTitle: string,
+    sectionHeadingID: string
+  ) {
+    // Create sectional elements to append to main
+    const pageMain = document.querySelector("main");
+    if (pageMain == null || pageMain.nodeName !== "MAIN") {
+      if (RWBError.checkElementforNull("MainRWB", "main", true, true)) {
+        ReadableStreamDefaultController;
+      }
     }
+    // Create card section elements
+    // <section class="cards">
+    //     <h2>Arbitrary Articles:</h2>
+    //     <div class="card_columns">
+
+    //     </div>
+    // </section>
+    //
+    const AASection = document.createElement("section");
+    let aaHeading = document.createElement("h2");
+    let aaCardsSection = document.createElement("div");
+    AASection.appendChild(aaHeading);
+    AASection.appendChild(aaCardsSection);
+    pageMain.append(AASection);
+
+    // Add data attributes and property values
+    AASection.classList.add("cards");
+    aaCardsSection.classList.add("card_columns", "cardslideshow", "grid");
+    aaHeading.innerText = `${sectionTitle}`;
+    aaHeading.setAttribute("id", sectionHeadingID);
+
+    return aaCardsSection;
+  }
+  public static buildRWBCards(cardsData: WebBit[]) {
+    // Iterate each card in the array. Build the card elements and add the data
+    let AAs = cardsData.map((article: WebBit) => {
+      const rwbcard = new RWBCard();
+      return rwbcard.buildRWBCardMarkup(article);
+    });
+    return AAs;
+  }
 }

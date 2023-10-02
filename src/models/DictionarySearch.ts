@@ -255,6 +255,21 @@ export class DictionarySearch extends DictionarySearchMarkup {
           );
         }
       );
+      //when focus (such as using keyboard only), display the delete button
+      btn.cacheWordHeadingElem.addEventListener("focus", (e: any) => {
+        e.preventDefault();
+        btn.deleteCacheWordHeadingElem.style.display = "inline-block";
+      });
+      //when not focused, hide the delete button option
+      btn.deleteCacheWordHeadingElem.addEventListener(
+        "focusout",
+        (event: any) => {
+          if (event.target == btn.cacheWordHeadingElem) {
+            return;
+          }
+          btn.deleteCacheWordHeadingElem.style.display = "none";
+        }
+      );
 
       //add event listener for delete button
       btn.deleteCacheWordHeadingElem.addEventListener("click", (event: any) => {

@@ -3,7 +3,6 @@
 import HeaderFooter from "./components/HeaderFooter";
 import PageComponents from "./PageComponents";
 import ClassComponents from "./ClassComponents";
-import mobileAbbrMarkup from "./components/mobileMarkup";
 import RWBPerf from "./models/ScriptPerf";
 
 const mainperf = new RWBPerf("main");
@@ -24,12 +23,12 @@ const main = {
       HeaderFooter.headerWidget.init();
       HeaderFooter.footerWidget.init();
 
-      // Initialize page components
-      // Initialize element components
-      ClassComponents.init(PageComponents.init());
+      let page: string = window.location.pathname;
 
-      // <abbr></abbr> styles: implemented for mobile devices
-      mobileAbbrMarkup.init();
+      // Initialize page components
+      PageComponents.init(page);
+      // Initialize element components
+      ClassComponents.init(page);
 
       mainperf.end();
     });

@@ -18,9 +18,9 @@ import { PS_pwa, PS_at, PS_ip } from "./components/PhotoSwipe";
 import ClassComponents from "./ClassComponents";
 
 const PageComponents = {
-  CheckPage: () => {
+  CheckPage: (page: string) => {
     ClassComponents.fourohfour();
-    let page: string = window.location.pathname;
+
     switch (page) {
       //'Index' and 'Pages' routes, add cards widget
       case "/RandomWebBits/index.html":
@@ -83,13 +83,12 @@ const PageComponents = {
         hslcolorwidget.inithslcolorpicker();
         break;
     }
-    return page;
   },
-  init: () => {
+  init: (page: string) => {
     const pageperf = new RWBPerf("Pagecomponents"); //measure performance
 
     customElements.define("acronyms-list", SimpleGreeting);
-    let page = PageComponents.CheckPage();
+    PageComponents.CheckPage(page);
 
     pageperf.end(); //end performance measure
     return page;

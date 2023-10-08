@@ -8,7 +8,18 @@ var watchify = require("watchify"); // Recompile the browser components on save
 var tsify = require("tsify"); // Browser plugin for compiling TypeScript
 var fancy_log = require("fancy-log"); // Gulp terminal extension
 var paths = {
-  pages: ["src/*.html"],
+  imports: [
+    "src/*.html",
+    "src/pages/*.html",
+    "src/guides/*.html",
+    "src/explore/*.html",
+    "src/_headers",
+    "src/css/*.css",
+    "src/css/fonts/*.ttf",
+    "src/css/fonts/*.txt",
+    "src/img/*",
+    "src/img/favicon/*",
+  ],
 };
 var watchedBrowserify = watchify(
   browserify({
@@ -20,8 +31,14 @@ var watchedBrowserify = watchify(
   }).plugin(tsify)
 );
 gulp.task("copy-html", function () {
-  return gulp.src(paths.pages).pipe(gulp.dest("dist"));
+  return gulp.src(paths.imports, { base: "./src/" }).pipe(gulp.dest("dist"));
 });
+// gulp.task("copy-html", function () {
+//   return gulp.src(paths.css, { base: "./src/" }).pipe(gulp.dest("dist"));
+// });
+// gulp.task("copy", function () {
+//   return gulp.src("src/_headers", { base: "./src/" }).pipe(gulp.dest("dist"));
+// });
 function bundle() {
   return watchedBrowserify
     .bundle()

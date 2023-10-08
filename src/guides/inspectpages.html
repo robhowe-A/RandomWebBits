@@ -1,0 +1,78 @@
+<!--Copyright (c) 2023 Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use browser tools to inspect open pages from an easy-to-find location.">
+    <title>&lt;/RWB&gt;GUIDE: Inspect Pages</title>
+    <link rel="stylesheet" 
+        href="../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../typescript.js"></script>
+    <link rel="stylesheet" href="../css/photoswipe.css">
+</head>
+<body class="WebBits-width">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main>
+        <time datetime="2023-04-10">April 10, 2023</time>
+        <article id="InspectPages" class="WebBits">
+            <h2>GUIDE: Dev Tools --&gt; Inspect Pages</h2>
+            <p>Opening the browser's developer toolset can be done in many ways. Multiple key binding combinations or even selecting the option from the settings will do the trick. Or, in the <em>edge</em> browser, you can follow this quick bit: <code>Ctrl&nbsp;+&nbsp;Q --&gt; type&nbsp;<q>dev</q></code></p>
+            <figure class="imgShadow pictureCaption">
+                <img src="/img/Edge-Inspect_ctrlq.png" alt="Application tab in dev tools.">
+                <figcaption>Edge browser command palette</figcaption>
+            </figure>
+            <p>With the <abbr title="developer">DEV</abbr> tools open, development may resume, until a separate tab needs to be opened. The process needs to be repeated for each tab. This can slow productivity, so an even faster method can be used to navigate tabs quickly, directly into the dev tools. Introducing the <abbr title="Uniform Resource Locator">URL</abbr> as such: <span class="url">edge://inspect/#pages</span></p>
+            <hr>
+                <h3>Open inspection panel:</h3>
+                <ol id="inspectSteps">
+                    <li><strong>Step 1:</strong> <code>Ctrl&nbsp;+&nbsp;Q --&gt; type&nbsp;<q>inspect</q></code> to get to <span class="url">edge://inspect/</span><br></li>
+                    <li><strong>Step 2:</strong> Click to open the <q>Pages</q> page<br></li>
+                    <li><strong>Step 3:</strong> Click <q>inspect</q> to jump to that page with network inspection open</li>
+                </ol>
+            <!--Photoswipe start-->
+            <div id="inspectPages-Gallery" class="devToolsGrid">
+                <figure class="pictureCaption img1">
+                    <a class="pswp-gallery__item" href="/img/Edge-Inspect.png" data-pswp-width="960" data-pswp-height="1032">
+                        <img src="/img/Edge-Inspect.png" alt="LocalStorage before clearing browser data" width="480" height="516">
+                    </a>
+                    <figcaption><strong>Step 1:</strong> Edge and chrome browsers each open the <q>Devices</q> page first</figcaption>
+                </figure>
+                <figure class=" pictureCaption img2">
+                    <a class="pswp-gallery__item" href="/img/Edge-Inspect_inspect.png" data-pswp-width="960" data-pswp-height="1032">
+                        <img src="/img/Edge-Inspect_inspect.png" alt="LocalStorage after clearing browser data" width="480" height="516">
+                    </a>
+                    <figcaption><strong>Step 2:</strong> Nineteen tabs are open in relation to DNS.<br><strong>Note:</strong> each page has an inspect and a pause button.</figcaption>
+                </figure>
+                <figure class=" pictureCaption img3">
+                    <a class="pswp-gallery__item" href="/img/Edge-Inspect_inspected-page.png" data-pswp-width="960" data-pswp-height="1032">
+                        <img src="/img/Edge-Inspect_inspected-page.png" alt="Cookies after clearing browser data" width="480" height="516">
+                    </a>
+                    <figcaption><strong>Step 3:</strong> After clicking inspect, the page is opened with the dev tools at the Network tab.</figcaption>
+                </figure>
+              </div>
+              <aside class="examplePink">
+                <p>Both <b>Google Chrome</b> and <b>Edge</b> operate the <em>chromium</em> browser engine, so each browser has this option.<br><br><code>chrome://inspect/#pages</code> or <code>edge://inspect/#pages</code></p>
+            </aside>
+              <hr>
+              <h3>Monitor browser processes</h3>
+              <p><strong>Step 4: &lpar;Optional&rpar;</strong> <code>Shift&nbsp;+&nbsp;Esc</code> opens the browser task manager. The process ID <abbr title="Process ID">&lpar;PID&rpar;</abbr> matches that found in the details tab of the <abbr title="Operating System">OS</abbr> task manager.</p>
+        </article>
+        <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    </main>
+        <noscript>Your JavaScript may be broken or is disabled. <br>Turn it on for full experience! Here are <a href="https://www.enable-javascript.com/">the instructions how to enable JavaScript in your web browser</a>.<br><br>-- Random Web Bits &copy;2023</noscript>
+</body>
+</html>

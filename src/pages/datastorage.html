@@ -1,0 +1,43 @@
+<!--Copyright (c) 2023 Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Local storage saves data when needed for concurrent page surfing.">
+    <title>&lt;/RWB&gt;Data Storage</title>
+    <link rel="stylesheet" 
+        href="../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../typescript.js"></script>
+</head>
+<body class="WebBits-width">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main>
+        <time datetime="2023-08-14">August 14, 2023</time>
+        <article id="URL" class="WebBits">
+            <h2>TRY: Review data storage</h2>
+            <p>Data storage is elemental to a website's operation. Viewing a web page doesn't involve disk storage, and the webpage's source code isn't saved. Instead, it is retrieved from a web server through web requests on each iteration. Go to <span data-rwb-type="link"><a href="markup.html" title="&lt;/RWB&gt; Markup">&lt;Markup&gt;</a></span> for viewing source code.</p>
+            <p>Data from one web page is sometimes needed for concurrent web pages. While a server <em>can</em> save the needed data, doing so is inefficient and adds unnecessary upkeep and maintenance of the server. The browser offers the developer 'localStorage' for this use case.</p>
+            <aside class="exampleBlue">
+                Go to <span data-rwb-type="link"><a href="/guides/applicationtab.html" title="&lt;/RWB&gt; GUIDE: Dev Application">&lt;GUIDE: Dev Application&gt;</a></span> for viewing local storage.
+            </aside>
+            <p>Browser's local storage is domain-based. That means dev tools will report data for each domain holding data. On the home page, <a href="https://randomwebbits.com" title="&lt;Random Web Bits&gt; | Home">https://randomwebbits.com</a>, the To-Do list stores each to-do in a local storage key called `ToDos`. Also, the Dictionary Term component stores `word-caches` as JSON objects to save all the previously searched words.</p>
+        </article>
+    </main>
+    <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+        <noscript>Your JavaScript may be broken or is disabled. <br>Turn it on for full experience! Here are <a href="https://www.enable-javascript.com/">the instructions how to enable JavaScript in your web browser</a>.<br><br>-- Random Web Bits &copy;2023</noscript>
+</body>
+</html>

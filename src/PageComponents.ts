@@ -1,32 +1,23 @@
 //--Copyright (c) 2023 Robert A. Howell
-import ExpandingListDOMWidget from "./ExpandingListDOMWidget";
-import ActiveCardsWidget from "./GrowingCard";
-import flashcardgameWidget from "./FlashcardGameWidget";
-import slideshowWidget from "./SlideShowWidget";
-import cssex from "./cssex";
-import htmlexColorCode from "./colorcode";
-import RWBCardsWidget from "./WebBits";
-import urlexColorCode from "./colorcodeurl";
-import RWBPerf from "../models/ScriptPerf";
-import domainlookup from "./domainlookup";
-import sliderbar from "./sliderbar";
-import hslcolorwidget from "./hslcolor";
+import ExpandingListDOMWidget from "./components/ExpandingListDOMWidget";
+import ActiveCardsWidget from "./components/GrowingCard";
+import flashcardgameWidget from "./components/FlashcardGameWidget";
+import slideshowWidget from "./components/SlideShowWidget";
+import cssex from "./components/cssex";
+import htmlexColorCode from "./components/colorcode";
+import RWBCardsWidget from "./components/WebBits";
+import urlexColorCode from "./components/colorcodeurl";
+import RWBPerf from "./models/ScriptPerf";
+import domainlookup from "./components/domainlookup";
+import sliderbar from "./components/sliderbar";
+import hslcolorwidget from "./components/hslcolor";
 
-import WebBitsSlideShow from "./WebBitsSlideshow";
-import { SimpleGreeting } from "./acronyms-element";
-import { PS_pwa, PS_at, PS_ip } from "./PhotoSwipe";
+import WebBitsSlideShow from "./components/WebBitsSlideshow";
+import { SimpleGreeting } from "./components/acronyms-element";
+import { PS_pwa, PS_at, PS_ip } from "./components/PhotoSwipe";
 import ClassComponents from "./ClassComponents";
 
 const PageComponents = {
-  init: () => {
-    const pageperf = new RWBPerf("Pagecomponents"); //measure performance
-
-    customElements.define("acronyms-list", SimpleGreeting);
-    let page = PageComponents.CheckPage();
-
-    pageperf.end(); //end performance measure
-    return page;
-  },
   CheckPage: () => {
     ClassComponents.fourohfour();
     let page: string = window.location.pathname;
@@ -94,6 +85,16 @@ const PageComponents = {
     }
     return page;
   },
+  init: () => {
+    const pageperf = new RWBPerf("Pagecomponents"); //measure performance
+
+    customElements.define("acronyms-list", SimpleGreeting);
+    let page = PageComponents.CheckPage();
+
+    pageperf.end(); //end performance measure
+    return page;
+  },
+  load: () => {},
 };
 
 export default PageComponents;

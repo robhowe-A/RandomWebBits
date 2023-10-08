@@ -1,8 +1,8 @@
 "strict mode";
 //--Copyright (c) 2023 Robert A. Howell
 import HeaderFooter from "./components/HeaderFooter";
-import PageComponents from "./components/PageComponents";
-import ClassComponents from "./components/ClassComponents";
+import PageComponents from "./PageComponents";
+import ClassComponents from "./ClassComponents";
 import mobileAbbrMarkup from "./components/mobileMarkup";
 import RWBPerf from "./models/ScriptPerf";
 

@@ -1,0 +1,54 @@
+<!--Copyright (c) 2023 Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A conversation with AI about JavaScript fetch request: accuracy and recreation of an API fetch.">
+    <title>&lt;/RWB&gt;chatGPT Test</title>
+    <link rel="stylesheet" 
+        href="../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../typescript.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css&amp;skin=sons-of-obsidian"></script>
+</head>
+<body class="WebBits-width">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main>
+        <time datetime="2023-01-28">January 28, 2023</time>
+        <article id="chatGPT" class="WebBits">
+            <h2>TRY: Previewing chatGPT</h2>
+                <p>A first attempt of <a href="https://chat.openai.com/chat" target="_blank" title="chatGPT">chatGPT</a> may get an error or wrong results. <img src="../img/chatGPT_First.jpeg" alt="Chat GPT conversation attempt showing error"></p>
+            <p>Reattempting the same question prompt <i><q>How do I make an HTTP request in Javascript?</q></i> was very descriptive and informative. In fact, the discussion was accurate and provided a nice format. The conversation is in the below markup:
+            <img src="../img/chatGPT_Second.jpeg" alt="Chat GPT screenshot working example"></p>
+            <hr>
+            <aside class="exampleBlue">
+                <p>The example fetch request URLs have been changed to vary the API usage. This example calls the open API called <strong><q>An API of Ice and Fire</q></strong></p>
+            </aside>
+            <div id="GPT">
+                <p>There are several ways to make an HTTP request in JavaScript, but one of the most popular is using the <code>fetch()</code> function.</p>
+                <p>Here's an example of how you can use <code>fetch()</code> to make a GET request to an API:</p>
+        <pre class="prettyprint linenums"><code>fetch('https://anapioficeandfire.com/api/characters/1770')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));</code></pre>
+        <p>This example uses the <code>fetch()</code> function to make a GET request to the url <a href="https://anapioficeandfire.com/" target="_blank" title="An API of Ice and Fire">anapioficeandfire.com</a>. The <code>then()</code> method is called with a callback function that logs the response data in the console, and the <code>catch()</code> method logs any errors that occur.</p>
+            </div>
+        </article>
+        <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    </main>
+        <noscript>Your JavaScript may be broken or is disabled. <br>Turn it on for full experience! Here are <a href="https://www.enable-javascript.com/">the instructions how to enable JavaScript in your web browser</a>.<br><br>-- Random Web Bits &copy;2023</noscript>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!--Copyright (c) 2023 Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A ToDo list on RWB static pages, available through JavaScript and localStorage.">
+    <title>&lt;/RWB&gt;To-Do List</title>
+    <link rel="stylesheet" 
+        href="../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../typescript.js"></script>
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/91ce0b8975.js" crossorigin="anonymous"></script>
+</head>
+<body class="WebBits-width">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main>
+        <time datetime="2023-02-20">February 20, 2023</time>
+        <aside class="exampleBlue ToDoList">
+            <p>Keep a list of things to do.</p>
+        </aside>
+        <section id="ToDO">
+            <h3>To-Do:</h3>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Complete?</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ToDoItems">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <input id="AddButton" type="button" value="Add">
+                            </td>
+                            <td>
+                                <input name="itemINPUT" type="text">
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>   
+            </div>
+        </section>
+        <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    </main>
+        <noscript>Your JavaScript may be broken or is disabled. <br>Turn it on for full experience! Here are <a href="https://www.enable-javascript.com/">the instructions how to enable JavaScript in your web browser</a>.<br><br>-- Random Web Bits &copy;2023</noscript>
+</body>
+</html>

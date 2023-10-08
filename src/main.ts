@@ -27,6 +27,7 @@ const main = {
 
       // Initialize page components
       PageComponents.init(page);
+
       // Initialize element components
       ClassComponents.init(page);
 

@@ -33,12 +33,6 @@ var watchedBrowserify = watchify(
 gulp.task("copy-html", function () {
   return gulp.src(paths.imports, { base: "./src/" }).pipe(gulp.dest("dist"));
 });
-// gulp.task("copy-html", function () {
-//   return gulp.src(paths.css, { base: "./src/" }).pipe(gulp.dest("dist"));
-// });
-// gulp.task("copy", function () {
-//   return gulp.src("src/_headers", { base: "./src/" }).pipe(gulp.dest("dist"));
-// });
 function bundle() {
   return watchedBrowserify
     .bundle()

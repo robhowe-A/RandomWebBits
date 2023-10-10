@@ -626,6 +626,24 @@ const GuideShorts = new Array(
       "GUIDE: Clear cookies quickly",
       30
     )
+  ),
+  new WebBit(
+    "InspectElement",
+    38,
+    "Element Inspect",
+    "See an element's metadata using hover details.",
+    new Date(2023, 10, 9),
+    "guides/elementinspect.html",
+    "img/checked.webp",
+    "To-do list notepad",
+    new AttributionLink(
+      "inspection icons",
+      "Inspection icons created by Freepik - Flaticon",
+      "https://www.flaticon.com/free-icons/inspection",
+      "Flaticon",
+      "To-Do List",
+      38
+    )
   )
 );
 

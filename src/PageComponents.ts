@@ -46,11 +46,12 @@ const PageComponents = {
         PS_pwa();
         slideshowWidget.init();
         break;
-      case "/guides/applicationtab.html":
-        PS_at();
-        break;
+      case "/guides/elementinspect.html":
       case "/guides/https.html":
         PS_pwa();
+        break;
+      case "/guides/applicationtab.html":
+        PS_at();
         break;
       case "/guides/inspectpages.html":
         PS_ip();

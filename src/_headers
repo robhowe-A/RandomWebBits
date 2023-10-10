@@ -63,7 +63,6 @@
   Content-Type: text/css; charset=utf-8
   X-Content-Type-Options: nosniff
 
-
 /img/2dShapes.png
 	Content-Type: image/png;
 /img/BingSkinny.jpeg
@@ -94,6 +93,14 @@
 	Content-Type: image/webp;
 /img/HTML_source.webp
 	Content-Type: image/webp;
+/img/InspectElement1.png
+	Content-Type: image/png;
+/img/InspectElement2.png
+	Content-Type: image/png;
+/img/InspectElement3.png
+	Content-Type: image/png;
+/img/InspectElement4.png
+	Content-Type: image/png;
 /img/JWST_poster.webp
 	Content-Type: image/webp;
 /img/NASA.GOV.jpeg
@@ -139,6 +146,8 @@
 /img/chatGPT_Second.jpeg
 	Content-Type: image/jpeg;
 /img/check.webp
+	Content-Type: image/webp;
+/img/checked.webp
 	Content-Type: image/webp;
 /img/chronometer.webp
 	Content-Type: image/webp;

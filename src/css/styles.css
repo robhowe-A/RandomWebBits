@@ -1314,7 +1314,8 @@ figure figcaption a {
   color: var(--clr-primary-900) !important;
 }
 
-#HTTPS figure {
+#HTTPS figure,
+#ElementInspect figure {
   width: auto;
 }
 
@@ -1851,11 +1852,13 @@ time {
   padding: 1.2em;
 }
 
-#HTTPS figure {
+#HTTPS figure,
+#ElementInspect figure {
   margin: 0 auto;
 }
 
-#HTTPS figure {
+#HTTPS figure,
+#ElementInspect figure {
   padding-top: 2em;
   padding-bottom: 1em;
 }
@@ -1865,7 +1868,8 @@ figcaption {
   font-style: italic;
 }
 
-#HTTPS div>p:not(:first-child) {
+#HTTPS div>p:not(:first-child),
+#ElementInspect div>p:not(:first-child) {
   margin: 0;
   color: var(--clr-black-900);
   font-family: monospace, sans-serif;

@@ -126,23 +126,52 @@ const WebBitsSlideShow = {
         aaslideshow.cards[i].style.transform = "translateX(365px)";
       }
     }
+    aaslideshow.cards[0].style.position = "absolute";
+    aaslideshow.cards[0].style.opacity = "100%";
+    aaslideshow.cards[1].style.display = "block";
+
     if (windowsize == "LARGE") {
-      aaslideshow.cards[0].style.position = "absolute";
-      aaslideshow.cards[0].style.opacity = "100%";
       aaslideshow.cards[0].style.transform = "translateX(-365px)";
       aaslideshow.cards[1].style.position = "absolute";
       aaslideshow.cards[1].style.opacity = "100%";
       aaslideshow.cards[2].style.position = "absolute";
       aaslideshow.cards[2].style.opacity = "100%";
       aaslideshow.cards[2].style.transform = "translateX(365px)";
+      aaslideshow.cards[2].style.display = "block";
+      aaslideshow.cards[3].style.display = "block";
+      aaslideshow.cards[3].children[1].children[2].setAttribute(
+        "tabindex",
+        "-1"
+      );
+      aaslideshow.cards[3].children[1].children[3].setAttribute(
+        "tabindex",
+        "-1"
+      );
     }
     if (windowsize == "MEDIUM") {
-      aaslideshow.cards[0].style.position = "absolute";
-      aaslideshow.cards[0].style.opacity = "100%";
       aaslideshow.cards[0].style.transform = "translateX(-182.5px)";
       aaslideshow.cards[1].style.position = "absolute";
       aaslideshow.cards[1].style.opacity = "100%";
       aaslideshow.cards[1].style.transform = "translateX(182.5px)";
+      aaslideshow.cards[2].style.display = "block";
+      aaslideshow.cards[2].children[1].children[2].setAttribute(
+        "tabindex",
+        "-1"
+      );
+      aaslideshow.cards[2].children[1].children[3].setAttribute(
+        "tabindex",
+        "-1"
+      );
+    }
+    if (windowsize == "SMALL") {
+      aaslideshow.cards[1].children[1].children[2].setAttribute(
+        "tabindex",
+        "-1"
+      );
+      aaslideshow.cards[1].children[1].children[3].setAttribute(
+        "tabindex",
+        "-1"
+      );
     }
 
     //Next/previous button event listeners
@@ -164,9 +193,24 @@ const WebBitsSlideShow = {
       return;
     }
     if (windowsize == "LARGE") {
+      if (slideshow.cards[slideshow.cardindxstart - 1] != undefined) {
+        slideshow.cards[slideshow.cardindxstart - 1].style.display = "none";
+        slideshow.cards[
+          slideshow.cardindxstart - 1
+        ].children[1].children[2].removeAttribute("tabindex");
+        slideshow.cards[
+          slideshow.cardindxstart - 1
+        ].children[1].children[3].removeAttribute("tabindex");
+      }
       //Hide the first element in slideshow
       slideshow.cards[slideshow.cardindxstart].style.opacity = "0%";
-      slideshow.cards[slideshow.cardindxstart].style.display = "none";
+      slideshow.cards[
+        slideshow.cardindxstart
+      ].children[1].children[2].setAttribute("tabindex", "-1");
+      slideshow.cards[
+        slideshow.cardindxstart
+      ].children[1].children[3].setAttribute("tabindex", "-1");
+
       //Move middle element to left
       slideshow.cards[slideshow.cardindxstart + 1].style.transform =
         "translateX(-365px)";
@@ -174,30 +218,86 @@ const WebBitsSlideShow = {
       slideshow.cards[slideshow.cardindxstart + 2].style.transform =
         "translateX(0px)";
       //Display the next element for slideshow
-      slideshow.cards[slideshow.cardsindxend + 1].style.display = "block";
+      slideshow.cards[
+        slideshow.cardsindxend + 1
+      ].children[1].children[2].removeAttribute("tabindex");
+      slideshow.cards[
+        slideshow.cardsindxend + 1
+      ].children[1].children[3].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardsindxend + 1].style.opacity = "100%";
       //Move in new element
       slideshow.cards[slideshow.cardsindxend + 1].style.transform =
         "translateX(365px)";
+      if (slideshow.cards[slideshow.cardsindxend + 2] != undefined) {
+        slideshow.cards[
+          slideshow.cardsindxend + 2
+        ].children[1].children[2].setAttribute("tabindex", "-1");
+        slideshow.cards[
+          slideshow.cardsindxend + 2
+        ].children[1].children[3].setAttribute("tabindex", "-1");
+        slideshow.cards[slideshow.cardsindxend + 2].style.display = "block";
+      }
     }
     if (windowsize == "MEDIUM") {
+      if (slideshow.cards[slideshow.cardindxstart - 1] != undefined) {
+        slideshow.cards[slideshow.cardindxstart - 1].style.display = "none";
+        slideshow.cards[
+          slideshow.cardindxstart - 1
+        ].children[1].children[2].removeAttribute("tabindex");
+        slideshow.cards[
+          slideshow.cardindxstart - 1
+        ].children[1].children[3].removeAttribute("tabindex");
+      }
       //Hide the first element in slideshow
       slideshow.cards[slideshow.cardindxstart].style.opacity = "0%";
-      slideshow.cards[slideshow.cardindxstart].style.display = "none";
+      slideshow.cards[
+        slideshow.cardindxstart
+      ].children[1].children[2].setAttribute("tabindex", "-1");
+      slideshow.cards[
+        slideshow.cardindxstart
+      ].children[1].children[3].setAttribute("tabindex", "-1");
       //Move the right element to left
       slideshow.cards[slideshow.cardindxstart + 1].style.transform =
         "translateX(-182.5px)";
       //Display the next element for slideshow
-      slideshow.cards[slideshow.cardsindxend + 1].style.display = "block";
+      slideshow.cards[
+        slideshow.cardsindxend + 1
+      ].children[1].children[2].removeAttribute("tabindex");
+      slideshow.cards[
+        slideshow.cardsindxend + 1
+      ].children[1].children[3].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardsindxend + 1].style.opacity = "100%";
       //Move in new element
       slideshow.cards[slideshow.cardsindxend + 1].style.transform =
         "translateX(182.5px)";
+      if (slideshow.cards[slideshow.cardsindxend + 2] != undefined) {
+        slideshow.cards[
+          slideshow.cardsindxend + 2
+        ].children[1].children[2].setAttribute("tabindex", "-1");
+        slideshow.cards[
+          slideshow.cardsindxend + 2
+        ].children[1].children[3].setAttribute("tabindex", "-1");
+        slideshow.cards[slideshow.cardsindxend + 2].style.display = "block";
+      }
     }
     if (windowsize == "SMALL") {
+      if (slideshow.cards[slideshow.cardindxstart - 1] != undefined) {
+        slideshow.cards[slideshow.cardindxstart - 1].style.display = "none";
+        slideshow.cards[
+          slideshow.cardindxstart - 1
+        ].children[1].children[2].removeAttribute("tabindex");
+        slideshow.cards[
+          slideshow.cardindxstart - 1
+        ].children[1].children[3].removeAttribute("tabindex");
+      }
       //Hide the first element in slideshow
       slideshow.cards[slideshow.cardindxstart].style.opacity = "0%";
-      slideshow.cards[slideshow.cardindxstart].style.display = "none";
+      slideshow.cards[
+        slideshow.cardindxstart
+      ].children[1].children[2].setAttribute("tabindex", "-1");
+      slideshow.cards[
+        slideshow.cardindxstart
+      ].children[1].children[3].setAttribute("tabindex", "-1");
       //Move element to left
       slideshow.cards[slideshow.cardindxstart].style.transform =
         "translateX(-182.5px)";
@@ -205,8 +305,22 @@ const WebBitsSlideShow = {
       slideshow.cards[slideshow.cardindxstart + 1].style.transform =
         "translateX(0px)";
       //Display the next element for slideshow
-      slideshow.cards[slideshow.cardsindxend + 1].style.display = "block";
+      slideshow.cards[
+        slideshow.cardsindxend + 1
+      ].children[1].children[2].removeAttribute("tabindex");
+      slideshow.cards[
+        slideshow.cardsindxend + 1
+      ].children[1].children[3].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardsindxend + 1].style.opacity = "100%";
+      if (slideshow.cards[slideshow.cardsindxend + 2] != undefined) {
+        slideshow.cards[
+          slideshow.cardsindxend + 2
+        ].children[1].children[2].setAttribute("tabindex", "-1");
+        slideshow.cards[
+          slideshow.cardsindxend + 2
+        ].children[1].children[3].setAttribute("tabindex", "-1");
+        slideshow.cards[slideshow.cardsindxend + 2].style.display = "block";
+      }
     }
 
     //Increment index counter
@@ -222,38 +336,108 @@ const WebBitsSlideShow = {
     if (windowsize == "LARGE") {
       //Hide the last element in slideshow
       slideshow.cards[slideshow.cardsindxend].style.opacity = "0%";
-      slideshow.cards[slideshow.cardsindxend].style.display = "none";
-      //Move left element to the right
-      slideshow.cards[slideshow.cardindxstart].style.transform =
-        "translateX(0px)";
+      slideshow.cards[
+        slideshow.cardsindxend
+      ].children[1].children[2].setAttribute("tabindex", "-1");
+      slideshow.cards[
+        slideshow.cardsindxend
+      ].children[1].children[3].setAttribute("tabindex", "-1");
+      if (slideshow.cards[slideshow.cardsindxend + 1] != undefined) {
+        slideshow.cards[slideshow.cardsindxend + 1].style.display = "none";
+        slideshow.cards[
+          slideshow.cardsindxend + 1
+        ].children[1].children[2].removeAttribute("tabindex");
+        slideshow.cards[
+          slideshow.cardsindxend + 1
+        ].children[1].children[3].removeAttribute("tabindex");
+      }
       //Move middle element to to the right
       slideshow.cards[slideshow.cardindxstart + 1].style.transform =
         "translateX(365px)";
+      //Move left element to the right
+      slideshow.cards[slideshow.cardindxstart].style.transform =
+        "translateX(0px)";
       //Display the next element for slideshow
-      slideshow.cards[slideshow.cardindxstart - 1].style.display = "block";
+      slideshow.cards[
+        slideshow.cardindxstart - 1
+      ].children[1].children[2].removeAttribute("tabindex");
+      slideshow.cards[
+        slideshow.cardindxstart - 1
+      ].children[1].children[3].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardindxstart - 1].style.opacity = "100%";
       //Move in new element
       slideshow.cards[slideshow.cardindxstart - 1].style.transform =
         "translateX(-365px)";
+      if (slideshow.cards[slideshow.cardindxstart - 2] != undefined) {
+        slideshow.cards[
+          slideshow.cardindxstart - 2
+        ].children[1].children[2].setAttribute("tabindex", "-1");
+        slideshow.cards[
+          slideshow.cardindxstart - 2
+        ].children[1].children[3].setAttribute("tabindex", "-1");
+        slideshow.cards[slideshow.cardindxstart - 2].style.display = "block";
+      }
     }
     if (windowsize == "MEDIUM") {
       //Hide the last element in slideshow
       slideshow.cards[slideshow.cardsindxend].style.opacity = "0%";
-      slideshow.cards[slideshow.cardsindxend].style.display = "none";
+      slideshow.cards[
+        slideshow.cardsindxend
+      ].children[1].children[2].setAttribute("tabindex", "-1");
+      slideshow.cards[
+        slideshow.cardsindxend
+      ].children[1].children[3].setAttribute("tabindex", "-1");
+      if (slideshow.cards[slideshow.cardsindxend + 1] != undefined) {
+        slideshow.cards[slideshow.cardsindxend + 1].style.display = "none";
+        slideshow.cards[
+          slideshow.cardsindxend + 1
+        ].children[1].children[2].removeAttribute("tabindex");
+        slideshow.cards[
+          slideshow.cardsindxend + 1
+        ].children[1].children[3].removeAttribute("tabindex");
+      }
       //Move left element to the right
       slideshow.cards[slideshow.cardindxstart].style.transform =
         "translateX(182.5px)";
       //Display the next element for slideshow
-      slideshow.cards[slideshow.cardindxstart - 1].style.display = "block";
+      slideshow.cards[
+        slideshow.cardindxstart - 1
+      ].children[1].children[2].removeAttribute("tabindex");
+      slideshow.cards[
+        slideshow.cardindxstart - 1
+      ].children[1].children[3].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardindxstart - 1].style.opacity = "100%";
       //Move in new element
       slideshow.cards[slideshow.cardindxstart - 1].style.transform =
         "translateX(-182.5px)";
+      if (slideshow.cards[slideshow.cardindxstart - 2] != undefined) {
+        slideshow.cards[
+          slideshow.cardindxstart - 2
+        ].children[1].children[2].setAttribute("tabindex", "-1");
+        slideshow.cards[
+          slideshow.cardindxstart - 2
+        ].children[1].children[3].setAttribute("tabindex", "-1");
+        slideshow.cards[slideshow.cardindxstart - 2].style.display = "block";
+      }
     }
     if (windowsize == "SMALL") {
       //Hide the first element in slideshow
       slideshow.cards[slideshow.cardindxstart].style.opacity = "0%";
-      slideshow.cards[slideshow.cardindxstart].style.display = "none";
+      slideshow.cards[
+        slideshow.cardsindxend
+      ].children[1].children[2].setAttribute("tabindex", "-1");
+      slideshow.cards[
+        slideshow.cardsindxend
+      ].children[1].children[3].setAttribute("tabindex", "-1");
+      if (slideshow.cards[slideshow.cardsindxend + 1] != undefined) {
+        slideshow.cards[slideshow.cardsindxend + 1].style.display = "none";
+        slideshow.cards[
+          slideshow.cardsindxend + 1
+        ].children[1].children[2].removeAttribute("tabindex");
+        slideshow.cards[
+          slideshow.cardsindxend + 1
+        ].children[1].children[3].removeAttribute("tabindex");
+      }
       //Move element to right
       slideshow.cards[slideshow.cardindxstart].style.transform =
         "translateX(182.5px)";
@@ -261,8 +445,22 @@ const WebBitsSlideShow = {
       slideshow.cards[slideshow.cardindxstart - 1].style.transform =
         "translateX(0px)";
       //Display the next element for slideshow
-      slideshow.cards[slideshow.cardindxstart - 1].style.display = "block";
+      slideshow.cards[
+        slideshow.cardindxstart - 1
+      ].children[1].children[2].removeAttribute("tabindex");
+      slideshow.cards[
+        slideshow.cardindxstart - 1
+      ].children[1].children[3].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardindxstart - 1].style.opacity = "100%";
+      if (slideshow.cards[slideshow.cardindxstart - 2] != undefined) {
+        slideshow.cards[slideshow.cardindxstart - 2].style.display = "block";
+        slideshow.cards[
+          slideshow.cardindxstart - 2
+        ].children[1].children[2].setAttribute("tabindex", "-1");
+        slideshow.cards[
+          slideshow.cardindxstart - 2
+        ].children[1].children[3].setAttribute("tabindex", "-1");
+      }
     }
 
     //Increment index counter

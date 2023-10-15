@@ -252,4 +252,5 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 1.8.78: New WebBits page: ElementInspect  
 1.8.79: WebBits Slideshow tabindex  
 1.8.80: Header/Footer colors  
+1.8.81: Propagation Latency Calculator  
 </details>

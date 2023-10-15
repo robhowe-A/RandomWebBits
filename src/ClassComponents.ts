@@ -10,6 +10,7 @@ const ClassComponents = {
     const classperf = new RWBPerf("Classcomponents"); //begin performance measure
 
     // Add Dictionary Widget if an element with that class is on a page
+<<<<<<< HEAD
     if (page == "/pages/dictionaryword.html" || page == "/index.html" || page == "/" || page == "") {
       if (RWBError.checkElementforNull("ClassComponent", ".dictionaryWidget", true, true)) return;
       DictionaryWidget.init();
@@ -18,6 +19,37 @@ const ClassComponents = {
     if (page == "/pages/todos.html" || page == "/index.html" || page == "/" || page == "") {
       // Add ToDos widget if an element with that class is on a page
       if (RWBError.checkElementforNull("ClassComponent", ".ToDoList", true, true)) return;
+=======
+    if (
+      page == "/pages/dictionaryword.html" ||
+      page == "/index.html" ||
+      page == "/" ||
+      page == ""
+    ) {
+      if (
+        RWBError.checkElementforNull(
+          "ClassComponent",
+          ".dictionaryWidget",
+          true,
+          true
+        )
+      )
+        return;
+      DictionaryWidget.init();
+    }
+
+    if (
+      page == "/pages/todos.html" ||
+      page == "/index.html" ||
+      page == "/" ||
+      page == ""
+    ) {
+      // Add ToDos widget if an element with that class is on a page
+      if (
+        RWBError.checkElementforNull("ClassComponent", ".ToDoList", true, true)
+      )
+        return;
+>>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
       ToDosWidget.init();
     }
     ClassComponents.mobileAbbrMarkups();
@@ -25,7 +57,18 @@ const ClassComponents = {
     classperf.end(); //end performance measure
   },
   fourohfour: () => {
+<<<<<<< HEAD
     if (!RWBError.checkElementforNull("PageComponents", "#Four-Oh-Four", false, true)) {
+=======
+    if (
+      !RWBError.checkElementforNull(
+        "PageComponents",
+        "#Four-Oh-Four",
+        false,
+        true
+      )
+    ) {
+>>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
       notfound404widget.init();
     }
   },
@@ -54,12 +97,19 @@ const ClassComponents = {
 
         abbrev.abbrElement.addEventListener("click", e => {
           e.preventDefault();
+<<<<<<< HEAD
           let abbrtitleattrval: string = abbrev.abbrElement.getAttribute("title") as string;
+=======
+          let abbrtitleattrval: string = abbrev.abbrElement.getAttribute(
+            "title"
+          ) as string;
+>>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
           let description: HTMLSpanElement;
 
           if (e.target == abbr) {
             if (abbrev.abbrElement.children.length < 1) {
               //create the span element
+<<<<<<< HEAD
               description = abbrev.abbrElement.appendChild(document.createElement("span"));
               description.textContent = `${String.fromCharCode(160)}(${abbrtitleattrval}${String.fromCharCode(
                 160
@@ -70,6 +120,22 @@ const ClassComponents = {
               description.textContent = `${String.fromCharCode(160)}(${abbrtitleattrval}${String.fromCharCode(
                 160
               )})`;
+=======
+              description = abbrev.abbrElement.appendChild(
+                document.createElement("span")
+              );
+              description.textContent = `${String.fromCharCode(
+                160
+              )}(${abbrtitleattrval}${String.fromCharCode(160)})`;
+            } else {
+              //show the span element
+              description = abbrev.abbrElement.querySelector(
+                "span"
+              ) as HTMLSpanElement;
+              description.textContent = `${String.fromCharCode(
+                160
+              )}(${abbrtitleattrval}${String.fromCharCode(160)})`;
+>>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
             }
           }
           abbrev.abbrElement.addEventListener("mouseleave", () => {

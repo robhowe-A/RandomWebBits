@@ -164,6 +164,7 @@ const WebBitsSlideShow = {
       );
     }
     if (windowsize == "SMALL") {
+      aaslideshow.cards[1].style.transform = "translateX(182.5px)";
       aaslideshow.cards[1].children[1].children[2].setAttribute(
         "tabindex",
         "-1"
@@ -313,6 +314,8 @@ const WebBitsSlideShow = {
       ].children[1].children[3].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardsindxend + 1].style.opacity = "100%";
       if (slideshow.cards[slideshow.cardsindxend + 2] != undefined) {
+        slideshow.cards[slideshow.cardsindxend + 2].style.transform =
+          "translateX(182.5px)";
         slideshow.cards[
           slideshow.cardsindxend + 2
         ].children[1].children[2].setAttribute("tabindex", "-1");

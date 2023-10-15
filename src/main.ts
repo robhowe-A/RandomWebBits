@@ -12,28 +12,29 @@ const mainperf = new RWBPerf("main");
  * TypeScript entry point. This script initializes page components and models as
  *  they're needed main.init() is the initialization of "typescript.js".
  */
-const main = {
+const RWB = {
   /**
    * Initialize page widgets and application functions.
    */
-  init() {
+  init: () => {
     // Event fired before assets are rendered to the page
-    window.addEventListener("DOMContentLoaded", () => {
-      // Add header and footer components
-      HeaderFooter.headerWidget.init();
-      HeaderFooter.footerWidget.init();
+    window.addEventListener("DOMContentLoaded", RWB.main);
+  },
+  main: () => {
+    // Add header and footer components
+    HeaderFooter.headerWidget.init();
+    HeaderFooter.footerWidget.init();
 
-      let page: string = window.location.pathname;
+    let page: string = window.location.pathname;
 
-      // Initialize page components
-      PageComponents.init(page);
+    // Initialize page components
+    PageComponents.init(page);
 
-      // Initialize element components
-      ClassComponents.init(page);
+    // Initialize element components
+    ClassComponents.init(page);
 
-      mainperf.end();
-    });
+    mainperf.end();
   },
 };
 
-main.init();
+RWB.init();

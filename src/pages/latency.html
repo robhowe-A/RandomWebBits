@@ -29,8 +29,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <time datetime="2023-07-18">July 18, 2023</time>
         <article id="LATENCY" class="WebBits">
             <h2>TRY: Measuring website latency</h2>
-            <p>The speed of light travels at 300,000,000 meters per second. Every millisecond, then, is 300,000 meters per second, or 300km = 186 miles. Two computers connected over the internet experience this latency, accumulating 1 millisecond for every 186 miles in packet travel. This is a limitation of physics. It is immutable.</p>
-            <acronyms-list></acronyms-list>
+            <p>The speed of light is 300,000,000 meters per second. Every millisecond, light travels 300,000 meters = 300km = 186 miles. Two computers connected over the internet experience this latency, accumulating 1 millisecond for every 186 miles in packet travel. This is a limitation of physics. It is immutable.</p>
+            <form id="PropagationLatency" action="">
+                <h3>Calculate Propagation Latency</h3>
+                <label for="distance">Distance(km)</label>
+                <input type="text" id="distance" placeholder="300 km" required>
+                <label for="mediumSpeed">Medium Speed(m/s)</label>
+                <input type="text" id="mediumSpeed" placeholder="300,000 m/s" required>
+                <label for="packetSize">Packet Size(bytes)</label>
+                <input type="text" id="packetSize" placeholder="1500 bytes">
+                <label for="transmissionRate">Transmission Rate(KB/s)</label>
+                <input type="text" id="transmissionRate" placeholder="1,000,000 Kbs">
+                <div id="propagationcalcbtns">
+                    <div>
+                        <button id="example1" class="propcalcbtn" type="example" aria-labelby="ExampleOne">Ex. 1</button>
+                        <button id="example2" class="propcalcbtn" type="example" aria-labelby="ExampleTwo">Ex. 2</button>
+                        <button id="example3" class="propcalcbtn" type="example" aria-labelby="ExampleThree">Ex. 3</button>
+                    </div>
+                    <div>
+                        <input id="reset" class="propcalcbtn" type="reset" value="Reset">
+                        <input id="calculate" class="propcalcbtn" type="submit" value="Calculate">
+                    </div>
+                </div>
+                <hr>
+                <h4>Results</h4>
+                <div id="propcalcres"></div>
+            </form>
             <aside class="examplePink">
                 <h3>More about the speed of light:</h3>
                 <ul>
@@ -43,6 +67,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <aside class="exampleBlue">
                 <p>Speed of light latency is 1 millisecond per 186 miles.</p>
             </aside>
+            <acronyms-list></acronyms-list>
             <p>Critical sites, such as the business retail website, should consider travel latency in both operating and backup situations. For example, a frontend server operating in Miami expecting a failover server in Seattle experiences 18 milliseconds of travel latency. This means that a <abbr title="Transmission Control Protocol">TCP</abbr> connection &lpar;which requires three way handshake&rpar; alone would add 54ms delay.</p>
         </article>
     </main>

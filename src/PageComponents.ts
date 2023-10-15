@@ -16,6 +16,7 @@ import WebBitsSlideShow from "./components/WebBitsSlideshow";
 import { SimpleGreeting } from "./components/acronyms-element";
 import { PS_pwa, PS_at, PS_ip } from "./components/PhotoSwipe";
 import ClassComponents from "./ClassComponents";
+import latencyCalculator from "./components/calculate";
 
 const PageComponents = {
   CheckPage: (page: string) => {
@@ -83,6 +84,10 @@ const PageComponents = {
       case "/pages/hsl.html":
         hslcolorwidget.inithslcolorpicker();
         break;
+      // Initialize Propagation Latency calculator
+      case "/pages/latency.html":
+        latencyCalculator.init();
+        break;
     }
   },
   init: (page: string) => {
@@ -92,7 +97,6 @@ const PageComponents = {
     PageComponents.CheckPage(page);
 
     pageperf.end(); //end performance measure
-    return page;
   },
   load: () => {},
 };

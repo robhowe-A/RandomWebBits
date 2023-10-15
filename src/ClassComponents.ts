@@ -10,35 +10,14 @@ const ClassComponents = {
     const classperf = new RWBPerf("Classcomponents"); //begin performance measure
 
     // Add Dictionary Widget if an element with that class is on a page
-    if (
-      page == "/pages/dictionaryword.html" ||
-      page == "/index.html" ||
-      page == "/" ||
-      page == ""
-    ) {
-      if (
-        RWBError.checkElementforNull(
-          "ClassComponent",
-          ".dictionaryWidget",
-          true,
-          true
-        )
-      )
-        return;
+    if (page == "/pages/dictionaryword.html" || page == "/index.html" || page == "/" || page == "") {
+      if (RWBError.checkElementforNull("ClassComponent", ".dictionaryWidget", true, true)) return;
       DictionaryWidget.init();
     }
 
-    if (
-      page == "/pages/todos.html" ||
-      page == "/index.html" ||
-      page == "/" ||
-      page == ""
-    ) {
+    if (page == "/pages/todos.html" || page == "/index.html" || page == "/" || page == "") {
       // Add ToDos widget if an element with that class is on a page
-      if (
-        RWBError.checkElementforNull("ClassComponent", ".ToDoList", true, true)
-      )
-        return;
+      if (RWBError.checkElementforNull("ClassComponent", ".ToDoList", true, true)) return;
       ToDosWidget.init();
     }
     ClassComponents.mobileAbbrMarkups();
@@ -46,14 +25,7 @@ const ClassComponents = {
     classperf.end(); //end performance measure
   },
   fourohfour: () => {
-    if (
-      !RWBError.checkElementforNull(
-        "PageComponents",
-        "#Four-Oh-Four",
-        false,
-        true
-      )
-    ) {
+    if (!RWBError.checkElementforNull("PageComponents", "#Four-Oh-Four", false, true)) {
       notfound404widget.init();
     }
   },
@@ -82,28 +54,22 @@ const ClassComponents = {
 
         abbrev.abbrElement.addEventListener("click", e => {
           e.preventDefault();
-          let abbrtitleattrval: string = abbrev.abbrElement.getAttribute(
-            "title"
-          ) as string;
+          let abbrtitleattrval: string = abbrev.abbrElement.getAttribute("title") as string;
           let description: HTMLSpanElement;
 
           if (e.target == abbr) {
             if (abbrev.abbrElement.children.length < 1) {
               //create the span element
-              description = abbrev.abbrElement.appendChild(
-                document.createElement("span")
-              );
-              description.textContent = `${String.fromCharCode(
+              description = abbrev.abbrElement.appendChild(document.createElement("span"));
+              description.textContent = `${String.fromCharCode(160)}(${abbrtitleattrval}${String.fromCharCode(
                 160
-              )}(${abbrtitleattrval}${String.fromCharCode(160)})`;
+              )})`;
             } else {
               //show the span element
-              description = abbrev.abbrElement.querySelector(
-                "span"
-              ) as HTMLSpanElement;
-              description.textContent = `${String.fromCharCode(
+              description = abbrev.abbrElement.querySelector("span") as HTMLSpanElement;
+              description.textContent = `${String.fromCharCode(160)}(${abbrtitleattrval}${String.fromCharCode(
                 160
-              )}(${abbrtitleattrval}${String.fromCharCode(160)})`;
+              )})`;
             }
           }
           abbrev.abbrElement.addEventListener("mouseleave", () => {

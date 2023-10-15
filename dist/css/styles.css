@@ -62,7 +62,7 @@
   :root {
     --clr-light-100: #ffffff;
     --clr-light-300: #fefefe;
-    --clr-light-500: #fdfdfd;
+    --clr-light-500: #e7e7e7;
     --clr-light-600: #cacaca;
     --clr-light-700: #989898;
     --clr-dark-300: #858585;
@@ -128,7 +128,7 @@
     --clr-dark-400: #858585;
     --clr-dark-500: #989898;
     --clr-dark-600: #cacaca;
-    --clr-dark-700: #fdfdfd;
+    --clr-dark-700: #e7e7e7;
     --clr-dark-800: #fefefe;
     --clr-dark-900: #ffffff;
     --clr-primary-100: #081c25;
@@ -175,7 +175,7 @@
 
 body {
   font-family: Lato, sans-serif;
-  background-color: var(--clr-light-500);
+  background-color: var(--clr-light-300);
   color: var(--clr-dark-500);
   margin: 0;
   --transition_fast: 200ms;
@@ -373,7 +373,7 @@ nav a {
 }
 
 nav a:focus {
-  border: 3px solid var(--clr-light-500);
+  border: 3px solid var(--clr-light-300);
   padding: 0.1em;
 }
 
@@ -655,7 +655,7 @@ a.attribute:hover {
 .cards a,
 .cardslideshow button {
   background: var(--clr-DarkCyan);
-  color: var(--clr-light-500);
+  color: var(--clr-light-300);
   font-size: 0.8rem;
   padding: 0.8em;
   text-transform: uppercase;
@@ -720,7 +720,113 @@ summary:focus-visible {
   cursor: pointer;
 }
 
+article form {
+  display: flex;
+  flex-direction: column;
+}
+
 /************************* Page Styles *************************/
+#PropagationLatency {
+  max-width: 25em;
+  border: 1px solid var(--clr-DarkCyan);
+  padding: 1em 1em 2em 1em;
+  text-align: left;
+  margin-block: 4em;
+  border-radius: 1em;
+  background-color: var(--clr-light-500);
+  box-shadow:
+    6.7px 10.1px 22.2px -9px rgba(0, 0, 0, 0.031),
+    8px 12px 16.8px -9px rgba(0, 0, 0, 0.045),
+    8.5px 12.8px 11.9px -9px rgba(0, 0, 0, 0.056),
+    8.7px 13.1px 10.3px -9px rgba(0, 0, 0, 0.065),
+    8.9px 13.4px 13.4px -9px rgba(0, 0, 0, 0.074),
+    9.3px 14px 22.7px -9px rgba(0, 0, 0, 0.085),
+    10.3px 15.4px 39.3px -9px rgba(0, 0, 0, 0.099),
+    14px 21px 65px -9px rgba(0, 0, 0, 0.13);
+}
+
+@media (prefers-color-scheme: dark) {
+  #PropagationLatency {
+    box-shadow:
+      6.7px 10.1px 22.2px -9px rgba(255, 255, 255, 0.031),
+      8px 12px 16.8px -9px rgba(255, 255, 255, 0.045),
+      8.5px 12.8px 11.9px -9px rgba(255, 255, 255, 0.056),
+      8.7px 13.1px 10.3px -9px rgba(255, 255, 255, 0.065),
+      8.9px 13.4px 13.4px -9px rgba(255, 255, 255, 0.074),
+      9.3px 14px 22.7px -9px rgba(255, 255, 255, 0.085),
+      10.3px 15.4px 39.3px -9px rgba(255, 255, 255, 0.099),
+      14px 21px 65px -9px rgba(255, 255, 255, 0.13);
+  }
+}
+
+#PropagationLatency p {
+  margin-left: 0;
+  margin-block: 0;
+}
+
+#PropagationLatency hr {
+  width: 100%;
+  color: var(--clr-dark-800);
+}
+
+#PropagationLatency input {
+  margin-top: .5em;
+  margin-bottom: 1em;
+  border-radius: .5rem;
+  border: 2px solid var(--clr-Cyan);
+}
+
+.propcalcbtn {
+  font-weight: bold;
+  color: var(--clr-all-font-white);
+  border: none !important;
+  width: fit-content;
+  padding: 1rem;
+  margin: .25em auto;
+  cursor: pointer;
+}
+
+#PropagationLatency input[type="submit"],
+#PropagationLatency input[type="reset"] {
+  background-color: var(--clr-DarkCyan);
+  border-radius: 0;
+}
+
+.propcalcbtn:hover {
+  transition: background-color var(--transition_medium);
+  background-color: var(--clr-primary-400) !important;
+}
+
+#PropagationLatency input[type="submit"] {
+  font-size: 90%;
+}
+
+#PropagationLatency button[type="example"] {
+  background-color: purple;
+  padding: .3rem;
+  font-size: 70%;
+  margin-right: 15%;
+}
+
+#propagationcalcbtns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5em;
+}
+
+#propagationcalcbtns div:nth-child(1) {
+  width: 38%;
+}
+
+#propagationcalcbtns div:nth-child(2) {
+  text-align: center;
+}
+
+#PropagationLatency span {
+  font-weight: bold;
+}
+
 .reset {
   position: absolute;
   left: 50%;
@@ -1433,7 +1539,7 @@ figure figcaption a {
 #ToDO input[value="Delete"] {
   font-weight: bold;
   background-color: var(--clr-DarkCyan);
-  color: var(--clr-light-500);
+  color: var(--clr-light-300);
   box-shadow: -3px 3px 15px -3px black;
 }
 
@@ -1536,7 +1642,7 @@ pre {
   background-color: var(--clr-DarkCyan);
   border-bottom: 3px solid var(--clr-DarkCyan);
   font-weight: bold;
-  color: var(--clr-light-500);
+  color: var(--clr-light-300);
   box-shadow: -3px 3px 15px -3px black;
   width: fit-content;
 }
@@ -1944,7 +2050,7 @@ button {
   font-family: lato, sans-serif;
   font-weight: bold;
   background-color: var(--clr-WhoIS_Orange);
-  color: var(--clr-light-500);
+  color: var(--clr-light-300);
   width: 38%;
   max-width: 8em;
   float: left;
@@ -2189,6 +2295,11 @@ article iframe {
   .exampleBlue {
     max-width: 100%;
   }
+
+  #PropagationLatency button[type="example"] {
+    padding: .75em;
+    margin-right: initial;
+  }
 }
 
 /* Styles for tablet */
@@ -2393,6 +2504,16 @@ article iframe {
   .card_columns {
     flex-direction: row;
     justify-content: center;
+  }
+
+  #PropagationLatency {
+    padding: 1em 2em 2em 3em;
+    margin-left: 2em;
+  }
+
+  #PropagationLatency input {
+    margin-top: 1em;
+    margin-bottom: 2em;
   }
 }
 

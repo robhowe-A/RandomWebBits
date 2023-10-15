@@ -72,6 +72,15 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 >
 > <img src="README/gulpinterminal_VSCode.png" alt="A screenshot of codespaces terminal" width="75%" margin="auto" />
 > <br>
+>
+> ```shell
+> #3 Extensions:
+> -Live Server
+> -Prettier - Code formatter
+> -Python, Pylance
+> -Tailwind Shades
+>
+> ```
 
 </details>
 

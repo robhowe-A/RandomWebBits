@@ -36,20 +36,25 @@ const WebBitsSlideShow = {
     slideshowslides.style.display = "flex";
     slideshowslides.style.position = "relative";
     aaslideshow.slideshowcontainer.style.justifyContent = "center";
+
     //Add left and right buttons
     let slideshowbtns = aaslideshow.slideshowcontainer.appendChild(document.createElement("div"));
 
     const showhideslideshowbuttons = () => {
       if (aaslideshow.cardindxstart == 0) {
-        previousslideshowbtn.style.display = "none";
+        previousslideshowbtn.style.opacity = "0%";
+        previousslideshowbtn.setAttribute("tabindex", "-1");
         return;
       }
       if (aaslideshow.cardsindxend == aaslideshow.cards.length - 1) {
-        nextslideshowbtn.style.display = "none";
+        nextslideshowbtn.style.opacity = "0%";
+        nextslideshowbtn.setAttribute("tabindex", "-1");
         return;
       }
-      previousslideshowbtn.style.display = "block";
-      nextslideshowbtn.style.display = "block";
+      previousslideshowbtn.style.removeProperty("opacity");
+      nextslideshowbtn.style.removeProperty("opacity");
+      previousslideshowbtn.removeAttribute("tabindex");
+      nextslideshowbtn.removeAttribute("tabindex");
     };
 
     //Left slideshow btn
@@ -57,6 +62,7 @@ const WebBitsSlideShow = {
     previousslideshowbtn.classList.add("slideshowPrev");
     previousslideshowbtn.innerText = "❮";
     slideshowbtns.insertAdjacentElement("beforeend", previousslideshowbtn);
+
     //Update slideshow object
     aaslideshow.prevbtn = previousslideshowbtn;
 
@@ -67,6 +73,7 @@ const WebBitsSlideShow = {
     slideshowbtns.insertAdjacentElement("beforeend", nextslideshowbtn);
     slideshowbtns.style.display = "flex";
     slideshowbtns.style.justifyContent = "center";
+
     //Update slideshow object
     aaslideshow.nextbtn = nextslideshowbtn;
 
@@ -113,17 +120,12 @@ const WebBitsSlideShow = {
       }
     }
     aaslideshow.cards[0].style.position = "absolute";
-    aaslideshow.cards[0].style.opacity = "100%";
-    aaslideshow.cards[1].style.display = "block";
 
     if (windowsize == "LARGE") {
       aaslideshow.cards[0].style.transform = "translateX(-365px)";
       aaslideshow.cards[1].style.position = "absolute";
-      aaslideshow.cards[1].style.opacity = "100%";
       aaslideshow.cards[2].style.position = "absolute";
-      aaslideshow.cards[2].style.opacity = "100%";
       aaslideshow.cards[2].style.transform = "translateX(365px)";
-      aaslideshow.cards[2].style.display = "block";
       aaslideshow.cards[3].style.display = "block";
       aaslideshow.cards[3].style.zIndex = "-1";
       aaslideshow.cards[3].children[1].children[2].setAttribute("tabindex", "-1");
@@ -132,7 +134,6 @@ const WebBitsSlideShow = {
     if (windowsize == "MEDIUM") {
       aaslideshow.cards[0].style.transform = "translateX(-182.5px)";
       aaslideshow.cards[1].style.position = "absolute";
-      aaslideshow.cards[1].style.opacity = "100%";
       aaslideshow.cards[1].style.transform = "translateX(182.5px)";
       aaslideshow.cards[2].style.display = "block";
       aaslideshow.cards[2].style.zIndex = "-1";
@@ -184,7 +185,8 @@ const WebBitsSlideShow = {
       slideshow.cards[slideshow.cardsindxend + 1].children[1].children[2].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardsindxend + 1].children[1].children[3].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardsindxend + 1].style.removeProperty("z-index");
-      slideshow.cards[slideshow.cardsindxend + 1].style.opacity = "100%";
+      slideshow.cards[slideshow.cardsindxend + 1].style.removeProperty("opacity");
+      slideshow.cards[slideshow.cardsindxend + 1].style.removeProperty("display");
 
       //Move in new element
       slideshow.cards[slideshow.cardsindxend + 1].style.transform = "translateX(365px)";
@@ -213,7 +215,8 @@ const WebBitsSlideShow = {
       slideshow.cards[slideshow.cardsindxend + 1].children[1].children[2].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardsindxend + 1].children[1].children[3].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardsindxend + 1].style.removeProperty("z-index");
-      slideshow.cards[slideshow.cardsindxend + 1].style.opacity = "100%";
+      slideshow.cards[slideshow.cardsindxend + 1].style.removeProperty("opacity");
+      slideshow.cards[slideshow.cardsindxend + 1].style.removeProperty("display");
 
       //Move in new element
       slideshow.cards[slideshow.cardsindxend + 1].style.transform = "translateX(182.5px)";
@@ -245,7 +248,9 @@ const WebBitsSlideShow = {
       slideshow.cards[slideshow.cardsindxend + 1].children[1].children[2].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardsindxend + 1].children[1].children[3].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardsindxend + 1].style.removeProperty("z-index");
-      slideshow.cards[slideshow.cardsindxend + 1].style.opacity = "100%";
+      slideshow.cards[slideshow.cardsindxend + 1].style.removeProperty("opacity");
+      slideshow.cards[slideshow.cardsindxend + 1].style.removeProperty("display");
+
       if (slideshow.cards[slideshow.cardsindxend + 2] != undefined) {
         slideshow.cards[slideshow.cardsindxend + 2].style.transform = "translateX(182.5px)";
         slideshow.cards[slideshow.cardsindxend + 2].children[1].children[2].setAttribute("tabindex", "-1");
@@ -278,12 +283,16 @@ const WebBitsSlideShow = {
       }
       //Move middle element to to the right
       slideshow.cards[slideshow.cardindxstart + 1].style.transform = "translateX(365px)";
+
       //Move left element to the right
       slideshow.cards[slideshow.cardindxstart].style.transform = "translateX(0px)";
+
       //Display the next element for slideshow
       slideshow.cards[slideshow.cardindxstart - 1].children[1].children[2].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardindxstart - 1].children[1].children[3].removeAttribute("tabindex");
-      slideshow.cards[slideshow.cardindxstart - 1].style.opacity = "100%";
+      slideshow.cards[slideshow.cardindxstart - 1].style.removeProperty("opacity");
+      slideshow.cards[slideshow.cardindxstart - 1].style.removeProperty("display");
+
       //Move in new element
       slideshow.cards[slideshow.cardindxstart - 1].style.transform = "translateX(-365px)";
       if (slideshow.cards[slideshow.cardindxstart - 2] != undefined) {
@@ -305,10 +314,13 @@ const WebBitsSlideShow = {
       }
       //Move left element to the right
       slideshow.cards[slideshow.cardindxstart].style.transform = "translateX(182.5px)";
+
       //Display the next element for slideshow
       slideshow.cards[slideshow.cardindxstart - 1].children[1].children[2].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardindxstart - 1].children[1].children[3].removeAttribute("tabindex");
-      slideshow.cards[slideshow.cardindxstart - 1].style.opacity = "100%";
+      slideshow.cards[slideshow.cardindxstart - 1].style.removeProperty("opacity");
+      slideshow.cards[slideshow.cardindxstart - 1].style.removeProperty("display");
+
       //Move in new element
       slideshow.cards[slideshow.cardindxstart - 1].style.transform = "translateX(-182.5px)";
       if (slideshow.cards[slideshow.cardindxstart - 2] != undefined) {
@@ -330,12 +342,16 @@ const WebBitsSlideShow = {
       }
       //Move element to right
       slideshow.cards[slideshow.cardindxstart].style.transform = "translateX(182.5px)";
+
       //Move element to center
       slideshow.cards[slideshow.cardindxstart - 1].style.transform = "translateX(0px)";
+
       //Display the next element for slideshow
       slideshow.cards[slideshow.cardindxstart - 1].children[1].children[2].removeAttribute("tabindex");
       slideshow.cards[slideshow.cardindxstart - 1].children[1].children[3].removeAttribute("tabindex");
-      slideshow.cards[slideshow.cardindxstart - 1].style.opacity = "100%";
+      slideshow.cards[slideshow.cardindxstart - 1].style.removeProperty("opacity");
+      slideshow.cards[slideshow.cardindxstart - 1].style.removeProperty("display");
+
       if (slideshow.cards[slideshow.cardindxstart - 2] != undefined) {
         slideshow.cards[slideshow.cardindxstart - 2].style.display = "block";
         slideshow.cards[slideshow.cardindxstart - 2].children[1].children[2].setAttribute("tabindex", "-1");

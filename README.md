@@ -241,4 +241,5 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 1.8.77: Added project ESLint  
 1.8.78: Re-Added todos WebBit  
 1.8.78: New WebBits page: ElementInspect  
+1.8.79: WebBits Slideshow tabindex  
 </details>

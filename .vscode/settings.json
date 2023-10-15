@@ -11,5 +11,6 @@
   "liveServer.settings.multiRootWorkspaceName": "RandomWebBits",
   "liveServer.settings.root": "/dist",
   "liveServer.settings.port": 5501,
-  "vs-code-prettier-eslint.prettierLast": "false" // set as "true" to run 'prettier' last not first
+  "vs-code-prettier-eslint.prettierLast": "false",
+  "prettier.printWidth": 110 // set as "true" to run 'prettier' last not first
 }

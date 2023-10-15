@@ -141,7 +141,7 @@
     --clr-primary-800: #aad1e3;
     --clr-primary-800-2: #aad1e380;
     --clr-primary-900: #d4e8f1;
-    --clr-all-primary-900: #161d2c;
+    --clr-all-primary-900: #0a335c;
     --clr-all-primary-800: #171c27;
     --clr-all-primary-500: #2d95c5;
     --clr-all-font-white: #fdfdfd;
@@ -193,6 +193,16 @@ footer {
   background-color: var(--clr-all-primary-900);
   padding: 1em;
   color: var(--clr-all-font-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  header {
+    background-color: hsl(220, 55%, 15%);
+  }
+
+  footer {
+    background-color: hsl(210, 80%, 5%);
+  }
 }
 
 footer a {
@@ -708,15 +718,6 @@ summary:focus-visible {
   background: var(--clr-Brown);
   position: relative;
   cursor: pointer;
-}
-
-.unselectable {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 /************************* Page Styles *************************/

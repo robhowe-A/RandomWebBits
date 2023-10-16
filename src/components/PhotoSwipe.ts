@@ -18,9 +18,18 @@ const photoswipe_apptab = () => {
     tapAction: "zoom",
     pswpModule: PhotoSwipe,
   };
+  const all = {
+    gallery: "#ElementsTab",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  };
   const picbox = new PhotoSwipeLightbox(options);
+  const page = new PhotoSwipeLightbox(all);
   lightbox.init();
   picbox.init();
+  page.init();
 };
 
 const photoswipe_pwa = () => {
@@ -43,8 +52,4 @@ const photoswipe_inspctpgs = () => {
   const lightbox2 = new PhotoSwipeLightbox(options);
   lightbox2.init();
 };
-export {
-  photoswipe_pwa as PS_pwa,
-  photoswipe_apptab as PS_at,
-  photoswipe_inspctpgs as PS_ip,
-};
+export { photoswipe_pwa as PS_pwa, photoswipe_apptab as PS_at, photoswipe_inspctpgs as PS_ip };

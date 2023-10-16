@@ -561,7 +561,7 @@ const GuideShorts = new Array(
     "GUIDE: Dev Application",
     "Review dev tool's application tab",
     new Date(2023, 3, 27),
-    "guides/applicationtab.html",
+    "guides/devtools/applicationtab.html",
     "img/tool-box.webp",
     "Developer's tool kit icon",
     new AttributionLink(
@@ -643,6 +643,24 @@ const GuideShorts = new Array(
       "Flaticon",
       "To-Do List",
       38
+    )
+  ),
+  new WebBit(
+    "ElementInspect",
+    39,
+    "Guide: Dev Elements",
+    "Review dev tool's elements tab",
+    new Date(2023, 10, 28),
+    "guides/devtools/elementstab.html",
+    "img/web-development.webp",
+    "Computer depiction of developer's tools",
+    new AttributionLink(
+      "development icons",
+      "Development icons created by Flat-icons-com - Flaticon",
+      "https://www.flaticon.com/free-icons/development",
+      "Flaticon",
+      "To-Do List",
+      39
     )
   )
 );

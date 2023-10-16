@@ -12,6 +12,7 @@ var paths = {
     "src/*.html",
     "src/pages/*.html",
     "src/guides/*.html",
+    "src/guides/devtools/*.html",
     "src/explore/*.html",
     "src/_headers",
     "src/css/*.css",

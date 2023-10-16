@@ -36,7 +36,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p><strong>1.&rpar; Local IP: </strong>the <em>device</em> address assigned by a router or <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> server on the network.</p>
                     </summary>
                     <p>The local ip can be found using <abbr title="PowerShell">PS</abbr> and <abbr title="Command Prompt">CMD</abbr>, as such:</p>
-                    <div id="TwoFigures" class="twoFigures">
+                    <div id="TwoFigures">
                         <figure class="twoFigures_PS PSFigure">
                             <figcaption>PowerShell</figcaption>
                             <code class="PS">Get-NetIPAddress | ? {$_.AddressFamily -match "IPv4"} | select IPAddress</code>

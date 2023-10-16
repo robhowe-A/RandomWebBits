@@ -14,10 +14,7 @@ export default class DictionarySearchMarkup {
   constructor(elem: Element) {
     //insert the widget after the passed in "elem"
     if (elem == undefined) {
-      console.log(
-        `%cThere is no "dictionaryWidget" class on this page.`,
-        "color: orange;"
-      );
+      console.log(`%cThere is no "dictionaryWidget" class on this page.`, "color: orange;");
       return;
     }
     if (!elem.classList.contains("dictionaryWidget")) {
@@ -34,10 +31,7 @@ export default class DictionarySearchMarkup {
    *  important HTML elements used through widget function.
    */
   public createDictionaryWidgetMarkup(elem: Element) {
-    const dictionary = elem.insertAdjacentElement(
-      "afterend",
-      document.createElement("section")
-    );
+    const dictionary = elem.insertAdjacentElement("afterend", document.createElement("section"));
     if (dictionary == null) {
       console.log("The determined dictionary element is null.");
       return;
@@ -53,38 +47,23 @@ export default class DictionarySearchMarkup {
       wordSearch: searchForm.appendChild(document.createElement("button")),
       dictionaryElem: <HTMLElement>dictionary,
       errorElem: searchForm.appendChild(document.createElement("span")),
-<<<<<<< HEAD
       previousWordBtn: previousWords.appendChild(document.createElement("button")),
       previousWordsContainer: dictionary.appendChild(document.createElement("div")),
-=======
-      previousWordBtn: previousWords.appendChild(
-        document.createElement("button")
-      ),
-      previousWordsContainer: dictionary.appendChild(
-        document.createElement("div")
-      ),
->>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
       refreshBtn: previousWords.appendChild(document.createElement("button")),
     };
 
     // Add attributes and property values
-<<<<<<< HEAD
     const fontAwesomeSearchIcon = searchElements.wordSearch.appendChild(document.createElement("i"));
-=======
-    const fontAwesomeSearchIcon = searchElements.wordSearch.appendChild(
-      document.createElement("i")
-    );
->>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
     fontAwesomeSearchIcon.classList.add("fa");
     fontAwesomeSearchIcon.classList.add("fa-search");
     previousWords.classList.add("previousWords");
     searchElements.searchWord.classList.add("monospace");
     searchElements.previousWordBtn.classList.add("dictionary-btn");
     searchElements.refreshBtn.classList.add("dictionary-btn");
-    searchElements.searchWord.setAttribute("type", "text");
+    searchElements.searchWord.setAttribute("type", "search");
     searchElements.searchWord.setAttribute("placeholder", "Search...");
     searchElements.searchWord.setAttribute("aria-label", "Input");
-    searchElements.wordSearch.setAttribute("type", "button");
+    searchElements.wordSearch.setAttribute("type", "submit");
     searchElements.wordSearch.setAttribute("aria-label", "Search");
     searchElements.searchWord.id = "search-word";
     searchElements.wordSearch.id = "word-search";
@@ -107,41 +86,17 @@ export default class DictionarySearchMarkup {
    * @param wordData - This parameter is an object of word types, definitions, and examples.
    * @param searchElems - Widget Elements -- key widget function elements.
    */
-<<<<<<< HEAD
   public createDictionaryTermWithMarkup(wordData: any, searchElems: DictionarySearchElements) {
     if (wordData == null || !(wordData instanceof Object) || Object.hasOwn(wordData, "title")) {
       console.log("%cThere is no definition for this word.", "color:darkgreen;");
-=======
-  public createDictionaryTermWithMarkup(
-    wordData: any,
-    searchElems: DictionarySearchElements
-  ) {
-    if (
-      wordData == null ||
-      !(wordData instanceof Object) ||
-      Object.hasOwn(wordData, "title")
-    ) {
-      console.log(
-        "%cThere is no definition for this word.",
-        "color:darkgreen;"
-      );
->>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
       return;
     }
 
     // Add word definition to the dictionary widget
-<<<<<<< HEAD
     const definitionDescriptionContainer = searchElems.dictionaryElem.appendChild(
       document.createElement("div")
     );
     const definitionDescription = definitionDescriptionContainer.appendChild(document.createElement("div"));
-=======
-    const definitionDescriptionContainer =
-      searchElems.dictionaryElem.appendChild(document.createElement("div"));
-    const definitionDescription = definitionDescriptionContainer.appendChild(
-      document.createElement("div")
-    );
->>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
     definitionDescription.appendChild(document.createElement("hr")); // word definition separator
     definitionDescriptionContainer.classList.add("definitionDescription");
 
@@ -150,18 +105,11 @@ export default class DictionarySearchMarkup {
     wordData.map((word: any) => {
       definitionDescriptionContainer.setAttribute("word", word.word);
       //console.log("The word is: ",word)
-<<<<<<< HEAD
       const wordTitle = definitionDescription.appendChild(document.createElement("h3"));
-=======
-      const wordTitle = definitionDescription.appendChild(
-        document.createElement("h3")
-      );
->>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
       wordTitle.textContent = word.word;
       //Add the word and examples to page
       word.meanings.map((wordType: any) => {
         //console.log("WordType are: ", wordType)
-<<<<<<< HEAD
         const wordTypeH = definitionDescription.appendChild(document.createElement("h4"));
         const wordTypeList = definitionDescription.appendChild(document.createElement("ul"));
         wordTypeH.textContent = wordType.partOfSpeech;
@@ -169,36 +117,12 @@ export default class DictionarySearchMarkup {
           //console.log("Definition is: ", def);
           let wordTypeDefItem = wordTypeList.appendChild(document.createElement("li"));
           let definitionP = wordTypeDefItem.appendChild(document.createElement("p"));
-=======
-        const wordTypeH = definitionDescription.appendChild(
-          document.createElement("h4")
-        );
-        const wordTypeList = definitionDescription.appendChild(
-          document.createElement("ul")
-        );
-        wordTypeH.textContent = wordType.partOfSpeech;
-        wordType.definitions.map((def: any) => {
-          //console.log("Definition is: ", def);
-          let wordTypeDefItem = wordTypeList.appendChild(
-            document.createElement("li")
-          );
-          let definitionP = wordTypeDefItem.appendChild(
-            document.createElement("p")
-          );
->>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
           definitionP.textContent = def.definition;
           definitionP.classList.add("wordDefinition");
 
           const addAdjacentElem = () => {
             //console.log("Definitions is: ", def);
-<<<<<<< HEAD
             const newP = definitionP.insertAdjacentElement("beforeend", document.createElement("p"));
-=======
-            const newP = definitionP.insertAdjacentElement(
-              "beforeend",
-              document.createElement("p")
-            );
->>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
             if (newP instanceof HTMLElement) {
               const newPi = newP.appendChild(document.createElement("i"));
               newPi.textContent = def.example;
@@ -212,16 +136,9 @@ export default class DictionarySearchMarkup {
     });
 
     //create clear button
-<<<<<<< HEAD
     const deleteWordTermHeadingElem = definitionDescriptionContainer.appendChild(
       document.createElement("button")
     );
-=======
-    const deleteWordTermHeadingElem =
-      definitionDescriptionContainer.appendChild(
-        document.createElement("button")
-      );
->>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
     deleteWordTermHeadingElem.setAttribute("type", "word-clear");
     deleteWordTermHeadingElem.classList.add("dictionary-word-btn-clear");
     deleteWordTermHeadingElem.style.display = "block";
@@ -240,13 +157,7 @@ export default class DictionarySearchMarkup {
       event.preventDefault();
       definitionDescriptionContainer.remove();
       console.log(
-<<<<<<< HEAD
         `%c<RWB>%cRemoved word: ${definitionDescriptionContainer.getAttribute("word")}`,
-=======
-        `%c<RWB>%cRemoved word: ${definitionDescriptionContainer.getAttribute(
-          "word"
-        )}`,
->>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
         "color:goldenrod;font-weight:bold;",
         "color:goldenrod;"
       );
@@ -265,27 +176,15 @@ export default class DictionarySearchMarkup {
     //Because the locator and the Local Storage values are viable, create the markup
     //needed to display those words. Add event listeners for widget functionality.
     for (let wordCache of wordstorage) {
-<<<<<<< HEAD
       const wordHeadingElemContainer = buttonContainer.appendChild(document.createElement("div"));
       const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(document.createElement("button"));
-=======
-      const wordHeadingElemContainer = buttonContainer.appendChild(
-        document.createElement("div")
-      );
-      const cacheWordHeadingElem = wordHeadingElemContainer.appendChild(
-        document.createElement("button")
-      );
->>>>>>> 1cc56c337858e9aee18e8a24841018bd8bf2ec3e
       const deleteCacheWordHeadingElem = wordHeadingElemContainer.appendChild(
         document.createElement("button")
       );
       deleteCacheWordHeadingElem.setAttribute("type", "button-clear");
       deleteCacheWordHeadingElem.classList.add("dictionary-word-btn-clear");
       cacheWordHeadingElem.setAttribute("type", "button");
-      cacheWordHeadingElem.classList.add(
-        "dictionary-btn",
-        "dictionary-word-btn"
-      );
+      cacheWordHeadingElem.classList.add("dictionary-btn", "dictionary-word-btn");
       cacheWordHeadingElem.textContent = wordCache.word;
 
       let previouswordbtn: DictionarySearchPreviousWordKeyElements = {

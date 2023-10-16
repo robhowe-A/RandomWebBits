@@ -1,0 +1,113 @@
+<!--Copyright (c) 2023 Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use the developer's tools to view browsing data like cache, cookies, and storage.">
+    <title>GUIDE: Dev Elements&lt;/RWB&gt;</title>
+    <link rel="stylesheet" 
+        href="../../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../../typescript.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
+</head>
+<body class="WebBits-width">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main id="DevTools">
+        <nav id="DevTabs">
+            <ol>
+                <li title="GUIDE: Dev Elements&lt;/RWB&gt;"><span data-rwb-type="link"><a href="elementstab.html" title="GUIDE: Dev Elements&lt;/RWB&gt;">Elements</a></span></li>
+                <li title="A page does not exist yet.">Console</li>
+                <li title="A page does not exist yet.">Sources</li>
+                <li title="A page does not exist yet.">Network</li>
+                <li title="A page does not exist yet.">Performance</li>
+                <li title="A page does not exist yet.">Memory</li>
+                <li title="GUIDE: Dev Application&lt;/RWB&gt;"><span data-rwb-type="link"><a href="applicationtab.html" title="GUIDE: Dev Application&lt;/RWB&gt;">Application</a></span></li>
+                <li title="A page does not exist yet.">Security</li>
+                <li title="A page does not exist yet.">Lighthouse</li>
+                <li title="A page does not exist yet.">CSS Overview</li>
+            </ol>
+            <button type="menu" style="display:none;">Open Menu</button>
+        </nav>
+        <script>
+            const devPanel = document.getElementById("DevTabs");
+        </script>
+        
+        <time datetime="2023-10-28">October 28, 2023</time>
+        <article id="ElementsTab" class="WebBits">
+            <h2>GUIDE: Dev Tools --&gt; Elements Tab</h2>
+            <p>Open the dev tools tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code> and navigate to the elements tab. In firefox, be sure to use <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code></p>
+            <figure class="imgShadow pictureCaption">
+                <a class="pswp-gallery__item" href="../../img/DevToolsElementsOpen.png" data-pswp-width="1913" data-pswp-height="820">
+                    <img src="../../img/DevToolsElementsOpen.png" alt="A default view of Elements tab in developer's tools." width="1913" height="820">
+                </a>
+                <figcaption>A default view of <q>Elements</q> tab in developer's tools.</figcaption>
+            </figure>
+            <p>All of the DOM elements are viewable in a tree structure. See <span data-rwb-type="link"><a href="dom.html" title="DOM&lt;/RWB&gt;">&lt;DOM&gt;</a></span> for more details. Elements' CSS properties are visible in the right part of the panel's display.</p>
+            <script>
+                const rwblink = document.querySelectorAll("span[data-rwb-type=link] a")
+                rwblink[0].href = "/guides/devtools/elementstab.html"
+                rwblink[1].href = "/guides/devtools/applicationtab.html"
+                rwblink[2].href = "/pages/dom.html"
+
+            </script>
+            <figure class="imgShadow pictureCaption">
+                <a class="pswp-gallery__item" href="../../img/DevToolsElementsOption.png" data-pswp-width="1911" data-pswp-height="820">
+                    <img src="../../img/DevToolsElementsOption.png" alt="View individual css atribute rules in the Computed tab." width="1911" height="820">
+                </a>
+                <figcaption>View individual css atribute rules in the <q>Computed</q> tab.</figcaption>
+            </figure>
+            <p> Below, the elements tab surfaces &lpar;varying&rpar; problems and uses the console to display errors and warnings, as pictured here:</p>
+            <div class="devToolsGrid">
+                <figure class="imgShadow pictureCaption img1">
+                    <a class="pswp-gallery__item" href="../../img/DevToolsElementsErrorsandWarnings.png" data-pswp-width="277" data-pswp-height="65">
+                        <img src="../../img/DevToolsElementsErrorsandWarnings.png" alt="Elements tab errors and warnings icon." width="277" height="65">
+                    </a>
+                    <figcaption class="pictureCaption">Elements tab errors and warnings icon.</figcaption>
+                </figure>
+                <figure class="imgShadow pictureCaption">
+                    <a class="pswp-gallery__item img2" href="../../img/DevToolsElementsErrorsandWarningsConsole.png" data-pswp-width="1506" data-pswp-height="666">
+                        <img src="../../img/DevToolsElementsErrorsandWarningsConsole.png" alt="A zoomed in view of elements errors and warnings." width="1506" height="666">
+                    </a>
+                    <figcaption>A zoomed in view of elements errors and warnings.</figcaption>
+                </figure>
+            </div>
+
+            <aside class="exampleBlue">
+                <p>If the page is without console errors, the button does not appear.</p>
+            </aside>
+            <hr>
+            <p><strong>Additionally: </strong>A part of development is making sure the markup adheres to the browser's specifications and writing standards. Clicking the blue comment bubble opens a list of recommendations for improvement. This option is not available in firefox browser.</p>
+            <p class="truebluebold note">
+                <em >Note:</em>"Improvements" is shown in Chromium's developer toolset, so use Edge or Chrome to see the feature.</a>
+            </p>
+            <!--Photoswipe start-->
+            <figure class="imgShadow pictureCaption">
+                <a class="pswp-gallery__item" href="../../img/DevToolsElementsIssuesandImprovements.png" data-pswp-width="1506" data-pswp-height="820">
+                    <img src="../../img/DevToolsElementsIssuesandImprovements.png" alt="Improvement suggestions view in the elements tab." width="1506" height="820">
+                </a>
+                <figcaption>Improvement suggestions view in the elements tab.</figcaption>
+            </figure>
+              <aside class="exampleBlue">
+                <p>Examples are using <em>Edge</em> browser. <em>Chrome</em> and <em>Firefox</em> use similar keyboard shortcuts and application layout information.</p>
+            </aside>            
+
+        </article>
+        <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    </main>
+        <noscript>Your JavaScript may be broken or is disabled. <br>Turn it on for full experience! Here are <a href="https://www.enable-javascript.com/">the instructions how to enable JavaScript in your web browser</a>.<br><br>-- Random Web Bits &copy;2023</noscript>
+</body>
+</html>

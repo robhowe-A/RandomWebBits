@@ -38,7 +38,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <input type="text" id="mediumSpeed" placeholder="300,000 m/s" required>
                 <label for="packetSize">Packet Size(bytes)</label>
                 <input type="text" id="packetSize" placeholder="1500 bytes">
-                <label for="transmissionRate">Transmission Rate(KB/s)</label>
+                <label for="transmissionRate">Transmission Rate(kB/s)</label>
                 <input type="text" id="transmissionRate" placeholder="1,000,000 Kbs">
                 <div id="propagationcalcbtns">
                     <div>
@@ -51,9 +51,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <input id="calculate" class="propcalcbtn" type="submit" value="Calculate">
                     </div>
                 </div>
+                <details id="Formulas">
+                    <summary>Formulas<sup>1</sup>:</summary>
+                    Network Latency <br />= Propagation Delay + Serialization Delay<br /><br />
+                    Propagation Delay <br />= Distance / Speed <br /><br />
+                    Serialization Delay <br />= Packet Size (bits) / Transmission Rate (bps)<br />
+                </details>
                 <hr>
-                <h4>Results</h4>
-                <div id="propcalcres"></div>
+                <h4>Result:</h4>
+                <div id="propcalcres"><p><i>Enter the variables and press calculate.</i></p></div><hr>
+                <p class="citations">
+                    <strong>Citations:</strong><br>
+                    <sup>[1]</sup>
+                    <cite><a href="https://www.rfwireless-world.com/calculators/Network-Latency-Calculator.html" rel="noopener" target="_blank" title="Network Latency Formula" >Network Latency Formula</a></cite>
+                </p>
             </form>
             <aside class="examplePink">
                 <h3>More about the speed of light:</h3>

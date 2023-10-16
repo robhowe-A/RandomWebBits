@@ -51,7 +51,10 @@ const latencyCalculator = {
       const validateNumberInput = (str: string) => {
         // Take user input and filter to an accepted string
         var regSTR: any;
-        PropagationLatencyCalculation.numberValidation(str) ? (regSTR = Number(str)) : (regSTR = "INVALID");
+        let numstr = str.split(",").join("");
+        PropagationLatencyCalculation.numberValidation(numstr)
+          ? (regSTR = Number(numstr))
+          : (regSTR = "INVALID");
         return regSTR;
       };
 
@@ -98,32 +101,32 @@ const latencyCalculator = {
     exampleElem1.addEventListener("click", event => {
       event.preventDefault();
       distanceElem.value = "300";
-      mediumSpeedElem.value = "300000";
+      mediumSpeedElem.value = "300,000";
       packetSizeElem.value = "1500";
-      transmissionRateElem.value = "1000000";
+      transmissionRateElem.value = "1,000,000";
     });
     exampleElem2.addEventListener("click", event => {
       event.preventDefault();
-      distanceElem.value = "90000000";
-      mediumSpeedElem.value = "300000";
+      distanceElem.value = "150,000,000";
+      mediumSpeedElem.value = "300,000";
       packetSizeElem.value = "4500";
-      transmissionRateElem.value = "100000";
+      transmissionRateElem.value = "100,000";
     });
     exampleElem3.addEventListener("click", event => {
       event.preventDefault();
-      distanceElem.value = "40000";
-      mediumSpeedElem.value = "300000";
+      distanceElem.value = "40,000";
+      mediumSpeedElem.value = "300,000";
       packetSizeElem.value = "1500";
-      transmissionRateElem.value = "10000";
+      transmissionRateElem.value = "56,000";
     });
   },
   resultmarkup: (result: PropagationLatencyCalculation) => {
     let resultelem = document.getElementById("propcalcres") as HTMLDivElement;
     let newResult = document.createElement("p");
     newResult.innerHTML = `
-      Propagation Delay: <span>${result.getPropagationDelay()} s</span><br />
-      Serialization Delay: <span>${result.getSerializationDelay()} s</span><br />
-      Network Latency: <span>${result.getNetworkLatency()} s</span><br><hr>
+      Propagation Delay: <span>${result.getPropagationDelay().toFixed(4)} s</span><br />
+      Serialization Delay: <span>${result.getSerializationDelay().toFixed(4)} s</span><br />
+      Network Latency: <span>${result.getNetworkLatency().toFixed(4)} s</span><br>
     `;
 
     resultelem.appendChild(newResult);

@@ -12,8 +12,8 @@ export class SimpleGreeting extends LitElement {
       display: block;
       width: fit-content;
       border: 0.5mm solid var(--clr-blue);
-      box-shadow: 0.7px 0px 1.4px rgba(0, 0, 0, 0.303),
-        1.7px 0px 4.7px rgba(0, 0, 0, 0.447), -7px 0px 11px rgba(0, 0, 0, 0.75);
+      box-shadow: 0.7px 0px 1.4px rgba(0, 0, 0, 0.303), 1.7px 0px 4.7px rgba(0, 0, 0, 0.447),
+        -7px 0px 11px rgba(0, 0, 0, 0.75);
       border-radius: 15px;
       padding: 0 1em 1em 1em;
       margin: 2em;
@@ -180,15 +180,7 @@ export class SimpleGreeting extends LitElement {
       {
         page: "/pages/dns.html",
         htmlTitle: "dns",
-        acronyms: [
-          "DDNS",
-          "DNSSEC",
-          '"A" record',
-          "CAA",
-          "NS (name server)",
-          '"MX" record',
-          "QPS",
-        ],
+        acronyms: ["DDNS", "DNSSEC", '"A" record', "CAA", "NS (name server)", '"MX" record', "QPS"],
       },
       {
         page: "/pages/dom.html",
@@ -214,33 +206,12 @@ export class SimpleGreeting extends LitElement {
       {
         page: "/pages/javascript.html",
         htmlTitle: "javascript",
-        acronyms: [
-          "Defer",
-          "Synchronous",
-          "ES",
-          "GUI",
-          "JSON",
-          "AJAX",
-          "IIFE",
-          "IDE",
-          "DOM",
-        ],
+        acronyms: ["Defer", "Synchronous", "ES", "GUI", "JSON", "AJAX", "IIFE", "IDE", "DOM"],
       },
       {
         page: "/pages/http.html",
         htmlTitle: "javascript",
-        acronyms: [
-          "HTTP",
-          "TCP",
-          "UDP",
-          "DNS",
-          "TLS",
-          "IP",
-          "HTML",
-          "CSS",
-          "JS",
-          "API",
-        ],
+        acronyms: ["HTTP", "TCP", "UDP", "DNS", "TLS", "IP", "HTML", "CSS", "JS", "API"],
       },
       {
         page: "/pages/latency.html",
@@ -249,9 +220,7 @@ export class SimpleGreeting extends LitElement {
       },
     ];
 
-    const currentPage = PageAcronyms.filter(
-      page => page.page === window.location.pathname
-    );
+    const currentPage = PageAcronyms.filter(page => page.page === window.location.pathname);
     // Declare reactive properties
     this.title = "Common Acronyms";
     this.id = currentPage[0].htmlTitle;

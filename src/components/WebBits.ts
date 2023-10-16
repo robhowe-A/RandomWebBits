@@ -13,20 +13,15 @@ const RWBCardsWidget = {
    * Articles have different categories, so each category must be respected.
    * */
   init: () => {
+    
     // Split the cards arrays into their respective category
     /** Multiple categories of card data exist. This array holds the markup needed
      * to create category sections divisions when placed on a page.
      */
     let cardsSection: HTMLDivElement[] = [
-      RandomWebBits.buildCardContainingSection(
-        "Arbitrary Articles:",
-        "ArbitraryArticles"
-      ),
+      RandomWebBits.buildCardContainingSection("Arbitrary Articles:", "ArbitraryArticles"),
       RandomWebBits.buildCardContainingSection("Guide Shorts:", "GuideShorts"),
-      RandomWebBits.buildCardContainingSection(
-        "Explore the Web:",
-        "ExploretheWeb"
-      ),
+      RandomWebBits.buildCardContainingSection("Explore the Web:", "ExploretheWeb"),
     ];
 
     // create an array of card data + attribution link data
@@ -55,10 +50,7 @@ const RWBCardsWidget = {
 
         return shuffled.slice(0, num); // return the requested number of elements
       };
-      cardsArticles[0] = getMultipleRandom(
-        cardsArticles[0],
-        cardsArticles[0].length
-      );
+      cardsArticles[0] = getMultipleRandom(cardsArticles[0], cardsArticles[0].length);
       cardsArticles[1] = getMultipleRandom(cardsArticles[1], 3);
     }
     // first section of cards slideshow class

@@ -153,6 +153,9 @@ const HeaderFooter = {
       footerIconLink.setAttribute("target", "_blank");
       footerIconLink.href =
         "https://www.vectorstock.com/royalty-free-vector/maintenance-icon-for-graphic-and-web-design-vector-45026755";
+      footerIconLink.target = "_blank";
+      footerIconLink.rel = "noopener";
+      footerIconLink.title = "Maintenance icon for graphic and web design Vector Image";
       footerIconLink.textContent = "VectorStock.com";
       footerIconPara.textContent = `Favicon designed by IconHome at `;
 

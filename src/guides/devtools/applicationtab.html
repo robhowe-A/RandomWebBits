@@ -7,10 +7,10 @@
     <meta name="description" content="Use the developer's tools to view browsing data like cache, cookies, and storage.">
     <title>GUIDE: Dev Application&lt;/RWB&gt;</title>
     <link rel="stylesheet" 
-        href="../css/styles.css"
+        href="../../css/styles.css"
         type="text/css"
         media="all">
-    <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
+    <link rel="icon" type="image/x-icon" href="../../img/favicon/ImageHome_Favicon.png">
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -18,19 +18,37 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
     <!-- End Google Tag Manager -->
-    <script type="module" src="../typescript.js"></script>
-    <link rel="stylesheet" href="../css/photoswipe.css">
+    <script type="module" src="../../typescript.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
 </head>
 <body class="WebBits-width">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-    <main>
+    <main id="DevTools">
+        <nav id="DevTabs">
+            <ol>
+                <li title="GUIDE: Dev Elements&lt;/RWB&gt;"><span data-rwb-type="link"><a href="elementstab.html" title="GUIDE: Dev Elements&lt;/RWB&gt;">Elements</a></span></li>
+                <li title="A page does not exist yet.">Console</li>
+                <li title="A page does not exist yet.">Sources</li>
+                <li title="A page does not exist yet.">Network</li>
+                <li title="A page does not exist yet.">Performance</li>
+                <li title="A page does not exist yet.">Memory</li>
+                <li title="GUIDE: Dev Application&lt;/RWB&gt;"><span data-rwb-type="link"><a href="applicationtab.html" title="GUIDE: Dev Application&lt;/RWB&gt;">Application</a></span></li>
+                <li title="A page does not exist yet.">Security</li>
+                <li title="A page does not exist yet.">Lighthouse</li>
+                <li title="A page does not exist yet.">CSS Overview</li>
+            </ol>
+            <button type="menu" style="display:none;">Open Menu</button>
+        </nav>
+        <script>
+            const devPanel = document.getElementById("DevTabs");
+        </script>
         <time datetime="2023-03-27">March 27, 2023</time>
         <article id="ApplicationTab" class="WebBits">
             <h2>GUIDE: Dev Tools --&gt; Application Tab</h2>
-            <p>Open the application tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code>. In firefox, be sure to use <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code></p>
+            <p>Open the dev tools tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code> and navigate to the application tab. In firefox, be sure to use <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code></p>
 
             <div id="devTools-Picture" class="devToolsGrid">
                 <figure class="imgShadow pictureCaption img1">
@@ -54,8 +72,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a class="pswp-gallery__item" href="/img/DevTools_Application4-After.png" data-pswp-width="1920" data-pswp-height="823">
                         <img src="/img/DevTools_Application4-After.png" alt="LocalStorage after clearing browser data" width="627" height="270">
                     </a>
-                    <figcaption>After clearing the browser's cache, local storage items are cleared.<br>Go to <span data-rwb-type="link"><a href="clearcookiesquickly.html" title="&lt;/RWB&gt; GUIDE: Clearing cookies"><strong>&lt;GUIDE: Clearing cookies&gt;</strong></a></span> to learn more.</figcaption>
+                    <figcaption>After clearing the browser's cache, local storage items are cleared.<br>Go to <span data-rwb-type="link"><a href="../clearcookiesquickly.html" title="GUIDE: Clearing cookies&lt;/RWB&gt;"><strong>&lt;GUIDE: Clearing cookies&gt;</strong></a></span> to learn more.</figcaption>
                 </figure>
+                <script>
+                    const rwblink = document.querySelectorAll("span[data-rwb-type=link] a")
+                    rwblink[0].href = "/guides/devtools/elementstab.html"
+                    rwblink[1].href = "/guides/devtools/applicationtab.html"
+                    rwblink[2].href = "/guides/clearcookiesquickly.html"
+                </script>
                 <figure class=" pictureCaption img3">
                     <a class="pswp-gallery__item" href="/img/DevTools_Application5-After_Cookies.png" data-pswp-width="1920" data-pswp-height="823">
                         <img src="/img/DevTools_Application5-After_Cookies.png" alt="Cookies after clearing browser data" width="627" height="270">

@@ -71,6 +71,16 @@
 	Content-Type: image/jpeg;
 /img/ClearCookies.png
 	Content-Type: image/png;
+/img/DevToolsElementsErrorsandWarnings.png
+	Content-Type: image/png;
+/img/DevToolsElementsErrorsandWarningsConsole.png
+	Content-Type: image/png;
+/img/DevToolsElementsIssuesandImprovements.png
+	Content-Type: image/png;
+/img/DevToolsElementsOpen.png
+	Content-Type: image/png;
+/img/DevToolsElementsOption.png
+	Content-Type: image/png;
 /img/DevTools_Application1.png
 	Content-Type: image/png;
 /img/DevTools_Application2-Before.png
@@ -224,6 +234,8 @@
 /img/wappalyzer-logo.webp
 	Content-Type: image/webp;
 /img/watchIngrid.webp
+	Content-Type: image/webp;
+/img/web-development.webp
 	Content-Type: image/webp;
 /img/webide__brackets-icon.svg
 	Content-Type: image/svg+xml;

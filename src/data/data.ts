@@ -635,18 +635,18 @@ const GuideShorts = new Array(
     new Date(2023, 10, 9),
     "guides/elementinspect.html",
     "img/checked.webp",
-    "To-do list notepad",
+    "Inspect element icon depiction",
     new AttributionLink(
       "inspection icons",
       "Inspection icons created by Freepik - Flaticon",
       "https://www.flaticon.com/free-icons/inspection",
       "Flaticon",
-      "To-Do List",
+      "Element Inspect",
       38
     )
   ),
   new WebBit(
-    "ElementInspect",
+    "DevToolsElements",
     39,
     "Guide: Dev Elements",
     "Review dev tool's elements tab",
@@ -659,8 +659,116 @@ const GuideShorts = new Array(
       "Development icons created by Flat-icons-com - Flaticon",
       "https://www.flaticon.com/free-icons/development",
       "Flaticon",
-      "To-Do List",
+      "Guide: Dev Elements",
       39
+    )
+  ),
+  new WebBit(
+    "DevToolsConsole",
+    40,
+    "GUIDE: Dev Console",
+    "Review dev tool's console tab",
+    new Date(2023, 10, 29),
+    "guides/devtools/consoletab.html",
+    "img/terminal2.webp",
+    "Icon depiction of developer's tools",
+    new AttributionLink(
+      "terminal icons",
+      "Terminal icons created by Smashicons - Flaticon",
+      "https://www.flaticon.com/free-icons/terminal",
+      "Flaticon",
+      "GUIDE: Dev Console",
+      40
+    )
+  ),
+  new WebBit(
+    "DevToolsSources",
+    41,
+    "GUIDE: Dev Sources",
+    "Review dev tool's sources tab",
+    new Date(2023, 10, 30),
+    "guides/devtools/sourcestab.html",
+    "img/terminal3.webp",
+    "Icon depiction of developer's tools",
+    new AttributionLink(
+      "terminal icons",
+      "Terminal icons created by Smashicons - Flaticon",
+      "https://www.flaticon.com/free-icons/terminal",
+      "Flaticon",
+      "GUIDE: Dev Sources",
+      41
+    )
+  ),
+  new WebBit(
+    "DevToolsNetwork",
+    42,
+    "GUIDE: Dev Network",
+    "Review dev tool's network tab",
+    new Date(2023, 10, 31),
+    "guides/devtools/networktab.html",
+    "img/terminal4.webp",
+    "Icon depiction of developer's tools",
+    new AttributionLink(
+      "terminal icons",
+      "Terminal icons created by Smashicons - Flaticon",
+      "https://www.flaticon.com/free-icons/terminal",
+      "Flaticon",
+      "GUIDE: Dev Network",
+      42
+    )
+  ),
+  new WebBit(
+    "DevToolsPerformance",
+    43,
+    "GUIDE: Dev Performance",
+    "Review dev tool's performance tab",
+    new Date(2023, 11, 1),
+    "guides/devtools/performancetab.html",
+    "img/terminal5.webp",
+    "Icon depiction of developer's tools",
+    new AttributionLink(
+      "terminal icons",
+      "Terminal icons created by Smashicons - Flaticon",
+      "https://www.flaticon.com/free-icons/terminal",
+      "Flaticon",
+      "GUIDE: Dev Performance",
+      43
+    )
+  ),
+  new WebBit(
+    "DevToolsMemory",
+    44,
+    "GUIDE: Dev Memory",
+    "Review dev tool's memory tab",
+    new Date(2023, 11, 2),
+    "guides/devtools/memorytab.html",
+    "img/terminal6.webp",
+    "Icon depiction of developer's tools",
+    new AttributionLink(
+      "terminal icons",
+      "Terminal icons created by Smashicons - Flaticon",
+      "https://www.flaticon.com/free-icons/terminal",
+      "Flaticon",
+      "GUIDE: Dev Memory",
+      44
+    )
+  ),
+  new WebBit(
+    "DevToolsSecurity",
+    45,
+    "GUIDE: Dev Security",
+    "Review dev tool's security tab",
+    new Date(2023, 11, 3),
+    "guides/devtools/securitytab.html",
+    "img/ssl.webp",
+    "Icon depiction of security items: a lock and a shield",
+    new AttributionLink(
+      "ssl icons",
+      "Ssl icons created by Freepik - Flaticon",
+      "https://www.flaticon.com/free-icons/ssl",
+      "Flaticon",
+      "GUIDE: Dev Security",
+      45
     )
   )
 );
@@ -709,7 +817,7 @@ const Explore = new Array(
     "Webb",
     31,
     "James Webb Space Telescope",
-    "",
+    "Discover the science mission of NASA's James Webb Space Telescope (JWST)",
     new Date(2023, 7, 3),
     "explore/webbtelescope.html",
     "img/JWST_poster.webp",

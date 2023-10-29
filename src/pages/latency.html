@@ -30,7 +30,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article id="LATENCY" class="WebBits">
             <h2>TRY: Measuring website latency</h2>
             <p>The speed of light is 300,000,000 meters per second. Every millisecond, light travels 300,000 meters = 300km = 186 miles. Two computers connected over the internet experience this latency, accumulating 1 millisecond for every 186 miles in packet travel. This is a limitation of physics. It is immutable.</p>
-            <form id="PropagationLatency" action="">
+            <form id="PropagationLatency">
                 <h3>Calculate Propagation Latency</h3>
                 <label for="distance">Distance(km)</label>
                 <input type="text" id="distance" placeholder="300 km" required>
@@ -42,9 +42,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <input type="text" id="transmissionRate" placeholder="1,000,000 Kbs">
                 <div id="propagationcalcbtns">
                     <div>
-                        <button id="example1" class="propcalcbtn" type="example" aria-labelby="ExampleOne">Ex. 1</button>
-                        <button id="example2" class="propcalcbtn" type="example" aria-labelby="ExampleTwo">Ex. 2</button>
-                        <button id="example3" class="propcalcbtn" type="example" aria-labelby="ExampleThree">Ex. 3</button>
+                        <button id="example1" class="propcalcbtn" type="button">Ex. 1</button>
+                        <button id="example2" class="propcalcbtn" type="button">Ex. 2</button>
+                        <button id="example3" class="propcalcbtn" type="button">Ex. 3</button>
                     </div>
                     <div>
                         <input id="reset" class="propcalcbtn" type="reset" value="Reset">
@@ -53,9 +53,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <details id="Formulas">
                     <summary>Formulas<sup>1</sup>:</summary>
-                    Network Latency <br />= Propagation Delay + Serialization Delay<br /><br />
-                    Propagation Delay <br />= Distance / Speed <br /><br />
-                    Serialization Delay <br />= Packet Size (bits) / Transmission Rate (bps)<br />
+                    Network Latency <br>= Propagation Delay + Serialization Delay<br><br>
+                    Propagation Delay <br>= Distance / Speed <br><br>
+                    Serialization Delay <br>= Packet Size (bits) / Transmission Rate (bps)<br>
                 </details>
                 <hr>
                 <h4>Result:</h4>

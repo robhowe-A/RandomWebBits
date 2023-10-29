@@ -48,10 +48,10 @@
   X-Content-Type-Options: nosniff
 #images
 /img/*
-  Cache-Control: max-age=604800
+  Cache-Control: max-age=86400
   X-Content-Type-Options: nosniff
 /js/*
-  Cache-Control: max-age=604800
+  Cache-Control: max-age=86400
   Content-Type: text/javascript; charset=utf-8
   X-Content-Type-Options: nosniff
 /js/photoswipe/*
@@ -59,7 +59,7 @@
   Content-Type: text/javascript; charset=utf-8
   X-Content-Type-Options: nosniff
 /css/*
-  Cache-Control: max-age=604800
+  Cache-Control: max-age=86400
   Content-Type: text/css; charset=utf-8
   X-Content-Type-Options: nosniff
 
@@ -71,6 +71,12 @@
 	Content-Type: image/jpeg;
 /img/ClearCookies.png
 	Content-Type: image/png;
+/img/DevToolsConsole-RWB.png
+	Content-Type: image/png;
+/img/DevToolsConsole-RWBconsolesource.png
+	Content-Type: image/png;
+/img/DevToolsConsole-RWBwebbtelescope.png
+	Content-Type: image/png;
 /img/DevToolsElementsErrorsandWarnings.png
 	Content-Type: image/png;
 /img/DevToolsElementsErrorsandWarningsConsole.png
@@ -80,6 +86,54 @@
 /img/DevToolsElementsOpen.png
 	Content-Type: image/png;
 /img/DevToolsElementsOption.png
+	Content-Type: image/png;
+/img/DevToolsMemory0.png
+	Content-Type: image/png;
+/img/DevToolsMemory1.png
+	Content-Type: image/png;
+/img/DevToolsMemory2.png
+	Content-Type: image/png;
+/img/DevToolsMemory3.png
+	Content-Type: image/png;
+/img/DevToolsMemory4.png
+	Content-Type: image/png;
+/img/DevToolsMemory5.png
+	Content-Type: image/png;
+/img/DevToolsNetwork-exportHAR.png
+	Content-Type: image/png;
+/img/DevToolsNetwork.png
+	Content-Type: image/png;
+/img/DevToolsNetwork0.png
+	Content-Type: image/png;
+/img/DevToolsNetwork1-filter.png
+	Content-Type: image/png;
+/img/DevToolsNetwork1-filterDetail.png
+	Content-Type: image/png;
+/img/DevToolsNetwork2-networkConditions.png
+	Content-Type: image/png;
+/img/DevToolsPerformance0.png
+	Content-Type: image/png;
+/img/DevToolsPerformance1.png
+	Content-Type: image/png;
+/img/DevToolsPerformance2.png
+	Content-Type: image/png;
+/img/DevToolsPerformance3.png
+	Content-Type: image/png;
+/img/DevToolsSecurity.png
+	Content-Type: image/png;
+/img/DevToolsSecurity0.png
+	Content-Type: image/png;
+/img/DevToolsSources-RWBdom0.png
+	Content-Type: image/png;
+/img/DevToolsSources-RWBdom1.png
+	Content-Type: image/png;
+/img/DevToolsSources-RWBdom2.png
+	Content-Type: image/png;
+/img/DevToolsSources-RWBdom3.png
+	Content-Type: image/png;
+/img/DevToolsSources-RWBdom4.png
+	Content-Type: image/png;
+/img/DevToolsSources-RWBdom5.png
 	Content-Type: image/png;
 /img/DevTools_Application1.png
 	Content-Type: image/png;
@@ -219,9 +273,21 @@
 	Content-Type: image/jpg;
 /img/software-application.webp
 	Content-Type: image/webp;
+/img/ssl.webp
+	Content-Type: image/webp;
 /img/svg.svg
 	Content-Type: image/svg+xml;
 /img/terminal.webp
+	Content-Type: image/webp;
+/img/terminal2.webp
+	Content-Type: image/webp;
+/img/terminal3.webp
+	Content-Type: image/webp;
+/img/terminal4.webp
+	Content-Type: image/webp;
+/img/terminal5.webp
+	Content-Type: image/webp;
+/img/terminal6.webp
 	Content-Type: image/webp;
 /img/tool-box.webp
 	Content-Type: image/webp;

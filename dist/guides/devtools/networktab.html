@@ -1,0 +1,101 @@
+<!--Copyright (c) 2023 Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use the developer's tools to view browsing data like cache, cookies, and storage.">
+    <title>GUIDE: Dev Network&lt;/RWB&gt;</title>
+    <link rel="stylesheet" 
+        href="../../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../../typescript.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
+</head>
+<body class="WebBits-width">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main id="DevTools">
+        <nav id="DevTabs">
+            <ol>
+                <li title="GUIDE: Dev Elements&lt;/RWB&gt;"><span data-rwb-type="link"><a href="elementstab.html" title="GUIDE: Dev Elements&lt;/RWB&gt;">Elements</a></span></li>
+                <li title="GUIDE: Dev Console&lt;/RWB&gt;"><span data-rwb-type="link"><a href="consoletab.html" title="GUIDE: Dev Console&lt;/RWB&gt;">Console</a></span></li>
+                <li title="GUIDE: Dev Sources&lt;/RWB&gt;"><span data-rwb-type="link"><a href="sourcestab.html" title="GUIDE: Dev Sources&lt;/RWB&gt;">Sources</a></span></li>
+                <li title="GUIDE: Dev Network&lt;/RWB&gt;"><span data-rwb-type="link"><a href="networktab.html" title="GUIDE: Dev Network&lt;/RWB&gt;">Network</a></span></li>
+                <li title="GUIDE: Dev Performance&lt;/RWB&gt;"><span data-rwb-type="link"><a href="performancetab.html" title="GUIDE: Dev Performance&lt;/RWB&gt;">Performance</a></span></li>
+                <li title="GUIDE: Dev Memory&lt;/RWB&gt;"><span data-rwb-type="link"><a href="memorytab.html" title="GUIDE: Dev Memory&lt;/RWB&gt;">Memory</a></span></li>
+                <li title="GUIDE: Dev Application&lt;/RWB&gt;"><span data-rwb-type="link"><a href="applicationtab.html" title="GUIDE: Dev Application&lt;/RWB&gt;">Application</a></span></li>
+                <li title="GUIDE: Dev Security&lt;/RWB&gt;"><span data-rwb-type="link"><a href="securitytab.html" title="GUIDE: Dev Security&lt;/RWB&gt;">Security</a></span></li>
+                <li title="A page does not exist yet.">Lighthouse</li>
+                <li title="A page does not exist yet.">CSS Overview</li>
+            </ol>
+            <button style="display:none;">Open Menu</button>
+        </nav>
+        <!-- <script>
+            const devPanel = document.getElementById("DevTabs");
+        </script> -->
+        <time datetime="2023-10-31">October 31, 2023</time>
+        <article id="NetworkTab" class="WebBits">
+            <h2>GUIDE: Dev Tools --&gt; Network Tab</h2>
+            <p>Open the <abbr title="developer">dev</abbr> tools tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code> and navigate to the network tab. In firefox, be sure to use <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code></p>
+            <figure class="imgShadow pictureCaption img1">
+                <a class="pswp-gallery__item" href="/img/DevToolsNetwork.png" data-pswp-width="1920" data-pswp-height="804">
+                    <img src="/img/DevToolsNetwork.png" alt="Developer's tools 'Network' tab default view." width="1920" height="804">
+                </a>
+                <figcaption>Developer's tools <q>Network</q> tab default view.</figcaption>
+            </figure>
+            <p>Network panel provides details and insights of a website's remote operation. Because files need to be downloaded from a web server, details specific to individual file transport are presented throughout the panel's interaction.</p>
+            <!--Photoswipe start-->
+            <aside class="exampleBlue">
+                <p>Examples below are using <em>Edge</em> browser. <em>Chrome</em> and <em>Firefox</em> share similar information and options.</p>
+            </aside>
+            <div id="devTools-Gallery" class="devToolsGrid">
+                <figure class="imgShadow pictureCaption img1">
+                    <a class="pswp-gallery__item" href="/img/DevToolsNetwork0.png" data-pswp-width="1918" data-pswp-height="955">
+                        <img src="/img/DevToolsNetwork0.png" alt="Click the filter icon to open and close the filter options bar" width="1918" height="955">
+                    </a>
+                    <figcaption>Click the filter icon to open and close the filter options bar</figcaption>
+                </figure>
+                <figure class="imgShadow pictureCaption img2">
+                    <a class="pswp-gallery__item" href="/img/DevToolsNetwork1-filter.png" data-pswp-width="1920" data-pswp-height="804">
+                        <img src="/img/DevToolsNetwork1-filter.png" alt="Filter the list by file extension type" width="1920" height="804">
+                    </a>
+                    <figcaption>Filter the list by file extension type<br>More status code information is found at <span data-rwb-type="link"><a href="../../pages/htmlresponses.html" title="HTML Frames&lt;/RWB&gt;">&lt;HTML Frames&gt;</a></span>.</figcaption>
+                </figure>
+                <figure class="imgShadow pictureCaption img3">
+                    <a class="pswp-gallery__item" href="/img/DevToolsNetwork1-filterDetail.png" data-pswp-width="1920" data-pswp-height="804">
+                        <img src="/img/DevToolsNetwork1-filterDetail.png" alt="'Waterfall' details show specific file transport statistics" width="1920" height="804">
+                    </a>
+                    <figcaption><q>Waterfall</q> details show specific file transport statistics</figcaption>
+                </figure>
+                <figure class="imgShadow pictureCaption img4">
+                    <a class="pswp-gallery__item" href="/img/DevToolsNetwork2-networkConditions.png" data-pswp-width="1920" data-pswp-height="805">
+                        <img src="/img/DevToolsNetwork2-networkConditions.png" alt="Click More network conditions icon to navigate to the network conditions console tab option" width="1920" height="805">
+                    </a>
+                    <figcaption>Click <q>More network conditions</q> icon to navigate to the network conditions console tab option</figcaption>
+                </figure>
+            </div>
+            <p>If the findings are needed analyzed at a later time or viewed elsewhere, the import and export &lpar;HAR&rpar; options allow saving and re-viewing the network data through the import and export HAR functionality.</p>
+            <figure class="imgShadow pictureCaption img1">
+                <a class="pswp-gallery__item" href="/img/DevToolsNetwork-exportHAR.png" data-pswp-width="1920" data-pswp-height="804">
+                    <img src="/img/DevToolsNetwork-exportHAR.png" alt="Save the records as a .HAR file" width="1920" height="804">
+                </a>
+                <figcaption>Save the records as a .HAR file</figcaption>
+            </figure>
+        </article>
+        <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    </main>
+        <noscript>Your JavaScript may be broken or is disabled. <br>Turn it on for full experience! Here are <a href="https://www.enable-javascript.com/">the instructions how to enable JavaScript in your web browser</a>.<br><br>-- Random Web Bits &copy;2023</noscript>
+</body>
+</html>

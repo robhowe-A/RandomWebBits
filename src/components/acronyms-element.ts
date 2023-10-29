@@ -2,7 +2,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { LitElement, css, html } from "../js/lit-all.min.js";
 
-export class SimpleGreeting extends LitElement {
+export class AcronymsElem extends LitElement {
   title: any = {};
   id: any = {};
   acronyms: any = [];

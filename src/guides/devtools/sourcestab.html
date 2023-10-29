@@ -1,0 +1,99 @@
+<!--Copyright (c) 2023 Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use the developer's tools to view browsing data like cache, cookies, and storage.">
+    <title>GUIDE: Dev Sources&lt;/RWB&gt;</title>
+    <link rel="stylesheet" 
+        href="../../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../../typescript.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
+</head>
+<body class="WebBits-width">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main id="DevTools">
+        <nav id="DevTabs">
+            <ol>
+                <li title="GUIDE: Dev Elements&lt;/RWB&gt;"><span data-rwb-type="link"><a href="elementstab.html" title="GUIDE: Dev Elements&lt;/RWB&gt;">Elements</a></span></li>
+                <li title="GUIDE: Dev Console&lt;/RWB&gt;"><span data-rwb-type="link"><a href="consoletab.html" title="GUIDE: Dev Console&lt;/RWB&gt;">Console</a></span></li>
+                <li title="GUIDE: Dev Sources&lt;/RWB&gt;"><span data-rwb-type="link"><a href="sourcestab.html" title="GUIDE: Dev Sources&lt;/RWB&gt;">Sources</a></span></li>
+                <li title="GUIDE: Dev Network&lt;/RWB&gt;"><span data-rwb-type="link"><a href="networktab.html" title="GUIDE: Dev Network&lt;/RWB&gt;">Network</a></span></li>
+                <li title="GUIDE: Dev Performance&lt;/RWB&gt;"><span data-rwb-type="link"><a href="performancetab.html" title="GUIDE: Dev Performance&lt;/RWB&gt;">Performance</a></span></li>
+                <li title="GUIDE: Dev Memory&lt;/RWB&gt;"><span data-rwb-type="link"><a href="memorytab.html" title="GUIDE: Dev Memory&lt;/RWB&gt;">Memory</a></span></li>
+                <li title="GUIDE: Dev Application&lt;/RWB&gt;"><span data-rwb-type="link"><a href="applicationtab.html" title="GUIDE: Dev Application&lt;/RWB&gt;">Application</a></span></li>
+                <li title="GUIDE: Dev Security&lt;/RWB&gt;"><span data-rwb-type="link"><a href="securitytab.html" title="GUIDE: Dev Security&lt;/RWB&gt;">Security</a></span></li>
+                <li title="A page does not exist yet.">Lighthouse</li>
+                <li title="A page does not exist yet.">CSS Overview</li>
+            </ol>
+            <button style="display:none;">Open Menu</button>
+        </nav>
+        <!-- <script>
+            const devPanel = document.getElementById("DevTabs");
+        </script> -->
+        <time datetime="2023-10-30">October 30, 2023</time>
+        <article id="SourcesTab" class="WebBits">
+            <h2>GUIDE: Dev Tools --&gt; Sources Tab</h2>
+            <p>Open the <abbr title="developer">dev</abbr> tools tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code> or with the <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code> keyboard shortcut in Firefox. Navigate to the sources tab. Here, try making the screen large.</p>
+            <figure class="imgShadow pictureCaption">
+                <a class="pswp-gallery__item" href="../../img/DevToolsSources-RWBdom1.png" data-pswp-width="1912" data-pswp-height="820">
+                    <img src="../../img/DevToolsSources-RWBdom1.png" alt="" width="1912" height="820">
+                </a>
+                <figcaption>A default view of <q>Sources</q> tab in developer's tools.</figcaption>
+            </figure>
+            <figure class="imgShadow pictureCaption gap">
+                <a class="pswp-gallery__item" href="../../img/DevToolsSources-RWBdom0.png" data-pswp-width="1916" data-pswp-height="859">
+                    <img src="../../img/DevToolsSources-RWBdom0.png" alt="" width="1916" height="859">
+                </a>
+                <figcaption>The navigation panel shows the files downloaded from the web server. <br><strong>Shown:</strong> src --&gt; components --&gt; ExpandingListDOMWidget.ts</figcaption>
+            </figure>
+            <p>Multiple panels are able to collapse, and the console can be closed and opened, too. Below, the panel is used to debug the widget.</p>
+
+            <!--Photoswipe start-->
+            <div id="devTools-Gallery" class="devToolsGrid">
+                <figure class="imgShadow pictureCaption img1">
+                    <a class="pswp-gallery__item" href="/img/DevToolsSources-RWBdom2.png" data-pswp-width="1916" data-pswp-height="858">
+                        <img src="/img/DevToolsSources-RWBdom2.png" alt="A breakpoint added to the typescript file" width="1916" height="858">
+                    </a>
+                    <figcaption>Add breakpoints in the main panel.</figcaption>
+                </figure>
+                <figure class="imgShadow pictureCaption img2">
+                    <a class="pswp-gallery__item" href="/img/DevToolsSources-RWBdom3.png" data-pswp-width="1915" data-pswp-height="858">
+                        <img src="/img/DevToolsSources-RWBdom3.png" alt="The sources console appearing different with a breakpoint applied" width="1915" height="858">
+                    </a>
+                    <figcaption>With breakpoints, the panels adjust with the current runtime.</figcaption>
+                </figure>
+                <figure class="imgShadow pictureCaption img3">
+                    <a class="pswp-gallery__item" href="/img/DevToolsSources-RWBdom4.png" data-pswp-width="1916" data-pswp-height="858">
+                        <img src="/img/DevToolsSources-RWBdom4.png" alt="Highlight of the console use during a breakpoint use" width="1916" height="858">
+                    </a>
+                    <figcaption>Use the console to access variables and JavaScript methods.</figcaption>
+                </figure>
+                <figure class="imgShadow pictureCaption img4">
+                    <a class="pswp-gallery__item" href="/img/DevToolsSources-RWBdom5.png" data-pswp-width="1716" data-pswp-height="820">
+                        <img src="/img/DevToolsSources-RWBdom5.png" alt="Highlight of scope and call stack in the panel on the right" width="1716" height="820">
+                    </a>
+                    <figcaption>View local and global variables and the call stack in the panel on the right.</figcaption>
+                </figure>
+              </div>
+              <!--https://learn.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/sources/-->
+        </article>
+        <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    </main>
+        <noscript>Your JavaScript may be broken or is disabled. <br>Turn it on for full experience! Here are <a href="https://www.enable-javascript.com/">the instructions how to enable JavaScript in your web browser</a>.<br><br>-- Random Web Bits &copy;2023</noscript>
+</body>
+</html>

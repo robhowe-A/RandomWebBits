@@ -242,7 +242,13 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 1.7.70: Footer addition  
 1.7.71: New WebBits page: HSL  
 1.7.72: New page: 404.html  
-1.7.73: WebBits Slideshow component  
+1.7.73: WebBits Slideshow component
+
+</details>
+
+<details>
+<summary>Version 1.8</summary>
+
 1.8.74: Lit Elements: TypeScript  
 1.8.74: PhotoSwipe: TypeScript  
 1.8.75: Logo attributions  
@@ -256,4 +262,11 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 1.8.82: RWB Card CSS  
 1.8.83: RWB Card CSS flip direction  
 1.8.84: New WebBits page: elementstab  
+1.8.85: New WebBits page: consoletab  
+1.8.86: New WebBits page: sourcestab  
+1.8.87: New WebBits page: networktab  
+1.8.88: New WebBits page: performancetab  
+1.8.89: New WebBits page: memorytab  
+1.8.90: New WebBits page: securitytab
+
 </details>

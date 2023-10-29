@@ -21,6 +21,7 @@ const ClassComponents = {
       ToDosWidget.init();
     }
     ClassComponents.mobileAbbrMarkups();
+    ClassComponents.rwbDataTypeAnchor();
 
     classperf.end(); //end performance measure
   },
@@ -80,6 +81,149 @@ const ClassComponents = {
     }
 
     mobileabbrperf.end(); //end performance measure
+  },
+  rwbDataTypeAnchor: () => {
+    switch (location.pathname) {
+      case "/guides/clearcookiesquickly.html":
+        const rwblink0 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink0[0].href = "/guides/devtools/applicationtab.html";
+        break;
+      case "/guides/devtools/applicationtab.html":
+        const rwblink1 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink1[0].href = "/guides/devtools/elementstab.html";
+        rwblink1[1].href = "/guides/devtools/consoletab.html";
+        rwblink1[2].href = "/guides/devtools/sourcestab.html";
+        rwblink1[3].href = "/guides/devtools/networktab.html";
+        rwblink1[4].href = "/guides/devtools/performancetab.html";
+        rwblink1[5].href = "/guides/devtools/memorytab.html";
+        rwblink1[6].href = "/guides/devtools/applicationtab.html";
+        rwblink1[7].href = "/guides/devtools/securitytab.html";
+        rwblink1[8].href = "/guides/clearcookiesquickly.html";
+        break;
+      case "/guides/devtools/consoletab.html":
+        const rwblink2 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink2[0].href = "/guides/devtools/elementstab.html";
+        rwblink2[1].href = "/guides/devtools/consoletab.html";
+        rwblink2[2].href = "/guides/devtools/sourcestab.html";
+        rwblink2[3].href = "/guides/devtools/networktab.html";
+        rwblink2[4].href = "/guides/devtools/performancetab.html";
+        rwblink2[5].href = "/guides/devtools/memorytab.html";
+        rwblink2[6].href = "/guides/devtools/applicationtab.html";
+        rwblink2[7].href = "/guides/devtools/securitytab.html";
+        rwblink2[8].href = "/explore/webbtelescope.html";
+        rwblink2[9].href = "/pages/dom.html";
+        break;
+      case "/guides/devtools/elementstab.html":
+        const rwblink3 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink3[0].href = "/guides/devtools/elementstab.html";
+        rwblink3[1].href = "/guides/devtools/consoletab.html";
+        rwblink3[2].href = "/guides/devtools/sourcestab.html";
+        rwblink3[3].href = "/guides/devtools/networktab.html";
+        rwblink3[4].href = "/guides/devtools/performancetab.html";
+        rwblink3[5].href = "/guides/devtools/memorytab.html";
+        rwblink3[6].href = "/guides/devtools/applicationtab.html";
+        rwblink3[7].href = "/guides/devtools/securitytab.html";
+        rwblink3[8].href = "/pages/dom.html";
+        break;
+      case "/guides/devtools/memorytab.html":
+        const rwblink4 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink4[0].href = "/guides/devtools/elementstab.html";
+        rwblink4[1].href = "/guides/devtools/consoletab.html";
+        rwblink4[2].href = "/guides/devtools/sourcestab.html";
+        rwblink4[3].href = "/guides/devtools/networktab.html";
+        rwblink4[4].href = "/guides/devtools/performancetab.html";
+        rwblink4[5].href = "/guides/devtools/memorytab.html";
+        rwblink4[6].href = "/guides/devtools/applicationtab.html";
+        rwblink4[7].href = "/guides/devtools/securitytab.html";
+        break;
+      case "/guides/devtools/networktab.html":
+        const rwblink5 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink5[0].href = "/guides/devtools/elementstab.html";
+        rwblink5[1].href = "/guides/devtools/consoletab.html";
+        rwblink5[2].href = "/guides/devtools/sourcestab.html";
+        rwblink5[3].href = "/guides/devtools/networktab.html";
+        rwblink5[4].href = "/guides/devtools/performancetab.html";
+        rwblink5[5].href = "/guides/devtools/memorytab.html";
+        rwblink5[6].href = "/guides/devtools/applicationtab.html";
+        rwblink5[7].href = "/guides/devtools/securitytab.html";
+        rwblink5[8].href = "/pages/htmlresponses.html";
+        break;
+      case "/guides/devtools/performancetab.html":
+        const rwblink6 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink6[0].href = "/guides/devtools/elementstab.html";
+        rwblink6[1].href = "/guides/devtools/consoletab.html";
+        rwblink6[2].href = "/guides/devtools/sourcestab.html";
+        rwblink6[3].href = "/guides/devtools/networktab.html";
+        rwblink6[4].href = "/guides/devtools/performancetab.html";
+        rwblink6[5].href = "/guides/devtools/memorytab.html";
+        rwblink6[6].href = "/guides/devtools/applicationtab.html";
+        rwblink6[7].href = "/guides/devtools/securitytab.html";
+        break;
+      case "/guides/devtools/sourcestab.html":
+        const rwblink7 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink7[0].href = "/guides/devtools/elementstab.html";
+        rwblink7[1].href = "/guides/devtools/consoletab.html";
+        rwblink7[2].href = "/guides/devtools/sourcestab.html";
+        rwblink7[3].href = "/guides/devtools/networktab.html";
+        rwblink7[4].href = "/guides/devtools/performancetab.html";
+        rwblink7[5].href = "/guides/devtools/memorytab.html";
+        rwblink7[6].href = "/guides/devtools/applicationtab.html";
+        rwblink7[7].href = "/guides/devtools/securitytab.html";
+        break;
+      case "/guides/devtools/securitytab.html":
+        const rwblink11 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink11[0].href = "/guides/devtools/elementstab.html";
+        rwblink11[1].href = "/guides/devtools/consoletab.html";
+        rwblink11[2].href = "/guides/devtools/sourcestab.html";
+        rwblink11[3].href = "/guides/devtools/networktab.html";
+        rwblink11[4].href = "/guides/devtools/performancetab.html";
+        rwblink11[5].href = "/guides/devtools/memorytab.html";
+        rwblink11[6].href = "/guides/devtools/applicationtab.html";
+        rwblink11[7].href = "/guides/devtools/securitytab.html";
+        rwblink11[8].href = "/guides/https.html";
+
+        break;
+      case "/pages/datastorage.html":
+        const rwblink8 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink8[0].href = "/pages/markup.html";
+        rwblink8[1].href = "/guides/devtools/applicationtab.html";
+        break;
+      case "/pages/htmlresponses.html":
+        const rwblink9 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink9[0].href = "/guides/devtools/networktab.html";
+        rwblink9[1].href = "/pages/webides.html";
+        break;
+      case "/pages/url.html":
+        const rwblink10 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink10[0].href = "/pages/domainlookup.html";
+        break;
+      default:
+        console.info("No elements of type data-rwb-type=link found.");
+    }
   },
 };
 export default ClassComponents;

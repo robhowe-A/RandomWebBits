@@ -1,0 +1,88 @@
+<!--Copyright (c) 2023 Robert A. Howell-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use the developer's tools to view browsing data like cache, cookies, and storage.">
+    <title>GUIDE: Dev Performance&lt;/RWB&gt;</title>
+    <link rel="stylesheet" 
+        href="../../css/styles.css"
+        type="text/css"
+        media="all">
+    <link rel="icon" type="image/x-icon" href="../../img/favicon/ImageHome_Favicon.png">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
+    <!-- End Google Tag Manager -->
+    <script type="module" src="../../typescript.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
+</head>
+<body class="WebBits-width">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSMV9TK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <main id="DevTools">
+        <nav id="DevTabs">
+            <ol>
+                <li title="GUIDE: Dev Elements&lt;/RWB&gt;"><span data-rwb-type="link"><a href="elementstab.html" title="GUIDE: Dev Elements&lt;/RWB&gt;">Elements</a></span></li>
+                <li title="GUIDE: Dev Console&lt;/RWB&gt;"><span data-rwb-type="link"><a href="consoletab.html" title="GUIDE: Dev Console&lt;/RWB&gt;">Console</a></span></li>
+                <li title="GUIDE: Dev Sources&lt;/RWB&gt;"><span data-rwb-type="link"><a href="sourcestab.html" title="GUIDE: Dev Sources&lt;/RWB&gt;">Sources</a></span></li>
+                <li title="GUIDE: Dev Network&lt;/RWB&gt;"><span data-rwb-type="link"><a href="networktab.html" title="GUIDE: Dev Network&lt;/RWB&gt;">Network</a></span></li>
+                <li title="GUIDE: Dev Performance&lt;/RWB&gt;"><span data-rwb-type="link"><a href="performancetab.html" title="GUIDE: Dev Performance&lt;/RWB&gt;">Performance</a></span></li>
+                <li title="GUIDE: Dev Memory&lt;/RWB&gt;"><span data-rwb-type="link"><a href="memorytab.html" title="GUIDE: Dev Memory&lt;/RWB&gt;">Memory</a></span></li>
+                <li title="GUIDE: Dev Application&lt;/RWB&gt;"><span data-rwb-type="link"><a href="applicationtab.html" title="GUIDE: Dev Application&lt;/RWB&gt;">Application</a></span></li>
+                <li title="GUIDE: Dev Security&lt;/RWB&gt;"><span data-rwb-type="link"><a href="securitytab.html" title="GUIDE: Dev Security&lt;/RWB&gt;">Security</a></span></li>
+                <li title="A page does not exist yet.">Lighthouse</li>
+                <li title="A page does not exist yet.">CSS Overview</li>
+            </ol>
+            <button style="display:none;">Open Menu</button>
+        </nav>
+        <!-- <script>
+            const devPanel = document.getElementById("DevTabs");
+        </script> -->
+        <time datetime="2023-11-01">November 1, 2023</time>
+        <article id="PerformanceTab" class="WebBits">
+            <h2>GUIDE: Dev Tools --&gt; Performance Tab</h2>
+            <p>Open the <abbr title="developer">dev</abbr> tools tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code> and navigate to the performance tab. In firefox, be sure to use <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code></p>
+            <figure class="imgShadow pictureCaption img1">
+                <a class="pswp-gallery__item" href="/img/DevToolsPerformance0.png" data-pswp-width="1919" data-pswp-height="954">
+                    <img src="/img/DevToolsPerformance0.png" alt="Developer's tools 'performance' tab default view." width="1919" height="954">
+                </a>
+                <figcaption>A default view of <q>performance</q> tab in developer's tools.</figcaption>
+            </figure>
+            <p>At first glance, it looks like something went wrong with the screen. That's not what happened here. The whole graph is the runtime for DOM.html page. In <q>Main</q>, a timeline of function calls is shown. Each top-level box is a function. Each box beneath it is smaller, as a result of a nested function call.</p>
+            <!--Photoswipe start-->
+            <div id="devTools-Gallery" class="devToolsGrid">
+                <figure class="imgShadow pictureCaption img1">
+                    <a class="pswp-gallery__item" href="/img/DevToolsPerformance1.png" data-pswp-width="1139" data-pswp-height="955">
+                        <img src="/img/DevToolsPerformance1.png" alt="The DOMContentLoaded function call begins custom component code." width="1139" height="955">
+                    </a>
+                    <figcaption>The DOMContentLoaded function call begins custom component code.</figcaption>
+                </figure>
+                <figure class="imgShadow pictureCaption img2">
+                    <a class="pswp-gallery__item" href="/img/DevToolsPerformance2.png" data-pswp-width="1139" data-pswp-height="955">
+                        <img src="/img/DevToolsPerformance2.png" alt="When the ExpandingListElement function call is reached, its runtime takes ~2ms" width="1139" height="955">
+                    </a>
+                    <figcaption>When the ExpandingListElement function call is reached, its runtime takes ~2ms</figcaption>
+                </figure>
+                <figure class="imgShadow pictureCaption img3">
+                    <a class="pswp-gallery__item" href="/img/DevToolsPerformance3.png" data-pswp-width="1140" data-pswp-height="955">
+                        <img src="/img/DevToolsPerformance3.png" alt="The Bottom-Up tab shows the call stack" width="1140" height="955">
+                    </a>
+                    <figcaption>The <q>Bottom-Up</q> console tab shows the call stack</figcaption>
+                </figure>
+            </div>
+              <aside class="exampleBlue">
+                <p>The summary graph's range details are dynamically updated when the graph timeline changes.</p>
+            </aside>
+        </article>
+        <div class="Top-Link"><a class="Top" href="#">Top</a></div>
+    </main>
+        <noscript>Your JavaScript may be broken or is disabled. <br>Turn it on for full experience! Here are <a href="https://www.enable-javascript.com/">the instructions how to enable JavaScript in your web browser</a>.<br><br>-- Random Web Bits &copy;2023</noscript>
+</body>
+</html>

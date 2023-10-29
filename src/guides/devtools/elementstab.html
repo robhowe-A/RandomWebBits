@@ -30,26 +30,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <nav id="DevTabs">
             <ol>
                 <li title="GUIDE: Dev Elements&lt;/RWB&gt;"><span data-rwb-type="link"><a href="elementstab.html" title="GUIDE: Dev Elements&lt;/RWB&gt;">Elements</a></span></li>
-                <li title="A page does not exist yet.">Console</li>
-                <li title="A page does not exist yet.">Sources</li>
-                <li title="A page does not exist yet.">Network</li>
-                <li title="A page does not exist yet.">Performance</li>
-                <li title="A page does not exist yet.">Memory</li>
+                <li title="GUIDE: Dev Console&lt;/RWB&gt;"><span data-rwb-type="link"><a href="consoletab.html" title="GUIDE: Dev Console&lt;/RWB&gt;">Console</a></span></li>
+                <li title="GUIDE: Dev Sources&lt;/RWB&gt;"><span data-rwb-type="link"><a href="sourcestab.html" title="GUIDE: Dev Sources&lt;/RWB&gt;">Sources</a></span></li>
+                <li title="GUIDE: Dev Network&lt;/RWB&gt;"><span data-rwb-type="link"><a href="networktab.html" title="GUIDE: Dev Network&lt;/RWB&gt;">Network</a></span></li>
+                <li title="GUIDE: Dev Performance&lt;/RWB&gt;"><span data-rwb-type="link"><a href="performancetab.html" title="GUIDE: Dev Performance&lt;/RWB&gt;">Performance</a></span></li>
+                <li title="GUIDE: Dev Memory&lt;/RWB&gt;"><span data-rwb-type="link"><a href="memorytab.html" title="GUIDE: Dev Memory&lt;/RWB&gt;">Memory</a></span></li>
                 <li title="GUIDE: Dev Application&lt;/RWB&gt;"><span data-rwb-type="link"><a href="applicationtab.html" title="GUIDE: Dev Application&lt;/RWB&gt;">Application</a></span></li>
-                <li title="A page does not exist yet.">Security</li>
+                <li title="GUIDE: Dev Security&lt;/RWB&gt;"><span data-rwb-type="link"><a href="securitytab.html" title="GUIDE: Dev Security&lt;/RWB&gt;">Security</a></span></li>
                 <li title="A page does not exist yet.">Lighthouse</li>
                 <li title="A page does not exist yet.">CSS Overview</li>
             </ol>
-            <button type="menu" style="display:none;">Open Menu</button>
+            <button style="display:none;">Open Menu</button>
         </nav>
-        <script>
+        <!-- <script>
             const devPanel = document.getElementById("DevTabs");
-        </script>
-        
+        </script> -->
         <time datetime="2023-10-28">October 28, 2023</time>
         <article id="ElementsTab" class="WebBits">
             <h2>GUIDE: Dev Tools --&gt; Elements Tab</h2>
-            <p>Open the dev tools tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code> and navigate to the elements tab. In firefox, be sure to use <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code></p>
+            <p>Open the <abbr title="developer">dev</abbr> tools tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code> and navigate to the elements tab. In firefox, be sure to use <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code></p>
             <figure class="imgShadow pictureCaption">
                 <a class="pswp-gallery__item" href="../../img/DevToolsElementsOpen.png" data-pswp-width="1913" data-pswp-height="820">
                     <img src="../../img/DevToolsElementsOpen.png" alt="A default view of Elements tab in developer's tools." width="1913" height="820">
@@ -57,13 +56,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <figcaption>A default view of <q>Elements</q> tab in developer's tools.</figcaption>
             </figure>
             <p>All of the DOM elements are viewable in a tree structure. See <span data-rwb-type="link"><a href="dom.html" title="DOM&lt;/RWB&gt;">&lt;DOM&gt;</a></span> for more details. Elements' CSS properties are visible in the right part of the panel's display.</p>
-            <script>
-                const rwblink = document.querySelectorAll("span[data-rwb-type=link] a")
-                rwblink[0].href = "/guides/devtools/elementstab.html"
-                rwblink[1].href = "/guides/devtools/applicationtab.html"
-                rwblink[2].href = "/pages/dom.html"
-
-            </script>
+            
             <figure class="imgShadow pictureCaption">
                 <a class="pswp-gallery__item" href="../../img/DevToolsElementsOption.png" data-pswp-width="1911" data-pswp-height="820">
                     <img src="../../img/DevToolsElementsOption.png" alt="View individual css atribute rules in the Computed tab." width="1911" height="820">
@@ -85,14 +78,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <figcaption>A zoomed in view of elements errors and warnings.</figcaption>
                 </figure>
             </div>
-
             <aside class="exampleBlue">
                 <p>If the page is without console errors, the button does not appear.</p>
             </aside>
             <hr>
             <p><strong>Additionally: </strong>A part of development is making sure the markup adheres to the browser's specifications and writing standards. Clicking the blue comment bubble opens a list of recommendations for improvement. This option is not available in firefox browser.</p>
             <p class="truebluebold note">
-                <em >Note:</em>"Improvements" is shown in Chromium's developer toolset, so use Edge or Chrome to see the feature.</a>
+                <em >Note:</em>"Improvements" is shown in Chromium's developer toolset, so use Edge or Chrome to see the feature.
             </p>
             <!--Photoswipe start-->
             <figure class="imgShadow pictureCaption">
@@ -104,7 +96,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <aside class="exampleBlue">
                 <p>Examples are using <em>Edge</em> browser. <em>Chrome</em> and <em>Firefox</em> use similar keyboard shortcuts and application layout information.</p>
             </aside>            
-
         </article>
         <div class="Top-Link"><a class="Top" href="#">Top</a></div>
     </main>

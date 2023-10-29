@@ -1,9 +1,12 @@
 "strict mode";
 //--Copyright (c) 2023 Robert A. Howell
 const portdefinitions = new Map<number, string>([
+  [20, "FTP-data"],
+  [21, "FTP"],
   [22, "Secure SSH  /TCP"],
   [23, "Telnet (unsecure)"],
   [25, "SMTP - 465 for encrypted."],
+  [37, "timeserver /TCP/UDP"],
   [49, "TACACS+"],
   [53, "DNS  /UDP/TCP"],
   [67, "DHCP"],

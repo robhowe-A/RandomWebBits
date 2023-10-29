@@ -13,7 +13,7 @@ import sliderbar from "./components/sliderbar";
 import hslcolorwidget from "./components/hslcolor";
 
 import WebBitsSlideShow from "./components/WebBitsSlideshow";
-import { SimpleGreeting } from "./components/acronyms-element";
+import { AcronymsElem } from "./components/acronyms-element";
 import { PS_pwa, PS_at, PS_ip } from "./components/PhotoSwipe";
 import ClassComponents from "./ClassComponents";
 import latencyCalculator from "./components/calculate";
@@ -53,6 +53,12 @@ const PageComponents = {
         break;
       case "/guides/devtools/applicationtab.html":
       case "/guides/devtools/elementstab.html":
+      case "/guides/devtools/consoletab.html":
+      case "/guides/devtools/sourcestab.html":
+      case "/guides/devtools/networktab.html":
+      case "/guides/devtools/performancetab.html":
+      case "/guides/devtools/memorytab.html":
+      case "/guides/devtools/securitytab.html":
         PS_at();
         break;
       case "/guides/inspectpages.html":
@@ -94,7 +100,7 @@ const PageComponents = {
   init: (page: string) => {
     const pageperf = new RWBPerf("Pagecomponents"); //measure performance
 
-    customElements.define("acronyms-list", SimpleGreeting);
+    customElements.define("acronyms-list", AcronymsElem);
     PageComponents.CheckPage(page);
 
     pageperf.end(); //end performance measure

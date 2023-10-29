@@ -25,11 +25,66 @@ const photoswipe_apptab = () => {
     tapAction: "zoom",
     pswpModule: PhotoSwipe,
   };
+  const allConsole = {
+    gallery: "#ConsoleTab",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  };
+  const allSources = {
+    gallery: "#SourcesTab",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  };
+  const allNetwork = {
+    gallery: "#NetworkTab",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  };
+  const allPerformance = {
+    gallery: "#PerformanceTab",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  };
+  const allMemory = {
+    gallery: "#MemoryTab",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  };
+  const allSecurity = {
+    gallery: "#SecurityTab",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  };
   const picbox = new PhotoSwipeLightbox(options);
   const page = new PhotoSwipeLightbox(all);
+  const pageConsole = new PhotoSwipeLightbox(allConsole);
+  const pageSources = new PhotoSwipeLightbox(allSources);
+  const pageNetwork = new PhotoSwipeLightbox(allNetwork);
+  const pagePerformance = new PhotoSwipeLightbox(allPerformance);
+  const pageMemory = new PhotoSwipeLightbox(allMemory);
+  const pageSecurity = new PhotoSwipeLightbox(allSecurity);
+
   lightbox.init();
   picbox.init();
   page.init();
+  pageConsole.init();
+  pageSources.init();
+  pageNetwork.init();
+  pagePerformance.init();
+  pageMemory.init();
+  pageSecurity.init();
 };
 
 const photoswipe_pwa = () => {

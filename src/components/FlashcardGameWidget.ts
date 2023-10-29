@@ -14,11 +14,12 @@ const flashcardgameWidget = {
     let mainFlashCardDivs = new FlashcardCardElems(portdefinitions);
 
     // Add the game's title element
+    let mainFlashCardPage = document.getElementById("mainFlashCardGame");
     let mainFlashCardPageDiv = document.getElementById("mainFlashCards");
-    const gametitleElem = mainFlashCardPageDiv.appendChild(
-      document.createElement("h2")
-    );
+
+    const gametitleElem = document.createElement("h2");
     gametitleElem.innerText = "Computing Port Numbers";
+    mainFlashCardPage.insertAdjacentElement("afterbegin", gametitleElem);
 
     // Add the flashcards to widget
     for (let elem of mainFlashCardDivs.m_flashcardsArr) {

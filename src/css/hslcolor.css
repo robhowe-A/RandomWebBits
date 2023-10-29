@@ -4,9 +4,27 @@
     --app-width: 90%;
 }
 
+#color-picker {
+    width: 100%;
+    height: max(210px, 54vh);
+    margin-top: 3em;
+    margin-bottom: 5em;
+}
+
+#color-picker p {
+    text-align: center;
+    margin: 0;
+}
+
+#color-picker div div {
+    height: 100%;
+    display: grid;
+    align-items: center;
+}
+
 #HSLColorONE {
     max-width: var(--app-width);
-    height: 75px;
+    height: max(70px, 18vh);
     width: 100%;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em;
@@ -15,30 +33,20 @@
 
 #HSLColorTWO {
     max-width: var(--app-width);
-    height: 75px;
+    height: max(70px, 18vh);
     width: 100%;
     margin: auto;
 }
 
 #HSLColorTHREE {
     max-width: var(--app-width);
-    height: 75px;
+    height: max(70px, 18vh);
     width: 100%;
     border-bottom-left-radius: 2em;
     border-bottom-right-radius: 2em;
     margin: auto;
 }
 
-#color-picker {
-    width: 100%;
-    height: 275px;
-    margin-block: 3em;
-}
-
-#color-picker p {
-    text-align: center;
-    margin: 0;
-}
 
 input#Hue {
     width: 50px;

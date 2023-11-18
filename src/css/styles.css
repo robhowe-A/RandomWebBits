@@ -911,8 +911,22 @@ figure.img4 {
 .EXPLORE iframe,
 .share-frame-img img {
   border: 1em solid var(--clr-primary-500);
-  border-radius: 6.65em;
+  border-radius: 3.65em;
   margin: 0 auto;
+
+  /* Styles for desktop */
+  @media only screen and (min-width: 769px) {
+    & {
+      border-radius: 4.15em;
+    }
+  }
+
+  /* Styles for desktop */
+  @media only screen and (min-width: 920px) {
+    & {
+      border-radius: 6.65em;
+    }
+  }
 }
 
 /* Components */

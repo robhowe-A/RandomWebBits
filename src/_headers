@@ -63,6 +63,7 @@
   Content-Type: text/css; charset=utf-8
   X-Content-Type-Options: nosniff
 
+
 /img/2dShapes.png
 	Content-Type: image/png;
 /img/BingSkinny.jpeg
@@ -197,6 +198,8 @@
 	Content-Type: image/webp;
 /img/app-development.webp
 	Content-Type: image/webp;
+/img/artsandculture.google-large.jpeg
+	Content-Type: image/jpeg;
 /img/artsandculture.google-small.jpeg
 	Content-Type: image/jpeg;
 /img/artsandculture.google.jpeg

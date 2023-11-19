@@ -95,6 +95,12 @@ const PageComponents = {
       case "/pages/latency.html":
         latencyCalculator.init();
         break;
+      case "/guides/devtools/lighthousetab.html":
+        const LighthouseTab = document.querySelector("article.lh-root");
+        const LighthouseTabDetailsElem = document.querySelector("#lighthousearticle");
+        LighthouseTabDetailsElem.insertAdjacentElement("afterbegin", LighthouseTab);
+        PS_at();
+        break;
     }
   },
   init: (page: string) => {

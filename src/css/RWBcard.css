@@ -304,8 +304,22 @@ body {
     transform: rotateY(-180deg);
 }
 
-#PLEARN__Google .cardBack {
+#LEARN__Google .cardBack {
     transform: rotateY(-180deg);
+}
+
+#DevToolsLighthouse {
+    & * {
+        transition: all 1400ms ease-in-out;
+    }
+
+    & .flip-card:hover .inner {
+        transform: rotateY(-540deg);
+    }
+
+    & .cardBack {
+        transform: rotateY(-540deg);
+    }
 }
 
 /*End card flip left*/

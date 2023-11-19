@@ -20,6 +20,7 @@ var paths = {
     "src/css/fonts/*.txt",
     "src/img/*",
     "src/img/favicon/*",
+    "src/library/*",
   ],
 };
 var watchedBrowserify = watchify(

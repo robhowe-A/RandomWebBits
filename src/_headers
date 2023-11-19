@@ -88,6 +88,8 @@
 	Content-Type: image/png;
 /img/DevToolsElementsOption.png
 	Content-Type: image/png;
+/img/DevToolsLighthouse-Extension.png
+	Content-Type: image/png;
 /img/DevToolsMemory0.png
 	Content-Type: image/png;
 /img/DevToolsMemory1.png
@@ -259,6 +261,8 @@
 /img/ip.webp
 	Content-Type: image/webp;
 /img/json.webp
+	Content-Type: image/webp;
+/img/lighthouse.webp
 	Content-Type: image/webp;
 /img/openWith.webp
 	Content-Type: image/webp;

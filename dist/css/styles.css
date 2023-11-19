@@ -115,6 +115,7 @@
       --clr-HSLA-Green-Dark: hsla(120, 100%, 33%, 0.5);
       --clr-elementisopenPink: 326, 37%, 55%;
       --clr-elementisclosedBlue: 191, 39%, 40%;
+      --clr-darkslategray: #2f4f4f;
     }
   }
 
@@ -174,6 +175,7 @@
       --clr-HSLA-Green-Dark: hsla(120, 100%, 33%, 0.5);
       --clr-elementisopenPink: 326, 37%, 55%;
       --clr-elementisclosedBlue: 191, 39%, 40%;
+      --clr-darkslategray: #309c9c;
     }
   }
 }
@@ -653,6 +655,104 @@ button {
 
 
 /************************* Page Styles *************************/
+#webTech {
+  & h2 {
+    text-align: center;
+  }
+
+  & ul {
+    margin: 0 auto;
+  }
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+
+  &>* {
+    padding-inline: 1.5rem;
+  }
+
+  & ul {
+    padding-inline: .5em;
+    list-style-position: inside;
+    text-align: initial;
+  }
+
+  @media only screen and (min-width: 700px) {
+    .col-d-1 {
+      width: 8.33%
+    }
+
+    .col-d-2 {
+      width: 16.66%
+    }
+
+    .col-d-3 {
+      width: 25.00%
+    }
+
+    .col-d-4 {
+      width: 33.33%
+    }
+
+    .col-d-5 {
+      width: 41.66%
+    }
+
+    .col-d-6 {
+      width: 50.00%
+    }
+
+    .col-d-7 {
+      width: 58.33%
+    }
+
+    .col-d-8 {
+      width: 66.66%
+    }
+
+    .col-d-9 {
+      width: 75.00%
+    }
+
+    .col-d-10 {
+      width: 83.33%
+    }
+
+    .col-d-11 {
+      width: 91.66%
+    }
+
+    .col-d-12 {
+      width: 100.00%
+    }
+  }
+}
+
+#lighthousearticle {
+  background-color: var(--clr-darkslategray);
+  padding: 1em .5em;
+  color: var(--clr-light-300);
+  border-radius: 1em;
+
+  & summary {
+    padding: 1em .5em;
+  }
+
+  & #screensize {
+    @media (prefers-color-scheme: light) {
+      &::before {
+        color: var(--clr-Brown) !important;
+      }
+    }
+  }
+}
+
 #HSL {
   & .trueredbold {
     color: hsl(0, 100%, 50%)
@@ -932,11 +1032,6 @@ figure.img4 {
 /* Components */
 @media (prefers-color-scheme: dark) {
 
-  #google tr,
-  #google td {
-    background-color: var(--clr-light-600);
-  }
-
   section#ToDO,
   section#dictionary {
     padding: 0 3em;
@@ -954,6 +1049,34 @@ figure.img4 {
   section#dictionary,
   time {
     display: none;
+  }
+}
+
+#Google {
+
+  & figure {
+    width: fit-content;
+  }
+
+  & table {
+    margin-bottom: 4em;
+  }
+
+  & #google td:nth-child(1) {
+    position: relative;
+    padding-left: 3em;
+  }
+
+  & hgroup p {
+    font-size: .7em;
+  }
+
+  @media (prefers-color-scheme: dark) {
+
+    & #google tr,
+    & #google td {
+      background-color: var(--clr-light-600);
+    }
   }
 }
 
@@ -1307,6 +1430,10 @@ figure.img4 {
       margin-bottom: 0.5em;
       text-indent: -0.8em;
     }
+  }
+
+  &.columns * {
+    padding: 0;
   }
 
   /* Styles for mobile */
@@ -1853,19 +1980,6 @@ figure.img4 {
       margin-inline: 1em;
     }
   }
-}
-
-#google td:nth-child(1) {
-  position: relative;
-  padding-left: 3em;
-}
-
-#Google table {
-  margin-bottom: 4em;
-}
-
-#Google hgroup p {
-  font-size: .7em;
 }
 
 #JSON>p {
@@ -2449,6 +2563,46 @@ figure.img4 {
 
   & #MemoryTab .devToolsGrid .img1 {
     max-width: 126px;
+  }
+
+  & #LighthouseTab {
+
+    & .img1 {
+      max-width: 265px;
+      margin: 3em auto;
+    }
+
+    @media only screen and (max-width: 940px) {
+      #lighthousearticle article.lh-root {
+        display: none;
+      }
+    }
+
+    & #screensize {
+      @media only screen and (max-width: 940px) {
+        & {
+          position: relative;
+          height: 25px;
+
+          &::before {
+            content: "**Change to a larger screen size (>940px) to view the interactive panel.**";
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 1em;
+            color: var(--clr-Brown);
+            display: inline-block;
+            text-align: center;
+          }
+
+          @media (prefers-color-scheme: light) {
+            &::before {
+              color: var(--clr-DarkCyan);
+            }
+          }
+        }
+      }
+    }
   }
 
   & #SourcesTab .devToolsGrid,

@@ -50,7 +50,7 @@ const ArbitraryArticles = new Array(
     5,
     "Wappalyzer",
     "Wappalyzer browser extension",
-    new Date(2023, 1, 2),
+    new Date(2023, 11, 19),
     "pages/webtech.html",
     "img/wappalyzer-logo.webp",
     "Browser extension logo. A white w on a purple tile.",
@@ -266,8 +266,8 @@ const ArbitraryArticles = new Array(
     22,
     "Google is #1 website",
     "Google is the #1 trafficked site",
-    new Date(2023, 4, 17),
-    "pages/google.html",
+    new Date(2023, 11, 19),
+    "pages/googleplatform.html",
     "img/search-engine.webp",
     "A bar graph icon",
     new AttributionLink(
@@ -769,6 +769,24 @@ const GuideShorts = new Array(
       "Flaticon",
       "GUIDE: Dev Security",
       45
+    )
+  ),
+  new WebBit(
+    "DevToolsLighthouse",
+    46,
+    "GUIDE: Dev Lighthouse",
+    "Review dev tool's Lighthouse tab",
+    new Date(2023, 11, 19),
+    "/guides/devtools/lighthousetab.html",
+    "img/lighthouse.webp",
+    "Icon depiction of a lighthouse",
+    new AttributionLink(
+      "lighthouse icons",
+      "Lighthouse icons created by BZZRINCANTATION - Flaticon",
+      "https://www.flaticon.com/free-icons/lighthouse",
+      "Flaticon",
+      "GUIDE: Dev Lighthouse",
+      46
     )
   )
 );

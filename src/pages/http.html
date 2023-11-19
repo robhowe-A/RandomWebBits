@@ -12,13 +12,13 @@
         media="all">
     <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
     <!-- Google Tag Manager -->
-    <script defer>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
     <!-- End Google Tag Manager -->
-    <script type="module" src="../typescript.js" defer></script>
+    <script type="module" src="../typescript.js"></script>
 </head>
 <body class="WebBits-width">
 <!-- Google Tag Manager (noscript) -->
@@ -29,20 +29,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <time datetime="2023-06-12">June 12, 2023</time>
         <article id="HTTP" class="WebBits">
             <h2>LEARN: HTTP</h2>
-            <p><strong>Hypertext Transport Protocol</strong>, <abbr title="Hypertext Transport Protocol">HTTP</abbr>, is an application-layer protocol responsible for retrieving and sending web pages. Http gives the world wide web the ability to view/host website content regardless of the location of the request. Without it, websites cannot exist as we know them today.</p>
-            <aside class="exampleBlue">
-                <p>By default, http operates on port 80 via <abbr title="Transmission Control Protocol">TCP</abbr> for both client requests and server responses.</p>
-            </aside>
-            <p>Commonly, http requests are made by a web browser. The request reaches the website's frontend &lpar;via routers and switches&rpar;, which may be an internet-hosted web server or a corporation's server bank. Multiple servers can work together to handle process volume and speed up response time.</p>
-            <aside class="examplePink">
-                <p>Multi-server website hosts are called web farms and are composed of three main server types:</p>
-                <ul>
-                    <li><strong>Frontend server:</strong> A server hosting the website's content files such as HTML, CSS, and JavaScript files.</li>
-                    <li><strong>Backend server:</strong> A server dedicated to application-specific tasks such as database API access and dynamic content rendering.</li>
-                    <li><strong>Database server:</strong> A server containing customer or sensitive data for the website in secure database tables.</li>
-                </ul>
-            </aside>
-            <p>Http traverses the web in network packet containers, called frames, via <em>HTTP/2</em>. <em>HTTP/3</em> was published 06-06-2022 by the <abbr title="Internet Engineering Task Force">IETF</abbr>.<sup>1</sup></p>
+            <div class="columns">
+                <p class="col-d-6"><strong>Hypertext Transport Protocol</strong>, <abbr title="Hypertext Transport Protocol">HTTP</abbr>, is an application-layer protocol responsible for retrieving and sending web pages. Http gives the world wide web the ability to view/host website content regardless of the location of the request. Without it, websites cannot exist as we know them today.</p>
+                <aside class="exampleBlue col-d-6">
+                    <p>By default, http operates on port 80 via <abbr title="Transmission Control Protocol">TCP</abbr> for client requests and server responses.</p>
+                </aside>
+                <aside class="examplePink col-d-6">
+                    <p>Multi-server website hosts are called web farms and are composed of three main server types:</p>
+                    <ul>
+                        <li><strong>Frontend server:</strong> A server hosting the website's content files such as HTML, CSS, and JavaScript files.</li>
+                        <li><strong>Backend server:</strong> A server dedicated to application-specific tasks such as database API access and dynamic content rendering.</li>
+                        <li><strong>Database server:</strong> A server containing customer or sensitive data for the website in secure database tables.</li>
+                    </ul>
+                </aside>
+                <p class="col-d-6">Http traverses the web in network packet containers, called frames, via <em>HTTP/2</em>. <em>HTTP/3</em> was published 06-06-2022 by the <abbr title="Internet Engineering Task Force">IETF</abbr>.<sup>1</sup></p>
+                <p class="col-d-10">Commonly, http requests are made by a web browser. The request reaches the website's frontend &lpar;via routers and switches&rpar;, which may be an internet-hosted web server or a corporation's server bank. Multiple servers can work together to handle process volume and speed up response time.</p>
+            </div>
             <hr class="dl">
             <dl>
                 <dt>Frames</dt>

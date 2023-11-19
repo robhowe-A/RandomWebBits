@@ -3,22 +3,14 @@ import ColorCode from "../models/ColorCode";
 
 const cssex = {
   /**
-   * Cssex is a widget in CSS page, applying style colors to elements of different
-   * types (based on the CSS programming language)
+   * Cssex is a page widget, applying style colors to elements of different
+   * types
    */
   CSSEXColorCode: () => {
-    const selectors = document.querySelectorAll(
-      ".Selector"
-    ) as NodeListOf<HTMLElement>;
-    const attributes = document.querySelectorAll(
-      ".Attribute"
-    ) as NodeListOf<HTMLElement>;
-    const values = document.querySelectorAll(
-      ".Value"
-    ) as NodeListOf<HTMLElement>;
-    const psuedos = document.querySelectorAll(
-      ".Psuedo-class"
-    ) as NodeListOf<HTMLElement>;
+    const selectors = document.querySelectorAll(".Selector") as NodeListOf<HTMLElement>;
+    const attributes = document.querySelectorAll(".Attribute") as NodeListOf<HTMLElement>;
+    const values = document.querySelectorAll(".Value") as NodeListOf<HTMLElement>;
+    const psuedos = document.querySelectorAll(".Psuedo-class") as NodeListOf<HTMLElement>;
 
     // Add elements to array data structures, needed for the ColorCode instantiation
     const colorlesselements = new Array(selectors, attributes, values, psuedos);
@@ -30,11 +22,7 @@ const cssex = {
     );
 
     // Instantiate a color code object with all needed elements
-    new ColorCode(
-      colorlesselements,
-      elementscolors,
-      document.querySelector(".reset")
-    );
+    new ColorCode(colorlesselements, elementscolors, document.querySelector(".reset"));
   },
 };
 

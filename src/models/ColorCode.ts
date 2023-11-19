@@ -4,11 +4,7 @@ export default class ColorCode {
   elems: NodeListOf<HTMLElement>[];
   color: string[];
   resetbtn: Element;
-  constructor(
-    colorlesselements: NodeListOf<HTMLElement>[],
-    colors: string[],
-    resetbtn: Element
-  ) {
+  constructor(colorlesselements: NodeListOf<HTMLElement>[], colors: string[], resetbtn: Element) {
     this.elems = colorlesselements;
     this.color = colors;
     this.resetbtn = resetbtn;

@@ -12,13 +12,13 @@
         media="all">
     <link rel="icon" type="image/x-icon" href="../img/favicon/ImageHome_Favicon.png">
     <!-- Google Tag Manager -->
-    <script defer>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-NSMV9TK');</script>
     <!-- End Google Tag Manager -->
-    <script type="module" src="../typescript.js" defer></script>
+    <script type="module" src="../typescript.js"></script>
 </head>
 <body class="WebBits-width">
 <!-- Google Tag Manager (noscript) -->
@@ -41,18 +41,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="cssfig">
                 <p class="Selector CSS">#CSS</p><pre class="CSS"> {
     </pre><p class="CSS Attribute">background-color</p><pre class="CSS">: </pre><p class="CSS Value">limegreen</p><pre class="CSS">;
+
+    </pre><p class="CSS Selector">&</p><p class="CSS Psuedo-class">:hover</p><pre class="CSS"> {
+        </pre><p class="CSS Attribute">background-color</p><pre class="CSS">: </pre><p class="CSS Value">hsl(120, 61%, 45%)</p><pre class="CSS">;
+    }
 }
 </pre>
-                </div><br>
-                <div class="cssfig">
-                <p class="Selector CSS">#CSS<p class="CSS Psuedo-class">:hover</p><pre class="CSS"> {
-    </pre><p class="CSS Attribute">background-color</p><pre class="CSS">: </pre><p class="CSS Value">hsl(120, 61%, 45%)</p><pre class="CSS">;
-}
- </pre>
                 </div>
             </div>
             <aside id="CSS" class="exampleBlue">
-                <p>The above example is a one-line, one-attribute css id rule. The same style gives this element the green background color.</p>
+                <p>The above example uses nested CSS rules, each with a single attribute. The same styles give this element the green background color.</p>
             </aside>
             <p>Style sheets can compose thousands of rules of varying complexity. Rules and/or style sheets can repeat throughout a website easily. Multiple css files can be added &lpar;or <i>not</i> added&rpar; to as part of the layout.</p>
         </article>

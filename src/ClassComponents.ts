@@ -103,7 +103,8 @@ const ClassComponents = {
         rwblink1[6].href = "/guides/devtools/applicationtab.html";
         rwblink1[7].href = "/guides/devtools/securitytab.html";
         rwblink1[8].href = "/guides/devtools/lighthousetab.html";
-        rwblink1[9].href = "/guides/clearcookiesquickly.html";
+        rwblink1[9].href = "/guides/devtools/cssoverviewtab.html";
+        rwblink1[10].href = "/guides/clearcookiesquickly.html";
         break;
       case "/guides/devtools/consoletab.html":
         const rwblink2 = document.querySelectorAll(
@@ -118,8 +119,9 @@ const ClassComponents = {
         rwblink2[6].href = "/guides/devtools/applicationtab.html";
         rwblink2[7].href = "/guides/devtools/securitytab.html";
         rwblink2[8].href = "/guides/devtools/lighthousetab.html";
-        rwblink2[9].href = "/explore/webbtelescope.html";
-        rwblink2[10].href = "/pages/dom.html";
+        rwblink2[9].href = "/guides/devtools/cssoverviewtab.html";
+        rwblink2[10].href = "/explore/webbtelescope.html";
+        rwblink2[11].href = "/pages/dom.html";
         break;
       case "/guides/devtools/elementstab.html":
         const rwblink3 = document.querySelectorAll(
@@ -134,7 +136,8 @@ const ClassComponents = {
         rwblink3[6].href = "/guides/devtools/applicationtab.html";
         rwblink3[7].href = "/guides/devtools/securitytab.html";
         rwblink3[8].href = "/guides/devtools/lighthousetab.html";
-        rwblink3[9].href = "/pages/dom.html";
+        rwblink3[9].href = "/guides/devtools/cssoverviewtab.html";
+        rwblink3[10].href = "/pages/dom.html";
         break;
       case "/guides/devtools/memorytab.html":
         const rwblink4 = document.querySelectorAll(
@@ -149,6 +152,7 @@ const ClassComponents = {
         rwblink4[6].href = "/guides/devtools/applicationtab.html";
         rwblink4[7].href = "/guides/devtools/securitytab.html";
         rwblink4[8].href = "/guides/devtools/lighthousetab.html";
+        rwblink4[9].href = "/guides/devtools/cssoverviewtab.html";
         break;
       case "/guides/devtools/networktab.html":
         const rwblink5 = document.querySelectorAll(
@@ -163,7 +167,8 @@ const ClassComponents = {
         rwblink5[6].href = "/guides/devtools/applicationtab.html";
         rwblink5[7].href = "/guides/devtools/securitytab.html";
         rwblink5[8].href = "/guides/devtools/lighthousetab.html";
-        rwblink5[9].href = "/pages/htmlresponses.html";
+        rwblink5[9].href = "/guides/devtools/cssoverviewtab.html";
+        rwblink5[10].href = "/pages/htmlresponses.html";
         break;
       case "/guides/devtools/performancetab.html":
         const rwblink6 = document.querySelectorAll(
@@ -178,6 +183,7 @@ const ClassComponents = {
         rwblink6[6].href = "/guides/devtools/applicationtab.html";
         rwblink6[7].href = "/guides/devtools/securitytab.html";
         rwblink6[8].href = "/guides/devtools/lighthousetab.html";
+        rwblink6[9].href = "/guides/devtools/cssoverviewtab.html";
         break;
       case "/guides/devtools/sourcestab.html":
         const rwblink7 = document.querySelectorAll(
@@ -192,6 +198,7 @@ const ClassComponents = {
         rwblink7[6].href = "/guides/devtools/applicationtab.html";
         rwblink7[7].href = "/guides/devtools/securitytab.html";
         rwblink7[8].href = "/guides/devtools/lighthousetab.html";
+        rwblink7[9].href = "/guides/devtools/cssoverviewtab.html";
         break;
       case "/guides/devtools/securitytab.html":
         const rwblink11 = document.querySelectorAll(
@@ -206,7 +213,8 @@ const ClassComponents = {
         rwblink11[6].href = "/guides/devtools/applicationtab.html";
         rwblink11[7].href = "/guides/devtools/securitytab.html";
         rwblink11[8].href = "/guides/devtools/lighthousetab.html";
-        rwblink11[9].href = "/guides/https.html";
+        rwblink11[9].href = "/guides/devtools/cssoverviewtab.html";
+        rwblink11[10].href = "/guides/https.html";
         break;
       case "/guides/devtools/lighthousetab.html":
         const rwblink12 = document.querySelectorAll(
@@ -221,8 +229,24 @@ const ClassComponents = {
         rwblink12[6].href = "/guides/devtools/applicationtab.html";
         rwblink12[7].href = "/guides/devtools/securitytab.html";
         rwblink12[8].href = "/guides/devtools/lighthousetab.html";
-        rwblink12[9].href = "/pages/hsl.html";
+        rwblink12[9].href = "/guides/devtools/cssoverviewtab.html";
+        rwblink12[10].href = "/pages/hsl.html";
         break;
+      case "/guides/devtools/cssoverviewtab.html":
+          const rwblink13 = document.querySelectorAll(
+            "span[data-rwb-type=link] a"
+          ) as NodeListOf<HTMLAnchorElement>;
+          rwblink13[0].href = "/guides/devtools/elementstab.html";
+          rwblink13[1].href = "/guides/devtools/consoletab.html";
+          rwblink13[2].href = "/guides/devtools/sourcestab.html";
+          rwblink13[3].href = "/guides/devtools/networktab.html";
+          rwblink13[4].href = "/guides/devtools/performancetab.html";
+          rwblink13[5].href = "/guides/devtools/memorytab.html";
+          rwblink13[6].href = "/guides/devtools/applicationtab.html";
+          rwblink13[7].href = "/guides/devtools/securitytab.html";
+          rwblink13[8].href = "/guides/devtools/lighthousetab.html";
+          rwblink13[9].href = "/guides/devtools/cssoverviewtab.html";
+          break;
       case "/pages/datastorage.html":
         const rwblink8 = document.querySelectorAll(
           "span[data-rwb-type=link] a"

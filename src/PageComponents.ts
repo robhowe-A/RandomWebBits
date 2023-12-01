@@ -59,6 +59,7 @@ const PageComponents = {
       case "/guides/devtools/performancetab.html":
       case "/guides/devtools/memorytab.html":
       case "/guides/devtools/securitytab.html":
+      case "/guides/devtools/cssoverviewtab.html":
         PS_at();
         break;
       case "/guides/inspectpages.html":

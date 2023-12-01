@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Use the developer's tools to view browsing data like cache, cookies, and storage.">
-    <title>GUIDE: Dev Memory&lt;/RWB&gt;</title>
+    <title>GUIDE: Dev CSS Overview&lt;/RWB&gt;</title>
     <link rel="stylesheet" 
         href="../../css/styles.css"
         type="text/css"
@@ -45,56 +45,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- <script>
             const devPanel = document.getElementById("DevTabs");
         </script> -->
-        <time datetime="2023-11-02">November 2, 2023</time>
-        <article id="MemoryTab" class="WebBits">
-            <h2>GUIDE: Dev Tools --&gt; Memory Tab</h2>
-            <p>Open the <abbr title="developer">dev</abbr> tools tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code> and navigate to the memory tab. In firefox, be sure to use <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code></p>
-            <figure class="imgShadow pictureCaption img1">
-                <a class="pswp-gallery__item" href="/img/DevToolsMemory0.png" data-pswp-width="1912" data-pswp-height="954">
-                    <img src="/img/DevToolsMemory0.png" alt="A default view of 'Memory' tab in developer's tools." width="1912" height="954">
+        <time datetime="2023-10-30">December 1, 2023</time>
+        <article id="CSSOverviewTab" class="WebBits">
+            <h2>GUIDE: Dev Tools --&gt; CSS Overview Tab</h2>
+            <p>Open the <abbr title="developer">dev</abbr> tools tab with <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;J</code> or with the <code>CTRL&nbsp;+&nbsp;SHIFT&nbsp;+&nbsp;I</code> keyboard shortcut in Firefox. Navigate to the css overview tab.</p>
+            <figure class="imgShadow pictureCaption">
+                <a class="pswp-gallery__item" href="../../img/DevToolsCSSOverview.png" data-pswp-width="1078" data-pswp-height="904">
+                    <img src="../../img/DevToolsCSSOverview.png" alt="Default view of CSS Overview tab" width="1078" height="904">
                 </a>
-                <figcaption>A default view of <q>Memory</q> tab in developer's tools.</figcaption>
+                <figcaption>A default view of <q>CSS Overview</q> tab in developer's tools.</figcaption>
             </figure>
-            <p>Take a snapshot of a favorite web page. A snapshot is like an instant copy, and a heap snapshot of memory from a web browser will include all DOM elements.</p>
-            <figure class="imgShadow pictureCaption gap">
-                <a class="pswp-gallery__item" href="/img/DevToolsMemory1.png" data-pswp-width="1111" data-pswp-height="953">
-                    <img src="/img/DevToolsMemory1.png" alt="Edge browser's heap snapshot of dom.html page." width="1111" height="953">
-                </a>
-                <figcaption>Edge browser's heap snapshot of dom.html page.</figcaption>
-            </figure>
+            <p>The default panel view has instructions and a <q>Capture overview</q> button. Click the capture overview button. The page is analyzed and a summary is shown relevant of the css elements on the captured page. Below, each section can be observed to inspect and fix recommended css changes.</p>
+
             <!--Photoswipe start-->
             <div id="devTools-Gallery" class="devToolsGrid">
-                <figure class="imgShadow pictureCaption img1 gap">
-                    <a class="pswp-gallery__item" href="/img/DevToolsMemory2.png" data-pswp-width="126" data-pswp-height="114">
-                        <img src="/img/DevToolsMemory2.png" alt="LocalStorage before clearing browser data" width="126" height="114">
+                <figure class="imgShadow pictureCaption img1">
+                    <a class="pswp-gallery__item" href="../../img/DevToolsCSSOverview-Summary.png" data-pswp-width="1078" data-pswp-height="904">
+                        <img src="../../img/DevToolsCSSOverview-Summary.png" alt="A highlighted view of css overview's summary" width="1078" height="904">
                     </a>
-                    <figcaption>Switch the memory tab view to statistics &lpar;Edge&rpar;</figcaption>
+                    <figcaption>Developer's tools summary view.</figcaption>
                 </figure>
                 <figure class="imgShadow pictureCaption img2">
-                    <a class="pswp-gallery__item" href="/img/DevToolsMemory3.png" data-pswp-width="1110" data-pswp-height="954">
-                        <img src="/img/DevToolsMemory3.png" alt="Heap snapshot pie chart (Edge)" width="1110" height="954">
+                    <a class="pswp-gallery__item" href="../../img/DevToolsCSSOverview-Colors.png" data-pswp-width="1078" data-pswp-height="873">
+                        <img src="../../img/DevToolsCSSOverview-Colors.png" alt="A highlighted view of css overview's colors" width="1078" height="873">
                     </a>
-                    <figcaption>Heap snapshot pie chart &lpar;Edge Browser&rpar;</figcaption>
+                    <figcaption>Colors highlighted view of CSS Overview tools</figcaption>
                 </figure>
                 <figure class="imgShadow pictureCaption img3">
-                    <a class="pswp-gallery__item" href="/img/DevToolsMemory4.png" data-pswp-width="1120" data-pswp-height="948">
-                        <img src="/img/DevToolsMemory4.png" alt="Heap snapshot tree map (Firefox)" width="1120" height="948">
+                    <a class="pswp-gallery__item" href="../../img/DevToolsCSSOverview-Font.png" data-pswp-width="1078" data-pswp-height="873">
+                        <img src="../../img/DevToolsCSSOverview-Font.png" alt="A highlighted view of css overview's font info" width="1078" height="873">
                     </a>
-                    <figcaption>The view of heap snapshot in firefox developer tools shows a tree map</figcaption>
+                    <figcaption>Font highlighted view of CSS Overview tools</figcaption>
                 </figure>
-            </div>
-            <hr>
-            <p><strong>Info: </strong>Firefox's memory tab has a call stack option. Depicted below is a nested function from main that expands the view of list items when clicked.</p>
-            <aside class="exampleBlue">
-                <p>The page's custom code call stack starts below at init:typescript.js:10721:16. <br>Then main --&gt; init --&gt; CheckPage --&gt; init --&gt; ExpandingListElement &lpar;highlighted&rpar;</p>
-            </aside>
-            <!--Example 3 picture (RWB, zoom or highlight)-->
-            <figure class="imgShadow pictureCaption">
-                <a class="pswp-gallery__item" href="../../img/DevToolsMemory5.png" data-pswp-width="1920" data-pswp-height="947">
-                    <img src="../../img/DevToolsMemory5.png" alt="A view of the heap snapshot's call stack in Firefox" width="1920" height="947">
-                </a>
-                <figcaption>A view of the heap snapshot's call stack in Firefox</figcaption>
-            </figure>
+                <figure class="imgShadow pictureCaption img4">
+                    <a class="pswp-gallery__item" href="../../img/DevToolsCSSOverview-UnusedDeclarationsMediaQueries.png" data-pswp-width="1078" data-pswp-height="873">
+                        <img src="../../img/DevToolsCSSOverview-UnusedDeclarationsMediaQueries.png" alt="A highlighted view of css overview's unused declarations and media queries" width="1078" height="873">
+                    </a>
+                    <figcaption>Unused declarations and media queries highlighted view of CSS Overview tools</figcaption>
+                </figure>
+                <figure class="imgShadow pictureCaption img5">
+                    <a class="pswp-gallery__item" href="../../img/DevToolsCSSOverview-SelectorPerformance.png" data-pswp-width="1078" data-pswp-height="871">
+                        <img src="../../img/DevToolsCSSOverview-SelectorPerformance.png" alt="A highlighted view of css overview's non-simple selectors" width="1078" height="871">
+                    </a>
+                    <figcaption>Selector performance highlighted view of CSS Overview tools</figcaption>
+                </figure>
+              </div>
         </article>
         <div class="Top-Link"><a class="Top" href="#">Top</a></div>
     </main>

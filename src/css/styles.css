@@ -1011,6 +1011,10 @@ figure.img4 {
   grid-area: d;
 }
 
+.img5 {
+  grid-area: e;
+}
+
 .source,
 .source a {
   font-size: 0.8em;
@@ -2705,6 +2709,15 @@ figure.img4 {
       "d d d d";
   }
 
+  & #CSSOverviewTab .devToolsGrid {
+    grid-template-areas:
+      "a a a a"
+      "b b b b"
+      "c c c c"
+      "d d d d"
+      "e e e e";
+  }
+
   @media only screen and (min-width: 769px) {
     & #ElementsTab #devTools-Gallery figure:first-of-type {
       margin-top: 4.75em;
@@ -2730,6 +2743,16 @@ figure.img4 {
         "a a b b"
         "c c d d"
         "c c d d"
+    }
+
+    & #CSSOverviewTab .devToolsGrid {
+      grid-template-areas:
+        "a a b b"
+        "a a b b"
+        "c c d d"
+        "c c d d"
+        "e e e e"
+        "e e e e";
     }
   }
 }

@@ -246,6 +246,7 @@ const ClassComponents = {
           rwblink13[7].href = "/guides/devtools/securitytab.html";
           rwblink13[8].href = "/guides/devtools/lighthousetab.html";
           rwblink13[9].href = "/guides/devtools/cssoverviewtab.html";
+          rwblink13[10].href = "/pages.html";
           break;
       case "/pages/datastorage.html":
         const rwblink8 = document.querySelectorAll(

@@ -1224,6 +1224,7 @@ figure.img4 {
 
   & a:hover {
     color: var(--clr-Cyan);
+    /* color: var(--clr-Red); */
   }
 
   & figcaption a:hover {

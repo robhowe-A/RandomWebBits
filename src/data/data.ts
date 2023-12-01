@@ -788,6 +788,24 @@ const GuideShorts = new Array(
       "GUIDE: Dev Lighthouse",
       46
     )
+  ),
+  new WebBit(
+    "DevToolsCSSOverview",
+    47,
+    "GUIDE: Dev CSS Overview",
+    "Review dev tool's CSS Overview tab",
+    new Date(2023, 11, 19),
+    "/guides/devtools/cssoverviewtab.html",
+    "img/terminal7.webp",
+    "Icon depiction of developer's tools",
+    new AttributionLink(
+      "terminal icons",
+      "Terminal icons created by Smashicons - Flaticon",
+      "https://www.flaticon.com/free-icons/terminal",
+      "Flaticon",
+      "GUIDE: Dev CSS Overview",
+      47
+    )
   )
 );
 

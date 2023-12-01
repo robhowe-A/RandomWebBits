@@ -268,6 +268,7 @@ Main branch hosted on Netlify CDN at [https://randomwebbits.com/](https://random
 1.8.88: New WebBits page: performancetab  
 1.8.89: New WebBits page: memorytab  
 1.8.90: New WebBits page: securitytab  
-1.8.91: New WebBits page: lighthousetab
+1.8.91: New WebBits page: lighthousetab  
+1.8.92: New WebBits page: cssoverviewtab  
 
 </details>

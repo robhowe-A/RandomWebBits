@@ -72,6 +72,18 @@
 	Content-Type: image/jpeg;
 /img/ClearCookies.png
 	Content-Type: image/png;
+/img/DevToolsCSSOverview-Colors.png
+	Content-Type: image/png;
+/img/DevToolsCSSOverview-Font.png
+	Content-Type: image/png;
+/img/DevToolsCSSOverview-SelectorPerformance.png
+	Content-Type: image/png;
+/img/DevToolsCSSOverview-Summary.png
+	Content-Type: image/png;
+/img/DevToolsCSSOverview-UnusedDeclarationsMediaQueries.png
+	Content-Type: image/png;
+/img/DevToolsCSSOverview.png
+	Content-Type: image/png;
 /img/DevToolsConsole-RWB.png
 	Content-Type: image/png;
 /img/DevToolsConsole-RWBconsolesource.png
@@ -295,6 +307,8 @@
 /img/terminal5.webp
 	Content-Type: image/webp;
 /img/terminal6.webp
+	Content-Type: image/webp;
+/img/terminal7.webp
 	Content-Type: image/webp;
 /img/tool-box.webp
 	Content-Type: image/webp;

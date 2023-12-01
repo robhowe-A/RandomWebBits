@@ -309,7 +309,7 @@ body {
 }
 
 #DevToolsLighthouse {
-    & * {
+    & .flip-card * {
         transition: all 1400ms ease-in-out;
     }
 

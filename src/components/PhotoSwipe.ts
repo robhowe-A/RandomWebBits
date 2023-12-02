@@ -103,7 +103,6 @@ const photoswipe_apptab = () => {
   pageSecurity.init();
   pageLighthouse.init();
   pageCSSOverview.init();
-
 };
 
 const photoswipe_pwa = () => {

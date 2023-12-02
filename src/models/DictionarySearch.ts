@@ -23,6 +23,7 @@ import { DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements"
  *
  */
 export class DictionarySearch extends DictionarySearchMarkup {
+  public static count: number = 0;
   public static wordStorage: localstorageword[];
   private static CacheStorageNameofWordRequest: string = "RWB_word_fetch";
   private static requestUrl: string = "https://api.dictionaryapi.dev/api/v2/entries/en/";
@@ -45,6 +46,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
     this.addWidgetEvents();
     //Store words cache data with initialization.
     DictionarySearch.wordStorage = DictionarySearch.getLocalStorageWordCaches();
+    DictionarySearch.count++;
   }
 
   /**

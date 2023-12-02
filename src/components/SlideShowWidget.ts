@@ -24,8 +24,7 @@ const slideshowWidget = {
     }
 
     //Change to next slide when arrow buttons are clicked
-    const slideShowPreviousBtns =
-      document.getElementsByClassName("slideshowPrev");
+    const slideShowPreviousBtns = document.getElementsByClassName("slideshowPrev");
     const slideShowNextBtns = document.getElementsByClassName("slideshowNext");
     for (let btn of slideShowPreviousBtns) {
       btn.addEventListener("click", () => {

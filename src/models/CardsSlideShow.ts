@@ -1,18 +1,18 @@
 //--Copyright (c) 2023 Robert A. Howell
 
 export default class CardsSlideShow {
-  cards: NodeListOf<HTMLDivElement>;
-  cardquantshow: number;
-  cardindxstart: number = 0;
-  cardcounter: number = 1;
-  cardsindxend: number;
-  turn: number = 0;
-  maxturncount: number;
-  slideshowcontainer: HTMLElement = document.querySelector(".cardslideshow") as HTMLElement;
-  prevbtn: HTMLElement;
-  nextbtn: HTMLElement;
-  numberElement: HTMLElement;
-  windowSize: string;
+  private cards: NodeListOf<HTMLDivElement>;
+  private cardquantshow: number;
+  private cardindxstart: number = 0;
+  private cardcounter: number = 1;
+  private cardsindxend: number;
+  private turn: number = 0;
+  private maxturncount: number;
+  private slideshowcontainer: HTMLElement = document.querySelector(".cardslideshow") as HTMLElement;
+  public prevbtn: HTMLElement;
+  public nextbtn: HTMLElement;
+  private numberElement: HTMLElement;
+  private windowSize: string;
 
   constructor(cards: NodeListOf<HTMLDivElement>, quantityshow: number, windowSize: string) {
     this.cards = cards;
@@ -62,27 +62,6 @@ export default class CardsSlideShow {
     this.newArrowsMarkup();
     this.newNumberElement();
     this.showHideSlideShowButtons();
-  }
-
-  private hideOverflowElements() {
-    //Hide overflow elements
-    if (this.cardindxstart < this.cardquantshow) {
-      for (let i = this.cards.length - 1; i > this.cardsindxend; i--) {
-        this.cards[i].style.position = "absolute";
-        this.cards[i].style.opacity = "0%";
-        this.cards[i].style.display = "none";
-        if (this.windowSize == "SMALL") {
-          this.cards[i].style.transform = "translateX(0px)";
-          continue;
-        }
-        if (this.windowSize == "MEDIUM") {
-          this.cards[i].style.transform = "translateX(182.5px)";
-          continue;
-        }
-        this.cards[i].style.transform = "translateX(365px)";
-      }
-    }
-    this.cards[0].style.position = "absolute";
   }
   public nextSlide() {
     if (this.turn == this.maxturncount) {
@@ -289,6 +268,56 @@ export default class CardsSlideShow {
     this.turn--;
     this.cardcounter--;
   }
+  public showHideSlideShowButtons() {
+    if (this.cardindxstart == 0) {
+      this.prevbtn.style.opacity = "0%";
+      this.prevbtn.setAttribute("tabindex", "-1");
+      return;
+    }
+    if (this.cardsindxend == this.cards.length - 1) {
+      this.nextbtn.style.opacity = "0%";
+      this.nextbtn.setAttribute("tabindex", "-1");
+      return;
+    }
+    this.prevbtn.style.removeProperty("opacity");
+    this.nextbtn.style.removeProperty("opacity");
+    this.prevbtn.removeAttribute("tabindex");
+    this.nextbtn.removeAttribute("tabindex");
+  }
+  public numberelementtext = () => {
+    if (this.windowSize == "SMALL") {
+      this.numberElement.innerText = this.cardcounter.toString() + " of " + this.cards.length.toString();
+    } else {
+      this.numberElement.innerText =
+        "[" +
+        this.cardcounter.toString() +
+        ".." +
+        (this.cardcounter + this.cardquantshow - 1).toString() +
+        "]" +
+        " of " +
+        this.cards.length.toString();
+    }
+  };
+  private hideOverflowElements() {
+    //Hide overflow elements
+    if (this.cardindxstart < this.cardquantshow) {
+      for (let i = this.cards.length - 1; i > this.cardsindxend; i--) {
+        this.cards[i].style.position = "absolute";
+        this.cards[i].style.opacity = "0%";
+        this.cards[i].style.display = "none";
+        if (this.windowSize == "SMALL") {
+          this.cards[i].style.transform = "translateX(0px)";
+          continue;
+        }
+        if (this.windowSize == "MEDIUM") {
+          this.cards[i].style.transform = "translateX(182.5px)";
+          continue;
+        }
+        this.cards[i].style.transform = "translateX(365px)";
+      }
+    }
+    this.cards[0].style.position = "absolute";
+  }
   private newContainerMarkup() {
     const newContainerStyles = () => {
       //Container styles
@@ -333,22 +362,6 @@ export default class CardsSlideShow {
     //Update slideshow object
     this.nextbtn = nextslideshowbtn;
   }
-  public showHideSlideShowButtons() {
-    if (this.cardindxstart == 0) {
-      this.prevbtn.style.opacity = "0%";
-      this.prevbtn.setAttribute("tabindex", "-1");
-      return;
-    }
-    if (this.cardsindxend == this.cards.length - 1) {
-      this.nextbtn.style.opacity = "0%";
-      this.nextbtn.setAttribute("tabindex", "-1");
-      return;
-    }
-    this.prevbtn.style.removeProperty("opacity");
-    this.nextbtn.style.removeProperty("opacity");
-    this.prevbtn.removeAttribute("tabindex");
-    this.nextbtn.removeAttribute("tabindex");
-  }
   private newNumberElement() {
     //Number element
     this.numberElement = document.createElement("div");
@@ -360,18 +373,4 @@ export default class CardsSlideShow {
     this.numberElement.style.alignContent = "center";
     this.numberElement.style.marginInline = "1.5rem";
   }
-  public numberelementtext = () => {
-    if (this.windowSize == "SMALL") {
-      this.numberElement.innerText = this.cardcounter.toString() + " of " + this.cards.length.toString();
-    } else {
-      this.numberElement.innerText =
-        "[" +
-        this.cardcounter.toString() +
-        ".." +
-        (this.cardcounter + this.cardquantshow - 1).toString() +
-        "]" +
-        " of " +
-        this.cards.length.toString();
-    }
-  };
 }

@@ -1,11 +1,11 @@
 //--Copyright (c) 2023 Robert A. Howell
 
 export class client {
-  oldURL = document.referrer;
-  browserplatform: string;
-  useragent = window.navigator.userAgent;
-  connectiontype;
-  connectionrtt;
+  public oldURL = document.referrer;
+  public browserplatform: string;
+  public useragent = window.navigator.userAgent;
+  public connectiontype;
+  public connectionrtt;
 
   constructor() {
     this.browserplatform = this.setbrowserplatform();
@@ -13,7 +13,7 @@ export class client {
     this.connectionrtt = this.setconnectionrtt();
   }
 
-  setbrowserplatform() {
+  private setbrowserplatform() {
     if ("userAgentData" in window.navigator) {
       //userAgentData is NavigatorUAData type, not found in TypeScript.
       //Known to Edge browser: Object.getPrototypeOf(window.navigator.userAgentData)
@@ -23,7 +23,7 @@ export class client {
     } else this.browserplatform = "";
   }
 
-  setconnectiontype() {
+  private setconnectiontype() {
     if ("connection" in window.navigator) {
       //connection is NetworkInformation type, not found in TypeScript.
       //Known to Edge browser: Object.getPrototypeOf(window.navigator.connection)
@@ -33,7 +33,7 @@ export class client {
     } else this.connectiontype = "";
   }
 
-  setconnectionrtt() {
+  private setconnectionrtt() {
     if ("connection" in window.navigator) {
       let connection: any = window.navigator.connection as object;
       let rtt: string = <string>connection.rtt;

@@ -27,7 +27,7 @@ export default class RWBError {
       Object.create(new RWBReferenceError("GetElement", `Could not get element: '${query}'`));
     }
     if (elem == null) {
-      if (logmssg) console.log(`%cNo element found with query: ${query}.`, "color: yellow;");
+      if (logmssg) console.info(`%cNo element found with query: ${query}.`, "color: orange;");
       if (!supressexcpt)
         Object.create(new RWBReferenceError(`${componentname}NullReference`, `Element not found`));
       return true;
@@ -44,7 +44,7 @@ export default class RWBError {
     let logmssg: boolean = true;
     if (!logmessage) logmssg = logmessage;
     if (localStorage.getItem(`${key}`) == null) {
-      if (logmssg) console.log(`%cNo local storage for ${componentname}.`, "color:purple;");
+      if (logmssg) console.info(`%cNo local storage for ${componentname}.`, "color:purple;");
       return true;
     }
     if (checkemptystring) return RWBError.checkLocalStorageNullorEmpty(componentname, key, logmssg);
@@ -61,13 +61,13 @@ export default class RWBError {
       throw new Error(`Could get local storage key: ${key}`);
     }
     if (test == null) {
-      if (logmssg) console.log(`%cLocal storage key not found: ${key}.`, "color: yellow;font-weight:bold;");
+      if (logmssg) console.warn(`%cLocal storage key not found: ${key}.`, "color: yellow;font-weight:bold;");
       Object.create(new RWBReferenceError(`${componentname}ReferenceException`, `Key not found`));
       return true;
     }
     if (test == "" || test == "[]") {
       if (logmssg)
-        console.log(`%cLocal storage value is empty for key: ${key}`, "color: yellow;font-weight:bold;");
+        console.warn(`%cLocal storage value is empty for key: ${key}`, "color: yellow;font-weight:bold;");
       Object.create(new RWBReferenceError(`${componentname}ReferenceException`, `Value is empty`));
       return true;
     }
@@ -91,7 +91,7 @@ export class RWBReferenceError extends ReferenceError {
     this.page = window.location.pathname;
     let err = new ReferenceError(this.message);
     this.referror = err;
-    console.log(
+    console.error(
       `%c<RWB>%cExecution experienced a reference error:\n%o\n%c</RWB>`,
       "color:red;font-weight:bold;",
       "color:red;",
@@ -116,12 +116,9 @@ export class RWBSyntaxError extends SyntaxError {
     this.name = name;
     this.message = message;
     this.page = window.location.pathname;
-    // let err = new RangeError();
-    // console.log(`%c<RWB>%cHSL color value out of acceptable range:\n%o\n%c</RWB>`,
-    // 'color:gray;font-weight:bold;', 'color:gray;', err, 'color:gray;font-weight:bold;');
     let err = new SyntaxError(this.message);
     this.synerror = err;
-    console.log(
+    console.error(
       `%c<RWB>%cExecution experienced a syntax error:\n%o\n%c</RWB>`,
       "color:red;font-weight:bold;",
       "color:red;",
@@ -149,7 +146,7 @@ export class RWBDomException extends DOMException {
     this.page = window.location.pathname;
     let err = new DOMException(this.message);
     this.domerror = err;
-    console.log(
+    console.error(
       `%c<RWB>%cExecution experienced a DOM error:\n%o\n%c</RWB>`,
       "color:red;font-weight:bold;",
       "color:red;",

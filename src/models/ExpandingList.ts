@@ -70,7 +70,7 @@ export class ExpandingListElement extends HTMLUListElement {
   }
 
   // li click handler
-  showul = function (e: any) {
+  private showul = function (e: any) {
     // next sibling to the span should be the ul
     const nextul = e.target.nextElementSibling;
 

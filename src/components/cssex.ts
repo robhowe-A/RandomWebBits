@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import ColorCode from "../models/ColorCode";
+import ColorCodeWidget from "../models/ColorCode";
 
 const cssex = {
   /**
@@ -22,7 +22,7 @@ const cssex = {
     );
 
     // Instantiate a color code object with all needed elements
-    new ColorCode(colorlesselements, elementscolors, document.querySelector(".reset"));
+    new ColorCodeWidget(colorlesselements, elementscolors, document.querySelector(".reset"));
   },
 };
 

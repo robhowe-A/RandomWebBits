@@ -13,8 +13,7 @@ const DictionaryWidget = {
    */
   init: () => {
     let dictionaryWidgetStartingElement: Element;
-    dictionaryWidgetStartingElement =
-      document.querySelector(".dictionaryWidget");
+    dictionaryWidgetStartingElement = document.querySelector(".dictionaryWidget");
 
     // DictionarySearch constructor
     Object.create(new DictionarySearch(dictionaryWidgetStartingElement));

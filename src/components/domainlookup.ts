@@ -6,14 +6,9 @@ const domainlookup = {
     // Get the form, assign to a variable
     let formelemclassname = "searchWhoIS";
     let form: HTMLFormElement;
-    form = document.getElementById(
-      `${formelemclassname}`
-    ) as HTMLFormElement | null;
+    form = document.getElementById(`${formelemclassname}`) as HTMLFormElement | null;
     if (form == null) {
-      new RWBReferenceError(
-        "ElementNotFound",
-        `Element not found: '${formelemclassname}':`
-      );
+      new RWBReferenceError("ElementNotFound", `Element not found: '${formelemclassname}':`);
     }
     form.addEventListener("submit", domainlookup.searchWHOIS);
   },

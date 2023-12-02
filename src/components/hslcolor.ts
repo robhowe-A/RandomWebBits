@@ -18,14 +18,7 @@ const hslcolorwidget = {
         } else if (hue == 240) {
           this.hue = 240;
         }
-        if (
-          hue < 0 ||
-          hue >= 360 ||
-          saturation < 0 ||
-          saturation > 100 ||
-          lightness < 0 ||
-          lightness > 100
-        ) {
+        if (hue < 0 || hue >= 360 || saturation < 0 || saturation > 100 || lightness < 0 || lightness > 100) {
           let err = new RangeError();
           console.log(
             `%c<RWB>%cHSL color value out of acceptable range:\n%o\n%c</RWB>`,
@@ -46,33 +39,15 @@ const hslcolorwidget = {
     let HSLBoxColorRed = Object.create(new boxcolor(red, 100, 50));
     let HSLBoxColorGreen = Object.create(new boxcolor(green, 100, 50));
     let HSLBoxColorBlue = Object.create(new boxcolor(blue, 100, 50));
-    let toprecthue = document.querySelector(
-      "#HSLColorONE span.val1"
-    ) as HTMLSpanElement;
-    let toprectsat = document.querySelector(
-      "#HSLColorONE span.val2"
-    ) as HTMLSpanElement;
-    let toprectlight = document.querySelector(
-      "#HSLColorONE span.val3"
-    ) as HTMLSpanElement;
-    let midrecthue = document.querySelector(
-      "#HSLColorTWO span.val1"
-    ) as HTMLSpanElement;
-    let midrectsat = document.querySelector(
-      "#HSLColorTWO span.val2"
-    ) as HTMLSpanElement;
-    let midrectlight = document.querySelector(
-      "#HSLColorTWO span.val3"
-    ) as HTMLSpanElement;
-    let botrecthue = document.querySelector(
-      "#HSLColorTHREE span.val1"
-    ) as HTMLSpanElement;
-    let botrectsat = document.querySelector(
-      "#HSLColorTHREE span.val2"
-    ) as HTMLSpanElement;
-    let botrectlight = document.querySelector(
-      "#HSLColorTHREE span.val3"
-    ) as HTMLSpanElement;
+    let toprecthue = document.querySelector("#HSLColorONE span.val1") as HTMLSpanElement;
+    let toprectsat = document.querySelector("#HSLColorONE span.val2") as HTMLSpanElement;
+    let toprectlight = document.querySelector("#HSLColorONE span.val3") as HTMLSpanElement;
+    let midrecthue = document.querySelector("#HSLColorTWO span.val1") as HTMLSpanElement;
+    let midrectsat = document.querySelector("#HSLColorTWO span.val2") as HTMLSpanElement;
+    let midrectlight = document.querySelector("#HSLColorTWO span.val3") as HTMLSpanElement;
+    let botrecthue = document.querySelector("#HSLColorTHREE span.val1") as HTMLSpanElement;
+    let botrectsat = document.querySelector("#HSLColorTHREE span.val2") as HTMLSpanElement;
+    let botrectlight = document.querySelector("#HSLColorTHREE span.val3") as HTMLSpanElement;
     toprecthue.textContent = HSLBoxColorRed.hue;
     toprectsat.textContent = HSLBoxColorRed.saturation;
     toprectlight.textContent = HSLBoxColorRed.lightness;
@@ -88,12 +63,8 @@ const hslcolorwidget = {
     HSLTHREE.style.backgroundColor = `hsl(${HSLBoxColorBlue.hue}, ${HSLBoxColorBlue.saturation}%, ${HSLBoxColorBlue.lightness}%)`;
 
     const HueSldr = document.querySelector(`#Hue`) as HTMLInputElement;
-    const SaturationSldr = document.querySelector(
-      `#Saturation`
-    ) as HTMLInputElement;
-    const LightnessSldr = document.querySelector(
-      `#Lightness`
-    ) as HTMLInputElement;
+    const SaturationSldr = document.querySelector(`#Saturation`) as HTMLInputElement;
+    const LightnessSldr = document.querySelector(`#Lightness`) as HTMLInputElement;
 
     HueSldr.addEventListener("input", () => {
       let hueinputvalue = HueSldr.value;

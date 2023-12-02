@@ -11,12 +11,8 @@ const ExpandingListDOMWidget = {
     // Update expanding list element properties
     // "DOM" page specific properties
     // Add a title attribute to all li-span that can expand further
-    const expandableLiOpenOpen = document.querySelectorAll(
-      `ul[is="expanding-list"] li span:first-child`
-    );
-    const expandableLiCloseSpan = document.querySelectorAll(
-      `ul[is="expanding-list"] li span:nth-child(3)`
-    );
+    const expandableLiOpenOpen = document.querySelectorAll(`ul[is="expanding-list"] li span:first-child`);
+    const expandableLiCloseSpan = document.querySelectorAll(`ul[is="expanding-list"] li span:nth-child(3)`);
 
     // Set attributes and property values for expanding-element expandable elements
     for (let span of expandableLiOpenOpen) {

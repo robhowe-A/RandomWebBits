@@ -34,9 +34,9 @@ export class RWBParseJSON {
 export class RWBStringifyJSON {
   /**Counts the number of objects instantiated */
   public static count: number = 0;
-  private json: any;
   public returnstr: string;
   public passed: boolean;
+  private json: any;
   /**Create this object to store parse results and parsed
    * JSON object.
    */

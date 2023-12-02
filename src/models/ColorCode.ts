@@ -1,9 +1,9 @@
 //--Copyright (c) 2023 Robert A. Howell
 
-export default class ColorCode {
-  elems: NodeListOf<HTMLElement>[];
-  color: string[];
-  resetbtn: Element;
+export default class ColorCodeWidget {
+  private elems: NodeListOf<HTMLElement>[];
+  private color: string[];
+  private resetbtn: Element;
   constructor(colorlesselements: NodeListOf<HTMLElement>[], colors: string[], resetbtn: Element) {
     this.elems = colorlesselements;
     this.color = colors;
@@ -19,7 +19,7 @@ export default class ColorCode {
    * @param elemslist - Node list of HTMLElelements. I.E. using query.SelectorAll()
    * @param color - String of CSS color value
    */
-  cssExampleHighlighting(elemslist: NodeListOf<HTMLElement>, color: string) {
+  private cssExampleHighlighting(elemslist: NodeListOf<HTMLElement>, color: string) {
     elemslist.forEach(elem => {
       elem.addEventListener("mouseover", event => {
         event.preventDefault();
@@ -37,7 +37,7 @@ export default class ColorCode {
   }
 
   //function to reset the css code properties color to original
-  cssExampleHighlightReset(elemslist: NodeListOf<HTMLElement>) {
+  private cssExampleHighlightReset(elemslist: NodeListOf<HTMLElement>) {
     this.resetbtn.addEventListener("click", () => {
       elemslist.forEach(elem => {
         elem.style.color = "initial";

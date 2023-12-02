@@ -25,16 +25,9 @@ const HeaderFooter = {
       if (pageMain != null) {
         // 'Main' element exists, add the header to it
         try {
-          siteHeader = pageMain.insertAdjacentElement(
-            "beforebegin",
-            HeaderFooter.headerWidget.buildHeader()
-          );
+          siteHeader = pageMain.insertAdjacentElement("beforebegin", HeaderFooter.headerWidget.buildHeader());
         } catch (e) {
-          new RWBDomException(
-            "DomException",
-            "Check site header element. Encountered error:",
-            e
-          );
+          new RWBDomException("DomException", "Check site header element. Encountered error:", e);
         }
       } else {
         // 'Main' element does not exist, add the header to the body
@@ -44,25 +37,15 @@ const HeaderFooter = {
             HeaderFooter.headerWidget.buildHeader()
           );
         } catch (e) {
-          new RWBDomException(
-            "DomException",
-            "Check site header is not null. Encountered error:",
-            e
-          );
+          new RWBDomException("DomException", "Check site header is not null. Encountered error:", e);
         }
       }
 
       //Append navigation items to header
       try {
-        siteHeader.childNodes[0].appendChild(
-          HeaderFooter.headerWidget.buildNavigation()
-        );
+        siteHeader.childNodes[0].appendChild(HeaderFooter.headerWidget.buildNavigation());
       } catch (e) {
-        new RWBDomException(
-          "DomException",
-          "Cannot prepend navigation items. Encountered error:",
-          e
-        );
+        new RWBDomException("DomException", "Cannot prepend navigation items. Encountered error:", e);
       }
 
       headerperf.end();
@@ -127,9 +110,7 @@ const HeaderFooter = {
       // Add footer element to the page end
       let footer: HTMLElement = HeaderFooter.footerWidget.buildFooter();
       document.body.append(footer);
-      footer.childNodes[0].appendChild(
-        HeaderFooter.footerWidget.buildFaviconAttribution(footer)
-      );
+      footer.childNodes[0].appendChild(HeaderFooter.footerWidget.buildFaviconAttribution(footer));
       HeaderFooter.footerWidget.buildDeveloperAttribution(footer);
 
       footerperf.end();

@@ -43,10 +43,7 @@ export default class RWBCard {
     this.rwbcardelements.cardBody.classList.add("cardBody");
     this.rwbcardelements.cardImg.setAttribute("src", article.cardImage);
     this.rwbcardelements.cardImg.setAttribute("alt", article.cardImageALT);
-    this.rwbcardelements.cardImg.setAttribute(
-      "Article",
-      article.articleNumber.toString()
-    );
+    this.rwbcardelements.cardImg.setAttribute("Article", article.articleNumber.toString());
     cardBodyLink.setAttribute("href", article.articleLink);
     cardBodyHeading.innerText = article.name;
     cardBodyPara.textContent = article.description;
@@ -55,10 +52,7 @@ export default class RWBCard {
     // Image attribution may be needed for the image used
     // Attribution data is imported as 'attrlinks' signature parameter
     if (article.linkAttribution) {
-      this.buildRWBCardAttributionPanel(
-        this.rwbcardelements,
-        article.linkAttribution
-      );
+      this.buildRWBCardAttributionPanel(this.rwbcardelements, article.linkAttribution);
     }
 
     // The card is WebBit
@@ -87,19 +81,11 @@ export default class RWBCard {
    * @param rwbcardelements Card elements to display an icon picture and card body. An image, the image top, the card body.
    * @param link Attribution link
    */
-  private buildRWBCardAttributionPanel(
-    rwbcardelements: RWBCardElements,
-    link: AttributionLink
-  ) {
-    if (
-      rwbcardelements.cardImg.getAttribute("Article") ===
-      link.articleid.toString()
-    ) {
+  private buildRWBCardAttributionPanel(rwbcardelements: RWBCardElements, link: AttributionLink) {
+    if (rwbcardelements.cardImg.getAttribute("Article") === link.articleid.toString()) {
       // Create image back panel elements and add the data
       // Redefine card image panel as a flip panel
-      const cardInner = rwbcardelements.cardImgTop.appendChild(
-        document.createElement("div")
-      );
+      const cardInner = rwbcardelements.cardImgTop.appendChild(document.createElement("div"));
       const cardFront = cardInner.appendChild(document.createElement("div"));
       cardFront.appendChild(rwbcardelements.cardImg); // move image within card front divisor
       let smallImg = <HTMLImageElement>rwbcardelements.cardImg.cloneNode(false);
@@ -107,9 +93,7 @@ export default class RWBCard {
       const backHeading = cardBack.appendChild(document.createElement("h3"));
       cardBack.appendChild(smallImg);
       const backPara = cardBack.appendChild(document.createElement("p"));
-      const attributeLink = rwbcardelements.cardBody.appendChild(
-        document.createElement("a")
-      ); //append to front panel
+      const attributeLink = rwbcardelements.cardBody.appendChild(document.createElement("a")); //append to front panel
 
       // Add flip-panel data attributes and property values
       rwbcardelements.cardImgTop.classList.add("flip-card");

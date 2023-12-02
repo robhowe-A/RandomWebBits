@@ -8,18 +8,13 @@ const ActiveCardsWidget = {
     });
 
     document.body.addEventListener("click", e => {
-      if (
-        e.target instanceof HTMLAnchorElement ||
-        e.target instanceof HTMLDetailsElement
-      ) {
+      if (e.target instanceof HTMLAnchorElement || e.target instanceof HTMLDetailsElement) {
         return;
       }
       e.preventDefault();
 
       // Array of list items (cards)
-      let listLIs: GrowingCardElement[] = Array.from(
-        document.querySelectorAll("#webIDECards li")
-      );
+      let listLIs: GrowingCardElement[] = Array.from(document.querySelectorAll("#webIDECards li"));
 
       // Click event to resize the cards if clicking outside of a card
       // When clicking outside a card, resize all cards to normal

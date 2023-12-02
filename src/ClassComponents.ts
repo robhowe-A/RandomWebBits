@@ -74,7 +74,7 @@ const ClassComponents = {
             }
           }
           abbrev.abbrElement.addEventListener("mouseleave", () => {
-            description.textContent = "";
+            description.textContent = null;
           });
         });
       }

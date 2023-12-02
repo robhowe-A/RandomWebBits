@@ -10,6 +10,7 @@ const WebBitsSlideShow = {
 
     //Implement slideshow for arbitrary articles
     let aaslideshow: CardsSlideShow;
+
     //Based on the matched media size, create a small, medium, or large slideshow
     if (small.matches) {
       aaslideshow = new CardsSlideShow(aacards, 1, "SMALL");

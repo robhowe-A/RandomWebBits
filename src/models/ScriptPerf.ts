@@ -18,17 +18,13 @@ export default class RWBPerf {
   /** Instantiating a ScriptPerf records the performance start mark. */
   constructor(scriptname: string) {
     this.scriptruntimemarks.name = scriptname;
-    this.scriptruntimemarks.startMark = performance.mark(
-      `${this.scriptruntimemarks.name}-start`
-    );
+    this.scriptruntimemarks.startMark = performance.mark(`${this.scriptruntimemarks.name}-start`);
     RWBPerf.count++;
   }
 
   /** Call end() to set the end time stamp. */
   public end() {
-    this.scriptruntimemarks.endMark = performance.mark(
-      `${this.scriptruntimemarks.name}-end`
-    );
+    this.scriptruntimemarks.endMark = performance.mark(`${this.scriptruntimemarks.name}-end`);
     this.measure();
   }
 
@@ -39,8 +35,6 @@ export default class RWBPerf {
       this.scriptruntimemarks.startMark.name,
       this.scriptruntimemarks.endMark.name
     );
-    return console.log(
-      `${this.scriptruntimemarks.name} execution time is: ${measure.duration}`
-    );
+    return console.debug(`${this.scriptruntimemarks.name} execution time is: ${measure.duration}`);
   }
 }

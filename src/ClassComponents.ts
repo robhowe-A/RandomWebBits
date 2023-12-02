@@ -233,21 +233,21 @@ const ClassComponents = {
         rwblink12[10].href = "/pages/hsl.html";
         break;
       case "/guides/devtools/cssoverviewtab.html":
-          const rwblink13 = document.querySelectorAll(
-            "span[data-rwb-type=link] a"
-          ) as NodeListOf<HTMLAnchorElement>;
-          rwblink13[0].href = "/guides/devtools/elementstab.html";
-          rwblink13[1].href = "/guides/devtools/consoletab.html";
-          rwblink13[2].href = "/guides/devtools/sourcestab.html";
-          rwblink13[3].href = "/guides/devtools/networktab.html";
-          rwblink13[4].href = "/guides/devtools/performancetab.html";
-          rwblink13[5].href = "/guides/devtools/memorytab.html";
-          rwblink13[6].href = "/guides/devtools/applicationtab.html";
-          rwblink13[7].href = "/guides/devtools/securitytab.html";
-          rwblink13[8].href = "/guides/devtools/lighthousetab.html";
-          rwblink13[9].href = "/guides/devtools/cssoverviewtab.html";
-          rwblink13[10].href = "/pages.html";
-          break;
+        const rwblink13 = document.querySelectorAll(
+          "span[data-rwb-type=link] a"
+        ) as NodeListOf<HTMLAnchorElement>;
+        rwblink13[0].href = "/guides/devtools/elementstab.html";
+        rwblink13[1].href = "/guides/devtools/consoletab.html";
+        rwblink13[2].href = "/guides/devtools/sourcestab.html";
+        rwblink13[3].href = "/guides/devtools/networktab.html";
+        rwblink13[4].href = "/guides/devtools/performancetab.html";
+        rwblink13[5].href = "/guides/devtools/memorytab.html";
+        rwblink13[6].href = "/guides/devtools/applicationtab.html";
+        rwblink13[7].href = "/guides/devtools/securitytab.html";
+        rwblink13[8].href = "/guides/devtools/lighthousetab.html";
+        rwblink13[9].href = "/guides/devtools/cssoverviewtab.html";
+        rwblink13[10].href = "/pages.html";
+        break;
       case "/pages/datastorage.html":
         const rwblink8 = document.querySelectorAll(
           "span[data-rwb-type=link] a"
@@ -269,7 +269,7 @@ const ClassComponents = {
         rwblink10[0].href = "/pages/domainlookup.html";
         break;
       default:
-        console.info("No elements of type data-rwb-type=link found.");
+        console.debug("No elements of type data-rwb-type=link found."); //shown with verbose logging
     }
   },
 };

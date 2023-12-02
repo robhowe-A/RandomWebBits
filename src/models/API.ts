@@ -115,10 +115,7 @@ export class apiGET {
             })
             .catch(e => {
               //Cannot open Storage Cache
-              console.log(
-                `%cProblem opening Cache Storage. Name: ${this.browserCacheName}`,
-                "color: grey"
-              );
+              console.error(`%cProblem opening Cache Storage. Name: ${this.browserCacheName}`, "color: grey");
               this.sendToBrowserCache = false;
             })
             .finally(() => {
@@ -176,7 +173,7 @@ export class apiGET {
         } else return data;
       })
       .catch((e: any) => {
-        console.log(e);
+        console.debug(e);
         this.errorElem.classList.add("error");
         this.errorElem.innerText = `${e.message}`;
       });

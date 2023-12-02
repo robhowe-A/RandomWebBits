@@ -33,59 +33,61 @@ body {
     --transition_slow: 700ms;
 
     &#PAGES {
+        @media screen and (min-width: 500px) {
 
-        & .cards .card_columns {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, 500px);
-            grid-template-rows: auto;
+            & .cards .card_columns {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, 500px);
+                grid-template-rows: auto;
 
-            & .card {
-                max-width: 450px !important;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: flex-start;
-                margin: .5em .5em !important;
+                & .card {
+                    max-width: 450px !important;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    margin: .5em .5em !important;
 
-                & .flip-card {
-                    height: 200px;
-                    width: 200px;
+                    & .flip-card {
+                        height: 200px;
+                        width: 200px;
 
-                    & .cardBack img {
-                        width: 100px;
-                        height: 100px;
+                        & .cardBack img {
+                            width: 100px;
+                            height: 100px;
+                        }
+
+                        & .cardBack p {
+                            font-size: 1rem;
+                        }
+
+                        & .cardBack h3,
+                        & .cardBack p {
+                            margin: 0;
+                        }
                     }
 
-                    & .cardBack p {
-                        font-size: 1rem;
-                    }
+                    & .cardBody {
+                        width: 50%;
+                        height: 270px;
 
-                    & .cardBack h3,
-                    & .cardBack p {
-                        margin: 0;
-                    }
-                }
+                        & .attribute {
+                            transform: translateX(-225px);
+                            top: calc(100% - 110px);
+                            margin-bottom: .5rem;
+                        }
 
-                & .cardBody {
-                    width: 50%;
-                    height: 270px;
+                        & h3 {
+                            margin-bottom: 1em;
+                        }
 
-                    & .attribute {
-                        transform: translateX(-225px);
-                        top: calc(100% - 110px);
-                        margin-bottom: .5rem;
-                    }
+                        & p {
+                            margin-block: 1rem;
+                            height: 70px !important;
+                        }
 
-                    & h3 {
-                        margin-bottom: 1em;
-                    }
-
-                    & p {
-                        margin-block: 1rem;
-                        height: 70px !important;
-                    }
-
-                    & a {
-                        margin-top: 1rem;
+                        & a {
+                            margin-top: 1rem;
+                        }
                     }
                 }
             }

@@ -13,7 +13,6 @@ const RWBCardsWidget = {
    * Articles have different categories, so each category must be respected.
    * */
   init: () => {
-    
     // Split the cards arrays into their respective category
     /** Multiple categories of card data exist. This array holds the markup needed
      * to create category sections divisions when placed on a page.
@@ -58,7 +57,7 @@ const RWBCardsWidget = {
       card.classList.add("slide");
     }
 
-    // Add the cards to the page by deconstruction and addition
+    // Add the cards to the page by deconstruction and append
     // Outer loop: iterate the data to each respective category: Pages, Guides, Explores
     for (let i = 0; i < cardsSection.length; i++) {
       if (cardsSection[i] != undefined) {
@@ -68,7 +67,7 @@ const RWBCardsWidget = {
           cardsSection[i].append(article);
         });
       } else {
-        console.log("There's an error.");
+        console.debug("There's an error in the data.");
       }
     }
   },

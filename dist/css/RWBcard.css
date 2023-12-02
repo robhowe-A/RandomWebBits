@@ -31,6 +31,71 @@ body {
     --transition_fast: 200ms;
     --transition_medium: 500ms;
     --transition_slow: 700ms;
+
+    &#PAGES {
+
+        & .cards:nth-child(1) .card_columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 500px);
+            grid-template-rows: auto;
+
+            & .slide {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+
+            & .card {
+                max-width: 450px !important;
+
+                & .cardbody {
+                    width: 50%;
+                }
+
+                & .flip-card {
+                    height: 200px;
+                    width: 200px;
+
+                    & .cardBack img {
+                        width: 100px;
+                        height: 100px;
+                    }
+
+                    & .cardBack p {
+                        font-size: 1rem;
+                    }
+
+                    & .cardBack h3,
+                    & .cardBack p {
+                        margin: 0;
+                    }
+                }
+
+                & .cardBody {
+                    width: 50%;
+                    height: 100%;
+
+                    & .attribute {
+                        transform: translateX(-225px);
+                        top: calc(100% - 110px);
+                        margin-bottom: .5rem;
+                    }
+
+                    & h3 {
+                        margin-bottom: 1em;
+                    }
+
+                    & p {
+                        margin-block: 1rem;
+                    }
+
+                    & a {
+                        margin-top: 1rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .cards {

@@ -34,23 +34,17 @@ body {
 
     &#PAGES {
 
-        & .cards:nth-child(1) .card_columns {
+        & .cards .card_columns {
             display: grid;
             grid-template-columns: repeat(auto-fill, 500px);
             grid-template-rows: auto;
 
-            & .slide {
+            & .card {
+                max-width: 450px !important;
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: flex-start;
-            }
-
-            & .card {
-                max-width: 450px !important;
-
-                & .cardbody {
-                    width: 50%;
-                }
+                margin: .5em .5em !important;
 
                 & .flip-card {
                     height: 200px;
@@ -73,7 +67,7 @@ body {
 
                 & .cardBody {
                     width: 50%;
-                    height: 100%;
+                    height: 270px;
 
                     & .attribute {
                         transform: translateX(-225px);
@@ -87,6 +81,7 @@ body {
 
                     & p {
                         margin-block: 1rem;
+                        height: 70px !important;
                     }
 
                     & a {

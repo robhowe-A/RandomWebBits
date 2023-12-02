@@ -42,6 +42,7 @@ const ClassComponents = {
     class AbbrOpen {
       isOpen: boolean = false;
       abbrElement: HTMLElement;
+      description: HTMLSpanElement;
 
       constructor() {
         this.isOpen = true;
@@ -56,25 +57,24 @@ const ClassComponents = {
         abbrev.abbrElement.addEventListener("click", e => {
           e.preventDefault();
           let abbrtitleattrval: string = abbrev.abbrElement.getAttribute("title") as string;
-          let description: HTMLSpanElement;
 
           if (e.target == abbr) {
             if (abbrev.abbrElement.children.length < 1) {
               //create the span element
-              description = abbrev.abbrElement.appendChild(document.createElement("span"));
-              description.textContent = `${String.fromCharCode(160)}(${abbrtitleattrval}${String.fromCharCode(
+              abbrev.description = abbrev.abbrElement.appendChild(document.createElement("span"));
+              abbrev.description.textContent = `${String.fromCharCode(
                 160
-              )})`;
+              )}(${abbrtitleattrval})${String.fromCharCode(160)}`;
             } else {
               //show the span element
-              description = abbrev.abbrElement.querySelector("span") as HTMLSpanElement;
-              description.textContent = `${String.fromCharCode(160)}(${abbrtitleattrval}${String.fromCharCode(
+              abbrev.description = abbrev.abbrElement.querySelector("span") as HTMLSpanElement;
+              abbrev.description.textContent = `${String.fromCharCode(
                 160
-              )})`;
+              )}(${abbrtitleattrval})${String.fromCharCode(160)}`;
             }
           }
           abbrev.abbrElement.addEventListener("mouseleave", () => {
-            description.textContent = null;
+            abbrev.description.replaceChildren();
           });
         });
       }

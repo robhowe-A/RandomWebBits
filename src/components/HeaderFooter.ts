@@ -9,48 +9,6 @@ import RWBPerf from "../models/ScriptPerf";
 const HeaderFooter = {
   headerWidget: {
     /**
-     * Site header containing navigation links and site logo.
-     */
-    init: () => {
-      const headerperf = new RWBPerf("Header");
-
-      /**
-       * HTML 'main' element
-       */
-      const pageMain = document.querySelector("main");
-      /** Header element container */
-      let siteHeader: Element | null;
-
-      // Add header element to the page
-      if (pageMain != null) {
-        // 'Main' element exists, add the header to it
-        try {
-          siteHeader = pageMain.insertAdjacentElement("beforebegin", HeaderFooter.headerWidget.buildHeader());
-        } catch (e) {
-          new RWBDomException("DomException", "Check site header element. Encountered error:", e);
-        }
-      } else {
-        // 'Main' element does not exist, add the header to the body
-        try {
-          siteHeader = document.body.insertAdjacentElement(
-            "afterbegin",
-            HeaderFooter.headerWidget.buildHeader()
-          );
-        } catch (e) {
-          new RWBDomException("DomException", "Check site header is not null. Encountered error:", e);
-        }
-      }
-
-      //Append navigation items to header
-      try {
-        siteHeader.childNodes[0].appendChild(HeaderFooter.headerWidget.buildNavigation());
-      } catch (e) {
-        new RWBDomException("DomException", "Cannot prepend navigation items. Encountered error:", e);
-      }
-
-      headerperf.end();
-    },
-    /**
      * Create header with site logo appended.
      * @param main HTML 'main' element
      * @returns Populated header element
@@ -101,20 +59,51 @@ const HeaderFooter = {
 
       return headerNavFrag;
     },
+    /**
+     * Site header containing navigation links and site logo.
+     */
+    init: () => {
+      const headerperf = new RWBPerf("Header");
+
+      /**
+       * HTML 'main' element
+       */
+      const pageMain = document.querySelector("main");
+      /** Header element container */
+      let siteHeader: Element | null;
+
+      // Add header element to the page
+      if (pageMain != null) {
+        // 'Main' element exists, add the header to it
+        try {
+          siteHeader = pageMain.insertAdjacentElement("beforebegin", HeaderFooter.headerWidget.buildHeader());
+        } catch (e) {
+          new RWBDomException("DomException", "Check site header element. Encountered error:", e);
+        }
+      } else {
+        // 'Main' element does not exist, add the header to the body
+        try {
+          siteHeader = document.body.insertAdjacentElement(
+            "afterbegin",
+            HeaderFooter.headerWidget.buildHeader()
+          );
+        } catch (e) {
+          new RWBDomException("DomException", "Check site header is not null. Encountered error:", e);
+        }
+      }
+
+      //Append navigation items to header
+      try {
+        siteHeader.childNodes[0].appendChild(HeaderFooter.headerWidget.buildNavigation());
+      } catch (e) {
+        new RWBDomException("DomException", "Cannot prepend navigation items. Encountered error:", e);
+      }
+
+      headerperf.end();
+    },
   },
 
   footerWidget: {
-    init: () => {
-      const footerperf = new RWBPerf("Footer");
-
-      // Add footer element to the page end
-      let footer: HTMLElement = HeaderFooter.footerWidget.buildFooter();
-      document.body.append(footer);
-      footer.childNodes[0].appendChild(HeaderFooter.footerWidget.buildFaviconAttribution(footer));
-      HeaderFooter.footerWidget.buildDeveloperAttribution(footer);
-
-      footerperf.end();
-    },
     buildFooter: () => {
       const siteFooter = document.createElement("footer");
       const siteFooterContainer = document.createElement("div");
@@ -155,6 +144,17 @@ const HeaderFooter = {
       footer.appendChild(devattrib);
 
       return;
+    },
+    init: () => {
+      const footerperf = new RWBPerf("Footer");
+
+      // Add footer element to the page end
+      let footer: HTMLElement = HeaderFooter.footerWidget.buildFooter();
+      document.body.append(footer);
+      footer.childNodes[0].appendChild(HeaderFooter.footerWidget.buildFaviconAttribution(footer));
+      HeaderFooter.footerWidget.buildDeveloperAttribution(footer);
+
+      footerperf.end();
     },
   },
 };

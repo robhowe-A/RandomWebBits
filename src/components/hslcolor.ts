@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 
 const hslcolorwidget = {
-  inithslcolorpicker: () => {
+  init: () => {
     let HSLONE = document.querySelector("#HSLColorONE") as HTMLDivElement;
     let HSLTWO = document.querySelector("#HSLColorTWO") as HTMLDivElement;
     let HSLTHREE = document.querySelector("#HSLColorTHREE") as HTMLDivElement;

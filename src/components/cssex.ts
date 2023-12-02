@@ -1,12 +1,12 @@
 //--Copyright (c) 2023 Robert A. Howell
 import ColorCodeWidget from "../models/ColorCode";
 
-const cssex = {
+const cssexColorCode = {
   /**
    * Cssex is a page widget, applying style colors to elements of different
    * types
    */
-  CSSEXColorCode: () => {
+  init: () => {
     const selectors = document.querySelectorAll(".Selector") as NodeListOf<HTMLElement>;
     const attributes = document.querySelectorAll(".Attribute") as NodeListOf<HTMLElement>;
     const values = document.querySelectorAll(".Value") as NodeListOf<HTMLElement>;
@@ -26,4 +26,4 @@ const cssex = {
   },
 };
 
-export default cssex;
+export default cssexColorCode;

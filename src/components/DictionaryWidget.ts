@@ -1,6 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { DictionarySearch } from "../models/DictionarySearch";
-import RWBError from "../models/RWBErrorBus";
 
 /**
  * Component containing the dictionary widget's creation.

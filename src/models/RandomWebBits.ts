@@ -1,13 +1,10 @@
 //--Copyright (c) 2023 Robert A. Howell
 import WebBit from "./WebBit";
-import RWBCard from "../components/RWBCard";
+import RWBCard from "./RWBCard";
 import RWBError from "./RWBErrorBus";
 
 export class RandomWebBits {
-  public static buildCardContainingSection(
-    sectionTitle: string,
-    sectionHeadingID: string
-  ) {
+  public static buildCardContainingSection(sectionTitle: string, sectionHeadingID: string) {
     // Create sectional elements to append to main
     const pageMain = document.querySelector("main");
     if (pageMain == null || pageMain.nodeName !== "MAIN") {

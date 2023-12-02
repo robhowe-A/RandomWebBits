@@ -81,6 +81,13 @@ const photoswipe_apptab = () => {
     tapAction: "zoom",
     pswpModule: PhotoSwipe,
   };
+  const allClearCookies = {
+    gallery: "#ClearCookies",
+    children: ".pswp-gallery__item",
+    imageClickAction: "zoom",
+    tapAction: "zoom",
+    pswpModule: PhotoSwipe,
+  };
   const picbox = new PhotoSwipeLightbox(options);
   const page = new PhotoSwipeLightbox(all);
   const pageConsole = new PhotoSwipeLightbox(allConsole);
@@ -91,6 +98,7 @@ const photoswipe_apptab = () => {
   const pageSecurity = new PhotoSwipeLightbox(allSecurity);
   const pageLighthouse = new PhotoSwipeLightbox(allLighthouse);
   const pageCSSOverview = new PhotoSwipeLightbox(allCSSOverview);
+  const pageClearCookies = new PhotoSwipeLightbox(allClearCookies);
 
   lightbox.init();
   picbox.init();
@@ -103,6 +111,7 @@ const photoswipe_apptab = () => {
   pageSecurity.init();
   pageLighthouse.init();
   pageCSSOverview.init();
+  pageClearCookies.init();
 };
 
 const photoswipe_pwa = () => {

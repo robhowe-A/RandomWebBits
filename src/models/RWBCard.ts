@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
-import AttributionLink from "../models/AttributionLink";
-import WebBit from "../models/WebBit";
-import { RWBCardElements } from "../models/WidgetMarkupElements";
+import AttributionLink from "./AttributionLink";
+import WebBit from "./WebBit";
+import { RWBCardElements } from "./WidgetMarkupElements";
 
 export default class RWBCard {
   /**

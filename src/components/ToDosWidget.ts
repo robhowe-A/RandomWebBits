@@ -1,6 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { ToDoList } from "../models/ToDo";
-import RWBError from "../models/RWBErrorBus";
 
 /**
  * Component containing the To-Do List widget's creation.

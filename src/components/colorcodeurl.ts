@@ -2,7 +2,7 @@
 import ColorCodeWidget from "../models/ColorCode";
 
 const urlexColorCode = {
-  URLEXColorCode: () => {
+  init: () => {
     const protocol = document.querySelectorAll(".protocol") as NodeListOf<HTMLElement>;
     const domain = document.querySelectorAll(".domain") as NodeListOf<HTMLElement>;
     const port = document.querySelectorAll(".port") as NodeListOf<HTMLElement>;

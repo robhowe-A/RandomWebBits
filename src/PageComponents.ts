@@ -3,7 +3,7 @@ import ExpandingListDOMWidget from "./components/ExpandingListDOMWidget";
 import ActiveCardsWidget from "./components/GrowingCard";
 import flashcardgameWidget from "./components/FlashcardGameWidget";
 import slideshowWidget from "./components/SlideShowWidget";
-import cssex from "./components/cssex";
+import cssexColorCode from "./components/cssex";
 import htmlexColorCode from "./components/colorcode";
 import RWBCardsWidget from "./components/WebBits";
 import urlexColorCode from "./components/colorcodeurl";
@@ -60,6 +60,7 @@ const PageComponents = {
       case "/guides/devtools/memorytab.html":
       case "/guides/devtools/securitytab.html":
       case "/guides/devtools/cssoverviewtab.html":
+      case "/guides/clearcookiesquickly.html":
         PS_at();
         break;
       case "/guides/inspectpages.html":
@@ -67,15 +68,15 @@ const PageComponents = {
         break;
       // Initialize CSSEX components
       case "/pages/css.html":
-        cssex.CSSEXColorCode();
+        cssexColorCode.init();
         break;
       // Initialize htmlexColorCode components
       case "/pages/html.html":
-        htmlexColorCode.HTMLEXColorCode();
+        htmlexColorCode.init();
         break;
       // Initialize urlexColorCode components
       case "/pages/url.html":
-        urlexColorCode.URLEXColorCode();
+        urlexColorCode.init();
         break;
       // Initialize flashcard components
       case "/flashcards.html":
@@ -90,7 +91,7 @@ const PageComponents = {
         break;
       // Initialize HSL color picker
       case "/pages/hsl.html":
-        hslcolorwidget.inithslcolorpicker();
+        hslcolorwidget.init();
         break;
       // Initialize Propagation Latency calculator
       case "/pages/latency.html":

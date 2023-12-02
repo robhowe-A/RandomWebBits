@@ -2,7 +2,7 @@
 import ColorCodeWidget from "../models/ColorCode";
 
 const htmlexColorCode = {
-  HTMLEXColorCode: () => {
+  init: () => {
     // Get component elements that will be used in widget interactivity
     const openers = document.querySelectorAll(".Tagopen") as NodeListOf<HTMLElement>;
     const closers = document.querySelectorAll(".Tagclose") as NodeListOf<HTMLElement>;

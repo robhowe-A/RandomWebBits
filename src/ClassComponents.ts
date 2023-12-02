@@ -4,8 +4,33 @@ import DictionaryWidget from "./components/DictionaryWidget";
 import notfound404widget from "./components/404";
 import RWBPerf from "./models/ScriptPerf";
 import RWBError from "./models/RWBErrorBus";
+import AbbrOpen from "./models/AbbrDescription";
 
 const ClassComponents = {
+  /**
+   * Attribute tags on mobile do not have hover option. This function adds a click
+   *  ability to define an abbr tag, than rely on the title attribute.
+   */
+  abbrDefinitions: () => {
+    const mobileabbrperf = new RWBPerf("Mobileabbrperf"); //start performance measure
+
+    /**Give all abbr elements option to click to reveal the expanded description. */
+    const allabbreviationelems = document.querySelectorAll("abbr");
+
+    if (allabbreviationelems.length > 0) {
+      for (let abbr of allabbreviationelems) {
+        let abbrev = new AbbrOpen(abbr);
+        abbrev.revealAbbrDescription();
+      }
+    }
+
+    mobileabbrperf.end(); //end performance measure
+  },
+  fourohfour: () => {
+    if (!RWBError.checkElementforNull("PageComponents", "#Four-Oh-Four", false, true)) {
+      notfound404widget.init();
+    }
+  },
   init: (page: string) => {
     const classperf = new RWBPerf("Classcomponents"); //begin performance measure
 
@@ -15,72 +40,19 @@ const ClassComponents = {
       DictionaryWidget.init();
     }
 
+    // Add ToDos widget if an element with that class is on a page
     if (page == "/pages/todos.html" || page == "/index.html" || page == "/" || page == "") {
-      // Add ToDos widget if an element with that class is on a page
       if (RWBError.checkElementforNull("ClassComponent", ".ToDoList", true, true)) return;
       ToDosWidget.init();
     }
-    ClassComponents.mobileAbbrMarkups();
+
+    // Add abbr definitions
+    ClassComponents.abbrDefinitions();
+
+    // Add RWB links definitions: appends ".html" to anchor href text (which is natively removed in Netlify)
     ClassComponents.rwbDataTypeAnchor();
 
     classperf.end(); //end performance measure
-  },
-  fourohfour: () => {
-    if (!RWBError.checkElementforNull("PageComponents", "#Four-Oh-Four", false, true)) {
-      notfound404widget.init();
-    }
-  },
-  /**
-   * Attribute tags on mobile do not have hover option. This function adds a click
-   *  ability to define an abbr tag, than rely on the title attribute.
-   */
-  mobileAbbrMarkups: () => {
-    const mobileabbrperf = new RWBPerf("Mobileabbrperf"); //start performance measure
-    /**
-     *
-     */
-    class AbbrOpen {
-      isOpen: boolean = false;
-      abbrElement: HTMLElement;
-      description: HTMLSpanElement;
-
-      constructor() {
-        this.isOpen = true;
-      }
-    }
-    const allabbreviationelems = document.querySelectorAll("abbr");
-    if (allabbreviationelems.length > 0) {
-      for (let abbr of allabbreviationelems) {
-        let abbrev = new AbbrOpen();
-        abbrev.abbrElement = abbr;
-
-        abbrev.abbrElement.addEventListener("click", e => {
-          e.preventDefault();
-          let abbrtitleattrval: string = abbrev.abbrElement.getAttribute("title") as string;
-
-          if (e.target == abbr) {
-            if (abbrev.abbrElement.children.length < 1) {
-              //create the span element
-              abbrev.description = abbrev.abbrElement.appendChild(document.createElement("span"));
-              abbrev.description.textContent = `${String.fromCharCode(
-                160
-              )}(${abbrtitleattrval})${String.fromCharCode(160)}`;
-            } else {
-              //show the span element
-              abbrev.description = abbrev.abbrElement.querySelector("span") as HTMLSpanElement;
-              abbrev.description.textContent = `${String.fromCharCode(
-                160
-              )}(${abbrtitleattrval})${String.fromCharCode(160)}`;
-            }
-          }
-          abbrev.abbrElement.addEventListener("mouseleave", () => {
-            abbrev.description.replaceChildren();
-          });
-        });
-      }
-    }
-
-    mobileabbrperf.end(); //end performance measure
   },
   rwbDataTypeAnchor: () => {
     switch (location.pathname) {

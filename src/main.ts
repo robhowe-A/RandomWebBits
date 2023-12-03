@@ -16,7 +16,7 @@ const RWB = {
   /**
    * Initialize page widgets and application functions.
    */
-  init: () => {
+  start: () => {
     // Event fired before assets are rendered to the page
     window.addEventListener("DOMContentLoaded", RWB.main);
   },
@@ -37,4 +37,4 @@ const RWB = {
   },
 };
 
-RWB.init();
+RWB.start();

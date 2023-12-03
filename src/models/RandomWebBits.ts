@@ -4,6 +4,14 @@ import RWBCard from "./RWBCard";
 import RWBError from "./RWBErrorBus";
 
 export class RandomWebBits {
+  public cardsSection: HTMLDivElement;
+  public cardsData: any;
+
+  constructor(cardsSection: HTMLDivElement, cardsData: any) {
+    this.cardsSection = cardsSection;
+    this.cardsData = cardsData;
+  }
+
   public static buildCardContainingSection(sectionTitle: string, sectionHeadingID: string) {
     // Create sectional elements to append to main
     const pageMain = document.querySelector("main");
@@ -35,12 +43,28 @@ export class RandomWebBits {
 
     return aaCardsSection;
   }
+
+  public static buildRWBIntroduction() {
+    let introduction = document.createElement("section");
+    let Title = introduction.appendChild(document.createElement("h1"));
+    Title.classList.add("Title");
+    Title.innerText = "Home | Arbitrary Web Bits";
+    let h2 = introduction.appendChild(document.createElement("h2"));
+    h2.innerText = "New to the Web?";
+    let para1 = introduction.appendChild(document.createElement("p"));
+    para1.innerText =
+      "If you are new to web development, there are innumerous enumerations of stuff and things the World Wide Web offers that you don't know.";
+    let para2 = introduction.appendChild(document.createElement("p"));
+    para2.innerText = "You may want to start by claiming a stake to a domain name.";
+
+    return introduction;
+  }
+
   public static buildRWBCards(cardsData: WebBit[]) {
     // Iterate each card in the array. Build the card elements and add the data
-    let AAs = cardsData.map((article: WebBit) => {
+    return cardsData.map((article: WebBit) => {
       const rwbcard = new RWBCard();
       return rwbcard.buildRWBCardMarkup(article);
     });
-    return AAs;
   }
 }

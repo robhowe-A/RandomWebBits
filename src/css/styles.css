@@ -278,7 +278,7 @@ article {
   }
 
   & a {
-    text-decoration: underline;
+    font-weight: bold;
 
     &:hover {
       color: var(--clr-Cyan) !important;
@@ -309,6 +309,27 @@ article {
       margin: auto;
       text-align: center;
     }
+  }
+}
+
+body a {
+  font-weight: bold;
+  transition: color var(--transition_fast) ease-in-out;
+
+  @media (prefers-color-scheme: light) {
+    & {
+      color: var(--clr-DarkCyan);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    & {
+      color: var(--clr-Skyblue);
+    }
+  }
+
+  &.Top {
+    text-decoration: none;
   }
 }
 
@@ -444,6 +465,7 @@ nav {
     & a {
       color: var(--clr-all-font-light);
       font-size: 1.4em;
+      font-weight: initial;
     }
   }
 }
@@ -500,10 +522,6 @@ ul[is="expanding-list"] {
     color: hsl(var(--clr-elementisclosedBlue)) !important;
     border-radius: 1rem;
   }
-}
-
-a {
-  text-decoration: none;
 }
 
 hgroup {
@@ -1207,6 +1225,21 @@ figure.img4 {
     font-size: 0.8em;
   }
 
+  & a:link {
+
+    @media (prefers-color-scheme: light) {
+      & {
+        color: var(--clr-DarkCyan);
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      & {
+        color: var(--clr-Skyblue);
+      }
+    }
+  }
+
   & a:visited {
 
     @media (prefers-color-scheme: light) {
@@ -1229,28 +1262,6 @@ figure.img4 {
 
   & figcaption a:hover {
     text-decoration: underline;
-  }
-}
-
-.WebBits a,
-.Top {
-  font-weight: bold;
-  transition: all var(--transition_fast) ease-in-out;
-
-  & a:link,
-  & {
-
-    @media (prefers-color-scheme: light) {
-      & {
-        color: var(--clr-DarkCyan);
-      }
-    }
-
-    @media (prefers-color-scheme: dark) {
-      & {
-        color: var(--clr-Skyblue);
-      }
-    }
   }
 }
 
@@ -1429,6 +1440,10 @@ figure.img4 {
     & li a:hover,
     & ol a:hover {
       color: var(--clr-Skyblue) !important;
+
+      @media (prefers-color-scheme: dark) {
+        color: var(--clr-Cyan) !important;
+      }
     }
   }
 

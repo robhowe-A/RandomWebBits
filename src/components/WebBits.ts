@@ -7,27 +7,71 @@ import { RandomWebBits } from "../models/RandomWebBits";
  * creates multiple sections of cards to add to a page.
  */
 const RWBCardsWidget = {
-  addCardSlideClass: (slides: HTMLDivElement[]) => {
-    // first section of cards slideshow class
-    for (let card of slides) {
-      card.classList.add("slide");
+  addCardSectionClass: (cards: HTMLDivElement[] | HTMLDivElement, cls: string) => {
+    if (Array.isArray(cards)) {
+      // cards is an array of cards; append class to all cards
+      for (let card of cards) {
+        card.classList.add(`${cls}`);
+      }
+    }
+    if (!Array.isArray(cards)) {
+      // cards is an element; append class to the element
+      cards.classList.add(`${cls}`);
     }
   },
-  buildRandomWebBits: () => {
-    // Split the cards arrays into their respective category
-    const ArbitraryArticles = new RandomWebBits(
-      RandomWebBits.buildCardContainingSection("Arbitrary Articles:", "ArbitraryArticles"),
-      RandomWebBits.buildRWBCards(WEBBITDATA.shift())
-    );
+  buildRandomWebBits: (page?: string) => {
+    let ArbitraryArticles: RandomWebBits;
+    let GuideShorts: RandomWebBits;
+    let ExploretheWeb: RandomWebBits;
 
-    const GuideShorts = new RandomWebBits(
-      RandomWebBits.buildCardContainingSection("Guide Shorts:", "GuideShorts"),
-      RandomWebBits.buildRWBCards(WEBBITDATA.shift())
-    );
-    const ExploretheWeb = new RandomWebBits(
-      RandomWebBits.buildCardContainingSection("Explore the Web:", "ExploretheWeb"),
-      RandomWebBits.buildRWBCards(WEBBITDATA.shift())
-    );
+    switch (page) {
+      case "Home":
+        enum CardContainerType {
+          Slideshow = "slideshow",
+          Accordion = "accordion",
+        }
+        // Split the cards arrays into their respective category
+        ArbitraryArticles = new RandomWebBits(
+          RandomWebBits.buildCardContainingSection(
+            "Arbitrary Articles:",
+            "ArbitraryArticles",
+            CardContainerType.Slideshow
+          ),
+          RandomWebBits.buildRWBCards(WEBBITDATA.shift())
+        );
+
+        GuideShorts = new RandomWebBits(
+          RandomWebBits.buildCardContainingSection(
+            "Guide Shorts:",
+            "GuideShorts",
+            CardContainerType.Accordion
+          ),
+          RandomWebBits.buildRWBCards(WEBBITDATA.shift())
+        );
+
+        ExploretheWeb = new RandomWebBits(
+          RandomWebBits.buildCardContainingSection("Explore the Web:", "ExploretheWeb"),
+          RandomWebBits.buildRWBCards(WEBBITDATA.shift())
+        );
+        break;
+      default:
+        // Split the cards arrays into their respective category
+        ArbitraryArticles = new RandomWebBits(
+          RandomWebBits.buildCardContainingSection("Arbitrary Articles:", "ArbitraryArticles"),
+          RandomWebBits.buildRWBCards(WEBBITDATA.shift())
+        );
+
+        GuideShorts = new RandomWebBits(
+          RandomWebBits.buildCardContainingSection("Guide Shorts:", "GuideShorts"),
+          RandomWebBits.buildRWBCards(WEBBITDATA.shift())
+        );
+
+        ExploretheWeb = new RandomWebBits(
+          RandomWebBits.buildCardContainingSection("Explore the Web:", "ExploretheWeb"),
+          RandomWebBits.buildRWBCards(WEBBITDATA.shift())
+        );
+        break;
+    }
 
     /** Multiple categories of card data exist. This array holds the markup needed
      * to create category sections divisions when placed on a page.
@@ -53,8 +97,7 @@ const RWBCardsWidget = {
    * Articles have different categories, so each category must be respected.
    * */
   init: () => {
-    const RWBSectionCards = RWBCardsWidget.buildRandomWebBits();
-
+    let RWBSectionCards: any;
     // Routes -> Add widget and format pages
     // Index (Home) page shortens each sections' card count and randomizes
     if (
@@ -64,15 +107,24 @@ const RWBCardsWidget = {
       window.location.pathname == "/RandomWebBits/" ||
       window.location.pathname == "/dist/index.html"
     ) {
-      RWBCardsWidget.randomizeWebBits(RWBSectionCards[1]);
-      RWBSectionCards[0].unshift(RandomWebBits.buildRWBIntroduction());
+      //Build RWB Sections + card slideshow, accordian
+      RWBSectionCards = RWBCardsWidget.buildRandomWebBits("Home");
 
+      // Apply classes to cards relevant of the container type
+      RWBCardsWidget.addCardSectionClass(RWBSectionCards[1][0], "slide");
+      RWBCardsWidget.addCardSectionClass(RWBSectionCards[1][1], "accordionslide");
+
+      //Randomize the cards in the slideshow section
+      RWBCardsWidget.randomizeWebBits(RWBSectionCards[1]);
+
+      //Add introduction section and append to main
+      RWBSectionCards[0].unshift(RandomWebBits.buildRWBIntroduction());
       const main = document.querySelector("main");
       main.prepend(RWBSectionCards[0].shift());
+    } else {
+      //Build RWB Sections + cards as default
+      RWBSectionCards = RWBCardsWidget.buildRandomWebBits();
     }
-
-    // Distinguish the first section of cards with a new class name
-    RWBCardsWidget.addCardSlideClass(RWBSectionCards[1][0]);
 
     // Add the cards to the page by combining rwb[1] (the cards) to rwb[0] (the section elements)
     // Outer loop: iterate each category, respectively: Pages, Guides, Explores

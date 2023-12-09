@@ -33,6 +33,7 @@ const portdefinitions = new Map<number, string>([
   [995, "POP TLS"],
   [1812, "RADIUS  /TCP/UDP"],
   [1813, "RADIUS  /TCP/UDP"],
+  // [3309, "SQL  /TCP/UDP"],
   [3269, "Microsoft Global Catalog"],
   [3389, "RDP"],
 ]);

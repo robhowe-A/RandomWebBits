@@ -12,7 +12,11 @@ export class RandomWebBits {
     this.cardsData = cardsData;
   }
 
-  public static buildCardContainingSection(sectionTitle: string, sectionHeadingID: string) {
+  public static buildCardContainingSection(
+    sectionTitle: string,
+    sectionHeadingID: string,
+    containerType?: string
+  ) {
     // Create sectional elements to append to main
     const pageMain = document.querySelector("main");
     if (pageMain == null || pageMain.nodeName !== "MAIN") {
@@ -37,7 +41,17 @@ export class RandomWebBits {
 
     // Add data attributes and property values
     AASection.classList.add("cards");
-    aaCardsSection.classList.add("card_columns", "cardslideshow", "grid");
+    switch (containerType) {
+      case "slideshow":
+        aaCardsSection.classList.add("card_columns", "cardslideshow", "grid");
+        break;
+      case "accordion":
+        aaCardsSection.classList.add("card_columns", "cardaccordion", "grid");
+        break;
+      default:
+        aaCardsSection.classList.add("card_columns", "grid");
+        break;
+    }
     aaHeading.innerText = `${sectionTitle}`;
     aaHeading.setAttribute("id", sectionHeadingID);
 

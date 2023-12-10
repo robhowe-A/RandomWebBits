@@ -17,6 +17,7 @@ import { AcronymsElem } from "./components/acronyms-element";
 import { PS_pwa, PS_at, PS_ip } from "./components/PhotoSwipe";
 import ClassComponents from "./ClassComponents";
 import latencyCalculator from "./components/calculate";
+import WebBitsAccordion from "./components/WebBitsAccordian";
 
 const PageComponents = {
   CheckPage: (page: string) => {
@@ -32,6 +33,7 @@ const PageComponents = {
       case "/pages.html":
         RWBCardsWidget.init(); // cards widget initialization
         WebBitsSlideShow.init();
+        WebBitsAccordion.init();
         break;
       // dom.html page uses expandingLists component
       case "/pages/dom.html":

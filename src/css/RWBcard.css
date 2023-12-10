@@ -134,6 +134,10 @@ section.cards {
     & p {
         color: var(--clr-dark-600);
     }
+
+    & .accordionslide {
+        transition: height var(--transition_medium) ease-in-out;
+    }
 }
 
 .card_columns {
@@ -241,7 +245,7 @@ section.cards {
         }
 
         & h3::after {
-            content: "(attribution)";
+            content: "(icon attribution)";
             display: block;
             font-size: 0.7em;
             text-decoration: none;

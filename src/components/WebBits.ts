@@ -149,7 +149,7 @@ const RWBCardsWidget = {
       return shuffled.slice(0, num); // return the requested number of elements
     };
     cardsArticles[0] = getMultipleRandom(cardsArticles[0], cardsArticles[0].length); //randomize all pages
-    cardsArticles[1] = getMultipleRandom(cardsArticles[1], 3); //randomly select 3 guides
+    cardsArticles[1] = getMultipleRandom(cardsArticles[1], 8); //randomly select 3 guides
   },
 };
 

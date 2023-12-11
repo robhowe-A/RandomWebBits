@@ -337,6 +337,7 @@ export default class CardsSlideShow {
       slideshowslides.insertAdjacentElement("beforeend", temp);
       newContainerStyles();
     }
+    slideshowslides.classList.add(`${this.windowSize}`);
   }
   private newArrowsMarkup() {
     //Add left and right buttons

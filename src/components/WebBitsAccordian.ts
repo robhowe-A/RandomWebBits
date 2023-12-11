@@ -30,7 +30,6 @@ const WebBitsAccordion = {
       }
       if (window.matchMedia("(max-width: 768px)").matches) {
         WebBitsAccordion.removeCardAccorionStyles(accordion);
-        console.log(`Smaller screensize: ${window.innerWidth}`);
       }
     });
 

@@ -164,10 +164,12 @@ const WebBitsAccordion = {
       //card image style
       let image = card.childNodes[0].childNodes[0].childNodes[0].childNodes[0] as HTMLImageElement;
       image.style.removeProperty("max-height");
+      image.style.removeProperty("max-width");
 
       //card image small style
       let imageSmall = card.childNodes[0].childNodes[0].childNodes[1].childNodes[1] as HTMLImageElement;
       imageSmall.style.removeProperty("max-height");
+      imageSmall.style.removeProperty("max-width");
 
       //card back para style
       let imagePara = card.childNodes[0].childNodes[0].childNodes[1].childNodes[2] as HTMLImageElement;
@@ -179,6 +181,7 @@ const WebBitsAccordion = {
         innerelem.style.removeProperty("width");
         innerelem.removeAttribute("style");
       }
+      card.replaceWith(card.cloneNode(true));
     });
   },
 };

@@ -1,12 +1,11 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { apiGET } from "../models/API";
-import { DictionarySearchElements } from "./WidgetMarkupElements";
+import { DictionarySearchElements, DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements";
 import { localstorageword } from "./LocalStorageCaches";
 import DictionarySearchMarkup from "./DictionarySearchMarkup";
 import RWBError from "./RWBErrorBus";
 import { RWBParseJSON } from "./RWBJSONConverter";
 import { RWBStringifyJSON } from "./RWBJSONConverter";
-import { DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements";
 
 /**
  * A DictionarySearch is a set of markup creation and functions which allow a user

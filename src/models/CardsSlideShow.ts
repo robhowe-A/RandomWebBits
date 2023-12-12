@@ -9,6 +9,8 @@ export default class CardsSlideShow {
   private turn: number = 0;
   private maxturncount: number;
   private slideshowcontainer: HTMLElement = document.querySelector(".cardslideshow") as HTMLElement;
+  public ssContainer: HTMLDivElement;
+  public arrowsContainer: HTMLDivElement;
   public prevbtn: HTMLElement;
   public nextbtn: HTMLElement;
   private numberElement: HTMLElement;
@@ -58,8 +60,9 @@ export default class CardsSlideShow {
         break;
     }
 
-    this.newContainerMarkup();
-    this.newArrowsMarkup();
+    this.ssContainer = this.newContainerMarkup();
+    this.arrowsContainer = this.newArrowsMarkup();
+    this.addBtnEventListeners();
     this.newNumberElement();
     this.showHideSlideShowButtons();
   }
@@ -298,6 +301,21 @@ export default class CardsSlideShow {
         this.cards.length.toString();
     }
   };
+  public addBtnEventListeners = () => {
+    //Event listeners for the next and previous buttons
+    this.nextbtn.addEventListener("click", e => {
+      e.preventDefault();
+      this.nextSlide();
+      this.showHideSlideShowButtons();
+      this.numberelementtext();
+    });
+    this.prevbtn.addEventListener("click", e => {
+      e.preventDefault();
+      this.prevSlide();
+      this.showHideSlideShowButtons();
+      this.numberelementtext();
+    });
+  };
   private hideOverflowElements() {
     //Hide overflow elements
     if (this.cardindxstart < this.cardquantshow) {
@@ -317,6 +335,28 @@ export default class CardsSlideShow {
       }
     }
     this.cards[0].style.position = "absolute";
+  }
+  public onResizeShowStartingElems() {
+    //screen has refreshed. counter is reset to start. card elements may be
+    //hidden from the display, depending on when the refresh occurred, so
+    //reset the starting elements to visible
+    //Show overflow elements
+    if (this.cardindxstart < this.cardquantshow) {
+      for (let i = 0; i <= this.cardsindxend; i++) {
+        this.cards[i].style.setProperty("opacity", "1");
+        this.cards[i].style.setProperty("display", "block");
+        if (this.windowSize == "SMALL") {
+          this.cards[i].style.transform = "translateX(0px)";
+          continue;
+        }
+        if (this.windowSize == "LARGE") {
+          if (i == 1) {
+            this.cards[i].style.transform = "translateX(0px)";
+          }
+          continue;
+        }
+      }
+    }
   }
   private newContainerMarkup() {
     const newContainerStyles = () => {
@@ -338,6 +378,7 @@ export default class CardsSlideShow {
       newContainerStyles();
     }
     slideshowslides.classList.add(`${this.windowSize}`);
+    return slideshowslides;
   }
   private newArrowsMarkup() {
     //Add left and right buttons
@@ -362,6 +403,8 @@ export default class CardsSlideShow {
 
     //Update slideshow object
     this.nextbtn = nextslideshowbtn;
+
+    return slideshowbtns;
   }
   private newNumberElement() {
     //Number element

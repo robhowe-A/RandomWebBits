@@ -28,29 +28,52 @@ const WebBitsSlideShow = {
     }
     window.addEventListener("resize", e => {
       e.preventDefault();
+      let slideshowsmall = document.querySelector(".slidescontainer.SMALL");
+      let slideshowmedium = document.querySelector(".slidescontainer.MEDIUM");
+      let slideshowlarge = document.querySelector(".slidescontainer.LARGE");
+
       if (window.matchMedia("(max-width: 819px)").matches) {
-        console.debug(`Small size: ${window.innerWidth}`);
+        if (slideshowmedium != null) {
+          slideshowmedium.remove();
+          console.debug(`Removed med slideshow ${slideshowmedium}`);
+        }
+        if (slideshowlarge != null) {
+          slideshowlarge.remove();
+          console.debug(`Removed large slideshow ${slideshowlarge}`);
+        }
+        currentslideshow.ssContainer.remove();
+        currentslideshow.arrowsContainer.remove();
+        currentslideshow = new CardsSlideShow(aacards, 1, "SMALL");
+        currentslideshow.onResizeShowStartingElems();
       }
       if (window.matchMedia("(min-width: 820px) and (max-width: 1090px)").matches) {
-        console.debug(`Medium size: ${window.innerWidth}`);
+        if (slideshowsmall != null) {
+          slideshowsmall.remove();
+          console.debug(`Removed small slideshow ${slideshowsmall}`);
+        }
+        if (slideshowlarge != null) {
+          slideshowlarge.remove();
+          console.debug(`Removed large slideshow ${slideshowlarge}`);
+        }
+        currentslideshow.ssContainer.remove();
+        currentslideshow.arrowsContainer.remove();
+        currentslideshow = new CardsSlideShow(aacards, 2, "MEDIUM");
+        currentslideshow.onResizeShowStartingElems();
       }
       if (window.matchMedia("(min-width: 1091px)").matches) {
-        console.debug(`Large size: ${window.innerWidth}`);
+        if (slideshowsmall != null) {
+          slideshowsmall.remove();
+          console.debug(`Removed small element ${slideshowsmall}`);
+        }
+        if (slideshowmedium != null) {
+          slideshowmedium.remove();
+          console.debug(`Removed medium element ${slideshowmedium}`);
+        }
+        currentslideshow.ssContainer.remove();
+        currentslideshow.arrowsContainer.remove();
+        currentslideshow = new CardsSlideShow(aacards, 3, "LARGE");
+        currentslideshow.onResizeShowStartingElems();
       }
-    });
-
-    //Event listeners for the next and previous buttons
-    currentslideshow.nextbtn.addEventListener("click", e => {
-      e.preventDefault();
-      currentslideshow.nextSlide();
-      currentslideshow.showHideSlideShowButtons();
-      currentslideshow.numberelementtext();
-    });
-    currentslideshow.prevbtn.addEventListener("click", e => {
-      e.preventDefault();
-      currentslideshow.prevSlide();
-      currentslideshow.showHideSlideShowButtons();
-      currentslideshow.numberelementtext();
     });
   },
 };

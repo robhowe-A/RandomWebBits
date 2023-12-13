@@ -21,7 +21,8 @@ export default class DictionarySearchMarkup {
       return;
     }
     this.createDictionaryWidgetMarkup(elem);
-  }
+  };
+
   /**
    * Primary widget markup structuring the widget elements and search input.
    *
@@ -75,7 +76,7 @@ export default class DictionarySearchMarkup {
     artH.textContent = "Dictionary Term:";
 
     this.searchElements = searchElements;
-  }
+  };
 
   /**
    * Creates the markup to house returned words from DictionarySearch. The markup
@@ -164,7 +165,7 @@ export default class DictionarySearchMarkup {
 
     //add clear button to widget
     definitionDescriptionContainer.appendChild(definitionDescription);
-  }
+  };
 
   public createPreviousWordSearchesElements(
     wordstorage: localstorageword[],
@@ -195,5 +196,6 @@ export default class DictionarySearchMarkup {
       buttonsarr.push(previouswordbtn);
     }
     return buttonsarr;
-  }
+  };
+  
 }

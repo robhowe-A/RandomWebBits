@@ -11,7 +11,7 @@ export class client {
     this.browserplatform = this.setbrowserplatform();
     this.connectiontype = this.setconnectiontype();
     this.connectionrtt = this.setconnectionrtt();
-  }
+  };
 
   private setbrowserplatform() {
     if ("userAgentData" in window.navigator) {
@@ -21,7 +21,7 @@ export class client {
       let platformdata: string = <string>userAgentData.platform;
       return platformdata;
     } else this.browserplatform = "";
-  }
+  };
 
   private setconnectiontype() {
     if ("connection" in window.navigator) {
@@ -31,7 +31,7 @@ export class client {
       let effectivetype: string = <string>connection.effectiveType;
       return effectivetype;
     } else this.connectiontype = "";
-  }
+  };
 
   private setconnectionrtt() {
     if ("connection" in window.navigator) {
@@ -39,5 +39,6 @@ export class client {
       let rtt: string = <string>connection.rtt;
       return rtt;
     } else this.connectionrtt = "";
-  }
+  };
+  
 }

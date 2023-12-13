@@ -34,7 +34,7 @@ export class ToDoList {
    */
   public static setToDoListElements(ToDoElements: ToDoListElements) {
     ToDoList.ToDoElements = ToDoElements;
-  }
+  };
 
   /**
    * Random Web Bits uses multiple locations to apply the To-Do List widget. Create
@@ -133,29 +133,12 @@ export class ToDoList {
           "Element is not valid. Please ensure a valid element for ToDo list widget to follow."
         );
     }
-  }
+  };
 
   /**
-   * Gather necessary elements from the created widget.
-   * @returns ToDoElements: ToDoListElements
-   */
-  private getToDoListElements() {
-    //Gather necessary elements from the created widget
-    //Each widget location's elements may vary, so a call of getToDoListElements()
-    //locates the page's elements to populate the ToDoElements interface.
-    let ToDoElements: ToDoListElements = {
-      todoTable: document.querySelector("#ToDO table"),
-      todoTableBody: document.getElementById("ToDoItems"),
-      addButton: document.getElementById("AddButton"),
-      addItemToEnter: document.querySelector('input[name="itemINPUT"]'),
-    };
-    this.listElements = ToDoElements;
-  }
-
-  /**
-   * Checks for To-Do items from Local Storage.
-   * @returns boolean true or false
-   */
+ * Checks for To-Do items from Local Storage.
+ * @returns boolean true or false
+ */
   private static getToDoInStorage(
     checkemptyvaluestring: boolean,
     logmessage: boolean
@@ -185,7 +168,24 @@ export class ToDoList {
 
     this.ToDoInStorage = parsetest.returnobj;
     return true;
-  }
+  };
+
+  /**
+   * Gather necessary elements from the created widget.
+   * @returns ToDoElements: ToDoListElements
+   */
+  private getToDoListElements() {
+    //Gather necessary elements from the created widget
+    //Each widget location's elements may vary, so a call of getToDoListElements()
+    //locates the page's elements to populate the ToDoElements interface.
+    let ToDoElements: ToDoListElements = {
+      todoTable: document.querySelector("#ToDO table"),
+      todoTableBody: document.getElementById("ToDoItems"),
+      addButton: document.getElementById("AddButton"),
+      addItemToEnter: document.querySelector('input[name="itemINPUT"]'),
+    };
+    this.listElements = ToDoElements;
+  };
 
   /**
    * Adds a To-Do to Local Storage.
@@ -234,7 +234,7 @@ export class ToDoList {
       "color:cyan;font-weight:bold;",
       "color:cyan;"
     );
-  }
+  };
 
   /**
    * Removes a To-Do item from Local Storage. The requested To-Do to remove is
@@ -268,7 +268,7 @@ export class ToDoList {
       return;
     }
     localStorage.setItem("ToDos", jsonstr);
-  }
+  };
 
   /**
    * This function creates the necessary markup to add a row to the To-Do table.
@@ -324,7 +324,7 @@ export class ToDoList {
     delBOX.addEventListener("click", () => {
       this.DeleteButton(delBOX);
     });
-  }
+  };
 
   /**
    * Function called to create the To-Do item rows from To-Dos stored in the browser Local Storage.
@@ -335,7 +335,7 @@ export class ToDoList {
         this.AddToDoRow(ToDoList.ToDoInStorage[i].todoitem, false);
       }
     }
-  }
+  };
 
   /**
    * Add button functionality.
@@ -358,7 +358,7 @@ export class ToDoList {
         ADDITEMENTER.value = "";
       }
     });
-  }
+  };
 
   /**
    * function determining the delete button. Items are deleted when pushed, but are
@@ -407,7 +407,7 @@ export class ToDoList {
       );
       ToDoList.ToDOs--;
     }
-  }
+  };
 
   /**
    * This function is called to seed the To-Do List when there are no Local Storage items
@@ -443,5 +443,6 @@ export class ToDoList {
         "color:purple;"
       );
     });
-  }
+  };
+
 }

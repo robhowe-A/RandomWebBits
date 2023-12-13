@@ -26,7 +26,8 @@ class RWBLink {
       (this.pageName = pageName),
       (this.hReference = hReference),
       RWBLink.count++;
-  }
+  };
+  
 }
 
 export default RWBLink;

@@ -1,21 +1,19 @@
 //--Copyright (c) 2023 Robert A. Howell
+import {RWBCardsWidget, WebBitsSlideShow, WebBitsAccordion} from "./components/WebBits";
 import ExpandingListDOMWidget from "./components/ExpandingListDOMWidget";
 import ActiveCardsWidget from "./components/GrowingCard";
 import flashcardgameWidget from "./components/FlashcardGameWidget";
 import slideshowWidget from "./components/SlideShowWidget";
 import {cssexColorCode, htmlexColorCode, urlexColorCode} from "./components/colorcode";
-import RWBCardsWidget from "./components/WebBits";
 import RWBPerf from "./models/ScriptPerf";
 import domainlookup from "./components/domainlookup";
 import sliderbar from "./components/sliderbar";
 import hslcolorwidget from "./components/hslcolor";
 
-import WebBitsSlideShow from "./components/WebBitsSlideshow";
 import { AcronymsElem } from "./components/acronyms-element";
 import { PS_pwa, PS_at, PS_ip } from "./components/PhotoSwipe";
 import ClassComponents from "./ClassComponents";
 import latencyCalculator from "./components/calculate";
-import WebBitsAccordion from "./components/WebBitsAccordian";
 
 const PageComponents = {
   CheckPage: (page: string) => {

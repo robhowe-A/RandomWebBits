@@ -3,14 +3,14 @@ import WebBit from "./WebBit";
 import RWBCard from "./RWBCard";
 import RWBError from "./RWBErrorBus";
 
-export class RandomWebBits {
+export default class RandomWebBits {
   public cardsSection: HTMLDivElement;
   public cardsData: any;
 
   constructor(cardsSection: HTMLDivElement, cardsData: any) {
     this.cardsSection = cardsSection;
     this.cardsData = cardsData;
-  }
+  };
 
   public static buildCardContainingSection(
     sectionTitle: string,
@@ -56,7 +56,15 @@ export class RandomWebBits {
     aaHeading.setAttribute("id", sectionHeadingID);
 
     return aaCardsSection;
-  }
+  };
+
+  public static buildRWBCards(cardsData: WebBit[]) {
+    // Iterate each card in the array. Build the card elements and add the data
+    return cardsData.map((article: WebBit) => {
+      const rwbcard = new RWBCard();
+      return rwbcard.buildRWBCardMarkup(article);
+    });
+  };
 
   public static buildRWBIntroduction() {
     let introduction = document.createElement("section");
@@ -72,13 +80,6 @@ export class RandomWebBits {
     para2.innerText = "You may want to start by claiming a stake to a domain name.";
 
     return introduction;
-  }
-
-  public static buildRWBCards(cardsData: WebBit[]) {
-    // Iterate each card in the array. Build the card elements and add the data
-    return cardsData.map((article: WebBit) => {
-      const rwbcard = new RWBCard();
-      return rwbcard.buildRWBCardMarkup(article);
-    });
-  }
+  };
+  
 }

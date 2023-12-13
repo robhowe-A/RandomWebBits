@@ -12,7 +12,7 @@ export default class ColorCodeWidget {
       this.cssExampleHighlighting(this.elems[i], this.color[i]);
       this.cssExampleHighlightReset(this.elems[i]);
     }
-  }
+  };
 
   /**
    * Function to color the example area's elements using css
@@ -34,7 +34,7 @@ export default class ColorCodeWidget {
         });
       });
     });
-  }
+  };
 
   //function to reset the css code properties color to original
   private cssExampleHighlightReset(elemslist: NodeListOf<HTMLElement>) {
@@ -43,5 +43,6 @@ export default class ColorCodeWidget {
         elem.style.color = "initial";
       });
     });
-  }
+  };
+  
 }

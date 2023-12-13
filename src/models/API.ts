@@ -36,7 +36,7 @@ export class apiGET {
     this.sendToBrowserCache = sendToBrowserCache;
     this.browserCacheName = browserCacheName;
     this.errorElem = errorElem;
-  }
+  };
 
   /**
    *
@@ -44,7 +44,7 @@ export class apiGET {
    */
   public getSendToBrowserCache() {
     return this.sendToBrowserCache;
-  }
+  };
 
   /**
    *
@@ -52,14 +52,14 @@ export class apiGET {
    */
   public getGETURL() {
     return this.GETURL;
-  }
+  };
 
   /**
    * Flip this.sendToBrowserCache boolean value from the current value.
    */
   public setSendToBrowserCache() {
     return this.sendToBrowserCache ? false : true;
-  }
+  };
 
   /**
    * A fetch request can take URL or string parameter. This function sets the apiGET
@@ -72,7 +72,8 @@ export class apiGET {
     } else {
       this.GETURL = GETURL;
     }
-  }
+  };
+
   /**
    * A public function creating a data promise object for the called fetch function. If
    *  the request needs added to browser storage, the fetch is made and sent to
@@ -139,7 +140,7 @@ export class apiGET {
       });
       return dataCachePromise;
     }
-  }
+  };
 
   /**
    * Checks whether the requested response is of valid status 'OK' and '200'
@@ -157,7 +158,7 @@ export class apiGET {
     }
 
     return res.json();
-  }
+  };
 
   /**
    * The fetch request, returning a fetch promise.
@@ -177,5 +178,6 @@ export class apiGET {
         this.errorElem.classList.add("error");
         this.errorElem.innerText = `${e.message}`;
       });
-  }
+  };
+  
 }

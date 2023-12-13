@@ -4,10 +4,10 @@
 //MDN: https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
 //Source distribution: https://github.com/mdn/web-components-examples/tree/main/expanding-list-web-component
 
-// Create a class for the element
 export class ExpandingListElement extends HTMLUListElement {
   /**Counts the number of objects instantiated */
   public static count: number = 0;
+
   constructor() {
     // Always call super first in constructor
     // Return value from super() is a reference to this element
@@ -67,7 +67,7 @@ export class ExpandingListElement extends HTMLUListElement {
       }
     });
     ExpandingListElement.count++;
-  }
+  };
 
   // li click handler
   private showul = function (e: any) {
@@ -83,4 +83,5 @@ export class ExpandingListElement extends HTMLUListElement {
       nextul.parentNode.setAttribute("class", "ulistelem-open");
     }
   };
+  
 }

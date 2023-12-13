@@ -1,7 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-/**
- *
- */
+
 export default class AbbrOpen {
   public isOpen: boolean = false;
   private abbrElement: HTMLElement;
@@ -10,7 +8,7 @@ export default class AbbrOpen {
   constructor(abbrElement: HTMLElement) {
     this.isOpen = false;
     this.abbrElement = abbrElement;
-  }
+  };
 
   public revealAbbrDescription() {
     this.abbrElement.addEventListener("click", e => {
@@ -29,5 +27,5 @@ export default class AbbrOpen {
         this.isOpen = true;
       }
     });
-  }
+  };
 }

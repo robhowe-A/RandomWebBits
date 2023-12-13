@@ -1,6 +1,10 @@
 //--Copyright (c) 2023 Robert A. Howell
 
 export default class CardsSlideShow {
+  public ssContainer: HTMLDivElement;
+  public arrowsContainer: HTMLDivElement;
+  public prevbtn: HTMLElement;
+  public nextbtn: HTMLElement;
   private cards: NodeListOf<HTMLDivElement>;
   private cardquantshow: number;
   private cardindxstart: number = 0;
@@ -9,10 +13,6 @@ export default class CardsSlideShow {
   private turn: number = 0;
   private maxturncount: number;
   private slideshowcontainer: HTMLElement = document.querySelector(".cardslideshow") as HTMLElement;
-  public ssContainer: HTMLDivElement;
-  public arrowsContainer: HTMLDivElement;
-  public prevbtn: HTMLElement;
-  public nextbtn: HTMLElement;
   private numberElement: HTMLElement;
   private windowSize: string;
 
@@ -24,48 +24,14 @@ export default class CardsSlideShow {
     this.windowSize = windowSize;
 
     this.hideOverflowElements();
-    switch (this.windowSize) {
-      case "SMALL":
-        //small window size logic
-        this.cards[1].style.transform = "translateX(182.5px)";
-        this.cards[1].children[1].children[2].setAttribute("tabindex", "-1");
-        this.cards[1].children[1].children[3].setAttribute("tabindex", "-1");
-
-        break;
-      case "MEDIUM":
-        //medium window size logic
-        this.cards[0].style.transform = "translateX(-182.5px)";
-        this.cards[1].style.position = "absolute";
-        this.cards[1].style.transform = "translateX(182.5px)";
-        this.cards[2].style.display = "block";
-        this.cards[2].style.zIndex = "-1";
-        this.cards[2].children[1].children[2].setAttribute("tabindex", "-1");
-        this.cards[2].children[1].children[3].setAttribute("tabindex", "-1");
-
-        break;
-      case "LARGE":
-        //large window size logic
-        this.cards[0].style.transform = "translateX(-365px)";
-        this.cards[1].style.position = "absolute";
-        this.cards[2].style.position = "absolute";
-        this.cards[2].style.transform = "translateX(365px)";
-        this.cards[3].style.display = "block";
-        this.cards[3].style.zIndex = "-1";
-        this.cards[3].children[1].children[2].setAttribute("tabindex", "-1");
-        this.cards[3].children[1].children[3].setAttribute("tabindex", "-1");
-
-        break;
-      default:
-        console.debug("Screen size property not set on slideshow.");
-        break;
-    }
-
+    this.onInitSetupElementPosition();
     this.ssContainer = this.newContainerMarkup();
     this.arrowsContainer = this.newArrowsMarkup();
-    this.addBtnEventListeners();
     this.newNumberElement();
+    this.addBtnEventListeners();
     this.showHideSlideShowButtons();
-  }
+  };
+
   public nextSlide() {
     if (this.turn == this.maxturncount) {
       return;
@@ -171,7 +137,8 @@ export default class CardsSlideShow {
     this.cardsindxend++;
     this.turn++;
     this.cardcounter++;
-  }
+  };
+
   public prevSlide() {
     if (this.turn == 0) {
       return;
@@ -270,37 +237,8 @@ export default class CardsSlideShow {
     this.cardsindxend--;
     this.turn--;
     this.cardcounter--;
-  }
-  public showHideSlideShowButtons() {
-    if (this.cardindxstart == 0) {
-      this.prevbtn.style.opacity = "0%";
-      this.prevbtn.setAttribute("tabindex", "-1");
-      return;
-    }
-    if (this.cardsindxend == this.cards.length - 1) {
-      this.nextbtn.style.opacity = "0%";
-      this.nextbtn.setAttribute("tabindex", "-1");
-      return;
-    }
-    this.prevbtn.style.removeProperty("opacity");
-    this.nextbtn.style.removeProperty("opacity");
-    this.prevbtn.removeAttribute("tabindex");
-    this.nextbtn.removeAttribute("tabindex");
-  }
-  public numberelementtext = () => {
-    if (this.windowSize == "SMALL") {
-      this.numberElement.innerText = this.cardcounter.toString() + " of " + this.cards.length.toString();
-    } else {
-      this.numberElement.innerText =
-        "[" +
-        this.cardcounter.toString() +
-        ".." +
-        (this.cardcounter + this.cardquantshow - 1).toString() +
-        "]" +
-        " of " +
-        this.cards.length.toString();
-    }
   };
+
   public addBtnEventListeners = () => {
     //Event listeners for the next and previous buttons
     this.nextbtn.addEventListener("click", e => {
@@ -316,26 +254,39 @@ export default class CardsSlideShow {
       this.numberelementtext();
     });
   };
-  private hideOverflowElements() {
-    //Hide overflow elements
-    if (this.cardindxstart < this.cardquantshow) {
-      for (let i = this.cards.length - 1; i > this.cardsindxend; i--) {
-        this.cards[i].style.position = "absolute";
-        this.cards[i].style.opacity = "0%";
-        this.cards[i].style.display = "none";
-        if (this.windowSize == "SMALL") {
-          this.cards[i].style.transform = "translateX(0px)";
-          continue;
-        }
-        if (this.windowSize == "MEDIUM") {
-          this.cards[i].style.transform = "translateX(182.5px)";
-          continue;
-        }
-        this.cards[i].style.transform = "translateX(365px)";
-      }
+
+  public showHideSlideShowButtons() {
+    if (this.cardindxstart == 0) {
+      this.prevbtn.style.opacity = "0%";
+      this.prevbtn.setAttribute("tabindex", "-1");
+      return;
     }
-    this.cards[0].style.position = "absolute";
-  }
+    if (this.cardsindxend == this.cards.length - 1) {
+      this.nextbtn.style.opacity = "0%";
+      this.nextbtn.setAttribute("tabindex", "-1");
+      return;
+    }
+    this.prevbtn.style.removeProperty("opacity");
+    this.nextbtn.style.removeProperty("opacity");
+    this.prevbtn.removeAttribute("tabindex");
+    this.nextbtn.removeAttribute("tabindex");
+  };
+
+  public numberelementtext = () => {
+    if (this.windowSize == "SMALL") {
+      this.numberElement.innerText = this.cardcounter.toString() + " of " + this.cards.length.toString();
+    } else {
+      this.numberElement.innerText =
+        "[" +
+        this.cardcounter.toString() +
+        ".." +
+        (this.cardcounter + this.cardquantshow - 1).toString() +
+        "]" +
+        " of " +
+        this.cards.length.toString();
+    }
+  };
+
   public onResizeShowStartingElems() {
     //screen has refreshed. counter is reset to start. card elements may be
     //hidden from the display, depending on when the refresh occurred, so
@@ -357,7 +308,29 @@ export default class CardsSlideShow {
         }
       }
     }
-  }
+  };
+
+  private hideOverflowElements() {
+    //Hide overflow elements
+    if (this.cardindxstart < this.cardquantshow) {
+      for (let i = this.cards.length - 1; i > this.cardsindxend; i--) {
+        this.cards[i].style.position = "absolute";
+        this.cards[i].style.opacity = "0%";
+        this.cards[i].style.display = "none";
+        if (this.windowSize == "SMALL") {
+          this.cards[i].style.transform = "translateX(0px)";
+          continue;
+        }
+        if (this.windowSize == "MEDIUM") {
+          this.cards[i].style.transform = "translateX(182.5px)";
+          continue;
+        }
+        this.cards[i].style.transform = "translateX(365px)";
+      }
+    }
+    this.cards[0].style.position = "absolute";
+  };
+
   private newContainerMarkup() {
     const newContainerStyles = () => {
       //Container styles
@@ -379,7 +352,8 @@ export default class CardsSlideShow {
     }
     slideshowslides.classList.add(`${this.windowSize}`);
     return slideshowslides;
-  }
+  };
+
   private newArrowsMarkup() {
     //Add left and right buttons
     let slideshowbtns = this.slideshowcontainer.appendChild(document.createElement("div"));
@@ -405,7 +379,8 @@ export default class CardsSlideShow {
     this.nextbtn = nextslideshowbtn;
 
     return slideshowbtns;
-  }
+  };
+
   private newNumberElement() {
     //Number element
     this.numberElement = document.createElement("div");
@@ -416,5 +391,44 @@ export default class CardsSlideShow {
     this.numberElement.style.display = "grid";
     this.numberElement.style.alignContent = "center";
     this.numberElement.style.marginInline = "1.5rem";
-  }
+  };
+
+  private onInitSetupElementPosition(){
+    switch (this.windowSize) {
+      case "SMALL":
+        //small window size logic
+        this.cards[1].style.transform = "translateX(182.5px)";
+        this.cards[1].children[1].children[2].setAttribute("tabindex", "-1");
+        this.cards[1].children[1].children[3].setAttribute("tabindex", "-1");
+
+        break;
+      case "MEDIUM":
+        //medium window size logic
+        this.cards[0].style.transform = "translateX(-182.5px)";
+        this.cards[1].style.position = "absolute";
+        this.cards[1].style.transform = "translateX(182.5px)";
+        this.cards[2].style.display = "block";
+        this.cards[2].style.zIndex = "-1";
+        this.cards[2].children[1].children[2].setAttribute("tabindex", "-1");
+        this.cards[2].children[1].children[3].setAttribute("tabindex", "-1");
+
+        break;
+      case "LARGE":
+        //large window size logic
+        this.cards[0].style.transform = "translateX(-365px)";
+        this.cards[1].style.position = "absolute";
+        this.cards[2].style.position = "absolute";
+        this.cards[2].style.transform = "translateX(365px)";
+        this.cards[3].style.display = "block";
+        this.cards[3].style.zIndex = "-1";
+        this.cards[3].children[1].children[2].setAttribute("tabindex", "-1");
+        this.cards[3].children[1].children[3].setAttribute("tabindex", "-1");
+
+        break;
+      default:
+        console.debug("Screen size property not set on slideshow.");
+        break;
+    }
+  };
+  
 }

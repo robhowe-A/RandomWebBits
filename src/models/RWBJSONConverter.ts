@@ -5,9 +5,10 @@ import { RWBSyntaxError } from "./RWBErrorBus";
 export class RWBParseJSON {
   /**Counts the number of objects instantiated */
   public static count: number = 0;
-  private parsestr: string;
   public returnobj: object;
   public passed: boolean;
+  private parsestr: string;
+
   /**Create this object to store parse results and parsed
    * JSON object.
    */
@@ -15,7 +16,7 @@ export class RWBParseJSON {
     RWBParseJSON.count++;
     this.parsestr = parsestr;
     this.passed = this.RWBparseJSON();
-  }
+  };
 
   private RWBparseJSON() {
     try {
@@ -26,7 +27,8 @@ export class RWBParseJSON {
       return false;
     }
     return true;
-  }
+  };
+
 }
 
 /** An RWBParseJSON tests whether an object can be stringified into a valid
@@ -44,7 +46,7 @@ export class RWBStringifyJSON {
     RWBStringifyJSON.count++;
     this.json = json;
     this.passed = this.parseJSON();
-  }
+  };
 
   private parseJSON() {
     try {
@@ -55,5 +57,6 @@ export class RWBStringifyJSON {
       return false;
     }
     return true;
-  }
+  };
+  
 }

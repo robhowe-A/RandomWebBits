@@ -1,6 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
 
-// This object creates an array of divs from port number information
+/** This object creates an array of div elements from port number information*/
 export default class FlashcardCardElems {
   /**Counts the number of widget objects instantiated */
   public static widgetcount: number = 0;
@@ -42,5 +42,6 @@ export default class FlashcardCardElems {
       // Add div to flashcard instance
       this.m_flashcardsArr.push(flashcard);
     });
-  }
+  };
+  
 }

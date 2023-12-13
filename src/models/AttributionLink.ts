@@ -30,7 +30,8 @@ class AttributionLink extends RWBLink {
     this.attributedowner = attributedowner;
     this.articleid = articleid;
     AttributionLink.count++;
-  }
+  };
+  
 }
 
 export default AttributionLink;

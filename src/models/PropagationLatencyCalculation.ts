@@ -17,35 +17,7 @@ export class PropagationLatencyCalculation {
     this.propagationDelay = this.calculatePropagationDelay();
     this.serializationDelay = this.calculateSerializationDelay();
     this.networkLatency = this.calculateNetworkLatency();
-  }
-
-  public getDistance() {
-    return this.distance;
-  }
-
-  public getSpeed() {
-    return this.speed;
-  }
-
-  public getPropagationDelay() {
-    return this.propagationDelay;
-  }
-
-  public getPacketSize() {
-    return this.packetSize;
-  }
-
-  public getTransmissionRate() {
-    return this.transmissionRate;
-  }
-
-  public getSerializationDelay() {
-    return this.serializationDelay;
-  }
-
-  public getNetworkLatency() {
-    return this.networkLatency;
-  }
+  };
 
   public static numberValidation(intxt: string) {
     let trimmed = intxt.trim();
@@ -56,19 +28,48 @@ export class PropagationLatencyCalculation {
       //input is not an acceptable number string.`);
       return false;
     }
-  }
+  };
+
+  public getDistance() {
+    return this.distance;
+  };
+
+  public getSpeed() {
+    return this.speed;
+  };
+
+  public getPropagationDelay() {
+    return this.propagationDelay;
+  };
+
+  public getPacketSize() {
+    return this.packetSize;
+  };
+
+  public getTransmissionRate() {
+    return this.transmissionRate;
+  };
+
+  public getSerializationDelay() {
+    return this.serializationDelay;
+  };
+
+  public getNetworkLatency() {
+    return this.networkLatency;
+  };
 
   private calculatePropagationDelay() {
     let propdelay = this.distance / this.speed;
     return propdelay;
-  }
+  };
 
   private calculateSerializationDelay() {
     let serialdelay = this.packetSize / this.transmissionRate;
     return serialdelay;
-  }
+  };
 
   private calculateNetworkLatency() {
     return this.propagationDelay + this.serializationDelay;
-  }
+  };
+
 }

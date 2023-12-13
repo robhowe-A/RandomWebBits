@@ -1,5 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
 import AttributionLink from "./AttributionLink";
+
 /**
  * This class holds the data for 'WebBit' article cards. Key information
  * of the article's contents are contained: name, description, data created,
@@ -39,7 +40,8 @@ class WebBit {
     this.cardImageALT = cardImageALT;
     this.linkAttribution = linkAttribution;
     WebBit.count++;
-  }
+  };
+
 }
 
 export default WebBit;

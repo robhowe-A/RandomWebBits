@@ -8,6 +8,7 @@ export default class RWBCard {
    * Card elements to display an icon picture and card body. An image, the image top, the card body.
    */
   private rwbcardelements: RWBCardElements;
+
   /**
    *  Map WebBit data to a card each
    *
@@ -61,7 +62,8 @@ export default class RWBCard {
     WebBit.appendChild(this.rwbcardelements.cardBody);
 
     return WebBit;
-  }
+  };
+
   /**
    * Function to determine image attribution, the image id and article id will match,
    * otherwise the data isn't entered, causing a miss
@@ -108,5 +110,6 @@ export default class RWBCard {
       attributeLink.title = link.title;
       attributeLink.textContent = link.attributedowner;
     }
-  }
+  };
+  
 }

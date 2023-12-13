@@ -4,9 +4,11 @@
 export default class RWBError {
   /**Counts the number of objects instantiated */
   public static count: number = 0;
+
   constructor() {
     RWBError.count++;
-  }
+  };
+
   public static checkElementforNull(
     componentname: string,
     cssquery: string,
@@ -33,7 +35,7 @@ export default class RWBError {
       return true;
     }
     return false;
-  }
+  };
 
   public static checkLocalStorageEqualNull(
     componentname: string,
@@ -48,7 +50,7 @@ export default class RWBError {
       return true;
     }
     if (checkemptystring) return RWBError.checkLocalStorageNullorEmpty(componentname, key, logmssg);
-  }
+  };
 
   public static checkLocalStorageNullorEmpty(componentname: string, key: string, logmessage?: boolean) {
     let logmssg: boolean = true;
@@ -72,7 +74,8 @@ export default class RWBError {
       return true;
     }
     return false;
-  }
+  };
+
 }
 
 /** Create this object to store reference error data. */
@@ -99,7 +102,8 @@ export class RWBReferenceError extends ReferenceError {
       "color:red;font-weight:bold;"
     );
     RWBReferenceError.count++;
-  }
+  };
+
 }
 
 /** Create this object to store syntax error data. */
@@ -126,7 +130,8 @@ export class RWBSyntaxError extends SyntaxError {
       "color:red;font-weight:bold;"
     );
     RWBSyntaxError.count++;
-  }
+  };
+
 }
 
 export class RWBDomException extends DOMException {
@@ -154,5 +159,6 @@ export class RWBDomException extends DOMException {
       "color:red;font-weight:bold;"
     );
     RWBDomException.count++;
-  }
+  };
+  
 }

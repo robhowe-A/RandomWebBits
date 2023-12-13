@@ -46,7 +46,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
     //Store words cache data with initialization.
     DictionarySearch.wordStorage = DictionarySearch.getLocalStorageWordCaches();
     DictionarySearch.count++;
-  }
+  };
 
   /**
    * Retrieve Local Storage words previously stored with the Dictionary Search Widget.
@@ -82,7 +82,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
       return;
     }
     return parsetest.returnobj;
-  }
+  };
 
   /**
    * Call to return the previously searched word.
@@ -91,7 +91,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
    */
   public getWordURL() {
     return this.wordURL;
-  }
+  };
 
   /**
    * Call to return the fetched word data.
@@ -100,7 +100,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
    */
   public getWordData() {
     return this.wordData;
-  }
+  };
 
   /**
    * Adds click and keypress event listeners to the widget. Input event listeners 'click'
@@ -144,7 +144,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
       event.preventDefault();
       location.reload();
     });
-  }
+  };
 
   private checkcreatePreviousWordButtons() {
     const placementlocationholder = document.querySelector(".previousWords");
@@ -180,7 +180,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
       return;
     }
     this.createPreviousWordButtons(this.previousWordsBtnWasClicked, buttonContainer);
-  }
+  };
 
   private createPreviousWordButtons(previousWordsBtnWasClicked: any, buttonContainer: HTMLDivElement) {
     if (previousWordsBtnWasClicked) {
@@ -244,7 +244,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
         this.removeDictionaryTermfromLocalStorage(btn.cacheWordHeadingElem.textContent);
       });
     }
-  }
+  };
 
   /**
    * Adds the word to the browser's Local Storage containing word data, URL, and caching.
@@ -319,7 +319,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
 
     localStorage.setItem("word-caches", jsonstr);
     addedwordcache();
-  }
+  };
 
   /**
    * Remove a previous word data from browser's Local Storage --> Key/Value
@@ -369,7 +369,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
 
     //Return remaining words to Local Storage
     localStorage.setItem("word-caches", wordcachesstrfytest.returnstr);
-  }
+  };
 
   /**
    * Remove a fetch request from Cache Storage. Utilizes
@@ -389,7 +389,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
         }
       });
     });
-  }
+  };
 
   /**
    * This function dynamically recalls a word definition request and instantiates apiGET(). The
@@ -488,7 +488,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
     };
     let wordData = wordFetchRequest();
     return wordData;
-  }
+  };
 
   /**
    * User input validation function tests the input string against a valid Regular Expression.
@@ -507,7 +507,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
       //word is not an acceptable word.`);
       return false;
     }
-  }
+  };
 
   /**
    * callFetchDictionaryTerm awaits a promise, fetching a dictionary term. The data
@@ -542,7 +542,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
       searchElems.errorElem.classList.remove("error-notfound");
       searchElems.errorElem.textContent = "";
     });
-  }
+  };
 
   /**
    * wordSearch() begins a word search request. The user input listener chooses
@@ -579,5 +579,6 @@ export class DictionarySearch extends DictionarySearchMarkup {
       }
     }
     searchElems.searchWord.value = ""; // reset input string
-  }
+  };
+
 }

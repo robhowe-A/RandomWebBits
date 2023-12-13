@@ -411,4 +411,4 @@ const webBitsSlideShow = {
   },
 };
 
-export {rwbCardsWidget as RWBCardsWidget, webBitsAccordion as WebBitsAccordion, webBitsSlideShow as WebBitsSlideShow};
+export {rwbCardsWidget, webBitsAccordion, webBitsSlideShow};

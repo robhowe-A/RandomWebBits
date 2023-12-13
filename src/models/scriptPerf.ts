@@ -7,36 +7,36 @@ interface ScriptRuntime {
 }
 
 /** Create this object to record performance start and end marks. */
-export default class RWBPerf {
+export default class RwbPerf {
   /**Counts the number of objects instantiated */
   public static count: number = 0;
-  private scriptruntimemarks: ScriptRuntime = {
+  private scriptRuntimeMarks: ScriptRuntime = {
     name: null,
     startMark: null,
     endMark: null,
   };
 
   /** Instantiating a ScriptPerf records the performance start mark. */
-  constructor(scriptname: string) {
-    this.scriptruntimemarks.name = scriptname;
-    this.scriptruntimemarks.startMark = performance.mark(`${this.scriptruntimemarks.name}-start`);
-    RWBPerf.count++;
+  constructor(scriptName: string) {
+    this.scriptRuntimeMarks.name = scriptName;
+    this.scriptRuntimeMarks.startMark = performance.mark(`${this.scriptRuntimeMarks.name}-start`);
+    RwbPerf.count++;
   };
 
   /** Call end() to set the end time stamp. */
   public end() {
-    this.scriptruntimemarks.endMark = performance.mark(`${this.scriptruntimemarks.name}-end`);
+    this.scriptRuntimeMarks.endMark = performance.mark(`${this.scriptRuntimeMarks.name}-end`);
     this.measure();
   };
 
   /** A console output of this object's performance measurement. */
   private measure() {
     let measure = performance.measure(
-      this.scriptruntimemarks.name,
-      this.scriptruntimemarks.startMark.name,
-      this.scriptruntimemarks.endMark.name
+      this.scriptRuntimeMarks.name,
+      this.scriptRuntimeMarks.startMark.name,
+      this.scriptRuntimeMarks.endMark.name
     );
-    return console.debug(`${this.scriptruntimemarks.name} execution time is: ${measure.duration}`);
+    return console.debug(`${this.scriptRuntimeMarks.name} execution time is: ${measure.duration}`);
   };
   
 }

@@ -1,23 +1,22 @@
 //--Copyright (c) 2023 Robert A. Howell
-import {RWBCardsWidget, WebBitsSlideShow, WebBitsAccordion} from "./components/webBits";
+import AcronymsElem from "./components/acronyms-element";
+import classComponents from "./classComponents";
+import { rwbCardsWidget, webBitsSlideShow, webBitsAccordion } from "./components/webBits";
 import expandingListDOMWidget from "./components/expandingListDomWidget";
 import activeCardsWidget from "./components/growingCard";
-import flashCardGameWidget from "./components/flashcardGameWidget";
 import slideShowWidget from "./components/slideShowWidget";
-import {cssexColorCode, htmlexColorCode, urlexColorCode} from "./components/colorCode";
-import RWBPerf from "./models/scriptPerf";
+import { ps_Pwa, ps_At, ps_Ip } from "./components/photoSwipe";
+import { cssexColorCode, htmlexColorCode, urlexColorCode } from "./components/colorCode";
+import flashCardGameWidget from "./components/flashcardGameWidget";
+import RwbPerf from "./models/scriptPerf";
 import domainLookup from "./components/domainLookup";
 import sliderBar from "./components/sliderBar";
 import hslColorWidget from "./components/hslColor";
-
-import { AcronymsElem } from "./components/acronyms-element";
-import { PS_pwa, PS_at, PS_ip } from "./components/photoSwipe";
-import ClassComponents from "./classComponents";
 import latencyCalculator from "./components/calculate";
 
-const PageComponents = {
-  CheckPage: (page: string) => {
-    ClassComponents.fourohfour();
+const pageComponents = {
+  checkPage: (page: string) => {
+    classComponents.fourohfour();
 
     switch (page) {
       //'Index' and 'Pages' routes, add cards widget
@@ -27,9 +26,9 @@ const PageComponents = {
       case "":
       case "/RandomWebBits/pages.html":
       case "/pages.html":
-        RWBCardsWidget.init(); // cards widget initialization
-        WebBitsSlideShow.init();
-        WebBitsAccordion.init();
+        rwbCardsWidget.init(); // cards widget initialization
+        webBitsSlideShow.init();
+        webBitsAccordion.init();
         break;
       // dom.html page uses expandingLists component
       case "/pages/dom.html":
@@ -42,12 +41,12 @@ const PageComponents = {
         break;
       // Initialize slideshow components
       case "/guides/pwaicon.html":
-        PS_pwa();
+        ps_Pwa();
         slideShowWidget.init();
         break;
       case "/guides/elementinspect.html":
       case "/guides/https.html":
-        PS_pwa();
+        ps_Pwa();
         break;
       case "/guides/devtools/applicationtab.html":
       case "/guides/devtools/elementstab.html":
@@ -59,10 +58,10 @@ const PageComponents = {
       case "/guides/devtools/securitytab.html":
       case "/guides/devtools/cssoverviewtab.html":
       case "/guides/clearcookiesquickly.html":
-        PS_at();
+        ps_At();
         break;
       case "/guides/inspectpages.html":
-        PS_ip();
+        ps_Ip();
         break;
       // Initialize CSSEX components
       case "/pages/css.html":
@@ -96,22 +95,22 @@ const PageComponents = {
         latencyCalculator.init();
         break;
       case "/guides/devtools/lighthousetab.html":
-        const LighthouseTab = document.querySelector("article.lh-root");
-        const LighthouseTabDetailsElem = document.querySelector("#lighthousearticle");
-        LighthouseTabDetailsElem.insertAdjacentElement("afterbegin", LighthouseTab);
-        PS_at();
+        const lighthouseTab = document.querySelector("article.lh-root");
+        const lighthouseTabDetailsElem = document.querySelector("#lighthousearticle");
+        lighthouseTabDetailsElem.insertAdjacentElement("afterbegin", lighthouseTab);
+        ps_At();
         break;
     }
   },
   init: (page: string) => {
-    const pageperf = new RWBPerf("Pagecomponents"); //measure performance
+    const pagePerf = new RwbPerf("Pagecomponents"); //measure performance
 
     customElements.define("acronyms-list", AcronymsElem);
-    PageComponents.CheckPage(page);
+    pageComponents.checkPage(page);
 
-    pageperf.end(); //end performance measure
+    pagePerf.end(); //end performance measure
   },
   load: () => {},
 };
 
-export default PageComponents;
+export default pageComponents;

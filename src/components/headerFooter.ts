@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 import NAVITEMS from "../data/navItems";
 import { RwbDomException } from "../models/rwbErrorBus";
-import RWBPerf from "../models/scriptPerf";
+import RwbPerf from "../models/scriptPerf";
 
 /**
  * Widget to add site header and footer. Instantiated in 'Main' script.
@@ -63,7 +63,7 @@ const headerFooter = {
      * Site header containing navigation links and site logo.
      */
     init: () => {
-      const headerperf = new RWBPerf("Header");
+      const headerperf = new RwbPerf("Header");
 
       /**
        * HTML 'main' element
@@ -146,7 +146,7 @@ const headerFooter = {
       return;
     },
     init: () => {
-      const footerperf = new RWBPerf("Footer");
+      const footerperf = new RwbPerf("Footer");
 
       // Add footer element to the page end
       let footer: HTMLElement = headerFooter.footerWidget.buildFooter();

@@ -3,7 +3,7 @@
 import PhotoSwipeLightbox from "../js/photoswipe/photoswipe-lightbox.esm.js";
 import PhotoSwipe from "../js/photoswipe/photoswipe.esm.js";
 
-const photoswipe_apptab = () => {
+const photoSwipe_AppTab = () => {
   const lightbox = new PhotoSwipeLightbox({
     gallery: "#devTools-Gallery",
     children: ".pswp-gallery__item",
@@ -114,7 +114,7 @@ const photoswipe_apptab = () => {
   pageClearCookies.init();
 };
 
-const photoswipe_pwa = () => {
+const photoSwipe_Pwa = () => {
   const lightbox = new PhotoSwipeLightbox({
     gallery: "#Instructions",
     children: ".pswp-gallery__item",
@@ -125,7 +125,7 @@ const photoswipe_pwa = () => {
   lightbox.init();
 };
 
-const photoswipe_inspctpgs = () => {
+const photoSwipe_InspctPgs = () => {
   const options = {
     gallery: "#inspectPages-Gallery",
     children: ".pswp-gallery__item",
@@ -134,4 +134,4 @@ const photoswipe_inspctpgs = () => {
   const lightbox2 = new PhotoSwipeLightbox(options);
   lightbox2.init();
 };
-export { photoswipe_pwa as PS_pwa, photoswipe_apptab as PS_at, photoswipe_inspctpgs as PS_ip };
+export { photoSwipe_Pwa as ps_Pwa, photoSwipe_AppTab as ps_At, photoSwipe_InspctPgs as ps_Ip };

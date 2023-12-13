@@ -1,11 +1,11 @@
 "strict mode";
 //--Copyright (c) 2023 Robert A. Howell
 import headerFooter from "./components/headerFooter";
-import PageComponents from "./pageComponents";
-import ClassComponents from "./classComponents";
-import RWBPerf from "./models/scriptPerf";
+import pageComponents from "./pageComponents";
+import classComponents from "./classComponents";
+import RwbPerf from "./models/scriptPerf";
 
-const mainperf = new RWBPerf("main");
+const mainPerf = new RwbPerf("main");
 
 // entry point
 /**
@@ -21,12 +21,12 @@ const RWB = {
     let page: string = window.location.pathname;
 
     // Initialize page components
-    PageComponents.init(page);
+    pageComponents.init(page);
 
     // Initialize element components
-    ClassComponents.init(page);
+    classComponents.init(page);
 
-    mainperf.end();
+    mainPerf.end();
   },
   /**
    * Initialize page widgets and application functions.

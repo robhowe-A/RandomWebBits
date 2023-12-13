@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
-import AttributionLink from "./AttributionLink";
-import WebBit from "./WebBit";
-import { RWBCardElements } from "./WidgetMarkupElements";
+import AttributionLink from "./attributionLink";
+import WebBit from "./webBit";
+import { RWBCardElements } from "./widgetMarkupElements";
 
 export default class RWBCard {
   /**
@@ -84,7 +84,7 @@ export default class RWBCard {
    * @param link Attribution link
    */
   private buildRWBCardAttributionPanel(rwbcardelements: RWBCardElements, link: AttributionLink) {
-    if (rwbcardelements.cardImg.getAttribute("Article") === link.articleid.toString()) {
+    if (rwbcardelements.cardImg.getAttribute("Article") === link.articleId.toString()) {
       // Create image back panel elements and add the data
       // Redefine card image panel as a flip panel
       const cardInner = rwbcardelements.cardImgTop.appendChild(document.createElement("div"));
@@ -104,11 +104,11 @@ export default class RWBCard {
       smallImg.classList.add("imgSmall", "imgPTR");
       cardBack.classList.add("cardBack");
       attributeLink.classList.add("attribute");
-      backHeading.textContent = link.attributedowner;
+      backHeading.textContent = link.attributedOwner;
       backPara.textContent = link.innerText;
       attributeLink.href = link.hReference;
       attributeLink.title = link.title;
-      attributeLink.textContent = link.attributedowner;
+      attributeLink.textContent = link.attributedOwner;
     }
   };
   

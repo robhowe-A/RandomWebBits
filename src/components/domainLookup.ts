@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { RWBReferenceError } from "../models/RWBErrorBus";
+import { RWBReferenceError } from "../models/rwbErrorBus";
 
 const domainlookup = {
   init: () => {

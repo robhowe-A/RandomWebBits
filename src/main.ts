@@ -1,9 +1,9 @@
 "strict mode";
 //--Copyright (c) 2023 Robert A. Howell
-import HeaderFooter from "./components/HeaderFooter";
-import PageComponents from "./PageComponents";
-import ClassComponents from "./ClassComponents";
-import RWBPerf from "./models/ScriptPerf";
+import HeaderFooter from "./components/headerFooter";
+import PageComponents from "./pageComponents";
+import ClassComponents from "./classComponents";
+import RWBPerf from "./models/scriptPerf";
 
 const mainperf = new RWBPerf("main");
 

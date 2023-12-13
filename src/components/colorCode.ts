@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import ColorCodeWidget from "../models/ColorCode";
+import ColorCodeWidget from "../models/colorCode";
 
 const htmlexColorCode = {
   init: () => {

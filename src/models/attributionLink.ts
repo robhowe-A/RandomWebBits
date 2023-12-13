@@ -1,16 +1,16 @@
 //--Copyright (c) 2023 Robert A. Howell
-import RWBLink from "./RWBLink";
+import RwbLink from "./rwbLink";
 
 /**
  * Used for image Attribution
  */
-class AttributionLink extends RWBLink {
+class AttributionLink extends RwbLink {
   /**Counts the number of objects instantiated */
   public static count: number = 0;
   /**Name of the owner */
-  public attributedowner: string;
+  public attributedOwner: string;
   /**WebBits article data ID */
-  public articleid: number;
+  public articleId: number;
 
   constructor(
     /**Link title */
@@ -20,15 +20,15 @@ class AttributionLink extends RWBLink {
     /** link href */
     hReference: string,
     /**Name of the owner */
-    attributedowner: string,
+    attributedOwner: string,
     /**WebBits page */
     pageName: string,
     /**WebBits article data ID */
-    articleid: number
+    articleId: number
   ) {
     super(title, innerText, pageName, hReference);
-    this.attributedowner = attributedowner;
-    this.articleid = articleid;
+    this.attributedOwner = attributedOwner;
+    this.articleId = articleId;
     AttributionLink.count++;
   };
   

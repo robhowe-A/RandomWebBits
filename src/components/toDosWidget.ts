@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { ToDoList } from "../models/ToDo";
+import { ToDoList } from "../models/toDo";
 
 /**
  * Component containing the To-Do List widget's creation.

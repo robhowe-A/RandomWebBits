@@ -12,10 +12,9 @@
  */
 export class apiGET {
   public errorElem: HTMLElement;
-  private GETURL: URL;
+  private getUrl: URL;
   private sendToBrowserCache: boolean = false;
   private browserCacheName: string;
-  private receivedData: any; //TODO: check if this is needed
 
   /**
    * This constructor gathers all the needed information for fetch and/or browser
@@ -32,7 +31,7 @@ export class apiGET {
     errorElem: HTMLElement,
     browserCacheName: string | null
   ) {
-    this.GETURL = GETURL;
+    this.getUrl = GETURL;
     this.sendToBrowserCache = sendToBrowserCache;
     this.browserCacheName = browserCacheName;
     this.errorElem = errorElem;
@@ -50,8 +49,8 @@ export class apiGET {
    *
    * @returns this.GETURL
    */
-  public getGETURL() {
-    return this.GETURL;
+  public getGetUrl() {
+    return this.getUrl;
   };
 
   /**
@@ -66,11 +65,11 @@ export class apiGET {
    *  object for a URL fetch by creating a URL from the string, or passing the URL.
    * @param GETURL - the (full) url of data request.
    */
-  public setGETURL(GETURL: URL | string) {
+  public setGetUrl(GETURL: URL | string) {
     if (typeof GETURL === "string") {
-      this.GETURL = new URL(GETURL);
+      this.getUrl = new URL(GETURL);
     } else {
-      this.GETURL = GETURL;
+      this.getUrl = GETURL;
     }
   };
 
@@ -84,7 +83,7 @@ export class apiGET {
    * @param GETURL - the (full) url of data request.
    * @returns dataCachePromise: Promise<unknown>
    */
-  public async apiGET(GETURL: URL) {
+  public async apiGet(GETURL: URL) {
     //Check if the request is for cache storage
     if (this.sendToBrowserCache) {
       //The returned data is packages as a Promise object

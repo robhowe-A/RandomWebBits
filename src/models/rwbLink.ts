@@ -3,7 +3,7 @@
 /**
  * HTML link element data. Used with anchor tags.
  */
-class RWBLink {
+class RwbLink {
   /**Counts the number of objects instantiated */
   public static count: number = 0;
   /**HTML title attribute */
@@ -25,9 +25,9 @@ class RWBLink {
       (this.innerText = innerText),
       (this.pageName = pageName),
       (this.hReference = hReference),
-      RWBLink.count++;
+      RwbLink.count++;
   };
   
 }
 
-export default RWBLink;
+export default RwbLink;

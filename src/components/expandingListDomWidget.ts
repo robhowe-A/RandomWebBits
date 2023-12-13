@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { ExpandingListElement } from "../models/ExpandingList";
+import { ExpandingListElement } from "../models/expandingList";
 
 const ExpandingListDOMWidget = {
   init: () => {

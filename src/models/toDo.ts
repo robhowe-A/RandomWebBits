@@ -1,8 +1,8 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { ToDoListElements } from "./WidgetMarkupElements";
-import { localstoragetodocache } from "./LocalStorageCaches";
-import { RWBParseJSON, RWBStringifyJSON } from "./RWBJSONConverter";
-import RWBError from "./RWBErrorBus";
+import { ToDoListElements } from "./widgetMarkupElements";
+import { localstoragetodocache } from "./localStorageCaches";
+import { RWBParseJSON, RWBStringifyJSON } from "./rwbJsonConverter";
+import RWBError from "./rwbErrorBus";
 
 /**
  * A ToDoList is an HTML widget to store To-Dos in the browser. Instantiate the

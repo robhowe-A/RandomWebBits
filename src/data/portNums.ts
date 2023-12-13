@@ -1,6 +1,6 @@
 "strict mode";
 //--Copyright (c) 2023 Robert A. Howell
-const portdefinitions = new Map<number, string>([
+const portDefinitions = new Map<number, string>([
   [20, "FTP-data"],
   [21, "FTP"],
   [22, "Secure SSH  /TCP"],
@@ -37,4 +37,4 @@ const portdefinitions = new Map<number, string>([
   [3269, "Microsoft Global Catalog"],
   [3389, "RDP"],
 ]);
-export default portdefinitions;
+export default portDefinitions;

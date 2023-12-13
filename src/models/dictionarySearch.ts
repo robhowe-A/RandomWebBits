@@ -1,11 +1,11 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { apiGET } from "../models/API";
-import { DictionarySearchElements, DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements";
-import { localstorageword } from "./LocalStorageCaches";
-import DictionarySearchMarkup from "./DictionarySearchMarkup";
-import RWBError from "./RWBErrorBus";
-import { RWBParseJSON } from "./RWBJSONConverter";
-import { RWBStringifyJSON } from "./RWBJSONConverter";
+import { apiGET } from "./api";
+import { DictionarySearchElements, DictionarySearchPreviousWordKeyElements } from "./widgetMarkupElements";
+import { localstorageword } from "./localStorageCaches";
+import DictionarySearchMarkup from "./dictionarySearchMarkup";
+import RWBError from "./rwbErrorBus";
+import { RWBParseJSON } from "./rwbJsonConverter";
+import { RWBStringifyJSON } from "./rwbJsonConverter";
 
 /**
  * A DictionarySearch is a set of markup creation and functions which allow a user
@@ -430,7 +430,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
       let noDefinitions: boolean;
 
       //Fetch request method call. Returned data may be the word definition
-      let data = await wordFetch.apiGET(wordFetch.getGETURL());
+      let data = await wordFetch.apiGet(wordFetch.getGetUrl());
       if (typeof data == "string") {
         //If the returned data is a string, it is the word definition data.
         noDefinitions = false;
@@ -457,9 +457,9 @@ export class DictionarySearch extends DictionarySearchMarkup {
             setTimeout(() => {
               //Function awaiting request's Cache Storage caching
               try {
-                this.removeRequestfromCacheStorage(wordFetch.getGETURL());
+                this.removeRequestfromCacheStorage(wordFetch.getGetUrl());
               } catch {
-                console.log("Could not remove from Cache Storage. Name: ", wordFetch.getGETURL());
+                console.log("Could not remove from Cache Storage. Name: ", wordFetch.getGetUrl());
               }
             }, 5000);
           }

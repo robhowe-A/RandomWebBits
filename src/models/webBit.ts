@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import AttributionLink from "./AttributionLink";
+import AttributionLink from "./attributionLink";
 
 /**
  * This class holds the data for 'WebBit' article cards. Key information

@@ -1,15 +1,15 @@
 "strict mode";
 //--Copyright (c) 2023 Robert A. Howell
-import RWBLink from "../models/RWBLink";
+import RwbLink from "../models/rwbLink";
 
 /**
  * Header navigation link data
  */
-const homeNavLink = new RWBLink("Index", "Home", "Home", "index.html");
+const homeNavLink = new RwbLink("Index", "Home", "Home", "index.html");
 
-const pagesNavLink = new RWBLink("Pages", "Pages", "Pages", "pages.html");
+const pagesNavLink = new RwbLink("Pages", "Pages", "Pages", "pages.html");
 
-const gameNavLink = new RWBLink(
+const gameNavLink = new RwbLink(
   "Game",
   "FlashCards",
   "Game",

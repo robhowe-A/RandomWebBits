@@ -1,6 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
-import RWBError from "../models/RWBErrorBus";
-import { PropagationLatencyCalculation } from "../models/PropagationLatencyCalculation";
+import RWBError from "../models/rwbErrorBus";
+import { PropagationLatencyCalculation } from "../models/propagationLatencyCalculation";
 
 /**
  * Propagation Latency component.

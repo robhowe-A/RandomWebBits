@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { localstorageword } from "./LocalStorageCaches";
+import { localstorageword } from "./localStorageCaches";
 
 /**
  * Interface used for DictionarySearch Elements functionality.

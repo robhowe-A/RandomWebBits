@@ -1,18 +1,18 @@
 //--Copyright (c) 2023 Robert A. Howell
-import {RWBCardsWidget, WebBitsSlideShow, WebBitsAccordion} from "./components/WebBits";
-import ExpandingListDOMWidget from "./components/ExpandingListDOMWidget";
-import ActiveCardsWidget from "./components/GrowingCard";
-import flashcardgameWidget from "./components/FlashcardGameWidget";
-import slideshowWidget from "./components/SlideShowWidget";
-import {cssexColorCode, htmlexColorCode, urlexColorCode} from "./components/colorcode";
-import RWBPerf from "./models/ScriptPerf";
-import domainlookup from "./components/domainlookup";
+import {RWBCardsWidget, WebBitsSlideShow, WebBitsAccordion} from "./components/webBits";
+import ExpandingListDOMWidget from "./components/expandingListDomWidget";
+import ActiveCardsWidget from "./components/growingCard";
+import flashcardgameWidget from "./components/flashcardGameWidget";
+import slideshowWidget from "./components/slideShowWidget";
+import {cssexColorCode, htmlexColorCode, urlexColorCode} from "./components/colorCode";
+import RWBPerf from "./models/scriptPerf";
+import domainlookup from "./components/domainLookup";
 import sliderbar from "./components/sliderbar";
-import hslcolorwidget from "./components/hslcolor";
+import hslcolorwidget from "./components/hslColor";
 
 import { AcronymsElem } from "./components/acronyms-element";
-import { PS_pwa, PS_at, PS_ip } from "./components/PhotoSwipe";
-import ClassComponents from "./ClassComponents";
+import { PS_pwa, PS_at, PS_ip } from "./components/photoSwipe";
+import ClassComponents from "./classComponents";
 import latencyCalculator from "./components/calculate";
 
 const PageComponents = {

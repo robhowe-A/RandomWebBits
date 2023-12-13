@@ -1,10 +1,10 @@
 //--Copyright (c) 2023 Robert A. Howell
-import ToDosWidget from "./components/ToDosWidget";
-import DictionaryWidget from "./components/DictionaryWidget";
-import notfound404widget from "./components/404";
-import RWBPerf from "./models/ScriptPerf";
-import RWBError from "./models/RWBErrorBus";
-import AbbrOpen from "./models/AbbrDescription";
+import ToDosWidget from "./components/toDosWidget";
+import DictionaryWidget from "./components/dictionaryWidget";
+import notFound404Widget from "./components/404";
+import RWBPerf from "./models/scriptPerf";
+import RWBError from "./models/rwbErrorBus";
+import AbbrOpen from "./models/abbrDescription";
 
 const ClassComponents = {
   /**
@@ -28,7 +28,7 @@ const ClassComponents = {
   },
   fourohfour: () => {
     if (!RWBError.checkElementforNull("PageComponents", "#Four-Oh-Four", false, true)) {
-      notfound404widget.init();
+      notFound404Widget.init();
     }
   },
   init: (page: string) => {

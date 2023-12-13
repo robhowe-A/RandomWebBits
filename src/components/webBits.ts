@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 import WEBBITDATA from "../data/data";
-import RandomWebBits from "../models/RandomWebBits";
-import CardsSlideShow from "../models/CardsSlideShow";
+import RandomWebBits from "../models/randomWebBits";
+import CardsSlideShow from "../models/cardsSlideShow";
 
 class Accordion {
   public accordionElements = new Map<HTMLDivElement, boolean>();
@@ -176,10 +176,6 @@ const WebBitsAccordion = {
       for (let inner of card.childNodes) {
         let innerelem = <HTMLElement>inner;
         innerelem.style.width = "50%";
-
-        // let flaticonelem = <HTMLAnchorElement>inner.childNodes[3];
-        // flaticonelem.style.right = "50%";
-        // flaticonelem.style.top = "50%";
       }
       //card body attr style
       let attrlink = card.childNodes[1].childNodes[3] as HTMLAnchorElement;
@@ -213,9 +209,12 @@ const WebBitsAccordion = {
         imageSmall.style.setProperty("max-height", "100px");
         imageSmall.style.setProperty("max-width", "100px");
       }
+      let pagelink = card.childNodes[1].childNodes[2] as HTMLAnchorElement;
 
       //add click event
       card.addEventListener("click", e => {
+        if (e.target == attrlink || e.target == pagelink)
+        return
         e.preventDefault();
         const close = () => {
           card.style.setProperty("height", "100px");
@@ -233,7 +232,7 @@ const WebBitsAccordion = {
       sitelink.addEventListener("focus", e => {
         e.preventDefault();
         const open = () => {
-          card.style.setProperty("height", "350px");
+          card.style.setProperty("height", "275px");
           isOpen = true;
         };
         open();
@@ -259,7 +258,7 @@ const WebBitsAccordion = {
       attrlink.addEventListener("focus", e => {
         e.preventDefault();
         const open = () => {
-          card.style.setProperty("height", "350px");
+          card.style.setProperty("height", "275px");
           isOpen = true;
         };
         open();
@@ -294,10 +293,6 @@ const WebBitsAccordion = {
         WebBitsAccordion.removeCardAccorionStyles(accordion);
       }
     });
-
-    //add styles for mobile screen
-    //add styles for tablet screen
-    //add styles for desktop screen
   },
   removeCardAccorionStyles: (cardaccordion: Accordion) => {
     cardaccordion.accordionElements.forEach((isOpen, card) => {
@@ -343,27 +338,26 @@ const WebBitsAccordion = {
 const WebBitsSlideShow = {
   init: () => {
     if (window.location.pathname == "/pages.html") return;
-    let aacards = document.querySelectorAll(".cardslideshow .slide") as NodeListOf<HTMLDivElement>;
+    let cards = document.querySelectorAll(".cardslideshow .slide") as NodeListOf<HTMLDivElement>;
     var small = window.matchMedia("(max-width: 819px)");
     var tablet = window.matchMedia("(min-width: 820px) and (max-width: 1090px)");
 
-    //Implement slideshow for arbitrary articles
-    let aaslideshow: CardsSlideShow;
-    let aaslideshowmed: CardsSlideShow;
-    let aaslideshowlarge: CardsSlideShow;
+    //Implement slideshow for section articles
+    let slideshow: CardsSlideShow;
+    let slideshowmed: CardsSlideShow;
+    let slideshowlarge: CardsSlideShow;
+    let currentslideshow: CardsSlideShow;
 
     //Based on the matched media size, create a small, medium, or large slideshow
-    let currentslideshow: CardsSlideShow;
-    //Based on the matched media size, create a small, medium, or large slideshow
     if (small.matches) {
-      aaslideshow = new CardsSlideShow(aacards, 1, "SMALL");
-      currentslideshow = aaslideshow;
+      slideshow = new CardsSlideShow(cards, 1, "SMALL");
+      currentslideshow = slideshow;
     } else if (tablet.matches) {
-      aaslideshowmed = new CardsSlideShow(aacards, 2, "MEDIUM");
-      currentslideshow = aaslideshowmed;
+      slideshowmed = new CardsSlideShow(cards, 2, "MEDIUM");
+      currentslideshow = slideshowmed;
     } else {
-      aaslideshowlarge = new CardsSlideShow(aacards, 3, "LARGE");
-      currentslideshow = aaslideshowlarge;
+      slideshowlarge = new CardsSlideShow(cards, 3, "LARGE");
+      currentslideshow = slideshowlarge;
     }
     window.addEventListener("resize", e => {
       e.preventDefault();
@@ -382,7 +376,7 @@ const WebBitsSlideShow = {
         }
         currentslideshow.ssContainer.remove();
         currentslideshow.arrowsContainer.remove();
-        currentslideshow = new CardsSlideShow(aacards, 1, "SMALL");
+        currentslideshow = new CardsSlideShow(cards, 1, "SMALL");
         currentslideshow.onResizeShowStartingElems();
       }
       if (window.matchMedia("(min-width: 820px) and (max-width: 1090px)").matches) {
@@ -396,7 +390,7 @@ const WebBitsSlideShow = {
         }
         currentslideshow.ssContainer.remove();
         currentslideshow.arrowsContainer.remove();
-        currentslideshow = new CardsSlideShow(aacards, 2, "MEDIUM");
+        currentslideshow = new CardsSlideShow(cards, 2, "MEDIUM");
         currentslideshow.onResizeShowStartingElems();
       }
       if (window.matchMedia("(min-width: 1091px)").matches) {
@@ -410,7 +404,7 @@ const WebBitsSlideShow = {
         }
         currentslideshow.ssContainer.remove();
         currentslideshow.arrowsContainer.remove();
-        currentslideshow = new CardsSlideShow(aacards, 3, "LARGE");
+        currentslideshow = new CardsSlideShow(cards, 3, "LARGE");
         currentslideshow.onResizeShowStartingElems();
       }
     });

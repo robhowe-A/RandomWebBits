@@ -1,14 +1,14 @@
 "strict mode";
 //--Copyright (c) 2023 Robert A. Howell
-import WebBit from "../models/WebBit";
-import AttributionLink from "../models/AttributionLink";
+import WebBit from "../models/webBit";
+import AttributionLink from "../models/attributionLink";
 
 // Create new AA (Arbitrary Article)
 
 /**
  * "Arbitrary Articles' section card data."
  */
-const ArbitraryArticles = new Array(
+const arbitraryArticles = new Array(
   new WebBit(
     "Domainlookup",
     1,
@@ -500,7 +500,7 @@ const ArbitraryArticles = new Array(
 /**
  * "Guide Shorts' section card data."
  */
-const GuideShorts = new Array(
+const guideShorts = new Array(
   new WebBit(
     "Httpscert",
     4,
@@ -812,7 +812,7 @@ const GuideShorts = new Array(
 /**
  * "Explore section card data."
  */
-const Explore = new Array(
+const explores = new Array(
   new WebBit(
     "Nasa",
     3,
@@ -873,5 +873,5 @@ const Explore = new Array(
  * Multidimensional array. Rows are the different sections. Columns
  * contain each article's data belonging in that section.
  */
-const WEBBITDATA = [ArbitraryArticles, GuideShorts, Explore];
+const WEBBITDATA = [arbitraryArticles, guideShorts, explores];
 export default WEBBITDATA;

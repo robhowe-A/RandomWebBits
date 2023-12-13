@@ -1,25 +1,25 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { client } from "../models/client";
 
-const notfound404widget = {
+const notFound404Widget = {
   init: () => {
     let client404 = new client();
-    let clientrefferinfo = document.querySelector("#clientreferrer");
-    let clientrttinfo = document.querySelector("#clientrtt");
-    let clientplatforminfo = document.querySelector("#clientplat");
+    let clientRefferInfo = document.querySelector("#clientreferrer");
+    let clientRttInfo = document.querySelector("#clientrtt");
+    let clientPlatformInfo = document.querySelector("#clientplat");
 
     //Fill information secion
-    clientrefferinfo.textContent = client404.oldURL ? client404.oldURL : window.location.href;
-    clientrttinfo.textContent = `${
+    clientRefferInfo.textContent = client404.oldURL ? client404.oldURL : window.location.href;
+    clientRttInfo.textContent = `${
       client404.connectiontype ? client404.connectiontype : "No connection type found."
     }`;
-    clientrttinfo.textContent += `, rtt of ${
+    clientRttInfo.textContent += `, rtt of ${
       client404.connectionrtt ? client404.connectionrtt : "No rtt found."
     }`;
-    clientplatforminfo.textContent = client404.browserplatform
+    clientPlatformInfo.textContent = client404.browserplatform
       ? client404.browserplatform
       : "No platform information found.";
-    clientplatforminfo.textContent += `, ${
+    clientPlatformInfo.textContent += `, ${
       client404.useragent ? client404.useragent : "No user agent info."
     }`;
 
@@ -34,4 +34,4 @@ const notfound404widget = {
   },
 };
 
-export default notfound404widget;
+export default notFound404Widget;

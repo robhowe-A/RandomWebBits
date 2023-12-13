@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
-import WebBit from "./WebBit";
-import RWBCard from "./RWBCard";
-import RWBError from "./RWBErrorBus";
+import WebBit from "./webBit";
+import RWBCard from "./rwbCard";
+import RWBError from "./rwbErrorBus";
 
 export default class RandomWebBits {
   public cardsSection: HTMLDivElement;

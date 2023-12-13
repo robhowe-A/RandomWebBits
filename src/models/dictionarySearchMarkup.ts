@@ -1,6 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { localstorageword } from "./LocalStorageCaches";
-import { DictionarySearchElements, DictionarySearchPreviousWordKeyElements } from "./WidgetMarkupElements";
+import { localstorageword } from "./localStorageCaches";
+import { DictionarySearchElements, DictionarySearchPreviousWordKeyElements } from "./widgetMarkupElements";
 
 /**
  * A DictionarySearchWidget is made to create the markup needed for the

@@ -1,6 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
-import FlashcardCardElems from "../models/FlashcardCardElems";
-import portdefinitions from "../data/portnums";
+import FlashcardCardElems from "../models/flashcardCardElems";
+import portDefinitions from "../data/portNums";
 
 const flashcardgameWidget = {
   init: () => {
@@ -11,7 +11,7 @@ const flashcardgameWidget = {
     ]);
 
     // Create flashcard elements
-    let mainFlashCardDivs = new FlashcardCardElems(portdefinitions);
+    let mainFlashCardDivs = new FlashcardCardElems(portDefinitions);
 
     // Add the game's title element
     let mainFlashCardPage = document.getElementById("mainFlashCardGame");

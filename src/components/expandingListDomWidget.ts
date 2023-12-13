@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { ExpandingListElement } from "../models/expandingList";
 
-const ExpandingListDOMWidget = {
+const expandingListDOMWidget = {
   init: () => {
     // Define the expanding list element, for use within the page
     customElements.define("expanding-list", ExpandingListElement, {
@@ -48,4 +48,4 @@ const ExpandingListDOMWidget = {
   },
 };
 
-export default ExpandingListDOMWidget;
+export default expandingListDOMWidget;

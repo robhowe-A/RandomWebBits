@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 import WebBit from "./webBit";
 import RWBCard from "./rwbCard";
-import RWBError from "./rwbErrorBus";
+import RwbError from "./rwbErrorBus";
 
 export default class RandomWebBits {
   public cardsSection: HTMLDivElement;
@@ -20,7 +20,7 @@ export default class RandomWebBits {
     // Create sectional elements to append to main
     const pageMain = document.querySelector("main");
     if (pageMain == null || pageMain.nodeName !== "MAIN") {
-      if (RWBError.checkElementforNull("MainRWB", "main", true, true)) {
+      if (RwbError.checkElementforNull("MainRWB", "main", true, true)) {
         ReadableStreamDefaultController;
       }
     }

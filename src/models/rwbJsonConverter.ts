@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { RWBSyntaxError } from "./rwbErrorBus";
+import { RwbSyntaxError } from "./rwbErrorBus";
 
 /** An RWBParseJSON parses json and stores the parsed string with the result. */
 export class RWBParseJSON {
@@ -23,7 +23,7 @@ export class RWBParseJSON {
       this.returnobj = JSON.parse(this.parsestr);
     } catch (e) {
       this.returnobj = null;
-      new RWBSyntaxError("ParseError", e.message);
+      new RwbSyntaxError("ParseError", e.message);
       return false;
     }
     return true;
@@ -53,7 +53,7 @@ export class RWBStringifyJSON {
       this.returnstr = JSON.stringify(this.json);
     } catch (e) {
       this.returnstr = null;
-      new RWBSyntaxError("ParseError", e.message);
+      new RwbSyntaxError("ParseError", e.message);
       return false;
     }
     return true;

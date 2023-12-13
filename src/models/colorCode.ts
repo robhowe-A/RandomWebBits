@@ -1,6 +1,6 @@
 //--Copyright (c) 2023 Robert A. Howell
 
-export default class ColorCodeWidget {
+export class ColorCodeWidget {
   private elems: NodeListOf<HTMLElement>[];
   private color: string[];
   private resetbtn: Element;

@@ -1,6 +1,6 @@
 "strict mode";
 //--Copyright (c) 2023 Robert A. Howell
-import HeaderFooter from "./components/headerFooter";
+import headerFooter from "./components/headerFooter";
 import PageComponents from "./pageComponents";
 import ClassComponents from "./classComponents";
 import RWBPerf from "./models/scriptPerf";
@@ -15,8 +15,8 @@ const mainperf = new RWBPerf("main");
 const RWB = {
   main: () => {
     // Add header and footer components
-    HeaderFooter.headerWidget.init();
-    HeaderFooter.footerWidget.init();
+    headerFooter.headerWidget.init();
+    headerFooter.footerWidget.init();
 
     let page: string = window.location.pathname;
 

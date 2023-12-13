@@ -4,7 +4,7 @@ import { DictionarySearch } from "../models/dictionarySearch";
 /**
  * Component containing the dictionary widget's creation.
  */
-const DictionaryWidget = {
+const dictionaryWidget = {
   /**
    * This initialization function creates a dictionary search widget by calling the
    *  constructor.
@@ -19,4 +19,4 @@ const DictionaryWidget = {
   },
 };
 
-export default DictionaryWidget;
+export default dictionaryWidget;

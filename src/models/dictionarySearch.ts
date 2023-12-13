@@ -3,7 +3,7 @@ import { apiGET } from "./api";
 import { DictionarySearchElements, DictionarySearchPreviousWordKeyElements } from "./widgetMarkupElements";
 import { localstorageword } from "./localStorageCaches";
 import DictionarySearchMarkup from "./dictionarySearchMarkup";
-import RWBError from "./rwbErrorBus";
+import RwbError from "./rwbErrorBus";
 import { RWBParseJSON } from "./rwbJsonConverter";
 import { RWBStringifyJSON } from "./rwbJsonConverter";
 
@@ -58,7 +58,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
     //Local Storage 'word-caches' items data assignment
     //cache response links and cache name are previously stored in Local Storage
     let storageStr: string;
-    if (RWBError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", true, true)) {
+    if (RwbError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", true, true)) {
       //The Local Storage is null or empty--> Confirm here the browser does not have any Cache Storage items in error
       if ("caches" in window) {
         if (window.caches.has(DictionarySearch.CacheStorageNameofWordRequest)) {
@@ -264,7 +264,7 @@ export class DictionarySearch extends DictionarySearchMarkup {
     //Local storage may be empty or already having the wanted searched word
     //Check storage is not null. If it is, add the word.
     if (DictionarySearch.wordStorage == null) {
-      if (RWBError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
+      if (RwbError.checkLocalStorageEqualNull("DictionarySearch", "word-caches", false, false)) {
         //Add the storage word to an array
         let wordStore: localstorageword[] = [];
         wordStore.push(localstoragevalue);

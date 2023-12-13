@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
 import { GrowingCardElement } from "../models/growingCard";
 
-const ActiveCardsWidget = {
+const activeCardsWidget = {
   init: () => {
     customElements.define("growing-card", GrowingCardElement, {
       extends: "li",
@@ -33,4 +33,4 @@ const ActiveCardsWidget = {
   },
 };
 
-export default ActiveCardsWidget;
+export default activeCardsWidget;

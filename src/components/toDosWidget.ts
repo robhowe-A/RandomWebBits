@@ -4,7 +4,7 @@ import { ToDoList } from "../models/toDo";
 /**
  * Component containing the To-Do List widget's creation.
  */
-const ToDosWidget = {
+const toDosWidget = {
   /**
    * Create a To-Do List widget.
    * @param elem - Element containing 'ToDoList' class
@@ -14,11 +14,11 @@ const ToDosWidget = {
     toDosElement = document.querySelector(".ToDoList");
 
     //ToDoList object
-    const todoWidget = new ToDoList();
+    const toDoWidget = new ToDoList();
 
     //Creates widget markup and populates To-Do tasks contained in Local Storage
-    todoWidget.createToDoListWidget(toDosElement);
+    toDoWidget.createToDoListWidget(toDosElement);
   },
 };
 
-export default ToDosWidget;
+export default toDosWidget;

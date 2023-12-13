@@ -5,8 +5,8 @@ import CardsSlideShow from "../models/cardsSlideShow";
 
 class Accordion {
   public accordionElements = new Map<HTMLDivElement, boolean>();
-  constructor(accordionnodes: NodeListOf<HTMLDivElement>) {
-    for (let card of accordionnodes) {
+  constructor(accordionNodes: NodeListOf<HTMLDivElement>) {
+    for (let card of accordionNodes) {
       this.accordionElements.set(card, false);
     }
   }
@@ -16,7 +16,7 @@ class Accordion {
  * Card widget to initialize article data into HTML card elements. This widget
  * creates multiple sections of cards to add to a page.
  */
-const RWBCardsWidget = {
+const rwbCardsWidget = {
   addCardSectionClass: (cards: HTMLDivElement[] | HTMLDivElement, cls: string) => {
     if (Array.isArray(cards)) {
       // cards is an array of cards; append class to all cards
@@ -30,9 +30,9 @@ const RWBCardsWidget = {
     }
   },
   buildRandomWebBits: (page?: string) => {
-    let ArbitraryArticles: RandomWebBits;
-    let GuideShorts: RandomWebBits;
-    let ExploretheWeb: RandomWebBits;
+    let arbitraryArticles: RandomWebBits;
+    let guideShorts: RandomWebBits;
+    let exploretheWeb: RandomWebBits;
 
     switch (page) {
       case "Home":
@@ -41,7 +41,7 @@ const RWBCardsWidget = {
           Accordion = "accordion",
         }
         // Split the cards arrays into their respective category
-        ArbitraryArticles = new RandomWebBits(
+        arbitraryArticles = new RandomWebBits(
           RandomWebBits.buildCardContainingSection(
             "Arbitrary Articles:",
             "ArbitraryArticles",
@@ -50,7 +50,7 @@ const RWBCardsWidget = {
           RandomWebBits.buildRWBCards(WEBBITDATA.shift())
         );
 
-        GuideShorts = new RandomWebBits(
+        guideShorts = new RandomWebBits(
           RandomWebBits.buildCardContainingSection(
             "Guide Shorts:",
             "GuideShorts",
@@ -59,24 +59,24 @@ const RWBCardsWidget = {
           RandomWebBits.buildRWBCards(WEBBITDATA.shift())
         );
 
-        ExploretheWeb = new RandomWebBits(
+        exploretheWeb = new RandomWebBits(
           RandomWebBits.buildCardContainingSection("Explore the Web:", "ExploretheWeb"),
           RandomWebBits.buildRWBCards(WEBBITDATA.shift())
         );
         break;
       default:
         // Split the cards arrays into their respective category
-        ArbitraryArticles = new RandomWebBits(
+        arbitraryArticles = new RandomWebBits(
           RandomWebBits.buildCardContainingSection("Arbitrary Articles:", "ArbitraryArticles"),
           RandomWebBits.buildRWBCards(WEBBITDATA.shift())
         );
 
-        GuideShorts = new RandomWebBits(
+        guideShorts = new RandomWebBits(
           RandomWebBits.buildCardContainingSection("Guide Shorts:", "GuideShorts"),
           RandomWebBits.buildRWBCards(WEBBITDATA.shift())
         );
 
-        ExploretheWeb = new RandomWebBits(
+        exploretheWeb = new RandomWebBits(
           RandomWebBits.buildCardContainingSection("Explore the Web:", "ExploretheWeb"),
           RandomWebBits.buildRWBCards(WEBBITDATA.shift())
         );
@@ -87,16 +87,16 @@ const RWBCardsWidget = {
      * to create category sections divisions when placed on a page.
      */
     const cardsSections: HTMLDivElement[] = [
-      ArbitraryArticles.cardsSection,
-      GuideShorts.cardsSection,
-      ExploretheWeb.cardsSection,
+      arbitraryArticles.cardsSection,
+      guideShorts.cardsSection,
+      exploretheWeb.cardsSection,
     ];
 
     // Create an array of card data + attribution link data
     // WEBBITDATA broken into 3 arrays: Pages (or articles), Guides, and Explores
     /**This array holds the markup of card elements. Each index stores the cards' data
      * for one category of articles. */
-    const cardsData: any = [ArbitraryArticles.cardsData, GuideShorts.cardsData, ExploretheWeb.cardsData];
+    const cardsData: any = [arbitraryArticles.cardsData, guideShorts.cardsData, exploretheWeb.cardsData];
     const RWB = [cardsSections, cardsData];
 
     return RWB;
@@ -118,14 +118,14 @@ const RWBCardsWidget = {
       window.location.pathname == "/dist/index.html"
     ) {
       //Build RWB Sections + card slideshow, accordian
-      RWBSectionCards = RWBCardsWidget.buildRandomWebBits("Home");
+      RWBSectionCards = rwbCardsWidget.buildRandomWebBits("Home");
 
       // Apply classes to cards relevant of the container type
-      RWBCardsWidget.addCardSectionClass(RWBSectionCards[1][0], "slide");
-      RWBCardsWidget.addCardSectionClass(RWBSectionCards[1][1], "accordionslide");
+      rwbCardsWidget.addCardSectionClass(RWBSectionCards[1][0], "slide");
+      rwbCardsWidget.addCardSectionClass(RWBSectionCards[1][1], "accordionslide");
 
       //Randomize the cards in the slideshow section
-      RWBCardsWidget.randomizeWebBits(RWBSectionCards[1]);
+      rwbCardsWidget.randomizeWebBits(RWBSectionCards[1]);
 
       //Add introduction section and append to main
       RWBSectionCards[0].unshift(RandomWebBits.buildRWBIntroduction());
@@ -133,7 +133,7 @@ const RWBCardsWidget = {
       main.prepend(RWBSectionCards[0].shift());
     } else {
       //Build RWB Sections + cards as default
-      RWBSectionCards = RWBCardsWidget.buildRandomWebBits();
+      RWBSectionCards = rwbCardsWidget.buildRandomWebBits();
     }
 
     // Add the cards to the page by combining rwb[1] (the cards) to rwb[0] (the section elements)
@@ -163,9 +163,9 @@ const RWBCardsWidget = {
   },
 };
 
-const WebBitsAccordion = {
-  addCardAccordionStyles: (cardaccordion: Accordion, screenSize: string) => {
-    cardaccordion.accordionElements.forEach((isOpen, card) => {
+const webBitsAccordion = {
+  addCardAccordionStyles: (cardAccordion: Accordion, screenSize: string) => {
+    cardAccordion.accordionElements.forEach((isOpen, card) => {
       card.style.removeProperty("flexDirection");
       card.style.setProperty("max-width", "900px");
       card.style.setProperty("margin", "0");
@@ -276,21 +276,21 @@ const WebBitsAccordion = {
     let accordion = Object.create(new Accordion(cardaccordion));
 
     if (window.matchMedia("(min-width: 501px) and (max-width: 768px)").matches) {
-      WebBitsAccordion.addCardAccordionStyles(accordion, "SMALL");
+      webBitsAccordion.addCardAccordionStyles(accordion, "SMALL");
     } else if (window.matchMedia("(min-width: 769px)").matches) {
-      WebBitsAccordion.addCardAccordionStyles(accordion, "MEDIUM");
+      webBitsAccordion.addCardAccordionStyles(accordion, "MEDIUM");
     }
 
     window.addEventListener("resize", e => {
       e.preventDefault();
       if (window.matchMedia("(min-width: 501px) and (max-width: 768px)").matches) {
-        WebBitsAccordion.addCardAccordionStyles(accordion, "SMALL");
+        webBitsAccordion.addCardAccordionStyles(accordion, "SMALL");
       }
       if (window.matchMedia("(min-width: 769px)").matches) {
-        WebBitsAccordion.addCardAccordionStyles(accordion, "MEDIUM");
+        webBitsAccordion.addCardAccordionStyles(accordion, "MEDIUM");
       }
       if (window.matchMedia("(max-width: 500px)").matches) {
-        WebBitsAccordion.removeCardAccorionStyles(accordion);
+        webBitsAccordion.removeCardAccorionStyles(accordion);
       }
     });
   },
@@ -335,7 +335,7 @@ const WebBitsAccordion = {
   },
 };
 
-const WebBitsSlideShow = {
+const webBitsSlideShow = {
   init: () => {
     if (window.location.pathname == "/pages.html") return;
     let cards = document.querySelectorAll(".cardslideshow .slide") as NodeListOf<HTMLDivElement>;
@@ -411,4 +411,4 @@ const WebBitsSlideShow = {
   },
 };
 
-export {RWBCardsWidget, WebBitsAccordion, WebBitsSlideShow};
+export {rwbCardsWidget as RWBCardsWidget, webBitsAccordion as WebBitsAccordion, webBitsSlideShow as WebBitsSlideShow};

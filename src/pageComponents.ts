@@ -1,14 +1,14 @@
 //--Copyright (c) 2023 Robert A. Howell
 import {RWBCardsWidget, WebBitsSlideShow, WebBitsAccordion} from "./components/webBits";
-import ExpandingListDOMWidget from "./components/expandingListDomWidget";
-import ActiveCardsWidget from "./components/growingCard";
-import flashcardgameWidget from "./components/flashcardGameWidget";
-import slideshowWidget from "./components/slideShowWidget";
+import expandingListDOMWidget from "./components/expandingListDomWidget";
+import activeCardsWidget from "./components/growingCard";
+import flashCardGameWidget from "./components/flashcardGameWidget";
+import slideShowWidget from "./components/slideShowWidget";
 import {cssexColorCode, htmlexColorCode, urlexColorCode} from "./components/colorCode";
 import RWBPerf from "./models/scriptPerf";
-import domainlookup from "./components/domainLookup";
-import sliderbar from "./components/sliderbar";
-import hslcolorwidget from "./components/hslColor";
+import domainLookup from "./components/domainLookup";
+import sliderBar from "./components/sliderBar";
+import hslColorWidget from "./components/hslColor";
 
 import { AcronymsElem } from "./components/acronyms-element";
 import { PS_pwa, PS_at, PS_ip } from "./components/photoSwipe";
@@ -34,16 +34,16 @@ const PageComponents = {
       // dom.html page uses expandingLists component
       case "/pages/dom.html":
       case "/pages/svg.html":
-        ExpandingListDOMWidget.init();
+        expandingListDOMWidget.init();
         break;
       // Initialize webIDE widget
       case "/pages/webides.html":
-        ActiveCardsWidget.init();
+        activeCardsWidget.init();
         break;
       // Initialize slideshow components
       case "/guides/pwaicon.html":
         PS_pwa();
-        slideshowWidget.init();
+        slideShowWidget.init();
         break;
       case "/guides/elementinspect.html":
       case "/guides/https.html":
@@ -78,18 +78,18 @@ const PageComponents = {
         break;
       // Initialize flashcard components
       case "/flashcards.html":
-        flashcardgameWidget.init();
+        flashCardGameWidget.init();
         break;
       // Initialize domain name lookup
       case "/pages/domainlookup.html":
-        domainlookup.init();
+        domainLookup.init();
         break;
       case "/pages/markup.html":
-        sliderbar.init();
+        sliderBar.init();
         break;
       // Initialize HSL color picker
       case "/pages/hsl.html":
-        hslcolorwidget.init();
+        hslColorWidget.init();
         break;
       // Initialize Propagation Latency calculator
       case "/pages/latency.html":

@@ -3,9 +3,9 @@
 export class PropagationLatencyCalculation {
   private distance: number;
   private speed: number;
-  private propagationDelay: number;
   private packetSize: number;
   private transmissionRate: number;
+  private propagationDelay: number;
   private serializationDelay: number;
   private networkLatency: number;
 

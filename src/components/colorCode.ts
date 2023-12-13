@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import ColorCodeWidget from "../models/colorCode";
+import { ColorCodeWidget } from "../models/colorCode";
 
 const htmlexColorCode = {
   init: () => {
@@ -10,8 +10,8 @@ const htmlexColorCode = {
     const attributes = document.querySelectorAll(".Attribute") as NodeListOf<HTMLElement>;
 
     // Add elements to array data structures, needed for the ColorCode instantiation
-    const colorlesselements = new Array(openers, closers, values, attributes);
-    const elementscolors = new Array(
+    const colorlessElements = new Array(openers, closers, values, attributes);
+    const elementsColors = new Array(
       "var(--clr-WhoIS_Orange)",
       "var(--clr-Red)",
       "var(--clr-DarkCyan)",
@@ -19,7 +19,7 @@ const htmlexColorCode = {
     );
 
     // Instantiate a color code object with all needed elements
-    new ColorCodeWidget(colorlesselements, elementscolors, document.querySelector(".reset"));
+    new ColorCodeWidget(colorlessElements, elementsColors, document.querySelector(".reset"));
   },
 };
 
@@ -35,8 +35,8 @@ const urlexColorCode = {
     const value = document.querySelectorAll(".value") as NodeListOf<HTMLElement>;
 
     // Add elements to array data structures, needed for the ColorCode instantiation
-    const colorlesselements = new Array(protocol, domain, port, folder, file, query, key, value);
-    const elementscolors = new Array(
+    const colorlessElements = new Array(protocol, domain, port, folder, file, query, key, value);
+    const elementsColors = new Array(
       "var(--clr-WhoIS_Orange)",
       "var(--clr-Skyblue)",
       "var(--clr-DarkCyan)",
@@ -48,7 +48,7 @@ const urlexColorCode = {
     );
 
     // Instantiate a color code object with all needed elements
-    new ColorCodeWidget(colorlesselements, elementscolors, document.querySelector(".reset"));
+    new ColorCodeWidget(colorlessElements, elementsColors, document.querySelector(".reset"));
   },
 };
 
@@ -64,8 +64,8 @@ const cssexColorCode = {
     const psuedos = document.querySelectorAll(".Psuedo-class") as NodeListOf<HTMLElement>;
 
     // Add elements to array data structures, needed for the ColorCode instantiation
-    const colorlesselements = new Array(selectors, attributes, values, psuedos);
-    const elementscolors = new Array(
+    const colorlessElements = new Array(selectors, attributes, values, psuedos);
+    const elementsColors = new Array(
       "var(--clr-Red)",
       "var(--clr-WhoIS_Orange)",
       "var(--clr-Skyblue)",
@@ -73,7 +73,7 @@ const cssexColorCode = {
     );
 
     // Instantiate a color code object with all needed elements
-    new ColorCodeWidget(colorlesselements, elementscolors, document.querySelector(".reset"));
+    new ColorCodeWidget(colorlessElements, elementsColors, document.querySelector(".reset"));
   },
 };
 

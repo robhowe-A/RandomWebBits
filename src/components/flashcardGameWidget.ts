@@ -1,12 +1,12 @@
 //--Copyright (c) 2023 Robert A. Howell
-import FlashcardCardElems from "../models/flashcardCardElems";
+import { FlashcardCardElems } from "../models/flashcardCardElems";
 import portDefinitions from "../data/portNums";
 
-const flashcardgameWidget = {
+const flashCardGameWidget = {
   init: () => {
     // Establish which port numbers to test and the definition
     // TODO: functions flashcards
-    const methoddefinitions = new Map<string, string>([
+    const methodDefinitions = new Map<string, string>([
       ["charAt()", "Returns a new string of the character at a given index."],
     ]);
 
@@ -17,9 +17,9 @@ const flashcardgameWidget = {
     let mainFlashCardPage = document.getElementById("mainFlashCardGame");
     let mainFlashCardPageDiv = document.getElementById("mainFlashCards");
 
-    const gametitleElem = document.createElement("h2");
-    gametitleElem.innerText = "Computing Port Numbers";
-    mainFlashCardPage.insertAdjacentElement("afterbegin", gametitleElem);
+    const gameTitleElem = document.createElement("h2");
+    gameTitleElem.innerText = "Computing Port Numbers";
+    mainFlashCardPage.insertAdjacentElement("afterbegin", gameTitleElem);
 
     // Add the flashcards to widget
     for (let elem of mainFlashCardDivs.m_flashcardsArr) {
@@ -28,4 +28,4 @@ const flashcardgameWidget = {
   },
 };
 
-export default flashcardgameWidget;
+export default flashCardGameWidget;

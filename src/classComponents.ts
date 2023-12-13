@@ -1,9 +1,9 @@
 //--Copyright (c) 2023 Robert A. Howell
-import ToDosWidget from "./components/toDosWidget";
-import DictionaryWidget from "./components/dictionaryWidget";
+import toDosWidget from "./components/toDosWidget";
+import dictionaryWidget from "./components/dictionaryWidget";
 import notFound404Widget from "./components/404";
 import RWBPerf from "./models/scriptPerf";
-import RWBError from "./models/rwbErrorBus";
+import RwbError from "./models/rwbErrorBus";
 import AbbrOpen from "./models/abbrDescription";
 
 const ClassComponents = {
@@ -27,7 +27,7 @@ const ClassComponents = {
     mobileabbrperf.end(); //end performance measure
   },
   fourohfour: () => {
-    if (!RWBError.checkElementforNull("PageComponents", "#Four-Oh-Four", false, true)) {
+    if (!RwbError.checkElementforNull("PageComponents", "#Four-Oh-Four", false, true)) {
       notFound404Widget.init();
     }
   },
@@ -36,14 +36,14 @@ const ClassComponents = {
 
     // Add Dictionary Widget if an element with that class is on a page
     if (page == "/pages/dictionaryword.html" || page == "/index.html" || page == "/" || page == "") {
-      if (RWBError.checkElementforNull("ClassComponent", ".dictionaryWidget", true, true)) return;
-      DictionaryWidget.init();
+      if (RwbError.checkElementforNull("ClassComponent", ".dictionaryWidget", true, true)) return;
+      dictionaryWidget.init();
     }
 
     // Add ToDos widget if an element with that class is on a page
     if (page == "/pages/todos.html" || page == "/index.html" || page == "/" || page == "") {
-      if (RWBError.checkElementforNull("ClassComponent", ".ToDoList", true, true)) return;
-      ToDosWidget.init();
+      if (RwbError.checkElementforNull("ClassComponent", ".ToDoList", true, true)) return;
+      toDosWidget.init();
     }
 
     // Add abbr definitions

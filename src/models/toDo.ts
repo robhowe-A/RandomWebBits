@@ -2,7 +2,7 @@
 import { ToDoListElements } from "./widgetMarkupElements";
 import { localstoragetodocache } from "./localStorageCaches";
 import { RWBParseJSON, RWBStringifyJSON } from "./rwbJsonConverter";
-import RWBError from "./rwbErrorBus";
+import RwbError from "./rwbErrorBus";
 
 /**
  * A ToDoList is an HTML widget to store To-Dos in the browser. Instantiate the
@@ -144,7 +144,7 @@ export class ToDoList {
     logmessage: boolean
   ) {
     if (
-      RWBError.checkLocalStorageEqualNull(
+      RwbError.checkLocalStorageEqualNull(
         "ToDoList",
         "ToDos",
         checkemptyvaluestring,

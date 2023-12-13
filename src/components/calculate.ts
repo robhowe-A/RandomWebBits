@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import RWBError from "../models/rwbErrorBus";
+import RwbError from "../models/rwbErrorBus";
 import { PropagationLatencyCalculation } from "../models/propagationLatencyCalculation";
 
 /**
@@ -18,12 +18,12 @@ const latencyCalculator = {
     let exampleElem3: HTMLButtonElement;
 
     if (
-      RWBError.checkElementforNull("latencyCalculator", "#distance", true, false) ||
-      RWBError.checkElementforNull("latencyCalculator", "#mediumSpeed", true, false) ||
-      RWBError.checkElementforNull("latencyCalculator", "#packetSize", true, false) ||
-      RWBError.checkElementforNull("latencyCalculator", "#transmissionRate", true, false) ||
-      RWBError.checkElementforNull("latencyCalculator", "#reset", true, false) ||
-      RWBError.checkElementforNull("latencyCalculator", "#calculate", true, false)
+      RwbError.checkElementforNull("latencyCalculator", "#distance", true, false) ||
+      RwbError.checkElementforNull("latencyCalculator", "#mediumSpeed", true, false) ||
+      RwbError.checkElementforNull("latencyCalculator", "#packetSize", true, false) ||
+      RwbError.checkElementforNull("latencyCalculator", "#transmissionRate", true, false) ||
+      RwbError.checkElementforNull("latencyCalculator", "#reset", true, false) ||
+      RwbError.checkElementforNull("latencyCalculator", "#calculate", true, false)
     )
       console.log(`%cCheck missing elements at /pages/latency.html`, "color:orange;font-weight:bold;");
 

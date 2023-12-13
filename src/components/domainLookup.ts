@@ -1,24 +1,24 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { RWBReferenceError } from "../models/rwbErrorBus";
+import { RwbReferenceError } from "../models/rwbErrorBus";
 
-const domainlookup = {
+const domainLookup = {
   init: () => {
     // Get the form, assign to a variable
-    let formelemclassname = "searchWhoIS";
+    let formElemClassName = "searchWhoIS";
     let form: HTMLFormElement;
-    form = document.getElementById(`${formelemclassname}`) as HTMLFormElement | null;
+    form = document.getElementById(`${formElemClassName}`) as HTMLFormElement | null;
     if (form == null) {
-      new RWBReferenceError("ElementNotFound", `Element not found: '${formelemclassname}':`);
+      new RwbReferenceError("ElementNotFound", `Element not found: '${formElemClassName}':`);
     }
-    form.addEventListener("submit", domainlookup.searchWHOIS);
+    form.addEventListener("submit", domainLookup.searchWHOIS);
   },
   searchWHOIS: () => {
-    let inputelem = document.getElementById("txtSearch") as HTMLInputElement;
-    let value = inputelem.value;
+    let inputElem = document.getElementById("txtSearch") as HTMLInputElement;
+    let value = inputElem.value;
     var URL = "https://www.whois.com/whois/" + value;
     window.open(URL, "_blank");
     return false;
   },
 };
 
-export default domainlookup;
+export default domainLookup;

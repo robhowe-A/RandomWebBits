@@ -1,12 +1,12 @@
 //--Copyright (c) 2023 Robert A. Howell
 import NAVITEMS from "../data/navItems";
-import { RWBDomException } from "../models/rwbErrorBus";
+import { RwbDomException } from "../models/rwbErrorBus";
 import RWBPerf from "../models/scriptPerf";
 
 /**
  * Widget to add site header and footer. Instantiated in 'Main' script.
  */
-const HeaderFooter = {
+const headerFooter = {
   headerWidget: {
     /**
      * Create header with site logo appended.
@@ -76,27 +76,27 @@ const HeaderFooter = {
       if (pageMain != null) {
         // 'Main' element exists, add the header to it
         try {
-          siteHeader = pageMain.insertAdjacentElement("beforebegin", HeaderFooter.headerWidget.buildHeader());
+          siteHeader = pageMain.insertAdjacentElement("beforebegin", headerFooter.headerWidget.buildHeader());
         } catch (e) {
-          new RWBDomException("DomException", "Check site header element. Encountered error:", e);
+          new RwbDomException("DomException", "Check site header element. Encountered error:", e);
         }
       } else {
         // 'Main' element does not exist, add the header to the body
         try {
           siteHeader = document.body.insertAdjacentElement(
             "afterbegin",
-            HeaderFooter.headerWidget.buildHeader()
+            headerFooter.headerWidget.buildHeader()
           );
         } catch (e) {
-          new RWBDomException("DomException", "Check site header is not null. Encountered error:", e);
+          new RwbDomException("DomException", "Check site header is not null. Encountered error:", e);
         }
       }
 
       //Append navigation items to header
       try {
-        siteHeader.childNodes[0].appendChild(HeaderFooter.headerWidget.buildNavigation());
+        siteHeader.childNodes[0].appendChild(headerFooter.headerWidget.buildNavigation());
       } catch (e) {
-        new RWBDomException("DomException", "Cannot prepend navigation items. Encountered error:", e);
+        new RwbDomException("DomException", "Cannot prepend navigation items. Encountered error:", e);
       }
 
       headerperf.end();
@@ -149,14 +149,14 @@ const HeaderFooter = {
       const footerperf = new RWBPerf("Footer");
 
       // Add footer element to the page end
-      let footer: HTMLElement = HeaderFooter.footerWidget.buildFooter();
+      let footer: HTMLElement = headerFooter.footerWidget.buildFooter();
       document.body.append(footer);
-      footer.childNodes[0].appendChild(HeaderFooter.footerWidget.buildFaviconAttribution(footer));
-      HeaderFooter.footerWidget.buildDeveloperAttribution(footer);
+      footer.childNodes[0].appendChild(headerFooter.footerWidget.buildFaviconAttribution(footer));
+      headerFooter.footerWidget.buildDeveloperAttribution(footer);
 
       footerperf.end();
     },
   },
 };
 
-export default HeaderFooter;
+export default headerFooter;

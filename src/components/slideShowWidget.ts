@@ -5,22 +5,22 @@
 /**
  * Component creating slideshow widgets
  */
-const slideshowWidget = {
+const slideShowWidget = {
   slideIndex: 1,
   /**
    * Create slideshow components.
    */
   init: () => {
-    slideshowWidget.showSlides(slideshowWidget.slideIndex);
+    slideShowWidget.showSlides(slideShowWidget.slideIndex);
 
     // Next/previous controls
     function plusSlides(n: number) {
-      slideshowWidget.showSlides((slideshowWidget.slideIndex += n));
+      slideShowWidget.showSlides((slideShowWidget.slideIndex += n));
     }
 
     // Thumbnail image controls
     function currentSlide(n: number) {
-      slideshowWidget.showSlides((slideshowWidget.slideIndex = n));
+      slideShowWidget.showSlides((slideShowWidget.slideIndex = n));
     }
 
     //Change to next slide when arrow buttons are clicked
@@ -56,10 +56,10 @@ const slideshowWidget = {
     let slides = document.getElementsByClassName("mySlides");
     let dots = document.getElementsByClassName("dot");
     if (n > slides.length) {
-      slideshowWidget.slideIndex = 1;
+      slideShowWidget.slideIndex = 1;
     }
     if (n < 1) {
-      slideshowWidget.slideIndex = slides.length;
+      slideShowWidget.slideIndex = slides.length;
     }
     for (i = 0; i < slides.length; i++) {
       let tempSlide = <HTMLDivElement>slides[i];
@@ -68,10 +68,10 @@ const slideshowWidget = {
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
-    let tempSlide = <HTMLDivElement>slides[slideshowWidget.slideIndex - 1];
+    let tempSlide = <HTMLDivElement>slides[slideShowWidget.slideIndex - 1];
     tempSlide.style.display = "block";
-    dots[slideshowWidget.slideIndex - 1].className += " active";
+    dots[slideShowWidget.slideIndex - 1].className += " active";
   },
 };
 
-export default slideshowWidget;
+export default slideShowWidget;

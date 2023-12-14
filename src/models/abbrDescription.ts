@@ -16,12 +16,12 @@ export default class AbbrOpen {
       if (this.isOpen) {
         this.description.remove();
       }
-      let abbrtitleattrval: string = this.abbrElement.getAttribute("title") as string;
+      let abbrTitleAttrVal: string = this.abbrElement.getAttribute("title") as string;
 
       if (e.target == this.abbrElement) {
         //create the span element
         this.description = this.abbrElement.appendChild(document.createElement("span"));
-        this.description.textContent = `${String.fromCharCode(160)}(${abbrtitleattrval})${String.fromCharCode(
+        this.description.textContent = `${String.fromCharCode(160)}(${abbrTitleAttrVal})${String.fromCharCode(
           160
         )}`;
         this.isOpen = true;

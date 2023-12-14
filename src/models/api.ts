@@ -20,18 +20,18 @@ export class apiGET {
    * This constructor gathers all the needed information for fetch and/or browser
    *  storage.
    *
-   * @param GETURL - the (full) url of data request.
+   * @param getUrl - the (full) url of data request.
    * @param sendToBrowserCache  - Boolean value determining fetch caching.
    * @param browserCacheName - If storing the request in browser cache, this string provides the name for storage.
    * @param errorElem - Should the fetch request fail, return error status to this element.
    */
   constructor(
-    GETURL: URL,
+    getUrl: URL,
     sendToBrowserCache: boolean,
     errorElem: HTMLElement,
     browserCacheName: string | null
   ) {
-    this.getUrl = GETURL;
+    this.getUrl = getUrl;
     this.sendToBrowserCache = sendToBrowserCache;
     this.browserCacheName = browserCacheName;
     this.errorElem = errorElem;
@@ -63,13 +63,13 @@ export class apiGET {
   /**
    * A fetch request can take URL or string parameter. This function sets the apiGET
    *  object for a URL fetch by creating a URL from the string, or passing the URL.
-   * @param GETURL - the (full) url of data request.
+   * @param getUrl - the (full) url of data request.
    */
-  public setGetUrl(GETURL: URL | string) {
-    if (typeof GETURL === "string") {
-      this.getUrl = new URL(GETURL);
+  public setGetUrl(getUrl: URL | string) {
+    if (typeof getUrl === "string") {
+      this.getUrl = new URL(getUrl);
     } else {
-      this.getUrl = GETURL;
+      this.getUrl = getUrl;
     }
   };
 
@@ -80,10 +80,10 @@ export class apiGET {
    *  sent to the cache. Without sending to browser cache, the fetch is requested and
    * returned.
    *
-   * @param GETURL - the (full) url of data request.
+   * @param getUrl - the (full) url of data request.
    * @returns dataCachePromise: Promise<unknown>
    */
-  public async apiGet(GETURL: URL) {
+  public async apiGet(getUrl: URL) {
     //Check if the request is for cache storage
     if (this.sendToBrowserCache) {
       //The returned data is packages as a Promise object
@@ -93,19 +93,19 @@ export class apiGET {
           window.caches
             .open(this.browserCacheName)
             .then(cache => {
-              caches.match(GETURL).then(result => {
+              caches.match(getUrl).then(result => {
                 if (result === undefined) {
                   //No matches for this request in Storage Cache, so fetch the request normally
                   //Upon success, a cloned copy will need to be returned.
-                  fetch(GETURL).then(result => {
+                  fetch(getUrl).then(result => {
                     //Copy the response since it can only be read once
-                    let clonedresp = result.clone();
+                    let clonedResp = result.clone();
 
                     //Add the result to the cache
-                    if (clonedresp.status != 404) {
-                      cache.put(GETURL, result);
+                    if (clonedResp.status != 404) {
+                      cache.put(getUrl, result);
                     }
-                    resolve(clonedresp.json().then(text => text));
+                    resolve(clonedResp.json().then(text => text));
                   });
                 } else {
                   //Cache hit success, return the response data
@@ -120,7 +120,7 @@ export class apiGET {
             })
             .finally(() => {
               //Attempt raw fetch
-              resolve(this.fetchData(GETURL));
+              resolve(this.fetchData(getUrl));
               reject(new Error("Promise error on data fetch."));
             });
         }
@@ -132,7 +132,7 @@ export class apiGET {
       return dataCachePromise;
     } else {
       let dataCachePromise = new Promise((resolve, reject) => {
-        resolve(this.fetchData(GETURL));
+        resolve(this.fetchData(getUrl));
       });
       dataCachePromise.then(data => {
         return data;
@@ -161,11 +161,11 @@ export class apiGET {
 
   /**
    * The fetch request, returning a fetch promise.
-   * @param GETURL - the (full) url of data request.
+   * @param getUrl - the (full) url of data request.
    * @returns data.text() or data based on the instance returned.
    */
-  private fetchData(GETURL: URL) {
-    return fetch(GETURL)
+  private fetchData(getUrl: URL) {
+    return fetch(getUrl)
       .then(response => this.apiResponseErrorCheck(response))
       .then(data => {
         if (data instanceof Response) {

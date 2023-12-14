@@ -1,7 +1,7 @@
 //--Copyright (c) 2023 Robert A. Howell
-import NAVITEMS from "../data/navItems";
-import { RwbDomException } from "../models/rwbErrorBus";
-import RwbPerf from "../models/scriptPerf";
+import NAVITEMS from "../../data/navItems";
+import { RwbDomException } from "../../models/rwbErrorBus";
+import RwbPerf from "../../models/scriptPerf";
 
 /**
  * Widget to add site header and footer. Instantiated in 'Main' script.

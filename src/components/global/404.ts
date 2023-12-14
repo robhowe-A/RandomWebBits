@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { client } from "../models/client";
+import { client } from "../../models/client";
 
 const notFound404Widget = {
   init: () => {

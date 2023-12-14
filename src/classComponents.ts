@@ -1,9 +1,9 @@
 //--Copyright (c) 2023 Robert A. Howell
-import toDosWidget from "./components/toDosWidget";
-import dictionaryWidget from "./components/dictionaryWidget";
-import notFound404Widget from "./components/404";
 import RwbPerf from "./models/scriptPerf";
 import RwbError from "./models/rwbErrorBus";
+import dictionaryWidget from "./components/global/dictionaryWidget";
+import toDosWidget from "./components/global/toDosWidget";
+import notFound404Widget from "./components/global/404";
 import AbbrOpen from "./models/abbrDescription";
 
 const classComponents = {

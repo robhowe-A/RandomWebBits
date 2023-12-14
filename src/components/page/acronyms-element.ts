@@ -1,6 +1,6 @@
 "strict mode";
 //--Copyright (c) 2023 Robert A. Howell
-import { LitElement, css, html } from "../js/lit-all.min.js";
+import { LitElement, css, html } from "../../js/lit-all.min.js";
 
 export default class AcronymsElem extends LitElement {
   title: any = {};

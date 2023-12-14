@@ -1,5 +1,5 @@
 //--Copyright (c) 2023 Robert A. Howell
-import { GrowingCardElement } from "../models/growingCard";
+import { GrowingCardElement } from "../../models/growingCard";
 
 const activeCardsWidget = {
   init: () => {

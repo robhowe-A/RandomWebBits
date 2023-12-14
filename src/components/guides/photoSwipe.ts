@@ -1,7 +1,7 @@
 "strict mode";
 //--Copyright (c) 2023 Robert A. Howell
-import PhotoSwipeLightbox from "../js/photoswipe/photoswipe-lightbox.esm.js";
-import PhotoSwipe from "../js/photoswipe/photoswipe.esm.js";
+import PhotoSwipeLightbox from "../../js/photoswipe/photoswipe-lightbox.esm.js";
+import PhotoSwipe from "../../js/photoswipe/photoswipe.esm.js";
 
 const photoSwipe_AppTab = () => {
   const lightbox = new PhotoSwipeLightbox({

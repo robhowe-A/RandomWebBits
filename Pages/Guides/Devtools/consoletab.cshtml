@@ -1,0 +1,121 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Guides.Devtools.consoletabModel
+@{
+    ViewData["Title"] = "GUIDE: Dev Console</RWB>";
+}
+@section guidesComponents
+{
+    <script type="module" src="~/src/guidesComponents.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
+}
+<time datetime="2023-10-29">October 29, 2023</time>
+<article id="ConsoleTab" class="WebBits">
+    <h2>GUIDE: Dev Tools --&gt; Console Tab</h2>
+    <p>
+        Open the <abbr title="developer">dev</abbr> tools tab with
+        <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>J</kbd></kbd> and navigate to the
+        console tab. In firefox, be sure to use
+        <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>I</kbd></kbd>
+    </p>
+    <!--Example 1 picture (RWB)-->
+    <figure class="imgShadow pictureCaption">
+        <a class="pswp-gallery__item" href="../../library/img/DevToolsConsole-RWB.png" data-pswp-width="1912"
+           data-pswp-height="820">
+            <img src="../../library/img/DevToolsConsole-RWB.png"
+                 alt="A default view of RWB's Console tab in developer's tools." width="1912" height="820">
+        </a>
+        <figcaption>
+            A default view of RWB's <q>Console</q> tab in developer's tools.
+            <p>
+                <strong>Note: </strong>RWB pages show performance metrics of
+                behind-the-scenes functions.
+            </p>
+        </figcaption>
+    </figure>
+    <aside class="exampleBlue">
+        <p>
+            Key <code>F12</code> opens the dev tools directly to the console.
+        </p>
+    </aside>
+    <p>
+        There may be a flurry of information and/or errors. Each error
+        highlights a problem and usually comes with a description of what type
+        of error has been encountered. The output also includes a reference to
+        where in the source code the error occurred.
+    </p>
+    <!--Example 2 picture (RWB, webb telescope | compare)-->
+    <figure class="imgShadow pictureCaption">
+        <a class="pswp-gallery__item" href="../../library/img/DevToolsConsole-RWBwebbtelescope.png"
+           data-pswp-width="1912" data-pswp-height="820">
+            <img src="../../library/img/DevToolsConsole-RWBwebbtelescope.png"
+                 alt="An error shown on an RWB page: EXPLORE: Webb Telescope" width="1912" height="820">
+        </a>
+        <figcaption>
+            An error shown on an RWB page:
+            <span data-rwb-type="link">
+                <a href="/explore/webbtelescope"
+                   title="EXPLORE: Webb Telescope&lt;/RWB&gt;"><strong>&lt;EXPLORE: Webb Telescope&gt;</strong></a>
+            </span>
+        </figcaption>
+    </figure>
+    <p>
+        Console information can be useful to developers, security specialists,
+        and designers. Searching and reviewing for errors is frequent
+        throughout a site's creation.
+    </p>
+    <hr>
+    <p>
+        <strong>Test: </strong>Click on the message's link to be taken to the
+        source code specific of the message.
+    </p>
+    <!--Example 3 picture (RWB, zoom or highlight)-->
+    <figure class="imgShadow pictureCaption">
+        <a class="pswp-gallery__item" href="../../library/img/DevToolsConsole-RWBconsolesource.png"
+           data-pswp-width="1264" data-pswp-height="820">
+            <img src="../../library/img/DevToolsConsole-RWBconsolesource.png"
+                 alt="After clicking the location reference, the developer's tools switches to the Sources tab."
+                 width="1264" height="820">
+        </a>
+        <figcaption>
+            After clicking the location reference, the developer's tools
+            switches to the Sources tab.
+        </figcaption>
+    </figure>
+    <aside class="examplePink explore">
+        <h3>More:</h3>
+        <p>
+            Learn a bit about the DOM, here:
+            <span data-rwb-type="link"><a href="/pages/dom" title="DOM&lt;/RWB&gt;">&lt;DOM&gt;</a></span>
+        </p>
+        <h3>Further reading:</h3>
+        <ul class="explore-links">
+            <li>
+                <a href="https://blog.teamtreehouse.com/mastering-developer-tools-console" target="_blank" rel="external noopener"
+                   title="How to Use the Browser Developer Tools Console [Article] | Treehouse Blog">
+                    How to Use the Browser
+                    Developer Tools Console [Article] |
+                    Treehouse Blog
+                </a>
+            </li>
+            <li>
+                <a href="https://www.javascripttutorial.net/web-development-tools/" target="_blank" rel="external noopener"
+                   title="How To Open Console Tab in Web Development Tools">
+                    How To Open Console Tab in Web Development
+                    Tools
+                </a>
+            </li>
+            <li>
+                <a href="https://developer.chrome.com/docs/devtools/console/" target="_blank" rel="external noopener"
+                   title="Console overview - Chrome for Developers">Console overview - Chrome for Developers</a>
+            </li>
+        </ul>
+    </aside>
+</article>
+<div class="Top-Link"><a class="Top" href="/guides/devtools/consoletab#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("main").setAttribute("id", "DevTools");
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

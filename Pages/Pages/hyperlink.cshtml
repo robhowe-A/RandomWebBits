@@ -1,0 +1,51 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.hyperlinkModel
+@{
+    ViewData["Title"] = "Hyperlink</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2024-01-02">January 2, 2024</time>
+<article id="Hyperlink" class="WebBits">
+    <h2>LEARN: Hyperlinks</h2>
+    <p>The internet would be vastly different without hyperlinks. A hyperlink &lpar;also known as a link&rpar; connects two web locations by means of a <abbr title="Uniform Resource Locator">URL</abbr>. Each of the below boxes are selectable links, individually written in the source code as an opening and closing anchor tag pair.</p>
+    <section class="WebBits-width-full">
+        <div class="boxList">
+            <a data-rwb-type="reference" href="pages/html" title="HTML&lt;/RWB&gt;" rel="tag">element</a>
+            <a href="pages/markup" title="Markup&lt;/RWB&gt;" rel="tag">markup</a>
+            <a data-rwb-type="reference" href="pages/css" title="CSS&lt;/RWB&gt;" rel="tag">styled</a>
+            <a data-rwb-type="reference" href="pages/hsl" title="HSL&lt;/RWB&gt;" rel="tag">color</a>
+            <a data-rwb-type="reference" href="guides/elementinspect" title="GUIDE: Element Inspect&lt;/RWB&gt;" rel="tag">inspected</a>
+            <a data-rwb-type="reference" href="pages/dom" title="DOM&lt;/RWB&gt;" rel="tag">DOM</a>
+        </div>
+    </section>
+    <p>
+        <br><span class="font-small">*Above, click a <q>block styled</q> hyperlink to navigate to a different page.</span>
+    </p>
+    <aside class="exampleBlue">
+        <p>An anchor element, <code title="Example HTML anchor element markup">&lt;a&gt;&lt;/a&gt;</code>, establishes hyperlinks to web locations.</p>
+    </aside>
+    <h2>Hyperlink styling:</h2>
+    <p class="textLeft">An anchor <a data-rwb-type="reference" href="pages/html" title="HTML&lt;/RWB&gt;" rel="tag">element</a> defaults as an inline display element. This means it is painted to the browser as part of a paragraph's inline text; also, it is a part of the <abbr title="HyperText Markup Language">HTML</abbr> <a href="pages/markup" title="Markup&lt;/RWB&gt;" rel="tag">markup</a>, indicated previously. </p>
+    <div class="columns">
+        <aside class="exampleBlue exampleDarkBlue">
+            <p>Block display elements have width and height customization available.</p>
+        </aside>
+        <aside class="exampleBlue exampleDarkBlue">
+            <p>Inline display elements match the height of the parent/sibling elements.</p>
+        </aside>
+    </div>
+    <p class="textLeft">
+        Anchor elements are usually <a data-rwb-type="reference" href="pages/css" title="CSS&lt;/RWB&gt;" rel="tag">styled</a> differently from the remaining paragraph text &lpar;often painted with a different <a data-rwb-type="reference" href="pages/hsl" title="HSL&lt;/RWB&gt;" rel="tag">color</a>&rpar; to make it obvious to readers that the hyperlink is not plain text. This difference is obvious when the hyperlink is <a data-rwb-type="reference" href="guides/elementinspect" title="GUIDE: Element Inspect&lt;/RWB&gt;" rel="tag">inspected</a> in the <a data-rwb-type="reference" href="pages/dom" title="DOM&lt;/RWB&gt;" rel="tag">DOM</a>. This paragraph and the previous have exclusively used inline anchors.
+        <br><span class="font-small">*Above, click an <q>inline styled</q> hyperlink to navigate to a different page.</span>
+    </p>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/hyperlink#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

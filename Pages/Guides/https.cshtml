@@ -1,0 +1,103 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Guides.httpsModel
+@{
+    ViewData["Title"] = "GUIDE: HTTPS</RWB>";
+}
+@section guidesComponents
+{
+    <script type="module" src="~/src/guidesComponents.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
+}
+<time datetime="2022-12-26">December 26, 2022</time>
+<article id="HTTPS" class="WebBits">
+    <h2>GUIDE: Viewing the HTTPS certificate</h2>
+    <p>
+        <strong>HyperText Transfer Protcol Secure</strong>,
+        <abbr title="HyperText Transport Protocol Secure">HTTPS</abbr>, keeps
+        data encrypted over the internet, helping to keep personal data and
+        sensitive data away from prying eyes and unwanted inter-webs robots.
+    </p>
+    <div id="Instructions">
+        <hr>
+        <h3>Open the certificate details pane:</h3>
+        <p>
+            <strong>Step 1: </strong>Click the icon by the URL bar
+            <q>View site information</q>
+        </p>
+        <figure>
+            <figcaption><q>View site information</q> URL button</figcaption>
+            <a class="pswp-gallery__item" href="../library/img/https0.png" data-pswp-width="1080"
+               data-pswp-height="1000">
+                <img src="../library/img/https0.png" alt="Cursor located on URL lock icon button" width="1080"
+                     height="1000">
+            </a>
+        </figure>
+        <aside class="exampleBlue">
+            <p>
+                <strong>Program:</strong> Microsoft Edge, 108.0.1462.54, Microsoft
+                Corporation, MSEDGE.EXE
+            </p>
+        </aside>
+        <hr>
+        <!--Step 1-->
+        <p>
+            <strong>Step 2: </strong>In Edge browser, left click the "Connection
+            is secure" button
+        </p>
+        <figure>
+            <figcaption><q>Connection is secure</q> button</figcaption>
+            <a class="pswp-gallery__item" href="../library/img/https1.png" data-pswp-width="1080"
+               data-pswp-height="1000">
+                <img src="../library/img/https1.png" alt="URL panel with multiple button selections" width="1080"
+                     height="1000">
+            </a>
+        </figure>
+        <hr>
+        <!--Step 2-->
+        <p>
+            <strong>Step 3: </strong>Click to open the https certificate panel.
+        </p>
+        <figure>
+            <figcaption><q>Show certificate</q> button</figcaption>
+            <a class="pswp-gallery__item" href="../library/img/https2.png" data-pswp-width="1080"
+               data-pswp-height="1000">
+                <img src="../library/img/https2.png" alt="Cursor located on certificate button" width="1080"
+                     height="1000">
+            </a>
+        </figure>
+        <hr>
+        <!--Step 3-->
+        <p>
+            <strong>Step 4 &lpar;Optional&rpar;: </strong>Switch to details tab
+            to view the browser interpretation of the certificate.
+        </p>
+        <figure>
+            <a class="pswp-gallery__item" href="../library/img/https3.png" data-pswp-width="1920"
+               data-pswp-height="1032">
+                <img src="../library/img/https3.png" alt="HTTPS certificate: general details panel" width="1920"
+                     height="1032">
+            </a>
+            <figcaption>
+                General details panel<br>
+                <p>
+                    <strong>Note: </strong>The
+                    <abbr title="Common Name">CN</abbr> value originates from the
+                    certificate field labeled "Subject".
+                </p>
+            </figcaption>
+        </figure>
+        <aside class="examplePink">
+            Details panel commonly allows certificate export from the browser
+            for local inspection or tests.
+        </aside>
+    </div>
+    <!--Step 4-->
+</article>
+<acronyms-list></acronyms-list>
+<div class="Top-Link"><a class="Top" href="/guides/https#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

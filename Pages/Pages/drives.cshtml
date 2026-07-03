@@ -1,0 +1,76 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.drivesModel
+@{
+    ViewData["Title"] = "PowerShell Drives</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css&amp;skin=desert"></script>
+}
+<time datetime="2023-03-20">March 20, 2023</time>
+<article id="PSDrives" class="WebBits">
+    <h2>TRY: Surface PowerShell Drives</h2>
+    <p>
+        Windows uses PowerShell as an
+        <abbr title="Application Programming Interface">API</abbr> to interact
+        with the <abbr title="Local Operating System">local OS</abbr> in many
+        ways. The scripting language is common for administration automation
+        and accessing <abbr title="Client-Side Object Model">CSOM</abbr> and
+        <abbr title="Server-Side Object Model">SSOM</abbr> methods.
+    </p>
+    <p>
+        Certificates' drive can be accessed in PowerShell's
+        <code>cert:\</code> location. Instead of browsing a drive letter, the
+        shell reads information from the isolated os partitions.
+    </p>
+    <aside class="examplePink">
+        <p>PowerShell drives available to review:</p>
+        <ul>
+            <li>cert:\</li>
+            <li>hklm:\</li>
+            <li>env:\</li>
+        </ul>
+        <p>
+            Reading the contents of the drive is similar to changing directories
+            <strong>Ex: </strong><code>cd c:\</code> in command prompt, using
+            drive <strong>Ex: </strong><code>cd env:\</code>
+        </p>
+    </aside>
+    <figure id="CheckCertificateExpiration">
+        <h3 class="Title">
+            Check for expiring certificates &lpar;1 year&rpar;
+        </h3>
+        <pre id="Measure-NetworkSpeed" class="prettyprint linenums">
+cd cert:\
+dir
+cd Cert:\LocalMachine
+$today = Get-Date
+$OneYearFromToday = $today.AddYears(1)
+Get-ChildItem -Recurse | Where-Object{($_.NotAfter -gt $today) `
+-and ($_.NotAfter -lt $OneYearFromToday)} `
+| fl | Sort-Object NotAfter
+
+
+</pre>
+        <figcaption>
+            Paste the above code into PowerShell to test local computer
+            certificate expirations.
+        </figcaption>
+    </figure>
+    <p>
+        Web administrators are familiar with maintenance needed for
+        <abbr title="HyperText Transport Protocol Secure">HTTPS</abbr>
+        delivery. Often, certificates will expire on a web or application
+        server. The above script would be used to find certificates expiring
+        within a 1 year's range.
+    </p>
+</article>
+<acronyms-list></acronyms-list>
+<div class="Top-Link"><a class="Top" href="/pages/drives#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

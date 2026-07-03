@@ -1,0 +1,18 @@
+﻿@page "/pages"
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.pagesModel
+@{
+    ViewData["Title"] = "<RWB>";
+}
+@section cardsComponents
+{
+    <link rel="stylesheet" href="~/css/RWBcard.css" type="text/css" media="all">
+    <script type="module" src="~/src/cardsComponents.js"></script>
+}
+@section Scripts
+{
+    <script type="text/javascript">
+        const bodyElem = document.querySelector("body");
+        bodyElem.setAttribute("id", "PAGES");
+    </script>
+}

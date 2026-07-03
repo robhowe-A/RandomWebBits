@@ -1,0 +1,102 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Guides.elementinspectModel
+@{
+    ViewData["Title"] = "GUIDE: Element Inspect</RWB>";
+}
+@section guidesComponents
+{
+    <script type="module" src="~/src/guidesComponents.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
+}
+<time datetime="2023-10-09">October 9, 2023</time>
+<article id="ElementInspect" class="WebBits">
+    <h2>GUIDE: Inspect HTML Elements</h2>
+    <p>
+        Developers are keenly aware of element structure. An element is made
+        of many attributes that combine to create the looks and actions of
+        elements. To see an element up close, use the element inspector.
+    </p>
+    <div id="Instructions">
+        <hr>
+        <h3>Inspector's Hover Details:</h3>
+        <p>
+            <strong>Step 1: </strong>Right click anywhere and select
+            <code>Inspect</code> or use the keyboard shortcut
+            <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>I</kbd></kbd>
+        </p>
+        <figure>
+            <figcaption>Dev tools panel open</figcaption>
+            <a class="pswp-gallery__item" href="../library/img/InspectElement1.png" data-pswp-width="950"
+               data-pswp-height="812">
+                <img class="imgShadow" src="../library/img/InspectElement1.png"
+                     alt="Dev tools pictured in green highlight." width="950" height="812">
+            </a>
+        </figure>
+        <hr>
+        <!--Step 1-->
+        <p>
+            <strong>Step 2: </strong>Click the inspector icon in the top left.
+        </p>
+        <figure>
+            <figcaption>
+                <q>
+                    Select an element in the page to inspect it - Ctrl + Shift +
+                    C
+                </q>
+            </figcaption>
+            <a class="pswp-gallery__item" href="../library/img/InspectElement2.png" data-pswp-width="858"
+               data-pswp-height="736">
+                <img class="imgShadow" src="../library/img/InspectElement2.png"
+                     alt="URL panel with multiple button selections" width="858" height="736">
+            </a>
+        </figure>
+        <hr>
+        <!--Step 2-->
+        <p><strong>Step 3: </strong>Hover the mouse over any element.</p>
+        <figure>
+            <figcaption>
+                <q>Arbitrary Articles</q> heading element inspection
+            </figcaption>
+            <a class="pswp-gallery__item" href="../library/img/InspectElement3.png" data-pswp-width="864"
+               data-pswp-height="737">
+                <img class="imgShadow" src="../library/img/InspectElement3.png" alt="Cursor located on certificate button"
+                     width="864" height="737">
+            </a>
+        </figure>
+        <aside class="exampleBlue">
+            <p>
+                Highlighted is element attribute information: color, font, and
+                accessibility metadata.
+            </p>
+        </aside>
+        <p>
+            Firefox does not have an information panel for inspection hovering.
+            Instead, the element locator is displayed and the tools brought into
+            focus of the Elements panel.
+        </p>
+        <hr>
+        <!--Step 3-->
+        <p>
+            <strong>Step 4 &lpar;Optional&rpar;: </strong>Click the element to
+            bring the DOM into focus of the selected element.
+        </p>
+        <figure>
+            <figcaption>
+                Dev panel opens to "Elements" tab after the selection.
+            </figcaption>
+            <a class="pswp-gallery__item" href="../library/img/InspectElement4.png" data-pswp-width="863"
+               data-pswp-height="734">
+                <img class="imgShadow" src="../library/img/InspectElement4.png"
+                     alt="HTTPS certificate: general details panel" width="863" height="734">
+            </a>
+        </figure>
+    </div>
+    <!--Step 4-->
+</article>
+<div class="Top-Link"><a class="Top" href="/guides/elementinspect#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

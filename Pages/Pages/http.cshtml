@@ -1,0 +1,122 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.httpModel
+@{
+    ViewData["Title"] = "HTTP</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-06-12">June 12, 2023</time>
+<article id="HTTP" class="WebBits">
+    <h2>LEARN: HTTP</h2>
+    <div class="columns">
+        <p class="col-d-6">
+            <strong>HyperText Transport Protocol</strong>,
+            <abbr title="HyperText Transport Protocol">HTTP</abbr>, is an
+            application-layer protocol responsible for retrieving and sending
+            web pages. Http gives the world wide web the ability to view/host
+            website content regardless of the location of the request. Without
+            it, websites cannot exist as we know them today.
+        </p>
+        <aside class="exampleBlue col-d-6">
+            <p>
+                By default, http operates on port 80 via
+                <abbr title="Transmission Control Protocol">TCP</abbr> for client
+                requests and server responses.
+            </p>
+        </aside>
+        <aside class="examplePink col-d-6">
+            <p>
+                Multi-server website hosts are called web farms and are composed
+                of three main server types:
+            </p>
+            <ul>
+                <li>
+                    <strong>Frontend server:</strong> A server hosting the website's
+                    content files such as HTML, CSS, and JavaScript files.
+                </li>
+                <li>
+                    <strong>Backend server:</strong> A server dedicated to
+                    application-specific tasks such as database API access and
+                    dynamic content rendering.
+                </li>
+                <li>
+                    <strong>Database server:</strong> A server containing customer
+                    or sensitive data for the website in secure database tables.
+                </li>
+            </ul>
+        </aside>
+        <p class="col-d-6">
+            Http traverses the web in network packet containers, called frames,
+            via <em>HTTP/2</em>. <em>HTTP/3</em> was published 06-06-2022 by the
+            <abbr title="Internet Engineering Task Force">IETF</abbr>.<sup>1</sup>
+        </p>
+        <p class="col-d-10">
+            Commonly, http requests are made by a web browser. The request
+            reaches the website's frontend &lpar;via routers and switches&rpar;,
+            which may be an internet-hosted web server or a corporation's server
+            bank. Multiple servers can work together to handle process volume
+            and speed up response time.
+        </p>
+    </div>
+    <hr class="dl">
+    <dl>
+        <dt>Frames</dt>
+        <dd>An independent chunk of data sent over a network.</dd>
+        <dt>HyperText Transport Protocol</dt>
+        <dd>The data transfer protocol used on the World Wide Web.</dd>
+        <dt>HyperText Transport Protocol/2</dt>
+        <dd>Emplaces http in frames for reduced latency.</dd>
+        <dt>HyperText Transport Protocol/3</dt>
+        <dd>
+            The third major version of http using
+            <abbr title="Quick UDP Internet Connections">QUIC</abbr>, a
+            multiplexed transport protocol built on
+            <abbr title="User Datagram Protocol">UDP</abbr>.<sup>1</sup>
+        </dd>
+        <dt>Server</dt>
+        <dd>
+            A computer dedicated to running programs that provide services to
+            other programs or devices, either in the same computer or over a
+            computer network.
+        </dd>
+        <dt>Transmission Control Protocol &lpar;TCP&rpar;</dt>
+        <dd>Ensures reliable data exchange between devices.</dd>
+        <dt>Web Browser</dt>
+        <dd>
+            A software application that allows a user to access and view
+            websites on the World Wide Web.
+        </dd>
+        <dt>Web Farm</dt>
+        <dd>
+            Computing a large website that uses two or more servers to handle
+            user requests.
+        </dd>
+        <dt>Website</dt>
+        <dd>
+            A collection of interlinked web pages on the World Wide Web that are
+            typically accessible from the same base
+            <abbr title="Uniform Resource Locator">URL</abbr> and reside on the
+            same server.
+        </dd>
+    </dl>
+    <p class="citations">
+        <strong>Citations:</strong><br>
+        <sup>[1]</sup>
+        <cite>
+            <a href="https://en.wikipedia.org/wiki/HTTP/3" target="_blank" rel="external noopener"
+               title="HTTP/3 - Wikipedia">
+                <q>HTTP/3 - Wikipedia</q>
+            </a>
+        </cite>
+    </p>
+</article>
+<acronyms-list></acronyms-list>
+<div class="Top-Link"><a class="Top" href="/pages/http#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

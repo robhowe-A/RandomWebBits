@@ -1,0 +1,60 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.domainlookupModel
+@{
+    ViewData["Title"] = "Domain Lookup</RWB>";
+}
+@section pagesComponents
+{
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/91ce0b8975.js" crossorigin="anonymous"></script>
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2022-12-04">December 4, 2022</time>
+<article class="WebBits">
+    <h2>TRY: Domain name lookup</h2>
+    <p>
+        Domain names are often bought up fast, so to have one yourself means
+        you need to find one that is available.
+    </p>
+    <aside id="TryWhoIS" class="exampleBlue">
+        <p>
+            Try searching <q>WhoIS</q>, a domain that hosts a service to check
+            domain buying availability.
+        </p>
+        <div class="search-container">
+            <form id="searchWhoIS">
+                <button type="submit">
+                    <i class="fa fa-search"></i>&nbsp;Search
+                </button>
+                <input id="txtSearch" type="text" placeholder="Domain search..." class="monospace">
+                <div>
+                    <!-- <button id="example1" class="domainbtn" type="button">
+                      Ex. 1
+                    </button>
+                    <button id="example1" class="domainbtn" type="button">
+                      Ex. 1
+                    </button>
+                    <button id="example1" class="domainbtn" type="button">
+                      Ex. 1
+                    </button> -->
+                </div>
+                <output id="WhoISsearch" style="display: none;"><span><u>Searches:</u></span></output>
+            </form>
+        </div>
+    </aside>
+    <p>
+        If a search returns an unavailable domain, you'll see the message:
+        <i><q>Looks like this domain has not been registered yet.</q></i>
+    </p>
+    <aside id="TryWhoIsReturn" class="examplePink">
+        <img src="../library/img/Whois_thisrandomwebdomain.com.png" alt="A screenshot of WhoIS domain search">
+    </aside>
+</article>
+<acronyms-list></acronyms-list>
+<div class="Top-Link"><a class="Top" href="/pages/domainlookup#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

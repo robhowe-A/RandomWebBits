@@ -1,0 +1,95 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.apiModel
+@using RWBDotnetTypeScript.Interop;
+@{
+    ViewData["Title"] = "Web API</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+    <component type="typeof(Microsoft.AspNetCore.Components.Web.HeadOutlet)"
+               render-mode="ServerPrerendered" />
+}
+
+<time datetime="2024-01-31">January 31, 2024</time>
+<article id="WebAPI" class="WebBits">
+    <h2>LEARN: Web API</h2>
+    <p>
+        <abbr title="Application Programming Interface">API</abbr>, or <strong>Application Programming Interface</strong>, is a programming concept used frequently in web development. Two programs interact in some manner in an api and data is exchanged. <abbr title="Representational Station Transfer">REST</abbr> apis, like the &lpar;far&rpar; below example, retrieve data via <abbr title="JavaScript">JS</abbr> code methods. Two distinct api types separate application development &lpar;writing code for an application&apos;s functionality&rpar; from the application&apos;s interaction &lpar;writing code to connect third-party programs&rpar;: 1.&rpar; browser apis and 2.&rpar; third-party apis.
+    </p>
+    <section>
+        <h3>Browser API</h3>
+        <p>A browser api, like that made for JavaScript, allows <span data-rwb-type="link"><a href="/pages/dom" title="DOM&lt;/RWB&gt;">DOM</a></span> interaction, the fetch method - a fetch call sends data requests to third-party api - and others</p>
+        <pre><code class="jsexample">
+<span class="block"><span class="comment">//Create a new HTML element</span>
+<span class="statement">document.createElement<span class="parenStart0">(</span>tagname<span class="parenEnd0"></span>)</span><span class="statementEnd">;</span></span>
+
+<span class="block"><span class="comment">//Search for page elements</span>
+<span class="statement">document.querySelector<span class="parenStart0">(</span>tagName<span class="parenEnd0">)</span></span><span class="statementEnd">;</span>
+<span class="statement">document.getElementById<span class="parenStart0">(</span>elementID<span class="parenEnd0">)</span></span><span class="statementEnd">;</span>
+<span class="statement">document.getElementByClassName<span class="parenStart0">(</span>className<span class="parenEnd0">)</span></span><span class="statementEnd">;</span></span>
+
+<span class="block"><span class="comment">//Fetch method</span>
+<span class="statement">fetch<span class="parenStart0">(</span><span class="interpolateStart">`${</span>apiUrl<span class="interpolateEnd">}`</span><span class="parenEnd0">)</span>
+  .then<span class="parenStart0">(</span>response => response.json<span class="parenStart1">(</span><span class="parenEnd1">)</span><span class="parenEnd0">)</span>
+  .then<span class="parenStart0">(</span>data => console.log<span class="parenStart1">(</span>data<span class="parenEnd1">)</span><span class="parenEnd0">)</span>
+  .catch<span class="parenStart0">(</span>error => console.error<span class="parenStart1">(</span>error<span class="parenEnd1">)</span><span class="parenEnd0">)</span><span class="statementEnd">;</span></span></span></code></pre>
+    </section>
+    <hr>
+    <section>
+        <h3>Third-Party &lpar;REST&rpar; API</h3>
+        <p><q>REST api utilizes the URL to make data available using the web.</q> <sup>1</sup>. More about <abbr title="Uniform Resource Locator">URL</abbr> at <span data-rwb-type="link"><a href="/pages/url" title="URL&lt;/RWB&gt;">URL&lt;/RWB&gt;</a></span>. The below section uses <a href="https://openlibrary.org/developers/api" title="Developer Center / APIs | Open Library" rel="noopener" target="_blank">Open Library&apos;s</a> api to show results from an api call. Use a name and the search button to interact with the api via a browser click event.</p>
+        <div>
+            <form id="authorFetch" class="inputForm">
+                <label for="fetch-author">Author Search:</label>
+                <input type="text" placeholder="Fetch authors data..." id="fetch-author">
+                <input type="button" value="Send" id="author-fetch">
+                <span class="apierror"></span>
+            </form>
+            <div class="results">
+                <h4>API Fetch Results: </h4>
+                <ol>
+                    <li><h5>Base Url &lpar;string&rpar;: <span id="baseURL"></span></h5></li>
+                    <li><h5>Query Parameters &lpar;string&rpar;: <span id="queryParams"></span></h5></li>
+                    <li><h5>Full Url &lpar;URL&rpar;: <span id="resultsURL"></span></h5></li>
+                </ol>
+            </div>
+        </div>
+        <p class="citations">
+            <strong>Citations:</strong><br>
+            <sup>[1]</sup>
+            <cite>
+                <a href="https://blog.postman.com/rest-api-examples/"
+                   target="_blank"
+                   rel="external noopener"
+                   title="What is a REST API? Examples, Uses & Challenges | Postman Blog">
+                    <q>What is a REST API? Examples, Uses & Challenges | Postman Blog</q>
+                </a>
+            </cite>
+        </p>
+    </section>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/api#top">Top</a></div>
+@(await Html.RenderComponentAsync<ClientApiRequest>(RenderMode.Server))
+@section widgetComponents
+{
+    <script type="module" src="~/src/widgetComponents.js"></script>
+}
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+
+    <script type="module" src="/Interop/ClientApiRequest.razor.js"></script>
+    <script src="_framework/blazor.web.js" autostart="false"></script>
+    <script>
+        Blazor.start({
+          circuit: {
+            configureSignalR: function (builder) {
+              builder.configureLogging("warning");
+            }
+          }
+        });
+    </script>
+}

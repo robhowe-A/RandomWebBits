@@ -1,0 +1,60 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Guides.clearcookiesquicklyModel
+@{
+    ViewData["Title"] = "GUIDE: Clearing cookies</RWB>";
+}
+@section guidesComponents
+{
+    <script type="module" src="~/src/guidesComponents.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
+}
+<time datetime="2023-07-02">July 2, 2023</time>
+<article id="ClearCookies" class="WebBits">
+    <h2>GUIDE: Clear cookies quickly</h2>
+    <p>
+        Clearing cookies is a common problem-solving technique when the
+        browser is awry. Use
+        <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>DEL</kbd></kbd> shortcut to clear
+        browser history and cache, generally for the last hour.
+    </p>
+
+    <figure class="imgShadow pictureCaption">
+        <a class="pswp-gallery__item" href="../library/img/ClearCookies.png" data-pswp-width="352"
+           data-pswp-height="437">
+            <img src="../library/img/ClearCookies.png" alt="Application tab in dev tools.">
+        </a>
+
+        <figcaption>
+            Clear browsing data, similar in Edge, Chrome, Firefox
+        </figcaption>
+    </figure>
+    <p>
+        On the frontside, the issue may resolve. Behind the scenes, the
+        browser is clearing temporarily stored files, references, and objects
+        from the application tab in the
+        <abbr title="developer">dev</abbr> tools.<br>Go to
+        <span data-rwb-type="link">
+            <a href="devtools/applicationtab.html"
+               title="GUIDE: Dev Application&lt;/RWB&gt;">&lt;GUIDE: Dev Application&gt;</a>
+        </span>
+        to learn more.
+    </p>
+    <div class="examplePink">
+        <h3>Cleared Data</h3>
+        <ol>
+            <li>Browsing history</li>
+            <li>Download history</li>
+            <li>Cache items</li>
+            <li>Local storage</li>
+            <li>Cookies</li>
+            <li>...more</li>
+        </ol>
+    </div>
+</article>
+<div class="Top-Link"><a class="Top" href="/guides/clearcookiesquickly#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

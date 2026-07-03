@@ -1,0 +1,67 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.javascriptModel
+@{
+    ViewData["Title"] = "JavaScript</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-05-22">May 22, 2023</time>
+<article id="JavaScript" class="WebBits">
+    <h2>TRY: Disabling JavaScript</h2>
+    <p>
+        JavaScript dominates the web for being the most common underlying code
+        to make a website interactive. Useful for buttons, panels, and
+        component interactions, <abbr title="JavaScript">JS</abbr> is loaded
+        with a page along with
+        <abbr title="HyperText Markup Language">HTML</abbr> and
+        <abbr title="Cascading Style Sheet">CSS</abbr>.
+    </p>
+    <p>
+        A website may break without JavaScript functions. This can be
+        simulated in the <abbr title="developer">dev</abbr> tools, as such:
+    </p>
+    <details open>
+        <summary>Firefox</summary>
+        <ol>
+            <li>
+                Open Firefox preferences by typing
+                <span class="url">about:config</span> in the address bar
+            </li>
+            <li>Search "JavaScript"</li>
+            <li>Toggle 'javascript.enabled' to false</li>
+            <li>Refresh the page</li>
+        </ol>
+    </details>
+    <details>
+        <summary>Chrome and Edge</summary>
+        <ol>
+            <li>Open Dev tools: <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>J</kbd></kbd></li>
+            <li>
+                Run command "JavaScript":
+                <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>P</kbd></kbd>
+            </li>
+            <li>Click "Disable"</li>
+            <li>Refresh the page</li>
+        </ol>
+    </details>
+    <p>
+        Different websites may portray its disablement differently.
+        <span data-rwb-type="link">
+            <a href="https://www.randomwebbits.com/" target="_blank"
+               title="&lt;RWB&gt;">Random Web Bits'</a>
+        </span>
+        header/footer will not show up. Navigation is only available if you
+        know the relative <abbr title="Uniform Resource Locator">URL</abbr> or
+        utilize the back/forward buttons.
+    </p>
+</article>
+<acronyms-list></acronyms-list>
+<div class="Top-Link"><a class="Top" href="/pages/javascript#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

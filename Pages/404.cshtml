@@ -1,0 +1,44 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages._404Model
+@{
+    ViewData["Title"] = "404<RWB>";
+}
+<article id="Four-Oh-Four" class="WebBits">
+    <h2 class="redbold">ERROR: Not Found</h2>
+    <figure style="text-align: center">
+        <img src="/library/img/error.png" alt="Error 404 computer icon.">
+        <a href="https://www.flaticon.com/free-icons/error" title="error icons" rel="external noopener">
+            Error icons created by Freepik -
+            Flaticon
+        </a>
+    </figure>
+    <aside class="exampleBlue">
+        <p>This is not the bit you're looking for.</p>
+    </aside>
+    <div>
+        <h3>You must be cautious.</h3>
+        <ul>
+            <li>
+                Do you know where you are? <br><em><span id="clientreferrer"></span></em>
+                <br><br>
+            </li>
+            <li>
+                How fast you're going? <br><em><span id="clientrtt"></span></em>
+                <br><br>
+            </li>
+            <li>
+                Let me see some identification? <br><em><span id="clientplat"></span></em>
+            </li>
+        </ul>
+        <a id="oldURL">Move Along &lpar;Go Home&rpar;</a>
+    </div>
+</article>
+<div class="Top-Link"><a class="Top" href="404#top">Top</a></div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

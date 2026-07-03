@@ -1,0 +1,97 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Explore.nasaModel
+@{
+    ViewData["Title"] = "EXPLORE: NASA Pages</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2022-12-18">December 18, 2022</time>
+<article id="NASA" class="WebBits EXPLORE">
+    <h2>EXPLORE: Browsing the NASA portal</h2>
+
+    <p>
+        If you're a space enthusiast, hobbyist, or like anything
+        space-related, then you <del>should be</del>
+        <ins>may benefit from</ins> browsing
+        <abbr title="National Aeronautics and Space Administration">NASA</abbr>
+        websites.
+    </p>
+
+    <!-- Click link or image to get to NASA -->
+    <div>
+        <h3 class="share-frame-link">
+            <a href="https://www.nasa.gov/" rel="external noopener" target="_blank" title="NASA">NASA's Home Page</a>
+        </h3>
+        <a class="share-frame-img" href="https://www.nasa.gov/" rel="external noopener" target="_blank" title="NASA">
+            <picture>
+                <source media="(max-width: 768px)" srcset="../library/img/NASA_Home-small.jpeg">
+                <source media="(min-width: 769px)" srcset="../library/img/NASA_Home.jpeg">
+                <img class="frames" src="../library/img/NASA_Home.jpeg" alt="Screenshot of NASA's webpage home">
+            </picture>
+        </a>
+    </div>
+    
+    <aside class="examplePink explore">
+        <h3>Example:</h3>
+        <p>There's too much to share! Try any of these links:</p>
+        <ul id="NASA-links">
+            <li>
+                <a href="https://www.nasa.gov/artemisprogram" target="_blank" rel="external noopener"
+                   title="Artemis Program | NASA">NASA Artemis Program</a>
+            </li>
+            <li>
+                <a href="https://mars.nasa.gov/" rel="external noopener" target="_blank" title="NASA Mars Exploration">
+                    NASA Mars
+                    Exploration
+                </a>
+            </li>
+            <li>
+                <a href="https://eyes.nasa.gov/" rel="external noopener" target="_blank" title="NASA's Eyes">NASA Eyes</a>
+            </li>
+            <li>
+                <a href="https://webbtelescope.org/" rel="external noopener" target="_blank" title="Webb Home">Webb Telescope</a>
+            </li>
+            <li>
+                <a href="https://eyes.nasa.gov/dsn/dsn.html" rel="external noopener" target="_blank" title="DSN Now">DSN Now</a>
+            </li>
+        </ul>
+    </aside>
+    <hr style="width:100%"/>
+    <aside>The below divisions are remained in this page intentionally and may not show any of the intended content. If you see the frame content, great! Otherwise, I'll plan to replace or resume the content in another way. <br /><em>-Robert Howell<br /><time datetime="2025-03-07">March 07, 2025</time></em></aside>
+
+    <!-- Header as a link to site. iFrame imports content -->
+    <div>
+        <h3 class="share-frame-link">
+            <a href="https://moon.nasa.gov/" rel="external noopener" target="_blank" title="Home - Moon: NASA Science">
+                Earth's
+                Moon
+            </a>
+        </h3>
+        <iframe class="frames" src="https://moon.nasa.gov/" title="Home - Moon: NASA Science" tabindex="-1"></iframe>
+    </div>
+
+    <div>
+        <h3 class="share-frame-link">
+            <a href="https://nasa.gov/feature/artemis" rel="external noopener" target="_blank"
+               title="Artemis - NASA">Artemis</a>
+        </h3>
+        <iframe class="frames" src="https://nasa.gov/feature/artemis"
+                title="Artemis - NASA" tabindex="-1"></iframe>
+    </div>
+
+    <!-- Header as a link to site. iFrame imports content -->
+    <div>
+        <h3 class="share-frame-link">
+            <a href="https://solarsystem.nasa.gov/planets/overview/" rel="external noopener" target="_blank"
+               title="Overview | Planets - NASA Solar System Exploration">Solar System</a>
+        </h3>
+        <iframe class="frames" src="https://solarsystem.nasa.gov/planets/overview/"
+                title="Overview | Planets - NASA Solar System Exploration" tabindex="-1"></iframe>
+    </div>
+
+
+</article>
+<div class="Top-Link"><a class="Top" href="/explore/nasa#top">Top</a></div>

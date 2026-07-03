@@ -1,0 +1,79 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.htmlModel
+@{
+    ViewData["Title"] = "HTML</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-07-25">July 25, 2023</time>
+<article id="HTML-ELEM" class="WebBits">
+    <h2>TRY: Create HTML elements</h2>
+    <p><strong>HyperText Markup Language</strong>, <abbr title="HyperText Markup Language">HTML</abbr>, holds the text of a webpage together and structures the page using symantic elements.</p>
+    <div class="colorcode">
+        <button class="reset">RESET</button>
+        <ol class="slct">
+            <li class="Tagopen Selector-elem">Opening-Tag</li>
+            <li class="Tagclose">Closing-Tag</li>
+            <li class="TextVal">Text</li>
+            <li class="Attribute">Attribute</li>
+        </ol>
+
+        <div class="codefig">
+            <p class="Tagopen EXTXT">&lt;body&gt;</p><p class="TextVal EXTXT"></p><pre class="EXTXT">
+
+  </pre><p class="Tagopen EXTXT">&lt;header&gt;</p><pre class="EXTXT">
+
+    </pre><p class="Tagopen EXTXT">&lt;h1 <span class="Attribute EXTXT">id="RandomWebBits"</span>&gt;</p><p class="TextVal EXTXT">&amp;lt;Random Web Bits&amp;gt;</p><p class="Tagclose EXTXT">&lt;/h1&gt;</p><pre class="EXTXT">
+
+    </pre><p class="Tagopen EXTXT">&lt;nav&gt;</p><pre class="EXTXT">
+
+      </pre><p class="Tagopen EXTXT">&lt;ul&gt;</p><pre class="EXTXT">
+
+        </pre><p class="Tagopen EXTXT">&lt;li&gt;</p><p class="Tagopen EXTXT">&lt;a&gt;</p><p class="TextVal EXTXT">Link one</p><p class="Tagclose EXTXT">&lt;/a&gt;</p><p class="Tagclose EXTXT">&lt;/li&gt;</p><pre class="EXTXT">
+
+        </pre><p class="Tagopen EXTXT">&lt;li&gt;</p><p class="Tagopen EXTXT">&lt;a&gt;</p><p class="TextVal EXTXT">Link two</p><p class="Tagclose EXTXT">&lt;/a&gt;</p><p class="Tagclose EXTXT">&lt;/li&gt;</p><pre class="EXTXT">
+
+        </pre><p class="Tagopen EXTXT">&lt;li&gt;</p><p class="Tagopen EXTXT">&lt;a&gt;</p><p class="TextVal EXTXT">Link three</p><p class="Tagclose EXTXT">&lt;/a&gt;</p><p class="Tagclose EXTXT">&lt;/li&gt;</p><pre class="EXTXT">
+
+      </pre><p class="Tagclose EXTXT">&lt;/ul&gt;</p><pre class="EXTXT">
+
+    </pre><p class="Tagclose EXTXT">&lt;/nav&gt;</p><pre class="EXTXT">
+
+  </pre><p class="Tagclose EXTXT">&lt;/header&gt;</p><pre class="EXTXT">
+
+  </pre><p class="Tagopen EXTXT">&lt;main&gt;</p><pre class="EXTXT">
+
+    </pre><p class="Tagopen EXTXT">&lt;time <span class="Attribute EXTXT">datetime="2023-07-25"</span>&gt;</p><p class="TextVal EXTXT">July 25, 2023</p><p class="Tagclose EXTXT">&lt;/time&gt;</p><pre class="EXTXT">
+
+    </pre><p class="Tagopen EXTXT">&lt;article <span class="Attribute EXTXT">id="HTML-ELEM"</span> <span class="Attribute EXTXT">class="WebBits"</span>&gt;</p><p class="TextVal EXTXT"></p><pre class="EXTXT">
+
+      </pre><p class="Tagopen EXTXT">&lt;h2&gt;</p><p class="TextVal EXTXT">Short Article</p><p class="Tagclose EXTXT">&lt;/h2&gt;</p><pre class="EXTXT">
+
+      </pre><p class="Tagopen EXTXT">&lt;p&gt;</p><p class="TextVal EXTXT">HTML elements structure a page in the web. They apply symantic meaning through the use of the tag name and the tag's placement.</p><p class="Tagclose EXTXT">&lt;/p&gt;</p><pre class="EXTXT">
+
+    </pre><p class="Tagclose EXTXT">&lt;/article&gt;</p><pre class="EXTXT">
+
+  </pre><p class="Tagclose EXTXT">&lt;/main&gt;</p><pre class="EXTXT">
+
+  </pre><p class="Tagopen EXTXT">&lt;footer&gt;</p><pre class="EXTXT">
+
+    </pre><p class="Tagopen EXTXT">&lt;p&gt;</p><p class="TextVal EXTXT">&amp;copy; Random Web Bits. All Rights Reserved.</p><p class="Tagclose EXTXT">&lt;/p&gt;</p><pre class="EXTXT">
+
+  </pre><p class="Tagclose EXTXT">&lt;/footer&gt;</p><pre class="EXTXT">
+
+</pre><p class="Tagclose EXTXT">&lt;/body&gt;</p>
+        </div><br>
+    </div>
+    <aside class="exampleBlue">
+        <p>A time element, <code>&lt;time&gt;&lt;/time&gt;</code>, provides the metadata to add a date to an article using the datetime attribute: <br><br><strong>&lpar;datetime="YYYY-MM-DD"&rpar;</strong></p>
+    </aside>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/html#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

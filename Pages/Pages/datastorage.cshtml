@@ -1,0 +1,54 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.datastorageModel
+@{
+    ViewData["Title"] = "Data Storage</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-08-14">August 14, 2023</time>
+<article id="URL" class="WebBits">
+    <h2>TRY: Review data storage</h2>
+    <div class="columns">
+        <p class="col-d-9 col-dl-6">
+            Data storage is elemental to a website's operation. Viewing a web
+            page doesn't involve disk storage, and the webpage's source code
+            isn't saved. Instead, it is retrieved from a web server through web
+            requests on each iteration. Go to
+            <span data-rwb-type="link"><a href="markup.html" title="Markup&lt;/RWB&gt;">&lt;Markup&gt;</a></span>
+            for viewing source code.
+        </p>
+        <p class="col-d-9 col-dl-6">
+            Data from one web page is sometimes needed for concurrent web pages.
+            While a server <em>can</em> save the needed data, doing so is
+            inefficient and adds unnecessary upkeep and maintenance of the
+            server. The browser offers the developer 'localStorage' for this use
+            case.
+        </p>
+        <aside class="exampleBlue">
+            Go to
+            <span data-rwb-type="link">
+                <a href="guides/devtools/applicationtab.html"
+                   title="GUIDE: Dev Application&lt;/RWB&gt;">&lt;GUIDE: Dev Application&gt;</a>
+            </span>
+            for a bit on local storage.
+        </aside>
+        <p class="col-d-9 col-dl-12">
+            Browser's local storage is domain-based. That means dev tools will
+            report data for each domain holding data. On the home page,
+            <a href="https://randomwebbits.com" title="&lt;Random Web Bits&gt; | Home">https://randomwebbits.com</a>,
+            the
+            To-Do list stores each to-do in a local storage key called
+            `ToDos`. Also, the Dictionary Term component stores words cached as
+            JSON objects to save all the previously searched words.
+        </p>
+    </div>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/datastorage#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

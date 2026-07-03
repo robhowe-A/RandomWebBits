@@ -1,0 +1,123 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Guides.Devtools.applicationtabModel
+@{
+    ViewData["Title"] = "GUIDE: Dev Application</RWB>";
+}
+@section guidesComponents
+{
+    <script type="module" src="~/src/guidesComponents.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
+}
+
+<time datetime="2023-03-27">March 27, 2023</time>
+<article id="ApplicationTab" class="WebBits">
+    <h2>GUIDE: Dev Tools --&gt; Application Tab</h2>
+    <p>
+        Open the <abbr title="developer">dev</abbr> tools tab with
+        <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>J</kbd></kbd> and navigate to the
+        application tab. In firefox, be sure to use
+        <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>I</kbd></kbd>
+    </p>
+
+    <div id="devTools-Picture" class="devToolsGrid">
+        <figure class="imgShadow pictureCaption img1">
+            <a class="pswp-gallery__item" href="../../library/img/DevTools_Application1.png" data-pswp-width="1920"
+               data-pswp-height="823">
+                <img src="../../library/img/DevTools_Application1.png"
+                     alt="Developer's tools 'application' tab default view." width="1255" height="600">
+            </a>
+            <figcaption>
+                A default view of <q>Application</q> tab in developer's tools.
+            </figcaption>
+        </figure>
+    </div>
+    <p>
+        The browser's temporary files, references, and objects reveal the
+        [before] transparent inner-workings of the current domain.
+    </p>
+
+    <!--Photoswipe start-->
+    <div id="devTools-Gallery" class="devToolsGrid">
+        <figure class="imgShadow pictureCaption img1">
+            <a class="pswp-gallery__item" href="../../library/img/DevTools_Application2-Before.png"
+               data-pswp-width="1920" data-pswp-height="823">
+                <img src="../../library/img/DevTools_Application2-Before.png"
+                     alt="LocalStorage before clearing browser data" width="1255" height="600">
+            </a>
+            <figcaption>
+                The browser's "Local Storage" holds key-value pairs with varying
+                data.<br><strong>Note:</strong> domains and locations blocked
+                for privacy
+            </figcaption>
+        </figure>
+        <figure class="imgShadow pictureCaption img2">
+            <a class="pswp-gallery__item" href="../../library/img/DevTools_Application4-After.png"
+               data-pswp-width="1920" data-pswp-height="823">
+                <img src="../../library/img/DevTools_Application4-After.png"
+                     alt="LocalStorage after clearing browser data" width="627" height="270">
+            </a>
+            <figcaption>
+                After clearing the browser's cache, local storage items are
+                cleared.<br>Go to
+                <span data-rwb-type="link">
+                    <a href="../clearcookiesquickly"
+                       title="GUIDE: Clearing cookies&lt;/RWB&gt;">
+                        <strong>
+                            &lt;GUIDE: Clearing
+                            cookies&gt;
+                        </strong>
+                    </a>
+                </span>
+                to learn more.
+            </figcaption>
+        </figure>
+
+        <figure class="imgShadow pictureCaption img3">
+            <a class="pswp-gallery__item" href="../../library/img/DevTools_Application5-After_Cookies.png"
+               data-pswp-width="1920" data-pswp-height="823">
+                <img src="../../library/img/DevTools_Application5-After_Cookies.png"
+                     alt="Cookies after clearing browser data" width="627" height="270">
+            </a>
+            <figcaption>
+                <a href="https://developer.chrome.com/docs/devtools/application/cookies/" rel="external noopener" target="_blank"
+                   title="View, add, edit, and delete cookies - Chrome for Developers">Cookies</a>
+                also enumerate if any are currently stored.
+            </figcaption>
+        </figure>
+    </div>
+    <aside class="exampleBlue">
+        <p>
+            Examples are using <em>Edge</em> browser. <em>Chrome</em> and
+            <em>Firefox</em> use similar keyboard shortcuts and application
+            layout information.
+        </p>
+    </aside>
+    <aside class="examplePink">
+        <p>
+            Service workers may only be removed manually by uninstalling them in
+            the application tab page.
+        </p>
+        <h4 class="source">Sources:</h4>
+        <ul>
+            <li>
+                <a href="https://love2dev.com/blog/how-to-uninstall-a-service-worker/" rel="external noopener" target="_blank"
+                   title="(love2dev.com)">How To Uninstall, Unregister Or Remove A Service&nbsp;Worker</a>
+            </li>
+            <li>
+                <a href="https://www.lucidchart.com/techblog/2019/01/22/what-you-should-know-before-making-a-service-worker/"
+                   rel="external noopener" target="_blank">
+                    What you should know before making
+                    a&nbsp;service&nbsp;worker
+                </a>
+            </li>
+        </ul>
+    </aside>
+</article>
+<div class="Top-Link"><a class="Top" href="/guides/devtools/applicationtab#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("main").setAttribute("id", "DevTools");
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

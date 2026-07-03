@@ -1,0 +1,93 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.ipaddressModel
+@{
+    ViewData["Title"] = "IP Address</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-02-13">February 13, 2023</time>
+<article id="Public_IP" class="WebBits">
+    <h2>TRY: Looking up your IP Address</h2>
+    <p>
+        Data runs the internet, and data always originates from somewhere. Two
+        <abbr title="Internet Protocol">IP</abbr> addresses are immediately
+        important.
+    </p>
+    <hr>
+    <details>
+        <summary>
+            <strong>1.&rpar; Local IP: </strong>the <em>device</em> address
+            assigned by a router or
+            <abbr title="Dynamic Host Configuration Protocol">DHCP</abbr> server
+            on the network.
+        </summary>
+        <p>
+            The local ip can be found using
+            <abbr title="PowerShell">PS</abbr> and
+            <abbr title="Command Prompt">CMD</abbr>, as such:
+        </p>
+        <div id="TwoFigures">
+            <figure class="twoFigures_PS PSFigure">
+                <figcaption>PowerShell</figcaption>
+                <code class="PS">
+                    Get-NetIPAddress | ? {$_.AddressFamily -match "IPv4"} | select
+                    IPAddress
+                </code>
+            </figure>
+            <figure class="twoFigures_CMD CMDFigure">
+                <figcaption>CMD</figcaption>
+                <code class="CMD">ipconfig | findstr "IPv4"</code>
+            </figure>
+        </div>
+    </details>
+    <hr>
+    <details>
+        <summary>
+            <strong>2.&rpar; Public IP: </strong> the <em>network</em> address
+            assigned by an <abbr title="Internet Service Provider">ISP</abbr>.
+        </summary>
+        <p>
+            A browser requires a connection into your network, so it's a good
+            place to find your public visible ip address.
+        </p>
+        <aside class="examplePink">
+            <h4>Find your public ip address using the browser:</h4>
+            <ol id="BOINC-links">
+                <li>
+                    <a href="https://www.bing.com/search?q=what+is+my+ip+address" title="Bing: what is my IP address"
+                       target="_blank" rel="external noopener">Search Engine</a>
+                    - The browser can return the public ip
+                </li>
+                <li>
+                    <a href="https://www.ipchicken.com/" title="IP Chicken" target="_blank" rel="external noopener">iP ChiCKEN</a>
+                    - Websites can return and show the public ip
+                </li>
+                <li>
+                    <a href="https://www.ip2location.com/demo/" title="IP2Location" target="_blank" rel="external noopener">
+                        Location
+                        Lookup
+                    </a>
+                    - The IP2Location website has location information along with
+                    the public ip
+                </li>
+            </ol>
+        </aside>
+        <hr>
+    </details>
+    <aside class="exampleBlue">
+        <p>
+            <strong>Do NOT share your <u>public ip.</u></strong><br>It belongs to you and is secure not to share it with
+            anyone.
+        </p>
+    </aside>
+</article>
+<acronyms-list></acronyms-list>
+<div class="Top-Link"><a class="Top" href="/pages/ipaddress#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

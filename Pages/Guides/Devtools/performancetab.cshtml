@@ -1,0 +1,86 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Guides.Devtools.performancetabModel
+@{
+    ViewData["Title"] = "GUIDE: Dev Performance</RWB>";
+}
+@section guidesComponents
+{
+    <script type="module" src="~/src/guidesComponents.js"></script>
+    <link rel="stylesheet" href="../../css/photoswipe.css">
+}
+<time datetime="2023-11-01">November 1, 2023</time>
+<article id="PerformanceTab" class="WebBits">
+    <h2>GUIDE: Dev Tools --&gt; Performance Tab</h2>
+    <p>
+        Open the <abbr title="developer">dev</abbr> tools tab with
+        <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>J</kbd></kbd> and navigate to the
+        performance tab. In firefox, be sure to use
+        <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>I</kbd></kbd>
+    </p>
+    <figure class="imgShadow pictureCaption img1">
+        <a class="pswp-gallery__item" href="../../library/img/DevToolsPerformance0.png" data-pswp-width="1919"
+           data-pswp-height="954">
+            <img src="../../library/img/DevToolsPerformance0.png"
+                 alt="Developer's tools 'performance' tab default view." width="1919" height="954">
+        </a>
+        <figcaption>
+            A default view of <q>performance</q> tab in developer's tools.
+        </figcaption>
+    </figure>
+    <p>
+        At first glance, it looks like something went wrong with the screen.
+        That's not what happened here. The whole graph is the runtime for
+        DOM page. In <q>Main</q>, a timeline of function calls is shown.
+        Each top-level box is a function. Each box beneath it is smaller, as a
+        result of a nested function call.
+    </p>
+    <!--Photoswipe start-->
+    <div id="devTools-Gallery" class="devToolsGrid">
+        <figure class="imgShadow pictureCaption img1">
+            <a class="pswp-gallery__item" href="../../library/img/DevToolsPerformance1.png" data-pswp-width="1139"
+               data-pswp-height="955">
+                <img src="../../library/img/DevToolsPerformance1.png"
+                     alt="The DOMContentLoaded function call begins custom component code." width="1139" height="955">
+            </a>
+            <figcaption>
+                The DOMContentLoaded function call begins custom component code.
+            </figcaption>
+        </figure>
+        <figure class="imgShadow pictureCaption img2">
+            <a class="pswp-gallery__item" href="../../library/img/DevToolsPerformance2.png" data-pswp-width="1139"
+               data-pswp-height="955">
+                <img src="../../library/img/DevToolsPerformance2.png"
+                     alt="When the ExpandingListElement function call is reached, its runtime takes ~2ms" width="1139"
+                     height="955">
+            </a>
+            <figcaption>
+                When the ExpandingListElement function call is reached, its
+                runtime takes ~2ms
+            </figcaption>
+        </figure>
+        <figure class="imgShadow pictureCaption img3">
+            <a class="pswp-gallery__item" href="../../library/img/DevToolsPerformance3.png" data-pswp-width="1140"
+               data-pswp-height="955">
+                <img src="../../library/img/DevToolsPerformance3.png" alt="The Bottom-Up tab shows the call stack"
+                     width="1140" height="955">
+            </a>
+            <figcaption>
+                The <q>Bottom-Up</q> console tab shows the call stack
+            </figcaption>
+        </figure>
+    </div>
+    <aside class="exampleBlue">
+        <p>
+            The summary graph's range details are dynamically updated when the
+            graph timeline changes.
+        </p>
+    </aside>
+</article>
+<div class="Top-Link"><a class="Top" href="/guides/devtools/performancetab#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("main").setAttribute("id", "DevTools");
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

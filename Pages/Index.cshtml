@@ -1,0 +1,44 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model IndexModel
+@using RWBDotnetTypeScript.Interop;
+@using RWBDotnetTypeScript.Server;
+
+@{
+    ViewData["Title"] = "<RWB>";
+}
+@section cardsComponents
+{
+    <link rel="stylesheet" href="~/css/RWBcard.css" type="text/css" media="all">
+    <script src="https://kit.fontawesome.com/91ce0b8975.js" crossorigin="anonymous"></script>
+    <script type="module" src="~/src/cardsComponents.js"></script>
+    <component type="typeof(Microsoft.AspNetCore.Components.Web.HeadOutlet)"
+        render-mode="ServerPrerendered" />
+}
+@section widgetComponents
+{
+    <script type="module" src="~/src/widgetComponents.js"></script>
+}
+@( await Html.RenderComponentAsync<ClientApiRequest>(RenderMode.Server) )
+
+@( await Html.RenderComponentAsync<LogFile>(RenderMode.Server) )
+
+@section Scripts
+{
+    <script type="text/javascript">
+        document.querySelector("main").classList.add("dictionaryWidget", "ToDoList");
+        document.querySelector("body").setAttribute("id", "INDEX");
+    </script>
+    
+    <script type="module" src="~/Interop/ClientApiRequest.razor.js"></script>
+    <script src="_framework/blazor.web.js" autostart="false"></script>
+    <script>
+        Blazor.start({
+          circuit: {
+            configureSignalR: function (builder) {
+              builder.configureLogging("warning");
+            }
+          }
+        });
+    </script>
+}

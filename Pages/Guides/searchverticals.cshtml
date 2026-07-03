@@ -1,0 +1,58 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Guides.searchverticalsModel
+@{
+    ViewData["Title"] = "GUIDE: PWA</RWB>";
+}
+@section guidesComponents
+{
+    <script type="module" src="~/src/guidesComponents.js"></script>
+}
+<time datetime="2023-02-26">February 26, 2023</time>
+<article id="SearchVerts" class="WebBits">
+    <h2>GUIDE: Optimize search</h2>
+    <p>
+        Search results have been around for decades. Managing search results
+        can be tricky at times. Bing offers customizations to trending news;
+        Google has an
+        <a href="https://www.google.com/advanced_search" rel="external noopener" target="_blank"
+           title="Google Advanced Search"><q>advanced search</q></a>
+        feature, improving search results with complex query manipulations.
+    </p>
+
+    <aside class="exampleBlue">
+        <h3>Bing:</h3>
+        <p>Navigate to bing.com --&gt; Quick Settings --&gt; "My Bing"</p>
+        <h3>Google.com:</h3>
+        <p>from "Google Account", search for "Search Settings"</p>
+    </aside>
+
+    <p>
+        Daily news results can be optimized for to personalized interests,
+        configured in the settings:
+    </p>
+    <ul>
+        <li>
+            What's trending: Bing news categories provided by topic selection.
+        </li>
+        <li>Added interests: Refresh personal interests.</li>
+        <li>Email updates: Receive emails with related news.</li>
+        <li>Search predictions: Account histories help with search.</li>
+    </ul>
+    <picture>
+        <source media="(max-width: 768px)" srcset="../library/img/BingSkinny.jpeg">
+        <source media="(min-width: 769px)" srcset="../library/img/BingWide.jpeg">
+        <img class="imgShadow" src="../library/img/BingSkinny.jpeg" alt="InPrivate search on Bing">
+    </picture>
+    <aside class="exampleBlue">
+        <p>
+            Private browsing does not use account history in search results.
+        </p>
+    </aside>
+</article>
+<div class="Top-Link"><a class="Top" href="/guides/searchverticals#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

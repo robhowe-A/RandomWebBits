@@ -1,0 +1,89 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.htmlresponsesModel
+@{
+    ViewData["Title"] = "HTML Frames</RWB>";
+}
+@section pagesComponents
+{
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/91ce0b8975.js" crossorigin="anonymous"></script>
+    <script type="module" src="~/src/pagesComponents.js"></script>
+    <link rel="stylesheet" href="../css/photoswipe.css">
+}
+<time datetime="2022-12-11">December 11, 2022</time>
+<article id="HtmlResponses" class="WebBits">
+    <h2>TRY: Viewing HTML Frames</h2>
+    <p>
+        View statuses of a web page's parts using the browser's developer
+        tools --&gt; Network tab. More specifics at
+        <span data-rwb-type="link">
+            <a href="/guides/devtools/networktab.html"
+               title="GUIDE: Dev Network&lt;/RWB&gt;">&lt;GUIDE: Dev Network&gt;</a>
+        </span>
+    </p>
+    <aside class="exampleBlue">
+        <p>
+            Assets are loaded into the browser for a page render. You can watch
+            the loading sequence as a series of frames. If a frame has a
+            <span class="redbold">400</span> or
+            <span class="redbold">500</span> error status, there's a problem
+            with the resource.
+        </p>
+    </aside>
+    <p>
+        You'll likely need more information pertaining to which status code is
+        given. Starting information can be found at
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+           title="HTTP response status codes - HTTP | MDN" target="_blank" rel="external noopener">MDN&nbsp;Web&nbsp;Docs</a>
+    </p>
+    <figure class="imgShadow pictureCaption htmlFrame">
+        <a class="pswp-gallery__item" href="../library/img/HTML_Frames.jpeg" data-pswp-width="776"
+           data-pswp-height="783">
+            <img src="../library/img/HTML_Frames.jpeg" alt="HTML frames example from developer's tools" width="776"
+                 height="783">
+        </a>
+        <figcaption>
+            Developer's tools html frames' server status list.
+        </figcaption>
+    </figure>
+    <aside class="examplePink">
+        <h3>Example:</h3>
+        <p>
+            This page's frames using Brackets
+            <abbr title="Integrated Development Environment">IDE</abbr> include:
+        </p>
+        <ul>
+            <li>
+                <span class="fa fa-brands fa-html5 fa-sm"></span>&nbsp;&nbsp;HTML
+                - The page's HTML source code
+            </li>
+            <li>
+                <span class="fa fa-brands fa-css3 fa-xs"></span>&nbsp;&nbsp;CSS -
+                The page's styling attributes
+            </li>
+            <li>
+                <span class="fa fa-regular fa-file fa-xs"></span>&nbsp;&nbsp;JS -
+                Scripts loading the font awesome icons
+            </li>
+            <li>
+                <span class="fa fa-regular fa-file-image fa-xs"></span>&nbsp;&nbsp;PNG - Images
+            </li>
+        </ul>
+        Go to
+        <span data-rwb-type="link">
+            <a href="webides.html" title="Browser IDE&lt;/RWB&gt;">
+                &lt;Browser
+                IDE&gt;
+            </a>
+        </span>
+        to learn more.
+    </aside>
+</article>
+<acronyms-list></acronyms-list>
+<div class="Top-Link"><a class="Top" href="/pages/htmlresponses#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

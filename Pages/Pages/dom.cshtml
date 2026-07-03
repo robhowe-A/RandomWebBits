@@ -1,0 +1,97 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.domModel
+@{
+    ViewData["Title"] = "DOM</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-04-27">April 27, 2023</time>
+<article id="DOM" class="WebBits">
+    <h2>LEARN: DOM</h2>
+    <p>
+        <abbr title="Document Object Model">DOM</abbr> stands for
+        <strong>Document Object Model</strong>. It contains the structure of
+        websites, and without a dom to interact with,
+        <abbr title="HyperText Markup Language">HTML</abbr> does not work.
+    </p>
+    <p>
+        A dom is simply a programming term describing how the browser - the
+        hosting program - interacts with the website's code.
+        <kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>SHIFT</kbd>&nbsp;+&nbsp;<kbd>I</kbd></kbd> to access the dom. Then type
+        <code>document</code> into the console.
+    </p>
+    <h3 class="h3tall">DOM tree - HTML Elements</h3>
+    <ul is="expanding-list">
+        <li>
+            #document
+            <ul>
+                <li>&lt;!DOCTYPE html&gt;</li>
+                <li>&lt;html lang="en"&gt;</li>
+                <li>
+                    &lt;head&gt;
+                    <ul>
+                        <li>&lt;meta charset="UTF-8"&gt;</li>
+                        <li>
+                            &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+                        </li>
+                        <li>
+                            &lt;meta name="viewport" content="width=device-width,
+                            initial-scale=1.0"&gt;
+                        </li>
+                        <li>&lt;title&gt;New Document&lt;/title&gt;</li>
+                        <li>
+                            &lt;script src="expandingList.js" async&gt;&lt;/script&gt;
+                        </li>
+                        <li>&lt;link rel="stylesheet" href="style.css"&gt;</li>
+                    </ul>
+                    <span>&lt;/head&gt;</span>
+                </li>
+                <li>
+                    &lt;body&gt;
+                    <ul>
+                        <li>
+                            &lt;header&gt;Site header element: usually contains
+                            navigation or menu structures.&lt;/header&gt;
+                        </li>
+                        <li>
+                            &lt;main&gt;
+                            <ul>
+                                <li>&lt;h1&gt;Hello, DOM&lt;/h1&gt;</li>
+                                <li>
+                                    &lt;p&gt;Learn more about the dom, at
+                                    <a href="https://www.codecademy.com/resources/blog/what-is-dom/" rel="external noopener" target="_blank"
+                                       title="What is DOM?">codecademy</a>&lt;/p&gt;
+                                </li>
+                            </ul>
+                            <span>&lt;/main&gt;</span>
+                        </li>
+                        <li>
+                            &lt;footer&gt;Footer area: Good for copyright and
+                            attributions.&lt;/footer&gt;
+                        </li>
+                    </ul>
+                    <span>&lt;/body&gt;</span>
+                </li>
+
+                <li></li>
+                <li>&lt;/html&gt;</li>
+            </ul>
+        </li>
+    </ul>
+    <aside class="exampleBlue">
+        <p>
+            The above simulation represents the HTML tree structure found in
+            <abbr title="developer">dev</abbr> tools.
+        </p>
+    </aside>
+</article>
+<acronyms-list></acronyms-list>
+<div class="Top-Link"><a class="Top" href="/pages/dom#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

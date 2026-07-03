@@ -1,0 +1,110 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.hslModel
+@{
+    ViewData["Title"] = "HSL</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+    <link rel="stylesheet" href="../css/hslcolor.css" type="text/css" media="all">
+}
+<time datetime="2023-09-06">September 6, 2023</time>
+<article id="HSL" class="WebBits">
+    <h2>LEARN: HSL Color</h2>
+    <p>
+        <strong>Hue, Saturation, and Lightness</strong>,
+        <abbr title="Hue, Saturation, and Lightness">HSL</abbr>, is one of
+        many programming choices for color format, acceptable in all the major
+        browsers. Other choices in color format exist, common across the web:
+        <abbr title="Red, Green, Blue">RGB</abbr>,
+        <abbr title="Cyan, Magenta, Yellow, Key/Black">CMYK</abbr>, and
+        <abbr title="Hue, Whiteness, Blackness">HWB</abbr>. HSL allows choice
+        of color &lpar;the hue&rpar; similar to picking a color from a color
+        wheel. The hue is then manipulated by its color saturation and
+        lightness.
+    </p>
+    <div id="color-picker">
+        <div id="HSLColorONE">
+            <div>
+                <p>Hue: <span class="val1">0</span></p>
+                <p>Saturation: <span class="val2">0</span></p>
+                <p>Lightness: <span class="val3">0</span></p>
+            </div>
+        </div>
+        <div id="HSLColorTWO">
+            <div>
+                <p>Hue: <span class="val1">0</span></p>
+                <p>Saturation: <span class="val2">0</span></p>
+                <p>Lightness: <span class="val3">0</span></p>
+            </div>
+        </div>
+        <div id="HSLColorTHREE">
+            <div>
+                <p>Hue: <span class="val1">0</span></p>
+                <p>Saturation: <span class="val2">0</span></p>
+                <p>Lightness: <span class="val3">0</span></p>
+            </div>
+        </div>
+        <div id="pre"></div>
+
+        <div id="color-labels">
+            <label>
+                <input id="Hue" type="range" min="0" max="359" value="0">
+                Hue
+            </label>
+            <label>
+                <input id="Saturation" type="range" min="0" max="100" value="100">
+                Saturation
+            </label>
+            <label>
+                <input id="Lightness" type="range" min="0" max="100" value="50">
+                Lightness
+            </label>
+        </div>
+    </div>
+    <p>
+        Three color bands make up a color picker box. Moving the saturation
+        and lightness sliders provide all variations supporting the hues red
+        &lpar;<span class="trueredbold">Hue: 0</span>&rpar;, green &lpar;<span class="truegreenbold">
+            Hue:
+            120
+        </span>&rpar;, and blue &lpar;<span class="truebluebold">Hue: 240</span>&rpar;.
+    </p>
+    <aside class="examplePink">
+        <p>Example programmed values:</p>
+        <ul>
+            <li>
+                hsl&lpar;<strong>hue</strong>, <strong>saturation</strong>,
+                <strong>lightness</strong>&rpar;
+            </li>
+            <li>
+                Red:
+                <em>
+                    hsl&lpar;<span class="trueredbold">0</span>, 100%,
+                    50%&rpar;
+                </em>
+            </li>
+            <li>
+                Green:
+                <em>
+                    hsl&lpar;<span class="truegreenbold">120</span>, 100%,
+                    50%&rpar;
+                </em>
+            </li>
+            <li>
+                Blue:
+                <em>
+                    hsl&lpar;<span class="truebluebold">240</span>, 100%,
+                    50%&rpar;
+                </em>
+            </li>
+        </ul>
+    </aside>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/hsl#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

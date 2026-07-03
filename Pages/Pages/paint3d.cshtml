@@ -1,0 +1,80 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.paint3dModel
+@{
+    ViewData["Title"] = "3D Paint</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+    <link rel="stylesheet" href="../css/photoswipe.css">
+}
+<time datetime="2023-01-31">January 31, 2023</time>
+<article id="paint3D" class="WebBits">
+    <h2>TRY: Editing with Paint 3D</h2>
+    <p>
+        Paint 3D can be
+        <a href="https://apps.microsoft.com/store/detail/paint-3d/9NBLGGH5FV99?hl=en-us&gl=us" target="_blank" rel="external noopener"
+           title="Paint 3D - Microsoft Store Apps">installed</a>
+        and makes editing images quick and easy with fast navigation to its
+        use.
+    </p>
+    <figure class="imgShadow pictureCaption paint3D">
+        <a class="pswp-gallery__item" href="../library/img/openWith.webp" data-pswp-width="700"
+           data-pswp-height="530">
+            <img id="openWith" src="../library/img/openWith.webp"
+                 alt="Right click an image and choose open with --&gt; Paint 3D">
+        </a>
+    </figure>
+    <aside id="paint3D-Nav" class="examplePink">
+        <h3>Paint 3D Navigation Bar</h3>
+        <figure class="imgShadow pictureCaption paint3D">
+            <a class="pswp-gallery__item" href="../library/img/2dShapes.png" data-pswp-width="750"
+               data-pswp-height="119">
+                <img src="../library/img/2dShapes.png" alt="Right click an image and choose open with --&gt; Paint 3D">
+            </a>
+        </figure>
+        <ul>
+            <li>Easy navigation items to toggle editing panels.</li>
+            <li>Crop with ease</li>
+            <li><kbd><kbd>CTRL</kbd>&nbsp;+&nbsp;<kbd>S</kbd></kbd> to save</li>
+        </ul>
+    </aside>
+    <figure id="Ingrid-figure">
+        <a class="pswp-gallery__item" href="../library/img/watchIngrid.webp" data-pswp-width="380"
+           data-pswp-height="220">
+            <img id="Ingrid" src="../library/img/watchIngrid.webp" alt="Paint 3D highlight overlay example">
+        </a>
+        <figcaption>
+            IBM's Ingrid assistant:
+            <a href="https://www.ibm.com/training/cloud" target="_blank" rel="external noopener"
+               title="IBM Center for Cloud Training">https://www.ibm.com/training/cloud</a>
+        </figcaption>
+    </figure>
+    <aside class="exampleBlue">
+        <p>
+            <abbr title="International Business Machines Corporation">IBM</abbr>
+            Ingrid assistant overlays the cloud learning page using clever
+            markup.
+        </p>
+        <br>
+        <figure class="imgShadow pictureCaption paint3D">
+            <a class="pswp-gallery__item" href="../library/img/Web%20capture_31-1-2023_162356_www.ibm.com.webp"
+               data-pswp-width="750" data-pswp-height="563">
+                <img src="../library/img/Web%20capture_31-1-2023_162356_www.ibm.com.webp"
+                     alt="IBM Ingrid: Cloud Assistant">
+            </a>
+        </figure>
+    </aside>
+    <p>
+        Use it to edit image overlays &lpar;as is the case in the above
+        example&rpar;, add highlights or block out text. Resize your image by
+        cropping or choosing specific dimensions.
+    </p>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/paint3d#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

@@ -1,0 +1,88 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.jsonobjectModel
+@{
+    ViewData["Title"] = "JSON Object</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-01-09">January 9, 2023</time>
+<article id="JSON" class="WebBits">
+    <h2>TRY: Finding a JSON object</h2>
+    <p>
+        Objects run the web. Short for
+        <strong>JavaScript Object Notation</strong>,
+        <abbr title="JavaScript Object Notation">JSON</abbr> objects hold bits
+        of information that make up the internet.
+    </p>
+    <code id="JSON1">
+        [ { "id": 16021, "title": "Curiosity marks 10 years on Mars as
+        discoveries continue", "url":
+        "https://www.nasaspaceflight.com/2022/08/curiosity-10-years/",
+        "imageUrl":
+        "https://www.nasaspaceflight.com/wp-content/uploads/2014/12/2014-12-30-00_25_32-nasa-curiosity-Google-Search.jpg",
+        "newsSite": "NASA Spaceflight", "summary": "After successfully landing
+        on Mars on August 6, 2012 (UTC), Curiosity continues to unlock the
+        secrets of the Red Planet as the vehicle explores Gale Crater. Since
+        landing, the rover has traveled over 17.5 miles (28.1 km) and made
+        multiple scientific discoveries. Curiosity is now in the process of
+        exploring and traversing Mount Sharp, the 5.5-kilometer-high mountain
+        that lies in the center of Gale Crater.", "publishedAt":
+        "2022-08-06T15:43:54.000Z", "updatedAt": "2022-08-06T15:56:45.516Z",
+        "featured": false, "launches": [ { "id":
+        "df8d4fdb-9add-4ce9-9f0e-aae1c61df212", "provider": "Lah Library 2" }
+        ], "events": [] } ]
+    </code>
+    <aside class="exampleBlue">
+        <p>
+            Json and <abbr title="Extensible Markup Language">XML</abbr> object
+            notations are very common in the internet realm, as they're very
+            transportable and easy to work with varying formats.
+        </p>
+    </aside>
+    <p>
+        This complex json object can be reformatted to be easier to read, like
+        this:
+    </p>
+    <pre>
+    <code id="JSON2">
+[
+{
+"id": 16021,
+"title": "Curiosity marks 10 years on Mars as discoveries continue",
+"url": "https://www.nasaspaceflight.com/2022/08/curiosity-10-years/",
+"imageUrl": "https://www.nasaspaceflight.com/wp-content/uploads/2014/12/2014-12-30-00_25_32-nasa-curiosity-Google-Search.jpg",
+"newsSite": "NASA Spaceflight",
+"summary": "After successfully landing on Mars on August 6, 2012 (UTC), Curiosity continues to unlock the secrets of the Red Planet as the vehicle explores Gale Crater. Since landing, the rover has traveled over 17.5 miles (28.1 km) and made multiple scientific discoveries. Curiosity is now in the process of exploring and traversing Mount Sharp, the 5.5-kilometer-high mountain that lies in the center of Gale Crater.",
+"publishedAt": "2022-08-06T15:43:54.000Z",
+"updatedAt": "2022-08-06T15:56:45.516Z",
+"featured": false,
+"launches": [
+  {
+    "id": "df8d4fdb-9add-4ce9-9f0e-aae1c61df212",
+    "provider": "Lah Library 2"
+  }
+],
+"events": []
+}
+]
+            </code>
+            </pre>
+    <p>
+        More information about objects can be found many places. A good
+        starting point might be
+        <a href="https://www.w3schools.com/whatis/whatis_json.asp" target="_blank" title="W3Schools: What is JSON"
+           rel="external noopener">W3Schools</a>
+    </p>
+    <aside id="TryWhoIS" class="exampleBlue">
+        <p>Json and xml are supported by all major browsers.</p>
+    </aside>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/jsonobject#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

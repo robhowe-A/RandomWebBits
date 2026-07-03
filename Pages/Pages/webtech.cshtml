@@ -1,0 +1,68 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.webtechModel
+@{
+    ViewData["Title"] = "Wappalyzer</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-11-19">November 19, 2023</time>
+<article id="webTech" class="WebBits">
+    <h2>TRY: Installing Wappalyzer</h2>
+    <div class="columns">
+        <p class="col-d-6">
+            <a href="https://www.wappalyzer.com/" target="_blank" rel="external noopener"
+               title="Find out what websites are built with - Wappalyzer">Wappalyzer browser extension</a>
+            is available in major browser brands. If you are curious what
+            technologies run a website, the extension will show a breakdown of
+            the site page's technology in use.
+        </p>
+        <aside class="exampleBlue webTech columns col-d-6">
+            <p class="col-d-6">
+                Wappalyzer analyzes simple and complex web applications.
+            </p>
+            <p class="col-d-6">
+                <span data-rwb-type="link">
+                    <a href="http://www.randomwebbits.com" title="&lt;Random Web Bits&gt;"
+                       target="_blank">RWB</a>
+                </span>
+                shows it is currently hosted on Netlify.<br><a href="../library/webtech.html.webp"
+                                                               download="Wappalyzer_Screenshot.webp" title="Download 'Wappalyzer_Screenshot.webp'">[02-14-2023]</a>
+            </p>
+        </aside>
+        <p class="col-d-6">
+            The extension provides links that offer further insights and extend
+            <abbr title="Application Programming Interface">API</abbr> usage
+            capabilities.
+        </p>
+        <aside id="wappalyzerInfo" class="exampleBlue webTech col-d-6">
+            The app extension sends and receives messages using JavaScript.
+        </aside>
+        <div>
+            <h3>Features of the app</h3>
+            <ul>
+                <li>
+                    <abbr title="HTTP Strict Transport Security">HSTS</abbr>
+                    security implementation
+                </li>
+                <li>
+                    Extensions and imports:
+                    <ul>
+                        <li>JavaScript frameworks</li>
+                        <li>JavaScript libraries</li>
+                        <li><abbr title="Platform As A Service">PaaS</abbr></li>
+                        <li>Analytics</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/webtech#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

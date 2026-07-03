@@ -1,0 +1,134 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.googleplatformModel
+@{
+    ViewData["Title"] = "Web Statistics</RWB>";
+}
+@section pagesComponents
+{
+    <link rel="stylesheet" href="../css/circle.css" type="text/css" media="all">
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-11-19">November 19, 2023</time>
+<article id="Google" class="WebBits">
+    <h2>LEARN: Google is the # 1 web platform</h2>
+    <p>
+        Internet traffic increases every day. There are billions surfing the
+        web and using the internet to achieve great things. Many statistics
+        websites hold data about internet totals; many show
+        <a href="https://www.google.com" target="_blank" rel="external noopener" title="Google"><q>google.com</q></a>
+        is the most popular destination: <br>
+    </p>
+    <figure>
+        <a href="https://www.statista.com/statistics/271412/most-visited-us-web-properties-based-on-number-of-visitors/"
+           rel="external noopener nofollow">
+            <img src="https://www.statista.com/graphic/1/271412/most-visited-us-web-properties-based-on-number-of-visitors.jpg"
+                 alt="Statistic: Most popular multi-platform web properties in the United States in June 2023, based on number of unique visitors (in millions) | Statista"
+                 style="
+                width: 100%;
+                height: auto !important;
+                max-width: 1000px;
+                -ms-interpolation-mode: bicubic;
+              ">
+        </a>
+        <br>
+        <figcaption>
+            Statistics courtesy from
+            <a href="https://www.statista.com/aboutus/#aboutUsJobLocationsTitle" rel="external noopener nofollow"
+               title="About Us | Services, Locations, Career | Statista" target="_blank">Statista</a>
+        </figcaption>
+    </figure>
+    <div id="googlefig">
+        <hgroup>
+            <h3>Google website traffic sources</h3>
+            <p>
+                <em>Source:</em> <br><a href="https://www.similarweb.com/website/google.com/#overview" target="_blank"
+                                        title="google.com Market Share, Revenue and Traffic Analytics | Similarweb" rel="external noopener">
+                    google.com
+                    Market Share, Revenue and Traffic Analytics |
+                    Similarweb
+                </a><br>
+            </p>
+            <p class="truebluebold">
+                <em>Note:</em> Below visual functions in chrome and edge browsers.
+            </p>
+        </hgroup>
+        <figure id="GCircle">
+            <div class="pieContainer">
+                <div class="inner-circle"></div>
+                <div id="pieRemainder" class="slice" title="Direct: 95.33%">
+                    <div class="pieProportion"></div>
+                </div>
+                <div id="slice1" class="slice" title="Referrals: 2.06%">
+                    <div class="pieProportion"></div>
+                </div>
+                <div id="slice2" class="slice" title="Social: 1.88%">
+                    <div class="pieProportion"></div>
+                </div>
+                <div id="slice3" class="slice" title="Search: 0.51%">
+                    <div class="pieProportion"></div>
+                </div>
+                <div id="slice4" class="slice" title="Email: 0.16%">
+                    <div class="pieProportion"></div>
+                </div>
+                <div id="slice5" class="slice" title="Display ads: 0.06%">
+                    <div class="pieProportion"></div>
+                </div>
+            </div>
+            <table id="google">
+                <tr>
+                    <th>Source</th>
+                    <th>Traffic Source</th>
+                </tr>
+                <tr>
+                    <td class="directDot">
+                        <div></div>
+                        Direct
+                    </td>
+                    <td>95.33</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="referralsDot"></div>
+                        Referrals
+                    </td>
+                    <td>2.06</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="socialDot"></div>
+                        Social
+                    </td>
+                    <td>1.88</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="searchDot"></div>
+                        Search
+                    </td>
+                    <td>0.51</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="emailDot"></div>
+                        Email
+                    </td>
+                    <td>0.16</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="displayadsDot"></div>
+                        Display Ads
+                    </td>
+                    <td>0.06</td>
+                </tr>
+            </table>
+        </figure>
+    </div>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/googleplatform#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

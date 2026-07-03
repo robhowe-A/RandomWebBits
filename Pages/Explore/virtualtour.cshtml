@@ -1,0 +1,65 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Explore.virtualtourModel
+@{
+    ViewData["Title"] = "EXPLORE: Virtual Tours</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-03-23">March 23, 2023</time>
+<article id="VirtualTour" class="WebBits EXPLORE">
+    <h2>EXPLORE: Virtual visits at <i>'Google Expeditions'</i> app</h2>
+    <p>
+        Google's <em>artsandculture</em> domain has a google application
+        supporting virtual tours of real-world locations using google maps
+        data. The site is nicely designed and has many cool features.
+    </p>
+    <aside class="exampleBlue">
+        <p>
+            There is no sponsorship or endoresment of any kind. It's just that
+            the site is well enough to share for anyone at
+            <abbr title="&lt;Random Web Bits&gt;">RWB</abbr>.
+        </p>
+    </aside>
+    <div>
+        <h3 class="share-frame-link">
+            <a href="https://artsandculture.google.com/project/expeditions" target="_blank" rel="external noopener"
+               title="Arts & Culture Expeditions - Google Arts & Culture">Google's Arts and Culture Virtual Tours</a>
+        </h3>
+        <a class="share-frame-img" href="https://artsandculture.google.com/project/expeditions" target="_blank"
+           rel="external noopener" title="Arts & Culture Expeditions - Google Arts & Culture">
+            <picture>
+                <source media="(max-width: 768px)" srcset="../library/img/artsandculture.google-small.jpeg">
+                <source media="(min-width: 769px) and (max-width: 919px)"
+                        srcset="../library/img/artsandculture.google.jpeg">
+                <source media="(min-width: 920px)" srcset="../library/img/artsandculture.google-large.jpeg">
+                <img src="../library/img/artsandculture.google-small.jpeg" alt="Google Arts and Culture Domain">
+            </picture>
+        </a>
+    </div>
+    <aside class="examplePink explore">
+        <h3>Example:</h3>
+        <p>There's more share! Try any of these links:</p>
+        <ul class="explore-links">
+            <li>
+                <a href="https://artsandculture.google.com/project/learning-computing" target="_blank" rel="external noopener"
+                   title="Learning About Computing - Google Arts & Culture">Learning About Computing</a>
+            </li>
+            <li>
+                <a href="https://artsandculture.google.com/story/bgVReU3VTLzVbg" target="_blank" rel="external noopener"
+                   title="10 Electrifying Neon Artworks - Google Arts & Culture">Electrifying Neon Artwork</a>
+            </li>
+            <li>
+                <a href="https://artsandculture.google.com/usergallery/iframe/YwKS1t4Irt19Jg" target="_blank"
+                   rel="external noopener" title="iFrame - Google Arts & Culture">User Galleries</a>
+            </li>
+            <li>
+                <a href="https://artsandculture.google.com/entity/atomic-bomb-dome/m01fbz2?categoryId=place"
+                   target="_blank" rel="external noopener" title="Atomic Bomb Dome - Google Arts & Culture">Entities</a>
+            </li>
+        </ul>
+    </aside>
+</article>
+<div class="Top-Link"><a class="Top" href="/explore/virtualtour#top">Top</a></div>

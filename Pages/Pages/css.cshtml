@@ -1,0 +1,44 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.cssModel
+@{
+    ViewData["Title"] = "CSS</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2023-06-19">June 19, 2023</time>
+<article id="CSSART" class="WebBits">
+    <h2>TRY: Create a CSS rule</h2>
+    <p><strong>Cascading Style Sheets</strong>, <abbr title="Cascading Style Sheets">CSS</abbr>, gives color and layout to web elements based on some chosen characteristic of that element. Without applying css, website pages will look like a text document.</p>
+    <div class="cssex">
+        <button class="reset">RESET</button>
+        <ol class="slct">
+            <li class="Selector Selector-elem">Selector</li>
+            <li class="Attribute">Attribute</li>
+            <li class="Value">Value</li>
+            <li class="Psuedo-class">Psuedo-class</li>
+        </ol>
+        <div class="cssfig">
+            <p class="Selector CSS">#CSS</p><pre class="CSS"> {
+    </pre><p class="CSS Attribute">background-color</p><pre class="CSS">: </pre><p class="CSS Value">limegreen</p><pre class="CSS">;
+
+    </pre><p class="CSS Selector">&</p><p class="CSS Psuedo-class">:hover</p><pre class="CSS"> {
+        </pre><p class="CSS Attribute">background-color</p><pre class="CSS">: </pre><p class="CSS Value">hsl(120, 61%, 45%)</p><pre class="CSS">;
+    }
+}
+</pre>
+        </div>
+    </div>
+    <aside id="CSS" class="exampleBlue">
+        <p>The above example uses nested CSS rules, each with a single attribute. The same styles give this element the green background color.</p>
+    </aside>
+    <p>Style sheets can compose thousands of rules of varying complexity. Rules and/or style sheets can repeat throughout a website easily. Multiple css files can be added &lpar;or <i>not</i> added&rpar; to as part of the layout.</p>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/css#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

@@ -1,0 +1,31 @@
+﻿@page
+<!--Copyright (c) 2025-2026 Robert A. Howell-->
+@model RWBDotnetTypeScript.Pages.Pages.cursorsModel
+@{
+    ViewData["Title"] = "Cursors</RWB>";
+}
+@section pagesComponents
+{
+    <script type="module" src="~/src/pagesComponents.js"></script>
+}
+<time datetime="2024-02-19">February 19, 2024</time>
+<article id="Cursors" class="WebBits">
+    <h2>TRY: Reviewing cursor icons</h2>
+
+    <p>Browsers understand the displayed content by the element tag name in the <abbr title="HyperText Markup Language">HTML</abbr>; however, the element's content type is not enough information to describe <em>how</em> a user should interact with or <em>what</em> the content itself portrays/describes.</p>
+
+    <h3>Browser Cursors:</h3>
+    <p id="cursors">To assist a user with discovering this, the browser offers many default cursors that the developer can choose from. Each cursor type helps people understand what actions an element is capable of by changing the cursor picture to a different icon.</p>
+
+    <p>Each box above is a different cursor from the browser's default styling selections. Hover your mouse over each box to display that cursor.</p>
+
+    <aside class="exampleBlue">
+        <p>Click a cursor box to reveal the details panel.</p>
+    </aside>
+</article>
+<div class="Top-Link"><a class="Top" href="/pages/cursors#top">Top</a></div>
+@section Scripts {
+    <script type="text/javascript">
+        document.querySelector("body").classList.add("WebBits-width");
+    </script>
+}

@@ -1,10 +1,8 @@
 //--Copyright (c) 2026 Robert A. Howell
 
-using Azure;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RWBDotnetTypeScript.Data;
-using RWBDotnetTypeScript.Pages;
 using System.Net;
+using TrafficRecord.Data;
 
 namespace RWBDotnetTypeScript.Models;
 

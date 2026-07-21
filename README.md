@@ -3,7 +3,7 @@ Copyright (c) 2022-2026 Robert A. Howell
 Author: Robert A. Howell
 Description: This project was created as a portfolio piece and demonstrates web application development deployed as www.randomwebbits.com.
 Created_Date: December 2022
-Edited: 2026-07-02
+Edited: 2026-07-21
 Updated: 2026-05-18
 -->
 
@@ -21,7 +21,7 @@ This repository holds source code for the Random Web Bits website. The code here
 ## Frontend  
 Built with TypeScript, everything you see on the page(s) is developed using HTML, CSS, and JavaScript (TypeScript) programming languages.  
 
-Because this is a site for fun, much of the code remains client-navigable in the developer's tools. Developers may watch the debug log and look into the component's source code. Fetch calls are directed to the server for security purposes and keeps the data plane sourced to only those originating from controlled domains.  
+Because this is a site for fun, much of the code remains client-navigable in the developer's tools. Developers may watch the debug log and look into the component's source code. Much of the frontend code is integrated without obfuscation and remains as viewable inside the developer tools; a [dedicated guide](https://www.randomwebbits.com/guides/devtools/sourcestab) page provides insights showing how to view and access the source code. Fetch calls are directed to the server for security purposes and keeps the data plane sourced to only those originating from controlled domains.  
 
 Fonts and style APIs - those used to change the visual appearance of components - is not data passing from a controlled domain; however, they have been explicitly trusted and are found to be functional and secure when used by chrome, edge, and firefox.  
 

@@ -1,1 +1,0 @@
-export default function t(n){const e=typeof window<"u"?window.SendRequestObjectData:void 0;if(typeof e!="function")throw new Error("SendRequestObjectData is not available on window at runtime.");return e(n)}

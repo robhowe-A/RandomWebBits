@@ -1,3 +1,6 @@
 [submodule "typescript"]
 	path = typescript
 	url = https://github.com/robhowe-A/RandomWebBits-TypeScript.git
+[submodule "src"]
+	path = src
+	url = https://github.com/robhowe-A/RWB-TypeScript.git

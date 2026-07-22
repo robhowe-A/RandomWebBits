@@ -88,10 +88,10 @@ const RWB = {
       dialog.style.setProperty("display", "none");
     });
   },
-  init: () => {
+  init: (cookieChoice: boolean) => {
     // Add header and footer components
     headerFooter.headerWidget.init();
-    headerFooter.footerWidget.init();
+    headerFooter.footerWidget.init(cookieChoice);
 
     //Check browser color scheme preference
     colorScheme.setColorTheme(false, 0);
@@ -108,9 +108,9 @@ const RWB = {
 
     mainPerf.end();
   },
-  main: () => {
+  main: (cookieChoice: boolean) => {
     try {
-      RWB.init();
+      RWB.init(cookieChoice);
     } catch {
       RWB.buildBrowserClearCacheElem();
       console.error("Application error. Clear the browser data and retry.");
@@ -121,13 +121,17 @@ const RWB = {
   start: () => {
     //Check user acceptance
     const userCookiesAcceptance = localStorage.getItem("cookiesOption");
+    let userCookieAccept = false;
 
     if (!userCookiesAcceptance) {
       RWB.buildCookiesOptionDialogElem();
+      }
+    else {
+        userCookieAccept = true;
     }
 
     // Event fired before assets are rendered to the page
-    window.addEventListener("DOMContentLoaded", RWB.main);
+    window.addEventListener("DOMContentLoaded", e => RWB.main(userCookieAccept));
 
     let loadingComp: HTMLElement | null;
     loadingComp = RwbError.TryDocumentQuerySelector("LoadingComp", "body aside:first-of-type", true, true) as HTMLElement;

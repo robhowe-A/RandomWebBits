@@ -118,24 +118,24 @@ const arbitraryArticles = new Array(
      8
    )
   ),
-  new WebBit(
-   "Paint3d",
-   9,
-   "Paint 3D",
-   "Edit pictures or screen captures using paint 3D",
-   new Date(2023, 1, 28),
-   "pages/paint3d",
-   "library/img/prototype.webp",
-   "Colorful prototyping icon",
-   new AttributionLink(
-     "prototype icons",
-     "Prototype icons created by Freepik - Flaticon",
-     "https://www.flaticon.com/free-icons/prototype",
-     "Flaticon",
-     "Paint 3D",
-     9
-   )
-  ),
+  // new WebBit(
+  //  "Paint3d",
+  //  9,
+  //  "Paint 3D",
+  //  "Edit pictures or screen captures using paint 3D",
+  //  new Date(2023, 1, 28),
+  //  "pages/paint3d",
+  //  "library/img/prototype.webp",
+  //  "Colorful prototyping icon",
+  //  new AttributionLink(
+  //    "prototype icons",
+  //    "Prototype icons created by Freepik - Flaticon",
+  //    "https://www.flaticon.com/free-icons/prototype",
+  //    "Flaticon",
+  //    "Paint 3D",
+  //    9
+  //  )
+  // ),
   new WebBit(
    "Dictionary",
    10,

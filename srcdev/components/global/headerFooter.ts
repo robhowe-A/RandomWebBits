@@ -139,7 +139,7 @@ const headerFooter = {
   },
 
   footerWidget: {
-    buildFooter: () => {
+    buildFooter: (acceptedCookie:boolean) => {
       const siteFooter = document.createElement("footer");
       const siteFooterContainer = document.createElement("div");
       const footerPara = document.createElement("p");
@@ -159,7 +159,7 @@ const headerFooter = {
       footerPara.textContent = `\u00A9 2022-2026 Random Web Bits. All Rights Reserved.`;
 
       siteFooterContainer.append(footerPara);
-      siteFooterContainer.append(footerCookiesOptionToggle);
+      if(!acceptedCookie) siteFooterContainer.append(footerCookiesOptionToggle);
       siteFooter.append(siteFooterContainer);
 
       return siteFooter;
@@ -194,11 +194,11 @@ const headerFooter = {
 
       return;
     },
-    init: () => {
+    init: (userCookiesAcceptance:boolean) => {
       const footerperf = new RwbPerf("Footer");
 
       // Add footer element to the page end
-      let footer: HTMLElement = headerFooter.footerWidget.buildFooter();
+      let footer: HTMLElement = headerFooter.footerWidget.buildFooter(userCookiesAcceptance);
       document.body.append(footer);
       footer.childNodes[0].appendChild(headerFooter.footerWidget.buildFaviconAttribution(footer));
       headerFooter.footerWidget.buildDeveloperAttribution(footer);

@@ -7,7 +7,7 @@
 }
 @section pagesComponents
 {
-    <script type="module" src="~/src/pagesComponents.js"></script>
+    <script type="module" src="/src/pagesComponents.js"></script>
     <component type="typeof(Microsoft.AspNetCore.Components.Web.HeadOutlet)"
                render-mode="ServerPrerendered" />
 }
@@ -74,7 +74,7 @@
 @(await Html.RenderComponentAsync<ClientApiRequest>(RenderMode.Server))
 @section widgetComponents
 {
-    <script type="module" src="~/src/widgetComponents.js"></script>
+    <script type="module" src="/src/widgetComponents.js"></script>
 }
 @section Scripts {
     <script type="text/javascript">
